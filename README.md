@@ -289,6 +289,10 @@ PBAI-P3の候補は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`�
 
 正式な最終判断は`COMPLETE / DEVELOPMENT-GATE-FAIL / KEEP-AI-GEN4`です。`PBAI-C016-v1`は不採用・閉鎖とし、independent validationとrelease holdoutは未実行のまま保持しました。公開AI、正式release、AI世代に変更はありません。詳細は[P12最終報告](doc/ai-engineering/public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md)を参照してください。
 
+### 今後の公開AI改善案
+
+[AI-GEN4以降の改善候補一覧](doc/ai-engineering/AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md)に、実対局の反例診断、着手順序付けの費用削減、限定的な強制勝敗探索、後順位手の浅い探索、小型評価器などを整理しました。優先順位と検証方法の案であり、正式なProgram・Candidateの発行、実装、採用、公開変更は行っていません。既存のP12の不採用判断とJev比較試験の非採用境界を保持します。
+
 ### Jevを用いた独立比較試験
 
 2026年9月22日、Jevを用いた2つの比較Studyを完了しました。これらはAI-GEN4の採用・世代昇格とは独立した性能比較であり、`PBAI-P13`や公開候補の採用評価ではありません。
