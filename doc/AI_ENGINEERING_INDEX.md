@@ -31,6 +31,8 @@ formal 32 fresh openings × side swap = 64局は全局terminalまで完走した
 
 最終再生監査と実使用opening定義のarchiveを完了し、Studyは`COMPLETED / CLOSED / AUDIT-PASS`。この判定は固定した`jev-1.13.0`、prompt、candidate表現、Direct Policy方式に限定し、Jev一般、別model version、別prompt、別統合方式へ一般化しない。またcompute-equal comparisonではない。
 
+完了後の[事後局面解析](ai-engineering/jev-direct-policy-comparison/POSTHOC_POSITION_ANALYSIS_20260923.md)では、splitした7開幕の開始局面の強制勝敗と、AI-GEN4敗局中の41判断局面ですでに相手の強制勝ちがあったことを確認した。静的評価が危険手を高く採点した局面も、記録中の実際の探索ではその手を選ばなかった。これは保存棋譜に限定した探索的な知見であり、正式判定・公開AI採用判断は変更しない。
+
 事前固定した`NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY`を維持し、この結果からJevの公開AI採用、AI-GEN4置換、AI世代変更、`public/`組込み、本番配信へ直接進まない。[Direct Policy比較試験の最終記録](ai-engineering/jev-direct-policy-comparison/README.md)を参照する。
 
 ## 1. 最初に知っておくこと
