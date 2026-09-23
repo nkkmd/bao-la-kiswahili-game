@@ -291,7 +291,7 @@ PBAI-P3の候補は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`�
 
 ### 今後の公開AI改善案
 
-[AI-GEN4以降の改善候補一覧](doc/ai-engineering/AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md)に、実対局の反例診断、着手順序付けの費用削減、限定的な強制勝敗探索、後順位手の浅い探索、小型評価器などを整理しました。優先順位と検証方法の案であり、正式なProgram・Candidateの発行、実装、採用、公開変更は行っていません。既存のP12の不採用判断とJev比較試験の非採用境界を保持します。
+[AI-GEN4以降の改善候補一覧](doc/ai-engineering/AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md)を精査し、判断を保つ重複計算の削減、Workerの再利用、より良い教師・教材による軽量評価器の再学習を具体化しました。強制勝敗探索や後順位手の浅い探索は適用条件を確認する案とし、各候補の期待効果・最小比較・見送り条件、棋力と応答時間を分けた検証方法を記録しています。文書上の検討案であり、新規試験・実装・正式なProgram・Candidateの発行・公開変更は行っていません。既存のP12の不採用判断とJev比較試験の非採用境界を保持します。
 
 ### Jevを用いた独立比較試験
 
