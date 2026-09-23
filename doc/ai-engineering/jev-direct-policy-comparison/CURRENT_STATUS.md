@@ -69,7 +69,7 @@ formal完走後およびopening定義固定後に、API keyを外して `node to
 
 保存game、request / response、response digest、candidate binding、selected move、exact after-state、ledger chain、runtime manifest、protocol/openings/spec bindingに不整合は検出されなかった。
 
-## Opening archive
+## 開幕定義の保存
 
 実対局に使用した生成opening定義を次のcommitで固定済み。
 
@@ -80,7 +80,7 @@ formal完走後およびopening定義固定後に、API keyを外して `node to
 
 `opening-verification.json` は Namua 16 / Mtaji 16、formal 32 pairs / 64 games、first-game Jev player 16 / 16、前Study opening 34件除外、固定openings hash一致を記録する。
 
-## Technical pauses
+## 技術的な一時停止
 
 formal中に3件のretryable `invalid-response` が発生した。
 
@@ -103,7 +103,7 @@ formal中に3件のretryable `invalid-response` が発生した。
 
 費用gate違反はない。
 
-## Pre-main documentation audit
+## main統合前の文書監査
 
 main統合前に、現在状態を案内する文書を相互照合した。
 
@@ -119,7 +119,7 @@ main統合前に、現在状態を案内する文書を相互照合した。
 
 authorization / pause / resume文書は実行時点の履歴なので、現在状態へ書き換えず保存する。
 
-## Main integration
+## mainへの統合
 
 - pre-integration main HEAD: `4d072cb862864f25d6ae74363040c8f4a772d8ee`
 - integrated source branch HEAD: `9f0ba0cb5b25f5d6d09a3535b531afd881d5f0fa`
@@ -134,7 +134,7 @@ authorization / pause / resume文書は実行時点の履歴なので、現在�
 
 main統合は完了した。本Studyの記録統合は公開AI採用・世代変更・本番配信を意味しない。
 
-## Closure
+## 試験の終了
 
 closure記録:
 
