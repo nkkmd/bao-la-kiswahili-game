@@ -100,7 +100,6 @@ formal中に3件のretryable `invalid-response` が発生した。各件で保�
 
 今回のDirect Policy Studyはfresh opening集合と異なるJev役割を用いており、前回Studyの生データ・台帳・formal結果は変更・合算していない。
 
-
 ## 事後的な追加局面解析（2026年9月23日）
 
 保存棋譜の追加解析では、1勝1敗だった7つの開幕すべてについて開始局面の強制勝敗を証明した。また、AI-GEN4が敗れた7局の全41判断局面で、着手前から相手の強制勝ちが成立していた。直後の負けを許す手を静的評価が高く採点する局面もあったが、保存棋譜の該当59局面ではAI-GEN4は危険な手を選ばなかった。方法、手数上限、訂正点および一般化できない範囲は[`POSTHOC_POSITION_ANALYSIS_20260923.md`](POSTHOC_POSITION_ANALYSIS_20260923.md)に記録する。
