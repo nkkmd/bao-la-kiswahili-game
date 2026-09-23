@@ -28,7 +28,7 @@ Jevを探索順序付けに使うのではなく、Baoエンジンが列挙し�
 - cumulative paid requests: 413
 - cumulative reported usage: USD `0.036509592`
 
-正式判定は固定条件における `AI-GEN4-SUPERIOR`。詳細は[`../../doc/ai-engineering/jev-direct-policy-comparison/FINAL_REPORT.md`](../../doc/ai-engineering/jev-direct-policy-comparison/FINAL_REPORT.md)と[`CLOSURE_AUDIT.md`](../../doc/ai-engineering/jev-direct-policy-comparison/CLOSURE_AUDIT.md)を参照する。
+正式判定は固定条件における `AI-GEN4-SUPERIOR`。詳細は[`../../doc/ai-engineering/jev-direct-policy-comparison/FINAL_REPORT.md`](../../doc/ai-engineering/jev-direct-policy-comparison/FINAL_REPORT.md)と[`CLOSURE_AUDIT.md`](../../doc/ai-engineering/jev-direct-policy-comparison/CLOSURE_AUDIT.md)を参照する。完了後に保存棋譜から行った探索的な[追加局面解析](../../doc/ai-engineering/jev-direct-policy-comparison/POSTHOC_POSITION_ANALYSIS_20260923.md)は、正式判定を変更しない。
 
 ## 権限分離
 

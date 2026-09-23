@@ -300,7 +300,7 @@ PBAI-P3の候補は`HOLD / NON-ESTIMABLE-HOLD / CLOSED-WITHOUT-IMPLEMENTATION`�
 
 候補手順序付け比較の`INCONCLUSIVE`は、優劣を確認できなかったことを示すもので、同等性の証明ではありません。Direct Policy比較の`AI-GEN4-SUPERIOR`は、固定した`jev-1.13.0`、prompt、candidate表現、Direct Policy方式に限定した判定であり、Jev一般や別model version・別prompt・別統合方式へ一般化しません。
 
-2つのStudyはJevの役割、opening集合、protocolが異なる独立試験です。結果を合算したり、Study間差を単一要因の因果効果として扱ったりしません。両Studyとも比較のみとして閉鎖し、その結果から公開AIへの採用判断は行っていません。`public/`、公開AI世代、release、本番配信状態に変更はありません。
+2つのStudyはJevの役割、opening集合、protocolが異なる独立試験です。結果を合算したり、Study間差を単一要因の因果効果として扱ったりしません。Direct Policy比較の[事後局面解析](doc/ai-engineering/jev-direct-policy-comparison/POSTHOC_POSITION_ANALYSIS_20260923.md)では、splitした7開幕の開始局面とAI-GEN4の敗局中の41判断局面に強制勝敗を確認しました。危険な手を静的評価が高く採点した局面もありましたが、記録された対局では探索後に選ばれていません。この探索的な追記はformal判定や公開AIの改善効果を新たに確定するものではありません。両Studyとも比較のみとして閉鎖し、その結果から公開AIへの採用判断は行っていません。`public/`、公開AI世代、release、本番配信状態に変更はありません。
 
 ### 詳細資料
 
