@@ -17,13 +17,13 @@
 
 2026年9月22日、JevとAI-GEN4の比較を2つの独立Studyとして完了した。いずれも`PBAI-P13`や公開候補の採用評価ではなく、比較・記録のみを目的とする。公開AIは`AI-GEN4 / AI-GEN4-RELEASE-001`、P1〜P12の正式判断も維持する。
 
-### `JEV-BAO-STRENGTH-20260921-v1` — root move ordering
+### `JEV-BAO-STRENGTH-20260921-v1` — 候補手の順序付け
 
 Jevの候補手順序付けを追加したAI-GEN4とAI-GEN4単独を比較した。正式64局は32勝32敗、全32ペアが1勝1敗で、正式判定は`INCONCLUSIVE`である。優劣を確認できなかったことを示すが、同等性の証明ではない。
 
 当初の範囲どおり結果にかかわらずJev組込版を公開AIに採用せず、追加の有料API呼出しを禁止して終了した。[最終報告・費用・保存状態](ai-engineering/jev-ai-gen4-comparison/README.md)を参照する。
 
-### `JEV-BAO-DIRECT-POLICY-20260922-v1` — Direct Policy
+### `JEV-BAO-DIRECT-POLICY-20260922-v1` — Jevによる最終着手の直接選択
 
 前Studyとは独立に、Baoエンジンが合法variantとexact after-stateを固定し、その合法集合からJevが最終着手を直接選択する方式を比較した。Jev選択後にAI-GEN4探索で上書きしない。
 
