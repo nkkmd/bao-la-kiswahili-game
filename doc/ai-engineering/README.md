@@ -10,6 +10,10 @@
 
 AI世代、Program ID、Candidate IDの命名と区別は[`AI_GENERATION_NAMING.md`](AI_GENERATION_NAMING.md)を参照する。
 
+## 今後の改善候補
+
+[AI-GEN4以降の候補一覧](AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md)に、反例診断と探索効率・強制勝敗探索・評価器・学習系の案を記録する。検討中の案であり、正式なProgram・Candidateや公開版の変更はない。
+
 ## 直近の改善Program
 
 2026-09-17、**「十分良い手を基準にしたマージン制限型選択探索」**（`Good-Enough / Margin-Bounded Selective Search`）を`PBAI-P12 / PBAI-C016-v1`として検証した。
