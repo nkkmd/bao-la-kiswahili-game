@@ -4,7 +4,7 @@
 
 2026年9月17日には`PBAI-P12 / PBAI-C016-v1`としてマージン制限型選択探索を検証しましたが、development gateを通過せず不採用・閉鎖となり、公開AIは`AI-GEN4`を維持しています。P12を含む最新のAI Engineering状態は[AI開発の中央索引](AI_ENGINEERING_INDEX.md)を正本とします。
 
-2026年9月23日に[AI-GEN4以降の改善候補](ai-engineering/AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md)を別文書へ記録しました。そこに示す優先順位と検証方法は今後の検討案であり、本書のPhase 10・12の実施状況や過去の不採用結果を変更しません。
+2026年9月23日に[AI-GEN4以降の改善候補](ai-engineering/AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md)を別文書へ記録し、最終精査で重複計算の削減、Worker再利用、教師・教材の改善を独立案として具体化しました。優先順位と検証方法は今後の検討案です。新特徴量の追加は本書のPhase 10B・12の反例条件を引き継ぎ、教師・教材の独立案を過去の重み再探索の再開理由にはしません。本書のPhaseの実施状況、過去の不採用結果、既存の局数・判断条件は変更しません。
 
 Version: 0.3.0  
 Status: Active  
