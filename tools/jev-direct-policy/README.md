@@ -99,7 +99,7 @@ live試験は完了しており、Studyは閉鎖済みである。`.live-authori
 
 API keyはGit、ログ、JSON、ZIP、Markdown、CLI引数へ保存しない。
 
-## retry / resume
+## 再試行・再開
 
 実施時の固定規則:
 
@@ -112,7 +112,7 @@ API keyはGit、ログ、JSON、ZIP、Markdown、CLI引数へ保存しない。
 
 formal中に3件のretryable `invalid-response` が発生したが、各attempt-1を監査し、規定のattempt-2で回復した。attempt-3は発生していない。
 
-## formal design
+## 正式試験の設計
 
 - pilot: 2 openings × side swap = 4 games
 - formal: 32 fresh openings × side swap = 64 games

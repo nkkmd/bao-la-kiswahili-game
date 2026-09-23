@@ -70,7 +70,7 @@ Jev Direct Policy:
 
 Primary analysisはopening pair単位の2-0対0-2に対するtwo-sided exact binomial sign testとした。1-1 pairは記述的に残すが方向情報を与えない。
 
-## Technical pauses
+## 技術的な一時停止
 
 formal中に3件のretryable `invalid-response` が発生した。各件で保存attempt-1をオフライン監査し、minimum retry wait経過後に同一logical moveのattempt-2を1回だけ明示認可した。3件ともattempt-2で回復し、attempt-3は行っていない。
 
@@ -85,7 +85,7 @@ formal中に3件のretryable `invalid-response` が発生した。各件で保�
 
 費用gate違反はなかった。
 
-## Opening archive / closure
+## 開幕定義の保存と試験の終了
 
 実対局で使用した生成opening定義はcommit `61ce1e70c413a6e3def2c2fe1e6ac86268d297fc`で専用branchへ固定済み。
 
@@ -99,7 +99,6 @@ formal中に3件のretryable `invalid-response` が発生した。各件で保�
 `JEV-BAO-STRENGTH-20260921-v1`ではJevをroot move orderingにのみ利用し、formal 64局は32勝32敗、全32 pairが1-1で`INCONCLUSIVE`だった。
 
 今回のDirect Policy Studyはfresh opening集合と異なるJev役割を用いており、前回Studyの生データ・台帳・formal結果は変更・合算していない。
-
 
 ## 事後的な追加局面解析（2026年9月23日）
 

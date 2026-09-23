@@ -17,13 +17,13 @@
 
 2026年9月22日、JevとAI-GEN4の比較を2つの独立Studyとして完了した。いずれも`PBAI-P13`や公開候補の採用評価ではなく、比較・記録のみを目的とする。公開AIは`AI-GEN4 / AI-GEN4-RELEASE-001`、P1〜P12の正式判断も維持する。
 
-### `JEV-BAO-STRENGTH-20260921-v1` — root move ordering
+### `JEV-BAO-STRENGTH-20260921-v1` — 候補手の順序付け
 
 Jevの候補手順序付けを追加したAI-GEN4とAI-GEN4単独を比較した。正式64局は32勝32敗、全32ペアが1勝1敗で、正式判定は`INCONCLUSIVE`である。優劣を確認できなかったことを示すが、同等性の証明ではない。
 
 当初の範囲どおり結果にかかわらずJev組込版を公開AIに採用せず、追加の有料API呼出しを禁止して終了した。[最終報告・費用・保存状態](ai-engineering/jev-ai-gen4-comparison/README.md)を参照する。
 
-### `JEV-BAO-DIRECT-POLICY-20260922-v1` — Direct Policy
+### `JEV-BAO-DIRECT-POLICY-20260922-v1` — Jevによる最終着手の直接選択
 
 前Studyとは独立に、Baoエンジンが合法variantとexact after-stateを固定し、その合法集合からJevが最終着手を直接選択する方式を比較した。Jev選択後にAI-GEN4探索で上書きしない。
 
@@ -31,7 +31,7 @@ formal 32 fresh openings × side swap = 64局は全局terminalまで完走した
 
 最終再生監査と実使用opening定義のarchiveを完了し、Studyは`COMPLETED / CLOSED / AUDIT-PASS`。この判定は固定した`jev-1.13.0`、prompt、candidate表現、Direct Policy方式に限定し、Jev一般、別model version、別prompt、別統合方式へ一般化しない。またcompute-equal comparisonではない。
 
-完了後の[事後局面解析](ai-engineering/jev-direct-policy-comparison/POSTHOC_POSITION_ANALYSIS_20260923.md)では、splitした7開幕の開始局面の強制勝敗と、AI-GEN4敗局中の41判断局面ですでに相手の強制勝ちがあったことを確認した。静的評価が危険手を高く採点した局面も、記録中の実際の探索ではその手を選ばなかった。これは保存棋譜に限定した探索的な知見であり、正式判定・公開AI採用判断は変更しない。
+完了後の[事後局面解析](ai-engineering/jev-direct-policy-comparison/POSTHOC_POSITION_ANALYSIS_20260923.md)では、splitした7開幕の開始局面の強制勝敗と、AI-GEN4敗局中の41判断局面ですでに相手の強制勝ちがあったことを確認した。静的評価が危険手を高く採点した局面も、記録中の実際の探索ではその手を選ばなかった。同一の開幕05でAI-GEN4は5手の強制勝ちとなる初手から勝ち、Jevは別の初手から敗れた。Jevは即負けを避けられる97判断局面中31局面で、相手の次手で負ける手を選んだ（AI-GEN4は同種の59局面中0局面）。両者が経験した局面は異なり、31局面を勝てた対局数とみなさない。これは保存棋譜に限定した探索的な知見であり、正式判定・公開AI採用判断は変更しない。
 
 事前固定した`NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY`を維持し、この結果からJevの公開AI採用、AI-GEN4置換、AI世代変更、`public/`組込み、本番配信へ直接進まない。[Direct Policy比較試験の最終記録](ai-engineering/jev-direct-policy-comparison/README.md)を参照する。
 

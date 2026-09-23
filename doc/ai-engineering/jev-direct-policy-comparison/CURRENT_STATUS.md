@@ -18,7 +18,6 @@ main統合前の文書整合監査も実施し、ルート`README.md`、`doc/AI_
 
 本統合はStudy文書・試験tool・固定opening定義・関連索引の記録をmainへ保存するものであり、`public/`、production AI、AI-GEN4 release、本番配信資産は変更していない。**`NO-PRODUCTION-ADOPTION-FROM-THIS-STUDY`** を維持する。
 
-
 ## 事後的な追加局面解析（2026年9月23日）
 
 保存棋譜の追加解析では、1勝1敗だった7つの開幕すべてについて開始局面の強制勝敗を証明した。また、AI-GEN4が敗れた7局の全41判断局面で、着手前から相手の強制勝ちが成立していた。直後の負けを許す手を静的評価が高く採点する局面もあったが、保存棋譜の該当59局面ではAI-GEN4は危険な手を選ばなかった。方法、手数上限、訂正点および一般化できない範囲は[`POSTHOC_POSITION_ANALYSIS_20260923.md`](POSTHOC_POSITION_ANALYSIS_20260923.md)に記録する。
@@ -70,7 +69,7 @@ formal完走後およびopening定義固定後に、API keyを外して `node to
 
 保存game、request / response、response digest、candidate binding、selected move、exact after-state、ledger chain、runtime manifest、protocol/openings/spec bindingに不整合は検出されなかった。
 
-## Opening archive
+## 開幕定義の保存
 
 実対局に使用した生成opening定義を次のcommitで固定済み。
 
@@ -81,7 +80,7 @@ formal完走後およびopening定義固定後に、API keyを外して `node to
 
 `opening-verification.json` は Namua 16 / Mtaji 16、formal 32 pairs / 64 games、first-game Jev player 16 / 16、前Study opening 34件除外、固定openings hash一致を記録する。
 
-## Technical pauses
+## 技術的な一時停止
 
 formal中に3件のretryable `invalid-response` が発生した。
 
@@ -104,7 +103,7 @@ formal中に3件のretryable `invalid-response` が発生した。
 
 費用gate違反はない。
 
-## Pre-main documentation audit
+## main統合前の文書監査
 
 main統合前に、現在状態を案内する文書を相互照合した。
 
@@ -120,7 +119,7 @@ main統合前に、現在状態を案内する文書を相互照合した。
 
 authorization / pause / resume文書は実行時点の履歴なので、現在状態へ書き換えず保存する。
 
-## Main integration
+## mainへの統合
 
 - pre-integration main HEAD: `4d072cb862864f25d6ae74363040c8f4a772d8ee`
 - integrated source branch HEAD: `9f0ba0cb5b25f5d6d09a3535b531afd881d5f0fa`
@@ -135,7 +134,7 @@ authorization / pause / resume文書は実行時点の履歴なので、現在�
 
 main統合は完了した。本Studyの記録統合は公開AI採用・世代変更・本番配信を意味しない。
 
-## Closure
+## 試験の終了
 
 closure記録:
 
