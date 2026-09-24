@@ -1,5 +1,6 @@
 name: LWSRT G4-03 Stage 1 pre-execution static validation
 # Effective scientific execution mode: GITHUB-ACTIONS-ONCE
+# Execution is armed only by the dedicated single-path trigger commit.
 
 on:
   push:
