@@ -23,10 +23,13 @@ preregistrationとStage 0 technical-only verificationは完了している。Sta
 ## Stage 1 execution boundary
 
 - scientific design、runner logic、seed block `40312001..40312768` / 768 は変更しない。
-- 本実行は `.github/workflows/lwsrt-stage1-actions-once.yml` の `workflow_dispatch` から一度だけ行う。
+- 本実行は `.github/workflows/lwsrt-stage1-actions-once.yml` が、研究ブランチ上の専用triggerファイル `authorizations/STAGE_1_ACTIONS_EXECUTION_TRIGGER.json` の**単独コミット**を検知したときに一度だけ開始する。
+- triggerファイルは準備段階では存在させない。作成そのものを本実行開始操作として扱う。
+- triggerは固定study/stage/seed block、`EXECUTE-AUTHORIZED-STAGE1-ONCE`、no-rerun / no-seed-extension acknowledgementを満たし、そのコミットで変更されたパスがtriggerファイル1件だけであることを要求する。
 - fresh seedの最初のread前に、固定blob SHA、upstream identity firewall、過去artifact digestを再検証する。
 - 本実行直前にリポジトリ上のdurable execution leaseを取得する。leaseが既に存在する場合はfresh seed access前にfail closedとする。
 - local fresh generation、二回目のscientific execution、fresh access後のrerun、seed extensionは認可しない。
+- `main`には本実行workflowを置かず、研究ブランチの隔離を維持する。
 
 ## Interpretation boundary
 
