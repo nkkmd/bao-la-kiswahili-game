@@ -1,12 +1,11 @@
 name: LWSRT G4-03 Stage 1 authorized once
 
 on:
-  workflow_dispatch:
-    inputs:
-      confirm:
-        description: "Type RUN-LWSRT-STAGE1-ONCE to consume the single authorized fresh execution"
-        required: true
-        type: string
+  push:
+    branches:
+      - "research/g4-03-width-ranking-transfer"
+    paths:
+      - "doc/local-width-search-ranking-transfer/authorizations/STAGE_1_ACTIONS_EXECUTION_TRIGGER.json"
 
 permissions:
   contents: write
@@ -21,17 +20,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
-      - name: Require explicit one-shot confirmation
-        shell: bash
-        env:
-          DISPATCH_CONFIRM: ${{ inputs.confirm }}
-        run: |
-          set -euo pipefail
-          test "${DISPATCH_CONFIRM}" = "RUN-LWSRT-STAGE1-ONCE"
-          test "${GITHUB_REF_NAME}" = "research/g4-03-width-ranking-transfer"
-          test "${GITHUB_EVENT_NAME}" = "workflow_dispatch"
-
-      - name: Checkout exact dispatched research state
+      - name: Checkout exact trigger commit
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -40,6 +29,30 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "22"
+
+      - name: Verify one-shot trigger contract without fresh seed access
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${GITHUB_REF_NAME}" = "research/g4-03-width-ranking-transfer"
+          test "${GITHUB_EVENT_NAME}" = "push"
+          node <<'NODE'
+          const fs=require('node:fs');
+          const cp=require('node:child_process');
+          const triggerPath='doc/local-width-search-ranking-transfer/authorizations/STAGE_1_ACTIONS_EXECUTION_TRIGGER.json';
+          const t=JSON.parse(fs.readFileSync(triggerPath,'utf8'));
+          const need=(x,msg)=>{if(!x)throw new Error(msg);};
+          need(t.schemaVersion===1,'trigger schema mismatch');
+          need(t.studyId==='LWSRT-STUDY1','trigger study mismatch');
+          need(t.stageId==='LWSRT-S1-DEVELOPMENT-2026-09-24-v1','trigger stage mismatch');
+          need(t.action==='EXECUTE-AUTHORIZED-STAGE1-ONCE','trigger action mismatch');
+          need(t.effectiveAuthorization==='LWSRT-STUDY1-STAGE1-AUTHORIZED-GITHUB-ACTIONS-ONCE','trigger authorization mismatch');
+          need(t.seedBlock?.start===40312001&&t.seedBlock?.end===40312768&&t.seedBlock?.count===768,'trigger seed block mismatch');
+          need(t.acknowledgeNoRerun===true&&t.acknowledgeNoSeedExtension===true,'trigger acknowledgement mismatch');
+          const changed=cp.execFileSync('git',['diff-tree','--no-commit-id','--name-only','-r',process.env.GITHUB_SHA],{encoding:'utf8'}).trim().split(/\r?\n/).filter(Boolean);
+          need(changed.length===1&&changed[0]===triggerPath,`trigger commit must change only ${triggerPath}; got ${changed.join(',')}`);
+          console.log('one-shot trigger contract PASS; fresh scientific seed access = false');
+          NODE
 
       - name: Verify effective authorization and frozen bindings without fresh seed access
         shell: bash
@@ -67,9 +80,25 @@ jobs:
             const actual=cp.execFileSync('git',['hash-object',x.path],{encoding:'utf8'}).trim();
             need(actual===x.blobSha,`blob mismatch ${name}: ${actual} != ${x.blobSha}`);
           }
-          need(!fs.existsSync('doc/local-width-search-ranking-transfer/executions/STAGE_1_ACTIONS_EXECUTION_LEASE.json'),'durable execution lease already present in checkout');
           console.log(`pre-fresh execution binding PASS (${Object.keys(b.bindings).length} bound files)`);
           NODE
+
+      - name: Refuse if a durable execution lease already exists on the research branch
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          url="https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/contents/doc/local-width-search-ranking-transfer/executions/STAGE_1_ACTIONS_EXECUTION_LEASE.json?ref=research%2Fg4-03-width-ranking-transfer"
+          status="$(curl --silent --show-error --location --output /tmp/lwsrt-lease-check.json --write-out '%{http_code}' \
+            --header "Authorization: Bearer ${GH_TOKEN}" \
+            --header "Accept: application/vnd.github+json" \
+            "${url}")"
+          case "${status}" in
+            404) echo 'durable execution lease absent; pre-fresh continuation allowed' ;;
+            200) echo 'durable execution lease already exists; refusing second execution' >&2; cat /tmp/lwsrt-lease-check.json >&2; exit 1 ;;
+            *) echo "unexpected lease lookup HTTP ${status}" >&2; cat /tmp/lwsrt-lease-check.json >&2; exit 1 ;;
+          esac
 
       - name: Download immutable upstream identity artifacts as raw ZIPs
         shell: bash
@@ -117,7 +146,7 @@ jobs:
             freshSeedBlock:{start:40312001,end:40312768,count:768},
             workflowRunId:Number(process.env.GITHUB_RUN_ID),
             workflowRunAttempt:Number(process.env.GITHUB_RUN_ATTEMPT),
-            dispatchedHeadSha:process.env.GITHUB_SHA,
+            triggerCommitSha:process.env.GITHUB_SHA,
             acquiredBeforeFreshSeedRead:true,
             acquiredAt:new Date().toISOString()
           };
@@ -156,7 +185,7 @@ jobs:
             studyId:'LWSRT-STUDY1',
             workflowRunId:Number(process.env.GITHUB_RUN_ID),
             workflowRunAttempt:Number(process.env.GITHUB_RUN_ATTEMPT),
-            dispatchedHeadSha:process.env.GITHUB_SHA,
+            triggerCommitSha:process.env.GITHUB_SHA,
             repository:process.env.GITHUB_REPOSITORY,
             ref:process.env.GITHUB_REF,
             resultPresent:fs.existsSync(p),
