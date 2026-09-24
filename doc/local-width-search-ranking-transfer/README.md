@@ -2,77 +2,94 @@
 
 Program: `Research Generation 4 / G4-03`  
 Study ID: `LWSRT-STUDY1`  
-Branch: `research/g4-03-width-ranking-transfer`
+Branch: `research/g4-03-width-ranking-transfer`  
+状態: **`COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE`**
 
 正式日本語題目:
 
 **Baoのroot legal widthとsearch ranking変化の移送可能性研究1 — fresh source policy・reachable-root family・phase strataにおけるG3-07 confirmed associationのprospective再検証**
 
-preregistration、Stage 0、Stage 1 development executionは完了している。Stage 1はGitHub Actionsで一回だけ正式実行し、`STAGE1-PASS`となった。現在はStage 2のimplementation、identity firewall、exact inference、pre-execution binding、seed-free preflightまで完了し、**final one-shot Stage 2 authorization review直前**である。Stage 2 fresh scientific seedにはまだ一度もアクセスしていない。
+## 結論
 
-## 正本
+G3-07で確認された、`root legal width` HIGH stratumで`ranking-preorder change`が多いという非因果的associationを、G4-01でcompatibilityを確認したfresh domainsへ移送した。
 
-- [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md)
-- [`prereg/STUDY_1_SPEC.json`](prereg/STUDY_1_SPEC.json)
-- [`CURRENT_STATUS.md`](CURRENT_STATUS.md)
-- [`checkpoints/2026-09-24-stage-1-completion.md`](checkpoints/2026-09-24-stage-1-completion.md)
-- [`checkpoints/2026-09-24-stage-2-preflight.md`](checkpoints/2026-09-24-stage-2-preflight.md)
-- [`authorizations/STAGE_1_AUTHORIZATION.json`](authorizations/STAGE_1_AUTHORIZATION.json) — Stage 1当初認可の履歴正本
-- [`authorizations/STAGE_1_EXECUTION_ENVIRONMENT_AMENDMENT.json`](authorizations/STAGE_1_EXECUTION_ENVIRONMENT_AMENDMENT.json)
-- [`authorizations/STAGE_1_PREEXECUTION_BINDING.json`](authorizations/STAGE_1_PREEXECUTION_BINDING.json)
-- [`authorizations/STAGE_2_PREEXECUTION_BINDING.json`](authorizations/STAGE_2_PREEXECUTION_BINDING.json)
-- [`prereg/STAGE_1_IDENTITY_FIREWALL_BINDING.json`](prereg/STAGE_1_IDENTITY_FIREWALL_BINDING.json)
-- [`results/stage-1/STAGE_1_ARTIFACT_RECEIPT.json`](results/stage-1/STAGE_1_ARTIFACT_RECEIPT.json)
-- [`results/stage-2-preflight/STAGE_2_PREFLIGHT_RECEIPT.json`](results/stage-2-preflight/STAGE_2_PREFLIGHT_RECEIPT.json)
-- [`../research-program-decisions/2026-09-24-g4-03-stage2-preaccess-authorization-review.md`](../research-program-decisions/2026-09-24-g4-03-stage2-preaccess-authorization-review.md)
-
-## Stage 1 result
-
-Stage 1 canonical runはGitHub Actions `35987703180`。
+Stage 2 fixed 12-test familyの最終結果は次のとおり。
 
 ```text
-seed block = 40312001..40312768 / 768
-scientific executions = 1 / 1
-stage disposition = STAGE1-PASS
-selected roots = 128 / 128
-16 width cells = 8 / 8 each
-SC1 defined = 128 / 128
-SC2 defined = 128 / 128
-SC3 defined = 128 / 128
-production / independent exact = true
-formal inference performed = false
+GENERALIZATION-CONFIRMED = 9
+NOT-GENERALIZED = 1
+NON-ESTIMABLE = 2
+COUNTEREXAMPLE-CONFIRMED = 0
 ```
 
-Stage 1ではeffect direction、risk difference、p-value、generalization/counterexample decisionを生成していない。Stage 2はcanonical Stage 1 artifactからsource seed、trajectory、opening prefix、RAW rootのidentityだけを再materializeして重複排除に用いる。
+- `SC1 DEPTH`: 4/4 domainで`GENERALIZATION-CONFIRMED`
+- `SC2 NODE-BUDGET`: P1×RF1 / P1×RF2で`GENERALIZATION-CONFIRMED`、P2×RF1 / P2×RF2はMtaji support不足で`NON-ESTIMABLE`
+- `SC3 QUIESCENCE`: 3/4 domainで`GENERALIZATION-CONFIRMED`、P2×RF2は`NOT-GENERALIZED`
+- 反対方向のformal counterexampleは確認されなかった
 
-## Stage 2 preparation boundary
+したがって、対象associationは本Studyのfresh domainsで**広く移送可能だったが、無条件・普遍的ではない**。support不足domainと、Holm補正後にformal confirmationへ届かなかったdomainが存在する。
 
-Stage 2 pre-access reviewの判定は、
-
-**`LWSRT-STUDY1-STAGE2-PREACCESS-PASS / FRESH-EXECUTION-NOT-YET-AUTHORIZED`**
-
-である。
-
-Stage 2 fixed contract:
+## Canonical Stage 2 execution
 
 ```text
-stage = LWSRT-S2-FORMAL-2026-09-24-v1
+workflow run = 35993172710 / attempt 1 / success
 seed block = 40322001..40323536 / 1536
-selection target = 12 HIGH + 12 LOW per policy × root-family × phase
-formal tests = 12
-exact test = phase-wise hypergeometric + Namua/Mtaji convolution
-multiplicity = fixed-12 Holm-Bonferroni
-family alpha = 1/20
+fresh reads = 1536 / exactly once
+selected roots = 192 / 192
+production / independent exact = true
+stage disposition = STAGE2-COMPLETE-WITH-NON-ESTIMABLE
+artifact ID = 10805571797
+artifact SHA-256 = c4449f9a034f30a501f60c6ee90b07426bd1c42aa3b0bbc150fd8d3e1199b597
+STAGE_2_RESULT.json SHA-256 = 88dd8c2e586f36692d5d0cb1d66847affe0151a803f9230eb7d8425f93469bf3
 ```
 
-seed-free preflight run `35991470739` と frozen binding validation run `35991767724` はともに`success`。Stage 2 fresh seed readは0のままである。
+final authorizationはfresh access前に`LWSRT-STUDY1-STAGE2-AUTHORIZED-GITHUB-ACTIONS-ONCE`として固定した。専用trigger、24-file frozen binding、identity firewall、seed-free preflight、durable repository leaseを通過した後に一回だけ本実行した。
 
-Stage 2 formal runner `tools/experiments/run-lwsrt-stage2-formal.js` は、別個のfinal authorization fileが存在しない限り実行を拒否する。execution environmentもまだ固定していないため、現時点でformal scientific executionを開始することはできない。
+rerun、seed extension、root replacement、threshold relearningは行っていない。G3-11 depth-10 / G4-10 depth-11 protected evidenceにもアクセスしていない。
+
+## Study structure
+
+### Stage 0
+
+technical-only validation。source replay、anchor selection、width threshold boundary、search production/independent exactness、exact inference arithmeticなどを検証し`STAGE0-PASS`。
+
+### Stage 1
+
+`40312001..40312768` / 768 fresh development seedsを一回だけ使用。16 strataすべてで`8 HIGH + 8 LOW`、合計128 rootsを確保し、SC1/SC2/SC3 endpointは128/128 defined。Stage 1ではeffect direction、risk difference、p-value、generalization/counterexample decisionを生成しなかった。
+
+### Stage 2
+
+`40322001..40323536` / 1536 fresh formal held-out seedsを一回だけ使用。各`policy × root-family × phase`で`12 HIGH + 12 LOW`、計192 rootsを固定selectionした。
+
+各domainでNamua/Mtajiのexact hypergeometric PMFをconvolutionし、3 contrasts × 4 domains = 12 testsを単一Holm-Bonferroni family、FWER `1/20`で評価した。
 
 ## Interpretation boundary
 
-本Studyの対象はroot legal widthとdeterministic search-condition間のranking-preorder changeの**非因果的associationのtransferability**である。best move correctness、game-theoretic value、AI棋力、人間の難しさはendpointではない。
+本Studyが検証したのはroot legal widthとdeterministic search-condition間のranking-preorder changeの**associationのtransferability**である。
+
+次を検証していない。
+
+- best move correctness
+- game-theoretic value
+- AI棋力や勝率
+- 人間の難しさ
+- causal mechanism
+- どちらのsearch conditionが「正しい」か
+
+`GENERALIZATION-CONFIRMED`はこの固定domain・固定contrast・固定endpointにおける統計的な移送確認であり、whole-Bao universal lawを意味しない。`NON-ESTIMABLE`はnegative evidenceではない。`NOT-GENERALIZED`も反対方向のcounterexampleと同義ではない。
+
+研究結果は公開AIの採用判断と分離する。public AI変更は認可していない。
+
+## 正本
+
+1. [`CURRENT_STATUS.md`](CURRENT_STATUS.md)
+2. [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md)
+3. [`prereg/STUDY_1_SPEC.json`](prereg/STUDY_1_SPEC.json)
+4. [`authorizations/STAGE_2_FINAL_AUTHORIZATION.json`](authorizations/STAGE_2_FINAL_AUTHORIZATION.json)
+5. [`executions/STAGE_2_ACTIONS_EXECUTION_LEASE.json`](executions/STAGE_2_ACTIONS_EXECUTION_LEASE.json)
+6. [`results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json`](results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json)
+7. [`../research-program-decisions/2026-09-24-g4-03-local-width-search-ranking-transfer-study1-closure.md`](../research-program-decisions/2026-09-24-g4-03-local-width-search-ranking-transfer-study1-closure.md)
 
 ## Main integration
 
-Research branchは`main`から隔離する。`main`統合はStudy closure・整合性監査後、ユーザーの明示指示があるまで行わない。public AI変更も本研究の自動的帰結とはしない。
+G4-03の研究作業は完了しているが、研究ブランチは`main`から隔離したままである。`main`統合はユーザーの明示指示があるまで行わない。
