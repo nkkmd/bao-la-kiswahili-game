@@ -18,7 +18,7 @@
   "authorizedScientificExecutions": 1,
   "authorizedSeedBlock": {"start":40312001,"end":40312768,"count":768},
   "authorizedWorkflowPath": ".github/workflows/lwsrt-stage1-actions-once.yml",
-  "authorizedWorkflowBlobSha": "024c95e90a19c6fa23fa52b2f498ca74ca04a5ad",
+  "authorizedWorkflowBlobSha": "7135468d3696ddb6d99b01b6b1cfe900c7e9bf6f",
   "requiredDispatchConfirmation": "RUN-LWSRT-STAGE1-ONCE",
   "durableLeasePath": "doc/local-width-search-ranking-transfer/executions/STAGE_1_ACTIONS_EXECUTION_LEASE.json",
   "durableLeaseRequiredBeforeFirstFreshRead": true,
