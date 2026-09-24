@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LWSRT-STUDY1",
+  "stageId": "LWSRT-S1-DEVELOPMENT-2026-09-24-v1",
+  "leaseClass": "DURABLE-GITHUB-ACTIONS-SINGLE-EXECUTION-LEASE",
+  "effectiveAuthorization": "LWSRT-STUDY1-STAGE1-AUTHORIZED-GITHUB-ACTIONS-ONCE",
+  "freshSeedBlock": {
+    "start": 40312001,
+    "end": 40312768,
+    "count": 768
+  },
+  "workflowRunId": 35987703180,
+  "workflowRunAttempt": 1,
+  "triggerCommitSha": "a9cf4fe237b85e18987c634a2edee86fbdca7b7f",
+  "acquiredBeforeFreshSeedRead": true,
+  "acquiredAt": "2026-09-24T10:31:34.582Z"
+}
