@@ -85,6 +85,8 @@ jobs:
           need(m.authorizedScientificExecutions === 1 && m.rerunAfterFreshAccessAuthorized === false && m.secondScientificExecutionAuthorized === false, 'one-shot authorization mismatch');
           need(m.authorizedSeedBlock.start === 40312001 && m.authorizedSeedBlock.end === 40312768 && m.authorizedSeedBlock.count === 768, 'amendment seed block mismatch');
           need(m.authorizedWorkflowPath === '.github/workflows/lwsrt-stage1-actions-once.yml', 'authorized workflow path mismatch');
+          need(m.requiredTriggerPath === 'doc/local-width-search-ranking-transfer/authorizations/STAGE_1_ACTIONS_EXECUTION_TRIGGER.json', 'trigger path contract mismatch');
+          need(m.requiredTriggerAction === 'EXECUTE-AUTHORIZED-STAGE1-ONCE' && m.requiredTriggerAcknowledgeNoRerun === true && m.requiredTriggerAcknowledgeNoSeedExtension === true && m.triggerMustBeSinglePathCommit === true, 'trigger contract mismatch');
           need(m.durableLeasePath === 'doc/local-width-search-ranking-transfer/executions/STAGE_1_ACTIONS_EXECUTION_LEASE.json' && m.durableLeaseRequiredBeforeFirstFreshRead === true, 'durable lease contract mismatch');
           need(m.stage2Authorized === false && m.publicAiChangeAuthorized === false && m.mainIntegrationAuthorized === false, 'downstream authorization boundary mismatch');
           need(s.studyId === 'LWSRT-STUDY1', 'spec study mismatch');
@@ -99,7 +101,8 @@ jobs:
           const workflowActual = cp.execFileSync('git', ['hash-object', m.authorizedWorkflowPath], {encoding:'utf8'}).trim();
           need(workflowActual === m.authorizedWorkflowBlobSha, 'amendment workflow blob mismatch');
           const forbidden = [
-            'doc/local-width-search-ranking-transfer/executions/STAGE_1_ACTIONS_EXECUTION_LEASE.json',
+            m.requiredTriggerPath,
+            m.durableLeasePath,
             'artifacts/local/lwsrt-stage1/FRESH_ACCESS_LEASE.json',
             'artifacts/local/lwsrt-stage1/STAGE_1_RESULT.json'
           ];
@@ -115,12 +118,14 @@ jobs:
             checkedBindingCount: Object.keys(b.bindings).length,
             authorizedSeedBlock: b.authorizedSeedBlock,
             effectiveExecutionAuthorization: m.amendmentDecision,
+            executionTriggerPath: m.requiredTriggerPath,
+            executionTriggerPresent: false,
             githubActionsFreshGenerationAuthorized: true,
             localFreshGenerationAuthorized: false,
             durableLeaseRequiredBeforeFirstFreshRead: true,
             stage2Authorized: false
           }, null, 2) + '\n');
-          console.log('LWSRT Stage 1 pre-execution static validation PASS; effective mode = GITHUB-ACTIONS-ONCE; fresh scientific seed access = false');
+          console.log('LWSRT Stage 1 pre-execution static validation PASS; trigger absent; effective mode = GITHUB-ACTIONS-ONCE; fresh scientific seed access = false');
           NODE
 
       - name: Upload static validation result
