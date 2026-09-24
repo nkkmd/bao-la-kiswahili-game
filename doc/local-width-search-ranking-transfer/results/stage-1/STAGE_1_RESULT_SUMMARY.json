@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LWSRT-STUDY1",
+  "stageId": "LWSRT-S1-DEVELOPMENT-2026-09-24-v1",
+  "evidenceClass": "FRESH-DEVELOPMENT",
+  "stageDisposition": "STAGE1-PASS",
+  "seedBlock": {
+    "start": 40312001,
+    "end": 40312768,
+    "count": 768
+  },
+  "scientificSeedsRead": 768,
+  "authorizedScientificExecutions": 1,
+  "actualScientificExecutions": 1,
+  "formalInferencePerformed": false,
+  "pValuesComputed": false,
+  "riskDifferencesComputed": false,
+  "effectDirectionSummarized": false,
+  "generalizationDecisionComputed": false,
+  "counterexampleDecisionComputed": false,
+  "thresholdRelearningPerformed": false,
+  "support": {
+    "LGTTCI-P1-UNIFORM-LEGAL|LGTTCI-RF1-MID-ANCHOR|namua|HIGH": {"firewallCleanEligiblePool":39,"provisionalSelected":8,"selectedAfterRawDedup":8,"target":8},
+    "LGTTCI-P1-UNIFORM-LEGAL|LGTTCI-RF1-MID-ANCHOR|namua|LOW": {"firewallCleanEligiblePool":24,"provisionalSelected":8,"selectedAfterRawDedup":8,"target":8},
+    "LGTTCI-P1-UNIFORM-LEGAL|LGTTCI-RF1-MID-ANCHOR|mtaji|HIGH": {"firewallCleanEligiblePool":25,"provisionalSelected":8,"selectedAfterRawDedup":8,"target":8},
+    "LGTTCI-P1-UNIFORM-LEGAL|LGTTCI-RF1-MID-ANCHOR|mtaji|LOW": {"firewallCleanEligiblePool":20,"provisionalSelected":8,"selectedAfterRawDedup":8,"target":8},
+    "LGTTCI-P1-UNIFORM-LEGAL|LGTTCI-RF2-OFFSET-ANCHOR|namua|HIGH": {"firewallCleanEligiblePool":39,"provisionalSelected":8,"selectedAfterRawDedup":8,"target":8},
+    "LGTTCI-P1-UNIFORM-LEGAL|LGTTCI-RF2-OFFSET-ANCHOR|namua|LOW": {"firewallCleanEligiblePool":28,"provisionalSelected":8,"selectedAfterRawDedup":8,"target":8},
+    "LGTTCI-P1-UNIFORM-LEGAL|LGTTCI-RF2-OFFSET-ANCHOR|mtaji|HIGH": {"firewallCleanEligiblePool":31,"provisionalSelected":8,"selectedAfterRawDedup":8,"target":8},
+    "LGTTCI-P1-UNIFORM-LEGAL|LGTTCI-RF2-OFFSET-ANCHOR|mtaji|LOW": {"firewallCleanEligiblePool":15,"provisionalSelected":8,"selectedAfterRawDedup":8,"target":8},
+    "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE|LGTTCI-RF1-MID-ANCHOR|namua|HIGH": {"firewallCleanEligiblePool":42,"provisionalSelected":8,"selectedAfterRawDedup":8,"target":8},
+    "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE|LGTTCI-RF1-MID-ANCHOR|namua|LOW": {"firewallCleanEligiblePool":32,"provisionalSelected":8,"selectedAfterRawDedup":8,"target":8},
+    "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE|LGTTCI-RF1-MID-ANCHOR|mtaji|HIGH": {"firewallCleanEligiblePool":35,"provisionalSelected":8,"selectedAfterRawDedup":8,"target":8},
+    "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE|LGTTCI-RF1-MID-ANCHOR|mtaji|LOW": {"firewallCleanEligiblePool":24,"provisionalSelected":8,"selectedAfterRawDedup":8,"target":8},
+    "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE|LGTTCI-RF2-OFFSET-ANCHOR|namua|HIGH": {"firewallCleanEligiblePool":40,"provisionalSelected":8,"selectedAfterRawDedup":8,"target":8},
+    "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE|LGTTCI-RF2-OFFSET-ANCHOR|namua|LOW": {"firewallCleanEligiblePool":20,"provisionalSelected":8,"selectedAfterRawDedup":8,"target":8},
+    "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE|LGTTCI-RF2-OFFSET-ANCHOR|mtaji|HIGH": {"firewallCleanEligiblePool":38,"provisionalSelected":8,"selectedAfterRawDedup":8,"target":8},
+    "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE|LGTTCI-RF2-OFFSET-ANCHOR|mtaji|LOW": {"firewallCleanEligiblePool":22,"provisionalSelected":8,"selectedAfterRawDedup":8,"target":8}
+  },
+  "rejectionCounts": {"UPSTREAM_TRAJECTORY":2,"UPSTREAM_PREFIX":0,"UPSTREAM_ROOT":0,"ANCHOR_UNAVAILABLE":99,"WIDTH_EQUAL":117,"WIDTH_LT2":76},
+  "selectedRoots": 128,
+  "endpointDefinedness": {
+    "SC1-DEPTH": {"defined":128,"undefined":0},
+    "SC2-NODE-BUDGET": {"defined":128,"undefined":0},
+    "SC3-QUIESCENCE": {"defined":128,"undefined":0}
+  },
+  "productionIndependentExact": true,
+  "identityManifestSha256": "4a1dd1f3bc516734c91f99fbd9bf63ff966e3ed0568cb1b21c3fa6ccd290a979",
+  "firewallAudit": {"g3Stage1Rows":48,"g3Stage2Rows":72,"g4Stage1rRows":768,"g4Stage1rTrajectoryUnique":766,"g4Stage1rRootUnique":665,"g4Stage1rOpeningPrefixAudited":false},
+  "resourceReadiness": {"elapsedMs":312374.380301,"peakRssBytes":146173952},
+  "stage2SeedAccess": false,
+  "protectedDepth10Access": false,
+  "g4_10Depth11Access": false,
+  "sourceWorkflow": {
+    "runId": 35987703180,
+    "attempt": 1,
+    "triggerCommitSha": "a9cf4fe237b85e18987c634a2edee86fbdca7b7f",
+    "artifactId": 10803311137,
+    "artifactSha256": "aaea8b1c564dbe400d2d1fc00ebfa58f23cd485d9ae994af88cd4ceaf6b621a6",
+    "fullResultSha256": "58d5489ce918bc57b599ca168fdcefbd4e741892ad123d96d27439fb06085ac8"
+  }
+}
