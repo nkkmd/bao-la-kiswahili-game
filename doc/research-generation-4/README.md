@@ -20,7 +20,7 @@ Program: `Bao Fourth-Generation Research Program`
 | --- | --- | --- | --- |
 | A | `G4-01` | claim-transfer compatibility instrument | `COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED` |
 | A | `G4-02` | G3-04由来corridor / tree-graph transfer | `CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED` |
-| A | `G4-03` | G3-07由来width / search-ranking transfer | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE` |
+| A | `G4-03` | G3-07由来width / search-ranking transfer | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED` |
 | A | `G4-04` | G3-10由来geometry-trajectory transfer | `ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED` |
 | B | `G4-05..G4-06` | exact microdomainとgeometry / consequence bridge | `NOT AUTHORIZED` |
 | C | `G4-07..G4-09` | memory、rule-semantic transition、search reliability | `NOT AUTHORIZED` |
@@ -105,7 +105,7 @@ G4-03を追加実行しない。Research Generation 4を継続する場合、次
 
 G4-04はG4-01のeligibility gateを満たしているが、**自動authorizationではない**。新しいStudyとしてauthorization reviewから開始する。
 
-G4-03の`main`統合も別工程であり、ユーザーの明示指示まで行わない。
+G4-03の`main`統合はユーザーの明示指示に基づきPR #164で完了した。
 
 ## 解釈上の境界
 

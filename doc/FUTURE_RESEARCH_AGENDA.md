@@ -24,7 +24,7 @@ Research Generation 3 core = CLOSED
 Research Generation 4 plan = FROZEN / INTEGRATED TO MAIN
 G4-01 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED
 G4-02 = CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED
-G4-03 = COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / NOT YET MAIN INTEGRATED
+G4-03 = COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED
 G4-04 = ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED
 G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 ```
@@ -39,7 +39,7 @@ G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 | --- | --- | --- | --- |
 | A | `G4-01` | claim-transfer compatibility instrument | `COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED` |
 | A | `G4-02` | G3-04由来corridor / tree-graph transfer | `CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED` |
-| A | `G4-03` | G3-07由来width / search-ranking transfer | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE` |
+| A | `G4-03` | G3-07由来width / search-ranking transfer | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED` |
 | A | `G4-04` | G3-10由来geometry-trajectory transfer | `ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED` |
 | B | `G4-05..G4-06` | fresh exact microdomainとgeometry / game-theoretic consequence bridge | `NOT AUTHORIZED` |
 | C | `G4-07..G4-09` | multiscale memory、rule-semantic transition、search reliability | `NOT AUTHORIZED` |

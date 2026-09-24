@@ -26,7 +26,7 @@ NON-ESTIMABLE = 2
 COUNTEREXAMPLE-CONFIRMED = 0
 Study closure = COMPLETE
 public AI change authorized = false
-main integration authorized = false
+main integration = COMPLETE / PR #164 / merge commit 73ac1920177c2451669e5ceeccaed53e34459df9
 ```
 
 ## Stage 1
@@ -116,7 +116,7 @@ G4-03 / `LWSRT-STUDY1`は**`COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE`**と�
 
 このStudyをrepair、rerun、seed-extensionしない。追加検証が必要なら新しいprospective Studyとして別authorizationから開始する。
 
-`main`統合はStudy closureとは別であり、ユーザーの明示指示があるまで行わない。
+`main`統合はユーザーの明示指示に基づきPR #164で完了した。merge commitは`73ac1920177c2451669e5ceeccaed53e34459df9`。
 
 ## 正本
 

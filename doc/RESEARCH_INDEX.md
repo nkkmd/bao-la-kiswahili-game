@@ -31,7 +31,7 @@
 | --- | --- | --- |
 | `G4-01` / [`LGTTCI-STUDY1`](local-game-tree-geometry-transfer-compatibility-instrument/) | claim-transfer compatibility instrument | `COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED` |
 | `G4-02` | corridor / tree-graph transfer | `CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED` |
-| `G4-03` / [`LWSRT-STUDY1`](local-width-search-ranking-transfer/) | width / search-ranking transfer | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE` |
+| `G4-03` / [`LWSRT-STUDY1`](local-width-search-ranking-transfer/) | width / search-ranking transfer | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED` |
 | `G4-04` | geometry-trajectory transfer | `ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED` |
 | `G4-05` | exact microdomain oracle foundation | `CANDIDATE / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-06` | geometry / exact consequence bridge | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
