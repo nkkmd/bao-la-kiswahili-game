@@ -7,6 +7,7 @@ on:
     paths:
       - "public/engine.js"
       - "public/ai.js"
+      - "public/ai-weights.js"
       - "tools/experiments/run-lwsrt-stage1-development.js"
       - "tools/experiments/lib/lgttci-compatibility-production.js"
       - "tools/experiments/lib/lgttci-compatibility-independent.js"
@@ -21,6 +22,7 @@ on:
       - "doc/local-width-search-ranking-transfer/prereg/UPSTREAM_IDENTITY_FIREWALL.json"
       - "doc/local-width-search-ranking-transfer/authorizations/STAGE_1_AUTHORIZATION.json"
       - "doc/local-width-search-ranking-transfer/authorizations/STAGE_1_PREEXECUTION_BINDING.json"
+      - "doc/search-instability-local-geometry-mechanism/prereg/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json"
       - ".github/workflows/lwsrt-stage1-preexecution-static.yml"
   workflow_dispatch:
 
