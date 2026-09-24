@@ -27,8 +27,8 @@
     "searchRobustness": {"path":"tools/experiments/lib/search-reliability-decision-robustness.js","blobSha":"f3a6951fe711db62e164910cfb248a9cbc2cac1a"},
     "spec": {"path":"doc/local-width-search-ranking-transfer/prereg/STUDY_1_SPEC.json","blobSha":"cd955019972b629b03ea210ff6f430ce4b83e502"},
     "authorization": {"path":"doc/local-width-search-ranking-transfer/authorizations/STAGE_1_AUTHORIZATION.json","blobSha":"ca5091b5d879aee4ecfee9311f1287531e10a6f0"},
-    "executionEnvironmentAmendment": {"path":"doc/local-width-search-ranking-transfer/authorizations/STAGE_1_EXECUTION_ENVIRONMENT_AMENDMENT.json","blobSha":"444c6ab112e47a85741dd52cea227ec74a695408"},
-    "authorizedExecutionWorkflow": {"path":".github/workflows/lwsrt-stage1-actions-once.yml","blobSha":"7135468d3696ddb6d99b01b6b1cfe900c7e9bf6f"},
+    "executionEnvironmentAmendment": {"path":"doc/local-width-search-ranking-transfer/authorizations/STAGE_1_EXECUTION_ENVIRONMENT_AMENDMENT.json","blobSha":"68c4c1265ba69c9a9f317432a24d4dca63f67ff1"},
+    "authorizedExecutionWorkflow": {"path":".github/workflows/lwsrt-stage1-actions-once.yml","blobSha":"3dbe1ec2282190b1d180c6f27ae34f1b6b67d18b"},
     "upstreamIdentityFirewall": {"path":"doc/local-width-search-ranking-transfer/prereg/UPSTREAM_IDENTITY_FIREWALL.json","blobSha":"066322fe3b273fd88590f2d367c8526a5659835a"},
     "g3Stage1IdentityExclusion": {"path":"doc/search-instability-local-geometry-mechanism/prereg/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json","blobSha":"3c9c67def9925df85b14287ef4fd931f099dca2a"}
   },
@@ -36,6 +36,7 @@
   "requiredBeforeFreshRead": [
     "all bound repository blob SHA values match",
     "effective Stage 1 execution authorization remains GITHUB-ACTIONS-ONCE",
+    "one-shot trigger contract passes on the research-branch trigger commit",
     "runtime upstream firewall materialization passes before the first fresh seed read",
     "durable repository execution lease acquisition succeeds before the first fresh seed read"
   ],
