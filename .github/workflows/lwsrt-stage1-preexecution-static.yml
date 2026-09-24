@@ -1,0 +1,114 @@
+name: LWSRT G4-03 Stage 1 pre-execution static validation
+
+on:
+  push:
+    branches:
+      - "research/g4-03-width-ranking-transfer"
+    paths:
+      - "public/engine.js"
+      - "public/ai.js"
+      - "tools/experiments/run-lwsrt-stage1-development.js"
+      - "tools/experiments/lib/lgttci-compatibility-production.js"
+      - "tools/experiments/lib/lgttci-compatibility-independent.js"
+      - "tools/experiments/lib/lgtgmiv-stage1-production.js"
+      - "tools/experiments/lib/lgtgmiv-stage1-independent.js"
+      - "tools/experiments/lib/crclgr-production.js"
+      - "tools/experiments/lib/crclgr-independent.js"
+      - "tools/experiments/lib/silgm-production.js"
+      - "tools/experiments/lib/silgm-independent.js"
+      - "tools/experiments/lib/search-reliability-decision-robustness.js"
+      - "doc/local-width-search-ranking-transfer/prereg/STUDY_1_SPEC.json"
+      - "doc/local-width-search-ranking-transfer/prereg/UPSTREAM_IDENTITY_FIREWALL.json"
+      - "doc/local-width-search-ranking-transfer/authorizations/STAGE_1_AUTHORIZATION.json"
+      - "doc/local-width-search-ranking-transfer/authorizations/STAGE_1_PREEXECUTION_BINDING.json"
+      - ".github/workflows/lwsrt-stage1-preexecution-static.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-preexecution:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout research branch state
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Syntax check Stage 1 runner only
+        run: node --check tools/experiments/run-lwsrt-stage1-development.js
+
+      - name: Verify frozen blobs and authorization boundary without fresh seed access
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs = require('node:fs');
+          const cp = require('node:child_process');
+          const path = require('node:path');
+          const root = process.cwd();
+          const bindingPath = path.join(root, 'doc/local-width-search-ranking-transfer/authorizations/STAGE_1_PREEXECUTION_BINDING.json');
+          const authPath = path.join(root, 'doc/local-width-search-ranking-transfer/authorizations/STAGE_1_AUTHORIZATION.json');
+          const specPath = path.join(root, 'doc/local-width-search-ranking-transfer/prereg/STUDY_1_SPEC.json');
+          const firewallPath = path.join(root, 'doc/local-width-search-ranking-transfer/prereg/UPSTREAM_IDENTITY_FIREWALL.json');
+          const b = JSON.parse(fs.readFileSync(bindingPath, 'utf8'));
+          const a = JSON.parse(fs.readFileSync(authPath, 'utf8'));
+          const s = JSON.parse(fs.readFileSync(specPath, 'utf8'));
+          const f = JSON.parse(fs.readFileSync(firewallPath, 'utf8'));
+          const need = (x, m) => { if (!x) throw new Error(m); };
+          need(b.studyId === 'LWSRT-STUDY1', 'binding study mismatch');
+          need(b.bindingClass === 'PRE-FRESH-EXECUTION-CODE-BINDING', 'binding class mismatch');
+          need(b.freshScientificSeedAccessAtBinding === 0 && b.scientificExecutionStarted === false, 'binding is not pre-fresh');
+          need(b.authorizedExecutionMode === 'LOCAL-ONCE' && b.githubActionsFreshGenerationAuthorized === false, 'execution boundary mismatch');
+          need(b.authorizedSeedBlock.start === 40312001 && b.authorizedSeedBlock.end === 40312768 && b.authorizedSeedBlock.count === 768, 'binding seed block mismatch');
+          need(a.decision === 'LWSRT-STUDY1-STAGE1-AUTHORIZED-LOCAL-ONCE', 'authorization decision mismatch');
+          need(a.authorizedScientificExecutions === 1, 'authorized execution count mismatch');
+          need(a.freshSeedAccessAtAuthorization === 0, 'authorization was not pre-fresh');
+          need(a.executionEnvironment === 'LOCAL-ONLY' && a.githubActionsFreshGenerationAuthorized === false, 'authorization environment mismatch');
+          need(a.authorizedSeedBlock.start === 40312001 && a.authorizedSeedBlock.end === 40312768 && a.authorizedSeedBlock.count === 768, 'authorization seed block mismatch');
+          need(a.seedExtensionAuthorized === false && a.rerunAfterFreshAccessAuthorized === false, 'extension/rerun boundary mismatch');
+          need(a.stage2Authorized === false && a.publicAiChangeAuthorized === false && a.mainIntegrationAuthorized === false, 'downstream authorization boundary mismatch');
+          need(s.studyId === 'LWSRT-STUDY1', 'spec study mismatch');
+          need(s.stage1.seedBlock.start === 40312001 && s.stage1.seedBlock.end === 40312768 && s.stage1.seedBlock.count === 768, 'spec Stage 1 seed block mismatch');
+          need(f.studyId === 'LWSRT-STUDY1' && f.status === 'FROZEN-PRE-FRESH' && f.freshStage1SeedAccessDuringMaterialization === false, 'firewall pre-fresh status mismatch');
+          cp.execFileSync('git', ['merge-base', '--is-ancestor', b.codeFreezeHead, 'HEAD']);
+          for (const [name, x] of Object.entries(b.bindings)) {
+            need(typeof x.path === 'string' && typeof x.blobSha === 'string', `bad binding ${name}`);
+            const actual = cp.execFileSync('git', ['hash-object', x.path], {encoding:'utf8'}).trim();
+            need(actual === x.blobSha, `blob mismatch ${name}: ${actual} != ${x.blobSha}`);
+          }
+          const forbidden = [
+            'artifacts/local/lwsrt-stage1/FRESH_ACCESS_LEASE.json',
+            'artifacts/local/lwsrt-stage1/STAGE_1_RESULT.json'
+          ];
+          for (const p of forbidden) need(!fs.existsSync(path.join(root, p)), `pre-execution state already contains ${p}`);
+          fs.mkdirSync(path.join(root, 'artifacts/lwsrt-stage1-preexecution-static'), {recursive:true});
+          fs.writeFileSync(path.join(root, 'artifacts/lwsrt-stage1-preexecution-static/result.json'), JSON.stringify({
+            schemaVersion: 1,
+            studyId: 'LWSRT-STUDY1',
+            validation: 'STAGE1-PREEXECUTION-STATIC-PASS',
+            freshScientificSeedAccess: false,
+            stage1ScientificExecutionPerformed: false,
+            codeFreezeHead: b.codeFreezeHead,
+            checkedBindingCount: Object.keys(b.bindings).length,
+            authorizedSeedBlock: b.authorizedSeedBlock,
+            githubActionsFreshGenerationAuthorized: false,
+            stage2Authorized: false
+          }, null, 2) + '\n');
+          console.log('LWSRT Stage 1 pre-execution static validation PASS; fresh scientific seed access = false');
+          NODE
+
+      - name: Upload static validation result
+        uses: actions/upload-artifact@v4
+        with:
+          name: lwsrt-stage1-preexecution-static-result
+          path: artifacts/lwsrt-stage1-preexecution-static/result.json
+          if-no-files-found: error
+          retention-days: 30
