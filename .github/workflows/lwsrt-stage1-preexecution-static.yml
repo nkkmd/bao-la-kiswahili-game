@@ -21,8 +21,10 @@ on:
       - "doc/local-width-search-ranking-transfer/prereg/STUDY_1_SPEC.json"
       - "doc/local-width-search-ranking-transfer/prereg/UPSTREAM_IDENTITY_FIREWALL.json"
       - "doc/local-width-search-ranking-transfer/authorizations/STAGE_1_AUTHORIZATION.json"
+      - "doc/local-width-search-ranking-transfer/authorizations/STAGE_1_EXECUTION_ENVIRONMENT_AMENDMENT.json"
       - "doc/local-width-search-ranking-transfer/authorizations/STAGE_1_PREEXECUTION_BINDING.json"
       - "doc/search-instability-local-geometry-mechanism/prereg/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json"
+      - ".github/workflows/lwsrt-stage1-actions-once.yml"
       - ".github/workflows/lwsrt-stage1-preexecution-static.yml"
   workflow_dispatch:
 
@@ -47,7 +49,7 @@ jobs:
       - name: Syntax check Stage 1 runner only
         run: node --check tools/experiments/run-lwsrt-stage1-development.js
 
-      - name: Verify frozen blobs and authorization boundary without fresh seed access
+      - name: Verify frozen blobs and effective Actions authorization without fresh seed access
         shell: bash
         run: |
           set -euo pipefail
@@ -58,25 +60,32 @@ jobs:
           const root = process.cwd();
           const bindingPath = path.join(root, 'doc/local-width-search-ranking-transfer/authorizations/STAGE_1_PREEXECUTION_BINDING.json');
           const authPath = path.join(root, 'doc/local-width-search-ranking-transfer/authorizations/STAGE_1_AUTHORIZATION.json');
+          const amendmentPath = path.join(root, 'doc/local-width-search-ranking-transfer/authorizations/STAGE_1_EXECUTION_ENVIRONMENT_AMENDMENT.json');
           const specPath = path.join(root, 'doc/local-width-search-ranking-transfer/prereg/STUDY_1_SPEC.json');
           const firewallPath = path.join(root, 'doc/local-width-search-ranking-transfer/prereg/UPSTREAM_IDENTITY_FIREWALL.json');
           const b = JSON.parse(fs.readFileSync(bindingPath, 'utf8'));
           const a = JSON.parse(fs.readFileSync(authPath, 'utf8'));
+          const m = JSON.parse(fs.readFileSync(amendmentPath, 'utf8'));
           const s = JSON.parse(fs.readFileSync(specPath, 'utf8'));
           const f = JSON.parse(fs.readFileSync(firewallPath, 'utf8'));
-          const need = (x, m) => { if (!x) throw new Error(m); };
+          const need = (x, msg) => { if (!x) throw new Error(msg); };
           need(b.studyId === 'LWSRT-STUDY1', 'binding study mismatch');
           need(b.bindingClass === 'PRE-FRESH-EXECUTION-CODE-BINDING', 'binding class mismatch');
           need(b.freshScientificSeedAccessAtBinding === 0 && b.scientificExecutionStarted === false, 'binding is not pre-fresh');
-          need(b.authorizedExecutionMode === 'LOCAL-ONCE' && b.githubActionsFreshGenerationAuthorized === false, 'execution boundary mismatch');
+          need(b.authorizedExecutionMode === 'GITHUB-ACTIONS-ONCE' && b.githubActionsFreshGenerationAuthorized === true && b.localFreshGenerationAuthorized === false, 'binding execution boundary mismatch');
           need(b.authorizedSeedBlock.start === 40312001 && b.authorizedSeedBlock.end === 40312768 && b.authorizedSeedBlock.count === 768, 'binding seed block mismatch');
-          need(a.decision === 'LWSRT-STUDY1-STAGE1-AUTHORIZED-LOCAL-ONCE', 'authorization decision mismatch');
+          need(a.decision === 'LWSRT-STUDY1-STAGE1-AUTHORIZED-LOCAL-ONCE', 'original authorization identity mismatch');
           need(a.authorizedScientificExecutions === 1, 'authorized execution count mismatch');
-          need(a.freshSeedAccessAtAuthorization === 0, 'authorization was not pre-fresh');
-          need(a.executionEnvironment === 'LOCAL-ONLY' && a.githubActionsFreshGenerationAuthorized === false, 'authorization environment mismatch');
-          need(a.authorizedSeedBlock.start === 40312001 && a.authorizedSeedBlock.end === 40312768 && a.authorizedSeedBlock.count === 768, 'authorization seed block mismatch');
-          need(a.seedExtensionAuthorized === false && a.rerunAfterFreshAccessAuthorized === false, 'extension/rerun boundary mismatch');
-          need(a.stage2Authorized === false && a.publicAiChangeAuthorized === false && a.mainIntegrationAuthorized === false, 'downstream authorization boundary mismatch');
+          need(a.freshSeedAccessAtAuthorization === 0, 'original authorization was not pre-fresh');
+          need(m.amendmentDecision === 'LWSRT-STUDY1-STAGE1-AUTHORIZED-GITHUB-ACTIONS-ONCE', 'effective amendment decision mismatch');
+          need(m.supersedesExecutionEnvironmentOnly === true && m.scientificDesignChanged === false && m.runnerLogicChanged === false && m.seedBlockChanged === false, 'amendment scope mismatch');
+          need(m.freshScientificSeedAccessAtAmendment === 0 && m.scientificExecutionStartedAtAmendment === false, 'amendment was not pre-fresh');
+          need(m.executionEnvironment === 'GITHUB-ACTIONS-ONLY' && m.githubActionsFreshGenerationAuthorized === true && m.localFreshGenerationAuthorized === false, 'effective authorization environment mismatch');
+          need(m.authorizedScientificExecutions === 1 && m.rerunAfterFreshAccessAuthorized === false && m.secondScientificExecutionAuthorized === false, 'one-shot authorization mismatch');
+          need(m.authorizedSeedBlock.start === 40312001 && m.authorizedSeedBlock.end === 40312768 && m.authorizedSeedBlock.count === 768, 'amendment seed block mismatch');
+          need(m.authorizedWorkflowPath === '.github/workflows/lwsrt-stage1-actions-once.yml', 'authorized workflow path mismatch');
+          need(m.durableLeasePath === 'doc/local-width-search-ranking-transfer/executions/STAGE_1_ACTIONS_EXECUTION_LEASE.json' && m.durableLeaseRequiredBeforeFirstFreshRead === true, 'durable lease contract mismatch');
+          need(m.stage2Authorized === false && m.publicAiChangeAuthorized === false && m.mainIntegrationAuthorized === false, 'downstream authorization boundary mismatch');
           need(s.studyId === 'LWSRT-STUDY1', 'spec study mismatch');
           need(s.stage1.seedBlock.start === 40312001 && s.stage1.seedBlock.end === 40312768 && s.stage1.seedBlock.count === 768, 'spec Stage 1 seed block mismatch');
           need(f.studyId === 'LWSRT-STUDY1' && f.status === 'FROZEN-PRE-FRESH' && f.freshStage1SeedAccessDuringMaterialization === false, 'firewall pre-fresh status mismatch');
@@ -86,7 +95,10 @@ jobs:
             const actual = cp.execFileSync('git', ['hash-object', x.path], {encoding:'utf8'}).trim();
             need(actual === x.blobSha, `blob mismatch ${name}: ${actual} != ${x.blobSha}`);
           }
+          const workflowActual = cp.execFileSync('git', ['hash-object', m.authorizedWorkflowPath], {encoding:'utf8'}).trim();
+          need(workflowActual === m.authorizedWorkflowBlobSha, 'amendment workflow blob mismatch');
           const forbidden = [
+            'doc/local-width-search-ranking-transfer/executions/STAGE_1_ACTIONS_EXECUTION_LEASE.json',
             'artifacts/local/lwsrt-stage1/FRESH_ACCESS_LEASE.json',
             'artifacts/local/lwsrt-stage1/STAGE_1_RESULT.json'
           ];
@@ -101,10 +113,13 @@ jobs:
             codeFreezeHead: b.codeFreezeHead,
             checkedBindingCount: Object.keys(b.bindings).length,
             authorizedSeedBlock: b.authorizedSeedBlock,
-            githubActionsFreshGenerationAuthorized: false,
+            effectiveExecutionAuthorization: m.amendmentDecision,
+            githubActionsFreshGenerationAuthorized: true,
+            localFreshGenerationAuthorized: false,
+            durableLeaseRequiredBeforeFirstFreshRead: true,
             stage2Authorized: false
           }, null, 2) + '\n');
-          console.log('LWSRT Stage 1 pre-execution static validation PASS; fresh scientific seed access = false');
+          console.log('LWSRT Stage 1 pre-execution static validation PASS; effective mode = GITHUB-ACTIONS-ONCE; fresh scientific seed access = false');
           NODE
 
       - name: Upload static validation result
