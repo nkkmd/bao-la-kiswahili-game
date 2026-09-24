@@ -1,0 +1,173 @@
+name: LWSRT G4-03 Stage 1 authorized once
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: "Type RUN-LWSRT-STAGE1-ONCE to consume the single authorized fresh execution"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: lwsrt-g4-03-stage1-authorized-once
+  cancel-in-progress: false
+
+jobs:
+  stage1-authorized-once:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - name: Require explicit one-shot confirmation
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${{ inputs.confirm }}" = "RUN-LWSRT-STAGE1-ONCE"
+          test "${GITHUB_REF_NAME}" = "research/g4-03-width-ranking-transfer"
+          test "${GITHUB_EVENT_NAME}" = "workflow_dispatch"
+
+      - name: Checkout exact dispatched research state
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Verify effective authorization and frozen bindings without fresh seed access
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check tools/experiments/run-lwsrt-stage1-development.js
+          node <<'NODE'
+          const fs=require('node:fs');
+          const cp=require('node:child_process');
+          const b=JSON.parse(fs.readFileSync('doc/local-width-search-ranking-transfer/authorizations/STAGE_1_PREEXECUTION_BINDING.json','utf8'));
+          const a=JSON.parse(fs.readFileSync('doc/local-width-search-ranking-transfer/authorizations/STAGE_1_AUTHORIZATION.json','utf8'));
+          const m=JSON.parse(fs.readFileSync('doc/local-width-search-ranking-transfer/authorizations/STAGE_1_EXECUTION_ENVIRONMENT_AMENDMENT.json','utf8'));
+          const need=(x,msg)=>{if(!x)throw new Error(msg);};
+          need(a.decision==='LWSRT-STUDY1-STAGE1-AUTHORIZED-LOCAL-ONCE','original authorization identity mismatch');
+          need(a.authorizedScientificExecutions===1&&a.freshSeedAccessAtAuthorization===0,'original authorization count/freshness mismatch');
+          need(m.amendmentDecision==='LWSRT-STUDY1-STAGE1-AUTHORIZED-GITHUB-ACTIONS-ONCE','effective amendment missing');
+          need(m.supersedesExecutionEnvironmentOnly===true,'amendment scope mismatch');
+          need(m.freshScientificSeedAccessAtAmendment===0&&m.scientificExecutionStartedAtAmendment===false,'amendment is not pre-fresh');
+          need(m.executionEnvironment==='GITHUB-ACTIONS-ONLY'&&m.githubActionsFreshGenerationAuthorized===true&&m.localFreshGenerationAuthorized===false,'effective environment mismatch');
+          need(m.authorizedScientificExecutions===1&&m.rerunAfterFreshAccessAuthorized===false,'one-shot boundary mismatch');
+          need(b.authorizedExecutionMode==='GITHUB-ACTIONS-ONCE'&&b.githubActionsFreshGenerationAuthorized===true&&b.localFreshGenerationAuthorized===false,'binding execution mode mismatch');
+          need(b.authorizedSeedBlock.start===40312001&&b.authorizedSeedBlock.end===40312768&&b.authorizedSeedBlock.count===768,'binding seed block mismatch');
+          cp.execFileSync('git',['merge-base','--is-ancestor',b.codeFreezeHead,'HEAD']);
+          for(const [name,x] of Object.entries(b.bindings)){
+            const actual=cp.execFileSync('git',['hash-object',x.path],{encoding:'utf8'}).trim();
+            need(actual===x.blobSha,`blob mismatch ${name}: ${actual} != ${x.blobSha}`);
+          }
+          need(!fs.existsSync('doc/local-width-search-ranking-transfer/executions/STAGE_1_ACTIONS_EXECUTION_LEASE.json'),'durable execution lease already present in checkout');
+          console.log(`pre-fresh execution binding PASS (${Object.keys(b.bindings).length} bound files)`);
+          NODE
+
+      - name: Download immutable upstream identity artifacts as raw ZIPs
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p upstream
+          curl --fail --silent --show-error --location \
+            --header "Authorization: Bearer ${GH_TOKEN}" \
+            --header "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/9879091983/zip" \
+            --output upstream/g3-07-stage2.zip
+          curl --fail --silent --show-error --location \
+            --header "Authorization: Bearer ${GH_TOKEN}" \
+            --header "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/10517090411/zip" \
+            --output upstream/g4-01-stage1r-source.zip
+          echo "5ada1dcb0ceab7d89ea0bfc78410a14c3875ba03a01e31a243950706349de70a  upstream/g3-07-stage2.zip" | sha256sum --check --strict
+          echo "3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b  upstream/g4-01-stage1r-source.zip" | sha256sum --check --strict
+
+      - name: Re-materialize upstream identity firewall without fresh Stage 1 seed access
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tools/experiments/run-lwsrt-stage1-development.js \
+            --dry-run-firewall-only \
+            --g3-stage2-zip upstream/g3-07-stage2.zip \
+            --g4-stage1r-source-zip upstream/g4-01-stage1r-source.zip
+
+      - name: Acquire durable single-execution lease before first fresh seed read
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/lwsrt-stage1-actions
+          node <<'NODE' > artifacts/lwsrt-stage1-actions/STAGE_1_ACTIONS_EXECUTION_LEASE.json
+          const x={
+            schemaVersion:1,
+            studyId:'LWSRT-STUDY1',
+            stageId:'LWSRT-S1-DEVELOPMENT-2026-09-24-v1',
+            leaseClass:'DURABLE-GITHUB-ACTIONS-SINGLE-EXECUTION-LEASE',
+            effectiveAuthorization:'LWSRT-STUDY1-STAGE1-AUTHORIZED-GITHUB-ACTIONS-ONCE',
+            freshSeedBlock:{start:40312001,end:40312768,count:768},
+            workflowRunId:Number(process.env.GITHUB_RUN_ID),
+            workflowRunAttempt:Number(process.env.GITHUB_RUN_ATTEMPT),
+            dispatchedHeadSha:process.env.GITHUB_SHA,
+            acquiredBeforeFreshSeedRead:true,
+            acquiredAt:new Date().toISOString()
+          };
+          process.stdout.write(JSON.stringify(x,null,2)+'\n');
+          NODE
+          lease_b64="$(base64 -w0 artifacts/lwsrt-stage1-actions/STAGE_1_ACTIONS_EXECUTION_LEASE.json)"
+          gh api --method PUT \
+            -H "Accept: application/vnd.github+json" \
+            "/repos/nkkmd/bao-la-kiswahili-game/contents/doc/local-width-search-ranking-transfer/executions/STAGE_1_ACTIONS_EXECUTION_LEASE.json" \
+            -f message='research(g4-03): acquire Stage 1 Actions execution lease' \
+            -f content="${lease_b64}" \
+            -f branch='research/g4-03-width-ranking-transfer' \
+            > artifacts/lwsrt-stage1-actions/LEASE_COMMIT_RESPONSE.json
+
+      - name: Execute the single authorized Stage 1 fresh generation
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tools/experiments/run-lwsrt-stage1-development.js \
+            --execute-authorized-once \
+            --g3-stage2-zip upstream/g3-07-stage2.zip \
+            --g4-stage1r-source-zip upstream/g4-01-stage1r-source.zip \
+            --output artifacts/lwsrt-stage1-actions/STAGE_1_RESULT.json \
+            --lease artifacts/lwsrt-stage1-actions/FRESH_ACCESS_LEASE.json
+
+      - name: Record execution metadata
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p artifacts/lwsrt-stage1-actions
+          node <<'NODE' > artifacts/lwsrt-stage1-actions/ACTIONS_EXECUTION_METADATA.json
+          const fs=require('node:fs');
+          const p='artifacts/lwsrt-stage1-actions/STAGE_1_RESULT.json';
+          const x={
+            schemaVersion:1,
+            studyId:'LWSRT-STUDY1',
+            workflowRunId:Number(process.env.GITHUB_RUN_ID),
+            workflowRunAttempt:Number(process.env.GITHUB_RUN_ATTEMPT),
+            dispatchedHeadSha:process.env.GITHUB_SHA,
+            repository:process.env.GITHUB_REPOSITORY,
+            ref:process.env.GITHUB_REF,
+            resultPresent:fs.existsSync(p),
+            recordedAt:new Date().toISOString()
+          };
+          process.stdout.write(JSON.stringify(x,null,2)+'\n');
+          NODE
+
+      - name: Upload durable Stage 1 execution evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lwsrt-stage1-actions-once-${{ github.run_id }}
+          path: artifacts/lwsrt-stage1-actions
+          if-no-files-found: error
+          retention-days: 90
