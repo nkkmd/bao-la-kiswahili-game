@@ -92,4 +92,4 @@ technical-only validation。source replay、anchor selection、width threshold b
 
 ## Main integration
 
-G4-03の研究作業は完了しているが、研究ブランチは`main`から隔離したままである。`main`統合はユーザーの明示指示があるまで行わない。
+G4-03はユーザーの明示指示に基づきPR #164で`main`へ統合済みである。merge commitは`73ac1920177c2451669e5ceeccaed53e34459df9`。

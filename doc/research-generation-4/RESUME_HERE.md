@@ -17,7 +17,7 @@
 ```text
 G4-01 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED
 G4-02 = CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED
-G4-03 = COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / NOT YET MAIN INTEGRATED
+G4-03 = COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED
 G4-04 = ELIGIBILITY-GATE-SATISFIED / NOT AUTHORIZED
 G4-05 = CANDIDATE / NOT AUTHORIZED
 G4-06..G4-09 = DEPENDENCY-GATED / NOT AUTHORIZED
@@ -74,9 +74,9 @@ G4-01のeligibility gateだけでscientific executionを自動開始しない。
 
 ## Main integration boundary
 
-G4-03 research branchはまだ`main`へ統合していない。
+G4-03はPR #164で`main`へ統合済みである。merge commitは`73ac1920177c2451669e5ceeccaed53e34459df9`。
 
-G4-03 closure後の整合性監査を終え、ユーザーから明示指示がある場合にのみPR / main integrationへ進む。
+以後、G4-03をrepair/reopenせず、RG4を継続する場合はG4-04の個別authorization reviewから開始する。
 
 ## 禁止事項
 
@@ -88,4 +88,3 @@ G4-03 closure後の整合性監査を終え、ユーザーから明示指示が�
 - G3-12 repair/replay
 - G4-10 depth11 access
 - public AIへの自動反映
-- ユーザー明示指示前のG4-03 main integration
