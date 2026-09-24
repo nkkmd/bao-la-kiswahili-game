@@ -9,8 +9,9 @@ Study ID = LWSRT-STUDY1
 Protocol = FROZEN
 Stage 0 = COMPLETE / STAGE0-PASS / run 35947479946
 Upstream identity firewall = FROZEN / PRE-FRESH / DIGEST-BOUND
-Stage 1 = AUTHORIZED-GITHUB-ACTIONS-ONCE / PREEXECUTION-STATIC-PASS / NOT-YET-EXECUTED
-Stage 1 pre-execution static validation = PASS / run 35986687011 / head 02f1731c5523a3bd67993229ffeef4416845bb73
+Stage 1 = AUTHORIZED-GITHUB-ACTIONS-ONCE / PREEXECUTION-STATIC-PASS / ARMED-BY-TRIGGER-FILE / NOT-YET-EXECUTED
+Stage 1 pre-execution static validation = PASS / run 35987274368 / head cb4dbb3bbe2084ea68f18804b66555ff3564904f
+Stage 1 execution trigger = ABSENT / NOT-YET-ARMED
 Stage 1 durable execution lease = ABSENT / NOT-YET-CONSUMED
 Stage 2 = NOT-AUTHORIZED / RESERVED-NOT-ACCESSED
 fresh scientific seed access = 0
@@ -23,12 +24,14 @@ main integration authorized = false
 
 Stage 1 pre-execution bindingは、runner、engine / AI、source-policy、RAW/continuous geometry、search production/independent、search robustness、spec、当初authorization、execution-environment amendment、authorized Actions workflow、upstream identity firewallのblob SHAを固定している。
 
-Actions移行後の静的検証run `35986687011`は成功した。runner構文、固定blob SHA、有効な`GITHUB-ACTIONS-ONCE`認可、local fresh generation禁止、固定seed block `40312001..40312768` / 768、durable lease契約、seed extension・二回目実行・fresh access後rerun禁止、Stage 2 / public AI / main integrationの未認可を確認した。この検証はfresh scientific seedを読み取っていない。
+最終pre-execution静的検証run `35987274368`は成功した。runner構文、固定blob SHA、有効な`GITHUB-ACTIONS-ONCE`認可、専用trigger契約、trigger不在、local fresh generation禁止、固定seed block `40312001..40312768` / 768、durable lease契約、seed extension・二回目実行・fresh access後rerun禁止、Stage 2 / public AI / main integrationの未認可を確認した。この検証はfresh scientific seedを読み取っていない。
 
-Stage 1本実行は `.github/workflows/lwsrt-stage1-actions-once.yml` の `workflow_dispatch` のみから実施する。開始時に固定blob SHAを確認し、artifact ID `9879091983`（G3-07 Stage 2）と `10517090411`（G4-01 Stage 1R source bundle）のraw ZIPを取得して固定SHA-256を検証する。その後、upstream identity firewallをfresh Stage 1 seed accessなしで再materializeし、完全一致を確認する。
+Stage 1本実行workflow `.github/workflows/lwsrt-stage1-actions-once.yml` は、研究ブランチ上に `doc/local-width-search-ranking-transfer/authorizations/STAGE_1_ACTIONS_EXECUTION_TRIGGER.json` が単独コミットとして追加されたpushだけを本実行開始操作として受け付ける。triggerはfixed study/stage/seed block、`EXECUTE-AUTHORIZED-STAGE1-ONCE`、no-rerun / no-seed-extension acknowledgementを検証し、trigger以外の同時変更があればfresh seed access前にfail closedとする。現在triggerファイルは存在しないため、本実行は開始していない。
 
-これらのpre-fresh checksを通過した場合のみ、最初のfresh seed read直前に `doc/local-width-search-ranking-transfer/executions/STAGE_1_ACTIONS_EXECUTION_LEASE.json` をGitHub Contents API経由で作成する。既にleaseが存在する場合は作成に失敗し、fresh seed access前にfail closedとなる。これにより、誤った二回目のworkflow dispatch / rerunからscientific executionを保護する。
+trigger検証後、固定blob SHAを再確認し、artifact ID `9879091983`（G3-07 Stage 2）と `10517090411`（G4-01 Stage 1R source bundle）のraw ZIPを取得して固定SHA-256を検証する。その後、upstream identity firewallをfresh Stage 1 seed accessなしで再materializeし、完全一致を確認する。
+
+これらのpre-fresh checksを通過した場合のみ、最初のfresh seed read直前に `doc/local-width-search-ranking-transfer/executions/STAGE_1_ACTIONS_EXECUTION_LEASE.json` をGitHub Contents API経由で作成する。既にleaseが存在する場合はfresh seed access前にfail closedとなる。これにより、誤った二回目のtrigger、workflow rerun、その他の再実行からscientific executionを保護する。
 
 Stage 1で許可されるのはsupport、endpoint definedness、production/independent exactness、resource readiness、identity manifestのみであり、effect direction、risk difference、p-value、generalization/counterexample decisionは生成・保持しない。
 
-Stage 2は引き続き未認可である。
+`main`には今回の本実行workflowを追加しておらず、研究ブランチの隔離を維持している。Stage 2は引き続き未認可である。
