@@ -14,6 +14,7 @@
     "runner": {"path":"tools/experiments/run-lwsrt-stage1-development.js","blobSha":"c50fbf6cc10890efc6adf38fd63128b52f36c577"},
     "engine": {"path":"public/engine.js","blobSha":"1527bb3665228b7a5bd9f03153567aedbaaa22d7"},
     "ai": {"path":"public/ai.js","blobSha":"ac2b4fd66a2555c50a362c39a828515323bba18a"},
+    "aiWeights": {"path":"public/ai-weights.js","blobSha":"98969eb4c8e1403beedcf5c139a07166aa78175c"},
     "sourceProduction": {"path":"tools/experiments/lib/lgttci-compatibility-production.js","blobSha":"2fe5b87572c0138cf66dfabb4ca40869eab26ddc"},
     "sourceIndependent": {"path":"tools/experiments/lib/lgttci-compatibility-independent.js","blobSha":"d63263375d4b1d61271ead31777b37185056a73b"},
     "rawGeometryProduction": {"path":"tools/experiments/lib/lgtgmiv-stage1-production.js","blobSha":"a4664f01535d6abbf6f83821befbb2fafd55cde6"},
