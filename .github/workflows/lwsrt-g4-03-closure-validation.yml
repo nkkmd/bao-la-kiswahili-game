@@ -14,6 +14,8 @@ on:
       - 'doc/research-generation-4/README.md'
       - 'doc/research-generation-4/RESUME_HERE.md'
       - 'doc/research-generation-4/checkpoints/2026-09-24-g4-03-complete.md'
+      - 'doc/RESEARCH_INDEX.md'
+      - 'doc/FUTURE_RESEARCH_AGENDA.md'
 
 permissions:
   contents: read
@@ -88,20 +90,34 @@ jobs:
             'doc/local-width-search-ranking-transfer/README.md',
             'doc/research-generation-4/CURRENT_STATUS.md',
             'doc/research-generation-4/README.md',
-            'doc/research-generation-4/RESUME_HERE.md'
+            'doc/research-generation-4/RESUME_HERE.md',
+            'doc/RESEARCH_INDEX.md',
+            'doc/FUTURE_RESEARCH_AGENDA.md'
           ];
           const need=(v,m)=>{if(!v)throw new Error(m);};
+          const stale=[
+            'G4-03 = ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED',
+            'G4-03 / G4-04 = ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED',
+            '`G4-03` | width / search-ranking transfer | `ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED`',
+            '`G4-03` | width / search-ranking transfer | `ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED`'
+          ];
           for(const f of files){
             const s=fs.readFileSync(f,'utf8');
             need(s.includes('G4-03')||f.includes('local-width-search-ranking-transfer'),`${f}: G4-03 identity missing`);
-            need(!s.includes('G4-03 = ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED'),`${f}: stale G4-03 status`);
+            for(const q of stale)need(!s.includes(q),`${f}: stale G4-03 status: ${q}`);
           }
-          const local=fs.readFileSync(files[0],'utf8');
+          const local=fs.readFileSync('doc/local-width-search-ranking-transfer/CURRENT_STATUS.md','utf8');
           need(local.includes('Study closure = COMPLETE'),'local current status not closed');
           need(local.includes('Stage 2 fresh seed reads = 1536 / 1536'),'local Stage 2 read count missing');
           const rg4=fs.readFileSync('doc/research-generation-4/CURRENT_STATUS.md','utf8');
           need(rg4.includes('G4-03 = COMPLETE'),'RG4 current status not advanced');
           need(rg4.includes('G4-04 = ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED'),'G4-04 boundary missing');
+          const index=fs.readFileSync('doc/RESEARCH_INDEX.md','utf8');
+          need(index.includes('G4-03の正式結果'),'central research index missing G4-03 entry');
+          need(index.includes('GENERALIZATION-CONFIRMED = 9'),'central research index result count missing');
+          const agenda=fs.readFileSync('doc/FUTURE_RESEARCH_AGENDA.md','utf8');
+          need(agenda.includes('Version: 5.4.0'),'future agenda version mismatch');
+          need(agenda.includes('次のcore candidateはG4-04'),'future agenda next candidate mismatch');
           console.log('live-state document status PASS');
           NODE
 
@@ -118,7 +134,9 @@ jobs:
             'doc/research-generation-4/CURRENT_STATUS.md',
             'doc/research-generation-4/README.md',
             'doc/research-generation-4/RESUME_HERE.md',
-            'doc/research-generation-4/checkpoints/2026-09-24-g4-03-complete.md'
+            'doc/research-generation-4/checkpoints/2026-09-24-g4-03-complete.md',
+            'doc/RESEARCH_INDEX.md',
+            'doc/FUTURE_RESEARCH_AGENDA.md'
           ];
           const missing=[];
           for(const f of files){
