@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "agendaId": "G4-03",
+  "studyId": "LWSRT-STUDY1",
+  "closureStatus": "COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE",
+  "validationWorkflow": ".github/workflows/lwsrt-g4-03-closure-validation.yml",
+  "validationRunId": 35998654711,
+  "validationRunAttempt": 1,
+  "validationHeadSha": "3c35cb5fbac67499a3fd5a8ada14583c62399955",
+  "conclusion": "success",
+  "checks": [
+    "canonical machine-readable closure",
+    "final authorization and durable lease identity",
+    "live-state documents including central research index and future agenda",
+    "selected relative Markdown links",
+    "seed-free closure validation boundary"
+  ],
+  "scientificSeedGenerationOrReadDuringValidation": false,
+  "mainIntegrationPerformed": false,
+  "publicAiChangePerformed": false,
+  "recordedDate": "2026-09-24"
+}
