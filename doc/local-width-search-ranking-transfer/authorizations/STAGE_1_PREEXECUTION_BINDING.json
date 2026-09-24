@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LWSRT-STUDY1",
+  "stageId": "LWSRT-S1-DEVELOPMENT-2026-09-24-v1",
+  "bindingClass": "PRE-FRESH-EXECUTION-CODE-BINDING",
+  "recordedDate": "2026-09-24",
+  "researchBranch": "research/g4-03-width-ranking-transfer",
+  "codeFreezeHead": "0d748976c97789532acf63fb8a6e2d2e9fd165ac",
+  "freshScientificSeedAccessAtBinding": 0,
+  "scientificExecutionStarted": false,
+  "authorizedExecutionMode": "LOCAL-ONCE",
+  "githubActionsFreshGenerationAuthorized": false,
+  "bindings": {
+    "runner": {
+      "path": "tools/experiments/run-lwsrt-stage1-development.js",
+      "blobSha": "c50fbf6cc10890efc6adf38fd63128b52f36c577"
+    },
+    "engine": {
+      "path": "public/engine.js",
+      "blobSha": "1527bb3665228b7a5bd9f03153567aedbaaa22d7"
+    },
+    "sourceProduction": {
+      "path": "tools/experiments/lib/lgttci-compatibility-production.js",
+      "blobSha": "2fe5b87572c0138cf66dfabb4ca40869eab26ddc"
+    },
+    "sourceIndependent": {
+      "path": "tools/experiments/lib/lgttci-compatibility-independent.js",
+      "blobSha": "d63263375d4b1d61271ead31777b37185056a73b"
+    },
+    "searchProduction": {
+      "path": "tools/experiments/lib/silgm-production.js",
+      "blobSha": "9712e897540b54ff5fe3aa6acd997d286b09331d"
+    },
+    "searchIndependent": {
+      "path": "tools/experiments/lib/silgm-independent.js",
+      "blobSha": "0bd60c96e5abfce9d1c99b474709177d52509138"
+    },
+    "spec": {
+      "path": "doc/local-width-search-ranking-transfer/prereg/STUDY_1_SPEC.json",
+      "blobSha": "cd955019972b629b03ea210ff6f430ce4b83e502"
+    },
+    "authorization": {
+      "path": "doc/local-width-search-ranking-transfer/authorizations/STAGE_1_AUTHORIZATION.json",
+      "blobSha": "ca5091b5d879aee4ecfee9311f1287531e10a6f0"
+    },
+    "upstreamIdentityFirewall": {
+      "path": "doc/local-width-search-ranking-transfer/prereg/UPSTREAM_IDENTITY_FIREWALL.json",
+      "blobSha": "066322fe3b273fd88590f2d367c8526a5659835a"
+    }
+  },
+  "authorizedSeedBlock": {
+    "start": 40312001,
+    "end": 40312768,
+    "count": 768
+  },
+  "requiredBeforeFreshRead": [
+    "all bound repository blob SHA values match",
+    "Stage 1 authorization remains LOCAL-ONCE",
+    "runtime upstream firewall materialization passes before the first fresh seed read"
+  ],
+  "stillProhibited": [
+    "GitHub Actions fresh generation",
+    "second scientific execution or rerun after fresh access",
+    "seed extension",
+    "Stage 2 access",
+    "formal effect inference in Stage 1",
+    "public AI change",
+    "main integration"
+  ]
+}
