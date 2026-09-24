@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LWSRT-STUDY1",
+  "stageId": "LWSRT-S1-DEVELOPMENT-2026-09-24-v1",
+  "validationClass": "PRE-FRESH-STATIC",
+  "result": "STAGE1-PREEXECUTION-STATIC-PASS",
+  "workflowRunId": 35971987147,
+  "workflowRunHeadSha": "df95219da95d29fd51fcc27fbe142651b3c2dddd",
+  "jobId": 107543595327,
+  "artifact": {
+    "id": 10796222784,
+    "name": "lwsrt-stage1-preexecution-static-result",
+    "digest": "sha256:bbfecf7527808cf15b783c7962c4458d928e5e44e3dbcfea7acdf1c2de81aafd"
+  },
+  "validated": [
+    "Stage 1 runner syntax",
+    "all bound repository blob SHA values",
+    "LOCAL-ONCE authorization",
+    "fixed Stage 1 seed block 40312001..40312768 / 768",
+    "seed extension and rerun prohibition",
+    "Stage 2 / public AI / main integration remain unauthorized",
+    "pre-execution repository contains no Stage 1 fresh-access lease or Stage 1 result"
+  ],
+  "freshScientificSeedAccessDuringValidation": false,
+  "stage1ScientificExecutionPerformed": false,
+  "formalInferencePerformed": false,
+  "stage2Authorized": false,
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false
+}
