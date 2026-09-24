@@ -1,0 +1,47 @@
+name: LWSRT G4-03 Stage 2 binding validation
+
+on:
+  push:
+    branches:
+      - research/g4-03-width-ranking-transfer
+    paths:
+      - '.github/workflows/lwsrt-stage2-binding-validation.yml'
+      - 'doc/local-width-search-ranking-transfer/authorizations/STAGE_2_PREEXECUTION_BINDING.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stage2-binding-validation:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout exact commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate frozen Stage 2 binding without fresh access
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const cp=require('node:child_process');
+          const p='doc/local-width-search-ranking-transfer/authorizations/STAGE_2_PREEXECUTION_BINDING.json';
+          const b=JSON.parse(fs.readFileSync(p,'utf8'));
+          const need=(x,m)=>{if(!x)throw new Error(m);};
+          need(b.studyId==='LWSRT-STUDY1'&&b.stageId==='LWSRT-S2-FORMAL-2026-09-24-v1','binding identity mismatch');
+          need(b.freshScientificSeedAccessAtBinding===0&&b.scientificExecutionStarted===false&&b.freshExecutionAuthorized===false,'binding fresh-access boundary mismatch');
+          need(b.executionEnvironment==='UNSET-PENDING-FINAL-AUTHORIZATION','execution environment was authorized prematurely');
+          cp.execFileSync('git',['merge-base','--is-ancestor',b.codeFreezeHead,'HEAD']);
+          let n=0;
+          for(const [name,x] of Object.entries(b.bindings)){
+            const actual=cp.execFileSync('git',['hash-object',x.path],{encoding:'utf8'}).trim();
+            need(actual===x.blobSha,`blob mismatch ${name}: ${actual} != ${x.blobSha}`);
+            n++;
+          }
+          need(!fs.existsSync('doc/local-width-search-ranking-transfer/authorizations/STAGE_2_FINAL_AUTHORIZATION.json'),'final authorization already exists unexpectedly');
+          need(!fs.existsSync('doc/local-width-search-ranking-transfer/executions/STAGE_2_ACTIONS_EXECUTION_LEASE.json'),'Stage 2 execution lease already exists unexpectedly');
+          console.log(`Stage 2 binding PASS (${n} bound files); fresh scientific seed access = false`);
+          NODE
