@@ -23,9 +23,11 @@ jobs:
     steps:
       - name: Require explicit one-shot confirmation
         shell: bash
+        env:
+          DISPATCH_CONFIRM: ${{ inputs.confirm }}
         run: |
           set -euo pipefail
-          test "${{ inputs.confirm }}" = "RUN-LWSRT-STAGE1-ONCE"
+          test "${DISPATCH_CONFIRM}" = "RUN-LWSRT-STAGE1-ONCE"
           test "${GITHUB_REF_NAME}" = "research/g4-03-width-ranking-transfer"
           test "${GITHUB_EVENT_NAME}" = "workflow_dispatch"
 
