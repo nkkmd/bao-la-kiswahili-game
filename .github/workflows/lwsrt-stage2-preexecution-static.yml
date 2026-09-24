@@ -1,0 +1,86 @@
+name: LWSRT G4-03 Stage 2 pre-execution static validation
+
+on:
+  push:
+    branches:
+      - research/g4-03-width-ranking-transfer
+    paths:
+      - '.github/workflows/lwsrt-stage2-preexecution-static.yml'
+      - 'tools/experiments/run-lwsrt-stage2-preflight.js'
+      - 'tools/experiments/run-lwsrt-stage2-formal.js'
+      - 'tools/experiments/lib/lwsrt-stage2-inference.js'
+      - 'doc/local-width-search-ranking-transfer/STUDY_1_PROTOCOL.md'
+      - 'doc/local-width-search-ranking-transfer/prereg/STUDY_1_SPEC.json'
+      - 'doc/local-width-search-ranking-transfer/prereg/STAGE_1_IDENTITY_FIREWALL_BINDING.json'
+      - 'doc/local-width-search-ranking-transfer/results/stage-1/STAGE_1_ARTIFACT_RECEIPT.json'
+      - 'doc/research-program-decisions/2026-09-24-g4-03-stage2-preaccess-authorization-review.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  stage2-preexecution-static:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout exact commit
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Verify fresh execution remains unauthorized
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e doc/local-width-search-ranking-transfer/authorizations/STAGE_2_FINAL_AUTHORIZATION.json
+          test ! -e doc/local-width-search-ranking-transfer/executions/STAGE_2_ACTIONS_EXECUTION_LEASE.json
+          echo 'Stage 2 fresh scientific execution remains unauthorized; fresh seed access = false'
+
+      - name: Syntax-check Stage 2 implementation
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check tools/experiments/lib/lwsrt-stage2-inference.js
+          node --check tools/experiments/run-lwsrt-stage2-preflight.js
+          node --check tools/experiments/run-lwsrt-stage2-formal.js
+
+      - name: Download canonical Stage 1 artifact without scientific replay
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p upstream
+          curl --fail --silent --show-error --location \
+            --header "Authorization: Bearer ${GH_TOKEN}" \
+            --header 'Accept: application/vnd.github+json' \
+            'https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/10803311137/zip' \
+            --output upstream/g4-03-stage1.zip
+          echo 'aaea8b1c564dbe400d2d1fc00ebfa58f23cd485d9ae994af88cd4ceaf6b621a6  upstream/g4-03-stage1.zip' | sha256sum --check --strict
+
+      - name: Run seed-free Stage 2 preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/lwsrt-stage2-preflight
+          node tools/experiments/run-lwsrt-stage2-preflight.js \
+            --stage1-artifact-zip upstream/g4-03-stage1.zip \
+            --output artifacts/lwsrt-stage2-preflight/STAGE_2_PREFLIGHT_RESULT.json
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const x=JSON.parse(fs.readFileSync('artifacts/lwsrt-stage2-preflight/STAGE_2_PREFLIGHT_RESULT.json','utf8'));
+          if(x.preflightDisposition!=='PASS'||x.freshScientificSeedAccess!==false||x.stage2ScientificExecutionStarted!==false)throw new Error('Stage 2 preflight boundary mismatch');
+          console.log('Stage 2 seed-free preflight PASS; fresh scientific seed access = false');
+          NODE
+
+      - name: Upload seed-free preflight evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: lwsrt-stage2-preflight-${{ github.run_id }}
+          path: artifacts/lwsrt-stage2-preflight
+          if-no-files-found: error
+          retention-days: 90
