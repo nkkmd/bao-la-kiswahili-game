@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LWSRT-STUDY1",
+  "stageId": "LWSRT-S2-FORMAL-2026-09-24-v1",
+  "decision": "LWSRT-STUDY1-STAGE2-AUTHORIZED-GITHUB-ACTIONS-ONCE",
+  "authorizationClass": "FRESH-FORMAL-GITHUB-ACTIONS-ONCE",
+  "recordedDate": "2026-09-24",
+  "researchBranch": "research/g4-03-width-ranking-transfer",
+  "freshSeedAccessAtAuthorization": 0,
+  "scientificExecutionStartedAtAuthorization": false,
+  "executionEnvironment": "GITHUB-ACTIONS-ONLY",
+  "githubActionsFreshGenerationAuthorized": true,
+  "localFreshGenerationAuthorized": false,
+  "authorizedScientificExecutions": 1,
+  "rerunAfterFreshAccessAuthorized": false,
+  "seedExtensionAuthorized": false,
+  "rootReplacementAuthorized": false,
+  "thresholdRelearningAuthorized": false,
+  "authorizedSeedBlock": {
+    "start": 40322001,
+    "end": 40323536,
+    "count": 1536
+  },
+  "scientificContract": {
+    "assignmentNamespace": "LWSRT-S2-ASSIGN-2026-09-24-v1",
+    "selectionNamespace": "LWSRT-S2-SELECT-2026-09-24-v1",
+    "targetPerPolicyRootFamilyPhaseWidth": 12,
+    "targetSelectedRoots": 192,
+    "formalTests": 12,
+    "familyAlpha": 0.05,
+    "multiplicity": "HOLM-BONFERRONI-FIXED-12",
+    "formalInferenceAuthorized": true
+  },
+  "preconditions": {
+    "stage1CanonicalRunId": 35987703180,
+    "stage1Disposition": "STAGE1-PASS",
+    "stage2PreaccessDecision": "LWSRT-STUDY1-STAGE2-PREACCESS-PASS",
+    "stage2SeedFreePreflightRunId": 35991470739,
+    "stage2SeedFreePreflightDisposition": "PASS",
+    "stage2BindingValidationRunId": 35991767724,
+    "stage2BindingValidationDisposition": "PASS",
+    "stage2FreshSeedReadsBeforeAuthorization": 0
+  },
+  "preexecutionBinding": {
+    "path": "doc/local-width-search-ranking-transfer/authorizations/STAGE_2_PREEXECUTION_BINDING.json",
+    "blobSha": "6a3b1620b988e3336e400a681e23ca471f086450",
+    "codeFreezeHead": "2a6f66760ce95f0ca36e021fef59c4ac8ebf751c",
+    "boundFileCount": 24
+  },
+  "authorizationReview": {
+    "path": "doc/research-program-decisions/2026-09-24-g4-03-stage2-final-one-shot-authorization-review.md",
+    "blobSha": "b5918529cfe46dd3c0455570fe685973a9a7d43c"
+  },
+  "executionWorkflow": {
+    "path": ".github/workflows/lwsrt-stage2-actions-once.yml",
+    "blobSha": "4354595e7cd7f88407d31b467e956708c7f16f88",
+    "triggerPath": "doc/local-width-search-ranking-transfer/authorizations/STAGE_2_ACTIONS_EXECUTION_TRIGGER.json",
+    "durableLeasePath": "doc/local-width-search-ranking-transfer/executions/STAGE_2_ACTIONS_EXECUTION_LEASE.json",
+    "triggerMustBeSinglePathCommit": true,
+    "concurrencyCancelInProgress": false
+  },
+  "requiredBeforeFirstFreshRead": [
+    "final authorization validation workflow passes without fresh scientific seed access",
+    "all 24 pre-execution bound blob SHA values match",
+    "pre-execution code freeze head remains an ancestor of the trigger commit",
+    "authorized execution workflow blob SHA matches",
+    "trigger commit changes only STAGE_2_ACTIONS_EXECUTION_TRIGGER.json",
+    "durable Stage 2 repository execution lease is absent",
+    "G3-07 Stage 2 artifact digest verifies",
+    "G4-01 Stage 1R source artifact digest verifies",
+    "G4-03 Stage 1 canonical artifact digest verifies",
+    "upstream and Stage 1 identity firewalls pass",
+    "Stage 2 seed-free preflight passes again",
+    "durable Stage 2 repository execution lease is acquired"
+  ],
+  "stillProhibited": [
+    "second Stage 2 scientific execution",
+    "workflow rerun after fresh access",
+    "seed extension",
+    "root replacement",
+    "threshold relearning",
+    "post-access repair-and-rerun",
+    "protected G3-11 depth-10 evidence access",
+    "protected G4-10 depth-11 evidence access",
+    "public AI change",
+    "main integration"
+  ]
+}
