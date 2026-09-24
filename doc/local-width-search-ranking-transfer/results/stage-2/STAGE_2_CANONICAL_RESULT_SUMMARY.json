@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LWSRT-STUDY1",
+  "stageId": "LWSRT-S2-FORMAL-2026-09-24-v1",
+  "evidenceClass": "FRESH-FORMAL-HELDOUT",
+  "stageDisposition": "STAGE2-COMPLETE-WITH-NON-ESTIMABLE",
+  "canonicalExecution": {
+    "workflowRunId": 35993172710,
+    "workflowRunAttempt": 1,
+    "triggerCommitSha": "f52fcd5a16028bac8e97a5b714b87c72853628e4",
+    "durableLeaseCommitSha": "3ca186b448460e42f9057fbef9a741982550bbaa",
+    "artifactId": 10805571797,
+    "artifactSha256": "c4449f9a034f30a501f60c6ee90b07426bd1c42aa3b0bbc150fd8d3e1199b597",
+    "stage2ResultSha256": "88dd8c2e586f36692d5d0cb1d66847affe0151a803f9230eb7d8425f93469bf3"
+  },
+  "seedBlock": {"start": 40322001, "end": 40323536, "count": 1536},
+  "scientificSeedsRead": 1536,
+  "authorizedScientificExecutions": 1,
+  "actualScientificExecutions": 1,
+  "selectedRoots": 192,
+  "productionIndependentExact": true,
+  "identityManifestSha256": "9989a42656cac788e6d6207516103ba5f79678d4ba1d501fb2c676ef83ae1312",
+  "formalDecisionCounts": {
+    "GENERALIZATION-CONFIRMED": 9,
+    "NOT-GENERALIZED": 1,
+    "NON-ESTIMABLE": 2,
+    "COUNTEREXAMPLE-CONFIRMED": 0
+  },
+  "holmFamily": {
+    "tests": 12,
+    "alpha": 0.05,
+    "nonEstimableSlotsRetainedWithConservativeP1ForMultiplicity": 2
+  },
+  "formalTests": [
+    {"testId":"SC1-DEPTH|LGTTCI-P1-UNIFORM-LEGAL|LGTTCI-RF1-MID-ANCHOR","contrast":"SC1-DEPTH","policyId":"LGTTCI-P1-UNIFORM-LEGAL","rootFamilyId":"LGTTCI-RF1-MID-ANCHOR","counts":{"namua":{"highChanged":11,"lowChanged":4},"mtaji":{"highChanged":9,"lowChanged":1}},"estimable":true,"decision":"GENERALIZATION-CONFIRMED","observedT":20,"KTotal":25,"signedCountDifference":15,"riskDifference":0.625,"direction":"HIGHER-IN-HIGH","pTwoSided":0.000021296867672194697,"holmRank":4,"holmCutoff":0.005555555555555556,"holmAdjustedP":0.00019167180904975227,"holmSignificant":true},
+    {"testId":"SC1-DEPTH|LGTTCI-P1-UNIFORM-LEGAL|LGTTCI-RF2-OFFSET-ANCHOR","contrast":"SC1-DEPTH","policyId":"LGTTCI-P1-UNIFORM-LEGAL","rootFamilyId":"LGTTCI-RF2-OFFSET-ANCHOR","counts":{"namua":{"highChanged":12,"lowChanged":6},"mtaji":{"highChanged":10,"lowChanged":5}},"estimable":true,"decision":"GENERALIZATION-CONFIRMED","observedT":22,"KTotal":33,"signedCountDifference":11,"riskDifference":0.4583333333333333,"direction":"HIGHER-IN-HIGH","pTwoSided":0.0013606084422783033,"holmRank":6,"holmCutoff":0.0071428571428571435,"holmAdjustedP":0.009524259095948123,"holmSignificant":true},
+    {"testId":"SC1-DEPTH|LGTTCI-P2-MIN-IMMEDIATE-CAPTURE|LGTTCI-RF1-MID-ANCHOR","contrast":"SC1-DEPTH","policyId":"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE","rootFamilyId":"LGTTCI-RF1-MID-ANCHOR","counts":{"namua":{"highChanged":11,"lowChanged":5},"mtaji":{"highChanged":10,"lowChanged":1}},"estimable":true,"decision":"GENERALIZATION-CONFIRMED","observedT":21,"KTotal":27,"signedCountDifference":15,"riskDifference":0.625,"direction":"HIGHER-IN-HIGH","pTwoSided":0.00001738538298965931,"holmRank":3,"holmCutoff":0.005,"holmAdjustedP":0.00017385382989659311,"holmSignificant":true},
+    {"testId":"SC1-DEPTH|LGTTCI-P2-MIN-IMMEDIATE-CAPTURE|LGTTCI-RF2-OFFSET-ANCHOR","contrast":"SC1-DEPTH","policyId":"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE","rootFamilyId":"LGTTCI-RF2-OFFSET-ANCHOR","counts":{"namua":{"highChanged":10,"lowChanged":5},"mtaji":{"highChanged":9,"lowChanged":1}},"estimable":true,"decision":"GENERALIZATION-CONFIRMED","observedT":19,"KTotal":25,"signedCountDifference":13,"riskDifference":0.5416666666666666,"direction":"HIGHER-IN-HIGH","pTwoSided":0.000320637558504441,"holmRank":5,"holmCutoff":0.00625,"holmAdjustedP":0.002565100468035528,"holmSignificant":true},
+    {"testId":"SC2-NODE-BUDGET|LGTTCI-P1-UNIFORM-LEGAL|LGTTCI-RF1-MID-ANCHOR","contrast":"SC2-NODE-BUDGET","policyId":"LGTTCI-P1-UNIFORM-LEGAL","rootFamilyId":"LGTTCI-RF1-MID-ANCHOR","counts":{"namua":{"highChanged":11,"lowChanged":1},"mtaji":{"highChanged":6,"lowChanged":0}},"estimable":true,"decision":"GENERALIZATION-CONFIRMED","observedT":17,"KTotal":18,"signedCountDifference":16,"riskDifference":0.6666666666666666,"direction":"HIGHER-IN-HIGH","pTwoSided":7.88441681505807e-7,"holmRank":2,"holmCutoff":0.004545454545454546,"holmAdjustedP":0.000008672858496563878,"holmSignificant":true},
+    {"testId":"SC2-NODE-BUDGET|LGTTCI-P1-UNIFORM-LEGAL|LGTTCI-RF2-OFFSET-ANCHOR","contrast":"SC2-NODE-BUDGET","policyId":"LGTTCI-P1-UNIFORM-LEGAL","rootFamilyId":"LGTTCI-RF2-OFFSET-ANCHOR","counts":{"namua":{"highChanged":11,"lowChanged":1},"mtaji":{"highChanged":8,"lowChanged":0}},"estimable":true,"decision":"GENERALIZATION-CONFIRMED","observedT":19,"KTotal":20,"signedCountDifference":18,"riskDifference":0.75,"direction":"HIGHER-IN-HIGH","pTwoSided":8.173556187408904e-8,"holmRank":1,"holmCutoff":0.004166666666666667,"holmAdjustedP":9.808267424890686e-7,"holmSignificant":true},
+    {"testId":"SC2-NODE-BUDGET|LGTTCI-P2-MIN-IMMEDIATE-CAPTURE|LGTTCI-RF1-MID-ANCHOR","contrast":"SC2-NODE-BUDGET","policyId":"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE","rootFamilyId":"LGTTCI-RF1-MID-ANCHOR","counts":{"namua":{"highChanged":11,"lowChanged":1},"mtaji":{"highChanged":5,"lowChanged":0}},"estimable":false,"decision":"NON-ESTIMABLE","reason":"PER-PHASE-SUPPORT","holmRank":11,"holmCutoff":0.025,"holmAdjustedP":1,"holmSignificant":false},
+    {"testId":"SC2-NODE-BUDGET|LGTTCI-P2-MIN-IMMEDIATE-CAPTURE|LGTTCI-RF2-OFFSET-ANCHOR","contrast":"SC2-NODE-BUDGET","policyId":"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE","rootFamilyId":"LGTTCI-RF2-OFFSET-ANCHOR","counts":{"namua":{"highChanged":10,"lowChanged":3},"mtaji":{"highChanged":4,"lowChanged":0}},"estimable":false,"decision":"NON-ESTIMABLE","reason":"PER-PHASE-SUPPORT","holmRank":12,"holmCutoff":0.05,"holmAdjustedP":1,"holmSignificant":false},
+    {"testId":"SC3-QUIESCENCE|LGTTCI-P1-UNIFORM-LEGAL|LGTTCI-RF1-MID-ANCHOR","contrast":"SC3-QUIESCENCE","policyId":"LGTTCI-P1-UNIFORM-LEGAL","rootFamilyId":"LGTTCI-RF1-MID-ANCHOR","counts":{"namua":{"highChanged":11,"lowChanged":4},"mtaji":{"highChanged":9,"lowChanged":5}},"estimable":true,"decision":"GENERALIZATION-CONFIRMED","observedT":20,"KTotal":29,"signedCountDifference":11,"riskDifference":0.4583333333333333,"direction":"HIGHER-IN-HIGH","pTwoSided":0.0029769591945039498,"holmRank":8,"holmCutoff":0.01,"holmAdjustedP":0.014884795972519748,"holmSignificant":true},
+    {"testId":"SC3-QUIESCENCE|LGTTCI-P1-UNIFORM-LEGAL|LGTTCI-RF2-OFFSET-ANCHOR","contrast":"SC3-QUIESCENCE","policyId":"LGTTCI-P1-UNIFORM-LEGAL","rootFamilyId":"LGTTCI-RF2-OFFSET-ANCHOR","counts":{"namua":{"highChanged":11,"lowChanged":5},"mtaji":{"highChanged":10,"lowChanged":5}},"estimable":true,"decision":"GENERALIZATION-CONFIRMED","observedT":21,"KTotal":31,"signedCountDifference":11,"riskDifference":0.4583333333333333,"direction":"HIGHER-IN-HIGH","pTwoSided":0.0022854485648959744,"holmRank":7,"holmCutoff":0.008333333333333333,"holmAdjustedP":0.013712691389375847,"holmSignificant":true},
+    {"testId":"SC3-QUIESCENCE|LGTTCI-P2-MIN-IMMEDIATE-CAPTURE|LGTTCI-RF1-MID-ANCHOR","contrast":"SC3-QUIESCENCE","policyId":"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE","rootFamilyId":"LGTTCI-RF1-MID-ANCHOR","counts":{"namua":{"highChanged":10,"lowChanged":5},"mtaji":{"highChanged":8,"lowChanged":2}},"estimable":true,"decision":"GENERALIZATION-CONFIRMED","observedT":18,"KTotal":25,"signedCountDifference":11,"riskDifference":0.4583333333333333,"direction":"HIGHER-IN-HIGH","pTwoSided":0.0029769591945039498,"holmRank":9,"holmCutoff":0.0125,"holmAdjustedP":0.014884795972519748,"holmSignificant":true},
+    {"testId":"SC3-QUIESCENCE|LGTTCI-P2-MIN-IMMEDIATE-CAPTURE|LGTTCI-RF2-OFFSET-ANCHOR","contrast":"SC3-QUIESCENCE","policyId":"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE","rootFamilyId":"LGTTCI-RF2-OFFSET-ANCHOR","counts":{"namua":{"highChanged":11,"lowChanged":4},"mtaji":{"highChanged":9,"lowChanged":8}},"estimable":true,"decision":"NOT-GENERALIZED","observedT":20,"KTotal":32,"signedCountDifference":8,"riskDifference":0.3333333333333333,"direction":"HIGHER-IN-HIGH","pTwoSided":0.03168292174307317,"holmRank":10,"holmCutoff":0.016666666666666666,"holmAdjustedP":0.09504876522921951,"holmSignificant":false}
+  ],
+  "rejectionCounts": {"UPSTREAM_OR_STAGE1_TRAJECTORY":3,"UPSTREAM_OR_STAGE1_PREFIX":1,"UPSTREAM_OR_STAGE1_ROOT":1,"ANCHOR_UNAVAILABLE":217,"WIDTH_EQUAL":236,"WIDTH_LT2":179},
+  "firewallAudit": {"g3Stage1Rows":48,"g3Stage2Rows":72,"g4Stage1rRows":768,"g4Stage1rTrajectoryUnique":766,"g4Stage1rRootUnique":665,"g4Stage1rOpeningPrefixAudited":false,"stage1IdentityRows":128,"stage1IdentityManifestSha256":"4a1dd1f3bc516734c91f99fbd9bf63ff966e3ed0568cb1b21c3fa6ccd290a979"},
+  "resourceReadiness": {"elapsedMs":611824.181676,"peakRssBytes":148189184},
+  "protectedDepth10Access": false,
+  "g4_10Depth11Access": false,
+  "thresholdRelearningPerformed": false,
+  "seedExtensionPerformed": false,
+  "rootReplacementPerformed": false
+}
