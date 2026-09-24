@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LWSRT-STUDY1",
+  "stageId": "LWSRT-S1-DEVELOPMENT-2026-09-24-v1",
+  "stageDisposition": "STAGE1-PASS",
+  "canonicalExecution": {
+    "workflowRunId": 35987703180,
+    "workflowRunAttempt": 1,
+    "triggerCommitSha": "a9cf4fe237b85e18987c634a2edee86fbdca7b7f",
+    "durableLeaseCommitSha": "8e41ba2e50ebeaea0c8d59fa3670485391b68ecc",
+    "artifactId": 10803311137,
+    "artifactName": "lwsrt-stage1-actions-once-35987703180",
+    "artifactSha256": "aaea8b1c564dbe400d2d1fc00ebfa58f23cd485d9ae994af88cd4ceaf6b621a6",
+    "artifactRetentionExpiry": "2026-12-23T10:31:16Z",
+    "fullResultSha256": "58d5489ce918bc57b599ca168fdcefbd4e741892ad123d96d27439fb06085ac8"
+  },
+  "executionContract": {
+    "effectiveAuthorization": "LWSRT-STUDY1-STAGE1-AUTHORIZED-GITHUB-ACTIONS-ONCE",
+    "scientificExecutionsAuthorized": 1,
+    "scientificExecutionsObserved": 1,
+    "freshSeedBlock": {"start":40312001,"end":40312768,"count":768},
+    "scientificSeedsRead": 768,
+    "rerunAuthorized": false,
+    "seedExtensionAuthorized": false
+  },
+  "resultCore": {
+    "selectedRoots": 128,
+    "allSixteenWidthCellsComplete": true,
+    "targetPerWidthCell": 8,
+    "SC1Defined": 128,
+    "SC1Undefined": 0,
+    "SC2Defined": 128,
+    "SC2Undefined": 0,
+    "SC3Defined": 128,
+    "SC3Undefined": 0,
+    "productionIndependentExact": true,
+    "identityManifestSha256": "4a1dd1f3bc516734c91f99fbd9bf63ff966e3ed0568cb1b21c3fa6ccd290a979",
+    "formalInferencePerformed": false,
+    "pValuesComputed": false,
+    "riskDifferencesComputed": false,
+    "effectDirectionSummarized": false,
+    "generalizationDecisionComputed": false,
+    "counterexampleDecisionComputed": false
+  },
+  "protectedBoundary": {
+    "stage2SeedAccess": false,
+    "protectedDepth10Access": false,
+    "g4_10Depth11Access": false,
+    "publicAiChange": false,
+    "mainIntegration": false
+  },
+  "identityFirewallSource": {
+    "source": "STAGE_1_RESULT.json inside the canonical artifact",
+    "selectedIdentityRows": 128,
+    "stage2MustExclude": ["sourceSeed","fullTrajectorySha256","openingPrefixSha256","rootRawSha256"],
+    "stage1ScientificReplayAuthorized": false
+  },
+  "metadataNote": {
+    "innerFreshAccessLeaseAuthorizationDecision": "LWSRT-STUDY1-STAGE1-AUTHORIZED-LOCAL-ONCE",
+    "reason": "The Stage 1 runner preserves the original authorization record as historical identity; the GitHub Actions execution-environment amendment and durable repository lease are the effective execution authorization.",
+    "scientificValidityImpact": "NONE",
+    "stage2DesignRequirement": "Use the effective authorization token directly in all execution metadata to avoid this historical/effective-token split."
+  }
+}

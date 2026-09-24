@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LWSRT-STUDY1",
+  "stageId": "LWSRT-S0-TECHNICAL-2026-09-24-v1",
+  "decision": "AUTHORIZED",
+  "authorizationType": "TECHNICAL-ONLY",
+  "authorizationReview": "doc/research-program-decisions/2026-09-24-post-g4-02-g4-03-authorization-review.md",
+  "allowedTechnicalFixtureSeeds": {
+    "start": 44010001,
+    "end": 44010064,
+    "evidenceClass": "TECHNICAL-FIXTURE",
+    "scientificUseAuthorized": false
+  },
+  "freshScientificSeedAccessAuthorized": false,
+  "scientificOutcomeAuthorized": false,
+  "stage1SeedAccessAuthorized": false,
+  "stage2SeedAccessAuthorized": false,
+  "g3_11Depth10RerunAuthorized": false,
+  "g4_10Depth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false
+}

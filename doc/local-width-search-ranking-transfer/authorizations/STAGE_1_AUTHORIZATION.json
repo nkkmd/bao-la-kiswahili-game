@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LWSRT-STUDY1",
+  "stageId": "LWSRT-S1-DEVELOPMENT-2026-09-24-v1",
+  "decision": "LWSRT-STUDY1-STAGE1-AUTHORIZED-LOCAL-ONCE",
+  "authorizationClass": "FRESH-DEVELOPMENT-LOCAL-ONCE",
+  "preAuthorizationBranchHead": "64975e3016a36b7e621f979bbd1d571398219e55",
+  "bindings": {
+    "protocolBlobSha": "acc74df015970e6b5fe1b89656844daa6d9f485c",
+    "specBlobSha": "cd955019972b629b03ea210ff6f430ce4b83e502",
+    "stage0ResultBlobSha": "772e39a4b4e7225b3565c3c8701e36cc5fbd6978",
+    "upstreamIdentityFirewallBlobSha": "066322fe3b273fd88590f2d367c8526a5659835a"
+  },
+  "authorizedSeedBlock": {"start":40312001,"end":40312768,"count":768},
+  "authorizedScientificExecutions": 1,
+  "freshSeedAccessAtAuthorization": 0,
+  "executionEnvironment": "LOCAL-ONLY",
+  "githubActionsFreshGenerationAuthorized": false,
+  "runtimeFirewallDigestMatchRequiredBeforeFirstFreshRead": true,
+  "stage1OutputsAllowed": ["cell support","endpoint definedness counts","production-independent exactness","resource readiness","identity manifest hashes"],
+  "stage1OutputsForbidden": ["HIGH-vs-LOW risk difference","effect direction","p-value","generalization decision","counterexample decision","threshold relearning"],
+  "seedExtensionAuthorized": false,
+  "rerunAfterFreshAccessAuthorized": false,
+  "stage2Authorized": false,
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false
+}

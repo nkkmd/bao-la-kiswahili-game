@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LWSRT-STUDY1",
+  "sourceStageId": "LWSRT-S1-DEVELOPMENT-2026-09-24-v1",
+  "targetStageId": "LWSRT-S2-FORMAL-2026-09-24-v1",
+  "firewallClass": "STAGE1-CANONICAL-ARTIFACT-IDENTITY-ONLY-BINDING",
+  "canonicalStage1Evidence": {
+    "workflowRunId": 35987703180,
+    "workflowRunAttempt": 1,
+    "artifactId": 10803311137,
+    "artifactName": "lwsrt-stage1-actions-once-35987703180",
+    "artifactSha256": "aaea8b1c564dbe400d2d1fc00ebfa58f23cd485d9ae994af88cd4ceaf6b621a6",
+    "stage1ResultMember": "STAGE_1_RESULT.json",
+    "stage1ResultSha256": "58d5489ce918bc57b599ca168fdcefbd4e741892ad123d96d27439fb06085ac8",
+    "identityManifestSha256": "4a1dd1f3bc516734c91f99fbd9bf63ff966e3ed0568cb1b21c3fa6ccd290a979",
+    "identityRows": 128
+  },
+  "expectedIdentitySetDigests": {
+    "sourceSeeds": {
+      "count": 128,
+      "linesSha256": "48bf2a91fc8e715a70c0aac10b02a5ae933be87d441009457be0f80e3d2393f6"
+    },
+    "fullTrajectorySha256": {
+      "count": 128,
+      "linesSha256": "792fb2aa77142a617024ecf84b4d1302d25438c5ac761a6c9f60b9a17ccc4939"
+    },
+    "openingPrefixSha256": {
+      "count": 128,
+      "linesSha256": "61e2f1aa9338c5ceab71e641524265253b5e64081c9506568e0a3e9fa7d01312"
+    },
+    "rootRawSha256": {
+      "count": 128,
+      "linesSha256": "3c32f7422bc395dfaf3641ea51742652b1988c5f2bf57dfea7e93d6716423c42"
+    }
+  },
+  "allowedStage2Use": "IDENTITY-EXCLUSION-ONLY",
+  "stage1ScientificReplayAuthorized": false,
+  "stage2FreshSeedAccessDuringBinding": false
+}

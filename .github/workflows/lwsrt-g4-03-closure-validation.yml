@@ -1,0 +1,165 @@
+name: LWSRT G4-03 closure validation
+
+on:
+  push:
+    branches:
+      - research/g4-03-width-ranking-transfer
+    paths:
+      - '.github/workflows/lwsrt-g4-03-closure-validation.yml'
+      - 'doc/local-width-search-ranking-transfer/CURRENT_STATUS.md'
+      - 'doc/local-width-search-ranking-transfer/README.md'
+      - 'doc/local-width-search-ranking-transfer/results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json'
+      - 'doc/research-program-decisions/2026-09-24-g4-03-local-width-search-ranking-transfer-study1-closure.md'
+      - 'doc/research-generation-4/CURRENT_STATUS.md'
+      - 'doc/research-generation-4/README.md'
+      - 'doc/research-generation-4/RESUME_HERE.md'
+      - 'doc/research-generation-4/checkpoints/2026-09-24-g4-03-complete.md'
+      - 'doc/RESEARCH_INDEX.md'
+      - 'doc/FUTURE_RESEARCH_AGENDA.md'
+
+permissions:
+  contents: read
+
+jobs:
+  closure-validation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact closure commit
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Validate canonical machine-readable closure
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs=require('node:fs');
+          const p='doc/local-width-search-ranking-transfer/results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json';
+          const x=JSON.parse(fs.readFileSync(p,'utf8'));
+          const need=(v,m)=>{if(!v)throw new Error(m);};
+          need(x.studyId==='LWSRT-STUDY1','study mismatch');
+          need(x.stageId==='LWSRT-S2-FORMAL-2026-09-24-v1','stage mismatch');
+          need(x.stageDisposition==='STAGE2-COMPLETE-WITH-NON-ESTIMABLE','disposition mismatch');
+          need(x.canonicalExecution.workflowRunId===35993172710,'canonical run mismatch');
+          need(x.canonicalExecution.artifactId===10805571797,'artifact mismatch');
+          need(x.canonicalExecution.artifactSha256==='c4449f9a034f30a501f60c6ee90b07426bd1c42aa3b0bbc150fd8d3e1199b597','artifact digest mismatch');
+          need(x.canonicalExecution.stage2ResultSha256==='88dd8c2e586f36692d5d0cb1d66847affe0151a803f9230eb7d8425f93469bf3','result digest mismatch');
+          need(x.scientificSeedsRead===1536&&x.actualScientificExecutions===1,'one-shot evidence mismatch');
+          need(x.selectedRoots===192&&x.productionIndependentExact===true,'sample/exactness mismatch');
+          need(Array.isArray(x.formalTests)&&x.formalTests.length===12,'formal family size mismatch');
+          const c=x.formalDecisionCounts;
+          need(c['GENERALIZATION-CONFIRMED']===9,'generalization count mismatch');
+          need(c['NOT-GENERALIZED']===1,'not-generalized count mismatch');
+          need(c['NON-ESTIMABLE']===2,'non-estimable count mismatch');
+          need(c['COUNTEREXAMPLE-CONFIRMED']===0,'counterexample count mismatch');
+          need(x.protectedDepth10Access===false&&x.g4_10Depth11Access===false,'protected evidence boundary mismatch');
+          need(x.thresholdRelearningPerformed===false&&x.seedExtensionPerformed===false&&x.rootReplacementPerformed===false,'post-hoc mutation boundary mismatch');
+          console.log('canonical G4-03 closure JSON PASS');
+          NODE
+
+      - name: Validate final authorization and durable lease identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs=require('node:fs');
+          const a=JSON.parse(fs.readFileSync('doc/local-width-search-ranking-transfer/authorizations/STAGE_2_FINAL_AUTHORIZATION.json','utf8'));
+          const l=JSON.parse(fs.readFileSync('doc/local-width-search-ranking-transfer/executions/STAGE_2_ACTIONS_EXECUTION_LEASE.json','utf8'));
+          const need=(v,m)=>{if(!v)throw new Error(m);};
+          need(a.decision==='LWSRT-STUDY1-STAGE2-AUTHORIZED-GITHUB-ACTIONS-ONCE','authorization token mismatch');
+          need(a.authorizedScientificExecutions===1&&a.rerunAfterFreshAccessAuthorized===false,'authorization one-shot boundary mismatch');
+          need(l.workflowRunId===35993172710&&l.workflowRunAttempt===1,'lease run mismatch');
+          need(l.triggerCommitSha==='f52fcd5a16028bac8e97a5b714b87c72853628e4','lease trigger mismatch');
+          need(l.acquiredBeforeFreshSeedRead===true,'lease timing mismatch');
+          console.log('authorization / durable lease identity PASS');
+          NODE
+
+      - name: Validate live-state documents
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs=require('node:fs');
+          const files=[
+            'doc/local-width-search-ranking-transfer/CURRENT_STATUS.md',
+            'doc/local-width-search-ranking-transfer/README.md',
+            'doc/research-generation-4/CURRENT_STATUS.md',
+            'doc/research-generation-4/README.md',
+            'doc/research-generation-4/RESUME_HERE.md',
+            'doc/RESEARCH_INDEX.md',
+            'doc/FUTURE_RESEARCH_AGENDA.md'
+          ];
+          const need=(v,m)=>{if(!v)throw new Error(m);};
+          const stale=[
+            'G4-03 = ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED',
+            'G4-03 / G4-04 = ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED',
+            '`G4-03` | width / search-ranking transfer | `ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED`',
+            '`G4-03` | width / search-ranking transfer | `ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED`'
+          ];
+          for(const f of files){
+            const s=fs.readFileSync(f,'utf8');
+            need(s.includes('G4-03')||f.includes('local-width-search-ranking-transfer'),`${f}: G4-03 identity missing`);
+            for(const q of stale)need(!s.includes(q),`${f}: stale G4-03 status: ${q}`);
+          }
+          const local=fs.readFileSync('doc/local-width-search-ranking-transfer/CURRENT_STATUS.md','utf8');
+          need(local.includes('Study closure = COMPLETE'),'local current status not closed');
+          need(local.includes('Stage 2 fresh seed reads = 1536 / 1536'),'local Stage 2 read count missing');
+          const rg4=fs.readFileSync('doc/research-generation-4/CURRENT_STATUS.md','utf8');
+          need(rg4.includes('G4-03 = COMPLETE'),'RG4 current status not advanced');
+          need(rg4.includes('G4-04 = ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED'),'G4-04 boundary missing');
+          const index=fs.readFileSync('doc/RESEARCH_INDEX.md','utf8');
+          need(index.includes('G4-03の正式結果'),'central research index missing G4-03 entry');
+          need(index.includes('GENERALIZATION-CONFIRMED = 9'),'central research index result count missing');
+          const agenda=fs.readFileSync('doc/FUTURE_RESEARCH_AGENDA.md','utf8');
+          need(agenda.includes('Version: 5.4.1'),'future agenda version mismatch');
+          need(agenda.includes('次のcore candidateはG4-04'),'future agenda next candidate mismatch');
+          need(agenda.includes('SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN'),'future agenda lost SSGTC closure history');
+          need(agenda.includes('EXPLORATORY-ONLY'),'future agenda lost PCEM closure history');
+          need(agenda.includes('[`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md)'),'future agenda lost Generation-2 synthesis navigation');
+          need(agenda.includes('[`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md)'),'future agenda lost Generation-3 synthesis navigation');
+          need(agenda.includes('## 10. 第三世代研究アジェンダ'),'future agenda truncated before Generation 3 section');
+          console.log('live-state document status PASS');
+          NODE
+
+      - name: Validate selected relative Markdown links
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs=require('node:fs'),path=require('node:path');
+          const files=[
+            'doc/local-width-search-ranking-transfer/CURRENT_STATUS.md',
+            'doc/local-width-search-ranking-transfer/README.md',
+            'doc/research-program-decisions/2026-09-24-g4-03-local-width-search-ranking-transfer-study1-closure.md',
+            'doc/research-generation-4/CURRENT_STATUS.md',
+            'doc/research-generation-4/README.md',
+            'doc/research-generation-4/RESUME_HERE.md',
+            'doc/research-generation-4/checkpoints/2026-09-24-g4-03-complete.md',
+            'doc/RESEARCH_INDEX.md',
+            'doc/FUTURE_RESEARCH_AGENDA.md'
+          ];
+          const missing=[];
+          for(const f of files){
+            const s=fs.readFileSync(f,'utf8');
+            for(const m of s.matchAll(/\[[^\]]*\]\(([^)]+)\)/g)){
+              let target=m[1].trim();
+              if(!target||target.startsWith('#')||/^[a-z]+:\/\//i.test(target)||target.startsWith('mailto:'))continue;
+              target=target.split('#')[0];
+              if(!target)continue;
+              const resolved=path.normalize(path.join(path.dirname(f),decodeURIComponent(target)));
+              if(!fs.existsSync(resolved))missing.push(`${f} -> ${target} (${resolved})`);
+            }
+          }
+          if(missing.length)throw new Error('missing relative links:\n'+missing.join('\n'));
+          console.log('selected relative Markdown links PASS');
+          NODE
+
+      - name: Confirm closure validation is seed-free
+        shell: bash
+        run: |
+          echo 'G4-03 closure validation PASS; no scientific seed generation/read performed by this workflow.'

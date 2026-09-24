@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LWSRT-STUDY1",
+  "stageId": "LWSRT-S1-DEVELOPMENT-2026-09-24-v1",
+  "bindingClass": "PRE-FRESH-EXECUTION-CODE-BINDING",
+  "recordedDate": "2026-09-24",
+  "researchBranch": "research/g4-03-width-ranking-transfer",
+  "codeFreezeHead": "0d748976c97789532acf63fb8a6e2d2e9fd165ac",
+  "freshScientificSeedAccessAtBinding": 0,
+  "scientificExecutionStarted": false,
+  "authorizedExecutionMode": "GITHUB-ACTIONS-ONCE",
+  "githubActionsFreshGenerationAuthorized": true,
+  "localFreshGenerationAuthorized": false,
+  "bindings": {
+    "runner": {"path":"tools/experiments/run-lwsrt-stage1-development.js","blobSha":"c50fbf6cc10890efc6adf38fd63128b52f36c577"},
+    "engine": {"path":"public/engine.js","blobSha":"1527bb3665228b7a5bd9f03153567aedbaaa22d7"},
+    "ai": {"path":"public/ai.js","blobSha":"ac2b4fd66a2555c50a362c39a828515323bba18a"},
+    "aiWeights": {"path":"public/ai-weights.js","blobSha":"98969eb4c8e1403beedcf5c139a07166aa78175c"},
+    "sourceProduction": {"path":"tools/experiments/lib/lgttci-compatibility-production.js","blobSha":"2fe5b87572c0138cf66dfabb4ca40869eab26ddc"},
+    "sourceIndependent": {"path":"tools/experiments/lib/lgttci-compatibility-independent.js","blobSha":"d63263375d4b1d61271ead31777b37185056a73b"},
+    "rawGeometryProduction": {"path":"tools/experiments/lib/lgtgmiv-stage1-production.js","blobSha":"a4664f01535d6abbf6f83821befbb2fafd55cde6"},
+    "rawGeometryIndependent": {"path":"tools/experiments/lib/lgtgmiv-stage1-independent.js","blobSha":"0c7239ac7acf146e9aee63dae66194681b8631d6"},
+    "continuousGeometryProduction": {"path":"tools/experiments/lib/crclgr-production.js","blobSha":"f9d90792d729a42f738e7cd1c3b045bdd758ffa5"},
+    "continuousGeometryIndependent": {"path":"tools/experiments/lib/crclgr-independent.js","blobSha":"77d3a91b2165019e4b50c195a1bb14147c35e6d2"},
+    "searchProduction": {"path":"tools/experiments/lib/silgm-production.js","blobSha":"9712e897540b54ff5fe3aa6acd997d286b09331d"},
+    "searchIndependent": {"path":"tools/experiments/lib/silgm-independent.js","blobSha":"0bd60c96e5abfce9d1c99b474709177d52509138"},
+    "searchRobustness": {"path":"tools/experiments/lib/search-reliability-decision-robustness.js","blobSha":"f3a6951fe711db62e164910cfb248a9cbc2cac1a"},
+    "spec": {"path":"doc/local-width-search-ranking-transfer/prereg/STUDY_1_SPEC.json","blobSha":"cd955019972b629b03ea210ff6f430ce4b83e502"},
+    "authorization": {"path":"doc/local-width-search-ranking-transfer/authorizations/STAGE_1_AUTHORIZATION.json","blobSha":"ca5091b5d879aee4ecfee9311f1287531e10a6f0"},
+    "executionEnvironmentAmendment": {"path":"doc/local-width-search-ranking-transfer/authorizations/STAGE_1_EXECUTION_ENVIRONMENT_AMENDMENT.json","blobSha":"68c4c1265ba69c9a9f317432a24d4dca63f67ff1"},
+    "authorizedExecutionWorkflow": {"path":".github/workflows/lwsrt-stage1-actions-once.yml","blobSha":"3dbe1ec2282190b1d180c6f27ae34f1b6b67d18b"},
+    "upstreamIdentityFirewall": {"path":"doc/local-width-search-ranking-transfer/prereg/UPSTREAM_IDENTITY_FIREWALL.json","blobSha":"066322fe3b273fd88590f2d367c8526a5659835a"},
+    "g3Stage1IdentityExclusion": {"path":"doc/search-instability-local-geometry-mechanism/prereg/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json","blobSha":"3c9c67def9925df85b14287ef4fd931f099dca2a"}
+  },
+  "authorizedSeedBlock": {"start":40312001,"end":40312768,"count":768},
+  "requiredBeforeFreshRead": [
+    "all bound repository blob SHA values match",
+    "effective Stage 1 execution authorization remains GITHUB-ACTIONS-ONCE",
+    "one-shot trigger contract passes on the research-branch trigger commit",
+    "runtime upstream firewall materialization passes before the first fresh seed read",
+    "durable repository execution lease acquisition succeeds before the first fresh seed read"
+  ],
+  "stillProhibited": [
+    "local fresh generation",
+    "second scientific execution or rerun after fresh access",
+    "seed extension",
+    "Stage 2 access",
+    "formal effect inference in Stage 1",
+    "public AI change",
+    "main integration"
+  ]
+}

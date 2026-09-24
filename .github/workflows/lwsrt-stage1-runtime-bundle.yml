@@ -1,0 +1,86 @@
+name: LWSRT G4-03 Stage 1 runtime audit bundle packaging
+
+on:
+  push:
+    branches:
+      - "research/g4-03-width-ranking-transfer"
+    paths:
+      - ".github/workflows/lwsrt-stage1-runtime-bundle.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package-runtime-audit-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout research branch state
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Verify bound runtime files without scientific seed access
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check tools/experiments/run-lwsrt-stage1-development.js
+          node <<'NODE'
+          const fs=require('node:fs');
+          const cp=require('node:child_process');
+          const b=JSON.parse(fs.readFileSync('doc/local-width-search-ranking-transfer/authorizations/STAGE_1_PREEXECUTION_BINDING.json','utf8'));
+          const m=JSON.parse(fs.readFileSync('doc/local-width-search-ranking-transfer/authorizations/STAGE_1_EXECUTION_ENVIRONMENT_AMENDMENT.json','utf8'));
+          const need=(x,msg)=>{if(!x)throw new Error(msg);};
+          need(b.studyId==='LWSRT-STUDY1'&&b.bindingClass==='PRE-FRESH-EXECUTION-CODE-BINDING','binding mismatch');
+          need(b.freshScientificSeedAccessAtBinding===0&&b.scientificExecutionStarted===false,'not pre-fresh');
+          need(b.authorizedExecutionMode==='GITHUB-ACTIONS-ONCE'&&b.githubActionsFreshGenerationAuthorized===true&&b.localFreshGenerationAuthorized===false,'execution boundary mismatch');
+          need(m.amendmentDecision==='LWSRT-STUDY1-STAGE1-AUTHORIZED-GITHUB-ACTIONS-ONCE','effective amendment mismatch');
+          for(const [name,x] of Object.entries(b.bindings)){
+            const actual=cp.execFileSync('git',['hash-object',x.path],{encoding:'utf8'}).trim();
+            need(actual===x.blobSha,`blob mismatch ${name}`);
+          }
+          console.log(`runtime audit bundle binding PASS (${Object.keys(b.bindings).length} bound files); fresh seed access = false`);
+          NODE
+
+      - name: Assemble bound runtime audit bundle only
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf runtime-bundle
+          mkdir -p runtime-bundle
+          node <<'NODE'
+          const fs=require('node:fs');
+          const path=require('node:path');
+          const b=JSON.parse(fs.readFileSync('doc/local-width-search-ranking-transfer/authorizations/STAGE_1_PREEXECUTION_BINDING.json','utf8'));
+          const paths=[...new Set([
+            ...Object.values(b.bindings).map(x=>x.path),
+            'doc/local-width-search-ranking-transfer/authorizations/STAGE_1_PREEXECUTION_BINDING.json'
+          ])];
+          for(const src of paths){
+            const dst=path.join('runtime-bundle',src);
+            fs.mkdirSync(path.dirname(dst),{recursive:true});
+            fs.copyFileSync(src,dst);
+          }
+          fs.writeFileSync('runtime-bundle/RUNTIME_BUNDLE_METADATA.json',JSON.stringify({
+            schemaVersion:1,
+            studyId:'LWSRT-STUDY1',
+            purpose:'AUDIT-BUNDLE-ONLY-NOT-AUTHORIZED-FOR-SCIENTIFIC-EXECUTION',
+            effectiveExecutionMode:'GITHUB-ACTIONS-ONCE',
+            sourceCommit:process.env.GITHUB_SHA,
+            freshScientificSeedAccessDuringPackaging:false,
+            scientificExecutionPerformed:false,
+            boundFileCount:Object.keys(b.bindings).length
+          },null,2)+'\n');
+          NODE
+
+      - name: Upload runtime audit bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: lwsrt-stage1-runtime-audit-bundle
+          path: runtime-bundle
+          if-no-files-found: error
+          retention-days: 30

@@ -1,0 +1,117 @@
+name: LWSRT G4-03 Stage 2 final authorization validation
+
+on:
+  push:
+    branches:
+      - research/g4-03-width-ranking-transfer
+    paths:
+      - '.github/workflows/lwsrt-stage2-final-authorization-validation.yml'
+      - '.github/workflows/lwsrt-stage2-actions-once.yml'
+      - 'doc/local-width-search-ranking-transfer/authorizations/STAGE_2_FINAL_AUTHORIZATION.json'
+      - 'doc/local-width-search-ranking-transfer/authorizations/STAGE_2_PREEXECUTION_BINDING.json'
+      - 'doc/research-program-decisions/2026-09-24-g4-03-stage2-final-one-shot-authorization-review.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  stage2-final-authorization-validation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Verify final authorization contract without fresh seed access
+        shell: bash
+        run: |
+          set -euo pipefail
+          test ! -e doc/local-width-search-ranking-transfer/authorizations/STAGE_2_ACTIONS_EXECUTION_TRIGGER.json
+          test ! -e doc/local-width-search-ranking-transfer/executions/STAGE_2_ACTIONS_EXECUTION_LEASE.json
+          node <<'NODE'
+          const fs=require('node:fs');
+          const cp=require('node:child_process');
+          const authPath='doc/local-width-search-ranking-transfer/authorizations/STAGE_2_FINAL_AUTHORIZATION.json';
+          const reviewPath='doc/research-program-decisions/2026-09-24-g4-03-stage2-final-one-shot-authorization-review.md';
+          const bindingPath='doc/local-width-search-ranking-transfer/authorizations/STAGE_2_PREEXECUTION_BINDING.json';
+          const auth=JSON.parse(fs.readFileSync(authPath,'utf8'));
+          const b=JSON.parse(fs.readFileSync(bindingPath,'utf8'));
+          const need=(x,m)=>{if(!x)throw new Error(m);};
+          need(auth.studyId==='LWSRT-STUDY1'&&auth.stageId==='LWSRT-S2-FORMAL-2026-09-24-v1','identity mismatch');
+          need(auth.decision==='LWSRT-STUDY1-STAGE2-AUTHORIZED-GITHUB-ACTIONS-ONCE','authorization token mismatch');
+          need(auth.authorizationClass==='FRESH-FORMAL-GITHUB-ACTIONS-ONCE','authorization class mismatch');
+          need(auth.freshSeedAccessAtAuthorization===0&&auth.scientificExecutionStartedAtAuthorization===false,'authorization not pre-fresh');
+          need(auth.executionEnvironment==='GITHUB-ACTIONS-ONLY'&&auth.githubActionsFreshGenerationAuthorized===true&&auth.localFreshGenerationAuthorized===false,'execution environment mismatch');
+          need(auth.authorizedScientificExecutions===1&&auth.rerunAfterFreshAccessAuthorized===false,'one-shot boundary mismatch');
+          need(auth.seedExtensionAuthorized===false&&auth.rootReplacementAuthorized===false&&auth.thresholdRelearningAuthorized===false,'scientific boundary mismatch');
+          need(auth.authorizedSeedBlock?.start===40322001&&auth.authorizedSeedBlock?.end===40323536&&auth.authorizedSeedBlock?.count===1536,'seed block mismatch');
+          need(auth.preconditions?.stage2SeedFreePreflightRunId===35991470739&&auth.preconditions?.stage2BindingValidationRunId===35991767724,'preparation run binding mismatch');
+          const reviewBlob=cp.execFileSync('git',['hash-object',reviewPath],{encoding:'utf8'}).trim();
+          need(reviewBlob===auth.authorizationReview.blobSha,'authorization review blob mismatch');
+          const preBindingBlob=cp.execFileSync('git',['hash-object',bindingPath],{encoding:'utf8'}).trim();
+          need(preBindingBlob===auth.preexecutionBinding.blobSha,'pre-execution binding blob mismatch');
+          cp.execFileSync('git',['merge-base','--is-ancestor',b.codeFreezeHead,'HEAD']);
+          need(Object.keys(b.bindings).length===24,'bound file count mismatch');
+          for(const [name,x] of Object.entries(b.bindings)){
+            const actual=cp.execFileSync('git',['hash-object',x.path],{encoding:'utf8'}).trim();
+            need(actual===x.blobSha,`blob mismatch ${name}: ${actual} != ${x.blobSha}`);
+          }
+          const workflowBlob=cp.execFileSync('git',['hash-object',auth.executionWorkflow.path],{encoding:'utf8'}).trim();
+          need(workflowBlob===auth.executionWorkflow.blobSha,'one-shot execution workflow blob mismatch');
+          need(auth.executionWorkflow.triggerMustBeSinglePathCommit===true&&auth.executionWorkflow.concurrencyCancelInProgress===false,'workflow one-shot metadata mismatch');
+          console.log('Stage 2 final authorization contract PASS; fresh scientific seed access = false');
+          NODE
+
+      - name: Syntax-check frozen Stage 2 implementation
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check tools/experiments/run-lwsrt-stage2-formal.js
+          node --check tools/experiments/lib/lwsrt-stage2-inference.js
+          node --check tools/experiments/run-lwsrt-stage2-preflight.js
+
+      - name: Download and verify canonical Stage 1 artifact
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p upstream
+          curl --fail --silent --show-error --location \
+            --header "Authorization: Bearer ${GH_TOKEN}" \
+            --header 'Accept: application/vnd.github+json' \
+            'https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/10803311137/zip' \
+            --output upstream/g4-03-stage1.zip
+          echo 'aaea8b1c564dbe400d2d1fc00ebfa58f23cd485d9ae994af88cd4ceaf6b621a6  upstream/g4-03-stage1.zip' | sha256sum --check --strict
+
+      - name: Re-run seed-free Stage 2 preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/lwsrt-stage2-final-auth-validation
+          node tools/experiments/run-lwsrt-stage2-preflight.js \
+            --stage1-artifact-zip upstream/g4-03-stage1.zip \
+            --output artifacts/lwsrt-stage2-final-auth-validation/STAGE_2_FINAL_AUTH_PREFLIGHT_RESULT.json
+          node <<'NODE'
+          const fs=require('node:fs');
+          const x=JSON.parse(fs.readFileSync('artifacts/lwsrt-stage2-final-auth-validation/STAGE_2_FINAL_AUTH_PREFLIGHT_RESULT.json','utf8'));
+          if(x.preflightDisposition!=='PASS'||x.freshScientificSeedAccess!==false||x.stage2ScientificExecutionStarted!==false)throw new Error('final authorization preflight boundary mismatch');
+          console.log('Stage 2 final authorization seed-free preflight PASS');
+          NODE
+
+      - name: Upload final authorization validation evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: lwsrt-stage2-final-authorization-validation-${{ github.run_id }}
+          path: artifacts/lwsrt-stage2-final-auth-validation
+          if-no-files-found: error
+          retention-days: 90

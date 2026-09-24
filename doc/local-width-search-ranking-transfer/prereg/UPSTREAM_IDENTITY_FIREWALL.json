@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LWSRT-STUDY1",
+  "stageId": "LWSRT-S1-DEVELOPMENT-2026-09-24-v1",
+  "purpose": "UPSTREAM-IDENTITY-ONLY-FRESHNESS-FIREWALL",
+  "status": "FROZEN-PRE-FRESH",
+  "scientificOutcomeFieldsRetained": false,
+  "freshStage1SeedAccessDuringMaterialization": false,
+  "excludedSeedNamespaces": [
+    {"source":"G3-07 Stage 1","range":"31710001..31710256"},
+    {"source":"G3-07 Stage 2","range":"31720001..31720384"},
+    {"source":"G4-01 interrupted SILGM","range":"40112001..40112768"},
+    {"source":"G4-01 Stage 1R SILGM primary","range":"40212001..40212768"},
+    {"source":"G4-01 Stage 1R SILGM reserve","range":"41212001..41212768"}
+  ],
+  "identitySources": {
+    "g3_07_stage1": {
+      "sourceClass": "REPOSITORY-IDENTITY-ONLY",
+      "path": "doc/search-instability-local-geometry-mechanism/prereg/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json",
+      "identityRowCount": 48,
+      "identityClasses": ["rootRawSha256","fullTrajectorySha256","openingPrefixSha256"],
+      "requiredScientificOutcomeFieldsRetained": false
+    },
+    "g3_07_stage2": {
+      "sourceClass": "CANONICAL-ARTIFACT-IDENTITY-ONLY-MATERIALIZATION",
+      "workflowRun": 33716884975,
+      "artifactId": 9879091983,
+      "artifactDigest": "sha256:5ada1dcb0ceab7d89ea0bfc78410a14c3875ba03a01e31a243950706349de70a",
+      "selectedIdentityRowCount": 72,
+      "canonicalIdentityRowDigest": "sha256:d1eee423d3185c8b1547c0c61c5de4b2dec4d68175763ebffe02e51f5395b51d",
+      "setDigests": {
+        "rootRawSha256": {"uniqueCount":72,"sha256":"d5e50f419ca98cff1f5a4f781f0eace3a23257195b1c82a7f58dac0f518353d5"},
+        "fullTrajectorySha256": {"uniqueCount":72,"sha256":"85d86e0ce7041ad1456e1599f5a9c071fcf44ec091b56c09afa410f174cb2482"},
+        "openingPrefixSha256": {"uniqueCount":72,"sha256":"521a3a95482fd0ac83140c50ce31003ae02dc4b5ac2c364d3ad3148d08875d1d"}
+      },
+      "retainedFields": ["seed","selectedPly","rootRawSha256","fullTrajectorySha256","openingPrefixSha256"],
+      "scientificOutcomeFieldsRetained": false
+    },
+    "g4_01_stage1r_silgm": {
+      "sourceClass": "RECOVERY-SOURCE-BUNDLE-IDENTITY-ONLY-MATERIALIZATION",
+      "sourceRunId": 35224920019,
+      "sourceRunHeadSha": "90aff0561538113c203cbf8efa8977420a19dca1",
+      "recoveryRunId": 35265290422,
+      "recoveryRunHeadSha": "2216c19e52bd0a7ce2680426183c058ecb8fce1c",
+      "artifactId": 10517090411,
+      "artifactDigest": "sha256:3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b",
+      "sourceRowCount": 768,
+      "canonicalIdentityRowDigest": "sha256:d80056712e69dd518eb77710e3ff070bda436bb23c8f3f1c19d77ae6465455a2",
+      "setDigests": {
+        "sourceSeed": {"uniqueCount":768,"sha256":"8d0033306422680b29e7d4e78ed00bedabde225e530579e4e301836827d7c38d"},
+        "fullTrajectorySha256": {"uniqueCount":766,"sha256":"9572e25dc2a4d9dad3726fc30541caa923c1585417bfb31cebecc2ea45d8c74e"},
+        "rootRawSha256": {"uniqueCount":665,"sha256":"8e30417d3fc58aa010cf3b7625175662e017950e94181e04375c7c47becd7b1e"}
+      },
+      "reserveUsed": false,
+      "scientificOutcomeFieldsRetained": false
+    }
+  },
+  "unavailableIdentityClasses": [
+    {"source":"G4-01 interrupted SILGM 40112001..40112768","identityClass":"fullTrajectory/openingPrefix/rootRaw","nonOverlapClaimed":false,"mitigation":"entire seed namespace remains quarantined; no historical identity non-overlap claim is made"},
+    {"source":"G4-01 Stage 1R SILGM","identityClass":"openingPrefixSha256","nonOverlapClaimed":false,"mitigation":"sourceSeed, fullTrajectorySha256 and rootRawSha256 are audited and enforced; opening-prefix non-overlap remains explicitly unaudited"},
+    {"source":"G4-01 Stage 1R reserve 41212001..41212768","identityClass":"generated identities","nonOverlapClaimed":false,"mitigation":"canonical recovery bundle records reserveUsed=false; the entire reserve seed namespace remains excluded"}
+  ],
+  "runtimeExclusionRule": {
+    "rejectIfExcludedSourceSeed": true,
+    "rejectIfAuditedFullTrajectoryCollision": true,
+    "rejectIfAuditedOpeningPrefixCollision": true,
+    "rejectIfAuditedRootRawCollision": true,
+    "secondaryRootAfterCollision": false,
+    "rootReplacement": false,
+    "seedExtension": false,
+    "materializedSetDigestMismatch": "FAIL-CLOSED",
+    "missingRequiredArtifact": "FAIL-CLOSED"
+  },
+  "stage1ReservedSeedBlock": {"start":40312001,"end":40312768,"count":768,"accessed":false},
+  "g3_12ScientificEvidenceReadOrReuse": false,
+  "protectedDepth10Access": false,
+  "g4_10Depth11Access": false
+}

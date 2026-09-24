@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LWSRT-STUDY1",
+  "stageId": "LWSRT-S1-DEVELOPMENT-2026-09-24-v1",
+  "statusAtFreeze": "PROSPECTIVE-FROZEN-NOT-AUTHORIZED",
+  "executionRoute": "LOCAL-ONLY",
+  "githubActionsFreshGenerationAuthorized": false,
+  "seedBlock": {"start": 40312001, "end": 40312768, "count": 768, "extensionAuthorized": false},
+  "assignment": {
+    "salt": "LWSRT-S1-ASSIGN-v1",
+    "formula": "SHA256_UTF8(salt + '|' + decimalSeed); take first 8 hex digits as unsigned 32-bit integer; index = value mod 8",
+    "cellIndex": [
+      {"index":0,"policyId":"LGTTCI-P1-UNIFORM-LEGAL","rootFamilyId":"LGTTCI-RF1-MID-ANCHOR","phase":"namua"},
+      {"index":1,"policyId":"LGTTCI-P1-UNIFORM-LEGAL","rootFamilyId":"LGTTCI-RF1-MID-ANCHOR","phase":"mtaji"},
+      {"index":2,"policyId":"LGTTCI-P1-UNIFORM-LEGAL","rootFamilyId":"LGTTCI-RF2-OFFSET-ANCHOR","phase":"namua"},
+      {"index":3,"policyId":"LGTTCI-P1-UNIFORM-LEGAL","rootFamilyId":"LGTTCI-RF2-OFFSET-ANCHOR","phase":"mtaji"},
+      {"index":4,"policyId":"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE","rootFamilyId":"LGTTCI-RF1-MID-ANCHOR","phase":"namua"},
+      {"index":5,"policyId":"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE","rootFamilyId":"LGTTCI-RF1-MID-ANCHOR","phase":"mtaji"},
+      {"index":6,"policyId":"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE","rootFamilyId":"LGTTCI-RF2-OFFSET-ANCHOR","phase":"namua"},
+      {"index":7,"policyId":"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE","rootFamilyId":"LGTTCI-RF2-OFFSET-ANCHOR","phase":"mtaji"}
+    ]
+  },
+  "rootSelection": {
+    "maxSourcePly": 80,
+    "assignedAnchorOnly": true,
+    "alternativeAnchorAfterRejection": false,
+    "widthThresholds": {"namua":4,"mtaji":3},
+    "widthClasses": {"HIGH":"width > threshold","LOW":"2 <= width < threshold","EQUAL":"width == threshold / not selected","SINGLETON":"width < 2 / non-estimable"},
+    "selectionSalt": "LWSRT-S1-SELECT-v1",
+    "rankFormula": "SHA256_UTF8(salt|policyId|rootFamilyId|phase|widthClass|decimalSeed|g4TrajectorySha256|rootRawSha256|decimalSelectedPly)",
+    "duplicateRawRootRule": "globally retain minimum lexicographic selectionRank; tie-break sourceSeed, selectedPly, rootRawSha256; never replace a rejected duplicate",
+    "targetPerCell": {"HIGH":8,"LOW":8},
+    "totalTarget": 128
+  },
+  "identityDerivation": {
+    "rawRoot": "lgtgmiv canonical RAW state SHA-256",
+    "g3_07FullTrajectory": "silgm-production digest([{moveKey,afterRawStateSha256},...])",
+    "g3_07OpeningPrefix": "silgm-production digest(first <=16 canonical moveKey strings)",
+    "g4_01FullTrajectory": "lgttci replay.trajectorySha256 = SHA256_UTF8(moveKeys joined by LF)",
+    "crossSemanticHashComparison": false
+  },
+  "preFreshGate": {
+    "mustCompleteBeforeLeaseAndFirstSeedRead": true,
+    "g3Stage1IdentityFile": "doc/search-instability-local-geometry-mechanism/prereg/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json",
+    "g3Stage2Zip": {"artifactId":9879091983,"sha256":"5ada1dcb0ceab7d89ea0bfc78410a14c3875ba03a01e31a243950706349de70a"},
+    "g4Stage1rZip": {"artifactId":10517090411,"sha256":"3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b"},
+    "firewallMaster": "doc/local-width-search-ranking-transfer/prereg/UPSTREAM_IDENTITY_FIREWALL.json",
+    "failureDisposition": "ABORT-BEFORE-FRESH-SEED-ACCESS"
+  },
+  "oneExecutionContract": {
+    "authorizedExecutionCount": 1,
+    "leaseCreation": "atomic local file create with exclusive-create semantics after all pre-fresh gates and before first seed replay",
+    "leasePathRelativeToOutput": "stage1-access-lease.json",
+    "rerunAfterLeaseCreationAuthorized": false,
+    "sameEvidenceRepairAndRerunAuthorized": false
+  },
+  "measurement": {
+    "productionIndependentExactnessRequired": true,
+    "contrasts": ["SC1-DEPTH","SC2-NODE-BUDGET","SC3-QUIESCENCE"],
+    "endpoint": "SILGM-E3-RANKING-PREORDER-CHANGE",
+    "persistEndpointValues": false,
+    "persistChangedCounts": false,
+    "persistRiskDifference": false,
+    "persistEffectDirection": false,
+    "persistPValue": false
+  },
+  "allowedResult": ["cell support","rejection counts","endpoint definedness counts","production-independent exactness","resource readiness","identity manifest hashes","execution provenance"],
+  "forbiddenResult": ["changed HIGH count","changed LOW count","risk difference","effect direction","p-value","generalization decision","counterexample decision"],
+  "stage2Authorized": false,
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false
+}

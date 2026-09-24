@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "programPosition": "Research Generation 4 / G4-03",
+  "studyId": "LWSRT-STUDY1",
+  "titles": {
+    "ja": "Baoのroot legal widthとsearch ranking変化の移送可能性研究1 — fresh source policy・reachable-root family・phase strataにおけるG3-07 confirmed associationのprospective再検証",
+    "en": "Local Width / Search-Ranking Transfer Study 1 — Prospective transfer validation of the G3-07 root-legal-width / ranking-preorder-change association across fresh source policies, reachable-root families, and phase strata"
+  },
+  "authorizationDecision": "G4-03-AUTHORIZED-FOR-PREREGISTRATION-AND-STAGE0-ONLY",
+  "authorizationReviewPath": "doc/research-program-decisions/2026-09-24-post-g4-02-g4-03-authorization-review.md",
+  "sourceMain": {
+    "repository": "nkkmd/bao-la-kiswahili-game",
+    "headSha": "dfc80a8fbf4487f7d6eb24e28908849d51a141ee",
+    "researchBranch": "research/g4-03-width-ranking-transfer"
+  },
+  "stageStructure": [
+    {
+      "stageId": "LWSRT-S0-TECHNICAL-2026-09-24-v1",
+      "evidenceClass": "TECHNICAL-FIXTURE",
+      "scientificOutcomeAuthorized": false,
+      "freshScientificSeedAccess": false,
+      "statusAtFreeze": "AUTHORIZED-NOT-EXECUTED"
+    },
+    {
+      "stageId": "LWSRT-S1-DEVELOPMENT-2026-09-24-v1",
+      "evidenceClass": "FRESH-DEVELOPMENT",
+      "scientificOutcomeAuthorized": false,
+      "requiresSeparatePostStage0Authorization": true,
+      "statusAtFreeze": "NOT-AUTHORIZED-NOT-EXECUTED"
+    },
+    {
+      "stageId": "LWSRT-S2-FORMAL-2026-09-24-v1",
+      "evidenceClass": "FRESH-FORMAL-HELDOUT",
+      "scientificOutcomeAuthorized": false,
+      "requiresSeparatePostStage1Authorization": true,
+      "statusAtFreeze": "NOT-AUTHORIZED-NOT-EXECUTED"
+    }
+  ],
+  "sourceIdentity": {
+    "engine": {"path": "public/engine.js", "gitBlobSha": "1527bb3665228b7a5bd9f03153567aedbaaa22d7"},
+    "aiTechnicalReference": {"path": "public/ai.js", "gitBlobSha": "ac2b4fd66a2555c50a362c39a828515323bba18a", "scope": "frozen controlled-search evaluation profile only"},
+    "searchProduction": {"path": "tools/experiments/lib/silgm-production.js", "gitBlobSha": "9712e897540b54ff5fe3aa6acd997d286b09331d"},
+    "searchIndependent": {"path": "tools/experiments/lib/silgm-independent.js", "gitBlobSha": "0bd60c96e5abfce9d1c99b474709177d52509138"},
+    "controlledSearchPrimitive": {"path": "tools/experiments/lib/search-reliability-decision-robustness.js", "gitBlobSha": "f3a6951fe711db62e164910cfb248a9cbc2cac1a"},
+    "transferProduction": {"path": "tools/experiments/lib/lgttci-compatibility-production.js", "gitBlobSha": "2fe5b87572c0138cf66dfabb4ca40869eab26ddc"},
+    "transferIndependent": {"path": "tools/experiments/lib/lgttci-compatibility-independent.js", "gitBlobSha": "d63263375d4b1d61271ead31777b37185056a73b"},
+    "exactTransferProduction": {"path": "tools/experiments/lib/lgtggc-stage0-production.js", "gitBlobSha": "c4d79334dca42ac3f98381ab0bcb6db1e6ec7c54"},
+    "exactTransferIndependent": {"path": "tools/experiments/lib/lgtggc-stage0-independent.js", "gitBlobSha": "e071fe803aeddac049a1688bd8425d4b12368758"}
+  },
+  "claimFamily": {
+    "predictor": "SILGM-G1-ROOT-LEGAL-WIDTH",
+    "endpoint": "SILGM-E3-RANKING-PREORDER-CHANGE",
+    "upstreamDirection": "HIGHER-IN-HIGH",
+    "phaseThresholds": {"namua": 4, "mtaji": 3},
+    "widthClasses": {
+      "singleton": "rootLegalWidth < 2 / NON-ESTIMABLE",
+      "low": "2 <= rootLegalWidth < phase threshold",
+      "equal": "rootLegalWidth = phase threshold / support diagnostic only",
+      "high": "rootLegalWidth > phase threshold"
+    },
+    "contrasts": [
+      {"id": "SC1-DEPTH", "a": {"id": "D2_Q1", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 1}, "b": {"id": "D3_Q1", "kind": "exact-depth", "depth": 3, "quiescenceDepth": 1}},
+      {"id": "SC2-NODE-BUDGET", "a": {"id": "B256_Q1_MAXD3", "kind": "node-budget", "nodeBudget": 256, "maxDepth": 3, "quiescenceDepth": 1}, "b": {"id": "B1024_Q1_MAXD3", "kind": "node-budget", "nodeBudget": 1024, "maxDepth": 3, "quiescenceDepth": 1}},
+      {"id": "SC3-QUIESCENCE", "a": {"id": "D2_Q0", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 0}, "b": {"id": "D2_Q2", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 2}}
+    ]
+  },
+  "sourcePolicies": [
+    {"policyId": "LGTTCI-P1-UNIFORM-LEGAL", "selection": "canonical legal moves; floor(u * legalMoveCount)"},
+    {"policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE", "selection": "retain minimum authoritative immediate-capture-count pool; seeded uniform within pool"}
+  ],
+  "rootFamilies": [
+    {"rootFamilyId": "LGTTCI-RF1-MID-ANCHOR", "namua": "exact ply 20 / nonterminal / phase=namua", "mtaji": "first nonterminal phase=mtaji state at ply >=40"},
+    {"rootFamilyId": "LGTTCI-RF2-OFFSET-ANCHOR", "namua": "exact ply 28 / nonterminal / phase=namua", "mtaji": "exact ply 52 / nonterminal / phase=mtaji"}
+  ],
+  "formalDomains": ["P1×RF1", "P1×RF2", "P2×RF1", "P2×RF2"],
+  "selectionContract": {
+    "assignment": "stage-specific SHA-256 assignment of each fixed source slot to policy × root-family × phase; assignment fixed before trajectory generation",
+    "oneRootPerTrajectory": true,
+    "rootSelection": "the assigned root-family/phase anchor only; no alternative anchor or root replacement",
+    "widthClassUse": "prespecified predictor stratum only; search endpoint, score, game outcome and historical effect are forbidden selection inputs",
+    "withinCellSelection": "stage-specific SHA-256 rank among firewall-clean eligible roots within policy × root-family × phase × width-class",
+    "duplicateRawRoot": "retain minimum selection rank only; do not replace rejected duplicates"
+  },
+  "stage1": {
+    "seedBlock": {"start": 40312001, "end": 40312768, "count": 768, "statusAtFreeze": "RESERVED-NOT-ACCESSED"},
+    "targetPerPolicyRootFamilyPhase": {"high": 8, "low": 8},
+    "selectedRootTargetTotal": 128,
+    "outputsAllowed": ["cell support", "endpoint definedness counts", "production-independent exactness", "resource readiness", "identity manifest hashes"],
+    "outputsForbidden": ["HIGH-vs-LOW risk difference", "effect direction", "p-value", "generalization decision", "counterexample decision"],
+    "seedExtensionAuthorized": false
+  },
+  "stage2": {
+    "seedBlock": {"start": 40322001, "end": 40323536, "count": 1536, "statusAtFreeze": "RESERVED-NOT-ACCESSED"},
+    "targetPerPolicyRootFamilyPhase": {"high": 12, "low": 12},
+    "selectedRootTargetTotal": 192,
+    "estimabilityPerPhase": {"minimumChanged": 6, "minimumUnchanged": 6, "requiredHigh": 12, "requiredLow": 12},
+    "test": "exact conditional hypergeometric in each phase; convolve Namua/Mtaji PMFs; exact two-sided tail",
+    "direction": "2*T > K_total => HIGHER-IN-HIGH; 2*T < K_total => LOWER-IN-HIGH; equality => ZERO-DIRECTION",
+    "fixedTestCount": 12,
+    "multiplicity": {"method": "Holm-Bonferroni", "familyAlpha": "1/20"},
+    "seedExtensionAuthorized": false
+  },
+  "technicalFixtureNamespace": {"seedStart": 44010001, "seedEnd": 44010064, "count": 64, "scientificUseAuthorized": false, "note": "reused G4-01 TECHNICAL-FIXTURE namespace only; no scientific use"},
+  "decisionMapping": {
+    "significantSameDirection": "GENERALIZATION-CONFIRMED",
+    "significantOppositeDirection": "COUNTEREXAMPLE-CONFIRMED",
+    "estimableNonsignificant": "NOT-GENERALIZED",
+    "insufficientSupportWithoutTechnicalError": "NON-ESTIMABLE",
+    "technicalFailure": "TECHNICAL-INVALID"
+  },
+  "freshnessFirewall": {
+    "g3_07Stage1Seeds": "31710001..31710256 / excluded",
+    "g3_07Stage2Seeds": "31720001..31720384 / excluded",
+    "g3_12ScientificEvidenceReuse": false,
+    "g4_01InterruptedSilgmSeeds": "40112001..40112768 / quarantined",
+    "g4_01Stage1rSilgmPrimary": "40212001..40212768 / excluded",
+    "g4_01Stage1rSilgmReserve": "41212001..41212768 / excluded",
+    "stage2ExcludesStage1": ["source seed", "full trajectory SHA-256", "opening-prefix SHA-256", "selected RAW-root SHA-256"],
+    "identityOnlyMaterializationRequiredBeforeStage1": true
+  },
+  "resourceCeilings": {
+    "maxSourcePliesPerTrajectory": 80,
+    "stage0": {"elapsedMs": 900000, "peakRssBytes": 1500000000, "resultArtifactBytes": 8000000},
+    "stage1": {"maxSeedReads": 768, "heavyFormalGenerationOnGitHubActionsAuthorized": false},
+    "stage2": {"maxSeedReads": 1536, "heavyFormalGenerationOnGitHubActionsAuthorized": false}
+  },
+  "protectedEvidence": {
+    "g3_11Depth10Rerun": false,
+    "g4_10Depth11Access": false,
+    "unvalidatedSymmetryCanonicalization": false,
+    "publicAiChange": false
+  },
+  "noRescueAfterFreshAccess": [
+    "seed extension", "root replacement", "source-policy replacement", "root-family replacement", "phase-threshold relearning", "search-contrast replacement", "endpoint substitution", "support-threshold relaxation", "multiplicity relaxation", "favorable subgroup rescue", "same-evidence repair-and-rerun"
+  ]
+}
