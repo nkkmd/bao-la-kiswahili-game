@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LWSRT-STUDY1",
+  "stageId": "LWSRT-S2-FORMAL-2026-09-24-v1",
+  "action": "EXECUTE-AUTHORIZED-STAGE2-ONCE",
+  "effectiveAuthorization": "LWSRT-STUDY1-STAGE2-AUTHORIZED-GITHUB-ACTIONS-ONCE",
+  "seedBlock": {
+    "start": 40322001,
+    "end": 40323536,
+    "count": 1536
+  },
+  "acknowledgeNoRerun": true,
+  "acknowledgeNoSeedExtension": true,
+  "acknowledgeNoRootReplacement": true,
+  "requestedDate": "2026-09-24"
+}
