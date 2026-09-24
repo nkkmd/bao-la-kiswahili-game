@@ -116,8 +116,13 @@ jobs:
           need(index.includes('G4-03の正式結果'),'central research index missing G4-03 entry');
           need(index.includes('GENERALIZATION-CONFIRMED = 9'),'central research index result count missing');
           const agenda=fs.readFileSync('doc/FUTURE_RESEARCH_AGENDA.md','utf8');
-          need(agenda.includes('Version: 5.4.0'),'future agenda version mismatch');
+          need(agenda.includes('Version: 5.4.1'),'future agenda version mismatch');
           need(agenda.includes('次のcore candidateはG4-04'),'future agenda next candidate mismatch');
+          need(agenda.includes('SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN'),'future agenda lost SSGTC closure history');
+          need(agenda.includes('EXPLORATORY-ONLY'),'future agenda lost PCEM closure history');
+          need(agenda.includes('[`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md)'),'future agenda lost Generation-2 synthesis navigation');
+          need(agenda.includes('[`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md)'),'future agenda lost Generation-3 synthesis navigation');
+          need(agenda.includes('## 10. 第三世代研究アジェンダ'),'future agenda truncated before Generation 3 section');
           console.log('live-state document status PASS');
           NODE
 
