@@ -1,4 +1,4 @@
-name: LWSRT G4-03 Stage 1 runtime bundle packaging
+name: LWSRT G4-03 Stage 1 runtime audit bundle packaging
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 jobs:
-  package-runtime-only:
+  package-runtime-audit-only:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -33,18 +33,20 @@ jobs:
           const fs=require('node:fs');
           const cp=require('node:child_process');
           const b=JSON.parse(fs.readFileSync('doc/local-width-search-ranking-transfer/authorizations/STAGE_1_PREEXECUTION_BINDING.json','utf8'));
-          const need=(x,m)=>{if(!x)throw new Error(m);};
+          const m=JSON.parse(fs.readFileSync('doc/local-width-search-ranking-transfer/authorizations/STAGE_1_EXECUTION_ENVIRONMENT_AMENDMENT.json','utf8'));
+          const need=(x,msg)=>{if(!x)throw new Error(msg);};
           need(b.studyId==='LWSRT-STUDY1'&&b.bindingClass==='PRE-FRESH-EXECUTION-CODE-BINDING','binding mismatch');
           need(b.freshScientificSeedAccessAtBinding===0&&b.scientificExecutionStarted===false,'not pre-fresh');
-          need(b.authorizedExecutionMode==='LOCAL-ONCE'&&b.githubActionsFreshGenerationAuthorized===false,'execution boundary mismatch');
+          need(b.authorizedExecutionMode==='GITHUB-ACTIONS-ONCE'&&b.githubActionsFreshGenerationAuthorized===true&&b.localFreshGenerationAuthorized===false,'execution boundary mismatch');
+          need(m.amendmentDecision==='LWSRT-STUDY1-STAGE1-AUTHORIZED-GITHUB-ACTIONS-ONCE','effective amendment mismatch');
           for(const [name,x] of Object.entries(b.bindings)){
             const actual=cp.execFileSync('git',['hash-object',x.path],{encoding:'utf8'}).trim();
             need(actual===x.blobSha,`blob mismatch ${name}`);
           }
-          console.log(`runtime bundle binding PASS (${Object.keys(b.bindings).length} bound files); fresh seed access = false`);
+          console.log(`runtime audit bundle binding PASS (${Object.keys(b.bindings).length} bound files); fresh seed access = false`);
           NODE
 
-      - name: Assemble bound runtime bundle only
+      - name: Assemble bound runtime audit bundle only
         shell: bash
         run: |
           set -euo pipefail
@@ -66,7 +68,8 @@ jobs:
           fs.writeFileSync('runtime-bundle/RUNTIME_BUNDLE_METADATA.json',JSON.stringify({
             schemaVersion:1,
             studyId:'LWSRT-STUDY1',
-            purpose:'LOCAL-ONCE-STAGE1-RUNTIME-TRANSFER-ONLY',
+            purpose:'AUDIT-BUNDLE-ONLY-NOT-AUTHORIZED-FOR-SCIENTIFIC-EXECUTION',
+            effectiveExecutionMode:'GITHUB-ACTIONS-ONCE',
             sourceCommit:process.env.GITHUB_SHA,
             freshScientificSeedAccessDuringPackaging:false,
             scientificExecutionPerformed:false,
@@ -74,10 +77,10 @@ jobs:
           },null,2)+'\n');
           NODE
 
-      - name: Upload runtime bundle
+      - name: Upload runtime audit bundle
         uses: actions/upload-artifact@v4
         with:
-          name: lwsrt-stage1-runtime-bundle
+          name: lwsrt-stage1-runtime-audit-bundle
           path: runtime-bundle
           if-no-files-found: error
           retention-days: 30
