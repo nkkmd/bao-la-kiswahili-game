@@ -1,4 +1,5 @@
 name: LWSRT G4-03 Stage 1 pre-execution static validation
+# Effective scientific execution mode: GITHUB-ACTIONS-ONCE
 
 on:
   push:
