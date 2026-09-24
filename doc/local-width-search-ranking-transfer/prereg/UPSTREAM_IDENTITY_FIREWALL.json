@@ -1,1 +1,78 @@
-{"auditBoundary":{"g3_11Depth10Access":false,"g3_12ScientificEvidenceReadOrReused":false,"g4_10Depth11Access":false,"historicalScientificOutcomesUsedForSelection":false,"unavailableIdentityClassMeansNonOverlapClaim":false},"digestContract":{"algorithm":"SHA-256","bytes":"UTF-8(stableCanonicalJson(value) + LF)","stableCanonicalJson":"JSON primitives as JSON.stringify; arrays preserve supplied order; object keys recursively sorted lexicographically; compact with no insignificant whitespace","trailingByte":"single LF / 0x0a"},"freshStage1SeedAccessAtFreeze":false,"identitySemantics":{"crossSemanticStringComparisonProhibited":true,"g3_07FullTrajectory":"SHA-256 of silgm stable canonical JSON for [{moveKey,afterRawStateSha256}, ...]","g3_07OpeningPrefix":"SHA-256 of silgm stable canonical JSON for first <=16 canonical moveKey strings","g4_01FullTrajectory":"SHA-256 UTF-8 of canonical moveKeys joined by newline as lgttci replay.trajectorySha256","rawRoot":"lgtgmiv canonical RAW state identity over pits,reserve,houseOwned,player,phase,winner,pending; common to G3-07 and G4-01","runtimeRequirement":"LWSRT must compute upstream-specific identity representations from the same fresh replay before collision checks."},"namespaceQuarantines":[{"id":"G3-07-STAGE1","range":"31710001..31710256","reuse":false},{"id":"G3-07-STAGE2","range":"31720001..31720384","reuse":false},{"id":"G4-01-INTERRUPTED-SILGM","identityAudit":"NO-AUDITABLE-FINAL-RESULT / NON-OVERLAP-NOT-CLAIMED","range":"40112001..40112768","reuse":false},{"id":"G4-01-STAGE1R-SILGM-PRIMARY","range":"40212001..40212768","reuse":false},{"actualReserveUse":0,"id":"G4-01-STAGE1R-SILGM-PAIRED-RESERVE","range":"41212001..41212768","reuse":false},{"id":"G3-12-SCIENTIFIC","range":"ALL-G3-12-SCIENTIFIC-SEEDS-AND-EVIDENCE","reuse":false}],"preFreshRuntimeGate":{"gateFailureDisposition":"ABORT-BEFORE-FRESH-SEED-ACCESS","partialFreshAccessOnGateFailureAuthorized":false,"requiredBeforeFirst40312SeedRead":["verify G3-07 Stage1 repo identity-only file contract","verify G3-07 Stage2 artifact ZIP SHA256 and rehydrate only sourceSeed/rootRaw/fullTrajectory/openingPrefix identities","verify G4-01 Stage1R source bundle ZIP SHA256 and rehydrate only SILGM sourceSeed/fullTrajectory/selectedRawRoot identities","verify all rehydrated set counts and canonical set digests using the frozen digestContract","construct upstream-specific collision sets before source generation loop"]},"purpose":"PRE-FRESH-UPSTREAM-IDENTITY-FIREWALL","runtimeRules":{"g4_01Stage1rOpeningPrefixNonOverlapClaimAuthorized":false,"rejectAnyQuarantinedSourceSeed":true,"rejectG3_07FullTrajectoryCollision":true,"rejectG3_07OpeningPrefixCollision":true,"rejectG3_07SelectedRawRootCollision":true,"rejectG4_01Stage1rFullTrajectoryCollision":true,"rejectG4_01Stage1rOpeningPrefixCollision":false,"rejectG4_01Stage1rSelectedRawRootCollision":true,"secondaryRootAfterCollision":false,"seedExtensionAfterSupportShortfall":false},"schemaVersion":1,"scientificOutcomeFieldsRetained":false,"stage1SeedBlock":{"count":768,"end":40312768,"start":40312001,"status":"RESERVED-NOT-ACCESSED"},"stageId":"LWSRT-S1-DEVELOPMENT-2026-09-24-v1","studyId":"LWSRT-STUDY1","upstreamSources":[{"class":"IDENTITY-ONLY-EXISTING","id":"G3-07-STAGE1","identityRowCount":48,"path":"doc/search-instability-local-geometry-mechanism/prereg/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json","retainedIdentityClasses":["sourceSeed","rootRawSha256","fullTrajectorySha256","openingPrefixSha256"],"scientificOutcomeFieldsRetainedRequired":false},{"class":"IDENTITY-ONLY-MATERIALIZED","gitBlobSha":"c25daf26afe27e849dd05cb6affc0a73d4634098","id":"G3-07-STAGE2","identityRowCount":72,"path":"doc/local-width-search-ranking-transfer/prereg/UPSTREAM_IDENTITY_FIREWALL_G3_07_STAGE2.json","retainedIdentityClasses":["sourceSeed","rootRawSha256","fullTrajectorySha256","openingPrefixSha256"],"runtimeInput":"artifact 9879091983 ZIP / digest sha256:5ada1dcb0ceab7d89ea0bfc78410a14c3875ba03a01e31a243950706349de70a"},{"class":"IDENTITY-ONLY-MATERIALIZED","gitBlobSha":"f4db4b2eda8639c698da5f2bf1a004bb48b0917f","id":"G4-01-STAGE1R-SILGM","openingPrefixAudit":"NOT-MATERIALIZABLE-FROM-RECOVERY-SOURCE-BUNDLE / NON-OVERLAP-NOT-CLAIMED","path":"doc/local-width-search-ranking-transfer/prereg/UPSTREAM_IDENTITY_FIREWALL_G4_01_STAGE1R.json","retainedIdentityClasses":["sourceSeed","fullTrajectorySha256","selectedRawRootSha256"],"runtimeInput":"artifact 10517090411 ZIP / digest sha256:3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b"}]}
+{
+  "schemaVersion": 1,
+  "studyId": "LWSRT-STUDY1",
+  "stageId": "LWSRT-S1-DEVELOPMENT-2026-09-24-v1",
+  "purpose": "UPSTREAM-IDENTITY-ONLY-FRESHNESS-FIREWALL",
+  "status": "FROZEN-PRE-FRESH",
+  "scientificOutcomeFieldsRetained": false,
+  "freshStage1SeedAccessDuringMaterialization": false,
+  "excludedSeedNamespaces": [
+    {"source":"G3-07 Stage 1","range":"31710001..31710256"},
+    {"source":"G3-07 Stage 2","range":"31720001..31720384"},
+    {"source":"G4-01 interrupted SILGM","range":"40112001..40112768"},
+    {"source":"G4-01 Stage 1R SILGM primary","range":"40212001..40212768"},
+    {"source":"G4-01 Stage 1R SILGM reserve","range":"41212001..41212768"}
+  ],
+  "identitySources": {
+    "g3_07_stage1": {
+      "sourceClass": "REPOSITORY-IDENTITY-ONLY",
+      "path": "doc/search-instability-local-geometry-mechanism/prereg/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json",
+      "identityRowCount": 48,
+      "identityClasses": ["rootRawSha256","fullTrajectorySha256","openingPrefixSha256"],
+      "requiredScientificOutcomeFieldsRetained": false
+    },
+    "g3_07_stage2": {
+      "sourceClass": "CANONICAL-ARTIFACT-IDENTITY-ONLY-MATERIALIZATION",
+      "workflowRun": 33716884975,
+      "artifactId": 9879091983,
+      "artifactDigest": "sha256:5ada1dcb0ceab7d89ea0bfc78410a14c3875ba03a01e31a243950706349de70a",
+      "selectedIdentityRowCount": 72,
+      "canonicalIdentityRowDigest": "sha256:d1eee423d3185c8b1547c0c61c5de4b2dec4d68175763ebffe02e51f5395b51d",
+      "setDigests": {
+        "rootRawSha256": {"uniqueCount":72,"sha256":"d5e50f419ca98cff1f5a4f781f0eace3a23257195b1c82a7f58dac0f518353d5"},
+        "fullTrajectorySha256": {"uniqueCount":72,"sha256":"85d86e0ce7041ad1456e1599f5a9c071fcf44ec091b56c09afa410f174cb2482"},
+        "openingPrefixSha256": {"uniqueCount":72,"sha256":"521a3a95482fd0ac83140c50ce31003ae02dc4b5ac2c364d3ad3148d08875d1d"}
+      },
+      "retainedFields": ["seed","selectedPly","rootRawSha256","fullTrajectorySha256","openingPrefixSha256"],
+      "scientificOutcomeFieldsRetained": false
+    },
+    "g4_01_stage1r_silgm": {
+      "sourceClass": "RECOVERY-SOURCE-BUNDLE-IDENTITY-ONLY-MATERIALIZATION",
+      "sourceRunId": 35224920019,
+      "sourceRunHeadSha": "90aff0561538113c203cbf8efa8977420a19dca1",
+      "recoveryRunId": 35265290422,
+      "recoveryRunHeadSha": "2216c19e52bd0a7ce2680426183c058ecb8fce1c",
+      "artifactId": 10517090411,
+      "artifactDigest": "sha256:3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b",
+      "sourceRowCount": 768,
+      "canonicalIdentityRowDigest": "sha256:d80056712e69dd518eb77710e3ff070bda436bb23c8f3f1c19d77ae6465455a2",
+      "setDigests": {
+        "sourceSeed": {"uniqueCount":768,"sha256":"8d0033306422680b29e7d4e78ed00bedabde225e530579e4e301836827d7c38d"},
+        "fullTrajectorySha256": {"uniqueCount":766,"sha256":"9572e25dc2a4d9dad3726fc30541caa923c1585417bfb31cebecc2ea45d8c74e"},
+        "rootRawSha256": {"uniqueCount":665,"sha256":"8e30417d3fc58aa010cf3b7625175662e017950e94181e04375c7c47becd7b1e"}
+      },
+      "reserveUsed": false,
+      "scientificOutcomeFieldsRetained": false
+    }
+  },
+  "unavailableIdentityClasses": [
+    {"source":"G4-01 interrupted SILGM 40112001..40112768","identityClass":"fullTrajectory/openingPrefix/rootRaw","nonOverlapClaimed":false,"mitigation":"entire seed namespace remains quarantined; no historical identity non-overlap claim is made"},
+    {"source":"G4-01 Stage 1R SILGM","identityClass":"openingPrefixSha256","nonOverlapClaimed":false,"mitigation":"sourceSeed, fullTrajectorySha256 and rootRawSha256 are audited and enforced; opening-prefix non-overlap remains explicitly unaudited"},
+    {"source":"G4-01 Stage 1R reserve 41212001..41212768","identityClass":"generated identities","nonOverlapClaimed":false,"mitigation":"canonical recovery bundle records reserveUsed=false; the entire reserve seed namespace remains excluded"}
+  ],
+  "runtimeExclusionRule": {
+    "rejectIfExcludedSourceSeed": true,
+    "rejectIfAuditedFullTrajectoryCollision": true,
+    "rejectIfAuditedOpeningPrefixCollision": true,
+    "rejectIfAuditedRootRawCollision": true,
+    "secondaryRootAfterCollision": false,
+    "rootReplacement": false,
+    "seedExtension": false,
+    "materializedSetDigestMismatch": "FAIL-CLOSED",
+    "missingRequiredArtifact": "FAIL-CLOSED"
+  },
+  "stage1ReservedSeedBlock": {"start":40312001,"end":40312768,"count":768,"accessed":false},
+  "g3_12ScientificEvidenceReadOrReuse": false,
+  "protectedDepth10Access": false,
+  "g4_10Depth11Access": false
+}
