@@ -1,6 +1,6 @@
 # Research Generation 4 — 現在の状態
 
-更新日: 2026-09-25  
+更新日: 2026-09-26  
 Program: `Bao Fourth-Generation Research Program`  
 状態: **`G4-01 COMPLETE / G4-02 CLOSED WITHOUT SCIENTIFIC DECISION / G4-03 COMPLETE / G4-04 COMPLETE / G4-05 COMPLETE`**
 
@@ -13,7 +13,7 @@ G4-01 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED
 G4-02 = CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED
 G4-03 = COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED
 G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED
-G4-05 = COMPLETE / FORMAL-COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN NOT INTEGRATED
+G4-05 = COMPLETE / FORMAL-COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED
 G4-06 = NEXT CORE CANDIDATE / ELIGIBLE FOR AUTHORIZATION REVIEW / NOT-AUTHORIZED
 G4-07..G4-09 = DEPENDENCY-GATED / NOT-AUTHORIZED
 G4-10 depth 11 = PROTECTED / NOT-AUTHORIZED / NOT-ACCESSED
@@ -115,13 +115,14 @@ inspected candidates = 10
 formal complete domains = 8
 production / independent agreement = true
 formal decision = EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN
+main integration = COMPLETE / PR #166 / merge commit 97ffe3758157d2497b5884f7b17abe59a24159b5
 ```
 
 frozen minimum gateは6 complete domains、targetは8。candidate 1と4は`STATE-LIMIT`でcomplete closureにならず、そのままfail-closedした。cap増加、root replacement、seed extension、same-evidence rerunは行っていない。
 
 8 formal domainsではproduction / independentがgraph identity、transition identity、retrograde solution、root exact result、recurrent SCC metadataまで一致した。8 domainのrecurrent countは0だったが、`RECURRENT`は公式ルール上の`DRAW`を意味せず、draw inferenceは認可していない。whole-Bao generalization、AI strength claim、public AI変更も認可しない。
 
-G4-05は`COMPLETE / FORMAL-COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN`として閉じた。`main`統合は未実施。
+G4-05は`COMPLETE / FORMAL-COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN`として閉じ、PR #166で`main`へ統合済みである。
 
 ## Agenda別の状態
 
@@ -131,7 +132,7 @@ G4-05は`COMPLETE / FORMAL-COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN
 | `G4-02` | `CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED` |
 | `G4-03` | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED` |
 | `G4-04` | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
-| `G4-05` | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN NOT INTEGRATED` |
+| `G4-05` | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED` |
 | `G4-06` | `NEXT CORE CANDIDATE / ELIGIBLE FOR AUTHORIZATION REVIEW / NOT-AUTHORIZED` |
 | `G4-07`〜`G4-09` | `DEPENDENCY-GATED / NOT-AUTHORIZED` |
 | `G4-10` | `PROTECTED / NOT-AUTHORIZED / NOT-ACCESSED` |
@@ -145,8 +146,6 @@ G4-05のscientific executionは完了しているため追加runは行わない�
 Program PlanではG4-06について、G4-05がformal-eligible exact oracle domainを生成した場合だけ実行すると固定している。G4-05がその前提を満たしたため、Research Generation 4を継続する場合の次のcore candidateは**G4-06 — 局所幾何とexact game-theoretic consequenceの接続**である。
 
 ただし、これはG4-06のexecution authorizationではない。G4-06へ進む場合は専用authorization reviewから開始する。
-
-G4-05の`main`統合はまだ認可されていない。
 
 ## 保護境界
 
@@ -171,3 +170,4 @@ G4-05の`main`統合はまだ認可されていない。
 - [`../reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md`](../reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md)
 - [`../reachable-late-game-exact-microdomain-oracle-foundation/results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json`](../reachable-late-game-exact-microdomain-oracle-foundation/results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json)
 - [`../research-program-decisions/2026-09-25-g4-05-reachable-late-game-exact-microdomain-oracle-foundation-study1-closure.md`](../research-program-decisions/2026-09-25-g4-05-reachable-late-game-exact-microdomain-oracle-foundation-study1-closure.md)
+- [`checkpoints/2026-09-26-g4-05-main-integration.md`](checkpoints/2026-09-26-g4-05-main-integration.md)
