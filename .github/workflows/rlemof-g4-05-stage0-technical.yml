@@ -2,18 +2,6 @@ name: RLEMOF G4-05 Stage 0 Technical
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - research/g4-05-exact-microdomain-oracle-foundation
-    paths:
-      - '.github/workflows/rlemof-g4-05-stage0-technical.yml'
-      - 'doc/reachable-late-game-exact-microdomain-oracle-foundation/**'
-      - 'tools/experiments/run-rlemof-stage0-technical.js'
-      - 'tools/experiments/run-reeoe-stage0-technical.js'
-      - 'tools/experiments/verify-reeoe-stage0-independent.js'
-      - 'tools/experiments/lib/restricted-endgame-*.js'
-      - 'doc/restricted-endgame-exact-oracle-expansion/preregistration/STAGE_0_TECHNICAL_SPEC.json'
-      - 'doc/restricted-endgame-winning-regions/preregistration/STAGE_1_DOMAIN.json'
 
 permissions:
   contents: read
