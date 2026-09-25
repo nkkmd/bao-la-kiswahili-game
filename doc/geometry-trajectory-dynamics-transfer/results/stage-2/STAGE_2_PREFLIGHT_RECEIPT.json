@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GTTD-STUDY1",
+  "stageId": "GTTD-S2-FORMAL-2026-09-25-v1",
+  "preflightDisposition": "PASS",
+  "canonicalPreflight": {
+    "workflowRunId": 36095418431,
+    "workflowRunAttempt": 1,
+    "headSha": "949095463cde5b6a01537986e5a924be47288138",
+    "artifactId": 10847750492,
+    "artifactName": "gttd-stage2-preflight",
+    "artifactSha256": "a065841e29809142954797f491d6fb0253566b5ec177473e93eb2d85daf8bcfb",
+    "resultSha256": "f01642d1b6fc0826ffd59f0e75fe3a744d7ad91aefcb354ac2a959564c2fd7cb"
+  },
+  "verifiedBoundary": {
+    "freshScientificSeedAccess": false,
+    "stage2ScientificExecutionStarted": false,
+    "stage1ScientificReplay": false,
+    "protectedDepth10Access": false,
+    "g4_10Depth11Access": false
+  },
+  "firewall": {
+    "g3Stage1Rows": 24,
+    "g3Stage2Rows": 48,
+    "g4Stage1rRows": 384,
+    "stage1Rows": 32,
+    "verified": true
+  },
+  "inferenceFixtures": {
+    "sign31_1": {"numerator":"33","denominator":"2147483648","defined":true},
+    "sign1_28": {"numerator":"15","denominator":"134217728","defined":true},
+    "holmFixtureTests": 8,
+    "threeWayAgreement": "GTTD independent / GCLD production / GCLD independent"
+  },
+  "preexecutionBinding": {
+    "path": "doc/geometry-trajectory-dynamics-transfer/authorizations/STAGE_2_PREEXECUTION_BINDING.json",
+    "blobSha": "5282f79ba9b3575cbd9e6aef496db7ffe515bd2e",
+    "boundFileCount": 24
+  },
+  "freshExecutionAuthorizedByThisReceipt": false,
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false
+}
