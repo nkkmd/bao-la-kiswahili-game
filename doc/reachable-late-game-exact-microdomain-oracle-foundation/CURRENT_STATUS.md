@@ -1,6 +1,6 @@
 # RLEMOF-STUDY1 — 現在の状態
 
-更新日: 2026-09-25
+更新日: 2026-09-26
 
 ```text
 Agenda = G4-05
@@ -29,7 +29,7 @@ production / independent agreement = true
 formal exact decision = EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN
 Study status = COMPLETE / CLOSED
 G4-06 = ELIGIBLE FOR SEPARATE AUTHORIZATION REVIEW / NOT AUTHORIZED
-main integration = NOT AUTHORIZED
+main integration = COMPLETE / PR #166 / merge commit 97ffe3758157d2497b5884f7b17abe59a24159b5
 public AI change = false
 ```
 
@@ -37,9 +37,12 @@ Stage 2 formal populationはcandidate orderどおりに取得した8 complete cl
 
 8 formal domainsでは`RECURRENT = 0`だったが、draw inferenceは認可しておらず、whole-Baoへの一般化もしない。
 
+G4-05はPR #166により`main`へ統合済みである。main統合は研究結果そのもの、no-rescue境界、G4-06の未認可状態、public AI非変更を変更しない。
+
 正本:
 
 - [`FINAL_REPORT.md`](FINAL_REPORT.md)
 - [`results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json`](results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json)
 - [`results/stage-2/STAGE_2_ARTIFACT_RECEIPT.json`](results/stage-2/STAGE_2_ARTIFACT_RECEIPT.json)
 - [`../research-program-decisions/2026-09-25-g4-05-reachable-late-game-exact-microdomain-oracle-foundation-study1-closure.md`](../research-program-decisions/2026-09-25-g4-05-reachable-late-game-exact-microdomain-oracle-foundation-study1-closure.md)
+- [`../research-generation-4/checkpoints/2026-09-26-g4-05-main-integration.md`](../research-generation-4/checkpoints/2026-09-26-g4-05-main-integration.md)
