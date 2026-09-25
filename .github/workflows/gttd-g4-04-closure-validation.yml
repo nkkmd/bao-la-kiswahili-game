@@ -1,0 +1,71 @@
+name: GTTD G4-04 closure validation
+
+on:
+  push:
+    branches:
+      - "research/g4-04-geometry-trajectory-transfer"
+    paths:
+      - ".github/workflows/gttd-g4-04-closure-validation.yml"
+      - ".github/workflows/gttd-stage1-actions-once.yml"
+      - ".github/workflows/gttd-stage2-actions-once.yml"
+      - "doc/geometry-trajectory-dynamics-transfer/**"
+      - "doc/research-generation-4/**"
+      - "doc/research-program-decisions/2026-09-25-g4-04-geometry-trajectory-dynamics-transfer-study1-closure.md"
+      - "doc/RESEARCH_INDEX.md"
+      - "doc/FUTURE_RESEARCH_AGENDA.md"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-closure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate canonical records and closure boundaries
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const base='doc/geometry-trajectory-dynamics-transfer';
+          const receipt=JSON.parse(fs.readFileSync(`${base}/results/stage-2/STAGE_2_ARTIFACT_RECEIPT.json`,'utf8'));
+          const summary=JSON.parse(fs.readFileSync(`${base}/results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json`,'utf8'));
+          const resultStatus=fs.readFileSync(`${base}/CURRENT_STATUS.md`,'utf8');
+          const rg4=fs.readFileSync('doc/research-generation-4/CURRENT_STATUS.md','utf8');
+          const resume=fs.readFileSync('doc/research-generation-4/RESUME_HERE.md','utf8');
+          const index=fs.readFileSync('doc/RESEARCH_INDEX.md','utf8');
+          const agenda=fs.readFileSync('doc/FUTURE_RESEARCH_AGENDA.md','utf8');
+          const s1wf=fs.readFileSync('.github/workflows/gttd-stage1-actions-once.yml','utf8');
+          const s2wf=fs.readFileSync('.github/workflows/gttd-stage2-actions-once.yml','utf8');
+          function need(x,m){if(!x)throw new Error(m)}
+          need(receipt.stageDisposition==='FORMAL-COMPLETE','receipt disposition');
+          need(receipt.canonicalExecution.workflowRunId===36095831961,'canonical run');
+          need(receipt.artifact.artifactId===10849029913,'artifact id');
+          need(receipt.artifact.zipSha256==='fe165e6c1735cb07e71ed49e2a1c4d3f7446e796ab63936d90c7e982edfc4bd7','artifact sha');
+          need(receipt.artifact.stage2ResultSha256==='85b5cf71c63dc9baeaf78a2dab4e61f03826b6f593552d916c5f48dcacd31d76','result sha');
+          need(receipt.executionContract.scientificExecutionsObserved===1&&receipt.executionContract.rerunAuthorized===false,'one-shot boundary');
+          need(summary.decisionCounts['GENERALIZATION-CONFIRMED']===8,'8 confirmations');
+          need(summary.decisionCounts['COUNTEREXAMPLE-CONFIRMED']===0&&summary.decisionCounts['NOT-GENERALIZED']===0&&summary.decisionCounts['NON-ESTIMABLE']===0,'decision counts');
+          need(summary.formalRows.length===8&&summary.formalRows.every(x=>x.decision==='GENERALIZATION-CONFIRMED'),'formal rows');
+          need(resultStatus.includes('8-OF-8-GENERALIZATION-CONFIRMED'),'study status');
+          need(rg4.includes('G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED'),'RG4 status');
+          need(resume.includes('NEXT CORE CANDIDATE = G4-05 AUTHORIZATION REVIEW'),'resume point');
+          need(index.includes('G4-04')&&index.includes('8-OF-8-GENERALIZATION-CONFIRMED'),'index state');
+          need(agenda.includes('G4-05 = NEXT CORE CANDIDATE / NOT AUTHORIZED'),'future agenda state');
+          need(s1wf.includes('CLOSED')&&!s1wf.includes('run-gttd-stage1-development.js'),'Stage1 workflow not sealed');
+          need(s2wf.includes('CLOSED')&&!s2wf.includes('run-gttd-stage2-formal.js'),'Stage2 workflow not sealed');
+          need(!resultStatus.includes('main integration = COMPLETE'),'study main boundary');
+          need(!rg4.includes('G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED'),'RG4 main boundary');
+          console.log('G4-04 closure validation PASS');
+          NODE
+
+      - name: Ensure no public product changes in G4-04 branch
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin 1274c9cf408f0e044c39751599941a6f75e96a4c
+          if git diff --name-only 1274c9cf408f0e044c39751599941a6f75e96a4c...HEAD | grep -E '^(public/|cloudflare/)' ; then
+            echo "Unexpected product/deployment change in G4-04 research branch" >&2
+            exit 1
+          fi
