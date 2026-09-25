@@ -1,4 +1,4 @@
-# 2026-09-25 — G4-05 / RLEMOF-STUDY1 closure
+# 2026-09-25 — G4-05 / RLEMOF-STUDY1 closure記録
 
 ## 正式状態
 
@@ -6,7 +6,7 @@
 
 G4-05 / `RLEMOF-STUDY1` は、fresh reachable late-game rootsからresource-feasibilityだけでformal microdomainを選び、complete legal-transition closureと独立exact solver agreementを確立できるかをprospectiveに検証した。
 
-## Canonical formal execution
+## Canonical formal実行
 
 ```text
 Stage 2 run = 36120286922
@@ -29,7 +29,7 @@ production / independent exact agreement = true
 
 candidate 1と4は`STATE-LIMIT`でcomplete closureにならず、そのままformal populationから除外した。resource capの増加、candidate replacement、seed extension、same-evidence rerunは行っていない。
 
-## Formal decision
+## 正式判断
 
 事前登録ではminimum 6 complete domainsを満たし、production / independentの全検証が一致した場合のdecisionを
 
@@ -49,7 +49,7 @@ RG4 Program PlanではG4-06について「G4-05がformal-eligible exact oracle d
 
 これはG4-06の自動authorizationではない。G4-06を開始する場合は別Studyとしてprospective authorization、claim/domain contract、identity firewall、exact consequence endpoints、no-rescue ruleをfresh access前に固定する。
 
-## Interpretation boundary
+## 解釈上の境界
 
 本結果は次を意味しない。
 
@@ -62,7 +62,7 @@ RG4 Program PlanではG4-06について「G4-05がformal-eligible exact oracle d
 - AI棋力・勝率改善
 - public AI変更
 
-## Closure decision
+## Closure判断
 
 **G4-05 / `RLEMOF-STUDY1` を上記formal decisionで閉じる。**
 
@@ -70,7 +70,7 @@ RG4 Program PlanではG4-06について「G4-05がformal-eligible exact oracle d
 
 `main`統合はこのclosureとは別操作であり、ユーザーの明示指示があるまで行わない。
 
-## Durable evidence
+## 永続的な証拠
 
 - [`../reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md`](../reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md)
 - [`../reachable-late-game-exact-microdomain-oracle-foundation/results/stage-2/STAGE_2_ARTIFACT_RECEIPT.json`](../reachable-late-game-exact-microdomain-oracle-foundation/results/stage-2/STAGE_2_ARTIFACT_RECEIPT.json)
