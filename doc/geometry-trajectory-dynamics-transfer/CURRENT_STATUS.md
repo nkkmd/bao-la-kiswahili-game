@@ -103,7 +103,7 @@ RF1/RF2はsupport descriptorとしてのみ扱い、root-family別formal subgrou
 - human difficulty
 - public AI変更の認可
 
-## Integrity
+## 整合性境界
 
 ```text
 scientific executions = 1 / 1
@@ -119,11 +119,11 @@ main integration = true / PR #165
 
 ## 次工程
 
-G4-04は追加実行せずclosure状態を維持する。
+G4-04自体は追加実行せず、closure状態を維持する。
 
-Research Generation 4を継続する場合、次のcore candidateはprogram plan上の`G4-05` exact microdomain oracle foundation。ただし自動authorizationではなく、独立したauthorization reviewから開始する。
+G4-04完了時点で次候補だったG4-05 `RLEMOF-STUDY1` は、その後別authorizationの下で実施され、`EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN`としてresearch branch上で完了した。これはG4-04のformal resultを変更しない。
 
-G4-04の`main`統合はPR #165で完了した。以後、G4-04をrepair/reopenせず、次の科学作業はG4-05の個別authorization reviewから開始する。
+Research Generation 4の現在の次候補はG4-06であり、G4-05が生成したformal-eligible exact oracle domainを前提とする個別authorization reviewから開始する。G4-06は未認可である。RG4全体の最新状態は[`../research-generation-4/CURRENT_STATUS.md`](../research-generation-4/CURRENT_STATUS.md)を参照する。
 
 ## 正本
 
