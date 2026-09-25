@@ -1,84 +1,17 @@
-name: GTTD G4-04 Stage 1 development once
+name: GTTD G4-04 Stage 1 development once — CLOSED
 
 on:
-  push:
-    branches:
-      - "research/g4-04-geometry-trajectory-transfer"
-    paths:
-      - "doc/geometry-trajectory-dynamics-transfer/authorizations/STAGE_1_ACTIONS_EXECUTION_TRIGGER.json"
+  workflow_dispatch:
 
 permissions:
   contents: read
-  actions: read
 
 jobs:
-  stage1-development-once:
+  closed-no-rerun:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
     steps:
-      - name: Checkout frozen execution state
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22"
-
-      - name: Verify one-shot control plane
+      - name: Refuse same-evidence rerun
         run: |
-          node - <<'NODE'
-          const fs=require('node:fs');
-          const t=JSON.parse(fs.readFileSync('doc/geometry-trajectory-dynamics-transfer/authorizations/STAGE_1_ACTIONS_EXECUTION_TRIGGER.json','utf8'));
-          const l=JSON.parse(fs.readFileSync('doc/geometry-trajectory-dynamics-transfer/executions/STAGE_1_ACTIONS_EXECUTION_LEASE.json','utf8'));
-          const b=JSON.parse(fs.readFileSync('doc/geometry-trajectory-dynamics-transfer/prereg/STAGE_1_EXECUTION_BINDING.json','utf8'));
-          const a=JSON.parse(fs.readFileSync('doc/geometry-trajectory-dynamics-transfer/authorizations/STAGE_1_AUTHORIZATION.json','utf8'));
-          function need(x,m){if(!x)throw new Error(m)}
-          need(t.action==='EXECUTE-AUTHORIZED-STAGE1-ONCE','trigger action mismatch');
-          need(t.effectiveAuthorization==='GTTD-STUDY1-STAGE1-AUTHORIZED-GITHUB-ACTIONS-ONCE','trigger authorization mismatch');
-          need(t.acknowledgeNoRerun===true&&t.acknowledgeNoSeedExtension===true,'trigger no-rescue ack missing');
-          need(l.leaseClass==='DURABLE-GITHUB-ACTIONS-SINGLE-EXECUTION-LEASE'&&l.executionSlots===1,'lease mismatch');
-          need(l.freshScientificSeedAccessBeforeLease===0&&l.scientificExecutionStartedBeforeLease===false,'lease not pre-fresh');
-          need(b.status==='FROZEN-PRE-FRESH'&&b.freshScientificSeedAccessAtBinding===0,'execution binding mismatch');
-          need(a.authorizedScientificExecutions===1&&a.rerunAuthorized===false,'authorization execution count mismatch');
-          for(const x of [t.seedBlock,l.freshSeedBlock,b.freshSeedBlock,a.freshSeedBlock]) need(x.start===40413001&&x.end===40413512&&x.count===512,'seed block mismatch');
-          NODE
-
-      - name: Verify trigger-bound blob identities
-        run: |
-          node - <<'NODE'
-          const fs=require('node:fs'),crypto=require('node:crypto'),path=require('node:path');
-          const ROOT=process.cwd();
-          const t=JSON.parse(fs.readFileSync('doc/geometry-trajectory-dynamics-transfer/authorizations/STAGE_1_ACTIONS_EXECUTION_TRIGGER.json','utf8'));
-          function blob(rel){const b=fs.readFileSync(path.join(ROOT,rel));return crypto.createHash('sha1').update(Buffer.from(`blob ${b.length}\0`)).update(b).digest('hex')}
-          function need(x,m){if(!x)throw new Error(m)}
-          need(blob('doc/geometry-trajectory-dynamics-transfer/prereg/STAGE_1_EXECUTION_BINDING.json')===t.executionBindingGitBlobSha,'execution binding blob mismatch');
-          need(blob('doc/geometry-trajectory-dynamics-transfer/executions/STAGE_1_ACTIONS_EXECUTION_LEASE.json')===t.executionLeaseGitBlobSha,'execution lease blob mismatch');
-          const b=JSON.parse(fs.readFileSync('doc/geometry-trajectory-dynamics-transfer/prereg/STAGE_1_EXECUTION_BINDING.json','utf8'));
-          for(const [rel,expected] of Object.entries(b.gitBlobShaByPath||{})) need(blob(rel)===expected,`bound blob mismatch ${rel}`);
-          NODE
-
-      - name: Download and verify immutable G4-01 identity source
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          mkdir -p /tmp/gttd-g4-01
-          gh api repos/${GITHUB_REPOSITORY}/actions/artifacts/10517090411/zip > /tmp/gttd-g4-01/source.zip
-          echo "3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b  /tmp/gttd-g4-01/source.zip" | sha256sum -c -
-          unzip -q /tmp/gttd-g4-01/source.zip -d /tmp/gttd-g4-01/extracted
-          test -d /tmp/gttd-g4-01/extracted/source/GCLD
-
-      - name: Execute blinded Stage 1 exactly once
-        env:
-          GTTD_EXECUTION_TRIGGER_OK: "1"
-          GTTD_EXECUTION_LEASE_OK: "1"
-          GTTD_G4_01_GCLD_SOURCE_DIR: /tmp/gttd-g4-01/extracted/source/GCLD
-        run: node tools/experiments/run-gttd-stage1-development.js artifacts/gttd-stage1
-
-      - name: Upload Stage 1 result
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: gttd-stage1-result
-          path: artifacts/gttd-stage1
-          if-no-files-found: error
-          retention-days: 90
+          echo "GTTD-STUDY1 Stage 1 completed canonically in run 36089520136."
+          echo "Same-evidence rerun, seed extension, and post-access repair-and-rerun are not authorized."
+          exit 1
