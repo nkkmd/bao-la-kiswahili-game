@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GTTD-STUDY1",
+  "stageId": "GTTD-S0-TECHNICAL-2026-09-25-v1",
+  "decision": "AUTHORIZED",
+  "authorizationType": "TECHNICAL-ONLY",
+  "authorizationReview": "doc/research-program-decisions/2026-09-25-post-g4-03-g4-04-authorization-review.md",
+  "allowedTechnicalFixtureSeeds": {
+    "start": 44014001,
+    "end": 44014064,
+    "evidenceClass": "TECHNICAL-FIXTURE",
+    "scientificUseAuthorized": false
+  },
+  "freshScientificSeedAccessAuthorized": false,
+  "scientificOutcomeAuthorized": false,
+  "stage1SeedAccessAuthorized": false,
+  "stage2SeedAccessAuthorized": false,
+  "g3_10ScientificReplayAuthorized": false,
+  "g3_12ScientificEvidenceReuseAuthorized": false,
+  "g3_11Depth10RerunAuthorized": false,
+  "g4_10Depth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false
+}
