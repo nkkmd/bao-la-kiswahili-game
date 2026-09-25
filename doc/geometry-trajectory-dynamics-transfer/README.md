@@ -18,7 +18,7 @@ C5 first-order directional path dependence = ACTUAL-GREATER
 
 G3-10 C4 circulation/hysteresis-like claimは`NOT-CONFIRMED`であり、positive transfer targetには含めていない。
 
-## representation
+## 使用representation
 
 ```text
 representation = CRCLGR-R1-EXACT-SQUASHED-L1
@@ -30,7 +30,7 @@ validated transform set = []
 
 G4-04中にrepresentation変更やsymmetry canonicalizationを導入していない。
 
-## Stage 0 / Stage 1
+## Stage 0 / Stage 1の検証
 
 Stage 0 technical validationで15 checkpoints、32 endpoint-preserving controls、C1/C2/C3/C5 production/independent exactness、P1/P2 source generation、resource fail-closedを確認した。
 
@@ -42,7 +42,7 @@ artifact ID = 10846181741
 stage disposition = STAGE1-PASS
 ```
 
-## Stage 2 formal
+## Stage 2 formal検証
 
 Stage 2はfresh access前にscientific contract、identity firewall、24-file preexecution binding、exact sign-test / fixed-8 Holm、GitHub Actions exactly-once authorizationを固定した。
 
@@ -61,7 +61,7 @@ production / independent exact = true
 stage disposition = FORMAL-COMPLETE
 ```
 
-## Formal result
+## 正式結果
 
 ```text
 GENERALIZATION-CONFIRMED = 8
