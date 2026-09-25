@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "agenda": "G4-05",
+  "studyId": "RLEMOF-STUDY1",
+  "stageId": "RLEMOF-S2-FORMAL-2026-09-25-v1",
+  "workflowName": "RLEMOF G4-05 Stage 2 Formal",
+  "canonicalRun": 36120286922,
+  "runAttempt": 1,
+  "event": "push",
+  "headSha": "72e45631112359346a83f9399be32ee3e6420ccb",
+  "nodeVersion": "v20.20.2",
+  "conclusion": "success",
+  "artifact": {
+    "id": 10858056244,
+    "name": "rlemof-g4-05-stage2-36120286922-attempt-1",
+    "sha256": "90520ed47e8d314e15c0c8dab18d805fa147d69c54ab3e7a4afc2136238c2154"
+  },
+  "files": {
+    "execution-identity.txt": "982f929993888e61375b812bc7bc1898ec024825539bf81bac9584753ebb1c5b",
+    "production-result.json": "03f0f416dca4bb92de9c55e780d47e8d39c2e2bb50fa0d987953fa87f256fff0",
+    "independent-verification.json": "acfb9fda216d0669e4432ab4bb112b07283e05def34e9793507c0c7ad9964140",
+    "SHA256SUMS.txt": "86c1ff573a64dbd58d9880a25284190ce7416f0b4d42398875a0769b500f80ce"
+  },
+  "productionCoreSha256": "f13c521c58ff2b6a5c649bf064752249fdf5a05754da90faddb78088b88e9a6c",
+  "independentVerificationCoreSha256": "48c974e5304ba0fe3476dc88124fd4f7f26261b9d045c539b7e695ee4a9e5144",
+  "sameEvidenceRerunPerformed": false,
+  "seedExtensionPerformed": false,
+  "postAccessRepairPerformed": false,
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false
+}
