@@ -11,7 +11,8 @@ G3-10 `GCLD-STUDY1`でformal confirmationされた4 trajectory-level claimにつ
 
 ```text
 C1 directionality / path efficiency = ACTUAL-GREATER
-C2 persistence / lag-distance gradient = ACTUAL-LESS
+C2 persistence / lag-distance gradient = ACTUAL-GREATER
+C3 return fraction = ACTUAL-LESS
 C5 first-order directional path dependence = ACTUAL-GREATER
 ```
 
