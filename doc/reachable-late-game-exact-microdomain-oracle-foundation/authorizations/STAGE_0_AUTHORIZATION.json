@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "agenda": "G4-05",
+  "studyId": "RLEMOF-STUDY1",
+  "stageId": "RLEMOF-S0-TECHNICAL-2026-09-25-v1",
+  "decision": "AUTHORIZED",
+  "authorizationType": "TECHNICAL-ONLY",
+  "authorizationReview": "doc/research-program-decisions/2026-09-25-post-g4-04-g4-05-authorization-review.md",
+  "allowedEvidence": ["REWR-8-STATE-TECHNICAL-REGRESSION", "SYNTHETIC-RECURRENCE-FIXTURE"],
+  "freshScientificEvidenceAuthorized": false,
+  "freshScientificSeedReadAuthorized": false,
+  "freshScientificRootReadAuthorized": false,
+  "stage1Authorized": false,
+  "stage2Authorized": false,
+  "mainIntegrationAuthorized": false,
+  "publicAiChangeAuthorized": false
+}
