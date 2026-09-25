@@ -11,8 +11,7 @@ G3-10 `GCLD-STUDY1`でformal confirmationされた4 trajectory-level claimにつ
 
 ```text
 C1 directionality / path efficiency = ACTUAL-GREATER
-C2 persistence / lag-distance gradient = ACTUAL-GREATER
-C3 return fraction = ACTUAL-LESS
+C2 persistence / lag-distance gradient = ACTUAL-LESS
 C5 first-order directional path dependence = ACTUAL-GREATER
 ```
 
@@ -84,7 +83,7 @@ P1/P2それぞれでC1・C2・C3・C5がすべて`GENERALIZATION-CONFIRMED`と�
 - game-theoretic value、best move correctness、AI strength、win rate、人間のdifficultyを検証していない。
 - public AI変更を認可しない。
 
-## one-shot / no-rescue boundary
+## one-shot / no-rescue 境界
 
 - Stage 1 scientific execution = exactly once
 - Stage 2 scientific execution = exactly once
@@ -106,4 +105,4 @@ P1/P2それぞれでC1・C2・C3・C5がすべて`GENERALIZATION-CONFIRMED`と�
 - [`../research-generation-4/checkpoints/2026-09-25-g4-04-main-integration.md`](../research-generation-4/checkpoints/2026-09-25-g4-04-main-integration.md)
 - [`../research-program-decisions/2026-09-25-g4-04-geometry-trajectory-dynamics-transfer-study1-closure.md`](../research-program-decisions/2026-09-25-g4-04-geometry-trajectory-dynamics-transfer-study1-closure.md)
 
-Research Generation 4を継続する場合、次のcore candidateは`G4-05`。開始には独立authorization reviewを必要とする。
+G4-04完了時点で次候補だったG4-05は、その後別Study `RLEMOF-STUDY1`として完了した。現在のResearch Generation 4の次候補はG4-06であり、個別authorization reviewを必要とする。最新状態は[`../research-generation-4/CURRENT_STATUS.md`](../research-generation-4/CURRENT_STATUS.md)を参照する。
