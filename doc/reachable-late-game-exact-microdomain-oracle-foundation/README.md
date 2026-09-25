@@ -63,6 +63,8 @@ G4-05 scientific executionは完了している。同一Studyをrepair / rerun /
 
 ## 主要文書
 
+`STUDY_1_PROTOCOL.md`はStudy開始時点のprospective freezeを保持する歴史記録であり、本文中のStage 1 / Stage 2 `NOT AUTHORIZED`は**その時点の状態**を示す。後続Stageの実行状態は各`authorizations/*.json`、`CURRENT_STATUS.md`、`FINAL_REPORT.md`を正本として読む。protocol自体を結果後に書き換えて現況へ合わせない。
+
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md)
 - [`FINAL_REPORT.md`](FINAL_REPORT.md)
 - [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md)
