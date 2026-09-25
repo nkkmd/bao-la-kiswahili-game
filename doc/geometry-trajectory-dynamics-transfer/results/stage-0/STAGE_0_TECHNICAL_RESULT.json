@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GTTD-STUDY1",
+  "stageId": "GTTD-S0-TECHNICAL-2026-09-25-v1",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "representationId": "CRCLGR-R1-EXACT-SQUASHED-L1",
+  "checkpointCount": 15,
+  "controlCount": 32,
+  "targetEndpoints": [
+    "C1-DIRECTIONALITY-PATH-EFFICIENCY",
+    "C2-PERSISTENCE-LAG-DISTANCE-GRADIENT",
+    "C3-RETURN-FRACTION",
+    "C5-FIRST-ORDER-DIRECTIONAL-PATH-DEPENDENCE"
+  ],
+  "syntheticExactAgreement": true,
+  "endpointPreservingControlsExact": true,
+  "implementationSeparation": true,
+  "sourcePolicies": [
+    {
+      "policyId": "LGTTCI-P1-UNIFORM-LEGAL",
+      "completeTechnicalTrajectoryCount": 2,
+      "fullyPreflightEligibleCount": 2,
+      "rejectionCounts": {"TERMINAL-BEFORE-72": 10},
+      "rf1CompleteCount": 2,
+      "rf2CompleteCount": 2,
+      "measuredTechnicalSeed": 44014005,
+      "phaseCounts": {"namua": 7, "mtaji": 8},
+      "preflightRows": [
+        {"seed": 44014005, "allEligible": true, "rows": [
+          {"ply":16,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":20,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":24,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":28,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":32,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":36,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":40,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":44,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":48,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":52,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":56,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":60,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":64,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":68,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":72,"eligible":true,"reasonCode":"ELIGIBLE"}
+        ]},
+        {"seed": 44014012, "allEligible": true, "rows": [
+          {"ply":16,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":20,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":24,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":28,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":32,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":36,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":40,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":44,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":48,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":52,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":56,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":60,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":64,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":68,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":72,"eligible":true,"reasonCode":"ELIGIBLE"}
+        ]}
+      ],
+      "targetEndpointProductionIndependentExact": true,
+      "scientificEndpointValuesRetained": false
+    },
+    {
+      "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE",
+      "completeTechnicalTrajectoryCount": 2,
+      "fullyPreflightEligibleCount": 2,
+      "rejectionCounts": {},
+      "rf1CompleteCount": 2,
+      "rf2CompleteCount": 2,
+      "measuredTechnicalSeed": 44014001,
+      "phaseCounts": {"namua": 7, "mtaji": 8},
+      "preflightRows": [
+        {"seed": 44014001, "allEligible": true, "rows": [
+          {"ply":16,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":20,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":24,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":28,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":32,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":36,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":40,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":44,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":48,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":52,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":56,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":60,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":64,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":68,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":72,"eligible":true,"reasonCode":"ELIGIBLE"}
+        ]},
+        {"seed": 44014002, "allEligible": true, "rows": [
+          {"ply":16,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":20,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":24,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":28,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":32,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":36,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":40,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":44,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":48,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":52,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":56,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":60,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":64,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":68,"eligible":true,"reasonCode":"ELIGIBLE"},{"ply":72,"eligible":true,"reasonCode":"ELIGIBLE"}
+        ]}
+      ],
+      "targetEndpointProductionIndependentExact": true,
+      "scientificEndpointValuesRetained": false
+    }
+  ],
+  "rootFamilyClassificationTechnicalOnly": true,
+  "phaseCompositionTechnicalOnly": true,
+  "scientificEndpointValuesRetained": false,
+  "formalInferencePerformed": false,
+  "freshScientificSeedAccess": false,
+  "stage1SeedAccess": false,
+  "stage2SeedAccess": false,
+  "g3_11Depth10Rerun": false,
+  "g4_10Depth11Access": false,
+  "publicAiChange": false,
+  "technicalSeedsScientificUseProhibited": true,
+  "deterministicCoreSha256": "3fb80c3421cbaccdc826d77afc95f0118a9d93a12ed3181dde3a14ce68d1db5d",
+  "stageDisposition": "STAGE0-PASS",
+  "stage1AutomaticallyAuthorized": false
+}
