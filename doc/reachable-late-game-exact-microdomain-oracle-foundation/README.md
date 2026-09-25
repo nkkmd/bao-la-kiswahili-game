@@ -2,7 +2,7 @@
 
 Agenda: `Research Generation 4 / G4-05`  
 Study ID: `RLEMOF-STUDY1`  
-状態: **`COMPLETE / FORMAL-COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN`**
+状態: **`COMPLETE / FORMAL-COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED`**
 
 日本語正式作業名:
 
@@ -33,6 +33,7 @@ inspected candidates = 10
 complete formal domains = 8
 production / independent agreement = true
 formal decision = EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN
+main integration = COMPLETE / PR #166 / merge commit 97ffe3758157d2497b5884f7b17abe59a24159b5
 ```
 
 frozen minimum gateは6 complete domains、targetは8。candidate 1と4は`STATE-LIMIT`でcomplete closureにならず、そのまま除外した。resource cap増加、root replacement、seed extension、same-evidence rerunは行っていない。
@@ -59,7 +60,7 @@ Program Plan上、G4-06はG4-05がformal-eligible exact oracle domainを生成�
 
 長時間trialはGitHub Actionsを第一候補として設計し、Stage 0 / 1 / 2すべてActions上でdurable artifactを残した。Stage 2はone-shot authorizationに従い、一回だけformal executionした。
 
-G4-05 scientific executionは完了している。同一Studyをrepair / rerun / seed-extensionしない。`main`統合は別操作であり、明示指示があるまで行わない。
+G4-05 scientific executionは完了している。同一Studyをrepair / rerun / seed-extensionしない。研究closure後、PR #166で`main`へ統合した。main統合はformal result、no-rescue境界、public AI非変更を変更しない。
 
 ## 主要文書
 
@@ -73,3 +74,4 @@ G4-05 scientific executionは完了している。同一Studyをrepair / rerun /
 - [`results/stage-2/STAGE_2_ARTIFACT_RECEIPT.json`](results/stage-2/STAGE_2_ARTIFACT_RECEIPT.json)
 - [`results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json`](results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json)
 - [`checkpoints/2026-09-25-stage2-formal-complete.md`](checkpoints/2026-09-25-stage2-formal-complete.md)
+- [`../research-generation-4/checkpoints/2026-09-26-g4-05-main-integration.md`](../research-generation-4/checkpoints/2026-09-26-g4-05-main-integration.md)
