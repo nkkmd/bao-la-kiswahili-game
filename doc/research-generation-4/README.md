@@ -1,6 +1,6 @@
 # Research Generation 4 — 入口
 
-更新日: 2026-09-25  
+更新日: 2026-09-26  
 Program: `Bao Fourth-Generation Research Program`  
 状態: **`G4-01 COMPLETE / G4-02 CLOSED WITHOUT SCIENTIFIC DECISION / G4-03 COMPLETE / G4-04 COMPLETE / G4-05 COMPLETE`**
 
@@ -22,7 +22,7 @@ Program: `Bao Fourth-Generation Research Program`
 | A | `G4-02` | G3-04由来corridor / tree-graph transfer | `CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED` |
 | A | `G4-03` | G3-07由来width / search-ranking transfer | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED` |
 | A | `G4-04` | G3-10由来geometry-trajectory transfer | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
-| B | `G4-05` | exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN NOT INTEGRATED` |
+| B | `G4-05` | exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED` |
 | B | `G4-06` | geometry / exact consequence bridge | `NEXT CORE CANDIDATE / ELIGIBLE FOR AUTHORIZATION REVIEW / NOT AUTHORIZED` |
 | C | `G4-07..G4-09` | memory、rule-semantic transition、search reliability | `DEPENDENCY-GATED / NOT AUTHORIZED` |
 | D | `G4-10` | protected depth-11 exact topology | `PROTECTED / NOT AUTHORIZED / NOT ACCESSED` |
@@ -79,17 +79,21 @@ inspected candidates = 10
 formal complete domains = 8
 production / independent agreement = true
 formal decision = EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN
+main integration = COMPLETE / PR #166 / merge commit 97ffe3758157d2497b5884f7b17abe59a24159b5
 ```
 
 candidate 1と4は`STATE-LIMIT`でfail-closedし、resource cap増加、root replacement、seed extension、same-evidence rerunは行っていない。
 
 8 formal domainsのrecurrent countは0だったが、`RECURRENT`を公式ルール上の`DRAW`へ読み替えず、draw inferenceも行わない。whole-Bao solution、best move correctness一般保証、AI棋力改善、public AI変更も主張しない。
 
+G4-05はPR #166で`main`へ統合済みである。formal result、no-rescue境界、G4-06未認可、public AI非変更は統合後も変わらない。
+
 詳細:
 
 - [`../reachable-late-game-exact-microdomain-oracle-foundation/README.md`](../reachable-late-game-exact-microdomain-oracle-foundation/README.md)
 - [`../reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md`](../reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md)
 - [`../reachable-late-game-exact-microdomain-oracle-foundation/results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json`](../reachable-late-game-exact-microdomain-oracle-foundation/results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json)
+- [`checkpoints/2026-09-26-g4-05-main-integration.md`](checkpoints/2026-09-26-g4-05-main-integration.md)
 
 ## 最初に読む文書
 
@@ -106,8 +110,6 @@ G4-05を追加実行しない。
 Program PlanではG4-06を「G4-05がformal-eligible exact oracle domainを生成した場合だけ実行する」としている。G4-05がこの前提を満たしたため、次のcore candidateは`G4-06`である。
 
 ただし、G4-06は**自動authorizationではない**。専用authorization reviewから開始する。
-
-G4-05の`main`統合はまだ実施していない。
 
 ## 解釈上の境界
 
