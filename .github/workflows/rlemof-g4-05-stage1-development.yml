@@ -1,0 +1,17 @@
+name: RLEMOF G4-05 Stage 1 Development — SEALED
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sealed:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Stage 1 is sealed
+        run: |
+          echo "RLEMOF-STUDY1 Stage 1 already consumed its authorized fresh block."
+          echo "Same-evidence rerun is prohibited."
+          exit 1

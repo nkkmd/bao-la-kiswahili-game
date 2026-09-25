@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "agenda": "G4-05",
+  "studyId": "RLEMOF-STUDY1",
+  "stageId": "RLEMOF-S0-TECHNICAL-2026-09-25-v1",
+  "freezeDate": "2026-09-25",
+  "role": "technical-exact-closure-retrograde-recurrence-and-actions-recoverability-validation",
+  "scientificInferenceAuthorized": false,
+  "freshScientificSeedReadAuthorized": false,
+  "freshScientificRootReadAuthorized": false,
+  "formalExactDecisionAuthorized": false,
+  "positiveControl": {
+    "source": "REWR-S1-DOMAIN-2026-08-24-v1",
+    "role": "TECHNICAL-REGRESSION-ONLY",
+    "expectedStates": 8,
+    "expectedEdges": 7,
+    "expectedSolutionSha256": "4acb2f0517d653b241e78bf9fc94ef2c4353a2a89263d1e8e71918e1cce72c15"
+  },
+  "syntheticRecurrenceFixture": {
+    "scientificEvidence": false,
+    "nodes": 3,
+    "expectedRecurrent": 2,
+    "expectedTerminal": 1,
+    "drawInferenceAuthorized": false
+  },
+  "semanticSeparation": {
+    "gameStateValueLabels": ["TERMINAL", "WIN", "LOSS", "RECURRENT"],
+    "nonExactLabels": ["UNRESOLVED"],
+    "transitionStopLabels": ["MOVE-NONTERMINATION", "STATE-LIMIT", "EDGE-LIMIT", "ADMIN-CUTOFF"],
+    "recurrentImpliesDraw": false
+  },
+  "mandatoryGates": {
+    "S0-G1": "historical technical production fixture reconstructs exactly",
+    "S0-G2": "historical independent verifier passes every frozen gate",
+    "S0-G3": "8-state graph and solution identities match frozen technical targets",
+    "S0-G4": "production and independent retrograde agree on synthetic recurrent SCC fixture",
+    "S0-G5": "synthetic fixture yields two RECURRENT and one TERMINAL nodes",
+    "S0-G6": "RECURRENT is not promoted to DRAW",
+    "S0-G7": "MOVE-NONTERMINATION vocabulary is disjoint from game-state value vocabulary",
+    "S0-G8": "no fresh scientific access or formal exact decision flag is enabled",
+    "S0-G9": "result is reopened and content hashes are stable"
+  },
+  "decisionRule": {
+    "allMandatoryGatesPass": "STAGE0-TECHNICAL-PASS",
+    "otherwise": "STAGE0-TECHNICAL-BLOCK",
+    "scientificInterpretationAllowed": false
+  },
+  "execution": {
+    "firstCandidate": "GITHUB-ACTIONS",
+    "workflow": ".github/workflows/rlemof-g4-05-stage0-technical.yml",
+    "artifactRequired": true,
+    "timeoutMinutes": 30,
+    "chatInterruptionSafe": true
+  },
+  "noRescue": true
+}

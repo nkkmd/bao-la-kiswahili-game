@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "agenda": "G4-05",
+  "studyId": "RLEMOF-STUDY1",
+  "formalTitle": "Reachable Late-Game Exact Microdomain Oracle Foundation Study 1",
+  "japaneseWorkingTitle": "Baoのreachable late-game exact microdomainと独立oracleのprospective構築 — terminal・recurrent closureを含む限定domainの完全解析可能性検証",
+  "freezeDate": "2026-09-25",
+  "baselineMain": "550508f07a1026fa5f08f82343c1b13da2e0dfbd",
+  "researchBranch": "research/g4-05-exact-microdomain-oracle-foundation",
+  "authorizationDecision": "G4-05-AUTHORIZED-FOR-PREREGISTRATION-AND-STAGE0-ONLY",
+  "freshScientificAccessAuthorized": false,
+  "formalExactDecisionAuthorized": false,
+  "authoritativeRawIdentity": {
+    "include": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "exclude": ["turn", "reason"]
+  },
+  "validatedTransformSet": [],
+  "canonicalizationAuthorized": false,
+  "symmetryReductionAuthorized": false,
+  "historicalEvidenceFirewall": {
+    "g2_04ScientificEvidenceReuse": false,
+    "g2_04SelectedRootReuse": false,
+    "rewr8StateFixtureRole": "TECHNICAL-REGRESSION-ONLY",
+    "g3_11Depth10Rerun": false,
+    "g4_10Depth11Access": false
+  },
+  "reservedFreshNamespaceStarts": {
+    "development": 40513001,
+    "formalHoldout": 40523001,
+    "generationOrReadAuthorized": false,
+    "endAndCountFrozen": false
+  },
+  "stage0": {
+    "stageId": "RLEMOF-S0-TECHNICAL-2026-09-25-v1",
+    "scientificEvidence": false,
+    "executionEnvironmentFirstCandidate": "GITHUB-ACTIONS",
+    "passDoesNotAuthorizeStage1": true
+  },
+  "stage1": {"authorized": false},
+  "stage2": {"authorized": false},
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion":1,
+  "agenda":"G4-05",
+  "studyId":"RLEMOF-STUDY1",
+  "stageId":"RLEMOF-S2-FORMAL-2026-09-25-v1",
+  "freezeDate":"2026-09-25",
+  "role":"fresh-formal-exact-microdomain-oracle-foundation",
+  "executionAuthorizedByThisSpecAlone":false,
+  "formalExactDecisionAuthorized":false,
+  "freshHoldout":{"seedBase":40523001,"games":1024,"seedEnd":40524024,"maxPly":320},
+  "identityFirewall":{
+    "stage1ConsumedBlock":{"seedBase":40513001,"games":512,"seedEnd":40513512,"maxPly":320},
+    "expectedStage1RawRootCount":8307,
+    "expectedStage1RawRootSetSha256":"83a563ae908ea8778c689ce68f4b63b3e8873eba7dcc8d0547edc5eabb199503",
+    "reconstructionPurpose":"identity-exclusion-only",
+    "closureEnumerationOnStage1RootsAuthorized":false,
+    "retrogradeOutcomeOnStage1RootsAuthorized":false,
+    "formalHoldoutMustExcludeAllStage1RawKeys":true
+  },
+  "rootContract":{"phase":"mtaji","winner":null,"reserve":[0,0],"houseOwned":[false,false],"pending":[0,0],"representedSeeds":64,"bothFrontRowsOccupied":true,"maximumNonEmptyPitCount":16,"maximumExactLegalMoveCount":2,"minimumExactLegalMoveCount":1},
+  "candidateOrder":["seed-ascending","ply-ascending","RAW-state-key-ascending"],
+  "resourceConditionedSelection":{"maximumClosureCandidatesInspected":16,"targetCompleteFormalDomains":8,"minimumCompleteFormalDomains":6,"selectionMayUseClosureCompleteness":true,"selectionMayUseRetrogradeOutcome":false,"selectionMayUseWinner":false,"selectionMayUseCycleStructure":false},
+  "perRootResourceProfile":{"maximumStates":200000,"maximumEdges":800000,"maximumMoveMicrostates":1000000},
+  "exactEndpoints":["graph-state-count","graph-edge-count","state-set-sha256","transition-set-sha256","terminal-win-loss-recurrent-counts","root-status","root-absolute-winner","root-dtf","root-optimal-move-keys","root-recurrent-move-keys","recurrent-scc-metadata","solution-sha256"],
+  "independentVerification":{"stage1IdentityOnlyReconstructionRequired":true,"stage1IdentityDigestAgreementRequired":true,"fullFreshHoldoutRegenerationRequired":true,"candidateOrderAgreementRequired":true,"closureClassificationAgreementRequired":true,"formalDomainIdentityAgreementRequired":true,"fullGraphDigestAgreementRequired":true,"exactSolutionDigestAgreementRequired":true,"rootExactResultAgreementRequired":true,"recurrentSccAgreementRequired":true},
+  "decisionRule":{"minimumGatePassAndAllIndependentAgreement":"EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN","insufficientCompleteDomains":"NON-ESTIMABLE-INSUFFICIENT-COMPLETE-DOMAINS","solverOrIdentityMismatch":"TECHNICAL-INVALID"},
+  "drawInferenceAuthorized":false,
+  "wholeBaoGeneralizationAuthorized":false,
+  "publicAiChangeAuthorized":false,
+  "execution":{"firstCandidate":"GITHUB-ACTIONS","workflow":".github/workflows/rlemof-g4-05-stage2-formal.yml","timeoutMinutes":180,"artifactAlways":true},
+  "noRescue":true
+}

@@ -1,0 +1,45 @@
+name: RLEMOF G4-05 Stage 0 Technical
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  technical-stage0:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Record execution identity
+        run: |
+          mkdir -p artifacts/local/rlemof-stage0-technical
+          {
+            echo "GITHUB_SHA=${GITHUB_SHA}"
+            echo "GITHUB_RUN_ID=${GITHUB_RUN_ID}"
+            echo "GITHUB_RUN_ATTEMPT=${GITHUB_RUN_ATTEMPT}"
+            echo "GITHUB_REF=${GITHUB_REF}"
+            node --version
+          } | tee artifacts/local/rlemof-stage0-technical/execution-identity.txt
+      - name: Run G4-05 technical Stage 0
+        run: node tools/experiments/run-rlemof-stage0-technical.js artifacts/local/rlemof-stage0-technical
+      - name: Build artifact manifest
+        if: always()
+        run: |
+          cd artifacts/local/rlemof-stage0-technical
+          find . -maxdepth 1 -type f -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt || true
+          cat SHA256SUMS.txt || true
+      - name: Upload technical artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rlemof-g4-05-stage0-${{ github.run_id }}-attempt-${{ github.run_attempt }}
+          path: artifacts/local/rlemof-stage0-technical/
+          if-no-files-found: error
+          retention-days: 30

@@ -18,7 +18,7 @@ C5 first-order directional path dependence = ACTUAL-GREATER
 
 G3-10 C4 circulation/hysteresis-like claimは`NOT-CONFIRMED`であり、positive transfer targetには含めていない。
 
-## representation
+## 使用representation
 
 ```text
 representation = CRCLGR-R1-EXACT-SQUASHED-L1
@@ -30,7 +30,7 @@ validated transform set = []
 
 G4-04中にrepresentation変更やsymmetry canonicalizationを導入していない。
 
-## Stage 0 / Stage 1
+## Stage 0 / Stage 1の検証
 
 Stage 0 technical validationで15 checkpoints、32 endpoint-preserving controls、C1/C2/C3/C5 production/independent exactness、P1/P2 source generation、resource fail-closedを確認した。
 
@@ -42,7 +42,7 @@ artifact ID = 10846181741
 stage disposition = STAGE1-PASS
 ```
 
-## Stage 2 formal
+## Stage 2 formal検証
 
 Stage 2はfresh access前にscientific contract、identity firewall、24-file preexecution binding、exact sign-test / fixed-8 Holm、GitHub Actions exactly-once authorizationを固定した。
 
@@ -61,7 +61,7 @@ production / independent exact = true
 stage disposition = FORMAL-COMPLETE
 ```
 
-## Formal result
+## 正式結果
 
 ```text
 GENERALIZATION-CONFIRMED = 8
@@ -84,7 +84,7 @@ P1/P2それぞれでC1・C2・C3・C5がすべて`GENERALIZATION-CONFIRMED`と�
 - game-theoretic value、best move correctness、AI strength、win rate、人間のdifficultyを検証していない。
 - public AI変更を認可しない。
 
-## one-shot / no-rescue boundary
+## one-shot / no-rescue 境界
 
 - Stage 1 scientific execution = exactly once
 - Stage 2 scientific execution = exactly once
@@ -106,4 +106,4 @@ P1/P2それぞれでC1・C2・C3・C5がすべて`GENERALIZATION-CONFIRMED`と�
 - [`../research-generation-4/checkpoints/2026-09-25-g4-04-main-integration.md`](../research-generation-4/checkpoints/2026-09-25-g4-04-main-integration.md)
 - [`../research-program-decisions/2026-09-25-g4-04-geometry-trajectory-dynamics-transfer-study1-closure.md`](../research-program-decisions/2026-09-25-g4-04-geometry-trajectory-dynamics-transfer-study1-closure.md)
 
-Research Generation 4を継続する場合、次のcore candidateは`G4-05`。開始には独立authorization reviewを必要とする。
+G4-04完了時点で次候補だったG4-05は、その後別Study `RLEMOF-STUDY1`として完了した。現在のResearch Generation 4の次候補はG4-06であり、個別authorization reviewを必要とする。最新状態は[`../research-generation-4/CURRENT_STATUS.md`](../research-generation-4/CURRENT_STATUS.md)を参照する。

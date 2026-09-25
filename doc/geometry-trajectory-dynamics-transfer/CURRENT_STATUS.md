@@ -19,7 +19,7 @@ main integration = COMPLETE / PR #165 / merge commit 5d4a0b3d685b23150dfda08540e
 public AI change = false
 ```
 
-## Transfer target
+## 移送対象（Transfer target）
 
 G3-10 `GCLD-STUDY1`のformal confirmed claimのみを対象とした。
 
@@ -32,7 +32,7 @@ C5 first-order directional path dependence = ACTUAL-GREATER
 
 C4はG3-10で`NOT-CONFIRMED`のためpositive transfer targetではない。
 
-## Stage 1
+## Stage 1の結果
 
 ```text
 canonical run = 36089520136 / attempt 1 / success
@@ -49,7 +49,7 @@ formal inference = false
 
 Stage 1はblinded development evidenceであり、endpoint値、contrast符号、effect direction、p値を保存していない。
 
-## Stage 2 canonical execution
+## Stage 2 canonical実行
 
 ```text
 Stage ID = GTTD-S2-FORMAL-2026-09-25-v1
@@ -70,7 +70,7 @@ production / independent exact = true
 stage disposition = FORMAL-COMPLETE
 ```
 
-## Formal result
+## 正式結果
 
 fixed 8-test Holm-Bonferroni family、family alpha exact `1/20`。
 
@@ -103,7 +103,7 @@ RF1/RF2はsupport descriptorとしてのみ扱い、root-family別formal subgrou
 - human difficulty
 - public AI変更の認可
 
-## Integrity
+## 整合性境界
 
 ```text
 scientific executions = 1 / 1
@@ -119,11 +119,11 @@ main integration = true / PR #165
 
 ## 次工程
 
-G4-04は追加実行せずclosure状態を維持する。
+G4-04自体は追加実行せず、closure状態を維持する。
 
-Research Generation 4を継続する場合、次のcore candidateはprogram plan上の`G4-05` exact microdomain oracle foundation。ただし自動authorizationではなく、独立したauthorization reviewから開始する。
+G4-04完了時点で次候補だったG4-05 `RLEMOF-STUDY1` は、その後別authorizationの下で実施され、`EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN`としてresearch branch上で完了した。これはG4-04のformal resultを変更しない。
 
-G4-04の`main`統合はPR #165で完了した。以後、G4-04をrepair/reopenせず、次の科学作業はG4-05の個別authorization reviewから開始する。
+Research Generation 4の現在の次候補はG4-06であり、G4-05が生成したformal-eligible exact oracle domainを前提とする個別authorization reviewから開始する。G4-06は未認可である。RG4全体の最新状態は[`../research-generation-4/CURRENT_STATUS.md`](../research-generation-4/CURRENT_STATUS.md)を参照する。
 
 ## 正本
 

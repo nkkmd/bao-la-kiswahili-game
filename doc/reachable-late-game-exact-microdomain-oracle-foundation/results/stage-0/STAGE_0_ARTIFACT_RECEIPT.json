@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "studyId": "RLEMOF-STUDY1",
+  "stageId": "RLEMOF-S0-TECHNICAL-2026-09-25-v1",
+  "workflowRunId": 36118292862,
+  "runAttempt": 1,
+  "workflowConclusion": "success",
+  "headSha": "4ac1344748e20d7afea82591763b1ee7e5dac127",
+  "artifactId": 10856435538,
+  "artifactName": "rlemof-g4-05-stage0-36118292862-attempt-1",
+  "artifactSizeBytes": 5872,
+  "artifactDigest": "sha256:5f439eeb35fbf14ea05b2e7f73755e15af123ea13cab5e0d72802572b2604b3b",
+  "artifactExpiresAt": "2026-10-25T09:25:09Z",
+  "containedFileSha256": {
+    "RLEMOF_STAGE_0_RESULT.json": "047dc887fd1e60f7a2c75b571aa7dd7501b3bfe3ef71d8da97eb1804dab264f2",
+    "technical-independent.json": "2f04cff16a48b40b4f28b254a86f4aff3757886ac9f8a6c7fae4f7b6729417a7",
+    "technical-production.json": "d0b91bfe676dd935995dcea5e82225e4edb4a83e9faed469f80c06394f40741d",
+    "execution-identity.txt": "be9b1f381afdf4b5330812cc192ffc7076d992d8a895cd7bc17cab9d01ea40e7"
+  }
+}

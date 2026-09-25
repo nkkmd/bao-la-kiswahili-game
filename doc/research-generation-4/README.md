@@ -2,7 +2,7 @@
 
 更新日: 2026-09-25  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`G4-01 COMPLETE / G4-02 CLOSED WITHOUT SCIENTIFIC DECISION / G4-03 COMPLETE / G4-04 COMPLETE`**
+状態: **`G4-01 COMPLETE / G4-02 CLOSED WITHOUT SCIENTIFIC DECISION / G4-03 COMPLETE / G4-04 COMPLETE / G4-05 COMPLETE`**
 
 ## このProgramが調べること
 
@@ -22,9 +22,9 @@ Program: `Bao Fourth-Generation Research Program`
 | A | `G4-02` | G3-04由来corridor / tree-graph transfer | `CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED` |
 | A | `G4-03` | G3-07由来width / search-ranking transfer | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED` |
 | A | `G4-04` | G3-10由来geometry-trajectory transfer | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
-| B | `G4-05` | exact microdomain oracle foundation | `NEXT CORE CANDIDATE / NOT AUTHORIZED` |
-| B | `G4-06` | geometry / exact consequence bridge | `DEPENDENCY-GATED / NOT AUTHORIZED` |
-| C | `G4-07..G4-09` | memory、rule-semantic transition、search reliability | `NOT AUTHORIZED` |
+| B | `G4-05` | exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN NOT INTEGRATED` |
+| B | `G4-06` | geometry / exact consequence bridge | `NEXT CORE CANDIDATE / ELIGIBLE FOR AUTHORIZATION REVIEW / NOT AUTHORIZED` |
+| C | `G4-07..G4-09` | memory、rule-semantic transition、search reliability | `DEPENDENCY-GATED / NOT AUTHORIZED` |
 | D | `G4-10` | protected depth-11 exact topology | `PROTECTED / NOT AUTHORIZED / NOT ACCESSED` |
 | 独立 | `G4-P01` | canonicalization re-foundation | `NOT AUTHORIZED` |
 | 独立 | `G4-H01` | human / expert evidence | `DEFERRED` |
@@ -47,12 +47,10 @@ G4-03 `LWSRT-STUDY1` はG3-07由来associationをfresh source-policy × root-fam
 
 ## G4-04 — geometry trajectory dynamics transfer
 
-G4-04 `GTTD-STUDY1` はG3-10でformal confirmationされたC1・C2・C3・C5のdirectionを、fresh P1/P2 source-policy domainsへprospectiveに移送検証した。
+G4-04 `GTTD-STUDY1` はG3-10でformal confirmationされたC1・C2・C3・C5のdirectionをfresh P1/P2 source-policy domainsへprospectiveに移送検証した。
 
 ```text
 canonical Stage 2 run = 36095831961 / attempt 1 / success
-fresh seed block = 40423001..40424024 / 1024
-seed reads = 369
 formal measured trajectories = 64
 production / independent exact = true
 GENERALIZATION-CONFIRMED = 8
@@ -61,38 +59,62 @@ NOT-GENERALIZED = 0
 NON-ESTIMABLE = 0
 ```
 
-C1・C2・C5はpositive direction、C3はnegative directionで、P1/P2ともG3-10と同方向にformal confirmationされた。
+8/8 formal testsすべてG3-10と同方向に移送された。ただしRF1/RF2 subgroup、whole-Bao universal law、game-theoretic value、AI strength、人間のdifficultyを意味しない。
 
-この結果は本StudyのP1/P2 full-trajectory domainsに限定される。RF1/RF2はsupport descriptorのみでformal subgroup inferenceは行っていない。whole-Bao universal law、game-theoretic value、AI strength、人間のdifficultyを意味しない。
+詳細: [`../geometry-trajectory-dynamics-transfer/README.md`](../geometry-trajectory-dynamics-transfer/README.md)
+
+## G4-05 — exact microdomain oracle foundation
+
+G4-05 `RLEMOF-STUDY1` はfresh reachable late-game rootsからoutcome-blind / resource-feasibility-onlyに限定microdomainを選び、complete legal-transition closureと独立exact solver agreementをprospectiveに検証した。
+
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-DEVELOPMENT-ACCEPTED
+Stage 2 canonical run = 36120286922 / attempt 1 / success
+fresh seed block = 40523001..40524024 / 1024 games
+Stage 1 RAW identity firewall roots = 8307
+fresh RAW overlap excluded count = 0
+eligible candidates = 21
+inspected candidates = 10
+formal complete domains = 8
+production / independent agreement = true
+formal decision = EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN
+```
+
+candidate 1と4は`STATE-LIMIT`でfail-closedし、resource cap増加、root replacement、seed extension、same-evidence rerunは行っていない。
+
+8 formal domainsのrecurrent countは0だったが、`RECURRENT`を公式ルール上の`DRAW`へ読み替えず、draw inferenceも行わない。whole-Bao solution、best move correctness一般保証、AI棋力改善、public AI変更も主張しない。
 
 詳細:
 
-- [`../geometry-trajectory-dynamics-transfer/README.md`](../geometry-trajectory-dynamics-transfer/README.md)
-- [`../geometry-trajectory-dynamics-transfer/results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json`](../geometry-trajectory-dynamics-transfer/results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json)
-- [`checkpoints/2026-09-25-g4-04-complete.md`](checkpoints/2026-09-25-g4-04-complete.md)
-- [`checkpoints/2026-09-25-g4-04-main-integration.md`](checkpoints/2026-09-25-g4-04-main-integration.md)
+- [`../reachable-late-game-exact-microdomain-oracle-foundation/README.md`](../reachable-late-game-exact-microdomain-oracle-foundation/README.md)
+- [`../reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md`](../reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md)
+- [`../reachable-late-game-exact-microdomain-oracle-foundation/results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json`](../reachable-late-game-exact-microdomain-oracle-foundation/results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json)
 
 ## 最初に読む文書
 
 1. [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — RG4全体の最新状態
 2. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — frozen prospective program contract
 3. [`RESUME_HERE.md`](RESUME_HERE.md) — 安全な再開位置
-4. [`../geometry-trajectory-dynamics-transfer/README.md`](../geometry-trajectory-dynamics-transfer/README.md) — G4-04の正式入口
-5. [`checkpoints/2026-09-25-g4-04-main-integration.md`](checkpoints/2026-09-25-g4-04-main-integration.md) — G4-04 main integration checkpoint
+4. [`../reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md`](../reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md) — G4-05正式結果
+5. [`../research-program-decisions/2026-09-25-g4-05-reachable-late-game-exact-microdomain-oracle-foundation-study1-closure.md`](../research-program-decisions/2026-09-25-g4-05-reachable-late-game-exact-microdomain-oracle-foundation-study1-closure.md) — G4-05 closure decision
 
 ## 次に許可される作業
 
-G4-04を追加実行しない。Research Generation 4を継続する場合、次のcore candidateは`G4-05` exact microdomain oracle foundationである。
+G4-05を追加実行しない。
 
-G4-05はprogram plan上の候補であり、**自動authorizationではない**。新しいStudyとしてauthorization reviewから開始する。
+Program PlanではG4-06を「G4-05がformal-eligible exact oracle domainを生成した場合だけ実行する」としている。G4-05がこの前提を満たしたため、次のcore candidateは`G4-06`である。
 
-G4-04はPR #165で`main`統合済みである。
+ただし、G4-06は**自動authorizationではない**。専用authorization reviewから開始する。
+
+G4-05の`main`統合はまだ実施していない。
 
 ## 解釈上の境界
 
 - compatibilityはgeneralizationそのものではない。
 - `GENERALIZATION-CONFIRMED`は固定domain・固定endpointに限定される。
-- G4-04の8/8はRF1/RF2 subgroupやwhole-Bao universal lawを意味しない。
+- exact resultも固定microdomainの外へ自動一般化しない。
+- `RECURRENT`と公式`DRAW`を同一視しない。
 - search/geometry evidenceはbest move correctnessやAI棋力を意味しない。
 - machine-only evidenceはhuman difficultyの証拠ではない。
 - 研究結果と公開AI engineeringは分離する。

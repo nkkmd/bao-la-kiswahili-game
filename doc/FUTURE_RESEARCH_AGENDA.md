@@ -1,11 +1,11 @@
 # Bao今後の研究アジェンダ
 
-Version: 5.5.0
+Version: 5.6.0
 
 更新日: 2026-09-25  
 Research Generation 2: **Closed (2026-08-31)**（完了）  
 Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了・統合済み）  
-Research Generation 4: **G4-01 complete / G4-02 closed without scientific decision / G4-03 complete / G4-04 complete**
+Research Generation 4: **G4-01 complete / G4-02 closed without scientific decision / G4-03 complete / G4-04 complete / G4-05 complete**
 
 この文書は、完了した研究を短く振り返りながら、次に研究する価値のある問いを整理するためのものです。候補として記載しただけでは、Study開始、seedアクセス、計算実行、公開AI変更は承認されません。
 
@@ -26,7 +26,8 @@ G4-01 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED
 G4-02 = CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED
 G4-03 = COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED
 G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED
-G4-05 = NEXT CORE CANDIDATE / NOT AUTHORIZED
+G4-05 = COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN NOT INTEGRATED
+G4-06 = NEXT CORE CANDIDATE / ELIGIBLE FOR AUTHORIZATION REVIEW / NOT AUTHORIZED
 G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 ```
 
@@ -42,8 +43,8 @@ G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 | A | `G4-02` | G3-04由来corridor / tree-graph transfer | `CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED` |
 | A | `G4-03` | G3-07由来width / search-ranking transfer | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED` |
 | A | `G4-04` | G3-10由来geometry-trajectory transfer | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
-| B | `G4-05` | fresh exact microdomain oracle foundation | `NEXT CORE CANDIDATE / NOT AUTHORIZED` |
-| B | `G4-06` | geometry / game-theoretic consequence bridge | `DEPENDENCY-GATED / NOT AUTHORIZED` |
+| B | `G4-05` | fresh exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN NOT INTEGRATED` |
+| B | `G4-06` | geometry / game-theoretic consequence bridge | `NEXT CORE CANDIDATE / ELIGIBLE FOR AUTHORIZATION REVIEW / NOT AUTHORIZED` |
 | C | `G4-07..G4-09` | multiscale memory、rule-semantic transition、search reliability | `NOT AUTHORIZED` |
 | D | `G4-10` | protected fresh depth-11 exact reachability topology | `PROTECTED / NOT AUTHORIZED` |
 | 独立 | `G4-P01`、`G4-H01` | canonicalization再基礎化とhuman / expert研究 | `NOT AUTHORIZED / DEFERRED` |
@@ -99,17 +100,45 @@ G4-04はPR #165で`main`へ統合済みです。formal result、one-shot/no-resc
 
 詳細は[`geometry-trajectory-dynamics-transfer/README.md`](geometry-trajectory-dynamics-transfer/README.md)を参照してください。
 
+### G4-05
+
+G4-05 `RLEMOF-STUDY1` は、fresh reachable late-game rootsからoutcome-blind / resource-feasibility-onlyに限定microdomainを選択し、complete legal-transition closureとproduction / independent exact solver agreementをprospectiveに検証しました。
+
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-DEVELOPMENT-ACCEPTED
+Stage 2 canonical run = 36120286922 / attempt 1 / success
+fresh seed block = 40523001..40524024 / 1024 games / maxPly 320
+Stage 1 RAW identity firewall roots = 8307
+fresh RAW overlap excluded count = 0
+eligible candidates = 21
+inspected candidates = 10
+formal complete domains = 8
+production / independent agreement = true
+formal decision = EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN
+```
+
+candidate 1と4は`STATE-LIMIT`でcomplete closureにならず、そのままfail-closedしました。resource cap増加、root replacement、seed extension、same-evidence rerunは行っていません。
+
+8 formal domainsではexact graph / solution / root resultまで独立一致しました。8 domainのrecurrent countは0でしたが、`RECURRENT`は公式ルール上の`DRAW`ではなく、draw inferenceは認可していません。whole-Bao solution、arbitrary late-game generalization、AI strength、人間のdifficulty、public AI変更も主張しません。
+
+Program Plan上、G4-06はG4-05がformal-eligible exact oracle domainを生成した場合だけ実行候補になります。G4-05はこのdependencyを満たしたため、G4-06を次の個別authorization review候補として扱えます。
+
+G4-05はresearch branch上でclosure済みですが、`main`統合は未実施です。
+
+詳細は[`reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md`](reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md)を参照してください。
+
 ## 2. 今後の優先課題
 
 以下は科学的価値の高い候補です。優先順位はauthorizationではありません。
 
-### 2.1 G4-05 — exact microdomain oracle foundation
+### 2.1 G4-06 — geometry / exact game-theoretic consequence bridge
 
-次のcore candidateはG4-05です。outcome-blindかつresource-feasibilityだけで選んだfresh reachable late-game rootsについて、合法遷移グラフを完全に閉じ、独立solver間でgame-theoretic valueとsolution structureを一致させられるかを検証する候補です。
+次のcore candidateはG4-06です。G4-05で成立したformal exact oracle domainを基盤として、bounded local geometryとexact game-theoretic consequenceの関係をprospectiveに検証する候補です。
 
-開始する場合は新しいStudyとしてauthorization reviewから始め、fresh root contract、terminal/recurrent semantics、value range、complete-closure条件、resource ceiling、partial-result handling、independent solver agreement、execution environment、no-rescue ruleを結果を見る前に固定します。
+G4-05の結果はG4-06のdependencyを満たしますが、G4-06そのものを自動authorizationしません。開始する場合は新しいStudyとしてauthorization reviewから始め、geometry claim / endpoint mapping、exact-domain inheritance、identity firewall、formal population、decision rule、resource ceiling、independent verification、no-rescue / no-rerun ruleをfresh evidence access前に固定します。
 
-Research Generation 1の8-state exact domainやG2-04を結果後に拡張・救済するStudyとして扱いません。G4-04のpositive resultもG4-05を自動authorizationしません。
+G4-05の8 formal domainsを結果後に都合のよいgeometry patternへ合わせて選び直したり、engine evaluation・自己対局勝率・deeper searchをexact valueの代替にしたりしません。限定microdomain内の関係をwhole-Bao optimalityへ一般化しません。
 
 ### 2.2 一般化と反例の境界
 
@@ -145,7 +174,7 @@ terminal stateを含むfull identity fields、move equivariance、winner / pendi
 
 評価値、empirical outcome、search reliability、practical comebackはそれぞれ異なるendpointです。将来の研究でも単一の「強さ」へまとめず、測定対象とpopulationを明示します。
 
-G4-03のsearch-ranking resultも、G4-04のtrajectory-transfer resultも、公開AIの棋力改善を直接示すものではありません。
+G4-03のsearch-ranking resultも、G4-04のtrajectory-transfer resultも、G4-05のexact microdomain resultも、公開AIの棋力改善を直接示すものではありません。
 
 ## 3. 新しいStudyに共通する必須条件
 
@@ -192,7 +221,9 @@ machine-reproducible motifやerror patternは、traditional tesuji、人間の�
 
 ### 4.6 限定終盤と必勝圏
 
-frozen 8-state domainではexact solutionが成立しましたが、全Mtaji、全終盤、Bao全体へ一般化できません。G4-05として拡張を検討する場合はfresh reachable-root contractとresource ceilingを新たに固定します。
+frozen 8-state domainではexact solutionが成立し、G4-05ではfresh reachable late-game rootsから8 complete formal microdomainsを構築して独立exact agreementを確認しました。それでも全Mtaji、全終盤、Bao全体へ一般化できません。
+
+G4-05のformal decisionは`EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN`です。これをwhole-Bao solution、DRAW分布、arbitrary root optimalityへ拡張しません。
 
 ### 4.7 逆転可能性と勝負手 — Study 1完了
 
@@ -219,7 +250,7 @@ standard initial RAW rootでは、depth 8・9・10までのbounded exact results
 1. **[完了] Baoを記述する語彙とRAW identityの構築**
 2. **[完了] 限定domainにおけるexact analysisと独立検証**
 3. **[完了] Local game-tree geometryのbounded measurement**
-4. **[進行] Research Generation 4 — G4-01/G4-03/G4-04完了。G4-02は科学的判定なしで終了。次候補はG4-05 exact microdomain oracle foundation**
+4. **[進行] Research Generation 4 — G4-01/G4-03/G4-04/G4-05完了。G4-02は科学的判定なしで終了。次候補はG4-06 geometry / exact consequence bridge**
 5. **[完了] 逆転可能性と勝負手 — Study 1（Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`）**
 6. **[独立・未承認] G4-H01によるqualified human / expert evidenceの収集**
 7. **[計画済み・未承認] G4-10によるfresh depth-11 exact研究**

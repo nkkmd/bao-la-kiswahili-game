@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "agenda": "G4-05",
+  "studyId": "RLEMOF-STUDY1",
+  "stageId": "RLEMOF-S1-DEVELOPMENT-2026-09-25-v1",
+  "decision": "RLEMOF-STUDY1-STAGE1-AUTHORIZED-GITHUB-ACTIONS-ONCE",
+  "preparationCommit": "eabf9d803641d7b933c11f9ce445b7dbb630df3f",
+  "executionAuthorized": true,
+  "freshScientificSeedReadAuthorized": true,
+  "freshScientificRootReadAuthorized": true,
+  "scientificInferenceAuthorized": false,
+  "formalExactDecisionAuthorized": false,
+  "stage2ExecutionAuthorized": false,
+  "allowedEvent": "push",
+  "allowedRunAttempt": 1,
+  "authorizedSeedBase": 40513001,
+  "authorizedSeedEnd": 40513512,
+  "sourceGitBlobSha": {
+    "doc/reachable-late-game-exact-microdomain-oracle-foundation/preregistration/STAGE_1_DEVELOPMENT_SPEC.json": "03a9e27b977ce398f1b5dd06cc0ff648953bfe69",
+    "tools/experiments/run-rlemof-stage1-development.js": "b7f52b447b31f5c6ca3c8cad78cacb8619fa041f",
+    "tools/experiments/verify-rlemof-stage1-development-independent.js": "44244f2b0207633c3ef8f056e4f63a0cd0974c19",
+    ".github/workflows/rlemof-g4-05-stage1-development.yml": "36e835ad0f4f1dd2b4abdc1e41f47803b324f424",
+    "tools/experiments/lib/restricted-endgame-stage0.js": "c0391da999314c4709e5002e73eae42ef3048436",
+    "tools/experiments/lib/restricted-endgame-transition.js": "7ca35ef03ecad102b9a9e1fa6c4767f72d409961",
+    "tools/experiments/lib/restricted-endgame-independent-verifier.js": "94a79d140803802acf607bbaf02d570aa3b6f362",
+    "public/engine.js": "1527bb3665228b7a5bd9f03153567aedbaaa22d7"
+  },
+  "sameEvidenceRerunAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "publicAiChangeAuthorized": false
+}

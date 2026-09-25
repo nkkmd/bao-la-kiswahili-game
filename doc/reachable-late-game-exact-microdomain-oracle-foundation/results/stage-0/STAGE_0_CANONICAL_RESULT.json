@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "agenda": "G4-05",
+  "studyId": "RLEMOF-STUDY1",
+  "stageId": "RLEMOF-S0-TECHNICAL-2026-09-25-v1",
+  "workflowRunId": 36118292862,
+  "runAttempt": 1,
+  "headSha": "4ac1344748e20d7afea82591763b1ee7e5dac127",
+  "decision": "STAGE0-TECHNICAL-PASS",
+  "mandatoryGateCounts": {"pass": 9, "fail": 0},
+  "historicalTechnicalFixture": {
+    "stateCount": 8,
+    "edgeCount": 7,
+    "solutionSha256": "4acb2f0517d653b241e78bf9fc94ef2c4353a2a89263d1e8e71918e1cce72c15",
+    "productionResultSha256": "d0b91bfe676dd935995dcea5e82225e4edb4a83e9faed469f80c06394f40741d",
+    "independentResultSha256": "2f04cff16a48b40b4f28b254a86f4aff3757886ac9f8a6c7fae4f7b6729417a7"
+  },
+  "syntheticRecurrence": {
+    "nodes": 3,
+    "terminal": 1,
+    "recurrent": 2,
+    "productionIndependentExactAgreement": true,
+    "recurrentImpliesDraw": false
+  },
+  "semanticSeparation": {
+    "vocabularyDisjoint": true,
+    "moveNonterminationIsGameStateValue": false
+  },
+  "freshScientificSeedReads": 0,
+  "freshScientificRootReads": 0,
+  "formalExactDecisionAuthorized": false,
+  "specFileSha256": "2e698e26b8a7652074b3e86f94e49238ee2e7150e45165946a4b703af66441e1",
+  "coreSha256": "1c3d8efc067241667b49fe34e77f65584045c94f6abdf20c6622b8c71c018752",
+  "resultFileSha256": "047dc887fd1e60f7a2c75b571aa7dd7501b3bfe3ef71d8da97eb1804dab264f2"
+}

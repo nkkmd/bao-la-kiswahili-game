@@ -1,0 +1,32 @@
+{
+  "schemaVersion":1,
+  "agenda":"G4-05",
+  "studyId":"RLEMOF-STUDY1",
+  "stageId":"RLEMOF-S2-FORMAL-2026-09-25-v1",
+  "decision":"RLEMOF-STUDY1-STAGE2-AUTHORIZED-GITHUB-ACTIONS-ONCE",
+  "preparationCommit":"ee5564844a1519f0625dbf64813b5616da877253",
+  "executionAuthorized":true,
+  "formalExactDecisionAuthorized":true,
+  "allowedEvent":"push",
+  "allowedRunAttempt":1,
+  "authorizedSeedBase":40523001,
+  "authorizedSeedEnd":40524024,
+  "sourceGitBlobSha":{
+    "doc/reachable-late-game-exact-microdomain-oracle-foundation/preregistration/STAGE_2_FORMAL_SPEC.json":"9d3c0c150b3111ff5297c1dc455483a6e66db218",
+    "tools/experiments/run-rlemof-stage2-formal.js":"a00baff1e185a23aeb357e0761b1e65b2e06c9ef",
+    "tools/experiments/verify-rlemof-stage2-formal-independent.js":"4e57b3a16ecbc62cd859378e686d9997cec0638f",
+    ".github/workflows/rlemof-g4-05-stage2-formal.yml":"44971350a2049ff9b5fbd5aee9b51b3f17c1b7dc",
+    "tools/experiments/lib/restricted-endgame-stage0.js":"c0391da999314c4709e5002e73eae42ef3048436",
+    "tools/experiments/lib/restricted-endgame-transition.js":"7ca35ef03ecad102b9a9e1fa6c4767f72d409961",
+    "tools/experiments/lib/restricted-endgame-tablebase.js":"f41ef2538b41e8ca9ed50f79cdab4bfa910989ef",
+    "tools/experiments/lib/restricted-endgame-retrograde.js":"e07b78b388996213c859145cd5a546b62d6f6d68",
+    "tools/experiments/lib/restricted-endgame-independent-verifier.js":"94a79d140803802acf607bbaf02d570aa3b6f362",
+    "tools/experiments/lib/restricted-endgame-tablebase-independent.js":"e5caa7b42f2cd4c04b98183886136471b1ae9807",
+    "tools/experiments/lib/restricted-endgame-retrograde-independent.js":"8d8d087b610b65806cd552f3b8038c6fecc8cec7",
+    "public/engine.js":"1527bb3665228b7a5bd9f03153567aedbaaa22d7"
+  },
+  "sameEvidenceRerunAuthorized":false,
+  "mainIntegrationAuthorized":false,
+  "g4_06Authorized":false,
+  "publicAiChangeAuthorized":false
+}
