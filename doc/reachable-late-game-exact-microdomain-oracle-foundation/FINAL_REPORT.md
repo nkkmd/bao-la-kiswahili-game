@@ -1,9 +1,9 @@
 # G4-05 / RLEMOF-STUDY1 — 最終報告
 
-更新日: 2026-09-25  
+更新日: 2026-09-26  
 Agenda: `Research Generation 4 / G4-05`  
 Study ID: `RLEMOF-STUDY1`  
-正式状態: **`COMPLETE / FORMAL-COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN`**
+正式状態: **`COMPLETE / FORMAL-COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED`**
 
 ## 1. 研究目的
 
@@ -154,7 +154,7 @@ GitHub Actionsではactions内部Node runtimeに関するdeprecation noticeが�
 
 **G4-05 / `RLEMOF-STUDY1` を `COMPLETE / FORMAL-COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN` として閉じる。**
 
-`main`統合はStudy closureとは別操作であり、明示指示があるまで行わない。public AI変更も認可しない。
+研究closure後、PR #166で`main`へ統合した。merge commitは`97ffe3758157d2497b5884f7b17abe59a24159b5`。この統合はformal result、解釈境界、same-evidence rerun禁止、G4-06未認可、public AI非変更を変更しない。
 
 ## 13. 正本
 
@@ -165,3 +165,4 @@ GitHub Actionsではactions内部Node runtimeに関するdeprecation noticeが�
 - [`authorizations/STAGE_2_AUTHORIZATION.json`](authorizations/STAGE_2_AUTHORIZATION.json)
 - [`results/stage-2/STAGE_2_ARTIFACT_RECEIPT.json`](results/stage-2/STAGE_2_ARTIFACT_RECEIPT.json)
 - [`results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json`](results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json)
+- [`../research-generation-4/checkpoints/2026-09-26-g4-05-main-integration.md`](../research-generation-4/checkpoints/2026-09-26-g4-05-main-integration.md)
