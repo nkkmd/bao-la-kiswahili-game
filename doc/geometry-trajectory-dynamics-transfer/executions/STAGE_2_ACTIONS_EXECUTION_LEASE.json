@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GTTD-STUDY1",
+  "stageId": "GTTD-S2-FORMAL-2026-09-25-v1",
+  "leaseClass": "DURABLE-GITHUB-ACTIONS-SINGLE-EXECUTION-LEASE",
+  "effectiveAuthorization": "GTTD-STUDY1-STAGE2-AUTHORIZED-GITHUB-ACTIONS-ONCE",
+  "executionMode": "GITHUB-ACTIONS-ONCE",
+  "executionSlots": 1,
+  "freshSeedBlock": {
+    "start": 40423001,
+    "end": 40424024,
+    "count": 1024
+  },
+  "finalAuthorization": {
+    "path": "doc/geometry-trajectory-dynamics-transfer/authorizations/STAGE_2_FINAL_AUTHORIZATION.json",
+    "gitBlobSha": "63d18cbcf65e7f76c78db07b92deace995d3cb1e"
+  },
+  "finalAuthorizationValidation": {
+    "workflowRunId": 36095760428,
+    "workflowRunAttempt": 1,
+    "conclusion": "success",
+    "headSha": "2022c6f64879e4a9857ce983fc60a5295b78567c"
+  },
+  "preexecutionBinding": {
+    "path": "doc/geometry-trajectory-dynamics-transfer/authorizations/STAGE_2_PREEXECUTION_BINDING.json",
+    "gitBlobSha": "5282f79ba9b3575cbd9e6aef496db7ffe515bd2e"
+  },
+  "executionWorkflow": {
+    "path": ".github/workflows/gttd-stage2-actions-once.yml",
+    "gitBlobSha": "c9041cc401d43854ca9749577f82599dc070b521"
+  },
+  "freshScientificSeedAccessBeforeLease": 0,
+  "scientificExecutionStartedBeforeLease": false,
+  "rerunAuthorized": false,
+  "seedExtensionAuthorized": false,
+  "trajectoryReplacementAfterManifestAuthorized": false,
+  "postAccessRepairAndRerunAuthorized": false,
+  "rootFamilySubgroupInferenceAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "publicAiChangeAuthorized": false
+}
