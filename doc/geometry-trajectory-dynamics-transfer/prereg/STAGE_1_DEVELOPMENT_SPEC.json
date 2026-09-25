@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GTTD-STUDY1",
+  "stageId": "GTTD-S1-DEVELOPMENT-2026-09-25-v1",
+  "evidenceClass": "FRESH-DEVELOPMENT",
+  "statusAtFreeze": "NOT-AUTHORIZED-NOT-EXECUTED",
+  "purpose": "population support, 15-checkpoint resource readiness, endpoint definedness, production-independent exactness, and identity-firewall verification only; no scientific effect inference",
+  "sourcePolicies": [
+    "LGTTCI-P1-UNIFORM-LEGAL",
+    "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE"
+  ],
+  "policyAssignment": {
+    "rule": "for seed s in fixed block, even zero-based slot (s-seedStart)%2=0 => P1; odd => P2",
+    "outcomeBlind": true
+  },
+  "seedBlock": {
+    "start": 40413001,
+    "end": 40413512,
+    "count": 512,
+    "slotsPerPolicy": 256,
+    "statusAtFreeze": "RESERVED-NOT-ACCESSED",
+    "seedExtensionAuthorized": false
+  },
+  "trajectoryContract": {
+    "startState": "standard initial RAW state",
+    "maximumRequiredPly": 72,
+    "checkpointPlies": [16,20,24,28,32,36,40,44,48,52,56,60,64,68,72],
+    "completeCandidate": "nonterminal through ply 72, no source relay-limit, firewall-clean",
+    "candidateTargetPerPolicy": 16,
+    "candidateManifestMustFreezeBeforeResourcePreflight": true,
+    "trajectoryReplacementAfterManifest": false
+  },
+  "resourceEligibility": {
+    "relativeDepth": 5,
+    "limits": {
+      "distinctRawStates": 100000,
+      "uniqueTransitions": 750000,
+      "parentExpansions": 100000,
+      "legalMoveEvaluations": 750000,
+      "treeNodeOccurrences": 1000000
+    },
+    "minimumFullyEligiblePerPolicy": 12,
+    "measuredDevelopmentPopulationPerPolicy": 8,
+    "selection": "first 8 fully eligible trajectories in frozen per-policy candidate order",
+    "productionIndependentReasonCodeAgreementRequired": true
+  },
+  "endpointReadiness": {
+    "targetEndpoints": ["C1","C2","C3","C5"],
+    "controlCount": 32,
+    "minimumDefinedContrastsPerEndpointPerPolicy": 7,
+    "productionIndependentExactAgreementRequired": true,
+    "retainEndpointValues": false,
+    "retainContrastSigns": false,
+    "retainEffectSizes": false,
+    "computePValues": false,
+    "formalInference": false
+  },
+  "rootFamilyHandling": {
+    "RF1": "technical/support descriptor only",
+    "RF2": "technical/support descriptor only",
+    "usedForCandidateSelection": false,
+    "usedAsScientificDomain": false,
+    "postHocSubgroupInferenceAuthorized": false
+  },
+  "freshnessFirewall": {
+    "path": "doc/geometry-trajectory-dynamics-transfer/prereg/UPSTREAM_IDENTITY_FIREWALL.json",
+    "mustMaterializeAndVerifyBeforeFirstFreshSeedRead": true,
+    "rejectExcludedSeed": true,
+    "rejectAuditedTrajectoryCollision": true,
+    "rejectAuditedOpeningPrefixCollision": true,
+    "rejectAuditedCheckpointRootCollision": true,
+    "unauditedG4_01OpeningPrefixNonOverlapClaimed": false
+  },
+  "outputsAllowed": [
+    "candidate counts and rejection reason counts",
+    "resource eligibility counts/reason codes",
+    "endpoint definedness counts",
+    "production-independent exactness booleans",
+    "phase-composition support counts",
+    "RF1/RF2 technical descriptor support counts",
+    "identity manifest hashes and identity-only exclusion rows for Stage 2"
+  ],
+  "outputsForbidden": [
+    "trajectory-level endpoint values",
+    "trajectory-level contrast signs",
+    "effect direction",
+    "effect size",
+    "p-value",
+    "generalization decision",
+    "counterexample decision",
+    "policy ranking",
+    "threshold relearning"
+  ],
+  "promotionGate": {
+    "candidatePopulationCompleteBothPolicies": true,
+    "minimumFullyEligibleMetBothPolicies": true,
+    "measuredPopulationCompleteBothPolicies": true,
+    "minimumDefinedContrastsMetAllPolicyEndpointCells": true,
+    "productionIndependentExact": true,
+    "identityFirewallExact": true,
+    "failureWithoutTechnicalError": "NON-ESTIMABLE-FOR-STAGE2-PROMOTION",
+    "implementationOrIntegrityFailure": "TECHNICAL-INVALID"
+  },
+  "noRescue": [
+    "seed extension",
+    "policy replacement",
+    "trajectory replacement after manifest",
+    "checkpoint change",
+    "resource ceiling relaxation",
+    "endpoint substitution",
+    "definedness threshold relaxation",
+    "root-family subgroup rescue",
+    "same-evidence rerun after first fresh access"
+  ],
+  "stage2AutomaticallyAuthorized": false
+}

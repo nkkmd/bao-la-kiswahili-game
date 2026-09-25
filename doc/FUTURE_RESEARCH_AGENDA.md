@@ -1,11 +1,11 @@
 # Bao今後の研究アジェンダ
 
-Version: 5.4.1
+Version: 5.5.0
 
-更新日: 2026-09-24  
+更新日: 2026-09-25  
 Research Generation 2: **Closed (2026-08-31)**（完了）  
 Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了・統合済み）  
-Research Generation 4: **G4-01 complete / G4-02 closed without scientific decision / G4-03 complete**
+Research Generation 4: **G4-01 complete / G4-02 closed without scientific decision / G4-03 complete / G4-04 complete**
 
 この文書は、完了した研究を短く振り返りながら、次に研究する価値のある問いを整理するためのものです。候補として記載しただけでは、Study開始、seedアクセス、計算実行、公開AI変更は承認されません。
 
@@ -25,7 +25,8 @@ Research Generation 4 plan = FROZEN / INTEGRATED TO MAIN
 G4-01 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED
 G4-02 = CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED
 G4-03 = COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED
-G4-04 = ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED
+G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN NOT INTEGRATED
+G4-05 = NEXT CORE CANDIDATE / NOT AUTHORIZED
 G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 ```
 
@@ -40,8 +41,9 @@ G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 | A | `G4-01` | claim-transfer compatibility instrument | `COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED` |
 | A | `G4-02` | G3-04由来corridor / tree-graph transfer | `CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED` |
 | A | `G4-03` | G3-07由来width / search-ranking transfer | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED` |
-| A | `G4-04` | G3-10由来geometry-trajectory transfer | `ELIGIBILITY GATE SATISFIED / NOT AUTHORIZED` |
-| B | `G4-05..G4-06` | fresh exact microdomainとgeometry / game-theoretic consequence bridge | `NOT AUTHORIZED` |
+| A | `G4-04` | G3-10由来geometry-trajectory transfer | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN NOT INTEGRATED` |
+| B | `G4-05` | fresh exact microdomain oracle foundation | `NEXT CORE CANDIDATE / NOT AUTHORIZED` |
+| B | `G4-06` | geometry / game-theoretic consequence bridge | `DEPENDENCY-GATED / NOT AUTHORIZED` |
 | C | `G4-07..G4-09` | multiscale memory、rule-semantic transition、search reliability | `NOT AUTHORIZED` |
 | D | `G4-10` | protected fresh depth-11 exact reachability topology | `PROTECTED / NOT AUTHORIZED` |
 | 独立 | `G4-P01`、`G4-H01` | canonicalization再基礎化とhuman / expert研究 | `NOT AUTHORIZED / DEFERRED` |
@@ -69,29 +71,49 @@ NON-ESTIMABLE = 2
 COUNTEREXAMPLE-CONFIRMED = 0
 ```
 
-SC1 DEPTHは4/4 domainsでformal generalization、SC2 NODE-BUDGETはP1の2 domainsでgeneralization・P2の2 domainsはMtaji support不足でnon-estimable、SC3 QUIESCENCEは3/4 domainsでgeneralization・P2×RF2はHolm補正後`NOT-GENERALIZED`でした。
-
 対象associationはfresh domainsへ広く移送されましたが、無条件のuniversal lawではありません。またbest move correctness、game-theoretic value、AI strength、人間のdifficulty、causal mechanismを示す結果ではありません。
 
 詳細は[`local-width-search-ranking-transfer/README.md`](local-width-search-ranking-transfer/README.md)を参照してください。
+
+### G4-04
+
+G3-10でformal confirmationされたC1・C2・C3・C5のtrajectory-level directionを、fresh P1/P2 source-policy domainsへprospectiveに移送検証しました。
+
+```text
+Stage 2 canonical run = 36095831961 / attempt 1 / success
+fresh seed block = 40423001..40424024 / 1024
+seed reads = 369
+formal measured trajectories = 64
+production / independent exact = true
+GENERALIZATION-CONFIRMED = 8
+COUNTEREXAMPLE-CONFIRMED = 0
+NOT-GENERALIZED = 0
+NON-ESTIMABLE = 0
+```
+
+C1・C2・C5はP1/P2ともpositive direction、C3はP1/P2ともnegative directionでG3-10と一致し、8/8 formal testsすべて`GENERALIZATION-CONFIRMED`でした。
+
+この結果は本StudyのP1/P2 full-trajectory domainsに限定されます。RF1/RF2はsupport descriptorのみでformal subgroup inferenceを行っていません。whole-Bao universal law、game-theoretic value、best move correctness、AI strength、人間のdifficultyを示す結果でもありません。
+
+詳細は[`geometry-trajectory-dynamics-transfer/README.md`](geometry-trajectory-dynamics-transfer/README.md)を参照してください。
 
 ## 2. 今後の優先課題
 
 以下は科学的価値の高い候補です。優先順位はauthorizationではありません。
 
-### 2.1 G4-04 — geometry-trajectory transfer
+### 2.1 G4-05 — exact microdomain oracle foundation
 
-次のcore candidateはG4-04です。G3-10で限定的にformal resultを得たgeometry-conditioned longitudinal dynamicsを、G4-01でcompatibility確認済みのfresh source policy / root familyへどこまで移せるかを検証します。
+次のcore candidateはG4-05です。outcome-blindかつresource-feasibilityだけで選んだfresh reachable late-game rootsについて、合法遷移グラフを完全に閉じ、独立solver間でgame-theoretic valueとsolution structureを一致させられるかを検証する候補です。
 
-開始する場合は、G4-03と同様に別Studyとしてauthorization reviewから始めます。fresh population、fresh seed namespace、claim、endpoint、selection、multiple-testing、resource ceiling、execution environment、no-rescue ruleを結果を見る前に固定します。
+開始する場合は新しいStudyとしてauthorization reviewから始め、fresh root contract、terminal/recurrent semantics、value range、complete-closure条件、resource ceiling、partial-result handling、independent solver agreement、execution environment、no-rescue ruleを結果を見る前に固定します。
 
-G4-01のcompatibility eligibilityだけで自動的にscientific executionを開始しません。
+Research Generation 1の8-state exact domainやG2-04を結果後に拡張・救済するStudyとして扱いません。G4-04のpositive resultもG4-05を自動authorizationしません。
 
 ### 2.2 一般化と反例の境界
 
-G3-12は`TECHNICAL-INVALID`で閉じ、G4-02もscientific decisionなしで終了しました。一方、G4-03ではfresh transfer domainにおけるpositive generalizationが多数確認されました。
+G3-12は`TECHNICAL-INVALID`で閉じ、G4-02もscientific decisionなしで終了しました。一方、G4-03ではfresh transfer domainにおけるpositive generalizationが多数確認され、G4-04ではprospectively frozen P1/P2 domainsで8/8 formal testsが`GENERALIZATION-CONFIRMED`となりました。
 
-今後一般化境界を追加検証する場合も、closed Studyのrepair/reopenやsame-evidence rescueではなく、新しいprospective Study identityを用います。`NOT-GENERALIZED`、`NON-ESTIMABLE`、`COUNTEREXAMPLE-CONFIRMED`を相互に読み替えません。
+今後一般化境界を追加検証する場合も、closed Studyのrepair/reopenやsame-evidence rescueではなく、新しいprospective Study identityを用います。G4-04の8/8をRF1/RF2 subgroupや任意source policy、whole-Bao universal lawへ拡張しません。
 
 ### 2.3 depth 11以深を扱うexact研究
 
@@ -121,7 +143,7 @@ terminal stateを含むfull identity fields、move equivariance、winner / pendi
 
 評価値、empirical outcome、search reliability、practical comebackはそれぞれ異なるendpointです。将来の研究でも単一の「強さ」へまとめず、測定対象とpopulationを明示します。
 
-G4-03のsearch-ranking resultも公開AIの棋力改善を直接示すものではありません。
+G4-03のsearch-ranking resultも、G4-04のtrajectory-transfer resultも、公開AIの棋力改善を直接示すものではありません。
 
 ## 3. 新しいStudyに共通する必須条件
 
@@ -152,11 +174,11 @@ G4-03のsearch-ranking resultも公開AIの棋力改善を直接示すもので�
 
 Mtajiではbounded two-type morphologyが確認されましたが、普遍的なBao局面分類や人間の棋風分類は確立していません。別representationを用いる場合は新規Studyとして扱います。
 
-### 4.3 局面複雑度と探索の不安定性
+### 4.3 局面複雑度・探索不安定性・trajectory dynamics
 
-局面複雑度、local width、search instabilityの間には限定domainでformalな関係が確認された例がありますが、それらを単一の普遍的difficulty指標とは扱いません。
+局面複雑度、local width、search instability、continuous geometry trajectoryは別constructです。限定domainでformalな関係やdirectionが確認された例がありますが、それらを単一の普遍的difficulty指標とは扱いません。
 
-G4-03はroot legal widthとranking-preorder changeのassociationがfresh domainsへ広く移ることを示しました。一方でnon-estimable domainとnot-generalized domainも存在したため、今後はphase、source policy、root family、search contrastを明示したprospective validationを続ける価値があります。
+G4-03はroot legal widthとranking-preorder changeのassociationがfresh domainsへ広く移ることを示しました。G4-04はG3-10由来C1/C2/C3/C5 directionがfresh P1/P2 domainsへ8/8で移送されることを確認しました。ただし、いずれも固定domain外へ無条件に一般化しません。
 
 ### 4.4 手筋・悪手・錯覚
 
@@ -168,7 +190,7 @@ machine-reproducible motifやerror patternは、traditional tesuji、人間の�
 
 ### 4.6 限定終盤と必勝圏
 
-frozen 8-state domainではexact solutionが成立しましたが、全Mtaji、全終盤、Bao全体へ一般化できません。拡張する場合はreachable-root contractとresource ceilingを新たに固定します。
+frozen 8-state domainではexact solutionが成立しましたが、全Mtaji、全終盤、Bao全体へ一般化できません。G4-05として拡張を検討する場合はfresh reachable-root contractとresource ceilingを新たに固定します。
 
 ### 4.7 逆転可能性と勝負手 — Study 1完了
 
@@ -195,7 +217,7 @@ standard initial RAW rootでは、depth 8・9・10までのbounded exact results
 1. **[完了] Baoを記述する語彙とRAW identityの構築**
 2. **[完了] 限定domainにおけるexact analysisと独立検証**
 3. **[完了] Local game-tree geometryのbounded measurement**
-4. **[進行] Research Generation 4 — G4-01 compatibility instrument、G4-03 width/search-ranking transfer完了。G4-02は科学的判定なしで終了。次候補G4-04はauthorization review待ち**
+4. **[進行] Research Generation 4 — G4-01/G4-03/G4-04完了。G4-02は科学的判定なしで終了。次候補はG4-05 exact microdomain oracle foundation**
 5. **[完了] 逆転可能性と勝負手 — Study 1（Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`）**
 6. **[独立・未承認] G4-H01によるqualified human / expert evidenceの収集**
 7. **[計画済み・未承認] G4-10によるfresh depth-11 exact研究**

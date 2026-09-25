@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GTTD-STUDY1",
+  "stageId": "GTTD-S2-FORMAL-2026-09-25-v1",
+  "evidenceClass": "FRESH-FORMAL-HELDOUT",
+  "statusAtFreeze": "NOT-AUTHORIZED-NOT-EXECUTED",
+  "scientificQuestion": "Within each G4-01-compatible fresh source policy, do the four G3-10-confirmed chronology-dependent GCLD endpoint directions transfer to a fresh held-out trajectory population?",
+  "formalDomains": [
+    "LGTTCI-P1-UNIFORM-LEGAL",
+    "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE"
+  ],
+  "rootFamilyHandling": {
+    "RF1": "support descriptor only",
+    "RF2": "support descriptor only",
+    "formalRootFamilyDomainTests": false,
+    "postHocRootFamilyInference": false
+  },
+  "seedBlock": {
+    "start": 40423001,
+    "end": 40424024,
+    "count": 1024,
+    "slotsPerPolicy": 512,
+    "statusAtFreeze": "RESERVED-NOT-ACCESSED",
+    "seedExtensionAuthorized": false
+  },
+  "policyAssignment": {
+    "rule": "for seed s in fixed block, even zero-based slot (s-seedStart)%2=0 => P1; odd => P2",
+    "outcomeBlind": true
+  },
+  "trajectoryContract": {
+    "checkpointPlies": [16,20,24,28,32,36,40,44,48,52,56,60,64,68,72],
+    "candidateTargetPerPolicy": 48,
+    "candidateManifestMustFreezeBeforeResourcePreflight": true,
+    "minimumFullyResourceEligiblePerPolicy": 40,
+    "formalMeasuredPopulationPerPolicy": 32,
+    "selection": "first 32 fully resource-eligible trajectories in frozen per-policy candidate order",
+    "trajectoryReplacementAfterManifest": false
+  },
+  "representation": {
+    "id": "CRCLGR-R1-EXACT-SQUASHED-L1",
+    "relativeDepth": 5,
+    "coordinateArithmetic": "EXACT-REDUCED-RATIONAL",
+    "distance": "EQUAL-WEIGHT-EXACT-L1",
+    "validatedTransformSet": []
+  },
+  "temporalControl": {
+    "count": 32,
+    "endpointsFixed": [0,14],
+    "internalOrdering": "ascending SHA-256(stageId|sourceSeed|permutationIndex|checkpointPly)",
+    "controlReference": "exact median of 32 control endpoint values",
+    "trajectoryContrast": "actual endpoint minus control median"
+  },
+  "formalClaims": [
+    {"testId":"P1-C1","policy":"LGTTCI-P1-UNIFORM-LEGAL","endpoint":"C1-DIRECTIONALITY-PATH-EFFICIENCY","upstreamDirection":"ACTUAL-GREATER","sameDirectionContrastSign":"POSITIVE"},
+    {"testId":"P1-C2","policy":"LGTTCI-P1-UNIFORM-LEGAL","endpoint":"C2-PERSISTENCE-LAG-DISTANCE-GRADIENT","upstreamDirection":"ACTUAL-GREATER","sameDirectionContrastSign":"POSITIVE"},
+    {"testId":"P1-C3","policy":"LGTTCI-P1-UNIFORM-LEGAL","endpoint":"C3-RETURN-FRACTION","upstreamDirection":"ACTUAL-LESS","sameDirectionContrastSign":"NEGATIVE"},
+    {"testId":"P1-C5","policy":"LGTTCI-P1-UNIFORM-LEGAL","endpoint":"C5-FIRST-ORDER-DIRECTIONAL-PATH-DEPENDENCE","upstreamDirection":"ACTUAL-GREATER","sameDirectionContrastSign":"POSITIVE"},
+    {"testId":"P2-C1","policy":"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE","endpoint":"C1-DIRECTIONALITY-PATH-EFFICIENCY","upstreamDirection":"ACTUAL-GREATER","sameDirectionContrastSign":"POSITIVE"},
+    {"testId":"P2-C2","policy":"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE","endpoint":"C2-PERSISTENCE-LAG-DISTANCE-GRADIENT","upstreamDirection":"ACTUAL-GREATER","sameDirectionContrastSign":"POSITIVE"},
+    {"testId":"P2-C3","policy":"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE","endpoint":"C3-RETURN-FRACTION","upstreamDirection":"ACTUAL-LESS","sameDirectionContrastSign":"NEGATIVE"},
+    {"testId":"P2-C5","policy":"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE","endpoint":"C5-FIRST-ORDER-DIRECTIONAL-PATH-DEPENDENCE","upstreamDirection":"ACTUAL-GREATER","sameDirectionContrastSign":"POSITIVE"}
+  ],
+  "formalInference": {
+    "experimentalUnit": "trajectory",
+    "testPerPolicyEndpoint": "exact two-sided binomial sign test on nonzero trajectory contrasts; null positive/negative probability = 1/2",
+    "ties": "reported and excluded only from sign-test denominator",
+    "minimumNonzeroTrajectoriesPerTest": 20,
+    "fixedTestCount": 8,
+    "multiplicity": {
+      "method": "HOLM-BONFERRONI",
+      "familyAlpha": "1/20",
+      "exactRationalArithmetic": true
+    }
+  },
+  "decisionMapping": {
+    "holmSignificantAndMedianDirectionMatchesUpstream": "GENERALIZATION-CONFIRMED",
+    "holmSignificantAndMedianDirectionOpposesUpstream": "COUNTEREXAMPLE-CONFIRMED",
+    "estimableButNotHolmSignificant": "NOT-GENERALIZED",
+    "minimumNonzeroOrPopulationSupportNotMetWithoutTechnicalError": "NON-ESTIMABLE",
+    "mandatoryImplementationOrIntegrityFailure": "TECHNICAL-INVALID"
+  },
+  "freshness": {
+    "mustExcludeStage1SourceSeed": true,
+    "mustExcludeStage1FullTrajectorySha256": true,
+    "mustExcludeStage1OpeningPrefixSha256": true,
+    "mustExcludeStage1CheckpointRootSha256": true,
+    "mustApplyUpstreamIdentityFirewall": true
+  },
+  "resourceLimits": {
+    "distinctRawStates": 100000,
+    "uniqueTransitions": 750000,
+    "parentExpansions": 100000,
+    "legalMoveEvaluations": 750000,
+    "treeNodeOccurrences": 1000000
+  },
+  "noRescue": [
+    "seed extension",
+    "policy replacement",
+    "trajectory replacement after manifest",
+    "checkpoint change",
+    "representation change",
+    "endpoint substitution",
+    "direction relearning",
+    "test replacement",
+    "multiplicity relaxation",
+    "estimability threshold relaxation",
+    "resource ceiling relaxation",
+    "root-family subgroup rescue",
+    "same-evidence rerun"
+  ],
+  "authorizationRequiredAfterStage1": true,
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GTTD-STUDY1",
+  "stageId": "GTTD-S0-TECHNICAL-2026-09-25-v1",
+  "canonicalExecution": {
+    "workflowRunId": 36082558032,
+    "runAttempt": 1,
+    "headSha": "6c3672f82db46edb83602c92e70e9bafc393e226",
+    "conclusion": "success"
+  },
+  "artifact": {
+    "artifactId": 10842846775,
+    "name": "gttd-stage0-result",
+    "zipSha256": "947235a9f8bec085382b872e75d7e93e2e6643f44e3dfe1071b681af28eaa985",
+    "resultJsonSha256": "a0b0fcc836c053e163e0bc5acec1d8a993994f54c209046717c1624c48c747a2",
+    "deterministicCoreSha256": "3fb80c3421cbaccdc826d77afc95f0118a9d93a12ed3181dde3a14ce68d1db5d"
+  },
+  "repositoryMirror": {
+    "path": "doc/geometry-trajectory-dynamics-transfer/results/stage-0/STAGE_0_TECHNICAL_RESULT.json",
+    "gitBlobSha": "9df16cf5ce8d9cdbfcde0b53f2c668f76e62418c",
+    "byteIdentityWithArtifact": false,
+    "note": "Repository mirror preserves the same recorded fields with normalized formatting. The immutable Actions artifact is authoritative for byte-level identity; deterministicCoreSha256 is the scientific/technical core identity."
+  },
+  "scientificBoundary": {
+    "scientificEndpointValuesRetained": false,
+    "formalInferencePerformed": false,
+    "freshScientificSeedAccess": false,
+    "stage1SeedAccess": false,
+    "stage2SeedAccess": false,
+    "stage1AutomaticallyAuthorized": false
+  }
+}

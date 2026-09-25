@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GTTD-STUDY1",
+  "stageId": "GTTD-S1-DEVELOPMENT-2026-09-25-v1",
+  "evidenceClass": "FRESH-DEVELOPMENT",
+  "stageDisposition": "STAGE1-PASS",
+  "canonicalRunId": 36089520136,
+  "seedBlock": {"start":40413001,"end":40413512,"count":512},
+  "seedReads": 134,
+  "lastSeedRead": 40413203,
+  "firewallVerification": {
+    "g3Stage1Rows": 24,
+    "g3Stage2Rows": 48,
+    "g4Stage1rRows": 384,
+    "g4OpeningPrefixAudited": false,
+    "verified": true
+  },
+  "policySupport": {
+    "LGTTCI-P1-UNIFORM-LEGAL": {
+      "candidateCount": 16,
+      "fullyEligibleCount": 15,
+      "measuredCount": 8,
+      "definedContrastCounts": {
+        "C1-DIRECTIONALITY-PATH-EFFICIENCY": 8,
+        "C2-PERSISTENCE-LAG-DISTANCE-GRADIENT": 8,
+        "C3-RETURN-FRACTION": 8,
+        "C5-FIRST-ORDER-DIRECTIONAL-PATH-DEPENDENCE": 8
+      },
+      "bothPhaseMeasuredTrajectories": 8,
+      "rf1CompleteMeasuredTrajectories": 8,
+      "rf2CompleteMeasuredTrajectories": 8
+    },
+    "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE": {
+      "candidateCount": 16,
+      "fullyEligibleCount": 16,
+      "measuredCount": 8,
+      "definedContrastCounts": {
+        "C1-DIRECTIONALITY-PATH-EFFICIENCY": 8,
+        "C2-PERSISTENCE-LAG-DISTANCE-GRADIENT": 8,
+        "C3-RETURN-FRACTION": 8,
+        "C5-FIRST-ORDER-DIRECTIONAL-PATH-DEPENDENCE": 8
+      },
+      "bothPhaseMeasuredTrajectories": 8,
+      "rf1CompleteMeasuredTrajectories": 8,
+      "rf2CompleteMeasuredTrajectories": 8
+    }
+  },
+  "developmentGate": {
+    "candidatePopulationComplete": true,
+    "minimumEligibilityPass": true,
+    "measuredPopulationPass": true,
+    "minimumDefinednessPass": true,
+    "productionIndependentExact": true
+  },
+  "blindingBoundary": {
+    "scientificEndpointValuesRetained": false,
+    "contrastSignsRetained": false,
+    "effectDirectionsRetained": false,
+    "pValuesComputed": false,
+    "formalInferencePerformed": false
+  },
+  "identityExclusion": {
+    "rowCount": 32,
+    "sha256": "0935cd3c6f35ca8dfe68e268337ba7f4bb55e615d726e8919594d7f52eebcd3e"
+  },
+  "deterministicCoreSha256": "edf149e2f01704332bfcdd79d5e40f750e7c57fbc513006d3425ae3a2be5b584",
+  "stage2PreparationEligible": true,
+  "stage2AutomaticallyAuthorized": false,
+  "stage2SeedAccess": false,
+  "publicAiChange": false,
+  "mainIntegration": false
+}

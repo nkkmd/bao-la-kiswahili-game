@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GTTD-STUDY1",
+  "stageId": "GTTD-S0-TECHNICAL-2026-09-25-v1",
+  "decision": "AUTHORIZED",
+  "authorizationType": "TECHNICAL-ONLY",
+  "authorizationReview": "doc/research-program-decisions/2026-09-25-post-g4-03-g4-04-authorization-review.md",
+  "allowedTechnicalFixtureSeeds": {
+    "start": 44014001,
+    "end": 44014064,
+    "evidenceClass": "TECHNICAL-FIXTURE",
+    "scientificUseAuthorized": false
+  },
+  "executionBinding": {
+    "bindingId": "GTTD-S0-BINDING-2026-09-25-V1",
+    "status": "FROZEN",
+    "branch": "research/g4-04-geometry-trajectory-transfer",
+    "sourceMainHead": "1274c9cf408f0e044c39751599941a6f75e96a4c",
+    "gitBlobShaByPath": {
+      "public/engine.js": "1527bb3665228b7a5bd9f03153567aedbaaa22d7",
+      "tools/experiments/lib/lgtgmiv-stage1-production.js": "a4664f01535d6abbf6f83821befbb2fafd55cde6",
+      "tools/experiments/lib/lgtgmiv-stage1-independent.js": "0c7239ac7acf146e9aee63dae66194681b8631d6",
+      "tools/experiments/lib/crclgr-production.js": "f9d90792d729a42f738e7cd1c3b045bdd758ffa5",
+      "tools/experiments/lib/crclgr-independent.js": "77d3a91b2165019e4b50c195a1bb14147c35e6d2",
+      "tools/experiments/lib/gcld-production.js": "8bd203832387be1957bf75cf310b06e861c86956",
+      "tools/experiments/lib/gcld-independent.js": "ffb234c0bba523c1e72c17e903a3edb9c2585656",
+      "tools/experiments/lib/lgttci-compatibility-production.js": "2fe5b87572c0138cf66dfabb4ca40869eab26ddc",
+      "tools/experiments/lib/lgttci-compatibility-independent.js": "d63263375d4b1d61271ead31777b37185056a73b",
+      "tools/experiments/run-gttd-stage0-technical.js": "984faaf6795a50839e1af6139bd2fe60a72f5fea",
+      "tools/experiments/verify-gttd-stage0-binding.js": "9c300bf534d4701a357684e07ae055e544d39d1b",
+      "doc/geometry-trajectory-dynamics-transfer/prereg/STUDY_1_SPEC.json": "a6ad845811996b910118f0b9f78c44fe2238c0d0"
+    }
+  },
+  "freshScientificSeedAccessAuthorized": false,
+  "scientificOutcomeAuthorized": false,
+  "stage1SeedAccessAuthorized": false,
+  "stage2SeedAccessAuthorized": false,
+  "g3_10ScientificReplayAuthorized": false,
+  "g3_12ScientificEvidenceReuseAuthorized": false,
+  "g3_11Depth10RerunAuthorized": false,
+  "g4_10Depth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false
+}

@@ -1,8 +1,8 @@
 # Bao研究成果索引
 
-更新日: 2026-09-24  
+更新日: 2026-09-25  
 対象: Research Generation 1〜4  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01完了、G4-02は科学的判定なしで終了、G4-03完了**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01完了、G4-02は科学的判定なしで終了、G4-03完了、G4-04完了**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
@@ -15,6 +15,7 @@
 | G4-01の正式結果 | [`local-game-tree-geometry-transfer-compatibility-instrument/README.md`](local-game-tree-geometry-transfer-compatibility-instrument/README.md) |
 | G4-02の正式状態 | [`structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md`](structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md) |
 | G4-03の正式結果 | [`local-width-search-ranking-transfer/README.md`](local-width-search-ranking-transfer/README.md) |
+| G4-04の正式結果 | [`geometry-trajectory-dynamics-transfer/README.md`](geometry-trajectory-dynamics-transfer/README.md) |
 | 第三世代の全体像 | [`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md) |
 | 第二世代の全体像 | [`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md) |
 | 今後の研究課題 | [`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md) |
@@ -32,8 +33,8 @@
 | `G4-01` / [`LGTTCI-STUDY1`](local-game-tree-geometry-transfer-compatibility-instrument/) | claim-transfer compatibility instrument | `COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED` |
 | `G4-02` | corridor / tree-graph transfer | `CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED` |
 | `G4-03` / [`LWSRT-STUDY1`](local-width-search-ranking-transfer/) | width / search-ranking transfer | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED` |
-| `G4-04` | geometry-trajectory transfer | `ELIGIBILITY-GATE-SATISFIED-BY-G4-01 / NOT-AUTHORIZED` |
-| `G4-05` | exact microdomain oracle foundation | `CANDIDATE / NOT-AUTHORIZED-NOT-EXECUTED` |
+| `G4-04` / [`GTTD-STUDY1`](geometry-trajectory-dynamics-transfer/) | geometry-trajectory transfer | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN NOT INTEGRATED` |
+| `G4-05` | exact microdomain oracle foundation | `NEXT CORE CANDIDATE / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-06` | geometry / exact consequence bridge | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-07` | multiscale memory / return | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-08` | rule-semantic transition | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
@@ -56,7 +57,6 @@ G3-07でformal confirmationされたroot legal width HIGH stratumとranking-preo
 
 ```text
 Stage 2 canonical run = 35993172710 / attempt 1 / success
-fresh formal seeds = 1536 / exactly once
 selected roots = 192 / 192
 production / independent exact = true
 GENERALIZATION-CONFIRMED = 9
@@ -65,14 +65,29 @@ NON-ESTIMABLE = 2
 COUNTEREXAMPLE-CONFIRMED = 0
 ```
 
-- SC1 DEPTH: 4/4 domainsで`GENERALIZATION-CONFIRMED`
-- SC2 NODE-BUDGET: P1の2 domainsで`GENERALIZATION-CONFIRMED`、P2の2 domainsはMtaji support不足で`NON-ESTIMABLE`
-- SC3 QUIESCENCE: 3/4 domainsで`GENERALIZATION-CONFIRMED`、P2×RF2は`NOT-GENERALIZED`
-- reverse-direction formal counterexampleは0
-
 対象associationは本Studyのfresh domainsへ広く移送されましたが、universal lawではありません。best move correctness、game-theoretic value、AI棋力、人間のdifficulty、causal mechanismの結果でもありません。
 
-詳しくは、[`research-generation-4/README.md`](research-generation-4/README.md)、[`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md)、[`local-width-search-ranking-transfer/README.md`](local-width-search-ranking-transfer/README.md)を参照してください。
+### G4-04
+
+G3-10でformal confirmationされたC1・C2・C3・C5のtrajectory-level directionを、fresh P1/P2 source-policy domainsへprospectiveに移送検証しました。
+
+```text
+Stage 2 canonical run = 36095831961 / attempt 1 / success
+fresh seed block = 40423001..40424024 / 1024
+seed reads = 369
+formal measured trajectories = 64
+production / independent exact = true
+GENERALIZATION-CONFIRMED = 8
+COUNTEREXAMPLE-CONFIRMED = 0
+NOT-GENERALIZED = 0
+NON-ESTIMABLE = 0
+```
+
+C1・C2・C5はP1/P2ともpositive direction、C3はP1/P2ともnegative directionでG3-10と一致し、8/8 formal testsすべて`GENERALIZATION-CONFIRMED`となりました。
+
+ただしformal domainはP1/P2 full trajectoriesです。RF1/RF2はsupport descriptorのみでformal subgroup inferenceは行っていません。whole-Bao universal law、game-theoretic value、best move correctness、AI棋力、人間のdifficultyを意味しません。
+
+詳しくは、[`research-generation-4/README.md`](research-generation-4/README.md)、[`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md)、[`geometry-trajectory-dynamics-transfer/README.md`](geometry-trajectory-dynamics-transfer/README.md)を参照してください。
 
 ## Research Generation 3 — 局所ゲーム木幾何
 

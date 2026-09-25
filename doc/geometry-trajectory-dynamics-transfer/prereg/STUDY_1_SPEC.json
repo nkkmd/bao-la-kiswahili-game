@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "programPosition": "Research Generation 4 / G4-04",
+  "studyId": "GTTD-STUDY1",
+  "titles": {
+    "ja": "Bao局所幾何trajectory dynamics移送研究1 — G3-10 confirmed directionality・persistence・return・first-order path dependenceのfresh source-policy・phase・root-family条件へのprospective移送検証",
+    "en": "Geometry-Trajectory Dynamics Transfer Study 1 — Prospective transfer validation of the G3-10 confirmed directionality, persistence, return, and first-order path-dependence claims across fresh source-policy, phase, and root-family conditions"
+  },
+  "authorizationDecision": "G4-04-AUTHORIZED-FOR-PREREGISTRATION-AND-STAGE0-ONLY",
+  "authorizationReviewPath": "doc/research-program-decisions/2026-09-25-post-g4-03-g4-04-authorization-review.md",
+  "sourceMain": {
+    "repository": "nkkmd/bao-la-kiswahili-game",
+    "headSha": "1274c9cf408f0e044c39751599941a6f75e96a4c",
+    "researchBranch": "research/g4-04-geometry-trajectory-transfer"
+  },
+  "stageStructure": [
+    {
+      "stageId": "GTTD-S0-TECHNICAL-2026-09-25-v1",
+      "evidenceClass": "TECHNICAL-FIXTURE",
+      "scientificOutcomeAuthorized": false,
+      "freshScientificSeedAccess": false,
+      "statusAtFreeze": "AUTHORIZED-NOT-EXECUTED"
+    },
+    {
+      "stageId": "GTTD-S1-DEVELOPMENT-2026-09-25-v1",
+      "evidenceClass": "FRESH-DEVELOPMENT",
+      "scientificOutcomeAuthorized": false,
+      "requiresSeparatePostStage0Authorization": true,
+      "statusAtFreeze": "NOT-AUTHORIZED-NOT-EXECUTED"
+    },
+    {
+      "stageId": "GTTD-S2-FORMAL-2026-09-25-v1",
+      "evidenceClass": "FRESH-FORMAL-HELDOUT",
+      "scientificOutcomeAuthorized": false,
+      "requiresSeparatePostStage1Authorization": true,
+      "statusAtFreeze": "NOT-AUTHORIZED-NOT-EXECUTED"
+    }
+  ],
+  "sourceIdentity": {
+    "engine": {"path": "public/engine.js", "scope": "authoritative Bao transition semantics; exact blob binding required in Stage 0 authorization"},
+    "rawGeometryProduction": {"path": "tools/experiments/lib/lgtgmiv-stage1-production.js", "gitBlobSha": "a4664f01535d6abbf6f83821befbb2fafd55cde6"},
+    "rawGeometryIndependent": {"path": "tools/experiments/lib/lgtgmiv-stage1-independent.js", "gitBlobSha": "0c7239ac7acf146e9aee63dae66194681b8631d6"},
+    "continuousGeometryProduction": {"path": "tools/experiments/lib/crclgr-production.js", "gitBlobSha": "f9d90792d729a42f738e7cd1c3b045bdd758ffa5"},
+    "continuousGeometryIndependent": {"path": "tools/experiments/lib/crclgr-independent.js", "gitBlobSha": "77d3a91b2165019e4b50c195a1bb14147c35e6d2"},
+    "longitudinalProduction": {"path": "tools/experiments/lib/gcld-production.js", "gitBlobSha": "8bd203832387be1957bf75cf310b06e861c86956"},
+    "longitudinalIndependent": {"path": "tools/experiments/lib/gcld-independent.js", "gitBlobSha": "ffb234c0bba523c1e72c17e903a3edb9c2585656"}
+  },
+  "representationContract": {
+    "representationId": "CRCLGR-R1-EXACT-SQUASHED-L1",
+    "relativeDepth": 5,
+    "axes": ["CRCLGR-A1", "CRCLGR-A2", "CRCLGR-A3", "CRCLGR-A4", "CRCLGR-A5", "CRCLGR-A6"],
+    "coordinateArithmetic": "EXACT-REDUCED-RATIONAL",
+    "distance": "EQUAL-WEIGHT-EXACT-L1",
+    "validatedTransformSet": [],
+    "symmetryCanonicalizationAuthorized": false
+  },
+  "upstreamClaimFamily": {
+    "sourceStudy": "G3-10 / GCLD-STUDY1",
+    "positiveTransferTargets": [
+      {"id": "C1", "name": "DIRECTIONALITY-PATH-EFFICIENCY", "upstreamDirection": "ACTUAL-GREATER"},
+      {"id": "C2", "name": "PERSISTENCE-LAG-DISTANCE-GRADIENT", "upstreamDirection": "ACTUAL-GREATER"},
+      {"id": "C3", "name": "RETURN-FRACTION", "upstreamDirection": "ACTUAL-LESS"},
+      {"id": "C5", "name": "FIRST-ORDER-DIRECTIONAL-PATH-DEPENDENCE", "upstreamDirection": "ACTUAL-GREATER"}
+    ],
+    "excludedPositiveTarget": {"id": "C4", "name": "CHRONOLOGY-CONDITIONED-CIRCULATION", "reason": "G3-10 NOT-CONFIRMED"}
+  },
+  "longitudinalContract": {
+    "inferentialUnit": "ONE-INDEPENDENTLY-SEEDED-SOURCE-TRAJECTORY",
+    "checkpointPlies": [16,20,24,28,32,36,40,44,48,52,56,60,64,68,72],
+    "checkpointInterpretation": "state after listed ply",
+    "checkpointCount": 15,
+    "orderedStepCount": 14,
+    "controlCount": 32,
+    "control": "endpoint-preserving order-destroyed permutation; checkpoint 0 and 14 fixed; 13 internal checkpoints ordered by SHA-256(stageId|sourceSeed|permutationIndex|checkpointPly)",
+    "controlReference": "exact median of 32 control values",
+    "trajectoryContrast": "actual endpoint minus control median",
+    "checkpointAsIndependentSample": false
+  },
+  "sourcePolicies": [
+    {
+      "policyId": "LGTTCI-P1-UNIFORM-LEGAL",
+      "selection": "canonical legal moves; floor(u * legalMoveCount)",
+      "compatibilityStatus": "G4-01 GCLD COMPATIBLE"
+    },
+    {
+      "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE",
+      "selection": "evaluate authoritative immediate capture-event seed count for every legal move, retain the minimum-count pool, then choose seeded uniform within pool",
+      "forbiddenSelectionInputs": ["geometry", "search output", "engine evaluation", "game outcome", "historical scientific result"],
+      "compatibilityStatus": "G4-01 GCLD COMPATIBLE"
+    }
+  ],
+  "technicalRootFamilyCandidates": [
+    {
+      "rootFamilyId": "LGTTCI-RF1-MID-ANCHOR",
+      "namuaAnchor": "exact ply 20 / nonterminal / phase=namua",
+      "mtajiAnchor": "first nonterminal phase=mtaji state at ply >=40",
+      "scientificDomainAuthorized": false
+    },
+    {
+      "rootFamilyId": "LGTTCI-RF2-OFFSET-ANCHOR",
+      "namuaAnchor": "exact ply 28 / nonterminal / phase=namua",
+      "mtajiAnchor": "exact ply 52 / nonterminal / phase=mtaji",
+      "scientificDomainAuthorized": false
+    }
+  ],
+  "stage0": {
+    "purpose": "technical validation only; no scientific effect, direction, p-value, generalization or counterexample output",
+    "technicalFixtureSeedBlock": {"start": 44014001, "end": 44014064, "count": 64, "scientificUseAuthorized": false},
+    "mandatoryChecks": [
+      "C1/C2/C3/C5 exact production-independent agreement on synthetic 15-checkpoint fixtures",
+      "32 control construction and exact median agreement",
+      "control construction independence from geometry coordinates and outcomes",
+      "P1 source trajectory generation through ply 72 or fail-closed",
+      "P2 source trajectory generation through ply 72 or fail-closed",
+      "all 15 checkpoint depth-5 preflight agreement on at least two complete technical trajectories per policy when obtainable inside the fixed fixture block",
+      "exact CRCLGR coordinate reconstruction on at least one complete technical trajectory per policy when obtainable",
+      "trajectory-level longitudinal aggregation equality",
+      "RF1/RF2 anchor classification deterministic agreement without using scientific endpoint values",
+      "phase-composition manifest generation without scientific endpoint values",
+      "source terminal / relay-limit / resource-limit fail-closed behavior",
+      "G3-10/G4-01/G3-12 namespace guards",
+      "G4-10 depth-11 guard",
+      "Stage 1 and Stage 2 fresh-seed guards"
+    ],
+    "passRequirement": "all mandatory deterministic checks applicable to generated fixtures pass; any mandatory implementation mismatch => TECHNICAL-INVALID",
+    "formalInferenceAllowed": false
+  },
+  "futureStageReservations": {
+    "stage1SeedBlock": {"start": 40413001, "status": "RESERVED-START-ONLY / END-COUNT-NOT-YET-AUTHORIZED"},
+    "stage2SeedBlock": {"start": 40423001, "status": "RESERVED-START-ONLY / END-COUNT-NOT-YET-AUTHORIZED"},
+    "seedReadAuthorized": false,
+    "formalDomains": "NOT-YET-FROZEN; must be fixed after Stage 0 using technical-only evidence and before any Stage 1 fresh access",
+    "formalTest": "NOT-YET-FROZEN; must preserve upstream claim directions and use an exact prospectively fixed procedure",
+    "multiplicity": "NOT-YET-FROZEN; must be fixed before Stage 1 fresh access",
+    "seedExtensionAuthorized": false
+  },
+  "freshnessFirewall": {
+    "g3_10Stage1Seeds": "32210001..32210256 / excluded",
+    "g3_10Stage2Seeds": "32220001..32220384 / excluded",
+    "g3_10PriorTrajectoryIdentityReuse": false,
+    "g3_10ScientificMeasurementsAsSelectionInput": false,
+    "g3_12ScientificEvidenceReuse": false,
+    "g4_01InterruptedGcldSeeds": "40113001..40113384 / quarantined",
+    "g4_01Stage1rGcldPrimary": "40213001..40213384 / excluded",
+    "g4_01Stage1rGcldReserve": "41213001..41213384 / excluded",
+    "stage2MustExcludeStage1": ["source seed", "full trajectory SHA-256", "opening-prefix SHA-256", "all checkpoint RAW-root SHA-256 values"],
+    "identityOnlyMaterializationRequiredBeforeStage1": true
+  },
+  "resourceCeilings": {
+    "perDepth5Root": {
+      "maxDistinctRawStates": 100000,
+      "maxUniqueTransitions": 750000,
+      "maxParentExpansions": 100000,
+      "maxLegalMoveEvaluations": 750000,
+      "maxTreeNodeOccurrences": 1000000
+    },
+    "stage0": {
+      "elapsedMs": 1800000,
+      "peakRssBytes": 2147483648,
+      "resultArtifactBytes": 67108864
+    }
+  },
+  "protectedEvidence": {
+    "g3_11Depth10Rerun": false,
+    "g4_10Depth11Access": false,
+    "unvalidatedSymmetryCanonicalization": false,
+    "publicAiChange": false
+  },
+  "noRescueAfterFreshAccess": [
+    "seed extension",
+    "trajectory replacement",
+    "checkpoint change",
+    "representation change",
+    "axis/weight/scaling change",
+    "endpoint substitution",
+    "control replacement",
+    "direction relearning",
+    "support-threshold relaxation",
+    "multiplicity relaxation",
+    "resource-ceiling relaxation",
+    "favorable subgroup rescue",
+    "same-evidence repair-and-rerun"
+  ]
+}

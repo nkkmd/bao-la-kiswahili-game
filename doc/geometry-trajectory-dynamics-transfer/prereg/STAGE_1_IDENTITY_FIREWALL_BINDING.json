@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GTTD-STUDY1",
+  "sourceStageId": "GTTD-S1-DEVELOPMENT-2026-09-25-v1",
+  "targetStageId": "GTTD-S2-FORMAL-2026-09-25-v1",
+  "firewallClass": "STAGE1-CANONICAL-ARTIFACT-IDENTITY-ONLY-BINDING",
+  "status": "FROZEN-PRE-STAGE2-FRESH",
+  "allowedStage2Use": "IDENTITY-EXCLUSION-ONLY",
+  "canonicalStage1Evidence": {
+    "workflowRunId": 36089520136,
+    "artifactId": 10846181741,
+    "artifactName": "gttd-stage1-result",
+    "artifactSha256": "fa14e0c56d7d7f7088684eb715b1bf26b307cb22459741dfe4a7629cf40b3183",
+    "stage1ResultMember": "STAGE_1_RESULT.json",
+    "stage1ResultSha256": "58ffb52f7924ce47ac4c5b1c8f321c5bd28e3b6d548a788eefa1179ae7ab29f0",
+    "identityManifestMember": "STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json",
+    "identityManifestSha256": "0935cd3c6f35ca8dfe68e268337ba7f4bb55e615d726e8919594d7f52eebcd3e",
+    "identityRows": 32
+  },
+  "expectedIdentitySetDigests": {
+    "sourceSeed": {"count":32,"linesSha256":"b65919c4a95c150d95a03325f459cd75b9151ebd274fcca3a8927a169b8fb6bc"},
+    "sourceTrajectorySha256": {"count":32,"linesSha256":"de14868d3406fb1b422fea3e01068a0f9f8c3f27ca1a6bcba1962998d320cb0b"},
+    "openingPrefixSha256": {"count":32,"linesSha256":"754291b610a13c55644034807701581209e1797bb8224f1e5ca677bf29daa78d"},
+    "rootRawSha256": {"count":480,"linesSha256":"88a43cced6d7dd1ec944400fdaf5c6b9163af14acc1dc678f2e6836234eeea32"}
+  },
+  "stage1ScientificReplayAuthorized": false,
+  "stage1ScientificOutcomeReuseAuthorized": false,
+  "stage2FreshSeedAccessDuringBinding": false,
+  "stage2FormalInferenceDuringBinding": false,
+  "mainIntegrationAuthorized": false,
+  "publicAiChangeAuthorized": false
+}

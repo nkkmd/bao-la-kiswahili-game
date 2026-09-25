@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GTTD-STUDY1",
+  "stageId": "GTTD-S1-DEVELOPMENT-2026-09-25-v1",
+  "stageDisposition": "STAGE1-PASS",
+  "canonicalExecution": {
+    "workflowRunId": 36089520136,
+    "workflowRunAttempt": 1,
+    "triggerCommitSha": "038022a431475039f1ae18481c4b5092e57e71b7",
+    "durableLeaseCommitSha": "4c522585e73bda8b6512b70b2035f4852ed66f61",
+    "artifactId": 10846181741,
+    "artifactName": "gttd-stage1-result",
+    "artifactSha256": "fa14e0c56d7d7f7088684eb715b1bf26b307cb22459741dfe4a7629cf40b3183",
+    "artifactRetentionExpiry": "2026-12-24T03:14:01Z",
+    "fullResultSha256": "58ffb52f7924ce47ac4c5b1c8f321c5bd28e3b6d548a788eefa1179ae7ab29f0",
+    "identityManifestSha256": "0935cd3c6f35ca8dfe68e268337ba7f4bb55e615d726e8919594d7f52eebcd3e"
+  },
+  "executionContract": {
+    "effectiveAuthorization": "GTTD-STUDY1-STAGE1-AUTHORIZED-GITHUB-ACTIONS-ONCE",
+    "scientificExecutionsAuthorized": 1,
+    "scientificExecutionsObserved": 1,
+    "freshSeedBlock": {"start":40413001,"end":40413512,"count":512},
+    "scientificSeedsRead": 134,
+    "lastSeedRead": 40413203,
+    "rerunAuthorized": false,
+    "seedExtensionAuthorized": false
+  },
+  "resultCore": {
+    "candidatePopulationComplete": true,
+    "P1Candidates": 16,
+    "P2Candidates": 16,
+    "P1FullyEligible": 15,
+    "P2FullyEligible": 16,
+    "P1Measured": 8,
+    "P2Measured": 8,
+    "allFourEndpointDefinedCountsPerPolicy": 8,
+    "productionIndependentExact": true,
+    "deterministicCoreSha256": "edf149e2f01704332bfcdd79d5e40f750e7c57fbc513006d3425ae3a2be5b584",
+    "identityRowCount": 32,
+    "formalInferencePerformed": false,
+    "pValuesComputed": false,
+    "effectDirectionsRetained": false,
+    "contrastSignsRetained": false,
+    "scientificEndpointValuesRetained": false
+  },
+  "protectedBoundary": {
+    "stage2SeedAccess": false,
+    "g3_11Depth10Rerun": false,
+    "g4_10Depth11Access": false,
+    "publicAiChange": false,
+    "mainIntegration": false
+  },
+  "stage2IdentityFirewallSource": {
+    "source": "STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json inside the canonical artifact",
+    "identityRows": 32,
+    "stage2MustExclude": ["sourceSeed","sourceTrajectorySha256","openingPrefixSha256","checkpointRoots.rootRawSha256"],
+    "stage1ScientificReplayAuthorized": false,
+    "stage1ScientificOutcomeReuseAuthorized": false
+  }
+}

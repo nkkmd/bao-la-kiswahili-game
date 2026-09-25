@@ -1,0 +1,17 @@
+name: GTTD G4-04 Stage 1 development once — CLOSED
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  closed-no-rerun:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Refuse same-evidence rerun
+        run: |
+          echo "GTTD-STUDY1 Stage 1 completed canonically in run 36089520136."
+          echo "Same-evidence rerun, seed extension, and post-access repair-and-rerun are not authorized."
+          exit 1

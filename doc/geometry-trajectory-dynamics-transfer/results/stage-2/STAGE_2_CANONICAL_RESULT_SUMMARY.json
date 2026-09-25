@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GTTD-STUDY1",
+  "stageId": "GTTD-S2-FORMAL-2026-09-25-v1",
+  "stageDisposition": "FORMAL-COMPLETE",
+  "canonicalRun": 36095831961,
+  "artifactId": 10849029913,
+  "artifactSha256": "fe165e6c1735cb07e71ed49e2a1c4d3f7446e796ab63936d90c7e982edfc4bd7",
+  "stage2ResultSha256": "85b5cf71c63dc9baeaf78a2dab4e61f03826b6f593552d916c5f48dcacd31d76",
+  "seedReads": 369,
+  "lastSeedRead": 40423593,
+  "candidatePopulationComplete": true,
+  "perPolicy": {
+    "LGTTCI-P1-UNIFORM-LEGAL": {
+      "candidateCount": 48,
+      "fullyEligibleCount": 47,
+      "formalMeasuredCount": 32
+    },
+    "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE": {
+      "candidateCount": 48,
+      "fullyEligibleCount": 46,
+      "formalMeasuredCount": 32
+    }
+  },
+  "formalTest": "EXACT-TWO-SIDED-BINOMIAL-SIGN-TEST",
+  "multiplicity": "HOLM-BONFERRONI-FIXED-8",
+  "familyAlpha": "1/20",
+  "decisionCounts": {
+    "GENERALIZATION-CONFIRMED": 8,
+    "COUNTEREXAMPLE-CONFIRMED": 0,
+    "NOT-GENERALIZED": 0,
+    "NON-ESTIMABLE": 0
+  },
+  "formalRows": [
+    {
+      "testId": "P1-C1",
+      "endpoint": "C1-DIRECTIONALITY-PATH-EFFICIENCY",
+      "positive": 31,
+      "negative": 1,
+      "ties": 0,
+      "nonzero": 32,
+      "medianDirection": "POSITIVE",
+      "rawPValue": {"numerator": "33", "denominator": "2147483648"},
+      "holmAdjustedPValue": {"numerator": "33", "denominator": "268435456"},
+      "decision": "GENERALIZATION-CONFIRMED"
+    },
+    {
+      "testId": "P1-C2",
+      "endpoint": "C2-PERSISTENCE-LAG-DISTANCE-GRADIENT",
+      "positive": 30,
+      "negative": 2,
+      "ties": 0,
+      "nonzero": 32,
+      "medianDirection": "POSITIVE",
+      "rawPValue": {"numerator": "529", "denominator": "2147483648"},
+      "holmAdjustedPValue": {"numerator": "2645", "denominator": "2147483648"},
+      "decision": "GENERALIZATION-CONFIRMED"
+    },
+    {
+      "testId": "P1-C3",
+      "endpoint": "C3-RETURN-FRACTION",
+      "positive": 3,
+      "negative": 24,
+      "ties": 5,
+      "nonzero": 27,
+      "medianDirection": "NEGATIVE",
+      "rawPValue": {"numerator": "413", "denominator": "8388608"},
+      "holmAdjustedPValue": {"numerator": "1239", "denominator": "8388608"},
+      "decision": "GENERALIZATION-CONFIRMED"
+    },
+    {
+      "testId": "P1-C5",
+      "endpoint": "C5-FIRST-ORDER-DIRECTIONAL-PATH-DEPENDENCE",
+      "positive": 25,
+      "negative": 7,
+      "ties": 0,
+      "nonzero": 32,
+      "medianDirection": "POSITIVE",
+      "rawPValue": {"numerator": "4514873", "denominator": "2147483648"},
+      "holmAdjustedPValue": {"numerator": "4514873", "denominator": "2147483648"},
+      "decision": "GENERALIZATION-CONFIRMED"
+    },
+    {
+      "testId": "P2-C1",
+      "endpoint": "C1-DIRECTIONALITY-PATH-EFFICIENCY",
+      "positive": 31,
+      "negative": 1,
+      "ties": 0,
+      "nonzero": 32,
+      "medianDirection": "POSITIVE",
+      "rawPValue": {"numerator": "33", "denominator": "2147483648"},
+      "holmAdjustedPValue": {"numerator": "33", "denominator": "268435456"},
+      "decision": "GENERALIZATION-CONFIRMED"
+    },
+    {
+      "testId": "P2-C2",
+      "endpoint": "C2-PERSISTENCE-LAG-DISTANCE-GRADIENT",
+      "positive": 31,
+      "negative": 1,
+      "ties": 0,
+      "nonzero": 32,
+      "medianDirection": "POSITIVE",
+      "rawPValue": {"numerator": "33", "denominator": "2147483648"},
+      "holmAdjustedPValue": {"numerator": "33", "denominator": "268435456"},
+      "decision": "GENERALIZATION-CONFIRMED"
+    },
+    {
+      "testId": "P2-C3",
+      "endpoint": "C3-RETURN-FRACTION",
+      "positive": 2,
+      "negative": 25,
+      "ties": 5,
+      "nonzero": 27,
+      "medianDirection": "NEGATIVE",
+      "rawPValue": {"numerator": "379", "denominator": "67108864"},
+      "holmAdjustedPValue": {"numerator": "379", "denominator": "16777216"},
+      "decision": "GENERALIZATION-CONFIRMED"
+    },
+    {
+      "testId": "P2-C5",
+      "endpoint": "C5-FIRST-ORDER-DIRECTIONAL-PATH-DEPENDENCE",
+      "positive": 26,
+      "negative": 6,
+      "ties": 0,
+      "nonzero": 32,
+      "medianDirection": "POSITIVE",
+      "rawPValue": {"numerator": "1149017", "denominator": "2147483648"},
+      "holmAdjustedPValue": {"numerator": "1149017", "denominator": "1073741824"},
+      "decision": "GENERALIZATION-CONFIRMED"
+    }
+  ],
+  "interpretationBoundary": {
+    "rootFamilyFormalSubgroupInference": false,
+    "wholeBaoUniversalGeneralization": false,
+    "gameTheoreticValueClaim": false,
+    "bestMoveCorrectnessClaim": false,
+    "aiStrengthClaim": false,
+    "humanDifficultyClaim": false,
+    "publicAiChangeAuthorized": false
+  }
+}
