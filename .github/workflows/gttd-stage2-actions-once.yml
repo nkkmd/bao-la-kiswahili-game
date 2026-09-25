@@ -1,0 +1,93 @@
+name: GTTD G4-04 Stage 2 formal once
+
+on:
+  push:
+    branches:
+      - "research/g4-04-geometry-trajectory-transfer"
+    paths:
+      - "doc/geometry-trajectory-dynamics-transfer/authorizations/STAGE_2_ACTIONS_EXECUTION_TRIGGER.json"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  stage2-formal-once:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - name: Checkout frozen execution state
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Verify one-shot control plane and frozen blobs
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs=require('node:fs'),crypto=require('node:crypto'),path=require('node:path');
+          const base='doc/geometry-trajectory-dynamics-transfer';
+          const t=JSON.parse(fs.readFileSync(`${base}/authorizations/STAGE_2_ACTIONS_EXECUTION_TRIGGER.json`,'utf8'));
+          const l=JSON.parse(fs.readFileSync(`${base}/executions/STAGE_2_ACTIONS_EXECUTION_LEASE.json`,'utf8'));
+          const a=JSON.parse(fs.readFileSync(`${base}/authorizations/STAGE_2_FINAL_AUTHORIZATION.json`,'utf8'));
+          const b=JSON.parse(fs.readFileSync(`${base}/authorizations/STAGE_2_PREEXECUTION_BINDING.json`,'utf8'));
+          function blob(rel){const x=fs.readFileSync(path.join(process.cwd(),rel));return crypto.createHash('sha1').update(Buffer.from(`blob ${x.length}\0`)).update(x).digest('hex')}
+          function need(x,m){if(!x)throw new Error(m)}
+          need(t.action==='EXECUTE-AUTHORIZED-STAGE2-ONCE','trigger action mismatch');
+          need(t.effectiveAuthorization==='GTTD-STUDY1-STAGE2-AUTHORIZED-GITHUB-ACTIONS-ONCE','trigger authorization mismatch');
+          need(t.acknowledgeNoRerun===true&&t.acknowledgeNoSeedExtension===true,'no-rescue acknowledgement missing');
+          need(a.decision===t.effectiveAuthorization&&a.authorizedScientificExecutions===1,'final authorization mismatch');
+          need(a.rerunAfterFreshAccessAuthorized===false&&a.seedExtensionAuthorized===false,'final no-rescue boundary mismatch');
+          need(l.leaseClass==='DURABLE-GITHUB-ACTIONS-SINGLE-EXECUTION-LEASE'&&l.executionSlots===1,'lease mismatch');
+          need(l.freshScientificSeedAccessBeforeLease===0&&l.scientificExecutionStartedBeforeLease===false,'lease not pre-fresh');
+          for(const x of [t.seedBlock,l.freshSeedBlock,a.authorizedSeedBlock,b.freshSeedBlock]) need(x.start===40423001&&x.end===40424024&&x.count===1024,'seed block mismatch');
+          need(blob(`${base}/authorizations/STAGE_2_FINAL_AUTHORIZATION.json`)===t.finalAuthorizationGitBlobSha,'final auth blob mismatch');
+          need(blob(`${base}/executions/STAGE_2_ACTIONS_EXECUTION_LEASE.json`)===t.executionLeaseGitBlobSha,'lease blob mismatch');
+          need(blob(`${base}/authorizations/STAGE_2_PREEXECUTION_BINDING.json`)===a.preexecutionBinding.blobSha,'preexecution binding blob mismatch');
+          need(blob('.github/workflows/gttd-stage2-actions-once.yml')===a.executionWorkflow.blobSha,'execution workflow blob mismatch');
+          for(const [rel,expected] of Object.entries(b.gitBlobShaByPath||{})) need(blob(rel)===expected,`bound blob mismatch ${rel}`);
+          NODE
+
+      - name: Download immutable Stage 1 and G4-01 artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/gttd-stage2/g4
+          gh api repos/${GITHUB_REPOSITORY}/actions/artifacts/10846181741/zip > /tmp/gttd-stage2/stage1.zip
+          echo "fa14e0c56d7d7f7088684eb715b1bf26b307cb22459741dfe4a7629cf40b3183  /tmp/gttd-stage2/stage1.zip" | sha256sum -c -
+          gh api repos/${GITHUB_REPOSITORY}/actions/artifacts/10517090411/zip > /tmp/gttd-stage2/g4.zip
+          echo "3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b  /tmp/gttd-stage2/g4.zip" | sha256sum -c -
+          unzip -q /tmp/gttd-stage2/g4.zip -d /tmp/gttd-stage2/g4
+          test -d /tmp/gttd-stage2/g4/source/GCLD
+
+      - name: Re-run seed-free preflight immediately before first fresh read
+        run: |
+          set -euo pipefail
+          node tools/experiments/run-gttd-stage2-preflight.js \
+            --stage1-artifact-zip /tmp/gttd-stage2/stage1.zip \
+            --g4-source-dir /tmp/gttd-stage2/g4/source/GCLD
+
+      - name: Execute formal Stage 2 exactly once
+        env:
+          GTTD_STAGE2_EXECUTION_TRIGGER_OK: "1"
+          GTTD_STAGE2_EXECUTION_LEASE_OK: "1"
+          GTTD_STAGE1_ARTIFACT_ZIP: /tmp/gttd-stage2/stage1.zip
+          GTTD_G4_01_GCLD_SOURCE_DIR: /tmp/gttd-stage2/g4/source/GCLD
+        run: |
+          set -euo pipefail
+          node tools/experiments/run-gttd-stage2-formal.js \
+            --execute-authorized-once \
+            --output artifacts/gttd-stage2
+
+      - name: Upload Stage 2 formal artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gttd-stage2-formal
+          path: artifacts/gttd-stage2
+          if-no-files-found: error
+          retention-days: 90
