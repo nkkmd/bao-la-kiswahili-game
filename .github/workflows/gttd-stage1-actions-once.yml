@@ -41,12 +41,7 @@ jobs:
           need(b.status==='FROZEN-READY-FOR-ONE-SHOT-TRIGGER'&&b.freshScientificSeedAccessAtBinding===0,'execution binding mismatch');
           need(a.authorizedScientificExecutions===1&&a.rerunAuthorized===false,'authorization execution count mismatch');
           for(const x of [t.seedBlock,l.freshSeedBlock,b.freshSeedBlock,a.freshSeedBlock]) need(x.start===40413001&&x.end===40413512&&x.count===512,'seed block mismatch');
-          need(t.executionBindingGitBlobSha===process.env.EXPECT_BINDING_BLOB,'trigger binding blob mismatch');
-          need(t.executionLeaseGitBlobSha===process.env.EXPECT_LEASE_BLOB,'trigger lease blob mismatch');
           NODE
-        env:
-          EXPECT_BINDING_BLOB: ${{ vars.GTTD_UNUSED || 'BINDING_BLOB_FROM_TRIGGER' }}
-          EXPECT_LEASE_BLOB: ${{ vars.GTTD_UNUSED || 'LEASE_BLOB_FROM_TRIGGER' }}
 
       - name: Verify trigger-bound blob identities
         run: |
