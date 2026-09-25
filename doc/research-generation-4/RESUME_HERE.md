@@ -1,15 +1,15 @@
 # Research Generation 4 — 再開位置
 
 更新日: 2026-09-25  
-状態: **`G4-04 COMPLETE / NEXT CORE CANDIDATE = G4-05 AUTHORIZATION REVIEW`**
+状態: **`G4-04 COMPLETE / MAIN INTEGRATED / NEXT CORE CANDIDATE = G4-05 AUTHORIZATION REVIEW`**
 
 ## 再開時の読む順序
 
-1. remote `main` HEADとG4-04 research branch HEADを確認する。
+1. remote `main` HEADを確認する。
 2. [`CURRENT_STATUS.md`](CURRENT_STATUS.md)でRG4全体の状態を確認する。
-3. [`../geometry-trajectory-dynamics-transfer/CURRENT_STATUS.md`](../geometry-trajectory-dynamics-transfer/CURRENT_STATUS.md)でG4-04 closureを確認する。
+3. [`../geometry-trajectory-dynamics-transfer/CURRENT_STATUS.md`](../geometry-trajectory-dynamics-transfer/CURRENT_STATUS.md)でG4-04 closureとmain integrationを確認する。
 4. [`../geometry-trajectory-dynamics-transfer/results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json`](../geometry-trajectory-dynamics-transfer/results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json)でformal resultを確認する。
-5. [`checkpoints/2026-09-25-g4-04-complete.md`](checkpoints/2026-09-25-g4-04-complete.md)でProgram-level checkpointを確認する。
+5. [`checkpoints/2026-09-25-g4-04-main-integration.md`](checkpoints/2026-09-25-g4-04-main-integration.md)でProgram-level integration checkpointを確認する。
 6. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)でG4-05のfrozen program roleを確認する。
 
 ## 現在地
@@ -18,7 +18,7 @@
 G4-01 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED
 G4-02 = CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED
 G4-03 = COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED
-G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN NOT INTEGRATED
+G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED
 G4-05 = NEXT CORE CANDIDATE / NOT AUTHORIZED
 G4-06..G4-09 = DEPENDENCY-GATED / NOT AUTHORIZED
 G4-10 = PROTECTED / NOT AUTHORIZED / NOT ACCESSED
@@ -77,11 +77,18 @@ G4-05へ進む場合は、新しいAgenda/Studyとして少なくとも次をfre
 
 G4-04の結果はG4-05を自動authorizationしない。
 
-## Main integration boundary
+## Main integration
 
-G4-04はresearch branch上でclosure済みだが、`main`には未統合である。
+G4-04はPR #165で`main`へ統合済みである。
 
-ユーザーの明示指示があるまでG4-04を`main`へ統合しない。G4-05を開始する場合も、まずG4-04のmain integration状態とprogram文書整合性を確認する。
+```text
+PR = #165
+merge commit = 5d4a0b3d685b23150dfda08540e959f3f3c1b82b
+formal result = unchanged
+public AI change = false
+```
+
+以後、G4-04をrepair/reopenせず、RG4を継続する場合はG4-05の個別authorization reviewから開始する。
 
 ## 禁止事項
 

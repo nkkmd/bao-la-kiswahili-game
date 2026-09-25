@@ -21,7 +21,7 @@ Program: `Bao Fourth-Generation Research Program`
 | A | `G4-01` | claim-transfer compatibility instrument | `COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED` |
 | A | `G4-02` | G3-04由来corridor / tree-graph transfer | `CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED` |
 | A | `G4-03` | G3-07由来width / search-ranking transfer | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED` |
-| A | `G4-04` | G3-10由来geometry-trajectory transfer | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN NOT INTEGRATED` |
+| A | `G4-04` | G3-10由来geometry-trajectory transfer | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
 | B | `G4-05` | exact microdomain oracle foundation | `NEXT CORE CANDIDATE / NOT AUTHORIZED` |
 | B | `G4-06` | geometry / exact consequence bridge | `DEPENDENCY-GATED / NOT AUTHORIZED` |
 | C | `G4-07..G4-09` | memory、rule-semantic transition、search reliability | `NOT AUTHORIZED` |
@@ -70,6 +70,7 @@ C1・C2・C5はpositive direction、C3はnegative directionで、P1/P2ともG3-1
 - [`../geometry-trajectory-dynamics-transfer/README.md`](../geometry-trajectory-dynamics-transfer/README.md)
 - [`../geometry-trajectory-dynamics-transfer/results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json`](../geometry-trajectory-dynamics-transfer/results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json)
 - [`checkpoints/2026-09-25-g4-04-complete.md`](checkpoints/2026-09-25-g4-04-complete.md)
+- [`checkpoints/2026-09-25-g4-04-main-integration.md`](checkpoints/2026-09-25-g4-04-main-integration.md)
 
 ## 最初に読む文書
 
@@ -77,7 +78,7 @@ C1・C2・C5はpositive direction、C3はnegative directionで、P1/P2ともG3-1
 2. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — frozen prospective program contract
 3. [`RESUME_HERE.md`](RESUME_HERE.md) — 安全な再開位置
 4. [`../geometry-trajectory-dynamics-transfer/README.md`](../geometry-trajectory-dynamics-transfer/README.md) — G4-04の正式入口
-5. [`checkpoints/2026-09-25-g4-04-complete.md`](checkpoints/2026-09-25-g4-04-complete.md) — G4-04 closure checkpoint
+5. [`checkpoints/2026-09-25-g4-04-main-integration.md`](checkpoints/2026-09-25-g4-04-main-integration.md) — G4-04 main integration checkpoint
 
 ## 次に許可される作業
 
@@ -85,7 +86,7 @@ G4-04を追加実行しない。Research Generation 4を継続する場合、次
 
 G4-05はprogram plan上の候補であり、**自動authorizationではない**。新しいStudyとしてauthorization reviewから開始する。
 
-G4-04の`main`統合はユーザーの明示指示まで行わない。
+G4-04はPR #165で`main`統合済みである。
 
 ## 解釈上の境界
 

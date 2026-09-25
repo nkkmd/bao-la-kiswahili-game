@@ -3,7 +3,7 @@
 更新日: 2026-09-25  
 Program: `Research Generation 4 / G4-04`  
 Study: `GTTD-STUDY1`  
-状態: **`COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED`**
+状態: **`COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED`**
 
 ## 目的
 
@@ -93,7 +93,7 @@ P1/P2それぞれでC1・C2・C3・C5がすべて`GENERALIZATION-CONFIRMED`と�
 - post-access repair-and-rerun = prohibited
 - G3-11 depth-10 rerun = false
 - G4-10 depth-11 access = false
-- main integration = not authorized
+- main integration = complete / PR #165
 
 ## 正本
 
@@ -103,6 +103,7 @@ P1/P2それぞれでC1・C2・C3・C5がすべて`GENERALIZATION-CONFIRMED`と�
 - [`authorizations/STAGE_2_FINAL_AUTHORIZATION.json`](authorizations/STAGE_2_FINAL_AUTHORIZATION.json)
 - [`results/stage-2/STAGE_2_ARTIFACT_RECEIPT.json`](results/stage-2/STAGE_2_ARTIFACT_RECEIPT.json)
 - [`results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json`](results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json)
+- [`../research-generation-4/checkpoints/2026-09-25-g4-04-main-integration.md`](../research-generation-4/checkpoints/2026-09-25-g4-04-main-integration.md)
 - [`../research-program-decisions/2026-09-25-g4-04-geometry-trajectory-dynamics-transfer-study1-closure.md`](../research-program-decisions/2026-09-25-g4-04-geometry-trajectory-dynamics-transfer-study1-closure.md)
 
 Research Generation 4を継続する場合、次のcore candidateは`G4-05`。開始には独立authorization reviewを必要とする。
