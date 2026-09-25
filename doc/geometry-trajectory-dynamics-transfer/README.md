@@ -3,11 +3,11 @@
 更新日: 2026-09-25  
 Program: `Research Generation 4 / G4-04`  
 Study: `GTTD-STUDY1`  
-状態: **`PREREGISTERED / STAGE0 AUTHORIZED / NOT EXECUTED`**
+状態: **`COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED`**
 
 ## 目的
 
-G3-10 `GCLD-STUDY1`でformal confirmationされた次の4 trajectory-level claimについて、freshなsource-policy・phase・root-family条件へ移送できる範囲をprospectiveに検証する。
+G3-10 `GCLD-STUDY1`でformal confirmationされた4 trajectory-level claimについて、fresh source-policy domainへprospectiveに移送できるかを検証した。
 
 ```text
 C1 directionality / path efficiency = ACTUAL-GREATER
@@ -16,27 +16,7 @@ C3 return fraction = ACTUAL-LESS
 C5 first-order directional path dependence = ACTUAL-GREATER
 ```
 
-G3-10 C4 circulationは`NOT-CONFIRMED`であり、positive transfer targetに含めない。
-
-## 現在の認可範囲
-
-`G4-04-AUTHORIZED-FOR-PREREGISTRATION-AND-STAGE0-ONLY`
-
-許可済み:
-
-- Study identity / title freeze
-- preregistration
-- technical-only Stage 0
-- Stage 1 / Stage 2 seed namespaceの予約
-- identity firewall contractの固定
-
-未許可:
-
-- Stage 1 fresh seed access
-- Stage 2 fresh seed access
-- scientific effect / p-value / generalization / counterexample生成
-- main統合
-- public AI変更
+G3-10 C4 circulation/hysteresis-like claimは`NOT-CONFIRMED`であり、positive transfer targetには含めていない。
 
 ## representation
 
@@ -48,47 +28,81 @@ distance = equal-weight exact L1
 validated transform set = []
 ```
 
-representationを変更する場合はG4-04内部の救済変更ではなく、別の新規representation prerequisiteを必要とする。
+G4-04中にrepresentation変更やsymmetry canonicalizationを導入していない。
 
-## Stage 0
+## Stage 0 / Stage 1
 
-Stage ID:
+Stage 0 technical validationで15 checkpoints、32 endpoint-preserving controls、C1/C2/C3/C5 production/independent exactness、P1/P2 source generation、resource fail-closedを確認した。
 
-`GTTD-S0-TECHNICAL-2026-09-25-v1`
-
-technical fixture namespace:
-
-`44014001..44014064`
-
-scientific useは禁止する。
-
-Stage 0では、G3-10と同じ15 checkpoint / 32 endpoint-preserving controls / C1・C2・C3・C5 exact endpoint semanticsを維持したまま、G4-01でcompatibleとなったP1/P2 source policyと、G4-01 root-family anchor候補のtechnical compatibilityを検証する。
-
-Stage 0はscientific effectを生成しない。
-
-## fresh namespace reservation
+Stage 1 developmentはGitHub Actions exactly onceで実施し、P1=15、P2=16 fully eligible trajectoryを確保、各policy first 8をdevelopment measurementとした。endpoint値、contrast符号、effect direction、p値は保存せず、formal inferenceも行っていない。
 
 ```text
-Stage 1 candidate start = 40413001 / RESERVED ONLY / NOT READ
-Stage 2 candidate start = 40423001 / RESERVED ONLY / NOT READ
+Stage 1 canonical run = 36089520136 / attempt 1 / success
+artifact ID = 10846181741
+stage disposition = STAGE1-PASS
 ```
 
-end/count/formal domain/test/multiplicityはStage 0後のfresh-free reviewで固定する。Stage 1 access前に必ず別authorizationを必要とする。
+## Stage 2 formal
 
-## 保護境界
+Stage 2はfresh access前にscientific contract、identity firewall、24-file preexecution binding、exact sign-test / fixed-8 Holm、GitHub Actions exactly-once authorizationを固定した。
 
-- G3-10 Stage 1/2 seed・trajectoryを再利用しない
-- G3-12 scientific evidenceを再利用しない
-- G4-01 GCLD compatibility seed namespacesを除外する
-- G3-11 depth-10をrerunしない
-- G4-10 depth-11へアクセスしない
-- symmetry/canonicalizationを導入しない
-- public AIへ自動反映しない
-- fresh access後のseed extension / trajectory replacement / checkpoint変更 / endpoint変更 / rescue rerunを行わない
+```text
+Stage 2 canonical run = 36095831961 / attempt 1 / success
+trigger commit = 97d8b374d6bfe1b573b915cd52974db6f6115423
+durable lease commit = fcd1f68f8c65b2f6c3359bd8b37e1c1b12261161
+artifact ID = 10849029913
+artifact SHA-256 = fe165e6c1735cb07e71ed49e2a1c4d3f7446e796ab63936d90c7e982edfc4bd7
+STAGE_2_RESULT.json SHA-256 = 85b5cf71c63dc9baeaf78a2dab4e61f03826b6f593552d916c5f48dcacd31d76
+seed block = 40423001..40424024 / 1024
+seed reads = 369
+last seed read = 40423593
+formal measured trajectories = 64
+production / independent exact = true
+stage disposition = FORMAL-COMPLETE
+```
+
+## Formal result
+
+```text
+GENERALIZATION-CONFIRMED = 8
+COUNTEREXAMPLE-CONFIRMED = 0
+NOT-GENERALIZED = 0
+NON-ESTIMABLE = 0
+```
+
+P1/P2それぞれでC1・C2・C3・C5がすべて`GENERALIZATION-CONFIRMED`となった。C1・C2・C5はpositive direction、C3はnegative directionでG3-10と一致した。
+
+したがって、G3-10の4 confirmed directionは、本Studyのfresh P1/P2 source-policy domainsへ8/8 formal testsで同方向に移送された。
+
+## 解釈上の境界
+
+この結果はformal domainをP1/P2 full trajectoriesへ限定する。
+
+- RF1/RF2はsupport descriptorのみで、root-family別formal subgroup inferenceは行っていない。
+- 任意source policyやwhole-Bao state spaceへのuniversal generalizationではない。
+- C4のpositive transferを示さない。
+- game-theoretic value、best move correctness、AI strength、win rate、人間のdifficultyを検証していない。
+- public AI変更を認可しない。
+
+## one-shot / no-rescue boundary
+
+- Stage 1 scientific execution = exactly once
+- Stage 2 scientific execution = exactly once
+- same-evidence rerun = prohibited
+- seed extension = prohibited
+- post-access repair-and-rerun = prohibited
+- G3-11 depth-10 rerun = false
+- G4-10 depth-11 access = false
+- main integration = not authorized
 
 ## 正本
 
-- [`prereg/STUDY_1_SPEC.json`](prereg/STUDY_1_SPEC.json)
-- [`authorizations/STAGE_0_AUTHORIZATION.json`](authorizations/STAGE_0_AUTHORIZATION.json)
 - [`CURRENT_STATUS.md`](CURRENT_STATUS.md)
-- [`../research-program-decisions/2026-09-25-post-g4-03-g4-04-authorization-review.md`](../research-program-decisions/2026-09-25-post-g4-03-g4-04-authorization-review.md)
+- [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md)
+- [`prereg/STAGE_2_FORMAL_SPEC.json`](prereg/STAGE_2_FORMAL_SPEC.json)
+- [`authorizations/STAGE_2_FINAL_AUTHORIZATION.json`](authorizations/STAGE_2_FINAL_AUTHORIZATION.json)
+- [`results/stage-2/STAGE_2_ARTIFACT_RECEIPT.json`](results/stage-2/STAGE_2_ARTIFACT_RECEIPT.json)
+- [`results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json`](results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json)
+- [`../research-program-decisions/2026-09-25-g4-04-geometry-trajectory-dynamics-transfer-study1-closure.md`](../research-program-decisions/2026-09-25-g4-04-geometry-trajectory-dynamics-transfer-study1-closure.md)
+
+Research Generation 4を継続する場合、次のcore candidateは`G4-05`。開始には独立authorization reviewを必要とする。
