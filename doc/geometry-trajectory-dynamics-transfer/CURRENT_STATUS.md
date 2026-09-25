@@ -3,19 +3,19 @@
 更新日: 2026-09-25  
 Agenda: `Research Generation 4 / G4-04`  
 Study: `GTTD-STUDY1`  
-状態: **`COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED`**
+状態: **`COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED`**
 
 ## 現在地
 
 ```text
-reviewed main HEAD = 1274c9cf408f0e044c39751599941a6f75e96a4c
+research base main HEAD = 1274c9cf408f0e044c39751599941a6f75e96a4c
 research branch = research/g4-04-geometry-trajectory-transfer
 Stage 0 = STAGE0-PASS
 Stage 1 = STAGE1-PASS / exactly once
 Stage 2 = FORMAL-COMPLETE / exactly once
 formal scientific outcome = 8 / 8 GENERALIZATION-CONFIRMED
 same-evidence rerun = NOT AUTHORIZED
-main integration = NOT AUTHORIZED
+main integration = COMPLETE / PR #165 / merge commit 5d4a0b3d685b23150dfda08540e959f3f3c1b82b
 public AI change = false
 ```
 
@@ -114,7 +114,7 @@ post-access repair-and-rerun = prohibited
 G3-11 depth-10 rerun = false
 G4-10 depth-11 access = false
 public AI change = false
-main integration = false
+main integration = true / PR #165
 ```
 
 ## 次工程
@@ -123,10 +123,11 @@ G4-04は追加実行せずclosure状態を維持する。
 
 Research Generation 4を継続する場合、次のcore candidateはprogram plan上の`G4-05` exact microdomain oracle foundation。ただし自動authorizationではなく、独立したauthorization reviewから開始する。
 
-G4-04の`main`統合はユーザーの明示指示まで行わない。
+G4-04の`main`統合はPR #165で完了した。以後、G4-04をrepair/reopenせず、次の科学作業はG4-05の個別authorization reviewから開始する。
 
 ## 正本
 
 - [`results/stage-2/STAGE_2_ARTIFACT_RECEIPT.json`](results/stage-2/STAGE_2_ARTIFACT_RECEIPT.json)
 - [`results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json`](results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json)
+- [`../research-generation-4/checkpoints/2026-09-25-g4-04-main-integration.md`](../research-generation-4/checkpoints/2026-09-25-g4-04-main-integration.md)
 - [`../research-program-decisions/2026-09-25-g4-04-geometry-trajectory-dynamics-transfer-study1-closure.md`](../research-program-decisions/2026-09-25-g4-04-geometry-trajectory-dynamics-transfer-study1-closure.md)
