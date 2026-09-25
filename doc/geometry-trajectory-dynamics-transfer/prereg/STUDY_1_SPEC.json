@@ -152,7 +152,7 @@
       "maxUniqueTransitions": 750000,
       "maxParentExpansions": 100000,
       "maxLegalMoveEvaluations": 750000,
-      "maxTreeNodeOccurrences": 1000000000
+      "maxTreeNodeOccurrences": 1000000
     },
     "stage0": {
       "elapsedMs": 1800000,
