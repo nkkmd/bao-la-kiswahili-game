@@ -2,10 +2,10 @@
 
 Version: 5.6.0
 
-更新日: 2026-09-25  
+更新日: 2026-09-26  
 Research Generation 2: **Closed (2026-08-31)**（完了）  
 Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了・統合済み）  
-Research Generation 4: **G4-01 complete / G4-02 closed without scientific decision / G4-03 complete / G4-04 complete / G4-05 complete**
+Research Generation 4: **G4-01 complete / G4-02 closed without scientific decision / G4-03 complete / G4-04 complete / G4-05 complete and integrated to `main`**
 
 この文書は、完了した研究を短く振り返りながら、次に研究する価値のある問いを整理するためのものです。候補として記載しただけでは、Study開始、seedアクセス、計算実行、公開AI変更は承認されません。
 
@@ -26,7 +26,7 @@ G4-01 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED
 G4-02 = CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED
 G4-03 = COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED
 G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED
-G4-05 = COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN NOT INTEGRATED
+G4-05 = COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED
 G4-06 = NEXT CORE CANDIDATE / ELIGIBLE FOR AUTHORIZATION REVIEW / NOT AUTHORIZED
 G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 ```
@@ -43,7 +43,7 @@ G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 | A | `G4-02` | G3-04由来corridor / tree-graph transfer | `CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED` |
 | A | `G4-03` | G3-07由来width / search-ranking transfer | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED` |
 | A | `G4-04` | G3-10由来geometry-trajectory transfer | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
-| B | `G4-05` | fresh exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN NOT INTEGRATED` |
+| B | `G4-05` | fresh exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED` |
 | B | `G4-06` | geometry / game-theoretic consequence bridge | `NEXT CORE CANDIDATE / ELIGIBLE FOR AUTHORIZATION REVIEW / NOT AUTHORIZED` |
 | C | `G4-07..G4-09` | multiscale memory、rule-semantic transition、search reliability | `NOT AUTHORIZED` |
 | D | `G4-10` | protected fresh depth-11 exact reachability topology | `PROTECTED / NOT AUTHORIZED` |
@@ -124,7 +124,7 @@ candidate 1と4は`STATE-LIMIT`でcomplete closureにならず、そのままfai
 
 Program Plan上、G4-06はG4-05がformal-eligible exact oracle domainを生成した場合だけ実行候補になります。G4-05はこのdependencyを満たしたため、G4-06を次の個別authorization review候補として扱えます。
 
-G4-05はresearch branch上でclosure済みですが、`main`統合は未実施です。
+G4-05はPR #166で`main`へ統合済みです。merge commitは`97ffe3758157d2497b5884f7b17abe59a24159b5`で、formal result、no-rescue境界、public AI非変更は統合後も変わりません。
 
 詳細は[`reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md`](reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md)を参照してください。
 
