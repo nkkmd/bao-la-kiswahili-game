@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GTTD-STUDY1",
+  "stageId": "GTTD-S2-FORMAL-2026-09-25-v1",
+  "decision": "GTTD-STUDY1-STAGE2-AUTHORIZED-GITHUB-ACTIONS-ONCE",
+  "authorizationClass": "FRESH-FORMAL-GITHUB-ACTIONS-ONCE",
+  "recordedDate": "2026-09-25",
+  "researchBranch": "research/g4-04-geometry-trajectory-transfer",
+  "freshSeedAccessAtAuthorization": 0,
+  "scientificExecutionStartedAtAuthorization": false,
+  "executionEnvironment": "GITHUB-ACTIONS-ONLY",
+  "githubActionsFreshGenerationAuthorized": true,
+  "localFreshGenerationAuthorized": false,
+  "authorizedScientificExecutions": 1,
+  "rerunAfterFreshAccessAuthorized": false,
+  "seedExtensionAuthorized": false,
+  "trajectoryReplacementAfterManifestAuthorized": false,
+  "rootFamilySubgroupInferenceAuthorized": false,
+  "postAccessRepairAndRerunAuthorized": false,
+  "authorizedSeedBlock": {
+    "start": 40423001,
+    "end": 40424024,
+    "count": 1024
+  },
+  "scientificContract": {
+    "formalDomains": ["LGTTCI-P1-UNIFORM-LEGAL","LGTTCI-P2-MIN-IMMEDIATE-CAPTURE"],
+    "candidateTargetPerPolicy": 48,
+    "minimumFullyResourceEligiblePerPolicy": 40,
+    "formalMeasuredPopulationPerPolicy": 32,
+    "endpoints": [
+      "C1-DIRECTIONALITY-PATH-EFFICIENCY",
+      "C2-PERSISTENCE-LAG-DISTANCE-GRADIENT",
+      "C3-RETURN-FRACTION",
+      "C5-FIRST-ORDER-DIRECTIONAL-PATH-DEPENDENCE"
+    ],
+    "formalTests": 8,
+    "formalTest": "EXACT-TWO-SIDED-BINOMIAL-SIGN-TEST",
+    "minimumNonzeroTrajectoriesPerTest": 20,
+    "multiplicity": "HOLM-BONFERRONI-FIXED-8",
+    "familyAlpha": "1/20",
+    "exactRationalArithmetic": true,
+    "formalInferenceAuthorized": true
+  },
+  "preconditions": {
+    "stage1CanonicalRunId": 36089520136,
+    "stage1Disposition": "STAGE1-PASS",
+    "stage2PreaccessDecision": "GTTD-STUDY1-STAGE2-PREACCESS-PASS",
+    "stage2SeedFreePreflightRunId": 36095418431,
+    "stage2SeedFreePreflightDisposition": "PASS",
+    "stage2PreflightArtifactId": 10847750492,
+    "stage2PreflightArtifactSha256": "a065841e29809142954797f491d6fb0253566b5ec177473e93eb2d85daf8bcfb",
+    "stage2PreflightResultSha256": "f01642d1b6fc0826ffd59f0e75fe3a744d7ad91aefcb354ac2a959564c2fd7cb",
+    "stage2FreshSeedReadsBeforeAuthorization": 0
+  },
+  "preexecutionBinding": {
+    "path": "doc/geometry-trajectory-dynamics-transfer/authorizations/STAGE_2_PREEXECUTION_BINDING.json",
+    "blobSha": "5282f79ba9b3575cbd9e6aef496db7ffe515bd2e",
+    "boundFileCount": 24
+  },
+  "preflightReceipt": {
+    "path": "doc/geometry-trajectory-dynamics-transfer/results/stage-2/STAGE_2_PREFLIGHT_RECEIPT.json",
+    "blobSha": "a1e6613ab8a21ff08af2d9d405bcb11752b7a48f"
+  },
+  "authorizationReview": {
+    "path": "doc/research-program-decisions/2026-09-25-g4-04-stage2-final-one-shot-authorization-review.md",
+    "blobSha": "53f28af63ff82c00d22c7a72ff12f89ea60f3da3"
+  },
+  "executionWorkflow": {
+    "path": ".github/workflows/gttd-stage2-actions-once.yml",
+    "blobSha": "c9041cc401d43854ca9749577f82599dc070b521",
+    "triggerPath": "doc/geometry-trajectory-dynamics-transfer/authorizations/STAGE_2_ACTIONS_EXECUTION_TRIGGER.json",
+    "durableLeasePath": "doc/geometry-trajectory-dynamics-transfer/executions/STAGE_2_ACTIONS_EXECUTION_LEASE.json",
+    "triggerMustBeSinglePurposeCommit": true,
+    "timeoutMinutes": 300
+  },
+  "authorizationValidationWorkflow": {
+    "path": ".github/workflows/gttd-stage2-final-authorization-validation.yml",
+    "blobSha": "4858202c946a51cc5b5fddec118f2108590a8242"
+  },
+  "requiredBeforeFirstFreshRead": [
+    "final authorization validation workflow passes without Stage 2 fresh scientific seed access",
+    "all 24 pre-execution bound blob SHA values match",
+    "authorized execution workflow blob SHA matches",
+    "canonical Stage 1 artifact digest verifies",
+    "immutable G4-01 identity artifact digest verifies",
+    "Stage 1 and upstream identity firewalls pass",
+    "Stage 2 seed-free preflight passes immediately before first fresh read",
+    "durable Stage 2 repository execution lease is acquired",
+    "dedicated Stage 2 trigger matches final authorization and lease blobs"
+  ],
+  "stillProhibited": [
+    "second Stage 2 scientific execution",
+    "workflow rerun after fresh access",
+    "seed extension",
+    "trajectory replacement after candidate manifest",
+    "resource ceiling relaxation",
+    "root-family subgroup rescue",
+    "post-access repair-and-rerun",
+    "Stage 1 scientific outcome reuse",
+    "protected G3-11 depth-10 evidence access",
+    "protected G4-10 depth-11 evidence access",
+    "public AI change",
+    "main integration"
+  ]
+}
