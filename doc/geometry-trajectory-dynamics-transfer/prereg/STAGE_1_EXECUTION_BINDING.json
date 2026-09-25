@@ -25,6 +25,7 @@
     "tools/experiments/run-gttd-stage1-development.js": "78706e0d7a6412e6186d99a9292652d856a8ba73",
     "tools/experiments/verify-gttd-stage1-preexecution.js": "3e6fdad60c249c30f80b28d5abd671a2c9e1cb17",
     ".github/workflows/gttd-stage1-preexecution-static.yml": "4a133391078389df2312d5152bac7a9b9ac995ff",
+    ".github/workflows/gttd-stage1-actions-once.yml": "e40800b7c1b979acf5744f6979781c3cfc4f885f",
     "doc/geometry-trajectory-dynamics-transfer/prereg/STUDY_1_SPEC.json": "a6ad845811996b910118f0b9f78c44fe2238c0d0",
     "doc/geometry-trajectory-dynamics-transfer/prereg/STAGE_1_DEVELOPMENT_SPEC.json": "b052b16d2d0262476c4dd4f225dd6565917b6a91",
     "doc/geometry-trajectory-dynamics-transfer/prereg/STAGE_2_FORMAL_SPEC.json": "8786f9aaa65e0c355116dbc78e396aa3e7a3cd71",
@@ -45,7 +46,8 @@
     "G4-01 artifact ZIP SHA-256",
     "G4-01 GCLD 384-row projection digest",
     "G4-01 sourceSeed/fullTrajectory/root set counts and digests",
-    "P1/P2 source row counts"
+    "P1/P2 source row counts",
+    "final one-shot GitHub Actions workflow blob identity"
   ],
   "freshAccessBeforeStaticValidation": 0,
   "stage2AccessAuthorized": false,
