@@ -2,7 +2,7 @@
 
 更新日: 2026-09-25  
 対象: Research Generation 1〜4  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01完了、G4-02は科学的判定なしで終了、G4-03完了、G4-04完了**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01完了、G4-02は科学的判定なしで終了、G4-03完了、G4-04完了、G4-05完了**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
@@ -16,6 +16,7 @@
 | G4-02の正式状態 | [`structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md`](structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md) |
 | G4-03の正式結果 | [`local-width-search-ranking-transfer/README.md`](local-width-search-ranking-transfer/README.md) |
 | G4-04の正式結果 | [`geometry-trajectory-dynamics-transfer/README.md`](geometry-trajectory-dynamics-transfer/README.md) |
+| G4-05の正式結果 | [`reachable-late-game-exact-microdomain-oracle-foundation/README.md`](reachable-late-game-exact-microdomain-oracle-foundation/README.md) |
 | 第三世代の全体像 | [`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md) |
 | 第二世代の全体像 | [`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md) |
 | 今後の研究課題 | [`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md) |
@@ -34,8 +35,8 @@
 | `G4-02` | corridor / tree-graph transfer | `CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED` |
 | `G4-03` / [`LWSRT-STUDY1`](local-width-search-ranking-transfer/) | width / search-ranking transfer | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED` |
 | `G4-04` / [`GTTD-STUDY1`](geometry-trajectory-dynamics-transfer/) | geometry-trajectory transfer | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
-| `G4-05` | exact microdomain oracle foundation | `NEXT CORE CANDIDATE / NOT-AUTHORIZED-NOT-EXECUTED` |
-| `G4-06` | geometry / exact consequence bridge | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
+| `G4-05` / [`RLEMOF-STUDY1`](reachable-late-game-exact-microdomain-oracle-foundation/) | exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN NOT INTEGRATED` |
+| `G4-06` | geometry / exact consequence bridge | `NEXT CORE CANDIDATE / ELIGIBLE FOR AUTHORIZATION REVIEW / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-07` | multiscale memory / return | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-08` | rule-semantic transition | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-09` | search reliability / exact agreement | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
@@ -89,7 +90,35 @@ C1・C2・C5はP1/P2ともpositive direction、C3はP1/P2ともnegative directio
 
 G4-04はPR #165で`main`統合済みです。formal resultと解釈境界は統合後も変更していません。
 
-詳しくは、[`research-generation-4/README.md`](research-generation-4/README.md)、[`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md)、[`geometry-trajectory-dynamics-transfer/README.md`](geometry-trajectory-dynamics-transfer/README.md)を参照してください。
+### G4-05
+
+G4-05 `RLEMOF-STUDY1` は、fresh reachable late-game rootsからoutcome-blind / resource-feasibility-onlyに限定microdomainを選び、complete legal-transition closureと独立exact solver agreementを検証しました。
+
+```text
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-DEVELOPMENT-ACCEPTED
+Stage 2 canonical run = 36120286922 / attempt 1 / success
+fresh seed block = 40523001..40524024 / 1024 games
+Stage 1 RAW identity firewall roots = 8307
+fresh RAW overlap excluded count = 0
+eligible candidates = 21
+inspected candidates = 10
+formal complete domains = 8
+production / independent agreement = true
+formal decision = EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN
+```
+
+candidate 1と4は`STATE-LIMIT`でcomplete closureにならず、そのままfail-closedしました。resource cap増加、root replacement、seed extension、same-evidence rerunは行っていません。
+
+8 formal domainsではgraph identity、transition identity、exact solution、root result、recurrent SCC metadataまでproduction / independentで一致しました。8 domainのrecurrent countは0ですが、これはBao全体のrecurrent構造やDRAW不在を意味しません。`RECURRENT`は公式ルール上の`DRAW`ではなく、draw inferenceは未認可です。
+
+この結果はfrozen microdomain内のexact oracle foundationであり、whole-Bao solution、best move correctness一般保証、AI棋力、人間のdifficulty、public AI変更を意味しません。
+
+Program Plan上のG4-06 dependencyは満たしたため、G4-06は次の個別authorization review候補です。ただし未認可です。
+
+G4-05はresearch branch上でclosure済みで、`main`統合はまだ行っていません。
+
+詳しくは、[`research-generation-4/README.md`](research-generation-4/README.md)、[`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md)、[`reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md`](reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md)を参照してください。
 
 ## Research Generation 3 — 局所ゲーム木幾何
 
@@ -206,6 +235,7 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 - `TECHNICAL-INVALID`は必要な技術・検証条件を満たせずformal claimを評価できなかった状態です。
 - `NOT-AUTHORIZED-NOT-EXECUTED`は実行失敗ではなく、実行を承認していないことを示します。
 - RAW state、tree occurrence、search output、engine evaluation、game-theoretic value、人間の難しさは別constructです。
+- exact resultは固定domain内でのみexactであり、whole-Bao solutionや未定義のDRAW semanticsへ自動拡張しません。
 
 ## 新しい研究を追加するとき
 
