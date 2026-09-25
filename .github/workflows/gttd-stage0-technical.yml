@@ -1,0 +1,57 @@
+name: GTTD G4-04 Stage 0 technical validation
+
+on:
+  push:
+    branches:
+      - "research/g4-04-geometry-trajectory-transfer"
+    paths:
+      - "public/engine.js"
+      - "tools/experiments/run-gttd-stage0-technical.js"
+      - "tools/experiments/verify-gttd-stage0-binding.js"
+      - "tools/experiments/lib/lgtgmiv-stage1-production.js"
+      - "tools/experiments/lib/lgtgmiv-stage1-independent.js"
+      - "tools/experiments/lib/crclgr-production.js"
+      - "tools/experiments/lib/crclgr-independent.js"
+      - "tools/experiments/lib/gcld-production.js"
+      - "tools/experiments/lib/gcld-independent.js"
+      - "tools/experiments/lib/lgttci-compatibility-production.js"
+      - "tools/experiments/lib/lgttci-compatibility-independent.js"
+      - "doc/geometry-trajectory-dynamics-transfer/**"
+      - ".github/workflows/gttd-stage0-technical.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stage0-technical:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout frozen branch state
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Syntax check Stage 0
+        run: |
+          node --check tools/experiments/run-gttd-stage0-technical.js
+          node --check tools/experiments/verify-gttd-stage0-binding.js
+
+      - name: Verify frozen execution binding
+        run: node tools/experiments/verify-gttd-stage0-binding.js
+
+      - name: Run technical-only Stage 0
+        run: node tools/experiments/run-gttd-stage0-technical.js artifacts/gttd-stage0/result.json
+
+      - name: Upload Stage 0 result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gttd-stage0-result
+          path: artifacts/gttd-stage0/result.json
+          if-no-files-found: error
+          retention-days: 30
