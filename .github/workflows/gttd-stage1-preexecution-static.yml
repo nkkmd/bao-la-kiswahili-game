@@ -1,0 +1,45 @@
+name: GTTD G4-04 Stage 1 pre-fresh static validation
+
+on:
+  push:
+    branches:
+      - "research/g4-04-geometry-trajectory-transfer"
+    paths:
+      - "doc/geometry-trajectory-dynamics-transfer/prereg/STAGE_1_EXECUTION_BINDING.json"
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  prefresh-static:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout bound branch state
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Syntax check Stage 1 code
+        run: |
+          node --check tools/experiments/run-gttd-stage1-development.js
+          node --check tools/experiments/verify-gttd-stage1-preexecution.js
+
+      - name: Download immutable G4-01 source bundle
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/gttd-g4-01
+          gh api repos/${GITHUB_REPOSITORY}/actions/artifacts/10517090411/zip > /tmp/gttd-g4-01/source.zip
+          echo "3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b  /tmp/gttd-g4-01/source.zip" | sha256sum -c -
+          unzip -q /tmp/gttd-g4-01/source.zip -d /tmp/gttd-g4-01/extracted
+          test -d /tmp/gttd-g4-01/extracted/source/GCLD
+
+      - name: Verify binding and identity-only firewall
+        env:
+          GTTD_G4_01_GCLD_SOURCE_DIR: /tmp/gttd-g4-01/extracted/source/GCLD
+        run: node tools/experiments/verify-gttd-stage1-preexecution.js
