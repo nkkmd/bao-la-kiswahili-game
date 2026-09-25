@@ -3,7 +3,7 @@
 更新日: 2026-09-25  
 Agenda: `Research Generation 4 / G4-04`  
 Study: `GTTD-STUDY1`  
-状態: **`STAGE1-PASS / STAGE2-PREPARATION-ELIGIBLE`**
+状態: **`COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED`**
 
 ## 現在地
 
@@ -11,116 +11,122 @@ Study: `GTTD-STUDY1`
 reviewed main HEAD = 1274c9cf408f0e044c39751599941a6f75e96a4c
 research branch = research/g4-04-geometry-trajectory-transfer
 Stage 0 = STAGE0-PASS
-Stage 1 = STAGE1-PASS / canonical run 36089520136 / exactly once
-Stage 2 = NOT AUTHORIZED / fresh seeds NOT READ
-formal scientific outcome = NONE
+Stage 1 = STAGE1-PASS / exactly once
+Stage 2 = FORMAL-COMPLETE / exactly once
+formal scientific outcome = 8 / 8 GENERALIZATION-CONFIRMED
+same-evidence rerun = NOT AUTHORIZED
 main integration = NOT AUTHORIZED
 public AI change = false
 ```
 
 ## Transfer target
 
-G3-10 `GCLD-STUDY1`のformal confirmed claimのみを対象とする。
+G3-10 `GCLD-STUDY1`のformal confirmed claimのみを対象とした。
 
 ```text
-C1 ACTUAL-GREATER
-C2 ACTUAL-GREATER
-C3 ACTUAL-LESS
-C5 ACTUAL-GREATER
+C1 directionality / path efficiency = ACTUAL-GREATER
+C2 persistence / lag-distance gradient = ACTUAL-GREATER
+C3 return fraction = ACTUAL-LESS
+C5 first-order directional path dependence = ACTUAL-GREATER
 ```
 
 C4はG3-10で`NOT-CONFIRMED`のためpositive transfer targetではない。
 
-## Stage 0
-
-```text
-Stage ID = GTTD-S0-TECHNICAL-2026-09-25-v1
-canonical Actions run = 36082558032 / attempt 1 / success
-stage disposition = STAGE0-PASS
-fresh scientific seed access = false
-```
-
-Stage 0ではrepresentation、15 checkpoint、32 control、C1/C2/C3/C5 exact production/independent一致、P1/P2 source generation、RF1/RF2 technical determinism、resource fail-closedを確認した。
-
 ## Stage 1
 
 ```text
-Stage ID = GTTD-S1-DEVELOPMENT-2026-09-25-v1
-authorization = GTTD-STUDY1-STAGE1-AUTHORIZED-GITHUB-ACTIONS-ONCE
-canonical Actions run = 36089520136 / attempt 1 / success
-trigger commit = 038022a431475039f1ae18481c4b5092e57e71b7
+canonical run = 36089520136 / attempt 1 / success
 artifact ID = 10846181741
 artifact SHA-256 = fa14e0c56d7d7f7088684eb715b1bf26b307cb22459741dfe4a7629cf40b3183
-STAGE_1_RESULT.json SHA-256 = 58ffb52f7924ce47ac4c5b1c8f321c5bd28e3b6d548a788eefa1179ae7ab29f0
-identity manifest SHA-256 = 0935cd3c6f35ca8dfe68e268337ba7f4bb55e615d726e8919594d7f52eebcd3e
 stage disposition = STAGE1-PASS
-```
-
-Stage 1 support:
-
-```text
-fresh seed block = 40413001..40413512 / fixed 512 slots
-actual seed reads = 134
-last seed read = 40413203
-P1 candidates = 16 / fully eligible = 15 / measured = 8
-P2 candidates = 16 / fully eligible = 16 / measured = 8
+fresh seed reads = 134
+P1 fully eligible = 15 / measured = 8
+P2 fully eligible = 16 / measured = 8
 C1/C2/C3/C5 defined = 8/8 for both policies
-both-phase measured trajectories = 8/8 for both policies
 production / independent exact = true
+formal inference = false
 ```
 
-Stage 1はblinded development evidenceであり、endpoint値、contrast符号、effect direction、p値を保存していない。formal inferenceは未実施で、Stage 2を自動認可しない。
+Stage 1はblinded development evidenceであり、endpoint値、contrast符号、effect direction、p値を保存していない。
 
-Stage 2 identity firewallでは、canonical Stage 1 artifact内の32 identity rowsから次を除外する。
-
-- source seed
-- full trajectory SHA-256
-- opening-prefix SHA-256
-- checkpoint RAW-root SHA-256
-
-Stage 1 scientific outcomeの再利用・再演算は許可しない。
-
-## Stage 2 frozen contract
+## Stage 2 canonical execution
 
 ```text
 Stage ID = GTTD-S2-FORMAL-2026-09-25-v1
-evidence = FRESH-FORMAL-HELDOUT
-fresh seed block = 40423001..40424024 / 1024 / RESERVED-NOT-ACCESSED
-formal domains = P1, P2
-endpoints = C1, C2, C3, C5
-formal tests = 8
-candidate target = 48 per policy
-minimum fully eligible = 40 per policy
-formal measured population = first 32 eligible per policy
-minimum nonzero contrasts = 20 per test
-formal test = exact two-sided sign test
-multiplicity = fixed 8-test Holm-Bonferroni
-family alpha = 1/20
-seed extension = prohibited
-same-evidence rerun = prohibited
+authorization = GTTD-STUDY1-STAGE2-AUTHORIZED-GITHUB-ACTIONS-ONCE
+canonical run = 36095831961 / attempt 1 / success
+trigger commit = 97d8b374d6bfe1b573b915cd52974db6f6115423
+durable lease commit = fcd1f68f8c65b2f6c3359bd8b37e1c1b12261161
+artifact ID = 10849029913
+artifact SHA-256 = fe165e6c1735cb07e71ed49e2a1c4d3f7446e796ab63936d90c7e982edfc4bd7
+STAGE_2_RESULT.json SHA-256 = 85b5cf71c63dc9baeaf78a2dab4e61f03826b6f593552d916c5f48dcacd31d76
+seed block = 40423001..40424024 / fixed 1024
+actual seed reads = 369
+last seed read = 40423593
+P1 candidates = 48 / fully eligible = 47 / measured = 32
+P2 candidates = 48 / fully eligible = 46 / measured = 32
+formal measured population = 64
+production / independent exact = true
+stage disposition = FORMAL-COMPLETE
 ```
 
-RF1/RF2はStage 2でもsupport descriptorのみで、formal subgroup inferenceは禁止する。
+## Formal result
+
+fixed 8-test Holm-Bonferroni family、family alpha exact `1/20`。
+
+```text
+GENERALIZATION-CONFIRMED = 8
+COUNTEREXAMPLE-CONFIRMED = 0
+NOT-GENERALIZED = 0
+NON-ESTIMABLE = 0
+```
+
+Claim別:
+
+- C1: P1 / P2とも`GENERALIZATION-CONFIRMED`
+- C2: P1 / P2とも`GENERALIZATION-CONFIRMED`
+- C3: P1 / P2とも`GENERALIZATION-CONFIRMED`、median directionはNEGATIVE
+- C5: P1 / P2とも`GENERALIZATION-CONFIRMED`
+
+G3-10のC1・C2・C3・C5 directionは、本Studyでprospectiveに固定したfresh P1/P2 source-policy domainsへ8/8で同方向に移送された。
+
+## 解釈境界
+
+RF1/RF2はsupport descriptorとしてのみ扱い、root-family別formal subgroup inferenceは行っていない。
+
+この結果は以下を意味しない。
+
+- whole-Bao universal law
+- 任意source policyへの普遍的一般化
+- game-theoretic value / best move correctness
+- AI strength / win rateの改善
+- human difficulty
+- public AI変更の認可
+
+## Integrity
+
+```text
+scientific executions = 1 / 1
+same-evidence rerun = prohibited
+seed extension = prohibited
+trajectory replacement after manifest = prohibited
+post-access repair-and-rerun = prohibited
+G3-11 depth-10 rerun = false
+G4-10 depth-11 access = false
+public AI change = false
+main integration = false
+```
 
 ## 次工程
 
-1. post-Stage1 Stage 2 pre-access authorization reviewを固定する。
-2. Stage 1 identity-only firewall reader、Stage 2 runner、exact sign test / exact Holmを実装する。
-3. protected-evidence guardを含むseed-free deterministic preflightをGitHub Actionsで実行する。
-4. pre-execution bindingを固定して再検証する。
-5. 全pre-fresh gateがPASSした場合のみ、Stage 2 final one-shot authorizationを別途固定する。
-6. fresh formal Stage 2はGitHub Actions exactly-onceを第一候補とする。
+G4-04は追加実行せずclosure状態を維持する。
 
-## 現在の禁止事項
+Research Generation 4を継続する場合、次のcore candidateはprogram plan上の`G4-05` exact microdomain oracle foundation。ただし自動authorizationではなく、独立したauthorization reviewから開始する。
 
-- Stage 2 fresh seed access
-- Stage 2 scientific effect direction / p-value生成
-- Stage 2 formal inference
-- Stage 1 scientific replay / outcome reuse
-- seed extension / trajectory replacement / threshold relaxation
-- same-evidence rerun
-- G3-11 depth-10 rerun
-- G4-10 depth-11 access
-- root-family subgroup rescue
-- main integration
-- public AI change
+G4-04の`main`統合はユーザーの明示指示まで行わない。
+
+## 正本
+
+- [`results/stage-2/STAGE_2_ARTIFACT_RECEIPT.json`](results/stage-2/STAGE_2_ARTIFACT_RECEIPT.json)
+- [`results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json`](results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json)
+- [`../research-program-decisions/2026-09-25-g4-04-geometry-trajectory-dynamics-transfer-study1-closure.md`](../research-program-decisions/2026-09-25-g4-04-geometry-trajectory-dynamics-transfer-study1-closure.md)
