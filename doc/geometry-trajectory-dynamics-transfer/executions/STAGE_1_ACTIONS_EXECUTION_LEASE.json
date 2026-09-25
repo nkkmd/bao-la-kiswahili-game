@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GTTD-STUDY1",
+  "stageId": "GTTD-S1-DEVELOPMENT-2026-09-25-v1",
+  "leaseClass": "DURABLE-GITHUB-ACTIONS-SINGLE-EXECUTION-LEASE",
+  "effectiveAuthorization": "GTTD-STUDY1-STAGE1-AUTHORIZED-GITHUB-ACTIONS-ONCE",
+  "executionMode": "GITHUB-ACTIONS-ONCE",
+  "executionSlots": 1,
+  "freshSeedBlock": {
+    "start": 40413001,
+    "end": 40413512,
+    "count": 512
+  },
+  "prefreshStaticValidation": {
+    "runId": 36089431287,
+    "runAttempt": 1,
+    "conclusion": "success",
+    "validatedBindingCommitSha": "95672349f01e960d2ee92fb27cdba9167582a99c",
+    "executionBindingGitBlobSha": "21fb7225792614d120cb234fab5c48bae9d336a4"
+  },
+  "oneShotWorkflow": {
+    "path": ".github/workflows/gttd-stage1-actions-once.yml",
+    "gitBlobSha": "e40800b7c1b979acf5744f6979781c3cfc4f885f"
+  },
+  "freshScientificSeedAccessBeforeLease": 0,
+  "scientificExecutionStartedBeforeLease": false,
+  "rerunAuthorized": false,
+  "seedExtensionAuthorized": false,
+  "stage2SeedAccessAuthorized": false,
+  "formalInferenceAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "publicAiChangeAuthorized": false
+}
