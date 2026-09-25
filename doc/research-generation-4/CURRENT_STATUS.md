@@ -12,7 +12,7 @@ Research Generation 4 plan = FROZEN / INTEGRATED TO MAIN
 G4-01 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED
 G4-02 = CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED
 G4-03 = COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED
-G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN NOT INTEGRATED
+G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED
 G4-05 = NEXT CORE CANDIDATE / NOT-AUTHORIZED
 G4-06..G4-09 = DEPENDENCY-GATED / NOT-AUTHORIZED
 G4-10 depth 11 = PROTECTED / NOT-AUTHORIZED / NOT-ACCESSED
@@ -118,7 +118,7 @@ G3-10でconfirmedだった4 directionは、本Studyでprospectiveに固定した
 
 ただしformal domainはP1/P2 full trajectoriesである。RF1/RF2はsupport descriptorのみで、root-family別formal subgroup inferenceは行っていない。whole-Bao universal law、game-theoretic value、best move correctness、AI strength、人間のdifficultyは主張しない。
 
-G4-04は`COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED`として閉じた。同一Studyのrerun / repair / seed extensionは行わない。`main`統合は未認可である。
+G4-04は`COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED`として閉じた。同一Studyのrerun / repair / seed extensionは行わない。`main`統合はPR #165で完了した。
 
 ## Agenda別の状態
 
@@ -127,7 +127,7 @@ G4-04は`COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED`として�
 | `G4-01` | `COMPLETE / MAIN INTEGRATED` |
 | `G4-02` | `CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED` |
 | `G4-03` | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED` |
-| `G4-04` | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN NOT INTEGRATED` |
+| `G4-04` | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
 | `G4-05` | `NEXT CORE CANDIDATE / NOT-AUTHORIZED` |
 | `G4-06`〜`G4-09` | `DEPENDENCY-GATED / NOT-AUTHORIZED` |
 | `G4-10` | `PROTECTED / NOT-AUTHORIZED / NOT-ACCESSED` |
@@ -140,7 +140,7 @@ G4-04のscientific executionは完了しているため追加runは行わない�
 
 Research Generation 4を継続する場合、次のcore candidateは`G4-05` exact microdomain oracle foundationである。ただし候補であることはauthorizationではない。**G4-05専用のauthorization reviewから開始する。**
 
-G4-04の`main`統合はユーザーの明示指示があるまで行わない。
+G4-04はPR #165で`main`統合済み。以後、G4-04をrepair/reopenせず、RG4を継続する場合はG4-05の個別authorization reviewから開始する。
 
 ## 保護境界
 
@@ -159,6 +159,7 @@ G4-04の`main`統合はユーザーの明示指示があるまで行わない。
 - [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)
 - [`RESUME_HERE.md`](RESUME_HERE.md)
 - [`checkpoints/2026-09-25-g4-04-complete.md`](checkpoints/2026-09-25-g4-04-complete.md)
+- [`checkpoints/2026-09-25-g4-04-main-integration.md`](checkpoints/2026-09-25-g4-04-main-integration.md)
 - [`../geometry-trajectory-dynamics-transfer/CURRENT_STATUS.md`](../geometry-trajectory-dynamics-transfer/CURRENT_STATUS.md)
 - [`../geometry-trajectory-dynamics-transfer/results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json`](../geometry-trajectory-dynamics-transfer/results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json)
 - [`../research-program-decisions/2026-09-25-g4-04-geometry-trajectory-dynamics-transfer-study1-closure.md`](../research-program-decisions/2026-09-25-g4-04-geometry-trajectory-dynamics-transfer-study1-closure.md)
