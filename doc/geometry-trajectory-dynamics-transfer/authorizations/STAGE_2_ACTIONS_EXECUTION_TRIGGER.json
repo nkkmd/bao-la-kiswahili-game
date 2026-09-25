@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GTTD-STUDY1",
+  "stageId": "GTTD-S2-FORMAL-2026-09-25-v1",
+  "action": "EXECUTE-AUTHORIZED-STAGE2-ONCE",
+  "effectiveAuthorization": "GTTD-STUDY1-STAGE2-AUTHORIZED-GITHUB-ACTIONS-ONCE",
+  "seedBlock": {
+    "start": 40423001,
+    "end": 40424024,
+    "count": 1024
+  },
+  "finalAuthorizationGitBlobSha": "63d18cbcf65e7f76c78db07b92deace995d3cb1e",
+  "executionLeaseGitBlobSha": "6ec20ed841e0a9caec05cd61328f5f93b656b4b4",
+  "preexecutionBindingGitBlobSha": "5282f79ba9b3575cbd9e6aef496db7ffe515bd2e",
+  "executionWorkflowGitBlobSha": "c9041cc401d43854ca9749577f82599dc070b521",
+  "preflightRunId": 36095418431,
+  "finalAuthorizationValidationRunId": 36095760428,
+  "acknowledgeExactlyOneScientificExecution": true,
+  "acknowledgeNoRerun": true,
+  "acknowledgeNoSeedExtension": true,
+  "acknowledgeNoPostAccessRepairAndRerun": true,
+  "acknowledgeNoTrajectoryReplacementAfterManifest": true,
+  "acknowledgeNoRootFamilySubgroupRescue": true,
+  "mainIntegrationAuthorized": false,
+  "publicAiChangeAuthorized": false
+}
