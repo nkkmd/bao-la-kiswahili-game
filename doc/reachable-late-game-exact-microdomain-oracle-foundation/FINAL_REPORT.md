@@ -11,7 +11,7 @@ Study ID: `RLEMOF-STUDY1`
 
 G2-04 `REEOE-STUDY1`のrepair / rescueではない。過去の8-state exact domainはStage 0 technical regression fixtureにだけ使用し、fresh G4-05 scientific evidenceには混合していない。
 
-## 2. Stage 0 — technical validation
+## 2. Stage 0 — 技術検証
 
 Stage 0はfresh scientific evidenceを読まず、既存8-state fixtureとsynthetic recurrent graphでexact closure・retrograde・independent verification・recurrent handlingを検証した。
 
@@ -25,7 +25,7 @@ synthetic recurrence = 2 recurrent + 1 terminal
 
 ここで確認した`RECURRENT`はgraph上のrecurrent SCC semanticsであり、公式ルール上の`DRAW`を意味しない。
 
-## 3. Stage 1 — fresh feasibility / development
+## 3. Stage 1 — fresh feasibility / development検証
 
 Stage 1はformal game-theoretic inferenceを行わないdevelopment stageとして一回だけ実行した。fresh root feasibilityをresource-only条件で評価し、formal Stage 2を実行できるresource envelopeが存在するかを確認した。
 
@@ -41,7 +41,7 @@ Stage 1 RAW identity set SHA-256 = 83a563ae908ea8778c689ce68f4b63b3e8873eba7dcc8
 
 Stage 1 root / outcomeをformal evidenceとして再利用せず、Stage 2ではこの8307 RAW identityを exclusion-only firewall として扱った。
 
-## 4. Stage 2 — canonical formal execution
+## 4. Stage 2 — canonical formal実行
 
 Stage 2は別authorization `RLEMOF-STUDY1-STAGE2-AUTHORIZED-GITHUB-ACTIONS-ONCE`の下で、GitHub Actionsにより一回だけ実行した。
 
@@ -59,7 +59,7 @@ execution-identity.txt SHA-256 = 982f929993888e61375b812bc7bc1898ec024825539bf81
 
 fresh holdoutは`40523001..40524024 / 1024 games / maxPly 320`。Stage 1 RAW identityとのoverlap exclusion countは0だった。
 
-## 5. Candidate selection と no-rescue
+## 5. 候補選択とno-rescue境界
 
 frozen candidate orderは`seed ascending -> ply ascending -> RAW-state-key ascending`。resource-conditioned selectionでは最大16 candidateを調べ、8 complete formal domainsを目標、最低6 complete domainsをformal gateとした。
 
@@ -74,7 +74,7 @@ completeにならなかった2件は次のとおり。
 
 この2件についてcap増加、seed extension、root replacement、structural restriction追加、partial graphのexact昇格を行っていない。結果確認後のsame-evidence rerunも行っていない。
 
-## 6. Formal exact domains
+## 6. Formal exact domainの結果
 
 formal populationはcomplete closureを得た8 domainである。
 
@@ -106,7 +106,7 @@ production core SHA-256 = f13c521c58ff2b6a5c649bf064752249fdf5a05754da90faddb780
 independent verification core SHA-256 = 48c974e5304ba0fe3476dc88124fd4f7f26261b9d045c539b7e695ee4a9e5144
 ```
 
-## 8. Formal decision
+## 8. 正式判断
 
 事前登録decision ruleでは、minimum complete-domain gateを満たし、全independent agreementが成立した場合のdecisionを次のtokenへ固定していた。
 
@@ -138,7 +138,7 @@ G4-05が確立したのは、**prospectiveに固定したreachable late-game mic
 - 人間のdifficulty
 - public AI変更の妥当性
 
-## 11. Integrity boundary
+## 11. 整合性・不変境界
 
 - Stage 0 / Stage 1 / Stage 2のsame-evidence rerunを行わない。
 - Stage 2 seed extensionを行わない。
@@ -150,13 +150,15 @@ G4-05が確立したのは、**prospectiveに固定したreachable late-game mic
 
 GitHub Actionsではactions内部Node runtimeに関するdeprecation noticeが出たが、Study scriptの記録runtimeは`v20.20.2`であり、production / independent scientific stepsはsuccessで完了した。この通知を理由とするscientific rerunは行わない。
 
-## 12. Closure
+## 12. 研究終了（closure）
 
 **G4-05 / `RLEMOF-STUDY1` を `COMPLETE / FORMAL-COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN` として閉じる。**
 
 `main`統合はStudy closureとは別操作であり、明示指示があるまで行わない。public AI変更も認可しない。
 
 ## 13. 正本
+
+`STUDY_1_PROTOCOL.md`はStudy開始時点のprospective freezeを保持する歴史記録であり、本文中のStage 1 / Stage 2 `NOT AUTHORIZED`は当時の状態を示す。後続Stageの実行状態はauthorization記録と本最終報告を優先し、protocol自体は結果後に現況へ合わせて書き換えない。
 
 - [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md)
 - [`preregistration/STAGE_2_FORMAL_SPEC.json`](preregistration/STAGE_2_FORMAL_SPEC.json)
