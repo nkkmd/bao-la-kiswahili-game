@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "agenda": "G4-05",
+  "studyId": "RLEMOF-STUDY1",
+  "stageId": "RLEMOF-S2-FORMAL-2026-09-25-v1",
+  "stageDisposition": "FORMAL-COMPLETE",
+  "formalDecision": "EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN",
+  "canonicalRun": 36120286922,
+  "runAttempt": 1,
+  "headSha": "72e45631112359346a83f9399be32ee3e6420ccb",
+  "artifactId": 10858056244,
+  "artifactSha256": "90520ed47e8d314e15c0c8dab18d805fa147d69c54ab3e7a4afc2136238c2154",
+  "freshHoldout": {
+    "seedBase": 40523001,
+    "seedEnd": 40524024,
+    "games": 1024,
+    "maxPly": 320
+  },
+  "identityFirewall": {
+    "stage1RawRootCount": 8307,
+    "stage1RawRootSetSha256": "83a563ae908ea8778c689ce68f4b63b3e8873eba7dcc8d0547edc5eabb199503",
+    "freshRawIdentityOverlapExcludedCount": 0
+  },
+  "eligibleCandidateCount": 21,
+  "eligibleCandidateSetSha256": "cd65024c4242072ee4dd819a9f66c06244772b4a37f46c3f6e8bb128be1c44b2",
+  "inspectedCandidateCount": 10,
+  "incompleteInspectedCandidates": [
+    {"candidateIndex": 1, "seed": 40523043, "ply": 55, "stopReason": "STATE-LIMIT", "stateCount": 200001, "edgeCount": 200274},
+    {"candidateIndex": 4, "seed": 40523197, "ply": 82, "stopReason": "STATE-LIMIT", "stateCount": 200001, "edgeCount": 200873}
+  ],
+  "formalDomainCount": 8,
+  "formalDomains": [
+    {"candidateIndex": 2, "seed": 40523046, "ply": 57, "rootStateKey": "2a90990b7e5cef0b4ae35f248bf01c8714cd58d14a707bcdb6892297a52b47d5", "stateCount": 13, "edgeCount": 12, "terminalCount": 10, "winCount": 2, "lossCount": 1, "recurrentCount": 0, "rootStatus": "LOSS", "rootAbsoluteWinner": 0, "rootDtf": 2, "solutionSha256": "c346110428e6b8a977f0e6c591aef4de052762e0148c9bd4955c1f434a489e9f"},
+    {"candidateIndex": 3, "seed": 40523102, "ply": 76, "rootStateKey": "41996d3ef9184a64e7c79e7e0a09aa586371647202197455cc964f64e9570c7d", "stateCount": 7, "edgeCount": 6, "terminalCount": 4, "winCount": 2, "lossCount": 1, "recurrentCount": 0, "rootStatus": "LOSS", "rootAbsoluteWinner": 1, "rootDtf": 2, "solutionSha256": "28a7e2a782024a87b1bb402eb570ea36f13a1601553503b8267cfe111e80ac38"},
+    {"candidateIndex": 5, "seed": 40523368, "ply": 63, "rootStateKey": "6d66e2b68bab2d63289c15fdf88f17e505083a2032a6c3bdb456f62afe5a8596", "stateCount": 30, "edgeCount": 29, "terminalCount": 21, "winCount": 6, "lossCount": 3, "recurrentCount": 0, "rootStatus": "LOSS", "rootAbsoluteWinner": 0, "rootDtf": 4, "solutionSha256": "34902cea2ce3e9ff5d897f049db9ee2885e1327e139b96a5f46ce9a8a416e8d5"},
+    {"candidateIndex": 6, "seed": 40523368, "ply": 64, "rootStateKey": "97f3f73dd7ee2a848d2ebefc2b76dd35acbc0ccdad1586761786d9316281bdec", "stateCount": 27, "edgeCount": 26, "terminalCount": 20, "winCount": 5, "lossCount": 2, "recurrentCount": 0, "rootStatus": "WIN", "rootAbsoluteWinner": 0, "rootDtf": 3, "solutionSha256": "ebe834522b0adcfea5ce6950893109bf9a886dbacbf485eb612a1e1b5b911e6d"},
+    {"candidateIndex": 7, "seed": 40523368, "ply": 65, "rootStateKey": "9841c8edbd3991e42f2940e1823289674aaf3885645ee5a88cee8b85b77a1f4e", "stateCount": 10, "edgeCount": 9, "terminalCount": 7, "winCount": 2, "lossCount": 1, "recurrentCount": 0, "rootStatus": "LOSS", "rootAbsoluteWinner": 0, "rootDtf": 2, "solutionSha256": "a1f61875d69a5d387110461b706e6baacda500c7cc4cad08d6dd2cb2f63fbe51"},
+    {"candidateIndex": 8, "seed": 40523399, "ply": 44, "rootStateKey": "8760f08e636e3f8eb4e0f8b55aeb6bd330385798bb3a7d6f87061f27f55b6371", "stateCount": 8, "edgeCount": 7, "terminalCount": 4, "winCount": 3, "lossCount": 1, "recurrentCount": 0, "rootStatus": "WIN", "rootAbsoluteWinner": 0, "rootDtf": 3, "solutionSha256": "7b8ed0813adbc0b15fee0d95ee5e9ce1f7d309b25cf6221fb0f0a8a82eda1c9c"},
+    {"candidateIndex": 9, "seed": 40523399, "ply": 45, "rootStateKey": "f8078d5a64d14c1e2e928cd63c258c74bcf9d721419235e1c0108533f562cf8d", "stateCount": 7, "edgeCount": 6, "terminalCount": 4, "winCount": 2, "lossCount": 1, "recurrentCount": 0, "rootStatus": "LOSS", "rootAbsoluteWinner": 0, "rootDtf": 2, "solutionSha256": "e124e9726c6551ad190aa1d07021fc23a799e9cad07328e9362924b3f368b18b"},
+    {"candidateIndex": 10, "seed": 40523519, "ply": 72, "rootStateKey": "96f90a45a75f2fedd41c01822da52b45b6d866f3df3f5ee146951b8ac100375c", "stateCount": 23, "edgeCount": 22, "terminalCount": 12, "winCount": 7, "lossCount": 4, "recurrentCount": 0, "rootStatus": "LOSS", "rootAbsoluteWinner": 1, "rootDtf": 6, "solutionSha256": "5c5a75992d2766ce021e964e63ffcb4a25587e6d96df5f2cd7a92d8a2ef2abab"}
+  ],
+  "productionDisposition": "FORMAL-DOMAIN-GATE-PASS",
+  "allProductionIndependentAgreement": true,
+  "productionCoreSha256": "f13c521c58ff2b6a5c649bf064752249fdf5a05754da90faddb78088b88e9a6c",
+  "independentVerificationCoreSha256": "48c974e5304ba0fe3476dc88124fd4f7f26261b9d045c539b7e695ee4a9e5144",
+  "interpretationBoundary": {
+    "drawInferenceAuthorized": false,
+    "wholeBaoGeneralizationAuthorized": false,
+    "publicAiChangeAuthorized": false,
+    "sameEvidenceRerunAuthorized": false,
+    "g4_06AuthorizedByThisResultAlone": false,
+    "mainIntegrationAuthorized": false
+  }
+}
