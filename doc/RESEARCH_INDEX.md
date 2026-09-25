@@ -1,8 +1,8 @@
 # Bao研究成果索引
 
-更新日: 2026-09-25  
+更新日: 2026-09-26  
 対象: Research Generation 1〜4  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01完了、G4-02は科学的判定なしで終了、G4-03完了、G4-04完了、G4-05完了**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01完了、G4-02は科学的判定なしで終了、G4-03完了、G4-04完了、G4-05完了・main統合済み**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
@@ -35,7 +35,7 @@
 | `G4-02` | corridor / tree-graph transfer | `CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED` |
 | `G4-03` / [`LWSRT-STUDY1`](local-width-search-ranking-transfer/) | width / search-ranking transfer | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED` |
 | `G4-04` / [`GTTD-STUDY1`](geometry-trajectory-dynamics-transfer/) | geometry-trajectory transfer | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
-| `G4-05` / [`RLEMOF-STUDY1`](reachable-late-game-exact-microdomain-oracle-foundation/) | exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN NOT INTEGRATED` |
+| `G4-05` / [`RLEMOF-STUDY1`](reachable-late-game-exact-microdomain-oracle-foundation/) | exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED` |
 | `G4-06` | geometry / exact consequence bridge | `NEXT CORE CANDIDATE / ELIGIBLE FOR AUTHORIZATION REVIEW / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-07` | multiscale memory / return | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-08` | rule-semantic transition | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
@@ -116,7 +116,7 @@ candidate 1と4は`STATE-LIMIT`でcomplete closureにならず、そのままfai
 
 Program Plan上のG4-06 dependencyは満たしたため、G4-06は次の個別authorization review候補です。ただし未認可です。
 
-G4-05はresearch branch上でclosure済みで、`main`統合はまだ行っていません。
+G4-05はPR #166で`main`統合済みです。merge commitは`97ffe3758157d2497b5884f7b17abe59a24159b5`で、formal resultと解釈境界は統合後も変更していません。
 
 詳しくは、[`research-generation-4/README.md`](research-generation-4/README.md)、[`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md)、[`reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md`](reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md)を参照してください。
 
