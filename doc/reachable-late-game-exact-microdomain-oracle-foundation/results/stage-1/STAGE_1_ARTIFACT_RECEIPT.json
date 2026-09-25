@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "studyId": "RLEMOF-STUDY1",
+  "stageId": "RLEMOF-S1-DEVELOPMENT-2026-09-25-v1",
+  "workflowRunId": 36118961899,
+  "runAttempt": 1,
+  "workflowConclusion": "success",
+  "headSha": "94d53f3578285e1ba7a371e8abe83cfb38b64bc7",
+  "artifactId": 10856747657,
+  "artifactName": "rlemof-g4-05-stage1-36118961899-attempt-1",
+  "artifactSizeBytes": 4282,
+  "artifactDigest": "sha256:3fbdfcb43fcc0d34eabf0e97fbb6708ca0933efda01b8460ea0e4dd641d5c6fb",
+  "artifactExpiresAt": "2026-10-25T09:36:55Z",
+  "containedFileSha256": {
+    "production-result.json": "337816f109886198cde341eabaf4f5fbc6500f42fe0755af37e6f9793ef68c7d",
+    "independent-verification.json": "6ab4b23f44929952bbc07a9f6f6656bf9b90820e1914f3fe37ca996d6fee5b3c",
+    "execution-identity.txt": "caada7b7c32a4de6a3d116057aa6fb870a94a3eacc1b6e52ad40656fc7ac9727"
+  },
+  "note": "SHA256SUMS.txt self-entry is non-authoritative because the manifest command included the file being written; individual file digests above were independently read from the artifact. Stage 2 workflow excludes SHA256SUMS.txt from its own manifest input."
+}
