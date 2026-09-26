@@ -1,0 +1,289 @@
+{
+  "schemaVersion": 1,
+  "program": "Research Generation 4",
+  "agendaId": "G4-07",
+  "studyId": "MLGMR-STUDY1",
+  "status": "PROSPECTIVE-FROZEN-BEFORE-FRESH-SCIENTIFIC-EVIDENCE",
+  "authorization": {
+    "reviewId": "G4-07-AUTHORIZATION-REVIEW-2026-09-26-V1",
+    "decision": "G4-07-AUTHORIZED-FOR-PREREGISTRATION-AND-STAGE0-ONLY",
+    "reviewPath": "doc/research-program-decisions/2026-09-26-post-g4-06-g4-07-authorization-review.md",
+    "freshStage1Authorized": false,
+    "freshStage2Authorized": false,
+    "mainIntegrationAuthorized": false,
+    "publicAiChangeAuthorized": false,
+    "g4_10Depth11AccessAuthorized": false
+  },
+  "repository": {
+    "fullName": "nkkmd/bao-la-kiswahili-game",
+    "reviewedMainSha": "8edf791aa789d77ba27d3d7704ab02acd6e35eac",
+    "researchBranch": "research/g4-07-multiscale-geometry-memory-return"
+  },
+  "titles": {
+    "english": "Multiscale Local Geometry Memory / Return Study 1 — Prospective exact analysis of lagged sign persistence, bounded memory, reversal, and return in fresh continuous-representation Bao trajectories",
+    "japanese": "Bao局所ゲーム木幾何の多時間尺度memory・反転・回帰研究1 — fresh trajectory上の連続表現におけるlagged sign persistenceとbounded returnのprospective exact解析"
+  },
+  "scientificQuestion": "Within fresh Bao trajectories, do exact change directions of the six frozen continuous local-geometry axes persist or reverse across multiple bounded lags, and what bounded return patterns follow the first reversal?",
+  "upstream": {
+    "directScientificFoundation": {
+      "studyId": "GTTD-STUDY1",
+      "agendaId": "G4-04",
+      "status": "COMPLETE-FORMAL-COMPLETE-8-OF-8-GENERALIZATION-CONFIRMED",
+      "usableClaims": ["C1", "C2", "C3", "C5"],
+      "sameEvidenceReplayAllowed": false
+    },
+    "g4_02": {
+      "status": "CLOSED-NO-SCIENTIFIC-DECISION",
+      "positiveEvidenceContribution": "NONE",
+      "negativeEvidenceContribution": "NONE",
+      "c1c6TransferAssumptionAllowed": false
+    },
+    "g4_03": {
+      "status": "COMPLETE-STAGE2-COMPLETE-WITH-NON-ESTIMABLE",
+      "searchRankingResultUsedAsMemoryEvidence": false
+    },
+    "g3_08": {
+      "studyId": "LGPML-STUDY1",
+      "status": "CLOSED-TECHNICAL-INVALID",
+      "scientificResultReuse": "NONE",
+      "partialTrajectoryScientificReuseAllowed": false,
+      "stage1SeedReuseAllowed": false,
+      "stage2SeedReuseAllowed": false,
+      "repairReopenRerunAllowed": false,
+      "methodologyUse": "HISTORICAL-TECHNICAL-REFERENCE-ONLY"
+    }
+  },
+  "representation": {
+    "id": "CRCLGR-R1-EXACT-SQUASHED-L1",
+    "relativeDepth": 5,
+    "axes": ["CRCLGR-A1", "CRCLGR-A2", "CRCLGR-A3", "CRCLGR-A4", "CRCLGR-A5", "CRCLGR-A6"],
+    "coordinateArithmetic": "EXACT-REDUCED-RATIONAL",
+    "trajectoryDistance": "EQUAL-WEIGHT-EXACT-L1",
+    "validatedTransformSet": [],
+    "rawIdentityFields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "canonicalizationAllowed": false,
+    "symmetryReductionAllowed": false,
+    "floatToleranceAllowed": false
+  },
+  "sourcePolicies": [
+    {
+      "id": "P1",
+      "canonicalId": "LGTTCI-P1-UNIFORM-LEGAL"
+    },
+    {
+      "id": "P2",
+      "canonicalId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE"
+    }
+  ],
+  "policyAssignment": "FIXED-SEED-SLOT-PARITY-OUTCOME-BLIND",
+  "checkpointGrid": {
+    "plies": [16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72],
+    "spacingPly": 4,
+    "count": 15,
+    "requiredTerminalState": "NONTERMINAL-THROUGH-CHECKPOINT-72"
+  },
+  "changeProcess": {
+    "definition": "D_axis(j)=sign(X_axis(j+1)-X_axis(j))",
+    "signValues": ["UP", "DOWN", "ZERO"],
+    "arithmetic": "EXACT-CROSS-MULTIPLICATION",
+    "adjacentPhaseCrossingDisposition": "UNDEFINED-PHASE-CROSSING"
+  },
+  "lagFamily": {
+    "checkpointIntervals": [1, 2, 4, 8],
+    "plyEquivalent": [4, 8, 16, 32],
+    "pairClasses": ["SAME", "OPPOSITE", "ZERO-EXCLUDED", "PHASE-CROSSING-CENSORED", "WINDOW-CENSORED"],
+    "primaryComparableRequirements": [
+      "BOTH-CHANGE-SIGNS-DEFINED",
+      "BOTH-CHANGE-SIGNS-NONZERO",
+      "WHOLE-SPAN-SAME-PHASE",
+      "ALL-REQUIRED-COORDINATES-EXACTLY-DEFINED"
+    ]
+  },
+  "primaryEndpoint": {
+    "family": "AXIS-BY-LAG-TRAJECTORY-LEVEL-SIGN-BALANCE",
+    "candidateSlots": 24,
+    "slotIdentity": "6-AXES-X-4-LAGS",
+    "perTrajectoryFields": [
+      "sameCount",
+      "oppositeCount",
+      "zeroExcludedCount",
+      "phaseCrossingCensoredCount",
+      "windowCensoredCount",
+      "comparableNonzero",
+      "balance",
+      "balanceSign"
+    ],
+    "balanceDefinition": "sameCount-oppositeCount",
+    "balanceSignLabels": {
+      "POSITIVE": "SAME-DOMINANT-PERSISTENCE-DIRECTION",
+      "NEGATIVE": "OPPOSITE-DOMINANT-REVERSAL-DIRECTION",
+      "ZERO": "TRAJECTORY-LEVEL-TIE"
+    },
+    "experimentalUnit": "SOURCE-TRAJECTORY",
+    "lagPairsIndependentSamples": false,
+    "checkpointsIndependentSamples": false,
+    "axesIndependentSamplesForPrimaryInference": false
+  },
+  "boundedMemorySummary": {
+    "field": "confirmedContiguousPersistenceLagMax",
+    "orderedLags": [1, 2, 4, 8],
+    "derivation": "MAXIMUM-CONTIGUOUS-FROM-LAG1-PERSISTENCE-CONFIRMED",
+    "ifLag1NotConfirmed": "NONE",
+    "beyondLag8ExtrapolationAllowed": false,
+    "halfLifePrimaryTokenAllowed": false
+  },
+  "secondaryReturnEndpoint": {
+    "status": "DESCRIPTIVE-ONLY",
+    "firstReversalDefinition": "FIRST-NONZERO-SIGN-CHANGE-IN-AXIS-CHANGE-SEQUENCE",
+    "horizonsChangeIntervals": [1, 2, 4],
+    "classes": ["RETURN", "STAY-REVERSED", "ZERO-OR-PHASE-CENSORED", "NO-WINDOW"],
+    "formalPValueAllowed": false,
+    "confirmationLabelAllowed": false
+  },
+  "phaseAndRuleContext": {
+    "phaseCrossingPrimaryDisposition": "CENSORED-AND-COUNTED-DESCRIPTIVELY",
+    "ruleSpecificFormalInferenceAllowed": false,
+    "ruleSpecificCausalClaimAllowed": false,
+    "descriptiveRuleTagsConditionalOnStage0Exactness": true,
+    "g4_08BoundaryPreserved": true
+  },
+  "stages": {
+    "stage0": {
+      "stageId": "MLGMR-S0-TECHNICAL-2026-09-26-v1",
+      "authorized": true,
+      "freshScientificSeedReadsAllowed": false,
+      "scientificOutcomeAllowed": false,
+      "technicalOrSyntheticFixturesOnly": true
+    },
+    "stage1": {
+      "stageId": "MLGMR-S1-DEVELOPMENT-2026-09-26-v1",
+      "authorized": false,
+      "seedStart": 40713001,
+      "seedEnd": 40713512,
+      "seedSlots": 512,
+      "slotsPerPolicy": 256,
+      "candidateTargetPerPolicy": 16,
+      "minimumFullyEligiblePerPolicy": 12,
+      "measuredPerPolicy": 8,
+      "effectDirectionBlinded": true,
+      "formalInferenceAllowed": false,
+      "supportOnlyPromotion": {
+        "completeMeasuredTrajectoriesRequired": 16,
+        "perPolicySupportTrajectoriesRequired": 6,
+        "perPolicyMeasuredTrajectories": 8,
+        "combinedSupportTrajectoriesRequired": 12,
+        "minimumComparableNonzeroPerSupportingTrajectory": 3,
+        "productionIndependentExactAgreementRequired": true,
+        "effectDirectionUsedForPromotion": false
+      }
+    },
+    "stage2": {
+      "stageId": "MLGMR-S2-FORMAL-2026-09-26-v1",
+      "authorized": false,
+      "seedStart": 40723001,
+      "seedEnd": 40724024,
+      "seedSlots": 1024,
+      "slotsPerPolicy": 512,
+      "candidateTargetPerPolicy": 48,
+      "minimumFullyEligiblePerPolicy": 40,
+      "measuredPerPolicy": 32,
+      "formalFamily": "STAGE1-SUPPORT-ONLY-PROMOTED-AXIS-BY-LAG-SLOTS",
+      "formalSupportGate": {
+        "measuredTrajectoriesRequired": 64,
+        "supportTrajectoriesRequired": 48,
+        "supportPerPolicyRequired": 20,
+        "nonzeroTrajectoryBalancesRequired": 40
+      },
+      "test": "EXACT-TWO-SIDED-BINOMIAL-SIGN-TEST",
+      "zeroTrajectoryBalancesInFormalN": false,
+      "multiplicity": "HOLM-BONFERRONI",
+      "familyAlpha": "1/20",
+      "labels": ["PERSISTENCE-CONFIRMED", "REVERSAL-CONFIRMED", "NOT-CONFIRMED", "NON-ESTIMABLE", "TECHNICAL-INVALID"]
+    }
+  },
+  "identityFirewall": {
+    "stage1Exclusions": [
+      "G3-10-STAGE1-STAGE2-SCIENTIFIC-SEED-NAMESPACES",
+      "G3-10-AUDITABLE-FULL-TRAJECTORY-OPENING-PREFIX-CHECKPOINT-ROOT-IDENTITIES",
+      "G3-08-SEEDS-31810001-31810256",
+      "G3-08-PROTECTED-SEEDS-31820001-31820384",
+      "G3-08-AUDITABLE-GENERATED-SCIENTIFIC-TRAJECTORY-ROOT-IDENTITIES",
+      "G4-01-GCLD-INTERRUPTED-PRIMARY-RESERVE-NAMESPACES",
+      "G4-04-SEEDS-40413001-40413512",
+      "G4-04-SEEDS-40423001-40424024",
+      "G4-04-FULL-TRAJECTORY-OPENING-PREFIX-CHECKPOINT-ROOT-IDENTITIES"
+    ],
+    "stage2AddsStage1Identities": true,
+    "priorEndpointValuesUsedForSelection": false,
+    "priorEffectDirectionsUsedForSelection": false,
+    "priorPValuesUsedForSelection": false,
+    "gameOutcomesUsedForSelection": false
+  },
+  "resourceCeilings": {
+    "perCheckpointPerImplementation": {
+      "uniqueRawStates": 100000,
+      "uniqueTransitions": 750000,
+      "parentExpansions": 100000,
+      "legalMoveEvaluations": 750000,
+      "summedTreeNodeOccurrences": 1000000000,
+      "elapsedMs": 180000,
+      "peakRssBytes": 4294967296,
+      "rootArtifactBytes": 67108864
+    },
+    "combinedProductionIndependentPerCheckpointElapsedMs": 360000,
+    "stage1ElapsedMs": 10800000,
+    "stage2ElapsedMs": 16200000,
+    "stagePeakRssBytes": 4294967296,
+    "stage1ResultArtifactBytes": 268435456,
+    "stage2ResultArtifactBytes": 402653184,
+    "freshAccessAfterCeilingRelaxationAllowed": false
+  },
+  "executionIntegrity": {
+    "preferredLongRunEnvironment": "GITHUB-ACTIONS",
+    "maxScientificExecutionsPerFreshStage": 1,
+    "authorizationTriggerSeparated": true,
+    "durablePrecomputationLeaseRequired": true,
+    "sourceBlobBindingRequired": true,
+    "singleTriggerPathRequired": true,
+    "concurrencyGuardRequired": true,
+    "artifactBeforeMirrorRequired": true,
+    "recordRunIdAttemptSourceSha": true,
+    "recordArtifactIdAndSha256": true,
+    "recordFreshSeedReads": true,
+    "recordG4_10Depth11AccessCount": true
+  },
+  "noRescue": {
+    "boundary": "EARLIEST-OF-FIRST-STAGE1-FRESH-SEED-GENERATION-OR-READ",
+    "afterBoundaryProhibitedChanges": [
+      "SOURCE-POLICY",
+      "CHECKPOINT-GRID",
+      "LAG-FAMILY",
+      "AXIS-FAMILY",
+      "PRIMARY-ENDPOINT",
+      "SUPPORT-GATE",
+      "SEED-BLOCK",
+      "SELECTION-RULE",
+      "FORMAL-TEST",
+      "MULTIPLICITY",
+      "RESOURCE-CEILING-RELAXATION",
+      "FAVORABLE-SUBGROUP-RESCUE"
+    ],
+    "sameEvidenceRepairRerunAllowed": false,
+    "seedExtensionAllowed": false
+  },
+  "interpretationBoundary": {
+    "wholeBaoUniversalLaw": false,
+    "beyond32PlyMemoryClaim": false,
+    "physicalExponentialHalfLifeClaim": false,
+    "gameTheoreticValueClaim": false,
+    "bestMoveCorrectnessClaim": false,
+    "aiStrengthClaim": false,
+    "humanMemoryDifficultyClaim": false,
+    "causalRuleMechanismClaim": false,
+    "publicAiAdoptionAuthorized": false
+  },
+  "protectedEvidence": {
+    "g3_11Depth10RerunAllowed": false,
+    "g4_10Depth11AccessAllowed": false
+  }
+}
