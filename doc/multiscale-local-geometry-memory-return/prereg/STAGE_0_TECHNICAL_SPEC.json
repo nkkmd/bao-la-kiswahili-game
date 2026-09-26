@@ -40,7 +40,7 @@
   ],
   "technicalTrajectoryRequirement": {
     "minimumFullyEligiblePerPolicy": 1,
-    "terminalThroughCheckpoint72": false,
+    "requireNonterminalThroughCheckpoint72": true,
     "allCheckpointDepth5PreflightEligible": true
   },
   "syntheticFixtureRequirements": {
