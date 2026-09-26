@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "studyId": "MLGMR-STUDY1",
+  "stageId": "MLGMR-S2-FORMAL-2026-09-26-v1",
+  "decision": "AUTHORIZED",
+  "authorizationType": "ONE-SHOT-SCIENTIFIC-FORMAL-HOLDOUT",
+  "reviewDecision": "MLGMR-STUDY1-STAGE2-AUTHORIZED-GITHUB-ACTIONS-ONCE",
+  "authorizationBasis": {
+    "stage0Disposition": "STAGE0-PASS",
+    "stage1Disposition": "STAGE1-DEVELOPMENT-COMPLETE",
+    "stage1CanonicalRunId": 36247459779,
+    "stage2DesignSourceFreezeReview": "MLGMR-STUDY1-STAGE2-DESIGN-AUTH-2026-09-27-V1",
+    "finalOneShotReview": "doc/research-program-decisions/2026-09-27-g4-07-stage2-final-one-shot-authorization-review.md",
+    "finalSeedFreeStaticRunId": 36276796017,
+    "finalSeedFreeStaticRunConclusion": "success",
+    "finalSeedFreeStaticRunHead": "8bf76b5bb4ef375948cedaac131cb256b4a1dd8a",
+    "priorStage2FreshScientificSeedReads": 0,
+    "identityFirewallRequiredBeforeFirstFreshRead": true
+  },
+  "freshScientificSeedAccessAuthorized": true,
+  "stage1SeedAccessAuthorized": false,
+  "stage2SeedAccessAuthorized": true,
+  "formalInferenceAuthorized": true,
+  "g4_10Depth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "singleAttemptOnly": true,
+  "sameEvidenceRerunAuthorized": false,
+  "seedExtensionAuthorized": false,
+  "replacementPopulationAuthorized": false,
+  "seedBlockAccess": {
+    "start": 40723001,
+    "end": 40724024,
+    "inclusiveCount": 1024,
+    "seedExtensionAuthorized": false
+  },
+  "formalFamilySize": 16,
+  "noRescueBoundary": "EARLIEST-OF-FIRST-STAGE2-FRESH-SEED-GENERATION-OR-READ",
+  "executionBinding": {
+    "status": "FROZEN",
+    "bindingId": "MLGMR-STUDY1-STAGE2-BINDING-2026-09-27-V1",
+    "branch": "research/g4-07-multiscale-geometry-memory-return",
+    "frozenSourceCommit": "8bf76b5bb4ef375948cedaac131cb256b4a1dd8a",
+    "postFreezeAllowedFiles": [
+      "doc/multiscale-local-geometry-memory-return/authorizations/STAGE_2_AUTHORIZATION.json",
+      "doc/multiscale-local-geometry-memory-return/executions/STAGE_2_TRIGGER.json"
+    ],
+    "gitBlobShaByPath": {
+      ".github/workflows/mlgmr-stage2-formal.yml": "d186e36386c3fdc840e3274f23e8898116163aac",
+      ".github/workflows/mlgmr-stage2-preexecution-static.yml": "7ec6283501d2cbb24ec11d5639042ff4ad18d52a",
+      "doc/research-program-decisions/2026-09-27-g4-07-stage2-final-one-shot-authorization-review.md": "16cc924be6e78546a180b87347416c25b985079b",
+      "doc/multiscale-local-geometry-memory-return/prereg/STUDY_1_SPEC.json": "04260fcad87ec9b88f8be61a1c68afaf830c791a",
+      "doc/multiscale-local-geometry-memory-return/prereg/STAGE_2_FORMAL_SPEC.json": "a09175a7b41a4d55056644a9850d62ded0aa7cc0",
+      "doc/multiscale-local-geometry-memory-return/prereg/STAGE_2_IDENTITY_FIREWALL.json": "c329bb8f6a9b9f6c5a979072b01e369e43d88821",
+      "doc/multiscale-local-geometry-memory-return/results/stage-1/STAGE_1_CANONICAL_RECORD.json": "693a8bca31a9881531356ef102e16ba4e4300643",
+      "tools/experiments/run-mlgmr-stage2-formal.js": "6a337c1c96cbd9fec2aaae0a602fb8d20198f3d2",
+      "tools/experiments/verify-mlgmr-stage2-binding.js": "ed7366f56ca52adf7f9468a1149677dd4622413a",
+      "tools/experiments/verify-mlgmr-stage2-static.js": "887b3879b11b45fbce21f062af523c868b3ec12c",
+      "tools/experiments/lib/mlgmr-stage2-firewall.js": "83bac5a8a5e4928603ec9654f6860102d9c3f9ed",
+      "tools/experiments/lib/mlgmr-stage2-inference-production.js": "e1ea80049bd862c57bd34b697d3e22ba8ceea71b",
+      "tools/experiments/lib/mlgmr-stage2-inference-independent.js": "b40b99cb1d680ae3cfd551cc51ee98dae13540f3",
+      "tools/experiments/lib/mlgmr-production.js": "347cada3a8067a4ef5295d1dadef749f4ff7430d",
+      "tools/experiments/lib/mlgmr-independent.js": "fb7868197f6367f38442eb92f3533a721809328f",
+      "tools/experiments/lib/lgttci-compatibility-production.js": "2fe5b87572c0138cf66dfabb4ca40869eab26ddc",
+      "tools/experiments/lib/lgttci-compatibility-independent.js": "d63263375d4b1d61271ead31777b37185056a73b",
+      "tools/experiments/lib/gcld-production.js": "8bd203832387be1957bf75cf310b06e861c86956",
+      "tools/experiments/lib/gcld-independent.js": "ffb234c0bba523c1e72c17e903a3edb9c2585656",
+      "public/engine.js": "1527bb3665228b7a5bd9f03153567aedbaaa22d7"
+    }
+  }
+}
