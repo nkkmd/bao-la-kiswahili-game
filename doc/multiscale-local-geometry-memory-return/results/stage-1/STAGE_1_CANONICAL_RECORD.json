@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "studyId": "MLGMR-STUDY1",
+  "stageId": "MLGMR-S1-DEVELOPMENT-2026-09-26-v1",
+  "recordType": "CANONICAL-STAGE1-DEVELOPMENT-SUMMARY-AND-PROVENANCE",
+  "disposition": "STAGE1-DEVELOPMENT-COMPLETE",
+  "evidenceClass": "FRESH-DEVELOPMENT-SUPPORT-ONLY",
+  "scientificOutcomeClass": "DEVELOPMENT-SUPPORT-ONLY",
+  "formalInferencePerformed": false,
+  "execution": {
+    "workflowRunId": 36247459779,
+    "runAttempt": 1,
+    "headSha": "cf9244d760fac807c604fef1ae9639103bfa4b31",
+    "bindingId": "MLGMR-STUDY1-STAGE1-BINDING-2026-09-26-V1",
+    "frozenSourceCommit": "acae88384e74d9d8b7d2661adcee69d1fe1f3175",
+    "conclusion": "success",
+    "artifactId": 10908816662,
+    "artifactName": "mlgmr-stage1-development-result",
+    "artifactZipSha256": "65081316d7f3dc0f59b7da5a527af65c052ea33b0ab7e8e8b07d06d764f27469",
+    "resultJsonSha256": "2a712105917da91c954689f42665fc248fdf16e22721e13726e7e0cfd356d196",
+    "identityJsonSha256": "bcc53e7f7a561552e0a67ac0225b0da29da6d7904834b6b8130531cc48b6e13b"
+  },
+  "firewall": {
+    "digest": "c601463cfa56acbe3b80fd02345f5ef2e7f3afc4dd72cda37503fbc6e7a156d7",
+    "setSizes": {
+      "seed": 3968,
+      "trajectory": 584,
+      "prefix": 200,
+      "root": 4517
+    },
+    "verifiedBeforeFirstFreshSeedRead": true,
+    "stage1ConsumedIdentityRowCount": 96
+  },
+  "freshAccess": {
+    "freshScientificSeedReads": 96,
+    "firstSeedRead": 40713001,
+    "lastSeedRead": 40713145,
+    "stage2SeedReads": 0,
+    "g4_10Depth11AccessCount": 0
+  },
+  "candidateCounts": {
+    "LGTTCI-P1-UNIFORM-LEGAL": 16,
+    "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE": 16
+  },
+  "rejectionCounts": {
+    "LGTTCI-P1-UNIFORM-LEGAL": {
+      "TERMINAL-BEFORE-72": 57
+    },
+    "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE": {
+      "TERMINAL-BEFORE-72": 7
+    }
+  },
+  "measurement": {
+    "measuredCount": 16,
+    "measuredPerPolicy": {
+      "LGTTCI-P1-UNIFORM-LEGAL": 8,
+      "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE": 8
+    },
+    "productionIndependentExact": true,
+    "resourceObservation": {
+      "elapsedMs": 2051988,
+      "rssBytes": 387956736,
+      "stageElapsedCeilingMs": 10800000,
+      "stagePeakRssBytes": 4294967296
+    }
+  },
+  "supportOnlyPromotion": {
+    "effectDirectionUsedForPromotion": false,
+    "slotCount": 24,
+    "supportedSlotCount": 16,
+    "supportedSlotIds": [
+      "CRCLGR-A1-ROOT-LEGAL-WIDTH-LAG1",
+      "CRCLGR-A1-ROOT-LEGAL-WIDTH-LAG2",
+      "CRCLGR-A1-ROOT-LEGAL-WIDTH-LAG4",
+      "CRCLGR-A2-CUMULATIVE-TREE-OCCURRENCE-LAG1",
+      "CRCLGR-A2-CUMULATIVE-TREE-OCCURRENCE-LAG2",
+      "CRCLGR-A2-CUMULATIVE-TREE-OCCURRENCE-LAG4",
+      "CRCLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES-LAG1",
+      "CRCLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES-LAG2",
+      "CRCLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES-LAG4",
+      "CRCLGR-A4-CUMULATIVE-TREE-RAW-RATIO-LAG1",
+      "CRCLGR-A4-CUMULATIVE-TREE-RAW-RATIO-LAG2",
+      "CRCLGR-A5-DUPLICATE-TRANSITION-FRACTION-LAG1",
+      "CRCLGR-A5-DUPLICATE-TRANSITION-FRACTION-LAG2",
+      "CRCLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION-LAG1",
+      "CRCLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION-LAG2",
+      "CRCLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION-LAG4"
+    ],
+    "slots": [
+      {"slotId":"CRCLGR-A1-ROOT-LEGAL-WIDTH-LAG1","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":8,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":8},"combinedSupportTrajectories":16,"status":"SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A1-ROOT-LEGAL-WIDTH-LAG2","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":8,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":7},"combinedSupportTrajectories":15,"status":"SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A1-ROOT-LEGAL-WIDTH-LAG4","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":7,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":6},"combinedSupportTrajectories":13,"status":"SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A1-ROOT-LEGAL-WIDTH-LAG8","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":0,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":0},"combinedSupportTrajectories":0,"status":"NOT-SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A2-CUMULATIVE-TREE-OCCURRENCE-LAG1","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":8,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":8},"combinedSupportTrajectories":16,"status":"SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A2-CUMULATIVE-TREE-OCCURRENCE-LAG2","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":8,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":8},"combinedSupportTrajectories":16,"status":"SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A2-CUMULATIVE-TREE-OCCURRENCE-LAG4","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":8,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":8},"combinedSupportTrajectories":16,"status":"SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A2-CUMULATIVE-TREE-OCCURRENCE-LAG8","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":0,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":0},"combinedSupportTrajectories":0,"status":"NOT-SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES-LAG1","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":8,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":8},"combinedSupportTrajectories":16,"status":"SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES-LAG2","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":8,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":8},"combinedSupportTrajectories":16,"status":"SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES-LAG4","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":8,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":8},"combinedSupportTrajectories":16,"status":"SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES-LAG8","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":0,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":0},"combinedSupportTrajectories":0,"status":"NOT-SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A4-CUMULATIVE-TREE-RAW-RATIO-LAG1","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":8,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":8},"combinedSupportTrajectories":16,"status":"SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A4-CUMULATIVE-TREE-RAW-RATIO-LAG2","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":8,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":8},"combinedSupportTrajectories":16,"status":"SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A4-CUMULATIVE-TREE-RAW-RATIO-LAG4","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":3,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":2},"combinedSupportTrajectories":5,"status":"NOT-SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A4-CUMULATIVE-TREE-RAW-RATIO-LAG8","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":0,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":0},"combinedSupportTrajectories":0,"status":"NOT-SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A5-DUPLICATE-TRANSITION-FRACTION-LAG1","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":8,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":8},"combinedSupportTrajectories":16,"status":"SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A5-DUPLICATE-TRANSITION-FRACTION-LAG2","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":8,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":8},"combinedSupportTrajectories":16,"status":"SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A5-DUPLICATE-TRANSITION-FRACTION-LAG4","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":3,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":2},"combinedSupportTrajectories":5,"status":"NOT-SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A5-DUPLICATE-TRANSITION-FRACTION-LAG8","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":0,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":0},"combinedSupportTrajectories":0,"status":"NOT-SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION-LAG1","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":8,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":8},"combinedSupportTrajectories":16,"status":"SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION-LAG2","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":8,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":8},"combinedSupportTrajectories":16,"status":"SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION-LAG4","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":8,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":8},"combinedSupportTrajectories":16,"status":"SUPPORTED-FOR-FORMAL-HOLDOUT"},
+      {"slotId":"CRCLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION-LAG8","supportByPolicy":{"LGTTCI-P1-UNIFORM-LEGAL":0,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":0},"combinedSupportTrajectories":0,"status":"NOT-SUPPORTED-FOR-FORMAL-HOLDOUT"}
+    ]
+  },
+  "guards": {
+    "sameEvidenceRerunAllowed": false,
+    "seedExtensionAllowed": false,
+    "replacementPopulationAllowed": false,
+    "stage2Authorized": false,
+    "g4_10Depth11Authorized": false,
+    "publicAiChange": false,
+    "mainIntegration": false
+  },
+  "rawArtifactRetentionNote": "The GitHub Actions artifact is the byte-exact raw Stage 1 output; this repository record preserves the prospectively relevant support result and provenance digests."
+}

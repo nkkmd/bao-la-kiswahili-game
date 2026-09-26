@@ -1,9 +1,9 @@
 # G4-07 / MLGMR-STUDY1 — 現在の状態
 
-更新日: 2026-09-26  
+更新日: 2026-09-27  
 Program: `Research Generation 4 / G4-07`  
 Study: `MLGMR-STUDY1`  
-状態: **`STAGE0-PASS / STAGE1-DESIGN-AND-SOURCE-FREEZE-AUTHORIZED / STAGE1-EXECUTION-NOT-YET-AUTHORIZED`**
+状態: **`STAGE0-PASS / STAGE1-DEVELOPMENT-COMPLETE / STAGE2-NOT-AUTHORIZED`**
 
 ## 現在地
 
@@ -11,19 +11,16 @@ Study: `MLGMR-STUDY1`
 reviewed main HEAD = 8edf791aa789d77ba27d3d7704ab02acd6e35eac
 research branch = research/g4-07-multiscale-geometry-memory-return
 initial authorization review = G4-07-AUTHORIZATION-REVIEW-2026-09-26-V1
-initial decision = G4-07-AUTHORIZED-FOR-PREREGISTRATION-AND-STAGE0-ONLY
 Study ID = MLGMR-STUDY1
-protocol = FROZEN BEFORE FRESH SCIENTIFIC EVIDENCE
-preregistration = FROZEN BEFORE FRESH SCIENTIFIC EVIDENCE
+protocol / preregistration = FROZEN BEFORE FRESH SCIENTIFIC EVIDENCE
 Stage 0 = COMPLETE / STAGE0-PASS
-Stage 1 design/source freeze review = MLGMR-STUDY1-STAGE1-DESIGN-AUTH-2026-09-26-V1
-Stage 1 design/source freeze = AUTHORIZED
-Stage 1 scientific execution = NOT YET AUTHORIZED
-Stage 2 = NOT AUTHORIZED / seed block reserved only
-fresh scientific seed reads = 0
-Stage 1 scientific seed reads = 0
+Stage 1 = COMPLETE / DEVELOPMENT-SUPPORT-ONLY
+Stage 1 canonical run = 36247459779 / attempt 1 / success
+fresh scientific seed reads = 96
+Stage 1 scientific seed reads = 96
 Stage 2 scientific seed reads = 0
 formal scientific outcome = NOT GENERATED
+Stage 2 = NOT AUTHORIZED / seed block reserved only
 G4-10 depth-11 access = 0 / NOT AUTHORIZED
 public AI change = false
 main integration = NOT AUTHORIZED
@@ -35,114 +32,99 @@ main integration = NOT AUTHORIZED
 run = 36238840292 / attempt 1 / success
 head = 0c7cdb2b2fa83c4d97ec0d2ad27c6a5c9c22b2b5
 binding = MLGMR-STUDY1-STAGE0-BINDING-2026-09-26-V3
-frozen source commit = 0886bb6786c38b35c5285dd87da8edaf7c6cb5f8
 mandatory gates = 18 / 18 PASS
 production / independent exact agreement = true
 artifact ID = 10905163005
-artifact ZIP SHA-256 = cf5b96e4fb63786e085bf9719beed6ff125f588d623657ed7450031b1a20614f
-result.json SHA-256 = d6854bd00454288e76de2274990571f6c5d0249b7b8ee8f632c53e8a4fe6e0a5
 fresh scientific seed reads = 0
-Stage 1 seed reads = 0
+```
+
+詳細: `checkpoints/2026-09-26-stage-0-technical-pass.md`
+
+## Stage 1 canonical execution
+
+```text
+run = 36247459779 / attempt 1 / success
+head = cf9244d760fac807c604fef1ae9639103bfa4b31
+binding = MLGMR-STUDY1-STAGE1-BINDING-2026-09-26-V1
+frozen source commit = acae88384e74d9d8b7d2661adcee69d1fe1f3175
+artifact ID = 10908816662
+artifact ZIP SHA-256 = 65081316d7f3dc0f59b7da5a527af65c052ea33b0ab7e8e8b07d06d764f27469
+STAGE_1_RESULT.json SHA-256 = 2a712105917da91c954689f42665fc248fdf16e22721e13726e7e0cfd356d196
+Stage 1 identity SHA-256 = bcc53e7f7a561552e0a67ac0225b0da29da6d7904834b6b8130531cc48b6e13b
+fresh scientific seed reads = 96
+first / last read = 40713001 / 40713145
+measured trajectories = 16 (P1 8 / P2 8)
+production / independent exact agreement = true
+formal inference = false
 Stage 2 seed reads = 0
 G4-10 depth-11 access = 0
 ```
 
-Stage 0 result mirror:
+Canonical repository record:
 
-`results/stage-0/STAGE_0_TECHNICAL_RESULT.json`
+- `results/stage-1/STAGE_1_CANONICAL_RECORD.json`
 
-Execution history and remediation provenance:
+Byte-exact raw result / identity files remain pinned by artifact ID and SHA-256 in the checkpoint.
 
-`checkpoints/2026-09-26-stage-0-technical-pass.md`
+詳細: `checkpoints/2026-09-27-stage-1-development-complete.md`
 
-## Dependency disposition
+## Stage 1 support-only result
 
-```text
-G4-02 = CLOSED / NO SCIENTIFIC DECISION
-G4-02 positive evidence contribution to G4-07 = NONE
-G4-03 = methodological/background only for this Study
-G4-04 = direct scientific foundation / 8-of-8 transfer confirmed
-G3-08 = CLOSED / TECHNICAL-INVALID / scientific reuse prohibited
-```
-
-G4-07はG4-02の未取得scientific decisionを代理生成せず、G3-08をrepair/reopenしない。G4-04でfresh transfer確認済みのcontinuous trajectory constructを直接的な上流foundationとする。
-
-## Frozen scientific design
+24個の preregistered axis×lag slot のうち、凍結済みsupport gateを満たしたのは **16 slot**。
 
 ```text
-representation = CRCLGR-R1-EXACT-SQUASHED-L1
-relative depth = 5
-axes = canonical CRCLGR A1..A6
-source policies = P1 / P2
-checkpoints = 16,20,24,28,32,36,40,44,48,52,56,60,64,68,72
-lag checkpoint intervals = 1,2,4,8
-lag ply-equivalent = 4,8,16,32
-primary candidate slots = 24 axis×lag
-primary unit = source trajectory
-return module = descriptive-only
-phase crossing = primary-censored / descriptive count
+lag 1 = 6 / 6 supported
+lag 2 = 6 / 6 supported
+lag 4 = 4 / 6 supported
+lag 8 = 0 / 6 supported
 ```
 
-Stage 1 seed reservation:
+lag 4でsupportedなのは A1 / A2 / A3 / A6。A4 / A5は非support。
+
+これは **formal scientific confirmationではない**。Stage 1ではeffect directionをpromotionへ使用せず、p-value・formal confirmation labelを生成していない。
+
+## No-rescue boundary
+
+Stage 1 fresh accessは完了したため、以下は禁止。
+
+- Stage 1 same-evidence rerun
+- 未読Stage 1 seedを使ったseed extension / replacement population
+- support gate、lag、axis、checkpoint、policyの結果後変更
+- favorable subgroup rescue
+- Stage 1 effect directionを用いたStage 2 familyの追加・削除
+
+Stage 2 family候補は、凍結済みStage 1 support gateで得られた上記16 slotのみ。
+
+## Stage 2 frozen reservation
 
 ```text
-40713001..40713512 / 512
-candidate target = 16 per policy
-minimum fully eligible = 12 per policy
-measured = 8 per policy
+seed reservation = 40723001..40724024 / 1024
+candidate target = 48 per policy
+minimum fully eligible = 40 per policy
+measured = 32 per policy
+formal measured trajectories = 64
+minimum support trajectories = 48
+minimum nonzero trajectory balances = 40
+formal test = exact two-sided binomial sign test
+multiplicity = Holm-Bonferroni
+family alpha = 1/20
 ```
 
-Stage 2 seed reservation:
-
-```text
-40723001..40724024 / 1024
-```
-
-これらのscientific seedは**まだgeneration/read未認可**である。
-
-## Stage 1 support-only boundary
-
-Stage 1はdevelopment / support-onlyとする。
-
-```text
-complete measured trajectories required = 16
-measured per policy = 8
-per-policy support trajectories required = 6
-combined support trajectories required = 12
-minimum comparable-nonzero per supporting trajectory = 3
-production/independent exact agreement required = true
-effect direction used for promotion = false
-formal inference allowed = false
-```
-
-Stage 1 outcomeの方向、p-value、favorable subgroupをStage 2 promotion条件へ使用しない。
+**Stage 2 seedはまだ1件もgeneration/readしていない。Stage 2 executionは未認可。**
 
 ## 次に許可される作業
 
-Stage 1 design/source freeze reviewにより、次だけが許可される。
+- Stage 1 canonical recordの整合性確認
+- post-Stage-1 / pre-Stage-2 prospective authorization review
+- 認可された場合のみStage 2 design/source/firewall freezeの準備
+- Stage 2 execution authorizationは、実装・workflow・bindingを再freezeした後に別途行う
 
-- Stage 1 development spec / source manifestの最終freeze
-- identity-only firewall manifest作成
-- Stage 1 production implementation
-- Stage 1 independent implementation
-- Stage 1 GitHub Actions workflow作成
-- syntax / static guard / source separation検査
-- scientific runner/helper/workflowのGit blob SHA取得
-- final one-shot Stage 1 execution authorization文書 / JSONの作成準備
+## 引き続き禁止
 
-**Stage 1 scientific seed accessはまだ禁止。**
-
-## 禁止事項
-
-- Stage 1 seed `40713001..40713512` のgeneration/read
-- Stage 1 candidate scan / scientific measurement
-- Stage 2 seed generation/read
-- G3-08 scientific seed/evidence reuse
-- G4-02 C1/C6 transfer成立の仮定
-- G4-04 same-evidence rerun
-- lag/checkpoint/axis/policy/support gateの結果後変更
-- seed extension / replacement population / favorable subgroup rescue
-- G3-11 depth-10 rerun
+- Stage 2 fresh seed generation/read
+- Stage 2 formal inferenceの先行実行
+- Stage 1の再実行・救済
+- G3-08 scientific evidence reuse
 - G4-10 depth-11 access
 - public AI変更
 - main統合
@@ -152,5 +134,6 @@ Stage 1 design/source freeze reviewにより、次だけが許可される。
 - [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md)
 - [`prereg/STUDY_1_SPEC.json`](prereg/STUDY_1_SPEC.json)
 - [`checkpoints/2026-09-26-stage-0-technical-pass.md`](checkpoints/2026-09-26-stage-0-technical-pass.md)
+- [`checkpoints/2026-09-27-stage-1-development-complete.md`](checkpoints/2026-09-27-stage-1-development-complete.md)
 - [`../research-program-decisions/2026-09-26-post-g4-06-g4-07-authorization-review.md`](../research-program-decisions/2026-09-26-post-g4-06-g4-07-authorization-review.md)
 - [`../research-program-decisions/2026-09-26-post-g4-07-stage0-stage1-design-authorization-review.md`](../research-program-decisions/2026-09-26-post-g4-07-stage0-stage1-design-authorization-review.md)
