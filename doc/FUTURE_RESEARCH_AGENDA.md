@@ -1,11 +1,11 @@
 # Bao今後の研究アジェンダ
 
-Version: 5.7.0
+Version: 5.8.0
 
 更新日: 2026-09-26  
 Research Generation 2: **Closed (2026-08-31)**（完了）  
 Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了・統合済み）  
-Research Generation 4: **G4-01 complete / G4-02 closed without scientific decision / G4-03 complete / G4-04 complete / G4-05 complete and integrated to `main` / G4-06 formal complete on research branch**
+Research Generation 4: **G4-01 complete / G4-02 closed without scientific decision / G4-03 complete / G4-04 complete / G4-05 complete / G4-06 complete and integrated to `main`**
 
 この文書は、完了した研究を短く振り返りながら、次に研究する価値のある問いを整理するためのものです。候補として記載しただけでは、Study開始、seedアクセス、計算実行、公開AI変更は承認されません。
 
@@ -27,8 +27,8 @@ G4-02 = CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED
 G4-03 = COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED
 G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED
 G4-05 = COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED
-G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / RESEARCH BRANCH ONLY
-G4-07 = NEXT CORE CANDIDATE AFTER G4-06 MAIN INTEGRATION / NOT AUTHORIZED
+G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED
+G4-07 = NEXT AUTHORIZATION-REVIEW CANDIDATE / NOT AUTHORIZED
 G4-08..G4-09 = NOT AUTHORIZED
 G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 ```
@@ -46,8 +46,8 @@ G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 | A | `G4-03` | G3-07由来width / search-ranking transfer | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED` |
 | A | `G4-04` | G3-10由来geometry-trajectory transfer | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
 | B | `G4-05` | fresh exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED` |
-| B | `G4-06` | geometry / game-theoretic consequence bridge | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / RESEARCH BRANCH ONLY` |
-| C | `G4-07` | multiscale memory / return | `NEXT CORE CANDIDATE AFTER G4-06 MAIN INTEGRATION / NOT AUTHORIZED` |
+| B | `G4-06` | geometry / game-theoretic consequence bridge | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED` |
+| C | `G4-07` | multiscale memory / return | `NEXT AUTHORIZATION-REVIEW CANDIDATE / NOT AUTHORIZED` |
 | C | `G4-08..G4-09` | rule-semantic transition、search reliability | `NOT AUTHORIZED` |
 | D | `G4-10` | protected fresh depth-11 exact reachability topology | `PROTECTED / NOT AUTHORIZED` |
 | 独立 | `G4-P01`、`G4-H01` | canonicalization再基礎化とhuman / expert研究 | `NOT AUTHORIZED / DEFERRED` |
@@ -145,15 +145,17 @@ all production / independent agreement = true
 formal decision = FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS
 G4-05 candidate rescan = 0
 G4-10 depth-11 access = 0
+main integration = COMPLETE / FAST-FORWARD
+integrated research HEAD = 889b3d16f09517e5b8aa6621cfd347d4b8902891
 ```
 
 Tree/RAW inflationは全8 rootで`1`、transposition occupancyは全8 rootで`0`となり、両axisはvariation不足のためexact consequenceとのrelationが`NON-ESTIMABLE`となりました。Corridorとreply widthにはvariationがあり、事前登録したfinite ordering ruleでは`DTF × reply width`と`value-preserving move count × corridor`が`MONOTONE-DECREASING-ORDER-CONSISTENT`、その他のestimable primary relationは`MIXED-ORDER`でした。
 
 この結果はN=8の固定late-game exact microdomain内だけを対象とします。whole-Bao universal law、因果関係、AI strength、人間のdifficulty、public AI変更を意味しません。
 
-G4-06はresearch branch上で科学実行とclosureまで完了しています。`main`統合は最終整合性監査と明示的な統合判断を経て行います。
+G4-06は科学実行、closure、main統合まで完了しています。統合はformal result、no-rescue境界、G4-10保護境界、public AI非変更を変更しません。
 
-詳細は[`local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md`](local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md)を参照してください。
+詳細は[`local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md`](local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md)と[`research-generation-4/checkpoints/2026-09-26-g4-06-main-integration.md`](research-generation-4/checkpoints/2026-09-26-g4-06-main-integration.md)を参照してください。
 
 ## 2. 今後の優先課題
 
@@ -161,9 +163,11 @@ G4-06はresearch branch上で科学実行とclosureまで完了しています�
 
 ### 2.1 G4-07 — multiscale geometry memory / return
 
-G4-06を`main`へ統合した後の次のcore candidateはG4-07です。G3-10のformal resultを仮説生成にだけ用い、fresh trajectory、事前固定したlag family、trajectory-level experimental unit、欠測・phase crossing規則により、局所幾何の各axisが複数lagでどの程度持続し、どのrule eventまたはphase crossingで消失・反転・回帰するかをprospectiveに検証する候補です。
+次のcore candidateはG4-07です。G3-10のformal resultを仮説生成にだけ用い、fresh trajectory、事前固定したlag family、trajectory-level experimental unit、欠測・phase crossing規則により、局所幾何の各axisが複数lagでどの程度持続し、どのrule eventまたはphase crossingで消失・反転・回帰するかをprospectiveに検証する候補です。
 
-Program Plan上、G4-07はG4-02..G4-04 eligible closuresを上流条件とします。これらは既に閉じていますが、G4-07そのものは未認可です。開始する場合はG4-06 main統合後に新しいauthorization reviewから始め、fresh population、lag family、trajectory contract、missingness / phase-crossing rule、formal endpoint、resource ceiling、independent verification、no-rescue / no-rerun ruleをscientific evidence access前に固定します。
+Program Plan上、G4-07はG4-02..G4-04 eligible closuresを上流条件とします。これらは既に閉じていますが、G4-07そのものは未認可です。開始する場合は新しいauthorization reviewから始め、fresh population、lag family、trajectory contract、missingness / phase-crossing rule、formal endpoint、resource ceiling、independent verification、no-rescue / no-rerun ruleをscientific evidence access前に固定します。
+
+G4-02は`CLOSED / NO SCIENTIFIC DECISION`であるため、Program Plan上のdependencyをpositive scientific evidenceへ機械的に読み替えず、authorization reviewで利用可能な上流evidenceを明示的に判定します。
 
 G3-08をrepair / rerunしません。`half-life`という語を用いる場合もbounded operational definitionとして固定し、物理的減衰法則を意味させません。
 
@@ -277,7 +281,7 @@ standard initial RAW rootでは、depth 8・9・10までのbounded exact results
 1. **[完了] Baoを記述する語彙とRAW identityの構築**
 2. **[完了] 限定domainにおけるexact analysisと独立検証**
 3. **[完了] Local game-tree geometryのbounded measurement**
-4. **[進行] Research Generation 4 — G4-01/G4-03/G4-04/G4-05/G4-06完了。G4-02は科学的判定なしで終了。G4-06 main統合後の次候補はG4-07 multiscale geometry memory / return**
+4. **[進行] Research Generation 4 — G4-01/G4-03/G4-04/G4-05/G4-06完了・G4-06 main統合済み。G4-02は科学的判定なしで終了。次候補はG4-07 multiscale geometry memory / returnのauthorization review**
 5. **[完了] 逆転可能性と勝負手 — Study 1（Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`）**
 6. **[独立・未承認] G4-H01によるqualified human / expert evidenceの収集**
 7. **[計画済み・未承認] G4-10によるfresh depth-11 exact研究**
