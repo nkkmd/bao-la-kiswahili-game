@@ -12,10 +12,10 @@ Authorization review = COMPLETE
 Stage 0 = COMPLETE / STAGE0-TECHNICAL-PASS
 Stage 1 = COMPLETE
 Formal decision = FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS
-G4-06 scientific study = COMPLETE ON RESEARCH BRANCH
+G4-06 scientific study = COMPLETE / CLOSED
 pre-main audit = PASS / READY-FOR-MAIN-INTEGRATION-REVIEW
-main integration = NOT AUTHORIZED / NOT EXECUTED
-public AI change = NOT AUTHORIZED
+main integration = COMPLETE / FAST-FORWARD / integrated research HEAD 889b3d16f09517e5b8aa6621cfd347d4b8902891
+public AI change = false
 ```
 
 ## Stage 0
@@ -79,7 +79,7 @@ whole-Bao generalization = false
 public AI change = false
 ```
 
-## Main formal observations
+## 主なformal observations
 
 - Tree/RAW inflation: all 8 roots = `1/1`; no geometry variation, so exact-consequence relations are non-estimable.
 - Transposition occupancy: all 8 roots = `0/1`; no geometry variation, so exact-consequence relations are non-estimable.
@@ -98,6 +98,7 @@ public AI change = false
 - `checkpoints/2026-09-26-stage-1-formal-complete.md`
 - `FINAL_REPORT.md`
 - `../research-generation-4/checkpoints/2026-09-26-g4-06-pre-main-audit.md`
+- `../research-generation-4/checkpoints/2026-09-26-g4-06-main-integration.md`
 
 ## main統合前監査
 
@@ -112,8 +113,14 @@ public AI change = false
 - G4-10 depth-11 accessは0のままである。
 - G4-07は次のauthorization-review candidateにすぎず、executionは未認可である。
 
+## main統合
+
+G4-06 research branchは統合直前に`main`へ対して`ahead 43 / behind 0`で、merge baseは`6a005d9f84d222126dc41abfe17ad5baa4c96629`だった。`main`をresearch branch HEAD `889b3d16f09517e5b8aa6621cfd347d4b8902891`へfast-forwardし、その後main統合checkpointとcurrent-facing文書を更新した。
+
+統合はformal result、no-rescue境界、G4-10保護境界、public AI非変更を変えない。
+
 ## 次に許可される作業
 
-G4-06のscientific executionとpre-main auditは完了した。追加run、metric変更、depth変更、subgroup rescueは行わない。
+G4-06は科学実行、closure、main統合まで完了した。追加run、metric変更、depth変更、subgroup rescueは行わない。
 
-次工程は **明示的なmain統合判断** である。現時点では`main`への統合は実行しない。
+次のcore candidateは **G4-07 — 多時間尺度geometry memoryと回帰** のauthorization reviewである。ただしG4-07のexecutionは未認可であり、fresh evidenceへアクセスしない。
