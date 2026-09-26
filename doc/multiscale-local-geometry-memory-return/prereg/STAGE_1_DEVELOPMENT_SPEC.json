@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "studyId": "MLGMR-STUDY1",
+  "stageId": "MLGMR-S1-DEVELOPMENT-2026-09-26-v1",
+  "statusAtFreeze": "DESIGN-AND-SOURCE-FREEZE-AUTHORIZED-EXECUTION-NOT-YET-AUTHORIZED",
+  "evidenceClass": "FRESH-DEVELOPMENT-SUPPORT-ONLY",
+  "scientificExecutionAuthorized": false,
+  "formalInferenceAllowed": false,
+  "seedBlock": {
+    "start": 40713001,
+    "end": 40713512,
+    "slots": 512,
+    "slotsPerPolicy": 256,
+    "seedExtensionAllowed": false
+  },
+  "policyAssignment": "FIXED-SEED-SLOT-PARITY-OUTCOME-BLIND",
+  "policies": [
+    "LGTTCI-P1-UNIFORM-LEGAL",
+    "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE"
+  ],
+  "trajectoryContract": {
+    "candidateTargetPerPolicy": 16,
+    "minimumFullyEligiblePerPolicy": 12,
+    "measuredPerPolicy": 8,
+    "nonterminalThroughPly": 72,
+    "checkpointPlies": [16,20,24,28,32,36,40,44,48,52,56,60,64,68,72],
+    "allCheckpointDepth5PreflightEligible": true
+  },
+  "lagCheckpointIntervals": [1,2,4,8],
+  "returnHorizons": [1,2,4],
+  "primaryFamily": {
+    "axes": [
+      "CRCLGR-A1-ROOT-LEGAL-WIDTH",
+      "CRCLGR-A2-CUMULATIVE-TREE-OCCURRENCE",
+      "CRCLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES",
+      "CRCLGR-A4-CUMULATIVE-TREE-RAW-RATIO",
+      "CRCLGR-A5-DUPLICATE-TRANSITION-FRACTION",
+      "CRCLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION"
+    ],
+    "slotCount": 24,
+    "perTrajectoryFields": [
+      "sameCount",
+      "oppositeCount",
+      "zeroExcludedCount",
+      "phaseCrossingCensoredCount",
+      "windowCensoredCount",
+      "comparableNonzero",
+      "balance",
+      "balanceSign"
+    ],
+    "experimentalUnit": "SOURCE-TRAJECTORY"
+  },
+  "secondaryReturn": {
+    "status": "DESCRIPTIVE-ONLY",
+    "formalPValueAllowed": false,
+    "confirmationLabelAllowed": false
+  },
+  "supportOnlyPromotion": {
+    "completeMeasuredTrajectoriesRequired": 16,
+    "measuredPerPolicy": 8,
+    "perPolicySupportTrajectoriesRequired": 6,
+    "combinedSupportTrajectoriesRequired": 12,
+    "minimumComparableNonzeroPerSupportingTrajectory": 3,
+    "productionIndependentExactAgreementRequired": true,
+    "effectDirectionUsedForPromotion": false
+  },
+  "resourceCeilings": {
+    "perCheckpointPerImplementation": {
+      "uniqueRawStates": 100000,
+      "uniqueTransitions": 750000,
+      "parentExpansions": 100000,
+      "legalMoveEvaluations": 750000,
+      "summedTreeNodeOccurrences": 1000000000,
+      "elapsedMs": 180000,
+      "peakRssBytes": 4294967296
+    },
+    "combinedProductionIndependentPerCheckpointElapsedMs": 360000,
+    "stageElapsedMs": 10800000,
+    "stagePeakRssBytes": 4294967296,
+    "resultArtifactBytes": 268435456
+  },
+  "identityFirewallPath": "doc/multiscale-local-geometry-memory-return/prereg/UPSTREAM_IDENTITY_FIREWALL.json",
+  "noRescue": {
+    "boundary": "EARLIEST-OF-FIRST-FRESH-SEED-GENERATION-OR-READ",
+    "sameEvidenceRerunAllowed": false,
+    "seedExtensionAllowed": false,
+    "replacementPopulationAllowed": false,
+    "postAccessDesignChangeAllowed": false
+  },
+  "protectedEvidence": {
+    "g3_11Depth10RerunAuthorized": false,
+    "g4_10Depth11AccessAuthorized": false
+  },
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false
+}
