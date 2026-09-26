@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "agenda": "G4-06",
+  "studyId": "LGTGECB-STUDY1",
+  "stageId": "LGTGECB-S0-TECHNICAL-2026-09-26-v1",
+  "canonicalRun": 36211754989,
+  "runAttempt": 1,
+  "event": "push",
+  "headSha": "355162ae40cabcc443944133aa1168a1588fcba3",
+  "workflowConclusion": "success",
+  "artifactId": 10896360387,
+  "artifactName": "lgtgecb-g4-06-stage0-36211754989-attempt-1",
+  "artifactSha256": "7cfc9c10d23886e78b8c7f0bb2a8e226c35a31035c36433c2770f32510270009",
+  "artifactExpiresAt": "2026-10-26T02:27:51Z",
+  "files": {
+    "bridge-production.json": "ec64ced01a13e901d827da7bcbc21afed85019ecb87619a63a52b7e75da36f04",
+    "bridge-independent-verification.json": "a6386f248edaa40ac1c3d9028b921a99c11609423fe0c917dca5254852782d0b",
+    "exact-technical-production.json": "d0b91bfe676dd935995dcea5e82225e4edb4a83e9faed469f80c06394f40741d",
+    "exact-technical-independent.json": "2f04cff16a48b40b4f28b254a86f4aff3757886ac9f8a6c7fae4f7b6729417a7",
+    "execution-identity.txt": "2492bfc1b15297af8d22332782e098f5ada3479c7b94bf5957c314ec6185926d"
+  },
+  "productionCoreSha256": "0661aa2c823a097d9a0e541ad9a951ad2a296351e79518d76a25d4736f6f26b8",
+  "independentVerificationCoreSha256": "547b410ac56d7239c43d41491c1b7ae80dd54055874dede8847fff52ed2be818",
+  "stage0TechnicalDecision": "STAGE0-TECHNICAL-PASS",
+  "mandatoryGatePassCount": 12,
+  "mandatoryGateCount": 12,
+  "productionIndependentAgreement": true,
+  "g405FormalDomainBridgeReads": 0,
+  "g410Depth11Accesses": 0,
+  "publicAiChangeAuthorized": false,
+  "scientificBridgeInferenceAuthorized": false,
+  "formalBridgeDecisionAuthorized": false
+}
