@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "studyId": "MLGMR-STUDY1",
+  "stageId": "MLGMR-S0-TECHNICAL-2026-09-26-v1",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "scientificOutcomeAuthorized": false,
+  "freshScientificSeedAccessAuthorized": false,
+  "technicalFixtureSeedBlock": {
+    "start": 40709001,
+    "end": 40709064,
+    "count": 64,
+    "scientificUseAuthorized": false
+  },
+  "requiredPolicies": [
+    "LGTTCI-P1-UNIFORM-LEGAL",
+    "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE"
+  ],
+  "checkpointPlies": [16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72],
+  "lagCheckpointIntervals": [1, 2, 4, 8],
+  "returnHorizons": [1, 2, 4],
+  "mandatoryGates": [
+    "STUDY-SPEC-AUTHORIZATION-BINDING",
+    "REPRESENTATION-BINDING",
+    "EXACT-RATIONAL-CHANGE-SIGN",
+    "CHECKPOINT-GRID",
+    "LAG-ELIGIBILITY",
+    "SAME-OPPOSITE-ZERO-SEMANTICS",
+    "WHOLE-SPAN-SAME-PHASE-GATE",
+    "PHASE-CROSSING-CENSOR",
+    "TRAJECTORY-BALANCE-AGGREGATION",
+    "CONTIGUOUS-PERSISTENCE-SUMMARY",
+    "FIRST-REVERSAL-RETURN-DESCRIPTIVE",
+    "PRODUCTION-INDEPENDENT-EXACT-AGREEMENT",
+    "IMPLEMENTATION-SEPARATION",
+    "CANONICAL-JSON-DIGEST",
+    "IDENTITY-FIREWALL-FIXTURE",
+    "TECHNICAL-RESOURCE-MEASUREMENT",
+    "NO-STAGE1-STAGE2-SEED-ACCESS",
+    "NO-G4-10-DEPTH11-ACCESS"
+  ],
+  "technicalTrajectoryRequirement": {
+    "minimumFullyEligiblePerPolicy": 1,
+    "terminalThroughCheckpoint72": false,
+    "allCheckpointDepth5PreflightEligible": true
+  },
+  "syntheticFixtureRequirements": {
+    "mustExerciseSame": true,
+    "mustExerciseOpposite": true,
+    "mustExerciseZero": true,
+    "mustExercisePhaseCrossingCensor": true,
+    "mustExerciseWindowCensor": true,
+    "mustExerciseFirstReversal": true,
+    "mustExerciseReturn": true,
+    "mustExerciseStayReversed": true,
+    "mustExerciseNoWindow": true
+  },
+  "futureScientificSeedReservations": {
+    "stage1": {
+      "start": 40713001,
+      "end": 40713512,
+      "authorizedForRead": false
+    },
+    "stage2": {
+      "start": 40723001,
+      "end": 40724024,
+      "authorizedForRead": false
+    }
+  },
+  "protectedEvidence": {
+    "g3_11Depth10RerunAuthorized": false,
+    "g4_10Depth11AccessAuthorized": false
+  },
+  "passRule": "ALL-MANDATORY-GATES-PASS",
+  "failureRule": "FAIL-CLOSED-TECHNICAL-INVALID-NO-SCIENTIFIC-DECISION",
+  "stage1AutoAuthorizationOnPass": false
+}
