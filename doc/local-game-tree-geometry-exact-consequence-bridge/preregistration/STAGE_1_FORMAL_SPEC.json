@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "agenda": "G4-06",
+  "studyId": "LGTGECB-STUDY1",
+  "stageId": "LGTGECB-S1-FORMAL-2026-09-26-v1",
+  "freezeDate": "2026-09-26",
+  "role": "formal-correspondence-mapping-within-frozen-exact-microdomains",
+  "baselineMain": "6a005d9f84d222126dc41abfe17ad5baa4c96629",
+  "populationManifest": "doc/local-game-tree-geometry-exact-consequence-bridge/preregistration/STAGE_1_FORMAL_INPUT_MANIFEST.json",
+  "scientificBridgeInferenceAuthorizedBySpecAlone": false,
+  "executionRequiresSeparateFinalSourceFreezeAuthorization": true,
+  "experimentalUnit": "G4-05-formal-domain-root",
+  "domainCount": 8,
+  "pseudoreplication": {
+    "stateAsIndependentUnit": false,
+    "edgeAsIndependentUnit": false,
+    "moveAsIndependentUnit": false
+  },
+  "geometryMeasurement": {
+    "representation": "RAW-ONLY",
+    "relativeHorizon": 5,
+    "validatedTransformSet": [],
+    "scalars": [
+      {
+        "id": "GEO-CORRIDOR",
+        "label": "unit-width occupancy fraction",
+        "sourceFamily": "LGTGMIV-F5-REPLY-GEOMETRY",
+        "derivation": "SFCDF-C1-UNIT-WIDTH-OCCUPANCY-FRACTION",
+        "definition": "sum of unitWidthStateCount across depth 0..5 divided by sum of positive-width unique RAW-state counts across depth 0..5",
+        "arithmetic": "reduced-rational",
+        "undefined": "NON-ESTIMABLE-FOR-RELATION"
+      },
+      {
+        "id": "GEO-TREE-RAW",
+        "label": "cumulative tree / RAW inflation ratio",
+        "sourceFamily": "LGTGMIV-F4-TREE-GRAPH-RELATION",
+        "derivation": "SFCDF-C6-CUMULATIVE-TREE-RAW-RATIO",
+        "definition": "sum of treeNodeOccurrences across depth 0..5 divided by cumulative distinct RAW states",
+        "arithmetic": "reduced-rational",
+        "undefined": "NON-ESTIMABLE-FOR-RELATION"
+      },
+      {
+        "id": "GEO-TRANSPOSITION",
+        "label": "reconvergent-state occupancy fraction",
+        "sourceFamily": "LGTGMIV-F3-TRANSPOSITION-RECONVERGENCE",
+        "derivation": "SFCDF-C4-RECONVERGENT-STATE-OCCUPANCY-FRACTION",
+        "definition": "sum of reconvergentRawStateCount across depth 0..5 divided by sum of unique RAW-state counts across depth 0..5",
+        "arithmetic": "reduced-rational",
+        "priorClaimStatusImported": false,
+        "undefined": "NON-ESTIMABLE-FOR-RELATION"
+      },
+      {
+        "id": "GEO-REPLY",
+        "label": "mean immediate reply width",
+        "sourceFamily": "LGTGMIV-F5-REPLY-GEOMETRY",
+        "derivation": "mean(immediateReplyWidth[rootMove]) over every legal root move",
+        "definition": "sum of successor legal widths across root legal moves divided by rootLegalMoveCount",
+        "arithmetic": "reduced-rational",
+        "undefined": "NON-ESTIMABLE-FOR-RELATION"
+      }
+    ]
+  },
+  "exactConsequences": [
+    {
+      "id": "EXACT-VALUE",
+      "definition": "root exact status WIN or LOSS from complete closure retrograde",
+      "scale": "binary",
+      "upstreamExpectedCounts": {"WIN": 2, "LOSS": 6}
+    },
+    {
+      "id": "EXACT-DTF",
+      "definition": "root exact distance-to-finish integer from frozen exact solution",
+      "scale": "ordered-integer"
+    },
+    {
+      "id": "EXACT-VPMC",
+      "label": "value-preserving root move count",
+      "definition": "number of legal root moves whose solved child absoluteWinner equals the decisive root absoluteWinner",
+      "terminalChildIncluded": true,
+      "scale": "ordered-integer"
+    }
+  ],
+  "secondaryIntegrityConstruct": {
+    "id": "DTF-OPTIMAL-MOVE-COUNT",
+    "definition": "value-preserving root moves whose child dtf + 1 equals root dtf",
+    "requiredAgreement": "move-key set exactly equals exact solver root optimalMoveKeys",
+    "primaryScientificEndpoint": false
+  },
+  "relationMatrix": [
+    {"id":"R-VALUE-CORRIDOR","geometry":"GEO-CORRIDOR","consequence":"EXACT-VALUE"},
+    {"id":"R-VALUE-TREE-RAW","geometry":"GEO-TREE-RAW","consequence":"EXACT-VALUE"},
+    {"id":"R-VALUE-TRANSPOSITION","geometry":"GEO-TRANSPOSITION","consequence":"EXACT-VALUE"},
+    {"id":"R-VALUE-REPLY","geometry":"GEO-REPLY","consequence":"EXACT-VALUE"},
+    {"id":"R-DTF-CORRIDOR","geometry":"GEO-CORRIDOR","consequence":"EXACT-DTF"},
+    {"id":"R-DTF-TREE-RAW","geometry":"GEO-TREE-RAW","consequence":"EXACT-DTF"},
+    {"id":"R-DTF-TRANSPOSITION","geometry":"GEO-TRANSPOSITION","consequence":"EXACT-DTF"},
+    {"id":"R-DTF-REPLY","geometry":"GEO-REPLY","consequence":"EXACT-DTF"},
+    {"id":"R-VPMC-CORRIDOR","geometry":"GEO-CORRIDOR","consequence":"EXACT-VPMC"},
+    {"id":"R-VPMC-TREE-RAW","geometry":"GEO-TREE-RAW","consequence":"EXACT-VPMC"},
+    {"id":"R-VPMC-TRANSPOSITION","geometry":"GEO-TRANSPOSITION","consequence":"EXACT-VPMC"},
+    {"id":"R-VPMC-REPLY","geometry":"GEO-REPLY","consequence":"EXACT-VPMC"}
+  ],
+  "binaryValueRelationRule": {
+    "requiredMeasuredDomains": 8,
+    "requiredValueClasses": ["WIN", "LOSS"],
+    "pairPopulation": "all cross-class root pairs",
+    "expectedPairCountFromFrozenPopulation": 12,
+    "counts": ["WIN_GREATER", "WIN_LESS", "TIE"],
+    "informativePairs": "WIN_GREATER + WIN_LESS",
+    "classification": {
+      "informativePairsEqualsZero": "NON-ESTIMABLE-NO-INFORMATIVE-CROSS-CLASS-PAIRS",
+      "winGreaterPositiveAndWinLessZero": "WIN-GREATER-ORDER-CONSISTENT",
+      "winLessPositiveAndWinGreaterZero": "WIN-LESS-ORDER-CONSISTENT",
+      "winGreaterPositiveAndWinLessPositive": "MIXED-ORDER"
+    },
+    "tiesRetained": true,
+    "completeSeparationReportedSeparately": "TIE == 0 and one directional count == 12",
+    "directionHypothesisPreselected": false
+  },
+  "orderedRelationRule": {
+    "requiredMeasuredDomains": 8,
+    "pairPopulation": "all unordered pairs of roots",
+    "expectedPairCount": 28,
+    "counts": ["CONCORDANT", "DISCORDANT", "GEOMETRY_TIE", "CONSEQUENCE_TIE", "BOTH_TIE"],
+    "informativePairs": "CONCORDANT + DISCORDANT",
+    "classification": {
+      "geometryNoVariation": "NON-ESTIMABLE-NO-GEOMETRY-VARIATION",
+      "consequenceNoVariation": "NON-ESTIMABLE-NO-CONSEQUENCE-VARIATION",
+      "informativePairsEqualsZero": "NON-ESTIMABLE-NO-INFORMATIVE-PAIRS",
+      "concordantPositiveAndDiscordantZero": "MONOTONE-INCREASING-ORDER-CONSISTENT",
+      "discordantPositiveAndConcordantZero": "MONOTONE-DECREASING-ORDER-CONSISTENT",
+      "concordantPositiveAndDiscordantPositive": "MIXED-ORDER"
+    },
+    "tiesRetained": true,
+    "directionHypothesisPreselected": false
+  },
+  "formalDecision": {
+    "studyLevelSuccessCondition": "all 8 fixed roots rematerialize by exact tuple, all upstream graph/solution identities match, all production/independent geometry and exact consequences agree, and all 12 relation summaries are emitted according to frozen rules",
+    "successToken": "FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS",
+    "technicalMismatchToken": "TECHNICAL-INVALID",
+    "individualRelationMayBeNonEstimable": true,
+    "positiveAssociationRequiredForStudySuccess": false
+  },
+  "rootRematerialization": {
+    "production": "generate only the manifest seed trajectory through exactly the manifest ply, select exact (seed,ply,rootStateKey) tuple, replay witness, and reject any mismatch",
+    "independent": "independently reproduce the manifest seed trajectory with independent move-key/state-key helpers through exactly the manifest ply and reject any mismatch",
+    "candidatePoolScan": false,
+    "seedBlockScan": false,
+    "rootReplacement": false
+  },
+  "resourceCeiling": {
+    "exactSolvePerDomain": "maximum states, edges, and move microsteps equal the already frozen upstream domain values in the input manifest",
+    "geometryHorizon": 5,
+    "higherResourceRescue": false,
+    "timeoutMinutes": 30
+  },
+  "verification": {
+    "productionIndependentRootRematerializationAgreement": true,
+    "upstreamStateSetDigestMatchRequired": true,
+    "upstreamTransitionSetDigestMatchRequired": true,
+    "upstreamSolutionDigestMatchRequired": true,
+    "upstreamRootStatusWinnerDtfOptimalMoveKeysMatchRequired": true,
+    "productionIndependentGeometryAgreementRequired": true,
+    "productionIndependentExactConsequenceAgreementRequired": true,
+    "productionIndependentRelationMatrixAgreementRequired": true
+  },
+  "statisticalBoundary": {
+    "asymptoticPValues": false,
+    "rootLevelFiniteExactOrderingSummaries": true,
+    "multipleTestingPromotion": false,
+    "allTwelveRelationsReported": true,
+    "wholeBaoPopulationInference": false
+  },
+  "noRescue": {
+    "metricChangeAfterOutcome": false,
+    "depthChangeAfterOutcome": false,
+    "domainDropAfterOutcome": false,
+    "subgroupRescue": false,
+    "thresholdRelaxation": false,
+    "seedExtension": false,
+    "g405CandidateRescan": false,
+    "g405IncompleteCandidateRescue": false,
+    "symmetryOrCanonicalization": false
+  },
+  "protectedBoundaries": {
+    "g405FormalDecisionReevaluation": false,
+    "g410Depth11Access": false,
+    "g311Depth10Rerun": false,
+    "publicAiChange": false,
+    "mainIntegration": false
+  }
+}
