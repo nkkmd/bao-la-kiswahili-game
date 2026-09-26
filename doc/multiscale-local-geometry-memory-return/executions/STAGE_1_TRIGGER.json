@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "studyId": "MLGMR-STUDY1",
+  "stageId": "MLGMR-S1-DEVELOPMENT-2026-09-26-v1",
+  "bindingId": "MLGMR-STUDY1-STAGE1-BINDING-2026-09-26-V1",
+  "triggerType": "ONE-SHOT-SCIENTIFIC-DEVELOPMENT",
+  "frozenSourceCommit": "acae88384e74d9d8b7d2661adcee69d1fe1f3175",
+  "scientificFreshAccessAuthorized": true,
+  "stage1SeedAccessAuthorized": true,
+  "stage2SeedAccessAuthorized": false,
+  "formalInferenceAuthorized": false,
+  "g4_10Depth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "singleAttemptOnly": true,
+  "expectedPriorFreshScientificSeedReads": 0
+}
