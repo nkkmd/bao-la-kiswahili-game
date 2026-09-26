@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "studyId": "MLGMR-STUDY1",
+  "targetStage": "MLGMR-S1-DEVELOPMENT-2026-09-26-v1",
+  "purpose": "UPSTREAM-IDENTITY-ONLY-FRESHNESS-FIREWALL",
+  "status": "FROZEN-PRE-FRESH",
+  "scientificOutcomeFieldsRetained": false,
+  "freshStage1SeedAccessDuringMaterialization": false,
+  "excludedSeedNamespaces": [
+    {"source":"G3-08 Stage 1 consumed","range":"31810001..31810256"},
+    {"source":"G3-08 Stage 2 protected","range":"31820001..31820384"},
+    {"source":"G3-10 Stage 1","range":"32210001..32210256"},
+    {"source":"G3-10 Stage 2","range":"32220001..32220384"},
+    {"source":"G4-01 interrupted GCLD","range":"40113001..40113384"},
+    {"source":"G4-01 Stage 1R GCLD primary","range":"40213001..40213384"},
+    {"source":"G4-01 Stage 1R GCLD reserve","range":"41213001..41213384"},
+    {"source":"G4-04 Stage 1","range":"40413001..40413512"},
+    {"source":"G4-04 Stage 2","range":"40423001..40424024"}
+  ],
+  "identitySources": {
+    "g3_10_stage1": {
+      "sourceClass": "REPOSITORY-IDENTITY-ONLY",
+      "path": "doc/geometry-conditioned-longitudinal-dynamics/results/stage-1/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json",
+      "identityRowCount": 24,
+      "fileSha256": "9d869d2f1b967d9a34e7e9ef20e780f149d3a90d3dc430805e43f5f0a73e8d0f",
+      "identityClasses": ["sourceSeed","sourceTrajectorySha256","openingPrefixSha256","checkpointRootRawSha256"],
+      "requiredScientificOutcomeFieldsRetained": false
+    },
+    "g3_10_stage2": {
+      "sourceClass": "REPOSITORY-CANDIDATE-IDENTITY-ONLY",
+      "path": "doc/geometry-conditioned-longitudinal-dynamics/results/stage-2/STAGE_2_CANDIDATE_MANIFEST.json",
+      "identityRowCount": 48,
+      "fileSha256": "b46288a8c25c3d00d0cb84500bda8af9adea943cc372cfbde467e05f59a0fb97",
+      "identityClasses": ["sourceSeed","sourceTrajectorySha256","openingPrefixSha256","checkpointRootRawSha256"],
+      "requiredScientificOutcomeFieldsRetained": false
+    },
+    "g4_01_stage1r_gcld": {
+      "sourceClass": "UPSTREAM-WORKFLOW-ARTIFACT-IDENTITY-ONLY",
+      "runId": 35265290422,
+      "artifactId": 10517090411,
+      "artifactName": "lgttci-stage1r-recovery-source-bundle",
+      "artifactZipSha256": "3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b",
+      "artifactBlock": "source/GCLD",
+      "sourceRowCount": 384,
+      "policyCounts": {
+        "LGTTCI-P1-UNIFORM-LEGAL": 192,
+        "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE": 192
+      },
+      "canonicalIdentityProjectionSha256": "6bb92f51c0a25f9e4761ecf5f8ef1048339a9210ba0d4a2da2a33d92660dc8d1",
+      "setDigests": {
+        "sourceSeed": {"uniqueCount":384,"sha256":"76464727fc9720b1f333c4115b7ac31db0a28918ed172de5d64d5f6e565958c0"},
+        "fullTrajectorySha256": {"uniqueCount":384,"sha256":"e9be9b52e4a3f14c1f887a393cc81460e7fe6610e2da70f24d5ac7e1de066266"},
+        "rootRawSha256": {"uniqueCount":1518,"sha256":"7bee7e262a387b229fa5a0c7710c04c32a911cd28db5ad6db2402f661576ede2"}
+      },
+      "openingPrefixAudited": false,
+      "scientificOutcomeFieldsRetained": false
+    },
+    "g4_04_stage1": {
+      "sourceClass": "UPSTREAM-WORKFLOW-ARTIFACT-IDENTITY-ONLY",
+      "runId": 36089520136,
+      "artifactId": 10846181741,
+      "artifactName": "gttd-stage1-result",
+      "identityFile": "STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json",
+      "identityFileSha256": "0935cd3c6f35ca8dfe68e268337ba7f4bb55e615d726e8919594d7f52eebcd3e",
+      "identityRowCount": 32,
+      "artifactZipSha256": "fa14e0c56d7d7f7088684eb715b1bf26b307cb22459741dfe4a7629cf40b3183",
+      "scientificOutcomeFieldsRetained": false
+    },
+    "g4_04_stage2": {
+      "sourceClass": "UPSTREAM-WORKFLOW-ARTIFACT-IDENTITY-ONLY",
+      "runId": 36095831961,
+      "artifactId": 10849029913,
+      "artifactName": "gttd-stage2-formal",
+      "identityFile": "STAGE_2_CANDIDATE_MANIFEST.json",
+      "identityFileSha256": "08df728a97e90a3bef84c24eb107871cf93b48af8fed961fa11b42bdd8febab3",
+      "identityRowCount": 96,
+      "artifactZipSha256": "fe165e6c1735cb07e71ed49e2a1c4d3f7446e796ab63936d90c7e982edfc4bd7",
+      "scientificOutcomeFieldsRetained": false
+    }
+  },
+  "unavailableIdentityClasses": [
+    {
+      "source":"G3-08 Stage 1 technical-invalid partial trajectories",
+      "identityClass":"generated trajectory/opening-prefix/checkpoint-root identities",
+      "nonOverlapClaimed":false,
+      "mitigation":"the canonical technical-invalid result does not retain those identity rows; the entire consumed Stage 1 seed namespace is quarantined and no historical identity non-overlap claim is made"
+    },
+    {
+      "source":"G4-01 interrupted GCLD 40113001..40113384",
+      "identityClass":"fullTrajectory/openingPrefix/rootRaw",
+      "nonOverlapClaimed":false,
+      "mitigation":"entire interrupted seed namespace remains quarantined"
+    },
+    {
+      "source":"G4-01 Stage 1R GCLD",
+      "identityClass":"openingPrefixSha256",
+      "nonOverlapClaimed":false,
+      "mitigation":"sourceSeed, fullTrajectorySha256 and checkpoint rootRawSha256 are audited and enforced; opening-prefix non-overlap remains explicitly unaudited"
+    },
+    {
+      "source":"G4-01 Stage 1R reserve 41213001..41213384",
+      "identityClass":"generated identities",
+      "nonOverlapClaimed":false,
+      "mitigation":"reserveUsed=false in the canonical recovery bundle and the entire reserve seed namespace remains excluded"
+    }
+  ],
+  "runtimeExclusionRule": {
+    "rejectIfExcludedSourceSeed": true,
+    "rejectIfAuditedFullTrajectoryCollision": true,
+    "rejectIfAuditedOpeningPrefixCollision": true,
+    "rejectIfAuditedCheckpointRootCollision": true,
+    "trajectoryReplacementAfterCollision": false,
+    "seedExtension": false,
+    "artifactOrDigestMismatch": "FAIL-CLOSED-BEFORE-FRESH-SEED-READ",
+    "missingRequiredRepositoryIdentityFile": "FAIL-CLOSED-BEFORE-FRESH-SEED-READ",
+    "missingRequiredArtifact": "FAIL-CLOSED-BEFORE-FRESH-SEED-READ"
+  },
+  "stage1Reservation": {
+    "start": 40713001,
+    "end": 40713512,
+    "count": 512,
+    "accessed": false
+  },
+  "g3_08ScientificEvidenceReuse": false,
+  "g4_04ScientificEndpointReuse": false,
+  "g3_11Depth10Rerun": false,
+  "g4_10Depth11Access": false,
+  "publicAiChange": false
+}
