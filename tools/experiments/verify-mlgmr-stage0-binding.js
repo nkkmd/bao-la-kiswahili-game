@@ -4,13 +4,20 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const crypto = require("node:crypto");
+const { execFileSync } = require("node:child_process");
 
 const ROOT = path.resolve(__dirname, "../..");
-const AUTH_PATH = path.join(ROOT, "doc/multiscale-local-geometry-memory-return/authorizations/STAGE_0_AUTHORIZATION.json");
+const AUTH_REL = "doc/multiscale-local-geometry-memory-return/authorizations/STAGE_0_AUTHORIZATION.json";
+const TRIGGER_REL = "doc/multiscale-local-geometry-memory-return/executions/STAGE_0_TRIGGER.json";
+const AUTH_PATH = path.join(ROOT, AUTH_REL);
 const AUTH = JSON.parse(fs.readFileSync(AUTH_PATH, "utf8"));
 
 function need(value, message) {
   if (!value) throw new Error(message);
+}
+
+function git(args) {
+  return execFileSync("git", args, { cwd: ROOT, encoding: "utf8" }).trim();
 }
 
 function gitBlobSha(relativePath) {
@@ -37,4 +44,20 @@ for (const [relativePath, expected] of Object.entries(AUTH.executionBinding.gitB
   need(actual === expected, `blob mismatch ${relativePath}: ${actual} != ${expected}`);
 }
 
+const frozenSourceCommit = AUTH.executionBinding.frozenSourceCommit;
+need(/^[0-9a-f]{40}$/.test(frozenSourceCommit || ""), "frozen source commit missing");
+const sourceAncestor = git(["rev-parse", "HEAD~2"]);
+need(sourceAncestor === frozenSourceCommit, `source ancestor mismatch: ${sourceAncestor} != ${frozenSourceCommit}`);
+
+const changed = git(["diff", "--name-only", `${frozenSourceCommit}..HEAD`]).split("\n").filter(Boolean).sort();
+const allowed = [AUTH_REL, TRIGGER_REL].sort();
+need(JSON.stringify(changed) === JSON.stringify(allowed), `post-freeze delta invalid: ${JSON.stringify(changed)}`);
+
+const trigger = JSON.parse(fs.readFileSync(path.join(ROOT, TRIGGER_REL), "utf8"));
+need(trigger.studyId === AUTH.studyId && trigger.stageId === AUTH.stageId, "trigger identity mismatch");
+need(trigger.bindingId === AUTH.executionBinding.bindingId, "trigger binding mismatch");
+need(trigger.freshScientificSeedAccessAuthorized === false, "trigger fresh access guard invalid");
+need(trigger.g4_10Depth11AccessAuthorized === false, "trigger G4-10 guard invalid");
+
 console.log(`MLGMR_STAGE0_BINDING_OK=${AUTH.executionBinding.bindingId}`);
+console.log(`MLGMR_STAGE0_FROZEN_SOURCE_COMMIT=${frozenSourceCommit}`);
