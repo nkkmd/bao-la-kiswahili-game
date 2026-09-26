@@ -24,11 +24,11 @@
   },
   "executionBinding": {
     "status": "FROZEN",
-    "bindingId": "MLGMR-STUDY1-STAGE0-BINDING-2026-09-26-V2",
-    "supersedesBindingId": "MLGMR-STUDY1-STAGE0-BINDING-2026-09-26-V1",
-    "remediationReason": "V1 failed closed before technical execution because actions/checkout used fetch-depth 1 and HEAD~2 was unavailable; V2 changes workflow checkout history depth only.",
+    "bindingId": "MLGMR-STUDY1-STAGE0-BINDING-2026-09-26-V3",
+    "supersedesBindingId": "MLGMR-STUDY1-STAGE0-BINDING-2026-09-26-V2",
+    "remediationReason": "V2 passed frozen-binding verification but failed in the synthetic technical fixture before any technical trajectory seed scan because the fixture used abbreviated axis keys. V3 binds fixture values to the canonical MP.AXES identifiers; scientific design and measurement logic are unchanged.",
     "branch": "research/g4-07-multiscale-geometry-memory-return",
-    "frozenSourceCommit": "0f7d654cc6373d447f57a63b3103de98ee6bcaa0",
+    "frozenSourceCommit": "0886bb6786c38b35c5285dd87da8edaf7c6cb5f8",
     "postFreezeAllowedFiles": [
       "doc/multiscale-local-geometry-memory-return/authorizations/STAGE_0_AUTHORIZATION.json",
       "doc/multiscale-local-geometry-memory-return/executions/STAGE_0_TRIGGER.json"
@@ -38,7 +38,7 @@
       "doc/multiscale-local-geometry-memory-return/prereg/STAGE_0_TECHNICAL_SPEC.json": "35ebd21b0ceb35c321ac7b05eb2a5d1d11c1a054",
       "tools/experiments/lib/mlgmr-production.js": "347cada3a8067a4ef5295d1dadef749f4ff7430d",
       "tools/experiments/lib/mlgmr-independent.js": "fb7868197f6367f38442eb92f3533a721809328f",
-      "tools/experiments/run-mlgmr-stage0-technical.js": "21ead53f239d6d24cf6c5315a870decedf7ee07c",
+      "tools/experiments/run-mlgmr-stage0-technical.js": "db18e3aef059432dc074225f4a6ef91dd338543a",
       "tools/experiments/verify-mlgmr-stage0-binding.js": "e584d9ed30bc89988559b93fc14d4a2f7dc23214",
       ".github/workflows/mlgmr-stage0-technical.yml": "fd9cf9dceabc808ca94ced6130c2ef4c4d1ebb41",
       "tools/experiments/lib/gcld-production.js": "8bd203832387be1957bf75cf310b06e861c86956",
