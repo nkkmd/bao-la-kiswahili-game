@@ -2,6 +2,11 @@ name: MLGMR G4-07 Stage 0 technical validation
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - research/g4-07-multiscale-geometry-memory-return
+    paths:
+      - doc/multiscale-local-geometry-memory-return/executions/STAGE_0_TRIGGER.json
 
 permissions:
   contents: read
