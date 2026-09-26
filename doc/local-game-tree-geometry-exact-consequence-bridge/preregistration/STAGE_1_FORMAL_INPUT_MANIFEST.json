@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "agenda": "G4-06",
+  "studyId": "LGTGECB-STUDY1",
+  "stageId": "LGTGECB-S1-FORMAL-2026-09-26-v1",
+  "freezeDate": "2026-09-26",
+  "populationRole": "IMMUTABLE-G4-05-FORMAL-DOMAINS-ONLY",
+  "upstream": {
+    "studyId": "RLEMOF-STUDY1",
+    "stageId": "RLEMOF-S2-FORMAL-2026-09-25-v1",
+    "canonicalRun": 36120286922,
+    "runAttempt": 1,
+    "executionSha": "72e45631112359346a83f9399be32ee3e6420ccb",
+    "artifactId": 10858056244,
+    "artifactSha256": "90520ed47e8d314e15c0c8dab18d805fa147d69c54ab3e7a4afc2136238c2154",
+    "productionResultSha256": "03f0f416dca4bb92de9c55e780d47e8d39c2e2bb50fa0d987953fa87f256fff0",
+    "independentVerificationSha256": "acfb9fda216d0669e4432ab4bb112b07283e05def34e9793507c0c7ad9964140"
+  },
+  "authoritativeIdentity": {
+    "include": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "exclude": ["turn", "reason"],
+    "validatedTransformSet": [],
+    "canonicalization": false,
+    "symmetryReduction": false
+  },
+  "formalDomainCount": 8,
+  "domains": [
+    {
+      "domainIndex": 1,
+      "upstreamCandidateIndex": 2,
+      "seed": 40523046,
+      "ply": 57,
+      "rootStateKey": "2a90990b7e5cef0b4ae35f248bf01c8714cd58d14a707bcdb6892297a52b47d5",
+      "rootLegalMoveCount": 2,
+      "stateCount": 13,
+      "edgeCount": 12,
+      "stateSetSha256": "b3b5839036af91b42b5a0ad46f3414670ea80e355e9bc6e4410793e4d6f9661c",
+      "transitionSetSha256": "ab523ef5a77a3e5f8ac55ebefe61f2682fe1b8488865606913f45c9198cbabcb",
+      "maximumMoveMicrosteps": 14,
+      "solutionSha256": "c346110428e6b8a977f0e6c591aef4de052762e0148c9bd4955c1f434a489e9f",
+      "rootStatus": "LOSS",
+      "rootAbsoluteWinner": 0,
+      "rootDtf": 2,
+      "rootOptimalMoveKeys": [
+        "takata:mtaji:0:4:left:::false",
+        "takata:mtaji:0:4:right:::false"
+      ]
+    },
+    {
+      "domainIndex": 2,
+      "upstreamCandidateIndex": 3,
+      "seed": 40523102,
+      "ply": 76,
+      "rootStateKey": "41996d3ef9184a64e7c79e7e0a09aa586371647202197455cc964f64e9570c7d",
+      "rootLegalMoveCount": 2,
+      "stateCount": 7,
+      "edgeCount": 6,
+      "stateSetSha256": "ae9439c97acc84ca1e0af53125e4f92c5bf66d776ebb07eb3f49408eace47ee8",
+      "transitionSetSha256": "8fdac341a61858b502e0fb52cadc030fecff5ea62223236a5c1ba1bda5ceedad",
+      "maximumMoveMicrosteps": 9,
+      "solutionSha256": "28a7e2a782024a87b1bb402eb570ea36f13a1601553503b8267cfe111e80ac38",
+      "rootStatus": "LOSS",
+      "rootAbsoluteWinner": 1,
+      "rootDtf": 2,
+      "rootOptimalMoveKeys": [
+        "takata:mtaji:1:0:left:::false",
+        "takata:mtaji:1:0:right:::false"
+      ]
+    },
+    {
+      "domainIndex": 3,
+      "upstreamCandidateIndex": 5,
+      "seed": 40523368,
+      "ply": 63,
+      "rootStateKey": "6d66e2b68bab2d63289c15fdf88f17e505083a2032a6c3bdb456f62afe5a8596",
+      "rootLegalMoveCount": 2,
+      "stateCount": 30,
+      "edgeCount": 29,
+      "stateSetSha256": "98e47cb67e06c001af6b159a86b7fc829306c613ea79fede1361ca96d09f5dfe",
+      "transitionSetSha256": "eadca98ee6bfbde5afe86356788948583512864db4a592db4544c79b5af5f57b",
+      "maximumMoveMicrosteps": 15,
+      "solutionSha256": "34902cea2ce3e9ff5d897f049db9ee2885e1327e139b96a5f46ce9a8a416e8d5",
+      "rootStatus": "LOSS",
+      "rootAbsoluteWinner": 0,
+      "rootDtf": 4,
+      "rootOptimalMoveKeys": [
+        "takata:mtaji:1:1:right:::false"
+      ]
+    },
+    {
+      "domainIndex": 4,
+      "upstreamCandidateIndex": 6,
+      "seed": 40523368,
+      "ply": 64,
+      "rootStateKey": "97f3f73dd7ee2a848d2ebefc2b76dd35acbc0ccdad1586761786d9316281bdec",
+      "rootLegalMoveCount": 2,
+      "stateCount": 27,
+      "edgeCount": 26,
+      "stateSetSha256": "4bc7de1ca1e0181a85a6756d68164a24e1e1f458d9065ace863ffc256ddfbe04",
+      "transitionSetSha256": "508619e35f4a7500bb0b9855c0033d658d785a7734e69ab5e03ddd2db8a72365",
+      "maximumMoveMicrosteps": 15,
+      "solutionSha256": "ebe834522b0adcfea5ce6950893109bf9a886dbacbf485eb612a1e1b5b911e6d",
+      "rootStatus": "WIN",
+      "rootAbsoluteWinner": 0,
+      "rootDtf": 3,
+      "rootOptimalMoveKeys": [
+        "capture:mtaji:1:4:left:::false",
+        "capture:mtaji:1:7:left:::false"
+      ]
+    },
+    {
+      "domainIndex": 5,
+      "upstreamCandidateIndex": 7,
+      "seed": 40523368,
+      "ply": 65,
+      "rootStateKey": "9841c8edbd3991e42f2940e1823289674aaf3885645ee5a88cee8b85b77a1f4e",
+      "rootLegalMoveCount": 2,
+      "stateCount": 10,
+      "edgeCount": 9,
+      "stateSetSha256": "32a2ca8fe565ffd9385ad287a3555e2e649f10cf165e1728817e03a000b6be52",
+      "transitionSetSha256": "0d431707ff457590eff16cf3da3aab4e6bd643663129c37f7c4992b743a836ae",
+      "maximumMoveMicrosteps": 3,
+      "solutionSha256": "a1f61875d69a5d387110461b706e6baacda500c7cc4cad08d6dd2cb2f63fbe51",
+      "rootStatus": "LOSS",
+      "rootAbsoluteWinner": 0,
+      "rootDtf": 2,
+      "rootOptimalMoveKeys": [
+        "takata:mtaji:1:0:left:::false",
+        "takata:mtaji:1:0:right:::false"
+      ]
+    },
+    {
+      "domainIndex": 6,
+      "upstreamCandidateIndex": 8,
+      "seed": 40523399,
+      "ply": 44,
+      "rootStateKey": "8760f08e636e3f8eb4e0f8b55aeb6bd330385798bb3a7d6f87061f27f55b6371",
+      "rootLegalMoveCount": 1,
+      "stateCount": 8,
+      "edgeCount": 7,
+      "stateSetSha256": "d6c5f2e2be319a16c920ca0e0c96c0d884bfa2172b02468ddebea18064d5bf06",
+      "transitionSetSha256": "d9fb858d8d50bc5a9a39624bd7312bf2c6992af3e74de19fb9aab66a662a0cf7",
+      "maximumMoveMicrosteps": 4,
+      "solutionSha256": "7b8ed0813adbc0b15fee0d95ee5e9ce1f7d309b25cf6221fb0f0a8a82eda1c9c",
+      "rootStatus": "WIN",
+      "rootAbsoluteWinner": 0,
+      "rootDtf": 3,
+      "rootOptimalMoveKeys": [
+        "capture:mtaji:1:6:left:::false"
+      ]
+    },
+    {
+      "domainIndex": 7,
+      "upstreamCandidateIndex": 9,
+      "seed": 40523399,
+      "ply": 45,
+      "rootStateKey": "f8078d5a64d14c1e2e928cd63c258c74bcf9d721419235e1c0108533f562cf8d",
+      "rootLegalMoveCount": 2,
+      "stateCount": 7,
+      "edgeCount": 6,
+      "stateSetSha256": "02ad035b1ca14dd24c988721a406f5826c2cfddb022ecdeaf89fe4862adfbf30",
+      "transitionSetSha256": "7619db352823a947f78bdaa80420a4efacbedc3bd8f3ca1fdb89a4b0b89a2f28",
+      "maximumMoveMicrosteps": 4,
+      "solutionSha256": "e124e9726c6551ad190aa1d07021fc23a799e9cad07328e9362924b3f368b18b",
+      "rootStatus": "LOSS",
+      "rootAbsoluteWinner": 0,
+      "rootDtf": 2,
+      "rootOptimalMoveKeys": [
+        "takata:mtaji:0:4:left:::false",
+        "takata:mtaji:0:4:right:::false"
+      ]
+    },
+    {
+      "domainIndex": 8,
+      "upstreamCandidateIndex": 10,
+      "seed": 40523519,
+      "ply": 72,
+      "rootStateKey": "96f90a45a75f2fedd41c01822da52b45b6d866f3df3f5ee146951b8ac100375c",
+      "rootLegalMoveCount": 1,
+      "stateCount": 23,
+      "edgeCount": 22,
+      "stateSetSha256": "b3059a7a02f55d04ef1cdbaf9719e831e4c47489d291b1a48f38a605fbff6344",
+      "transitionSetSha256": "33d9d69fc3858cc6f85e8f4c7e068b58b004df0d842ce3b380c72d52b4744430",
+      "maximumMoveMicrosteps": 13,
+      "solutionSha256": "5c5a75992d2766ce021e964e63ffcb4a25587e6d96df5f2cd7a92d8a2ef2abab",
+      "rootStatus": "LOSS",
+      "rootAbsoluteWinner": 1,
+      "rootDtf": 6,
+      "rootOptimalMoveKeys": [
+        "capture:mtaji:1:7:left:::false"
+      ]
+    }
+  ],
+  "populationSummary": {
+    "domainCount": 8,
+    "winRoots": 2,
+    "lossRoots": 6,
+    "recurrentRoots": 0,
+    "experimentalUnit": "formal-domain-root",
+    "stateEdgeMovePseudoreplicationAllowed": false
+  },
+  "selectionChangesAfterFreezeAllowed": false,
+  "seedExtensionAllowed": false,
+  "candidateRescanAllowed": false,
+  "incompleteCandidateRescueAllowed": false
+}
