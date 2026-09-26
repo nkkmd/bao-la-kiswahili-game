@@ -161,8 +161,8 @@ G4-06は科学実行、closure、main統合まで完了しています。統合�
 | `G3-07` / [`SILGM-STUDY1`](search-instability-local-geometry-mechanism/) | `FORMAL-COMPLETE` | 3件`CONFIRMED`、4件`NOT-CONFIRMED`、1件`NON-ESTIMABLE`です。 |
 | `G3-08` / [`LGPML-STUDY1`](local-geometry-persistence-memory-length/) | `TECHNICAL-INVALID` | persistence / memory lengthのformal resultはありません。 |
 | `G3-09` / [`CLGR-STUDY1`](continuous-local-geometry-representation/) | `TECHNICAL-INVALID` | 当初のcontinuous representationはformal eligibilityに到達していません。 |
-| 前提Study / [`RRCLGR-STUDY1`](resource-robust-continuous-local-game-tree-geometry-representation/) | `TECHNICAL-INVALID` | resource-robust retryも、別Studyとしてfail-closedしました。 |
-| 前提Study / [`CRCLGR-STUDY1`](canonical-resource-robust-continuous-local-game-tree-geometry-representation/) | `FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION` | `CRCLGR-R1-EXACT-SQUASHED-L1`を適格化しました。 |
+| 前提Study / [`RRCLGR-STUDY1`](resource-robust-continuous-local-geometry-representation/) | `TECHNICAL-INVALID` | resource-robust retryも、別Studyとしてfail-closedしました。 |
+| 前提Study / [`CRCLGR-STUDY1`](canonical-resource-robust-continuous-local-geometry-representation/) | `FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION` | `CRCLGR-R1-EXACT-SQUASHED-L1`を適格化しました。 |
 | `G3-10` / [`GCLD-STUDY1`](geometry-conditioned-longitudinal-dynamics/) | `FORMAL-COMPLETE` | C1・C2・C3・C5が`CONFIRMED`、C4が`NOT-CONFIRMED`です。 |
 | `G3-11` / [`FDEGHV-STUDY1`](fresh-depth10-exact-geometry-holdout/) | `EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN` | H1〜H4が`DEEPER-CONFIRMED`。depth 10は一度だけ消費済みです。 |
 | `G3-12` / [`LGTGGC-STUDY1`](local-game-tree-geometry-generalization-counterexample/) | `TECHNICAL-INVALID` | Stage 2は未実行で、generalization / counterexampleのformal decisionはありません。 |
