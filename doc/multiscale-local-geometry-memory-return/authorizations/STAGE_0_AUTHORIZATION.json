@@ -24,9 +24,11 @@
   },
   "executionBinding": {
     "status": "FROZEN",
-    "bindingId": "MLGMR-STUDY1-STAGE0-BINDING-2026-09-26-V1",
+    "bindingId": "MLGMR-STUDY1-STAGE0-BINDING-2026-09-26-V2",
+    "supersedesBindingId": "MLGMR-STUDY1-STAGE0-BINDING-2026-09-26-V1",
+    "remediationReason": "V1 failed closed before technical execution because actions/checkout used fetch-depth 1 and HEAD~2 was unavailable; V2 changes workflow checkout history depth only.",
     "branch": "research/g4-07-multiscale-geometry-memory-return",
-    "frozenSourceCommit": "edb2312dc7aa6cf18e229cc2b1b04b802a9f1633",
+    "frozenSourceCommit": "0f7d654cc6373d447f57a63b3103de98ee6bcaa0",
     "postFreezeAllowedFiles": [
       "doc/multiscale-local-geometry-memory-return/authorizations/STAGE_0_AUTHORIZATION.json",
       "doc/multiscale-local-geometry-memory-return/executions/STAGE_0_TRIGGER.json"
@@ -38,7 +40,7 @@
       "tools/experiments/lib/mlgmr-independent.js": "fb7868197f6367f38442eb92f3533a721809328f",
       "tools/experiments/run-mlgmr-stage0-technical.js": "21ead53f239d6d24cf6c5315a870decedf7ee07c",
       "tools/experiments/verify-mlgmr-stage0-binding.js": "e584d9ed30bc89988559b93fc14d4a2f7dc23214",
-      ".github/workflows/mlgmr-stage0-technical.yml": "880e508c9370a5c9270fe105946699c6952e1656",
+      ".github/workflows/mlgmr-stage0-technical.yml": "fd9cf9dceabc808ca94ced6130c2ef4c4d1ebb41",
       "tools/experiments/lib/gcld-production.js": "8bd203832387be1957bf75cf310b06e861c86956",
       "tools/experiments/lib/gcld-independent.js": "ffb234c0bba523c1e72c17e903a3edb9c2585656",
       "tools/experiments/lib/lgttci-compatibility-production.js": "2fe5b87572c0138cf66dfabb4ca40869eab26ddc",
