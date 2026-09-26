@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "studyId": "MLGMR-STUDY1",
+  "stageId": "MLGMR-S0-TECHNICAL-2026-09-26-v1",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "disposition": "STAGE0-PASS",
+  "scientificExecution": false,
+  "scientificOutcomeGenerated": false,
+  "freshScientificSeedReads": 0,
+  "stage1SeedReads": 0,
+  "stage2SeedReads": 0,
+  "g4_10Depth11AccessCount": 0,
+  "publicAiChange": false,
+  "mainIntegration": false,
+  "mandatoryGates": [
+    {
+      "id": "STUDY-SPEC-AUTHORIZATION-BINDING",
+      "status": "PASS"
+    },
+    {
+      "id": "REPRESENTATION-BINDING",
+      "status": "PASS"
+    },
+    {
+      "id": "EXACT-RATIONAL-CHANGE-SIGN",
+      "status": "PASS"
+    },
+    {
+      "id": "CHECKPOINT-GRID",
+      "status": "PASS"
+    },
+    {
+      "id": "LAG-ELIGIBILITY",
+      "status": "PASS"
+    },
+    {
+      "id": "SAME-OPPOSITE-ZERO-SEMANTICS",
+      "status": "PASS"
+    },
+    {
+      "id": "WHOLE-SPAN-SAME-PHASE-GATE",
+      "status": "PASS"
+    },
+    {
+      "id": "PHASE-CROSSING-CENSOR",
+      "status": "PASS"
+    },
+    {
+      "id": "TRAJECTORY-BALANCE-AGGREGATION",
+      "status": "PASS"
+    },
+    {
+      "id": "CONTIGUOUS-PERSISTENCE-SUMMARY",
+      "status": "PASS"
+    },
+    {
+      "id": "FIRST-REVERSAL-RETURN-DESCRIPTIVE",
+      "status": "PASS"
+    },
+    {
+      "id": "PRODUCTION-INDEPENDENT-EXACT-AGREEMENT",
+      "status": "PASS"
+    },
+    {
+      "id": "IMPLEMENTATION-SEPARATION",
+      "status": "PASS"
+    },
+    {
+      "id": "CANONICAL-JSON-DIGEST",
+      "status": "PASS"
+    },
+    {
+      "id": "IDENTITY-FIREWALL-FIXTURE",
+      "status": "PASS"
+    },
+    {
+      "id": "TECHNICAL-RESOURCE-MEASUREMENT",
+      "status": "PASS"
+    },
+    {
+      "id": "NO-STAGE1-STAGE2-SEED-ACCESS",
+      "status": "PASS"
+    },
+    {
+      "id": "NO-G4-10-DEPTH11-ACCESS",
+      "status": "PASS"
+    }
+  ],
+  "synthetic": {
+    "coverage": {
+      "same": true,
+      "opposite": true,
+      "zero": true,
+      "phaseCrossingCensor": true,
+      "windowCensor": true,
+      "firstReversal": true,
+      "return": true,
+      "stayReversed": true,
+      "noWindow": true
+    },
+    "summaryDigest": "cf9b5da491d451d97a602b6f6543a1a1741efc19d40ac0496a5449f931b9ac3a",
+    "contiguousPersistence": {
+      "CRCLGR-A1-ROOT-LEGAL-WIDTH": 2,
+      "CRCLGR-A2-CUMULATIVE-TREE-OCCURRENCE": "NONE",
+      "CRCLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": "NONE",
+      "CRCLGR-A4-CUMULATIVE-TREE-RAW-RATIO": "NONE",
+      "CRCLGR-A5-DUPLICATE-TRANSITION-FRACTION": "NONE",
+      "CRCLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": "NONE"
+    },
+    "signTest": {
+      "positive": 4,
+      "negative": 2,
+      "ties": 1,
+      "nonzero": 6,
+      "pValue": {
+        "numerator": "11",
+        "denominator": "16",
+        "defined": true
+      }
+    }
+  },
+  "firewall": {
+    "exercised": true,
+    "reason": "UPSTREAM-TRAJECTORY"
+  },
+  "technicalPolicies": [
+    {
+      "policyId": "LGTTCI-P1-UNIFORM-LEGAL",
+      "technicalSeed": 40709001,
+      "checkpointCount": 15,
+      "preflight": [
+        {"ply":16,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":20,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":24,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":28,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":32,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":36,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":40,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":44,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":48,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":52,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":56,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":60,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":64,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":68,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":72,"eligible":true,"reasonCode":"ELIGIBLE"}
+      ],
+      "rejectionCountsBeforeSelection": {},
+      "summaryDigest": "c435ced7fb97173aede7995ecd64586041bc94718f2cfb13db3966b8a9c91f9f",
+      "productionIndependentExact": true,
+      "scientificUseAuthorized": false
+    },
+    {
+      "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE",
+      "technicalSeed": 40709001,
+      "checkpointCount": 15,
+      "preflight": [
+        {"ply":16,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":20,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":24,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":28,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":32,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":36,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":40,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":44,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":48,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":52,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":56,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":60,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":64,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":68,"eligible":true,"reasonCode":"ELIGIBLE"},
+        {"ply":72,"eligible":true,"reasonCode":"ELIGIBLE"}
+      ],
+      "rejectionCountsBeforeSelection": {},
+      "summaryDigest": "4dd85129c0ae157009c8c21f6b9d1629f73545df8b1b40f5792645be8e69faaa",
+      "productionIndependentExact": true,
+      "scientificUseAuthorized": false
+    }
+  ],
+  "productionIndependentExact": true,
+  "resourceObservation": {
+    "elapsedMs": 199675,
+    "rssBeforeBytes": 52043776,
+    "rssAfterBytes": 218730496,
+    "peakRssCeilingBytes": 4294967296
+  }
+}
