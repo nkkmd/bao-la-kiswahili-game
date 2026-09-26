@@ -13,6 +13,7 @@ Stage 0 = COMPLETE / STAGE0-TECHNICAL-PASS
 Stage 1 = COMPLETE
 Formal decision = FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS
 G4-06 scientific study = COMPLETE ON RESEARCH BRANCH
+pre-main audit = PASS / READY-FOR-MAIN-INTEGRATION-REVIEW
 main integration = NOT AUTHORIZED / NOT EXECUTED
 public AI change = NOT AUTHORIZED
 ```
@@ -82,12 +83,12 @@ public AI change = false
 
 - Tree/RAW inflation: all 8 roots = `1/1`; no geometry variation, so exact-consequence relations are non-estimable.
 - Transposition occupancy: all 8 roots = `0/1`; no geometry variation, so exact-consequence relations are non-estimable.
-- Exact value × corridor: `MIXED-ORDER`.
-- Exact value × reply width: `MIXED-ORDER`.
-- DTF × corridor: `MIXED-ORDER`.
+- Exact value × corridor: `MIXED-ORDER`。
+- Exact value × reply width: `MIXED-ORDER`。
+- DTF × corridor: `MIXED-ORDER`。
 - DTF × reply width: `MONOTONE-DECREASING-ORDER-CONSISTENT` within the frozen eight-domain population.
 - VPMC × corridor: `MONOTONE-DECREASING-ORDER-CONSISTENT` within the frozen eight-domain population.
-- VPMC × reply width: `MIXED-ORDER`.
+- VPMC × reply width: `MIXED-ORDER`。
 
 これらは固定8 microdomain内のfinite ordering summaryであり、whole-Baoの一般則、因果関係、公開AI改善効果を意味しない。
 
@@ -96,18 +97,23 @@ public AI change = false
 - `results/stage-1/STAGE_1_FORMAL_RECEIPT.json`
 - `checkpoints/2026-09-26-stage-1-formal-complete.md`
 - `FINAL_REPORT.md`
+- `../research-generation-4/checkpoints/2026-09-26-g4-06-pre-main-audit.md`
+
+## main統合前監査
+
+最終整合性監査は`PASS`した。
+
+確認済み事項:
+
+- G4-06 README / CURRENT_STATUS / FINAL_REPORT / receipt / checkpointが一致する。
+- RG4 CURRENT_STATUS / README / RESUME_HERE、`RESEARCH_INDEX.md`、`FUTURE_RESEARCH_AGENDA.md`をG4-06完了状態へ同期した。
+- historical checkpoint、frozen preregistration、authorization、Program Planは事後結果に合わせて書き換えていない。
+- `main`との差分はG4-06研究・専用workflow/tools・研究文書に限定され、`public/`や公開AI production codeの変更はない。
+- G4-10 depth-11 accessは0のままである。
+- G4-07は次のauthorization-review candidateにすぎず、executionは未認可である。
 
 ## 次に許可される作業
 
-G4-06科学実行は完了した。次は **main統合前の最終整合性監査** である。
+G4-06のscientific executionとpre-main auditは完了した。追加run、metric変更、depth変更、subgroup rescueは行わない。
 
-監査では少なくとも次を確認する。
-
-- G4-06 README / CURRENT_STATUS / FINAL_REPORT / receipt / checkpointの相互整合
-- Research Generation 4のprogram status文書でG4-06を`COMPLETE`へ更新するための差分
-- G4-07 dependency gateの解放条件
-- G4-10 depth-11 protected boundaryの維持
-- public AI変更が混入していないこと
-- main baseline以降の研究branch変更がG4-06専用範囲に限定されること
-
-`main`への統合は、最終監査後の明示的な統合判断まで行わない。
+次工程は **明示的なmain統合判断** である。現時点では`main`への統合は実行しない。
