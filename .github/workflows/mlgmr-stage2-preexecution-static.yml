@@ -6,7 +6,9 @@ on:
       - research/g4-07-multiscale-geometry-memory-return
     paths:
       - '.github/workflows/mlgmr-stage2-preexecution-static.yml'
+      - '.github/workflows/mlgmr-stage2-formal.yml'
       - 'tools/experiments/verify-mlgmr-stage2-static.js'
+      - 'tools/experiments/verify-mlgmr-stage2-binding.js'
       - 'tools/experiments/run-mlgmr-stage2-formal.js'
       - 'tools/experiments/lib/mlgmr-stage2-firewall.js'
       - 'tools/experiments/lib/mlgmr-stage2-inference-production.js'
@@ -42,6 +44,7 @@ jobs:
         run: |
           set -euo pipefail
           node --check tools/experiments/verify-mlgmr-stage2-static.js
+          node --check tools/experiments/verify-mlgmr-stage2-binding.js
           node --check tools/experiments/run-mlgmr-stage2-formal.js
           node --check tools/experiments/lib/mlgmr-stage2-firewall.js
           node --check tools/experiments/lib/mlgmr-stage2-inference-production.js
