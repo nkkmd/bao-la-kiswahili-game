@@ -1,0 +1,59 @@
+name: LGTGECB G4-06 Stage 0 Technical
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/g4-06-geometry-exact-consequence-bridge
+    paths:
+      - 'doc/local-game-tree-geometry-exact-consequence-bridge/preregistration/STAGE_0_TECHNICAL_SPEC.json'
+      - 'doc/local-game-tree-geometry-exact-consequence-bridge/preregistration/STAGE_0_TECHNICAL_FIXTURE.json'
+      - 'tools/experiments/lib/lgtgecb-stage0-production.js'
+      - 'tools/experiments/lib/lgtgecb-stage0-independent.js'
+      - 'tools/experiments/run-lgtgecb-stage0-technical.js'
+      - 'tools/experiments/verify-lgtgecb-stage0-independent.js'
+      - '.github/workflows/lgtgecb-g4-06-stage0-technical.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  technical-stage0:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Record execution identity
+        run: |
+          mkdir -p artifacts/local/lgtgecb-stage0-technical
+          {
+            echo "GITHUB_SHA=${GITHUB_SHA}"
+            echo "GITHUB_RUN_ID=${GITHUB_RUN_ID}"
+            echo "GITHUB_RUN_ATTEMPT=${GITHUB_RUN_ATTEMPT}"
+            echo "GITHUB_EVENT_NAME=${GITHUB_EVENT_NAME}"
+            echo "GITHUB_REF=${GITHUB_REF}"
+            node --version
+          } | tee artifacts/local/lgtgecb-stage0-technical/execution-identity.txt
+      - name: Run G4-06 technical production path
+        run: node tools/experiments/run-lgtgecb-stage0-technical.js artifacts/local/lgtgecb-stage0-technical
+      - name: Run G4-06 independent technical verification
+        run: node tools/experiments/verify-lgtgecb-stage0-independent.js artifacts/local/lgtgecb-stage0-technical
+      - name: Build artifact manifest
+        if: always()
+        run: |
+          cd artifacts/local/lgtgecb-stage0-technical
+          find . -maxdepth 1 -type f -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt || true
+          cat SHA256SUMS.txt || true
+      - name: Upload technical artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lgtgecb-g4-06-stage0-${{ github.run_id }}-attempt-${{ github.run_attempt }}
+          path: artifacts/local/lgtgecb-stage0-technical/
+          if-no-files-found: error
+          retention-days: 30
