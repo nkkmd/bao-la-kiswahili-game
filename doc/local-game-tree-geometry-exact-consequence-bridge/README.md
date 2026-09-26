@@ -18,9 +18,9 @@ relations emitted = 12 / 12
 production / independent agreement = true
 G4-05 candidate rescan = 0
 G4-10 depth-11 access = 0
-pre-main audit = PASS / READY-FOR-MAIN-INTEGRATION-REVIEW
-public AI change = NOT AUTHORIZED
-main integration = NOT AUTHORIZED / NOT EXECUTED
+pre-main audit = PASS
+main integration = COMPLETE / FAST-FORWARD / integrated research HEAD 889b3d16f09517e5b8aa6621cfd347d4b8902891
+public AI change = false
 ```
 
 Canonical Stage 1 formal runは `36214800357 / attempt 1`、execution SHAは `90283d1680cef8feda02e11b072e98b145d5d786` である。
@@ -72,11 +72,10 @@ G4-05でcomplete closureと独立exact solver agreementが成立した固定8 mi
 10. [`FINAL_REPORT.md`](FINAL_REPORT.md)
 11. [`CURRENT_STATUS.md`](CURRENT_STATUS.md)
 12. [`../research-generation-4/checkpoints/2026-09-26-g4-06-pre-main-audit.md`](../research-generation-4/checkpoints/2026-09-26-g4-06-pre-main-audit.md)
+13. [`../research-generation-4/checkpoints/2026-09-26-g4-06-main-integration.md`](../research-generation-4/checkpoints/2026-09-26-g4-06-main-integration.md)
 
 ## 次工程
 
-G4-06のscientific executionとmain統合前監査は完了し、`READY-FOR-MAIN-INTEGRATION-REVIEW`と判定されている。追加scientific run、metric変更、depth変更、subgroup rescueは行わない。
+G4-06はscientific execution、closure、main統合まで完了した。追加scientific run、metric変更、depth変更、subgroup rescueは行わない。
 
-次工程は、G4-06を`main`へ統合するかどうかの明示的な判断である。現時点ではmain統合を実行しない。
-
-G4-06 main統合後の次のcore candidateはG4-07 authorization reviewである。ただしG4-07は未認可であり、G4-02の`CLOSED / NO SCIENTIFIC DECISION`をpositive scientific evidenceとして扱わない。
+次のcore candidateは **G4-07 — 多時間尺度geometry memoryと回帰** のauthorization reviewである。ただしG4-07は未認可であり、G4-02の`CLOSED / NO SCIENTIFIC DECISION`をpositive scientific evidenceとして扱わない。
