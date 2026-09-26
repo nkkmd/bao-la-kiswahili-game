@@ -46,12 +46,14 @@
         "LGTTCI-P1-UNIFORM-LEGAL": 192,
         "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE": 192
       },
-      "canonicalIdentityProjectionSha256": "6bb92f51c0a25f9e4761ecf5f8ef1048339a9210ba0d4a2da2a33d92660dc8d1",
+      "canonicalIdentityProjectionDefinition": "slotSeed,effectiveSeed,trajectorySha256,checkpoints[null-or-{ply,rawStateSha256}] with rows sorted by slotSeed/effectiveSeed",
+      "canonicalIdentityProjectionSha256": "b287a0b84ad4a66e62aad8d5ee48965d4e9dde60758dd9175d4ddaf12f5a2ea3",
       "setDigests": {
-        "sourceSeed": {"uniqueCount":384,"sha256":"76464727fc9720b1f333c4115b7ac31db0a28918ed172de5d64d5f6e565958c0"},
-        "fullTrajectorySha256": {"uniqueCount":384,"sha256":"e9be9b52e4a3f14c1f887a393cc81460e7fe6610e2da70f24d5ac7e1de066266"},
-        "rootRawSha256": {"uniqueCount":1518,"sha256":"7bee7e262a387b229fa5a0c7710c04c32a911cd28db5ad6db2402f661576ede2"}
+        "sourceSeed": {"uniqueCount":384,"sha256":"3c53c99c08598353305840a438d58bfd3b6eb81bfed746c1e4afc546d0df9487"},
+        "fullTrajectorySha256": {"uniqueCount":384,"sha256":"a55464fcd423fde7130fa6c82529b66e8e1175712289826ef05a765fe7191812"},
+        "rootRawSha256": {"uniqueCount":1518,"sha256":"2f487081020b27c953456a070576106e3a1f6955ebdeebd77e8e924aebe242a9"}
       },
+      "nullCheckpointSlotsPreservedInProjection": true,
       "openingPrefixAudited": false,
       "scientificOutcomeFieldsRetained": false
     },
@@ -95,7 +97,7 @@
       "source":"G4-01 Stage 1R GCLD",
       "identityClass":"openingPrefixSha256",
       "nonOverlapClaimed":false,
-      "mitigation":"sourceSeed, fullTrajectorySha256 and checkpoint rootRawSha256 are audited and enforced; opening-prefix non-overlap remains explicitly unaudited"
+      "mitigation":"sourceSeed, fullTrajectorySha256 and non-null checkpoint rawStateSha256 are audited and enforced; opening-prefix non-overlap remains explicitly unaudited"
     },
     {
       "source":"G4-01 Stage 1R reserve 41213001..41213384",
