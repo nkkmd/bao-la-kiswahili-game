@@ -2,7 +2,7 @@
 
 更新日: 2026-09-26  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`G4-01 COMPLETE / G4-02 CLOSED WITHOUT SCIENTIFIC DECISION / G4-03 COMPLETE / G4-04 COMPLETE / G4-05 COMPLETE / G4-06 COMPLETE / PRE-MAIN AUDIT PASS`**
+状態: **`G4-01 COMPLETE / G4-02 CLOSED WITHOUT SCIENTIFIC DECISION / G4-03 COMPLETE / G4-04 COMPLETE / G4-05 COMPLETE / G4-06 COMPLETE / MAIN INTEGRATED`**
 
 ## Program全体
 
@@ -14,8 +14,8 @@ G4-02 = CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED
 G4-03 = COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED
 G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED
 G4-05 = COMPLETE / FORMAL-COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED
-G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / PRE-MAIN-AUDIT-PASS / RESEARCH BRANCH ONLY
-G4-07 = NEXT AUTHORIZATION-REVIEW CANDIDATE AFTER G4-06 MAIN INTEGRATION / NOT-AUTHORIZED
+G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED
+G4-07 = NEXT AUTHORIZATION-REVIEW CANDIDATE / NOT-AUTHORIZED
 G4-08..G4-09 = DEPENDENCY-GATED / NOT-AUTHORIZED
 G4-10 depth 11 = PROTECTED / NOT-AUTHORIZED / NOT-ACCESSED
 G4-P01 = INDEPENDENT / NOT-AUTHORIZED
@@ -135,10 +135,21 @@ readiness = READY-FOR-MAIN-INTEGRATION-REVIEW
 public/ changes = 0
 public AI production changes = 0
 G4-10 depth-11 access = 0
-main integration = NOT EXECUTED
 ```
 
-G4-06正本、中央研究文書、branch scope、protected boundaryを横断監査し、main統合を阻害する不整合は確認されなかった。監査記録は[`checkpoints/2026-09-26-g4-06-pre-main-audit.md`](checkpoints/2026-09-26-g4-06-pre-main-audit.md)に固定した。
+G4-06正本、中央研究文書、branch scope、protected boundaryを横断監査し、main統合を阻害する不整合は確認されなかった。
+
+### main統合
+
+```text
+integration method = FAST-FORWARD
+main baseline before integration = 6a005d9f84d222126dc41abfe17ad5baa4c96629
+integrated research HEAD = 889b3d16f09517e5b8aa6621cfd347d4b8902891
+main integration = COMPLETE
+public AI change = false
+```
+
+統合直前は`ahead 43 / behind 0`で、merge baseはmain baselineと一致していた。統合によってformal result、解釈境界、no-rescue rule、G4-10保護境界は変更していない。統合記録は[`checkpoints/2026-09-26-g4-06-main-integration.md`](checkpoints/2026-09-26-g4-06-main-integration.md)に固定した。
 
 ## Agenda別の状態
 
@@ -149,8 +160,8 @@ G4-06正本、中央研究文書、branch scope、protected boundaryを横断監
 | `G4-03` | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED` |
 | `G4-04` | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
 | `G4-05` | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED` |
-| `G4-06` | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / PRE-MAIN-AUDIT-PASS / RESEARCH BRANCH ONLY` |
-| `G4-07` | `NEXT AUTHORIZATION-REVIEW CANDIDATE AFTER G4-06 MAIN INTEGRATION / NOT-AUTHORIZED` |
+| `G4-06` | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED` |
+| `G4-07` | `NEXT AUTHORIZATION-REVIEW CANDIDATE / NOT-AUTHORIZED` |
 | `G4-08`〜`G4-09` | `DEPENDENCY-GATED / NOT-AUTHORIZED` |
 | `G4-10` | `PROTECTED / NOT-AUTHORIZED / NOT-ACCESSED` |
 | `G4-P01` | `INDEPENDENT / NOT-AUTHORIZED` |
@@ -158,11 +169,11 @@ G4-06正本、中央研究文書、branch scope、protected boundaryを横断監
 
 ## 次に許可される作業
 
-G4-06のscientific executionとpre-main auditは完了した。同一formal Stageの追加run、metric変更、depth変更、domain除外、seed extension等は行わない。
+G4-06はscientific execution、closure、main統合まで完了した。同一formal Stageの追加run、metric変更、depth変更、domain除外、seed extension等は行わない。
 
-次工程は、G4-06を`main`へ統合するかどうかの**明示的な統合判断**である。現時点ではmain統合を実行しない。
+次のcore candidateはG4-07 — 多時間尺度geometry memoryと回帰 — のauthorization reviewである。G4-07は現在`NOT-AUTHORIZED`であり、fresh evidenceへのアクセスやStudy executionは行わない。
 
-G4-06がmain統合された後、Program Plan上の次のcore candidateとしてG4-07 — 多時間尺度geometry memoryと回帰 — のauthorization reviewを検討できる。ただしG4-02は`CLOSED / NO SCIENTIFIC DECISION`であり、G4-07のreviewでは利用可能な上流evidenceを改めて明示的に判定する。G4-07は現在`NOT-AUTHORIZED`である。
+G4-02は`CLOSED / NO SCIENTIFIC DECISION`であるため、G4-07 reviewではProgram Planのdependencyをpositive scientific evidenceへ機械的に読み替えず、利用可能な上流evidenceを改めて明示的に判定する。
 
 ## 保護境界
 
@@ -191,4 +202,5 @@ G4-06がmain統合された後、Program Plan上の次のcore candidateとして
 - [`../local-game-tree-geometry-exact-consequence-bridge/results/stage-1/STAGE_1_FORMAL_RECEIPT.json`](../local-game-tree-geometry-exact-consequence-bridge/results/stage-1/STAGE_1_FORMAL_RECEIPT.json)
 - [`../local-game-tree-geometry-exact-consequence-bridge/checkpoints/2026-09-26-stage-1-formal-complete.md`](../local-game-tree-geometry-exact-consequence-bridge/checkpoints/2026-09-26-stage-1-formal-complete.md)
 - [`checkpoints/2026-09-26-g4-06-pre-main-audit.md`](checkpoints/2026-09-26-g4-06-pre-main-audit.md)
+- [`checkpoints/2026-09-26-g4-06-main-integration.md`](checkpoints/2026-09-26-g4-06-main-integration.md)
 - [`../reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md`](../reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md)
