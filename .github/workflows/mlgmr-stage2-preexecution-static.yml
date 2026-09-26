@@ -16,6 +16,7 @@ on:
       - 'doc/multiscale-local-geometry-memory-return/prereg/STAGE_2_FORMAL_SPEC.json'
       - 'doc/multiscale-local-geometry-memory-return/prereg/STAGE_2_IDENTITY_FIREWALL.json'
       - 'doc/multiscale-local-geometry-memory-return/results/stage-1/STAGE_1_CANONICAL_RECORD.json'
+      - 'doc/research-program-decisions/2026-09-27-g4-07-stage2-final-one-shot-authorization-review.md'
   workflow_dispatch:
 
 permissions:
