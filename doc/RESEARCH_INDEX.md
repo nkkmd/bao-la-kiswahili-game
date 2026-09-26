@@ -2,7 +2,7 @@
 
 更新日: 2026-09-26  
 対象: Research Generation 1〜4  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01完了、G4-02は科学的判定なしで終了、G4-03完了、G4-04完了、G4-05完了・main統合済み**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01完了、G4-02は科学的判定なしで終了、G4-03完了、G4-04完了、G4-05完了・main統合済み、G4-06はresearch branch上でformal完了**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
@@ -17,6 +17,7 @@
 | G4-03の正式結果 | [`local-width-search-ranking-transfer/README.md`](local-width-search-ranking-transfer/README.md) |
 | G4-04の正式結果 | [`geometry-trajectory-dynamics-transfer/README.md`](geometry-trajectory-dynamics-transfer/README.md) |
 | G4-05の正式結果 | [`reachable-late-game-exact-microdomain-oracle-foundation/README.md`](reachable-late-game-exact-microdomain-oracle-foundation/README.md) |
+| G4-06の正式結果 | [`local-game-tree-geometry-exact-consequence-bridge/README.md`](local-game-tree-geometry-exact-consequence-bridge/README.md) |
 | 第三世代の全体像 | [`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md) |
 | 第二世代の全体像 | [`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md) |
 | 今後の研究課題 | [`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md) |
@@ -36,8 +37,8 @@
 | `G4-03` / [`LWSRT-STUDY1`](local-width-search-ranking-transfer/) | width / search-ranking transfer | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED` |
 | `G4-04` / [`GTTD-STUDY1`](geometry-trajectory-dynamics-transfer/) | geometry-trajectory transfer | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
 | `G4-05` / [`RLEMOF-STUDY1`](reachable-late-game-exact-microdomain-oracle-foundation/) | exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED` |
-| `G4-06` | geometry / exact consequence bridge | `NEXT CORE CANDIDATE / ELIGIBLE FOR AUTHORIZATION REVIEW / NOT-AUTHORIZED-NOT-EXECUTED` |
-| `G4-07` | multiscale memory / return | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
+| `G4-06` / [`LGTGECB-STUDY1`](local-game-tree-geometry-exact-consequence-bridge/) | geometry / exact consequence bridge | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / RESEARCH BRANCH ONLY` |
+| `G4-07` | multiscale memory / return | `NEXT CORE CANDIDATE AFTER G4-06 MAIN INTEGRATION / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-08` | rule-semantic transition | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-09` | search reliability / exact agreement | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-10` | protected depth-11 exact topology | `PROTECTED / NOT-AUTHORIZED-NOT-ACCESSED` |
@@ -114,11 +115,33 @@ candidate 1と4は`STATE-LIMIT`でcomplete closureにならず、そのままfai
 
 この結果はfrozen microdomain内のexact oracle foundationであり、whole-Bao solution、best move correctness一般保証、AI棋力、人間のdifficulty、public AI変更を意味しません。
 
-Program Plan上のG4-06 dependencyは満たしたため、G4-06は次の個別authorization review候補です。ただし未認可です。
-
 G4-05はPR #166で`main`統合済みです。merge commitは`97ffe3758157d2497b5884f7b17abe59a24159b5`で、formal resultと解釈境界は統合後も変更していません。
 
-詳しくは、[`research-generation-4/README.md`](research-generation-4/README.md)、[`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md)、[`reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md`](reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md)を参照してください。
+### G4-06
+
+G4-06 `LGTGECB-STUDY1` は、G4-05で完全解析済みとなった固定8 microdomainをimmutable upstream populationとして使用し、relative depth 5のbounded RAW local geometryとexact value・DTF・value-preserving move countをprospectiveに接続しました。
+
+```text
+Stage 0 canonical run = 36211754989 / attempt 1 / success
+Stage 0 decision = STAGE0-TECHNICAL-PASS
+Stage 1 canonical run = 36214800357 / attempt 1 / success
+Stage 1 execution SHA = 90283d1680cef8feda02e11b072e98b145d5d786
+artifact ID = 10897225431
+formal domains = 8 / 8
+relations emitted = 12 / 12
+all production / independent agreement = true
+formal decision = FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS
+G4-05 candidate rescan = 0
+G4-10 depth-11 access = 0
+```
+
+Tree/RAW inflationは8 rootすべて`1`、transposition occupancyは8 rootすべて`0`で、両axisはvariation不足のためexact consequenceとのrelationが`NON-ESTIMABLE`となりました。Corridorとreply widthにはvariationがあり、事前登録したfinite ordering ruleでは`DTF × reply width`と`value-preserving move count × corridor`が`MONOTONE-DECREASING-ORDER-CONSISTENT`、その他のestimable primary relationは`MIXED-ORDER`でした。
+
+この結果はN=8の固定late-game exact microdomain内のfinite ordering summaryです。whole-Bao universal law、因果関係、AI棋力、人間のdifficulty、public AI変更を意味しません。
+
+G4-06はresearch branch上で科学実行とclosureまで完了しています。`main`統合は最終整合性監査と明示的な統合判断を経て行います。次のcore candidateは、G4-06 main統合後のG4-07 authorization reviewです。
+
+詳しくは、[`research-generation-4/README.md`](research-generation-4/README.md)、[`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md)、[`local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md`](local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md)を参照してください。
 
 ## Research Generation 3 — 局所ゲーム木幾何
 
