@@ -129,21 +129,81 @@
       "technicalSeed": 40709001,
       "checkpointCount": 15,
       "preflight": [
-        {"ply":16,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":20,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":24,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":28,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":32,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":36,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":40,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":44,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":48,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":52,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":56,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":60,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":64,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":68,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":72,"eligible":true,"reasonCode":"ELIGIBLE"}
+        {
+          "ply": 16,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 20,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 24,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 28,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 32,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 36,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 40,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 44,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 48,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 52,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 56,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 60,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 64,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 68,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 72,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        }
       ],
       "rejectionCountsBeforeSelection": {},
       "summaryDigest": "c435ced7fb97173aede7995ecd64586041bc94718f2cfb13db3966b8a9c91f9f",
@@ -155,21 +215,81 @@
       "technicalSeed": 40709001,
       "checkpointCount": 15,
       "preflight": [
-        {"ply":16,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":20,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":24,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":28,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":32,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":36,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":40,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":44,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":48,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":52,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":56,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":60,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":64,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":68,"eligible":true,"reasonCode":"ELIGIBLE"},
-        {"ply":72,"eligible":true,"reasonCode":"ELIGIBLE"}
+        {
+          "ply": 16,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 20,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 24,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 28,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 32,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 36,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 40,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 44,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 48,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 52,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 56,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 60,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 64,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 68,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        },
+        {
+          "ply": 72,
+          "eligible": true,
+          "reasonCode": "ELIGIBLE"
+        }
       ],
       "rejectionCountsBeforeSelection": {},
       "summaryDigest": "4dd85129c0ae157009c8c21f6b9d1629f73545df8b1b40f5792645be8e69faaa",
