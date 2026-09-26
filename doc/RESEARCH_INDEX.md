@@ -2,7 +2,7 @@
 
 更新日: 2026-09-26  
 対象: Research Generation 1〜4  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01完了、G4-02は科学的判定なしで終了、G4-03完了、G4-04完了、G4-05完了・main統合済み、G4-06はresearch branch上でformal完了**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01完了、G4-02は科学的判定なしで終了、G4-03完了、G4-04完了、G4-05完了、G4-06完了・main統合済み**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
@@ -37,8 +37,8 @@
 | `G4-03` / [`LWSRT-STUDY1`](local-width-search-ranking-transfer/) | width / search-ranking transfer | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED` |
 | `G4-04` / [`GTTD-STUDY1`](geometry-trajectory-dynamics-transfer/) | geometry-trajectory transfer | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
 | `G4-05` / [`RLEMOF-STUDY1`](reachable-late-game-exact-microdomain-oracle-foundation/) | exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED` |
-| `G4-06` / [`LGTGECB-STUDY1`](local-game-tree-geometry-exact-consequence-bridge/) | geometry / exact consequence bridge | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / RESEARCH BRANCH ONLY` |
-| `G4-07` | multiscale memory / return | `NEXT CORE CANDIDATE AFTER G4-06 MAIN INTEGRATION / NOT-AUTHORIZED-NOT-EXECUTED` |
+| `G4-06` / [`LGTGECB-STUDY1`](local-game-tree-geometry-exact-consequence-bridge/) | geometry / exact consequence bridge | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED` |
+| `G4-07` | multiscale memory / return | `NEXT AUTHORIZATION-REVIEW CANDIDATE / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-08` | rule-semantic transition | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-09` | search reliability / exact agreement | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-10` | protected depth-11 exact topology | `PROTECTED / NOT-AUTHORIZED-NOT-ACCESSED` |
@@ -133,15 +133,17 @@ all production / independent agreement = true
 formal decision = FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS
 G4-05 candidate rescan = 0
 G4-10 depth-11 access = 0
+main integration = COMPLETE / FAST-FORWARD
+integrated research HEAD = 889b3d16f09517e5b8aa6621cfd347d4b8902891
 ```
 
 Tree/RAW inflationは8 rootすべて`1`、transposition occupancyは8 rootすべて`0`で、両axisはvariation不足のためexact consequenceとのrelationが`NON-ESTIMABLE`となりました。Corridorとreply widthにはvariationがあり、事前登録したfinite ordering ruleでは`DTF × reply width`と`value-preserving move count × corridor`が`MONOTONE-DECREASING-ORDER-CONSISTENT`、その他のestimable primary relationは`MIXED-ORDER`でした。
 
 この結果はN=8の固定late-game exact microdomain内のfinite ordering summaryです。whole-Bao universal law、因果関係、AI棋力、人間のdifficulty、public AI変更を意味しません。
 
-G4-06はresearch branch上で科学実行とclosureまで完了しています。`main`統合は最終整合性監査と明示的な統合判断を経て行います。次のcore candidateは、G4-06 main統合後のG4-07 authorization reviewです。
+G4-06は科学実行、closure、main統合まで完了しています。統合はformal result、no-rescue boundary、G4-10保護境界、public AI非変更を変更しません。次のcore candidateはG4-07 authorization reviewです。
 
-詳しくは、[`research-generation-4/README.md`](research-generation-4/README.md)、[`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md)、[`local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md`](local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md)を参照してください。
+詳しくは、[`research-generation-4/README.md`](research-generation-4/README.md)、[`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md)、[`local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md`](local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md)、[`research-generation-4/checkpoints/2026-09-26-g4-06-main-integration.md`](research-generation-4/checkpoints/2026-09-26-g4-06-main-integration.md)を参照してください。
 
 ## Research Generation 3 — 局所ゲーム木幾何
 
@@ -159,8 +161,8 @@ G4-06はresearch branch上で科学実行とclosureまで完了しています�
 | `G3-07` / [`SILGM-STUDY1`](search-instability-local-geometry-mechanism/) | `FORMAL-COMPLETE` | 3件`CONFIRMED`、4件`NOT-CONFIRMED`、1件`NON-ESTIMABLE`です。 |
 | `G3-08` / [`LGPML-STUDY1`](local-geometry-persistence-memory-length/) | `TECHNICAL-INVALID` | persistence / memory lengthのformal resultはありません。 |
 | `G3-09` / [`CLGR-STUDY1`](continuous-local-geometry-representation/) | `TECHNICAL-INVALID` | 当初のcontinuous representationはformal eligibilityに到達していません。 |
-| 前提Study / [`RRCLGR-STUDY1`](resource-robust-continuous-local-geometry-representation/) | `TECHNICAL-INVALID` | resource-robust retryも、別Studyとしてfail-closedしました。 |
-| 前提Study / [`CRCLGR-STUDY1`](canonical-resource-robust-continuous-local-geometry-representation/) | `FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION` | `CRCLGR-R1-EXACT-SQUASHED-L1`を適格化しました。 |
+| 前提Study / [`RRCLGR-STUDY1`](resource-robust-continuous-local-game-tree-geometry-representation/) | `TECHNICAL-INVALID` | resource-robust retryも、別Studyとしてfail-closedしました。 |
+| 前提Study / [`CRCLGR-STUDY1`](canonical-resource-robust-continuous-local-game-tree-geometry-representation/) | `FORMAL-ELIGIBLE-RESOURCE-BOUNDED-CONTINUOUS-REPRESENTATION` | `CRCLGR-R1-EXACT-SQUASHED-L1`を適格化しました。 |
 | `G3-10` / [`GCLD-STUDY1`](geometry-conditioned-longitudinal-dynamics/) | `FORMAL-COMPLETE` | C1・C2・C3・C5が`CONFIRMED`、C4が`NOT-CONFIRMED`です。 |
 | `G3-11` / [`FDEGHV-STUDY1`](fresh-depth10-exact-geometry-holdout/) | `EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN` | H1〜H4が`DEEPER-CONFIRMED`。depth 10は一度だけ消費済みです。 |
 | `G3-12` / [`LGTGGC-STUDY1`](local-game-tree-geometry-generalization-counterexample/) | `TECHNICAL-INVALID` | Stage 2は未実行で、generalization / counterexampleのformal decisionはありません。 |
