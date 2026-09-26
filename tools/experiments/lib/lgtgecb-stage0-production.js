@@ -60,6 +60,7 @@ function exactMoveStructure(graphNode, rootRow, solutionRows) {
   need(graphNode && rootRow && Array.isArray(solutionRows), "exact move structure input required");
   need(graphNode.id === rootRow.stateKey, "graph/solution root identity mismatch");
   need(rootRow.status === "WIN" || rootRow.status === "LOSS", "root must be exact WIN or LOSS");
+  need(rootRow.absoluteWinner === 0 || rootRow.absoluteWinner === 1, "decisive root absolute winner required");
   const byKey = new Map(solutionRows.map((row) => [row.stateKey, row]));
   const seen = new Set();
   const rows = [];
@@ -68,7 +69,7 @@ function exactMoveStructure(graphNode, rootRow, solutionRows) {
     seen.add(move.key);
     const child = byKey.get(move.to);
     need(child, `missing solved child ${move.to}`);
-    const valuePreserving = rootRow.status === "WIN" ? child.status === "LOSS" : child.status === "WIN";
+    const valuePreserving = child.absoluteWinner === rootRow.absoluteWinner;
     const dtfConsistent = valuePreserving
       && Number.isInteger(rootRow.dtf)
       && Number.isInteger(child.dtf)
@@ -77,6 +78,7 @@ function exactMoveStructure(graphNode, rootRow, solutionRows) {
       moveKey: move.key,
       childStateKey: move.to,
       childStatus: child.status,
+      childAbsoluteWinner: child.absoluteWinner,
       childDtf: child.dtf,
       valuePreserving,
       dtfConsistent,
@@ -88,6 +90,7 @@ function exactMoveStructure(graphNode, rootRow, solutionRows) {
   return {
     rootStateKey: rootRow.stateKey,
     rootStatus: rootRow.status,
+    rootAbsoluteWinner: rootRow.absoluteWinner,
     rootDtf: rootRow.dtf,
     legalMoveCount: rows.length,
     valuePreservingMoveCount: valuePreservingMoveKeys.length,
