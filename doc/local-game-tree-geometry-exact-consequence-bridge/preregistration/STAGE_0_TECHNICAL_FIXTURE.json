@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "studyId": "LGTGECB-STUDY1",
+  "stageId": "LGTGECB-S0-TECHNICAL-2026-09-26-v1",
+  "scientificEvidence": false,
+  "geometryMeasurement": {
+    "reconstructionCore": {
+      "rootRawSha256": "g4-06-stage0-fixture-root",
+      "targetDepth": 5,
+      "representation": {"mode": "RAW-ONLY", "validatedTransformSet": []},
+      "rootLegalMoveCount": 4,
+      "layers": [
+        {"depth": 0, "treeNodeOccurrences": "1", "uniqueRawStateCount": 1, "replyWidthHistogram": {"4": "1"}, "unitWidthStateCount": 0, "reconvergentRawStateCount": 0},
+        {"depth": 1, "treeNodeOccurrences": "4", "uniqueRawStateCount": 4, "replyWidthHistogram": {"1": "2", "2": "2"}, "unitWidthStateCount": 2, "reconvergentRawStateCount": 0},
+        {"depth": 2, "treeNodeOccurrences": "6", "uniqueRawStateCount": 5, "replyWidthHistogram": {"1": "3", "2": "2"}, "unitWidthStateCount": 3, "reconvergentRawStateCount": 1},
+        {"depth": 3, "treeNodeOccurrences": "8", "uniqueRawStateCount": 5, "replyWidthHistogram": {"1": "2", "3": "3"}, "unitWidthStateCount": 2, "reconvergentRawStateCount": 2},
+        {"depth": 4, "treeNodeOccurrences": "9", "uniqueRawStateCount": 5, "replyWidthHistogram": {"0": "1", "1": "1", "2": "3"}, "unitWidthStateCount": 1, "reconvergentRawStateCount": 2},
+        {"depth": 5, "treeNodeOccurrences": "10", "uniqueRawStateCount": 6, "replyWidthHistogram": {"0": "2", "1": "1", "2": "3"}, "unitWidthStateCount": 1, "reconvergentRawStateCount": 2}
+      ],
+      "parentLayers": [
+        {"depth": 0, "widthCompressionCount": 2, "widthExpansionCount": 1, "widthStableCount": 1, "branchReopeningCount": 0, "branchExtinctionCount": 0},
+        {"depth": 1, "widthCompressionCount": 3, "widthExpansionCount": 1, "widthStableCount": 2, "branchReopeningCount": 1, "branchExtinctionCount": 0},
+        {"depth": 2, "widthCompressionCount": 2, "widthExpansionCount": 2, "widthStableCount": 2, "branchReopeningCount": 1, "branchExtinctionCount": 0},
+        {"depth": 3, "widthCompressionCount": 3, "widthExpansionCount": 1, "widthStableCount": 1, "branchReopeningCount": 1, "branchExtinctionCount": 1},
+        {"depth": 4, "widthCompressionCount": 2, "widthExpansionCount": 1, "widthStableCount": 2, "branchReopeningCount": 0, "branchExtinctionCount": 2}
+      ],
+      "cumulative": {"distinctRawStates": 20},
+      "narrowPathGeometry": {
+        "lengthHistogram": {"1": "1", "2": "1", "3": "1"},
+        "recordsDigestSha256": "g4-06-stage0-fixture-narrow",
+        "records": [{"length": 1}, {"length": 3}, {"length": 2}]
+      },
+      "rootBranchGeometry": {
+        "rootMoveLabels": ["A", "B", "C", "D"],
+        "rootBranchPairOverlapByDepth": [
+          {"depth": 0, "pairs": []},
+          {"depth": 1, "pairs": [
+            {"rootMoveA": "A", "rootMoveB": "B", "overlap": {"numerator": "1", "denominator": "3", "defined": true}},
+            {"rootMoveA": "A", "rootMoveB": "C", "overlap": {"numerator": "0", "denominator": "1", "defined": true}}
+          ]},
+          {"depth": 2, "pairs": [
+            {"rootMoveA": "A", "rootMoveB": "B", "overlap": {"numerator": "1", "denominator": "2", "defined": true}},
+            {"rootMoveA": "B", "rootMoveB": "C", "overlap": {"numerator": "1", "denominator": "4", "defined": true}}
+          ]},
+          {"depth": 3, "pairs": [
+            {"rootMoveA": "C", "rootMoveB": "D", "overlap": {"numerator": "2", "denominator": "5", "defined": true}}
+          ]},
+          {"depth": 4, "pairs": []},
+          {"depth": 5, "pairs": []}
+        ]
+      }
+    }
+  },
+  "binaryOrderingRows": [
+    {"id": "W1", "valueClass": "WIN", "geometry": {"numerator": "3", "denominator": "4", "defined": true}},
+    {"id": "W2", "valueClass": "WIN", "geometry": {"numerator": "1", "denominator": "2", "defined": true}},
+    {"id": "L1", "valueClass": "LOSS", "geometry": {"numerator": "1", "denominator": "4", "defined": true}},
+    {"id": "L2", "valueClass": "LOSS", "geometry": {"numerator": "1", "denominator": "2", "defined": true}}
+  ],
+  "orderedRows": [
+    {"id": "A", "geometry": {"numerator": "1", "denominator": "1", "defined": true}, "consequence": {"numerator": "1", "denominator": "1", "defined": true}},
+    {"id": "B", "geometry": {"numerator": "2", "denominator": "1", "defined": true}, "consequence": {"numerator": "3", "denominator": "1", "defined": true}},
+    {"id": "C", "geometry": {"numerator": "3", "denominator": "1", "defined": true}, "consequence": {"numerator": "2", "denominator": "1", "defined": true}},
+    {"id": "D", "geometry": {"numerator": "3", "denominator": "1", "defined": true}, "consequence": {"numerator": "4", "denominator": "1", "defined": true}}
+  ],
+  "noVariationRows": [
+    {"id": "N1", "geometry": {"numerator": "1", "denominator": "1", "defined": true}, "consequence": {"numerator": "1", "denominator": "1", "defined": true}},
+    {"id": "N2", "geometry": {"numerator": "1", "denominator": "1", "defined": true}, "consequence": {"numerator": "2", "denominator": "1", "defined": true}}
+  ]
+}
