@@ -1,0 +1,52 @@
+name: LGTGECB G4-06 Stage 1 Formal
+
+on:
+  push:
+    branches:
+      - research/g4-06-geometry-exact-consequence-bridge
+    paths:
+      - 'doc/local-game-tree-geometry-exact-consequence-bridge/authorizations/STAGE_1_AUTHORIZATION.json'
+
+permissions:
+  contents: read
+
+jobs:
+  formal-stage1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Record execution identity
+        run: |
+          mkdir -p artifacts/local/lgtgecb-stage1-formal
+          {
+            echo "GITHUB_SHA=${GITHUB_SHA}"
+            echo "GITHUB_RUN_ID=${GITHUB_RUN_ID}"
+            echo "GITHUB_RUN_ATTEMPT=${GITHUB_RUN_ATTEMPT}"
+            echo "GITHUB_EVENT_NAME=${GITHUB_EVENT_NAME}"
+            echo "GITHUB_REF=${GITHUB_REF}"
+            node --version
+          } | tee artifacts/local/lgtgecb-stage1-formal/execution-identity.txt
+      - name: Production formal bridge mapping
+        run: node tools/experiments/run-lgtgecb-stage1-formal.js artifacts/local/lgtgecb-stage1-formal/production-result.json
+      - name: Independent full rematerialization and bridge verification
+        run: node tools/experiments/verify-lgtgecb-stage1-formal-independent.js artifacts/local/lgtgecb-stage1-formal/production-result.json artifacts/local/lgtgecb-stage1-formal/independent-verification.json
+      - name: Build artifact manifest
+        if: always()
+        run: |
+          cd artifacts/local/lgtgecb-stage1-formal
+          find . -maxdepth 1 -type f ! -name SHA256SUMS.txt -print0 | sort -z | xargs -0 sha256sum > SHA256SUMS.txt || true
+          cat SHA256SUMS.txt || true
+      - name: Upload formal artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lgtgecb-g4-06-stage1-${{ github.run_id }}-attempt-${{ github.run_attempt }}
+          path: artifacts/local/lgtgecb-stage1-formal/
+          if-no-files-found: error
+          retention-days: 30
