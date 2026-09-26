@@ -1,0 +1,88 @@
+name: MLGMR G4-07 Stage 1 development
+
+on:
+  push:
+    branches:
+      - research/g4-07-multiscale-geometry-memory-return
+    paths:
+      - doc/multiscale-local-geometry-memory-return/executions/STAGE_1_TRIGGER.json
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: mlgmr-g4-07-stage1-development
+  cancel-in-progress: false
+
+jobs:
+  stage1-development:
+    runs-on: ubuntu-latest
+    timeout-minutes: 200
+    steps:
+      - name: Checkout frozen branch state
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Syntax check Stage 1
+        run: |
+          node --check tools/experiments/run-mlgmr-stage1-development.js
+          node --check tools/experiments/verify-mlgmr-stage1-binding.js
+          node --check tools/experiments/lib/mlgmr-production.js
+          node --check tools/experiments/lib/mlgmr-independent.js
+
+      - name: Verify frozen one-shot binding
+        run: node tools/experiments/verify-mlgmr-stage1-binding.js
+
+      - name: Download frozen G4-01 identity source artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: lgttci-stage1r-recovery-source-bundle
+          path: upstream/mlgmr-stage1/g4-01
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 35265290422
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download frozen G4-04 Stage 1 identity artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: gttd-stage1-result
+          path: upstream/mlgmr-stage1/g4-04-stage1
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 36089520136
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download frozen G4-04 Stage 2 identity artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: gttd-stage2-formal
+          path: upstream/mlgmr-stage1/g4-04-stage2
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 36095831961
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify upstream artifact presence
+        run: |
+          test -d upstream/mlgmr-stage1/g4-01/source/GCLD
+          test -f upstream/mlgmr-stage1/g4-04-stage1/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json
+          test -f upstream/mlgmr-stage1/g4-04-stage2/STAGE_2_CANDIDATE_MANIFEST.json
+
+      - name: Run one-shot fresh Stage 1 development
+        env:
+          MLGMR_UPSTREAM_DIR: ${{ github.workspace }}/upstream/mlgmr-stage1
+        run: node tools/experiments/run-mlgmr-stage1-development.js artifacts/mlgmr-stage1
+
+      - name: Upload Stage 1 result and consumed-identity record
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mlgmr-stage1-development-result
+          path: artifacts/mlgmr-stage1
+          if-no-files-found: warn
+          retention-days: 30
