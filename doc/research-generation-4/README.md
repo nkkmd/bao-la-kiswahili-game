@@ -2,7 +2,7 @@
 
 更新日: 2026-09-26  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`G4-01 COMPLETE / G4-02 CLOSED WITHOUT SCIENTIFIC DECISION / G4-03 COMPLETE / G4-04 COMPLETE / G4-05 COMPLETE / G4-06 COMPLETE / PRE-MAIN AUDIT PASS`**
+状態: **`G4-01 COMPLETE / G4-02 CLOSED WITHOUT SCIENTIFIC DECISION / G4-03 COMPLETE / G4-04 COMPLETE / G4-05 COMPLETE / G4-06 COMPLETE / MAIN INTEGRATED`**
 
 ## このProgramが調べること
 
@@ -23,8 +23,8 @@ Program: `Bao Fourth-Generation Research Program`
 | A | `G4-03` | G3-07由来width / search-ranking transfer | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED` |
 | A | `G4-04` | G3-10由来geometry-trajectory transfer | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
 | B | `G4-05` | exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED` |
-| B | `G4-06` | geometry / exact consequence bridge | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / PRE-MAIN-AUDIT-PASS / RESEARCH BRANCH ONLY` |
-| C | `G4-07` | multiscale memory / return | `NEXT AUTHORIZATION-REVIEW CANDIDATE AFTER G4-06 MAIN INTEGRATION / NOT AUTHORIZED` |
+| B | `G4-06` | geometry / exact consequence bridge | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED` |
+| C | `G4-07` | multiscale memory / return | `NEXT AUTHORIZATION-REVIEW CANDIDATE / NOT AUTHORIZED` |
 | C | `G4-08..G4-09` | rule-semantic transition、search reliability | `DEPENDENCY-GATED / NOT AUTHORIZED` |
 | D | `G4-10` | protected depth-11 exact topology | `PROTECTED / NOT AUTHORIZED / NOT ACCESSED` |
 | 独立 | `G4-P01` | canonicalization re-foundation | `NOT AUTHORIZED` |
@@ -100,6 +100,8 @@ formal decision = FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS
 G4-05 candidate rescan = 0
 G4-10 depth-11 access = 0
 pre-main audit = PASS
+main integration = COMPLETE / FAST-FORWARD
+integrated research HEAD = 889b3d16f09517e5b8aa6621cfd347d4b8902891
 ```
 
 主なformal observations:
@@ -115,7 +117,7 @@ pre-main audit = PASS
 
 この結果はN=8の固定late-game exact microdomain内のfinite ordering summaryであり、whole-Bao universal law、因果関係、AI strength、人間のdifficulty、public AI feature採用を意味しない。
 
-main統合前監査では、正本・中央研究文書・branch scope・protected boundaryの整合を確認し、`READY-FOR-MAIN-INTEGRATION-REVIEW`と判定した。`public/`や公開AI production codeの変更はなく、G4-10 depth-11 accessも0のままである。
+main統合前監査では、正本・中央研究文書・branch scope・protected boundaryの整合を確認し、`READY-FOR-MAIN-INTEGRATION-REVIEW`と判定した。その後、`main`がresearch branchに対してbehind 43 / branch側behind 0の状態であることを確認し、research HEADへfast-forwardした。`public/`や公開AI production codeの変更はなく、G4-10 depth-11 accessも0のままである。
 
 詳細:
 
@@ -123,23 +125,22 @@ main統合前監査では、正本・中央研究文書・branch scope・protect
 - [`../local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md`](../local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md)
 - [`../local-game-tree-geometry-exact-consequence-bridge/results/stage-1/STAGE_1_FORMAL_RECEIPT.json`](../local-game-tree-geometry-exact-consequence-bridge/results/stage-1/STAGE_1_FORMAL_RECEIPT.json)
 - [`checkpoints/2026-09-26-g4-06-pre-main-audit.md`](checkpoints/2026-09-26-g4-06-pre-main-audit.md)
+- [`checkpoints/2026-09-26-g4-06-main-integration.md`](checkpoints/2026-09-26-g4-06-main-integration.md)
 
 ## 最初に読む文書
 
 1. [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — RG4全体の最新状態
 2. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — frozen prospective program contract
 3. [`RESUME_HERE.md`](RESUME_HERE.md) — 安全な再開位置
-4. [`checkpoints/2026-09-26-g4-06-pre-main-audit.md`](checkpoints/2026-09-26-g4-06-pre-main-audit.md) — main統合前監査
+4. [`checkpoints/2026-09-26-g4-06-main-integration.md`](checkpoints/2026-09-26-g4-06-main-integration.md) — G4-06 main統合記録
 5. [`../local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md`](../local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md) — G4-06正式結果
 6. [`../research-program-decisions/2026-09-26-g4-06-local-game-tree-geometry-exact-consequence-bridge-study1-closure.md`](../research-program-decisions/2026-09-26-g4-06-local-game-tree-geometry-exact-consequence-bridge-study1-closure.md) — G4-06 closure decision
 
 ## 次に許可される作業
 
-G4-06のformal Stageとmain統合前監査は完了した。追加scientific run、metric変更、depth変更、subgroup rescueは行わない。
+G4-06はformal Stage、closure、main統合まで完了した。追加scientific run、metric変更、depth変更、subgroup rescueは行わない。
 
-次工程は、G4-06を`main`へ統合するかどうかの明示的な統合判断である。現時点ではmain統合を実行しない。
-
-G4-06 main統合後の次のcore candidateはG4-07 authorization reviewである。ただしG4-07は自動authorizationではない。またG4-02はscientific decisionなしで閉じているため、G4-07 reviewでは利用可能な上流evidenceを明示的に判定する。
+次のcore candidateはG4-07 authorization reviewである。ただしG4-07は自動authorizationではない。またG4-02はscientific decisionなしで閉じているため、G4-07 reviewでは利用可能な上流evidenceを明示的に判定する。
 
 ## 解釈上の境界
 
