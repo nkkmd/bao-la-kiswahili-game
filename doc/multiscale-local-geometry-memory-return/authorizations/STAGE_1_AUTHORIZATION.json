@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "studyId": "MLGMR-STUDY1",
+  "stageId": "MLGMR-S1-DEVELOPMENT-2026-09-26-v1",
+  "decision": "AUTHORIZED",
+  "authorizationType": "ONE-SHOT-SCIENTIFIC-DEVELOPMENT",
+  "authorizationBasis": {
+    "stage0Disposition": "STAGE0-PASS",
+    "stage0MandatoryGates": "18/18-PASS",
+    "stage1DesignSourceFreezeReview": "AUTHORIZED",
+    "priorFreshScientificSeedReads": 0,
+    "upstreamIdentityFirewallRequiredBeforeFirstFreshRead": true
+  },
+  "freshScientificSeedAccessAuthorized": true,
+  "stage1SeedAccessAuthorized": true,
+  "stage2SeedAccessAuthorized": false,
+  "formalInferenceAuthorized": false,
+  "g4_10Depth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "singleAttemptOnly": true,
+  "seedBlockAccess": {
+    "start": 40713001,
+    "end": 40713512,
+    "inclusiveCount": 512,
+    "seedExtensionAuthorized": false
+  },
+  "noRescueBoundary": "EARLIEST-OF-FIRST-FRESH-SEED-GENERATION-OR-READ",
+  "executionBinding": {
+    "status": "FROZEN",
+    "bindingId": "MLGMR-STUDY1-STAGE1-BINDING-2026-09-26-V1",
+    "branch": "research/g4-07-multiscale-geometry-memory-return",
+    "frozenSourceCommit": "acae88384e74d9d8b7d2661adcee69d1fe1f3175",
+    "postFreezeAllowedFiles": [
+      "doc/multiscale-local-geometry-memory-return/authorizations/STAGE_1_AUTHORIZATION.json",
+      "doc/multiscale-local-geometry-memory-return/executions/STAGE_1_TRIGGER.json"
+    ],
+    "gitBlobShaByPath": {
+      ".github/workflows/mlgmr-stage1-development.yml": "e58b8d42749d5c27bbe5c07774c509a8ee9d78d6",
+      "doc/multiscale-local-geometry-memory-return/prereg/STUDY_1_SPEC.json": "04260fcad87ec9b88f8be61a1c68afaf830c791a",
+      "doc/multiscale-local-geometry-memory-return/prereg/STAGE_1_DEVELOPMENT_SPEC.json": "599cddf27d4c5b5fd93749a21ad614ce20bdf85b",
+      "doc/multiscale-local-geometry-memory-return/prereg/UPSTREAM_IDENTITY_FIREWALL.json": "9ec64d91f6824b994a462a7a32f13409d8ec2000",
+      "tools/experiments/run-mlgmr-stage1-development.js": "3b4f8094ab26d2889dd070e7681919b5c732b5c2",
+      "tools/experiments/verify-mlgmr-stage1-binding.js": "6ed831238173a3de09d8d563843c05854bf97417",
+      "tools/experiments/lib/mlgmr-production.js": "347cada3a8067a4ef5295d1dadef749f4ff7430d",
+      "tools/experiments/lib/mlgmr-independent.js": "fb7868197f6367f38442eb92f3533a721809328f",
+      "tools/experiments/lib/lgttci-compatibility-production.js": "2fe5b87572c0138cf66dfabb4ca40869eab26ddc",
+      "tools/experiments/lib/lgttci-compatibility-independent.js": "d63263375d4b1d61271ead31777b37185056a73b",
+      "tools/experiments/lib/gcld-production.js": "8bd203832387be1957bf75cf310b06e861c86956",
+      "tools/experiments/lib/gcld-independent.js": "ffb234c0bba523c1e72c17e903a3edb9c2585656",
+      "public/engine.js": "1527bb3665228b7a5bd9f03153567aedbaaa22d7"
+    }
+  }
+}
