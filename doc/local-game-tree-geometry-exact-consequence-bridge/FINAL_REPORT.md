@@ -3,7 +3,8 @@
 更新日: 2026-09-26  
 Agenda: `Research Generation 4 / G4-06`  
 Study ID: `LGTGECB-STUDY1`  
-Formal Stage: `LGTGECB-S1-FORMAL-2026-09-26-v1`
+Formal Stage: `LGTGECB-S1-FORMAL-2026-09-26-v1`  
+正式状態: **`COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED`**
 
 ## 1. 結論
 
@@ -171,16 +172,33 @@ source-freeze authorizationにより、spec、manifest、workflow、engine、RNG
 - 公開AIの棋力改善
 - AI featureの正式採用
 
-## 11. Closure
+## 11. 研究終了（closure）
 
-G4-06のformal scientific objectiveは達成されたため、研究branch上では`COMPLETE`とする。
+G4-06のformal scientific objectiveは達成され、main統合前監査も`PASS`したため、`COMPLETE`として閉じる。
 
 ```text
-G4-06 = COMPLETE
+G4-06 = COMPLETE / MAIN INTEGRATED
 formal decision = FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS
-main integration = NOT AUTHORIZED / NOT EXECUTED
-public AI change = NOT AUTHORIZED
-next program item = G4-07 dependency review after G4-06 integration
+pre-main audit = PASS
+main integration = COMPLETE / FAST-FORWARD
+integrated research HEAD = 889b3d16f09517e5b8aa6621cfd347d4b8902891
+public AI change = false
+next program item = G4-07 authorization review
 ```
 
-mainへの統合は別途、関連文書の整合性監査と明示的な統合判断を経て行う。
+research branchは統合直前に`main`へ対して`ahead 43 / behind 0`で、merge baseは`6a005d9f84d222126dc41abfe17ad5baa4c96629`だったため、履歴を保持したfast-forwardで統合した。この統合はformal result、解釈境界、same-evidence rerun禁止、G4-10保護境界、public AI非変更を変更しない。
+
+G4-07は次のauthorization-review candidateにすぎず、executionは未認可である。
+
+## 12. 正本
+
+`STUDY_1_PROTOCOL.md`、preregistration、authorizationは各時点のprospective / historical recordを保持する。後続の実行・closure・main統合状態は、本最終報告、`CURRENT_STATUS.md`、canonical receipt、checkpointを優先する。
+
+- [`STUDY_1_PROTOCOL.md`](STUDY_1_PROTOCOL.md)
+- [`preregistration/STAGE_1_FORMAL_SPEC.json`](preregistration/STAGE_1_FORMAL_SPEC.json)
+- [`preregistration/STAGE_1_FORMAL_INPUT_MANIFEST.json`](preregistration/STAGE_1_FORMAL_INPUT_MANIFEST.json)
+- [`authorizations/STAGE_1_AUTHORIZATION.json`](authorizations/STAGE_1_AUTHORIZATION.json)
+- [`results/stage-1/STAGE_1_FORMAL_RECEIPT.json`](results/stage-1/STAGE_1_FORMAL_RECEIPT.json)
+- [`checkpoints/2026-09-26-stage-1-formal-complete.md`](checkpoints/2026-09-26-stage-1-formal-complete.md)
+- [`../research-generation-4/checkpoints/2026-09-26-g4-06-pre-main-audit.md`](../research-generation-4/checkpoints/2026-09-26-g4-06-pre-main-audit.md)
+- [`../research-generation-4/checkpoints/2026-09-26-g4-06-main-integration.md`](../research-generation-4/checkpoints/2026-09-26-g4-06-main-integration.md)
