@@ -1,0 +1,13 @@
+{
+  "studyId": "MLGMR-STUDY1",
+  "stageId": "MLGMR-S2-FORMAL-2026-09-26-v1",
+  "bindingId": "MLGMR-STUDY1-STAGE2-BINDING-2026-09-27-V1",
+  "triggerType": "ONE-SHOT-SCIENTIFIC-FORMAL-HOLDOUT",
+  "stage1SeedAccessAuthorized": false,
+  "stage2SeedAccessAuthorized": true,
+  "g4_10Depth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "sameEvidenceRerunAuthorized": false,
+  "seedExtensionAuthorized": false
+}
