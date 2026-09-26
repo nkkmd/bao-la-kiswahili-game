@@ -1,0 +1,49 @@
+name: MLGMR G4-07 Stage 2 pre-execution static validation
+
+on:
+  push:
+    branches:
+      - research/g4-07-multiscale-geometry-memory-return
+    paths:
+      - '.github/workflows/mlgmr-stage2-preexecution-static.yml'
+      - 'tools/experiments/verify-mlgmr-stage2-static.js'
+      - 'tools/experiments/lib/mlgmr-stage2-inference-production.js'
+      - 'tools/experiments/lib/mlgmr-stage2-inference-independent.js'
+      - 'doc/multiscale-local-geometry-memory-return/prereg/STAGE_2_FORMAL_SPEC.json'
+      - 'doc/multiscale-local-geometry-memory-return/prereg/STAGE_2_IDENTITY_FIREWALL.json'
+      - 'doc/multiscale-local-geometry-memory-return/results/stage-1/STAGE_1_CANONICAL_RECORD.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mlgmr-g4-07-stage2-preexecution-static
+  cancel-in-progress: false
+
+jobs:
+  static-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout branch state
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Syntax check Stage 2 static components
+        run: |
+          set -euo pipefail
+          node --check tools/experiments/verify-mlgmr-stage2-static.js
+          node --check tools/experiments/lib/mlgmr-stage2-inference-production.js
+          node --check tools/experiments/lib/mlgmr-stage2-inference-independent.js
+
+      - name: Verify Stage 2 frozen family and independent inference
+        run: |
+          set -euo pipefail
+          node tools/experiments/verify-mlgmr-stage2-static.js
