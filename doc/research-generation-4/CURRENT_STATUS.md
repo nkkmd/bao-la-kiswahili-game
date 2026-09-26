@@ -2,7 +2,7 @@
 
 更新日: 2026-09-26  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`G4-01 COMPLETE / G4-02 CLOSED WITHOUT SCIENTIFIC DECISION / G4-03 COMPLETE / G4-04 COMPLETE / G4-05 COMPLETE`**
+状態: **`G4-01 COMPLETE / G4-02 CLOSED WITHOUT SCIENTIFIC DECISION / G4-03 COMPLETE / G4-04 COMPLETE / G4-05 COMPLETE / G4-06 COMPLETE ON RESEARCH BRANCH`**
 
 ## Program全体
 
@@ -14,8 +14,9 @@ G4-02 = CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED
 G4-03 = COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED
 G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED
 G4-05 = COMPLETE / FORMAL-COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED
-G4-06 = NEXT CORE CANDIDATE / ELIGIBLE FOR AUTHORIZATION REVIEW / NOT-AUTHORIZED
-G4-07..G4-09 = DEPENDENCY-GATED / NOT-AUTHORIZED
+G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / RESEARCH BRANCH ONLY
+G4-07 = NEXT CORE CANDIDATE AFTER G4-06 MAIN INTEGRATION / NOT-AUTHORIZED
+G4-08..G4-09 = DEPENDENCY-GATED / NOT-AUTHORIZED
 G4-10 depth 11 = PROTECTED / NOT-AUTHORIZED / NOT-ACCESSED
 G4-P01 = INDEPENDENT / NOT-AUTHORIZED
 G4-H01 = DEFERRED
@@ -79,50 +80,55 @@ G3-10でconfirmedだった4 directionは、本Studyで固定したfresh P1/P2 do
 
 G4-05 `RLEMOF-STUDY1` は、outcome-blind / resource-feasibility-onlyに選択したfresh reachable late-game rootsについてcomplete legal-transition closureを構築し、production / independent solverがexact valueとsolution structureを一致して再構築できるかを検証した。
 
-### Stage 0
-
 ```text
-run = 36118292862 / attempt 1 / success
-stage decision = STAGE0-TECHNICAL-PASS
-technical gates = 9 / 9 PASS
-fresh scientific evidence = none
-```
-
-### Stage 1
-
-```text
-run = 36118961899 / attempt 1 / success
-stage decision = STAGE1-DEVELOPMENT-ACCEPTED
-selected tier = T3
-selected roots = 7
-complete closures = 5
-Stage 1 RAW identity firewall roots = 8307
-formal inference = false
-```
-
-### Stage 2
-
-```text
-canonical run = 36120286922 / attempt 1 / success
+Stage 0 = STAGE0-TECHNICAL-PASS
+Stage 1 = STAGE1-DEVELOPMENT-ACCEPTED / selected tier T3
+Stage 2 canonical run = 36120286922 / attempt 1 / success
 execution SHA = 72e45631112359346a83f9399be32ee3e6420ccb
 artifact ID = 10858056244
-artifact SHA-256 = 90520ed47e8d314e15c0c8dab18d805fa147d69c54ab3e7a4afc2136238c2154
-fresh seed block = 40523001..40524024 / 1024 games / maxPly 320
-Stage 1 identity firewall roots = 8307
-fresh RAW overlap excluded = 0
-eligible candidates = 21
-inspected candidates = 10
 formal complete domains = 8
 production / independent agreement = true
 formal decision = EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN
-main integration = COMPLETE / PR #166 / merge commit 97ffe3758157d2497b5884f7b17abe59a24159b5
+main integration = COMPLETE / PR #166
 ```
 
-frozen minimum gateは6 complete domains、targetは8。candidate 1と4は`STATE-LIMIT`でcomplete closureにならず、そのままfail-closedした。cap増加、root replacement、seed extension、same-evidence rerunは行っていない。
+candidate 1と4は`STATE-LIMIT`でcomplete closureにならず、そのままfail-closedした。cap増加、root replacement、seed extension、same-evidence rerunは行っていない。8 domainのrecurrent countは0だったが、`RECURRENT`を公式ルール上の`DRAW`へ読み替えていない。
 
-8 formal domainsではproduction / independentがgraph identity、transition identity、retrograde solution、root exact result、recurrent SCC metadataまで一致した。8 domainのrecurrent countは0だったが、`RECURRENT`は公式ルール上の`DRAW`を意味せず、draw inferenceは認可していない。whole-Bao generalization、AI strength claim、public AI変更も認可しない。
+## G4-06 — local geometry / exact-consequence bridge
 
-G4-05は`COMPLETE / FORMAL-COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN`として閉じ、PR #166で`main`へ統合済みである。
+G4-06 `LGTGECB-STUDY1` は、G4-05の固定8 complete microdomainをimmutable upstream populationとして受け取り、relative depth 5のRAW local geometryとexact value・DTF・value-preserving move countをprospectiveに接続した。
+
+### Stage 0
+
+```text
+canonical run = 36211754989 / attempt 1 / success
+stage decision = STAGE0-TECHNICAL-PASS
+mandatory gates = 12 / 12 PASS
+production / independent agreement = true
+G4-05 formal-domain scientific bridge reads = 0
+```
+
+### Stage 1 formal
+
+```text
+canonical run = 36214800357 / attempt 1 / success
+execution SHA = 90283d1680cef8feda02e11b072e98b145d5d786
+artifact ID = 10897225431
+artifact SHA-256 = 1a087b4bccfb0c941e9895d2bf35cce41fcbee5f0194de1c43f2293ea593c688
+formal domains = 8 / 8
+relations emitted = 12 / 12
+all production / independent agreement = true
+formal decision = FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS
+G4-05 candidate rescan = 0
+G4-10 depth-11 access = 0
+main integration = NOT YET EXECUTED
+```
+
+固定8 rootではTree/RAW inflationが全root `1`、transposition occupancyが全root `0`で、これらはgeometry variation不足によりexact consequenceとの関係が`NON-ESTIMABLE`となった。Corridorとreply widthにはvariationがあり、exact valueとの関係はmixedだった。
+
+事前登録したfinite ordering ruleでは、`DTF × reply width`と`value-preserving move count × corridor`が`MONOTONE-DECREASING-ORDER-CONSISTENT`となった。ただしこれはN=8の限定late-game exact microdomain内の結果であり、whole-Bao一般則、因果関係、探索難易度、AI strength、公開AI feature採用へ一般化しない。
+
+G4-06 scientific executionはresearch branch上で完了している。main統合は別途、最終整合性監査と明示的な統合判断を経て行う。
 
 ## Agenda別の状態
 
@@ -133,19 +139,20 @@ G4-05は`COMPLETE / FORMAL-COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN
 | `G4-03` | `COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED` |
 | `G4-04` | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
 | `G4-05` | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED` |
-| `G4-06` | `NEXT CORE CANDIDATE / ELIGIBLE FOR AUTHORIZATION REVIEW / NOT-AUTHORIZED` |
-| `G4-07`〜`G4-09` | `DEPENDENCY-GATED / NOT-AUTHORIZED` |
+| `G4-06` | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / RESEARCH BRANCH ONLY` |
+| `G4-07` | `NEXT CORE CANDIDATE AFTER G4-06 MAIN INTEGRATION / NOT-AUTHORIZED` |
+| `G4-08`〜`G4-09` | `DEPENDENCY-GATED / NOT-AUTHORIZED` |
 | `G4-10` | `PROTECTED / NOT-AUTHORIZED / NOT-ACCESSED` |
 | `G4-P01` | `INDEPENDENT / NOT-AUTHORIZED` |
 | `G4-H01` | `DEFERRED` |
 
 ## 次に許可される作業
 
-G4-05のscientific executionは完了しているため追加runは行わない。
+G4-06のscientific executionは完了しているため、同一formal Stageの追加run、metric変更、depth変更、domain除外、seed extension等は行わない。
 
-Program PlanではG4-06について、G4-05がformal-eligible exact oracle domainを生成した場合だけ実行すると固定している。G4-05がその前提を満たしたため、Research Generation 4を継続する場合の次のcore candidateは**G4-06 — 局所幾何とexact game-theoretic consequenceの接続**である。
+Program Plan上、G4-07はG4-02..G4-04のeligible closuresを前提とするWave C / P1研究であり、それらの上流研究はすでに閉じている。P0系列のG4-06まで完了したため、**G4-06をmainへ統合した後の次のcore candidateはG4-07 — 多時間尺度geometry memoryと回帰**とする。
 
-ただし、これはG4-06のexecution authorizationではない。G4-06へ進む場合は専用authorization reviewから開始する。
+ただし、これはG4-07のexecution authorizationではない。G4-07へ進む場合はG4-06 main integration完了後に専用authorization reviewから開始する。
 
 ## 保護境界
 
@@ -153,10 +160,13 @@ Program PlanではG4-06について、G4-05がformal-eligible exact oracle domai
 - G4-03 Stage 1 / Stage 2をrerunしない。
 - G4-04 Stage 1 / Stage 2をrerunしない。
 - G4-05 Stage 0 / Stage 1 / Stage 2をrerunしない。
+- G4-05 candidate poolをrescanしない。
 - G4-05 `STATE-LIMIT` candidateをresource増加で救済しない。
 - G4-05 seed blockをextensionしない。
 - G4-05 recurrent resultをDRAWへ読み替えない。
 - G4-05 resultをwhole-Bao solutionへ拡張しない。
+- G4-06 Stage 1をoutcome確認後にrerun / rescueしない。
+- G4-06のN=8結果をwhole-Bao ruleへ一般化しない。
 - G3-12をrepair / replayしない。
 - G3-11 depth-10をrerunしない。
 - G4-10 depth-11へアクセスしない。
@@ -166,8 +176,8 @@ Program PlanではG4-06について、G4-05がformal-eligible exact oracle domai
 
 - [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)
 - [`RESUME_HERE.md`](RESUME_HERE.md)
-- [`../reachable-late-game-exact-microdomain-oracle-foundation/README.md`](../reachable-late-game-exact-microdomain-oracle-foundation/README.md)
+- [`../local-game-tree-geometry-exact-consequence-bridge/README.md`](../local-game-tree-geometry-exact-consequence-bridge/README.md)
+- [`../local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md`](../local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md)
+- [`../local-game-tree-geometry-exact-consequence-bridge/results/stage-1/STAGE_1_FORMAL_RECEIPT.json`](../local-game-tree-geometry-exact-consequence-bridge/results/stage-1/STAGE_1_FORMAL_RECEIPT.json)
+- [`../local-game-tree-geometry-exact-consequence-bridge/checkpoints/2026-09-26-stage-1-formal-complete.md`](../local-game-tree-geometry-exact-consequence-bridge/checkpoints/2026-09-26-stage-1-formal-complete.md)
 - [`../reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md`](../reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md)
-- [`../reachable-late-game-exact-microdomain-oracle-foundation/results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json`](../reachable-late-game-exact-microdomain-oracle-foundation/results/stage-2/STAGE_2_CANONICAL_RESULT_SUMMARY.json)
-- [`../research-program-decisions/2026-09-25-g4-05-reachable-late-game-exact-microdomain-oracle-foundation-study1-closure.md`](../research-program-decisions/2026-09-25-g4-05-reachable-late-game-exact-microdomain-oracle-foundation-study1-closure.md)
-- [`checkpoints/2026-09-26-g4-05-main-integration.md`](checkpoints/2026-09-26-g4-05-main-integration.md)
