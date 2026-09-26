@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "studyId": "MLGMR-STUDY1",
+  "stageId": "MLGMR-S2-FORMAL-2026-09-26-v1",
+  "statusAtFreeze": "STAGE2-DESIGN-AND-SOURCE-FREEZE-AUTHORIZED-EXECUTION-NOT-YET-AUTHORIZED",
+  "authorizationReviewId": "MLGMR-STUDY1-STAGE2-DESIGN-AUTH-2026-09-27-V1",
+  "evidenceClass": "FRESH-FORMAL-HOLDOUT",
+  "scientificExecutionAuthorized": false,
+  "seedBlock": {"start":40723001,"end":40724024,"slots":1024,"slotsPerPolicy":512,"seedExtensionAllowed":false},
+  "policyAssignment": "FIXED-SEED-SLOT-PARITY-OUTCOME-BLIND",
+  "policies": ["LGTTCI-P1-UNIFORM-LEGAL","LGTTCI-P2-MIN-IMMEDIATE-CAPTURE"],
+  "trajectoryContract": {
+    "candidateTargetPerPolicy": 48,
+    "minimumFullyEligiblePerPolicy": 40,
+    "measuredPerPolicy": 32,
+    "formalMeasuredTrajectoriesRequired": 64,
+    "nonterminalThroughPly": 72,
+    "checkpointPlies": [16,20,24,28,32,36,40,44,48,52,56,60,64,68,72],
+    "allCheckpointDepth5PreflightEligible": true
+  },
+  "lagCheckpointIntervals": [1,2,4,8],
+  "returnHorizons": [1,2,4],
+  "formalFamily": {
+    "derivation": "STAGE1-FROZEN-SUPPORT-GATE-ONLY",
+    "effectDirectionUsedForMembership": false,
+    "slotCount": 16,
+    "slotIds": [
+      "CRCLGR-A1-ROOT-LEGAL-WIDTH-LAG1",
+      "CRCLGR-A1-ROOT-LEGAL-WIDTH-LAG2",
+      "CRCLGR-A1-ROOT-LEGAL-WIDTH-LAG4",
+      "CRCLGR-A2-CUMULATIVE-TREE-OCCURRENCE-LAG1",
+      "CRCLGR-A2-CUMULATIVE-TREE-OCCURRENCE-LAG2",
+      "CRCLGR-A2-CUMULATIVE-TREE-OCCURRENCE-LAG4",
+      "CRCLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES-LAG1",
+      "CRCLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES-LAG2",
+      "CRCLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES-LAG4",
+      "CRCLGR-A4-CUMULATIVE-TREE-RAW-RATIO-LAG1",
+      "CRCLGR-A4-CUMULATIVE-TREE-RAW-RATIO-LAG2",
+      "CRCLGR-A5-DUPLICATE-TRANSITION-FRACTION-LAG1",
+      "CRCLGR-A5-DUPLICATE-TRANSITION-FRACTION-LAG2",
+      "CRCLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION-LAG1",
+      "CRCLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION-LAG2",
+      "CRCLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION-LAG4"
+    ]
+  },
+  "formalSupportGate": {
+    "supportingTrajectoryDefinition": "comparableNonzero>=3",
+    "supportTrajectoriesRequired": 48,
+    "supportPerPolicyRequired": 20,
+    "nonzeroTrajectoryBalancesRequired": 40,
+    "zeroTrajectoryBalancesInFormalN": false
+  },
+  "formalInference": {
+    "experimentalUnit": "SOURCE-TRAJECTORY",
+    "test": "EXACT-TWO-SIDED-BINOMIAL-SIGN-TEST",
+    "positiveBalanceMeaning": "SAME-DOMINANT-PERSISTENCE-DIRECTION",
+    "negativeBalanceMeaning": "OPPOSITE-DOMINANT-REVERSAL-DIRECTION",
+    "multiplicity": "HOLM-BONFERRONI",
+    "fixedFamilySize": 16,
+    "familyAlpha": {"numerator":"1","denominator":"20","defined":true},
+    "nonEstimableHolmInput": {"numerator":"1","denominator":"1","defined":true},
+    "labels": ["PERSISTENCE-CONFIRMED","REVERSAL-CONFIRMED","NOT-CONFIRMED","NON-ESTIMABLE","TECHNICAL-INVALID"],
+    "decisionRule": "NON-ESTIMABLE if frozen support/nonzero gate fails; otherwise Holm-significant positive>negative => PERSISTENCE-CONFIRMED; Holm-significant negative>positive => REVERSAL-CONFIRMED; otherwise NOT-CONFIRMED"
+  },
+  "boundedMemorySummary": {
+    "field": "confirmedContiguousPersistenceLagMax",
+    "orderedLags": [1,2,4,8],
+    "stopOnNonPersistenceOrNonFamily": true,
+    "beyondLag8ExtrapolationAllowed": false,
+    "halfLifePrimaryTokenAllowed": false
+  },
+  "secondaryReturn": {"status":"DESCRIPTIVE-ONLY","formalPValueAllowed":false,"confirmationLabelAllowed":false,"aggregate":"CLASS-COUNTS-BY-AXIS-X-HORIZON"},
+  "stage1SourceArtifact": {
+    "runId": 36247459779,
+    "artifactId": 10908816662,
+    "artifactName": "mlgmr-stage1-development-result",
+    "artifactZipSha256": "65081316d7f3dc0f59b7da5a527af65c052ea33b0ab7e8e8b07d06d764f27469",
+    "resultFile": "STAGE_1_RESULT.json",
+    "resultFileSha256": "2a712105917da91c954689f42665fc248fdf16e22721e13726e7e0cfd356d196",
+    "identityFile": "STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json",
+    "identityFileSha256": "bcc53e7f7a561552e0a67ac0225b0da29da6d7904834b6b8130531cc48b6e13b",
+    "identityRowCount": 96
+  },
+  "resourceCeilings": {
+    "perCheckpointPerImplementation": {"uniqueRawStates":100000,"uniqueTransitions":750000,"parentExpansions":100000,"legalMoveEvaluations":750000,"summedTreeNodeOccurrences":1000000000,"elapsedMs":180000,"peakRssBytes":4294967296},
+    "combinedProductionIndependentPerCheckpointElapsedMs": 360000,
+    "stageElapsedMs": 16200000,
+    "stagePeakRssBytes": 4294967296,
+    "resultArtifactBytes": 402653184
+  },
+  "noRescue": {"sameEvidenceRerunAllowed":false,"seedExtensionAllowed":false,"replacementPopulationAllowed":false,"postAccessDesignChangeAllowed":false},
+  "protectedEvidence": {"g3_11Depth10RerunAuthorized":false,"g4_10Depth11AccessAuthorized":false},
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false
+}
