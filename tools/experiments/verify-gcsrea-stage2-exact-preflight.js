@@ -100,8 +100,9 @@ function main() {
   }
 
   need(exactPreflight.disposition === "EXACT-ORACLE-INTEGRITY-PREFLIGHT-PASS", "exact oracle integrity preflight failed");
-  need(exactPreflight.fixedDomainCount === 8, "exact preflight fixed domain count mismatch");
-  need(exactPreflight.actualSearchVsExactMeasurements === 0, "exact preflight performed forbidden search measurement");
+  need(exactPreflight.core && exactPreflight.core.fixedDomainCount === 8, "exact preflight fixed domain count mismatch");
+  need(exactPreflight.core.actualSearchVsExactMeasurements === 0, "exact preflight performed forbidden search measurement");
+  need(exactPreflight.scientificOutcomeGenerated === false, "exact preflight unexpectedly generated scientific outcome");
 
   const prodSource = raw(PROD_LIB).toString("utf8");
   const indSource = raw(IND_LIB).toString("utf8");
