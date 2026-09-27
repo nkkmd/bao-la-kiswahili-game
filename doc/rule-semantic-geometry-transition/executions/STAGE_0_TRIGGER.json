@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRSGT-STUDY1",
+  "stageId": "BRSGT-S0-TECHNICAL-2026-09-27-v1",
+  "authorizationReviewId": "G4-08-AUTHORIZATION-REVIEW-2026-09-27-V1",
+  "authorizationCommit": "d26bf3a3d3bf465a5b6d93f779a5921e18376238",
+  "auditedSourceSha": "1940fcc740d0636a6d1f6bd889058fff8ecfb6d1",
+  "executionIntent": "TECHNICAL-ONLY",
+  "freshScientificSeedAccess": false,
+  "scientificOutcome": false,
+  "protectedDepth11Access": false,
+  "publicAiChange": false,
+  "requestedExecutions": 1
+}
