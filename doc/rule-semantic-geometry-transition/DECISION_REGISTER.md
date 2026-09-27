@@ -37,7 +37,7 @@
 | BRSGT-D031 | Stage 0 version isolation | `V1 AUTH/TRIGGER NOT REUSED` | v2はnew spec、new source audit、new authorization、new trigger、new workflowを要求。 |
 | BRSGT-D032 | Stage 0 v2 disposition | `STAGE0-PASS` | Run `36295553800`。4 fixturesすべて64 seeds、E1-E4 coverage、production/independent exact agreement、fresh reads 0。 |
 | BRSGT-D033 | Stage 1 role | `FRESH-DEVELOPMENT / SUPPORT-ONLY / NO FORMAL INFERENCE` | effect value/signを保持せず、definedness/supportだけをStage 2 candidate preparationへ使用する。 |
-| BRSGT-D034 | Stage 1 frozen namespace | `40813001..40813512 / 512 / NOT YET ACCESSED` | fresh access前にseed block・policy assignment・resource ceilingをfreeze。 |
+| BRSGT-D034 | Stage 1 frozen namespace | `40813001..40813512 / 512` | v1 fresh access前にseed block・policy assignment・resource ceilingをfreeze。 |
 | BRSGT-D035 | Stage 1 firewall | `FROZEN-PRE-FRESH / IDENTITY-ONLY` | G4-01/G4-04/G4-07等のseed・trajectory・opening-prefix・RAW-root identityを除外し、scientific effect値はselectionへ使わない。 |
 | BRSGT-D036 | Earlier Stage 1 static audit | `PASS SUPERSEDED FOR CURRENT-HEAD BINDING` | PASS後にworkflow/binding/relay-limit処理が変更されたためcurrent HEADへの流用を禁止。 |
 | BRSGT-D037 | Hardened Stage 1 static audit | `PASS / SCOPE-V2` | Run `36298236747`、audit HEAD `bc390876...`。workflow/binding/runner ordering、relay-limit、auth/trigger absenceまで再監査。 |
@@ -46,7 +46,12 @@
 | BRSGT-D040 | Stage 1 scientific execution precondition | `SEPARATE AUTHORIZATION REQUIRED` | final-freeze audit PASSだけではfresh scientific executionを自動認可しない。 |
 | BRSGT-D041 | Stage 1 final-freeze audit | `PASS / RUN 36298395328` | HEAD `4f307a5502...`。scientific auth/trigger不在、fresh reads 0、Stage 2/G4-10 read 0を再確認。 |
 | BRSGT-D042 | Stage 1 v1 authorization | `FRESH-DEVELOPMENT-ONE-SHOT` | final-freeze HEADへsource-bindし、post-audit差分をauthorization + triggerの2 pathだけに限定。 |
-| BRSGT-D043 | Stage 1 v1 execution | `TECHNICAL-INVALID / NO-RERUN-SAME-VERSION` | Run `36298620437`。binding PASS後のscientific runnerがfailure。catch-path自身の`freshScientificSeedReads`未定義参照で元例外をmask。 |
-| BRSGT-D044 | Stage 1 v1 seed block | `CONSERVATIVELY-CONSUMED-NO-REUSE` | exact fresh-read countがfailure-handler bugで保存されなかったため、`40813001..40813512`全体を安全側で隔離。 |
+| BRSGT-D043 | Stage 1 v1 execution | `TECHNICAL-INVALID / NO-RERUN-SAME-VERSION` | Run `36298620437`。terminal errorはcatch内の`freshScientificSeedReads`未定義。source auditで同じ未定義shorthandが正常系3箇所＋catch 1箇所に存在し、initiating exceptionは復元不能。 |
+| BRSGT-D044 | Stage 1 v1 seed block | `CONSERVATIVELY-CONSUMED-NO-REUSE` | exact fresh-read countが保存されなかったため、`40813001..40813512`全体を安全側で隔離。 |
 | BRSGT-D045 | Stage 1 v1 scientific interpretation | `NONE-TECHNICAL-INVALID` | formal inferenceなし。Stage 2 seed read 0、G4-10 depth-11 access 0、public AI変更なし。 |
 | BRSGT-D046 | Stage 1 v2 prerequisite | `NEW VERSION + NEW SEED BLOCK + CATCH SELF-TEST` | v1の修復再実行を禁止し、別namespace・別spec・別binding・別authorizationを要求。 |
+| BRSGT-D047 | Stage 1 v2 identity | `BRSGT-S1-DEVELOPMENT-2026-09-27-v2` | v1と科学的に区別可能な新versionとしてtechnical correctionを隔離。 |
+| BRSGT-D048 | Stage 1 v2 seed block | `40814001..40814512 / 512 / NOT AUTHORIZED` | v1 blockと非重複。v1 blockはv2 firewallで明示除外し再利用しない。 |
+| BRSGT-D049 | Stage 1 v2 runner construction | `PINNED V1 SOURCE + COUNT-CHECKED DETERMINISTIC MATERIALIZATION` | frozen v1 runner SHA-256を固定し、spec/firewall/auth/version/output pathと4箇所のcounter mappingのみを厳密変換する。 |
+| BRSGT-D050 | Stage 1 v2 failure-path gate | `PRE-FRESH CATCH SELF-TEST REQUIRED` | fresh access前にintentional exceptionで実際のcatchを通し、failure artifact・read count 0・no-rescue falseを確認する。 |
+| BRSGT-D051 | Stage 1 v2 execution boundary | `STATIC AUDIT THEN SEPARATE ONE-SHOT AUTHORIZATION` | static audit PASSだけでは実行しない。audit後の許可差分はv2 authorization + triggerの2 pathのみ。 |
