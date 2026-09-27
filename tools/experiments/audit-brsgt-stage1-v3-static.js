@@ -115,7 +115,8 @@ function main() {
     generated = fs.readFileSync(generatedPath, "utf8");
     need(generated.includes("STAGE_1_V3_DEVELOPMENT_SPEC.json") && generated.includes("UPSTREAM_IDENTITY_FIREWALL_V3.json") && generated.includes("STAGE_1_V3_AUTHORIZATION.json"), "generated v3 bindings missing");
     need(generated.includes("BRSGT-S1-DEVELOPMENT-2026-09-27-v3"), "generated v3 stage identity missing");
-    need(count(generated, "freshScientificSeedReads: freshSeedReads,") === 4, "generated v3 fresh-read mappings != 4");
+    need(materialization.replacementCounts["fresh-read-counter-mapping"] === 4, "materialized v3 fresh-read replacement count != 4");
+    need(count(generated, "freshScientificSeedReads: freshSeedReads,") === 5, "generated v3 explicit fresh-read mappings != 5");
     need(count(generated, "freshScientificSeedReads,") === 0, "generated v3 retains undefined fresh-read shorthand");
     need(count(generated, "distinctRawStates: source.maxDistinctRawStates,") === 1, "generated v3 distinctRawStates mapping != 1");
     need(count(generated, "uniqueTransitions: source.maxUniqueTransitions,") === 1, "generated v3 uniqueTransitions mapping != 1");
