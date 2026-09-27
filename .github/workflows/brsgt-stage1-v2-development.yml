@@ -1,0 +1,177 @@
+name: BRSGT Stage 1 v2 Development
+
+on:
+  push:
+    branches:
+      - research/g4-08-rule-semantic-geometry-transition
+    paths:
+      - doc/rule-semantic-geometry-transition/executions/STAGE_1_V2_TRIGGER.json
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: brsgt-stage1-v2-development
+  cancel-in-progress: false
+
+jobs:
+  stage1-v2-development:
+    runs-on: ubuntu-latest
+    timeout-minutes: 210
+    steps:
+      - name: Checkout frozen research branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Syntax checks
+        run: |
+          node --check tools/experiments/run-brsgt-stage1-development.js
+          node --check tools/experiments/materialize-brsgt-stage1-v2-runner.js
+          node --check tools/experiments/verify-brsgt-stage1-v2-binding.js
+          node --check tools/experiments/lib/brsgt-production.js
+          node --check tools/experiments/lib/brsgt-independent.js
+          node --check tools/experiments/lib/brsgt-stage1-firewall.js
+
+      - name: Run pre-fresh catch-path self-test
+        run: |
+          set -o pipefail
+          mkdir -p artifacts/brsgt-stage1-v2
+          node tools/experiments/materialize-brsgt-stage1-v2-runner.js --self-test | tee artifacts/brsgt-stage1-v2/CATCH_SELF_TEST.json
+
+      - name: Materialize frozen v2 runner
+        run: |
+          set -o pipefail
+          node tools/experiments/materialize-brsgt-stage1-v2-runner.js --emit tools/experiments/run-brsgt-stage1-v2-development.generated.js | tee artifacts/brsgt-stage1-v2/MATERIALIZATION.json
+          node --check tools/experiments/run-brsgt-stage1-v2-development.generated.js
+
+      - name: Verify one-shot authorization and frozen source binding
+        run: node tools/experiments/verify-brsgt-stage1-v2-binding.js
+
+      - name: Verify generated runner hash against authorization
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const meta = JSON.parse(fs.readFileSync('artifacts/brsgt-stage1-v2/MATERIALIZATION.json', 'utf8'));
+          const auth = JSON.parse(fs.readFileSync('doc/rule-semantic-geometry-transition/authorizations/STAGE_1_V2_AUTHORIZATION.json', 'utf8'));
+          if (meta.generatedSha256 !== auth.executionBinding.generatedRunnerSha256) throw new Error('generated runner SHA-256 authorization mismatch');
+          NODE
+
+      - name: Download frozen G4-01 identity source artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: lgttci-stage1r-recovery-source-bundle
+          path: upstream/brsgt-stage1-v2/g4-01
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 35265290422
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download frozen G4-04 Stage 1 identity artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: gttd-stage1-result
+          path: upstream/brsgt-stage1-v2/g4-04-stage1
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 36089520136
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download frozen G4-04 Stage 2 identity artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: gttd-stage2-formal
+          path: upstream/brsgt-stage1-v2/g4-04-stage2
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 36095831961
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download frozen G4-07 Stage 1 identity artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: mlgmr-stage1-development-result
+          path: upstream/brsgt-stage1-v2/g4-07-stage1
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 36247459779
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download frozen G4-07 Stage 2 identity artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: mlgmr-stage2-formal-result
+          path: upstream/brsgt-stage1-v2/g4-07-stage2
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 36278926636
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify upstream artifact presence
+        run: |
+          test -d upstream/brsgt-stage1-v2/g4-01/source/GCLD
+          test -f upstream/brsgt-stage1-v2/g4-04-stage1/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json
+          test -f upstream/brsgt-stage1-v2/g4-04-stage2/STAGE_2_CANDIDATE_MANIFEST.json
+          test -f upstream/brsgt-stage1-v2/g4-07-stage1/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json
+          test -f upstream/brsgt-stage1-v2/g4-07-stage2/STAGE_2_CANDIDATE_MANIFEST.json
+
+      - name: Record execution context before fresh access
+        run: |
+          mkdir -p doc/rule-semantic-geometry-transition/results/stage-1-v2
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const meta = JSON.parse(fs.readFileSync('artifacts/brsgt-stage1-v2/MATERIALIZATION.json', 'utf8'));
+          const row = {
+            schemaVersion: 1,
+            studyId: 'BRSGT-STUDY1',
+            stageId: 'BRSGT-S1-DEVELOPMENT-2026-09-27-v2',
+            evidenceClass: 'FRESH-DEVELOPMENT',
+            repository: process.env.GITHUB_REPOSITORY,
+            sourceSha: process.env.GITHUB_SHA,
+            refName: process.env.GITHUB_REF_NAME,
+            runId: process.env.GITHUB_RUN_ID,
+            runAttempt: process.env.GITHUB_RUN_ATTEMPT,
+            generatedRunnerSha256: meta.generatedSha256,
+            freshScientificSeedReadsAtContextWrite: 0,
+            priorStage1V1SeedReuse: false,
+            stage2SeedReads: 0,
+            g4_10Depth11AccessCount: 0
+          };
+          fs.writeFileSync('doc/rule-semantic-geometry-transition/results/stage-1-v2/STAGE_1_EXECUTION_CONTEXT.json', JSON.stringify(row, null, 2) + '\n');
+          NODE
+
+      - name: Run one-shot fresh Stage 1 v2 development
+        env:
+          BRSGT_STAGE1_UPSTREAM_DIR: ${{ github.workspace }}/upstream/brsgt-stage1-v2
+          BRSGT_STAGE1_EXECUTION_TRIGGER_OK: '1'
+        run: node tools/experiments/run-brsgt-stage1-v2-development.generated.js --output doc/rule-semantic-geometry-transition/results/stage-1-v2
+
+      - name: Hash available Stage 1 v2 artifacts
+        if: always()
+        run: |
+          set -e
+          mkdir -p doc/rule-semantic-geometry-transition/results/stage-1-v2
+          cd doc/rule-semantic-geometry-transition/results/stage-1-v2
+          : > SHA256SUMS.txt
+          for f in STAGE_1_EXECUTION_CONTEXT.json STAGE_1_RESULT.json STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json STAGE_1_FIREWALL_SUMMARY.json STAGE_1_FAILURE.json; do
+            if [ -f "$f" ]; then sha256sum "$f" >> SHA256SUMS.txt; fi
+          done
+          cat SHA256SUMS.txt
+
+      - name: Upload Stage 1 v2 artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: brsgt-stage1-v2-development-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            artifacts/brsgt-stage1-v2/CATCH_SELF_TEST.json
+            artifacts/brsgt-stage1-v2/MATERIALIZATION.json
+            doc/rule-semantic-geometry-transition/results/stage-1-v2/STAGE_1_EXECUTION_CONTEXT.json
+            doc/rule-semantic-geometry-transition/results/stage-1-v2/STAGE_1_RESULT.json
+            doc/rule-semantic-geometry-transition/results/stage-1-v2/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json
+            doc/rule-semantic-geometry-transition/results/stage-1-v2/STAGE_1_FIREWALL_SUMMARY.json
+            doc/rule-semantic-geometry-transition/results/stage-1-v2/STAGE_1_FAILURE.json
+            doc/rule-semantic-geometry-transition/results/stage-1-v2/SHA256SUMS.txt
+          if-no-files-found: error
+          retention-days: 30
