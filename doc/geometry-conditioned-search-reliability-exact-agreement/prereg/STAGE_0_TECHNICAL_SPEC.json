@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GCSREA-STUDY1",
+  "stageId": "GCSREA-S0-TECHNICAL-2026-09-27-v1",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "authorizationScope": "PREREGISTRATION-AND-STAGE0-ONLY",
+  "freshScientificSeedAccessAuthorized": false,
+  "scientificOutcomeAuthorized": false,
+  "g4_05ExactDomainScientificMeasurementAuthorized": false,
+  "protectedDepth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "relativeDepth": 5,
+  "technicalGeometryMetadataSeed": 40900001,
+  "technicalGeometryMetadataSeedScientificUse": false,
+  "searchValidation": {
+    "required": true,
+    "source": "public/engine.js initial RAW state",
+    "conditions": [
+      "D2_Q1",
+      "D3_Q1",
+      "D2_Q0",
+      "D2_Q2",
+      "B256_Q1_MAXD3",
+      "B1024_Q1_MAXD3"
+    ],
+    "requiredProductionIndependentExactAgreement": true,
+    "requiredAtLeastOneEstimableContrast": true,
+    "higherResourceSearchIsTruth": false
+  },
+  "geometryValidation": {
+    "required": true,
+    "roots": [
+      "initial RAW state",
+      "canonical-first child of initial RAW state"
+    ],
+    "requiredProductionIndependentExactAgreement": true,
+    "representation": "RAW-ONLY",
+    "validatedTransformSet": []
+  },
+  "exactAgreement": {
+    "required": true,
+    "source": "synthetic move-set fixtures only",
+    "actualG4_05RootsUsed": false,
+    "requiredSetRelations": [
+      "EQUAL",
+      "A-SUBSET-B",
+      "A-SUPERSET-B",
+      "OVERLAP",
+      "DISJOINT"
+    ],
+    "topK": 3,
+    "requiredProductionIndependentExactAgreement": true
+  },
+  "executionFirewall": {
+    "scientificExecution": false,
+    "freshScientificSeedReads": 0,
+    "stage1CandidateNamespaceRead": false,
+    "stage2CandidateNamespaceRead": false,
+    "g4_05ExactDomainNewMeasurements": 0,
+    "g4_10Depth11AccessCount": 0,
+    "publicAiChanged": false
+  },
+  "resourceCeiling": {
+    "maxGeometryRootMeasurements": 2,
+    "maxExactSemanticFixtures": 5,
+    "elapsedMs": 900000,
+    "peakRssBytes": 1500000000,
+    "resultArtifactBytes": 8000000
+  },
+  "passCondition": "all mandatory technical gates true => STAGE0-PASS; otherwise TECHNICAL-INVALID",
+  "stage1AutomaticallyAuthorizedOnPass": false,
+  "sameVersionRescueAfterAuthorizedExecution": false
+}
