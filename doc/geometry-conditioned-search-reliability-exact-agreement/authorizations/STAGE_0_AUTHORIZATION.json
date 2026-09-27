@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GCSREA-STUDY1",
+  "stageId": "GCSREA-S0-TECHNICAL-2026-09-27-v1",
+  "reviewId": "G4-09-AUTHORIZATION-REVIEW-2026-09-27-V1",
+  "decision": "AUTHORIZED",
+  "authorizationType": "TECHNICAL-ONLY",
+  "maxExecutions": 1,
+  "freshScientificSeedAccessAuthorized": false,
+  "scientificOutcomeAuthorized": false,
+  "g4_05ExactDomainScientificMeasurementAuthorized": false,
+  "protectedDepth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "executionBinding": {
+    "status": "FROZEN",
+    "branch": "research/g4-09-search-reliability-exact-agreement",
+    "auditedSourceSha": "0d47638f187c19e4f1d4d199394e44f380747ac0",
+    "allowedPostAuditPaths": [
+      "doc/geometry-conditioned-search-reliability-exact-agreement/authorizations/STAGE_0_AUTHORIZATION.json",
+      "doc/geometry-conditioned-search-reliability-exact-agreement/executions/STAGE_0_TRIGGER.json"
+    ]
+  },
+  "requiredEvidenceClass": "TECHNICAL-FIXTURE",
+  "requiredRelativeDepth": 5,
+  "resourceCeiling": {
+    "maxGeometryRootMeasurements": 2,
+    "maxExactSemanticFixtures": 5,
+    "elapsedMs": 900000,
+    "peakRssBytes": 1500000000,
+    "resultArtifactBytes": 8000000
+  },
+  "failureRule": "FAIL-CLOSED-AS-TECHNICAL-INVALID",
+  "stage1AutomaticallyAuthorizedOnPass": false
+}
