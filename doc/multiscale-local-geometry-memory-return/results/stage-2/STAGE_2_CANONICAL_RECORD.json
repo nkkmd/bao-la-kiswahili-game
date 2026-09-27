@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "studyId": "MLGMR-STUDY1",
+  "stageId": "MLGMR-S2-FORMAL-2026-09-26-v1",
+  "recordType": "CANONICAL-STAGE2-FORMAL-SUMMARY-AND-PROVENANCE",
+  "disposition": "FORMAL-COMPLETE",
+  "evidenceClass": "FRESH-FORMAL-HOLDOUT",
+  "formalInferencePerformed": true,
+  "execution": {
+    "workflowRunId": 36278926636,
+    "runAttempt": 1,
+    "headSha": "f73e2ade42b3379b9eaf2007292a057cfeaf88f0",
+    "bindingId": "MLGMR-STUDY1-STAGE2-BINDING-2026-09-27-V1",
+    "frozenSourceCommit": "8bf76b5bb4ef375948cedaac131cb256b4a1dd8a",
+    "conclusion": "success",
+    "artifactId": 10919769185,
+    "artifactName": "mlgmr-stage2-formal-result",
+    "artifactZipSha256": "4d8370ccad1be7fa4052a4293e6b64c4e1b77f7c11c94c1f4dbabead694394f2",
+    "resultJsonSha256": "970083e5f2a5f06e05d52c271e7b4b2bda3e8eb7889ba699b96c9cc3efc98726",
+    "candidateManifestSha256": "1c4b8479a04169a50e89e4c33b79fc4a95930c2d61c52f1d6ddb51cf958b28af",
+    "formalMeasurementsSha256": "be67b4e7d78291e008eaf8b40d94b08cf5924a703ddb54df183824f237751ab8",
+    "formalInferenceSha256": "365e7ae66571d6e6621a81ea6755185c7e581d13a38f81491f428b3a7f03b429"
+  },
+  "freshAccess": {
+    "freshScientificSeedReads": 363,
+    "firstSeedRead": 40723001,
+    "lastSeedRead": 40723581,
+    "g4_10Depth11AccessCount": 0
+  },
+  "firewall": {
+    "digest": "21219d6c137fb69340cd8193ac9b74d7f79dbeca6ee19db8442322a15596556d",
+    "setSizes": {"seed":4480,"trajectory":680,"prefix":296,"root":5613},
+    "verifiedBeforeFirstFreshSeedRead": true
+  },
+  "candidateCounts": {
+    "LGTTCI-P1-UNIFORM-LEGAL": 48,
+    "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE": 48
+  },
+  "rejectionCounts": {
+    "LGTTCI-P1-UNIFORM-LEGAL": {"TERMINAL-BEFORE-72":237,"DEPTH5-PREFLIGHT-INELIGIBLE":4,"UPSTREAM-TRAJECTORY":2},
+    "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE": {"TERMINAL-BEFORE-72":22,"DEPTH5-PREFLIGHT-INELIGIBLE":1,"UPSTREAM-PREFIX":1}
+  },
+  "measurement": {
+    "measuredCount": 64,
+    "measuredPerPolicy": {"LGTTCI-P1-UNIFORM-LEGAL":32,"LGTTCI-P2-MIN-IMMEDIATE-CAPTURE":32},
+    "productionIndependentExact": true,
+    "resourceObservation": {"elapsedMs":8935819,"rssBytes":439906304,"stageElapsedCeilingMs":16200000,"stagePeakRssBytes":4294967296}
+  },
+  "formalFamily": {
+    "slotCount": 16,
+    "formalTest": "EXACT-TWO-SIDED-BINOMIAL-SIGN-TEST",
+    "multiplicity": "HOLM-BONFERRONI",
+    "familyAlpha": {"numerator":"1","denominator":"20","defined":true}
+  },
+  "formalDecisionCounts": {"REVERSAL-CONFIRMED":6,"NOT-CONFIRMED":10},
+  "formalRows": [
+    {"slotId":"CRCLGR-A1-ROOT-LEGAL-WIDTH-LAG1","positive":1,"negative":61,"zero":2,"nonzero":62,"decision":"REVERSAL-CONFIRMED"},
+    {"slotId":"CRCLGR-A1-ROOT-LEGAL-WIDTH-LAG2","positive":34,"negative":23,"zero":7,"nonzero":57,"decision":"NOT-CONFIRMED"},
+    {"slotId":"CRCLGR-A1-ROOT-LEGAL-WIDTH-LAG4","positive":22,"negative":30,"zero":12,"nonzero":52,"decision":"NOT-CONFIRMED"},
+    {"slotId":"CRCLGR-A2-CUMULATIVE-TREE-OCCURRENCE-LAG1","positive":10,"negative":54,"zero":0,"nonzero":64,"decision":"REVERSAL-CONFIRMED"},
+    {"slotId":"CRCLGR-A2-CUMULATIVE-TREE-OCCURRENCE-LAG2","positive":25,"negative":39,"zero":0,"nonzero":64,"decision":"NOT-CONFIRMED"},
+    {"slotId":"CRCLGR-A2-CUMULATIVE-TREE-OCCURRENCE-LAG4","positive":34,"negative":30,"zero":0,"nonzero":64,"decision":"NOT-CONFIRMED"},
+    {"slotId":"CRCLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES-LAG1","positive":11,"negative":53,"zero":0,"nonzero":64,"decision":"REVERSAL-CONFIRMED"},
+    {"slotId":"CRCLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES-LAG2","positive":24,"negative":40,"zero":0,"nonzero":64,"decision":"NOT-CONFIRMED"},
+    {"slotId":"CRCLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES-LAG4","positive":33,"negative":31,"zero":0,"nonzero":64,"decision":"NOT-CONFIRMED"},
+    {"slotId":"CRCLGR-A4-CUMULATIVE-TREE-RAW-RATIO-LAG1","positive":4,"negative":52,"zero":8,"nonzero":56,"decision":"REVERSAL-CONFIRMED"},
+    {"slotId":"CRCLGR-A4-CUMULATIVE-TREE-RAW-RATIO-LAG2","positive":24,"negative":25,"zero":15,"nonzero":49,"decision":"NOT-CONFIRMED"},
+    {"slotId":"CRCLGR-A5-DUPLICATE-TRANSITION-FRACTION-LAG1","positive":8,"negative":49,"zero":7,"nonzero":57,"decision":"REVERSAL-CONFIRMED"},
+    {"slotId":"CRCLGR-A5-DUPLICATE-TRANSITION-FRACTION-LAG2","positive":24,"negative":30,"zero":10,"nonzero":54,"decision":"NOT-CONFIRMED"},
+    {"slotId":"CRCLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION-LAG1","positive":9,"negative":55,"zero":0,"nonzero":64,"decision":"REVERSAL-CONFIRMED"},
+    {"slotId":"CRCLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION-LAG2","positive":30,"negative":34,"zero":0,"nonzero":64,"decision":"NOT-CONFIRMED"},
+    {"slotId":"CRCLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION-LAG4","positive":28,"negative":36,"zero":0,"nonzero":64,"decision":"NOT-CONFIRMED"}
+  ],
+  "confirmedContiguousPersistenceLagMax": {
+    "CRCLGR-A1-ROOT-LEGAL-WIDTH": "NONE",
+    "CRCLGR-A2-CUMULATIVE-TREE-OCCURRENCE": "NONE",
+    "CRCLGR-A3-CUMULATIVE-DISTINCT-RAW-STATES": "NONE",
+    "CRCLGR-A4-CUMULATIVE-TREE-RAW-RATIO": "NONE",
+    "CRCLGR-A5-DUPLICATE-TRANSITION-FRACTION": "NONE",
+    "CRCLGR-A6-UNIT-WIDTH-OCCUPANCY-FRACTION": "NONE"
+  },
+  "returnEndpointStatus": "DESCRIPTIVE-ONLY-NO-FORMAL-CONFIRMATION",
+  "guards": {"sameEvidenceRerunAllowed":false,"seedExtensionAllowed":false,"replacementPopulationAllowed":false,"g4_10Depth11Authorized":false,"publicAiChange":false,"mainIntegration":false},
+  "rawArtifactRetentionNote": "The GitHub Actions artifact is the byte-exact raw Stage 2 output; this repository record preserves the prospectively relevant formal result and provenance digests."
+}
