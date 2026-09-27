@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRSGT-STUDY1",
+  "stageId": "BRSGT-S1-DEVELOPMENT-2026-09-27-v3",
+  "triggerType": "PRE-FRESH-STATIC-AUDIT-ONLY",
+  "sourceHeadBeforeTrigger": "64371e2d671eb4a793b6b8de3fd87c51f15c611e",
+  "scientificExecutionAuthorized": false,
+  "freshScientificSeedAccessAuthorized": false,
+  "stage2SeedAccessAuthorized": false,
+  "g4_10Depth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false
+}
