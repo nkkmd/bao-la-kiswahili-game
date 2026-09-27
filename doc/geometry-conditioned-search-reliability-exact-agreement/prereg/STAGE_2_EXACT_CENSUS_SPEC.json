@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "agenda": "G4-09",
+  "studyId": "GCSREA-STUDY1",
+  "stageId": "GCSREA-S2-EXACT-CENSUS-2026-09-27-v1",
+  "freezeDate": "2026-09-27",
+  "statusAtFreeze": "PREREGISTERED / TECHNICAL-PREFLIGHT-ONLY-AUTHORIZED / ACTUAL-MEASUREMENT-NOT-AUTHORIZED",
+  "authorizationReviewPath": "doc/research-program-decisions/2026-09-27-g4-09-stage1-closure-stage2-route-review.md",
+  "module": "EXACT-MICRODOMAIN-AGREEMENT",
+  "evidenceClass": "FIXED-FINITE-EXACT-CENSUS",
+  "generalDomainStage2": {
+    "authorized": false,
+    "candidateNamespaceStart": 40923001,
+    "readsAuthorized": 0,
+    "reason": "Stage 1 Module A had 0/9 support-eligible slots under the frozen support gate"
+  },
+  "population": {
+    "manifestPath": "doc/local-game-tree-geometry-exact-consequence-bridge/preregistration/STAGE_1_FORMAL_INPUT_MANIFEST.json",
+    "populationRoleRequired": "IMMUTABLE-G4-05-FORMAL-DOMAINS-ONLY",
+    "domainCount": 8,
+    "experimentalUnit": "fixed-exact-domain-root",
+    "rootLegalWidthKnownFromUpstreamManifest": {
+      "width1": 2,
+      "width2": 6
+    },
+    "candidateRescan": false,
+    "domainReplacement": false,
+    "seedExtension": false,
+    "stateLimitRescue": false,
+    "selectionChanges": false
+  },
+  "oracleIntegrity": {
+    "requiredBeforeMeasurement": true,
+    "requiredFields": [
+      "rootStateKey",
+      "stateCount",
+      "edgeCount",
+      "stateSetSha256",
+      "transitionSetSha256",
+      "solutionSha256",
+      "rootStatus",
+      "rootAbsoluteWinner",
+      "rootDtf",
+      "rootOptimalMoveKeys"
+    ],
+    "productionIndependentExactMatchRequired": true
+  },
+  "searchConfigurations": [
+    {"id": "D2_Q1", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 1},
+    {"id": "D3_Q1", "kind": "exact-depth", "depth": 3, "quiescenceDepth": 1},
+    {"id": "D2_Q0", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 0},
+    {"id": "D2_Q2", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 2},
+    {"id": "B256_Q1_MAXD3", "kind": "node-budget", "nodeBudget": 256, "maxDepth": 3, "quiescenceDepth": 1},
+    {"id": "B1024_Q1_MAXD3", "kind": "node-budget", "nodeBudget": 1024, "maxDepth": 3, "quiescenceDepth": 1}
+  ],
+  "forcedRootRule": {
+    "condition": "rootLegalMoveCount===1",
+    "measurementClass": "TRIVIAL-FORCED-LEGAL",
+    "searchHelperExecuted": false,
+    "canonicalBest": "sole legal move",
+    "topSet": "singleton sole legal move",
+    "pvFirstMove": "sole legal move",
+    "reportSeparatelyFromNontrivialSearch": true,
+    "rationale": "the upstream fixed manifest reveals two width-1 roots before any G4-09 exact search output is observed; invoking a ranking search on a singleton move universe adds no search-reliability information"
+  },
+  "nontrivialRootRule": {
+    "condition": "rootLegalMoveCount>=2",
+    "searchHelperExecuted": true,
+    "productionIndependentExactSearchOutputMatchRequired": true,
+    "nodeBudgetNonEstimableRule": "record NON-ESTIMABLE for that domain/configuration; do not replace domain or configuration"
+  },
+  "agreementEndpoints": {
+    "primary": [
+      "canonical-best-in-exact-optimal-set",
+      "search-TopSet-vs-exact-optimal-set-relation"
+    ],
+    "secondary": [
+      "PV-first-move-in-exact-optimal-set",
+      "exact-optimal-best-rank",
+      "exact-optimal-worst-rank"
+    ],
+    "setRelationLabels": [
+      "EQUAL",
+      "SEARCH-SUBSET-EXACT",
+      "SEARCH-SUPERSET-EXACT",
+      "OVERLAP",
+      "DISJOINT"
+    ],
+    "top3CoverageDroppedBeforeMeasurement": true,
+    "top3CoverageDropReason": "all fixed roots have legal width <=2 in the immutable upstream manifest, so k=3 coverage is structurally degenerate and cannot discriminate search configurations"
+  },
+  "formalSummary": {
+    "mode": "FINITE-CENSUS-DESCRIPTIVE-EXACT",
+    "perConfiguration": true,
+    "reportForcedRootsSeparately": true,
+    "reportNontrivialRootsSeparately": true,
+    "pValues": false,
+    "confidenceIntervals": false,
+    "multiplicity": "NOT-APPLICABLE-NO-HYPOTHESIS-TESTING",
+    "wholeBaoProbabilityEstimate": false,
+    "overallWinnerOrRankingOfConfigurations": false
+  },
+  "outputBoundary": {
+    "allowedAfterFinalMeasurementAuthorization": [
+      "per-domain exact oracle identity and optimal move set",
+      "per-configuration estimability",
+      "canonical-best exact membership",
+      "TopSet relation label",
+      "PV-first exact membership",
+      "exact-optimal rank positions",
+      "finite-census counts by configuration",
+      "forced-root counts separated from nontrivial search roots",
+      "production-independent agreement and digests"
+    ],
+    "prohibited": [
+      "whole-Bao correctness probability",
+      "p-value or confidence interval",
+      "configuration winner or strength ranking",
+      "human difficulty interpretation",
+      "causal geometry claim",
+      "public AI adoption decision"
+    ]
+  },
+  "technicalPreflight": {
+    "actualFixed8SearchMeasurementAuthorized": false,
+    "allowed": [
+      "spec/schema validation",
+      "fixed manifest structural validation",
+      "exact oracle integrity rematerialization",
+      "synthetic set-relation fixtures",
+      "synthetic ranking endpoint fixtures",
+      "production-independent classifier agreement",
+      "canonical serialization and digest validation",
+      "resource-envelope validation"
+    ]
+  },
+  "resourceCeilingForFutureMeasurement": {
+    "fixedDomains": 8,
+    "searchConfigurations": 6,
+    "maximumNontrivialSearchExecutionsPerImplementation": 36,
+    "maximumTotalNontrivialSearchExecutionsAcrossTwoImplementations": 72,
+    "maximumExactOracleRematerializationsPerImplementation": 8,
+    "stageElapsedMs": 1800000,
+    "peakRssBytes": 2147483648,
+    "artifactBytes": 33554432
+  },
+  "protectedBoundary": {
+    "actualFixed8SearchMeasurement": false,
+    "g405CandidateRescan": false,
+    "g405DomainReplacement": false,
+    "generalStage2SeedAccess": false,
+    "g410Depth11Access": false,
+    "publicAiChange": false,
+    "mainIntegration": false
+  },
+  "finalMeasurementRequiresSeparateAuthorization": true
+}
