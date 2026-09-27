@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GCSREA-STUDY1",
+  "stageId": "GCSREA-S1-DEVELOPMENT-2026-09-27-v1",
+  "action": "RUN-PRE-FRESH-NON-SCIENTIFIC-AUDIT",
+  "freshScientificSeedAccess": false,
+  "actualG405SearchVsExactMeasurement": false,
+  "g410Depth11Access": false,
+  "publicAiChange": false
+}
