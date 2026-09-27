@@ -2,7 +2,7 @@
 
 更新日: 2026-09-27  
 対象: Research Generation 1〜4  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01〜G4-06 main統合済み、G4-07 formal complete・研究ブランチclosed・main未統合**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01〜G4-06 main統合済み、G4-07 formal complete・pre-main audit PASS・main統合レビュー待ち**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`または`FINAL_REPORT.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
@@ -39,7 +39,7 @@
 | `G4-04` / [`GTTD-STUDY1`](geometry-trajectory-dynamics-transfer/) | geometry-trajectory transfer | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
 | `G4-05` / [`RLEMOF-STUDY1`](reachable-late-game-exact-microdomain-oracle-foundation/) | exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED` |
 | `G4-06` / [`LGTGECB-STUDY1`](local-game-tree-geometry-exact-consequence-bridge/) | geometry / exact consequence bridge | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED` |
-| `G4-07` / [`MLGMR-STUDY1`](multiscale-local-geometry-memory-return/) | multiscale memory / return | `COMPLETE / FORMAL-COMPLETE / RESEARCH BRANCH CLOSED / MAIN NOT INTEGRATED` |
+| `G4-07` / [`MLGMR-STUDY1`](multiscale-local-geometry-memory-return/) | multiscale memory / return | `COMPLETE / FORMAL-COMPLETE / PRE-MAIN-AUDIT-PASS / MAIN NOT INTEGRATED` |
 | `G4-08` | rule-semantic transition | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-09` | search reliability / exact agreement | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-10` | protected depth-11 exact topology | `PROTECTED / NOT-AUTHORIZED-NOT-ACCESSED` |
@@ -75,7 +75,7 @@ COUNTEREXAMPLE-CONFIRMED = 0
 G3-10でformal confirmationされたC1・C2・C3・C5のtrajectory-level directionを、fresh P1/P2 source-policy domainsへprospectiveに移送検証しました。
 
 ```text
-Stage 2 canonical run = 36095831961 / attempt 1 / success
+Stage 2 canonical run = 36095820136 / attempt 1 / success
 fresh seed block = 40423001..40424024 / 1024
 seed reads = 369
 formal measured trajectories = 64
@@ -174,9 +174,9 @@ preregistered contiguous-persistence summaryでは、6 axisすべて`confirmedCo
 
 return endpointはdescriptive onlyです。universal oscillation / mean-reversion law、causal rule-event mechanism、physical half-life、AI strength、best-move correctness、人間のdifficultyへの読み替えは行いません。
 
-G4-07 scientific executionは研究ブランチ上でclosedです。main統合はまだ実行していません。
+G4-07 scientific executionは研究ブランチ上でclosedです。pre-main consistency auditは`PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`、main統合はまだ実行していません。
 
-詳しくは、[`multiscale-local-geometry-memory-return/FINAL_REPORT.md`](multiscale-local-geometry-memory-return/FINAL_REPORT.md)、[`multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json)、[`multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md`](multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md)を参照してください。
+詳しくは、[`multiscale-local-geometry-memory-return/FINAL_REPORT.md`](multiscale-local-geometry-memory-return/FINAL_REPORT.md)、[`multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json)、[`multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md`](multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md)、[`research-generation-4/checkpoints/2026-09-27-g4-07-pre-main-audit.md`](research-generation-4/checkpoints/2026-09-27-g4-07-pre-main-audit.md)を参照してください。
 
 ## Research Generation 3 — 局所ゲーム木幾何
 
