@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "agenda": "G4-09",
+  "studyId": "GCSREA-STUDY1",
+  "stageId": "GCSREA-S1-DEVELOPMENT-2026-09-27-v1",
+  "authorizationDate": "2026-09-27",
+  "decision": "GCSREA-STUDY1-STAGE1-AUTHORIZED-GITHUB-ACTIONS-ONCE",
+  "executionAuthorized": true,
+  "executionEnvironment": "GITHUB-ACTIONS-ONLY",
+  "authorizedScientificExecutions": 1,
+  "oneShot": true,
+  "rerunAfterFreshAccessAuthorized": false,
+  "seedExtensionAuthorized": false,
+  "replacementAuthorized": false,
+  "thresholdRelaxationAuthorized": false,
+  "stage2AccessAuthorized": false,
+  "actualG405SearchVsExactMeasurementAuthorized": false,
+  "g405CandidateRescanAuthorized": false,
+  "g405DomainReplacementAuthorized": false,
+  "g410Depth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "allowedEvent": "push",
+  "allowedRunAttempt": 1,
+  "authorizedBranch": "research/g4-09-search-reliability-exact-agreement",
+  "seedBlock": {
+    "start": 40913001,
+    "end": 40913768,
+    "count": 768
+  },
+  "codeFreezeHead": "ec40f1894ac44c77e2bad437575c7e6a71d9c3dc",
+  "preFreshAudit": {
+    "runId": 36323915432,
+    "runAttempt": 1,
+    "sourceSha": "784b98f181e49ac8cb2602da51a0980e0de71e27",
+    "artifactId": 10933925678,
+    "artifactDigest": "sha256:22caedb85cd7bc7da2aa09e52488c3ec53eea3698cb8b03d7b56cc1514e3428d",
+    "checkpointPath": "doc/geometry-conditioned-search-reliability-exact-agreement/checkpoints/2026-09-27-stage1-prefresh-audit-pass.md",
+    "freshScientificSeedReads": 0,
+    "actualG405SearchVsExactMeasurements": 0,
+    "g410Depth11AccessCount": 0
+  },
+  "bindings": {
+    "workflow": {
+      "path": ".github/workflows/gcsrea-stage1-development-once.yml",
+      "blobSha": "9f9bd4d5d27f8d56e0cb315bf01674f3bc4cd5ac"
+    },
+    "stage1Spec": {
+      "path": "doc/geometry-conditioned-search-reliability-exact-agreement/prereg/STAGE_1_DEVELOPMENT_SPEC.json",
+      "blobSha": "20f92937c4b7e49285ab1e2c36e08e3b8c5f61bd"
+    },
+    "freshnessFirewallSpec": {
+      "path": "doc/geometry-conditioned-search-reliability-exact-agreement/prereg/UPSTREAM_IDENTITY_FIREWALL.json",
+      "blobSha": "403a566d13030d0745d7f304aded950493a7d28c"
+    },
+    "preFreshCheckpoint": {
+      "path": "doc/geometry-conditioned-search-reliability-exact-agreement/checkpoints/2026-09-27-stage1-prefresh-audit-pass.md",
+      "blobSha": "c98163294132f3ab666788c405c907d49047b627"
+    },
+    "runner": {
+      "path": "tools/experiments/run-gcsrea-stage1-development.js",
+      "blobSha": "4d97a5891e672bf455008c0ad6a0d552441f93dd"
+    },
+    "bindingVerifier": {
+      "path": "tools/experiments/verify-gcsrea-stage1-binding.js",
+      "blobSha": "97c8ef286be205ac325c7dd30915bbc34c34b050"
+    },
+    "exactOraclePreflight": {
+      "path": "tools/experiments/verify-gcsrea-stage1-exact-oracle-preflight.js",
+      "blobSha": "57579e0dbd28e453087e98274c68ea83ded00724"
+    },
+    "stage1Firewall": {
+      "path": "tools/experiments/lib/gcsrea-stage1-firewall.js",
+      "blobSha": "df5387136dc6b9efa015e6077c58870afad5d062"
+    },
+    "gcsreaProduction": {
+      "path": "tools/experiments/lib/gcsrea-stage1-production.js",
+      "blobSha": "64d420e2d61f40029ec22b7e49aabd25b3b8f99d"
+    },
+    "gcsreaIndependent": {
+      "path": "tools/experiments/lib/gcsrea-stage1-independent.js",
+      "blobSha": "4f8de146be86bf45ab6b99f4c3c4b939a883f163"
+    },
+    "sourcePolicyProduction": {
+      "path": "tools/experiments/lib/lgttci-compatibility-production.js",
+      "blobSha": "2fe5b87572c0138cf66dfabb4ca40869eab26ddc"
+    },
+    "sourcePolicyIndependent": {
+      "path": "tools/experiments/lib/lgttci-compatibility-independent.js",
+      "blobSha": "d63263375d4b1d61271ead31777b37185056a73b"
+    },
+    "searchGeometryProduction": {
+      "path": "tools/experiments/lib/silgm-production.js",
+      "blobSha": "9712e897540b54ff5fe3aa6acd997d286b09331d"
+    },
+    "searchGeometryIndependent": {
+      "path": "tools/experiments/lib/silgm-independent.js",
+      "blobSha": "0bd60c96e5abfce9d1c99b474709177d52509138"
+    },
+    "rawGeometryProduction": {
+      "path": "tools/experiments/lib/lgtgmiv-stage1-production.js",
+      "blobSha": "a4664f01535d6abbf6f83821befbb2fafd55cde6"
+    },
+    "rawGeometryIndependent": {
+      "path": "tools/experiments/lib/lgtgmiv-stage1-independent.js",
+      "blobSha": "0c7239ac7acf146e9aee63dae66194681b8631d6"
+    },
+    "continuousGeometryProduction": {
+      "path": "tools/experiments/lib/crclgr-production.js",
+      "blobSha": "f9d90792d729a42f738e7cd1c3b045bdd758ffa5"
+    },
+    "continuousGeometryIndependent": {
+      "path": "tools/experiments/lib/crclgr-independent.js",
+      "blobSha": "77d3a91b2165019e4b50c195a1bb14147c35e6d2"
+    },
+    "searchImplementation": {
+      "path": "tools/experiments/lib/search-reliability-decision-robustness.js",
+      "blobSha": "f3a6951fe711db62e164910cfb248a9cbc2cac1a"
+    },
+    "publicEngine": {
+      "path": "public/engine.js",
+      "blobSha": "1527bb3665228b7a5bd9f03153567aedbaaa22d7"
+    },
+    "publicAi": {
+      "path": "public/ai.js",
+      "blobSha": "ac2b4fd66a2555c50a362c39a828515323bba18a"
+    },
+    "benchmarkRngSource": {
+      "path": "tools/benchmark.js",
+      "blobSha": "88a2543157eacf15693b30c589b0fbcc616223a6"
+    },
+    "exactTransition": {
+      "path": "tools/experiments/lib/restricted-endgame-transition.js",
+      "blobSha": "7ca35ef03ecad102b9a9e1fa6c4767f72d409961"
+    },
+    "exactTablebase": {
+      "path": "tools/experiments/lib/restricted-endgame-tablebase.js",
+      "blobSha": "f41ef2538b41e8ca9ed50f79cdab4bfa910989ef"
+    },
+    "exactRetrograde": {
+      "path": "tools/experiments/lib/restricted-endgame-retrograde.js",
+      "blobSha": "e07b78b388996213c859145cd5a546b62d6f6d68"
+    },
+    "exactIndependentVerifier": {
+      "path": "tools/experiments/lib/restricted-endgame-independent-verifier.js",
+      "blobSha": "94a79d140803802acf607bbaf02d570aa3b6f362"
+    },
+    "exactIndependentTablebase": {
+      "path": "tools/experiments/lib/restricted-endgame-tablebase-independent.js",
+      "blobSha": "e5caa7b42f2cd4c04b98183886136471b1ae9807"
+    },
+    "exactIndependentRetrograde": {
+      "path": "tools/experiments/lib/restricted-endgame-retrograde-independent.js",
+      "blobSha": "8d8d087b610b65806cd552f3b8038c6fecc8cec7"
+    }
+  },
+  "upstreamArtifacts": {
+    "g2_02_stage1": {"artifactId": 9651424447, "digest": "sha256:2c90e3cdd935bdbeab4e79f99eba3b59968763327cd78e8e912cfc7864e04627"},
+    "g2_02_stage2": {"artifactId": 9672561139, "digest": "sha256:c107773d7f7a7cd9ba05a875305486738e10268435730283d6aa46cb5340e47a"},
+    "g3_07_stage2": {"artifactId": 9879091983, "digest": "sha256:5ada1dcb0ceab7d89ea0bfc78410a14c3875ba03a01e31a243950706349de70a"},
+    "g4_01_stage1r": {"artifactId": 10517090411, "digest": "sha256:3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b"},
+    "g4_03_stage1": {"artifactId": 10803311137, "digest": "sha256:aaea8b1c564dbe400d2d1fc00ebfa58f23cd485d9ae994af88cd4ceaf6b621a6"},
+    "g4_03_stage2": {"artifactId": 10805571797, "digest": "sha256:c4449f9a034f30a501f60c6ee90b07426bd1c42aa3b0bbc150fd8d3e1199b597"},
+    "g4_04_stage1": {"artifactId": 10846181741, "digest": "sha256:fa14e0c56d7d7f7088684eb715b1bf26b307cb22459741dfe4a7629cf40b3183"},
+    "g4_04_stage2": {"artifactId": 10849029913, "digest": "sha256:fe165e6c1735cb07e71ed49e2a1c4d3f7446e796ab63936d90c7e982edfc4bd7"},
+    "g4_07_stage1": {"artifactId": 10908816662, "digest": "sha256:65081316d7f3dc0f59b7da5a527af65c052ea33b0ab7e8e8b07d06d764f27469"},
+    "g4_07_stage2": {"artifactId": 10919769185, "digest": "sha256:4d8370ccad1be7fa4052a4293e6b64c4e1b77f7c11c94c1f4dbabead694394f2"},
+    "g4_08_stage1_v3": {"artifactId": 10926322837, "digest": "sha256:c93ae26b019edde841e58a4f452aa8bacd45c0954937294ca2c12c786d916140"},
+    "g4_08_stage2": {"artifactId": 10929684128, "digest": "sha256:bbbe1e2206c9f439168829581d1bce1ef03dddaec1fe0914b8888a63767bcb1b"}
+  },
+  "freshScientificSeedAccessAtAuthorization": 0,
+  "actualScientificExecutionsAtAuthorization": 0
+}
