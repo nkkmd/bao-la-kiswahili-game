@@ -2,7 +2,7 @@
 
 更新日: 2026-09-27  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`G4-01..G4-07 MAIN INTEGRATED / G4-08 CLOSED・MAIN NOT INTEGRATED / G4-09 NOT AUTHORIZED / G4-10 PROTECTED`**
+状態: **`G4-01..G4-08 MAIN INTEGRATED / G4-09 NOT AUTHORIZED / G4-10 PROTECTED`**
 
 ## このProgramが調べること
 
@@ -25,7 +25,7 @@ Program: `Bao Fourth-Generation Research Program`
 | B | `G4-05` | exact microdomain oracle foundation | `COMPLETE / MAIN INTEGRATED` |
 | B | `G4-06` | geometry / exact consequence bridge | `COMPLETE / MAIN INTEGRATED` |
 | C | `G4-07` | multiscale memory / return | `COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED` |
-| C | `G4-08` | rule-semantic geometry transition | `CLOSED / 24-OF-24 NON-ESTIMABLE / MAIN NOT INTEGRATED` |
+| C | `G4-08` | rule-semantic geometry transition | `CLOSED / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRATED` |
 | C | `G4-09` | search reliability / exact agreement | `DEPENDENCY-GATED / NOT AUTHORIZED` |
 | D | `G4-10` | protected depth-11 exact topology | `PROTECTED / NOT AUTHORIZED / NOT ACCESSED` |
 | 独立 | `G4-P01` | canonicalization re-foundation | `NOT AUTHORIZED` |
@@ -33,9 +33,9 @@ Program: `Bao Fourth-Generation Research Program`
 
 Public AI change authorized by RG4 = `false`。
 
-## G4-01〜G4-07
+## G4-01〜G4-08
 
-G4-01〜G4-07は研究実行と文書closureを完了し、`main`へ統合済み。
+G4-01〜G4-08は研究実行と文書closureを完了し、`main`へ統合済み。
 
 - G4-01: `COMPATIBILITY-ELIGIBLE-ALL`
 - G4-02: `CLOSED / NO SCIENTIFIC DECISION`
@@ -44,6 +44,7 @@ G4-01〜G4-07は研究実行と文書closureを完了し、`main`へ統合済み
 - G4-05: fixed late-game microdomains内でexact-oracle foundation確立
 - G4-06: fixed 8 exact microdomains内でgeometry / exact-consequence mapping完了
 - G4-07: 16-slot family = 6 `REVERSAL-CONFIRMED` / 10 `NOT-CONFIRMED`
+- G4-08: 24 / 24 `NON-ESTIMABLE` / no directional scientific conclusion
 
 これらをwhole-Bao universal law、public AI adoption、human difficultyへ自動拡張しない。
 
@@ -117,6 +118,12 @@ Stage 2全1024 trajectoriesとStage 1 v3全512 identity rowsに共通するply-0
 
 このpost-execution diagnosticを使ったsame-Study rescue、ply-0除外、firewall grammar変更、seed extension、replacement populationは行わない。
 
+### Main統合
+
+2026-09-27、pre-integration `main` `2023860419d13b6f294b0600943de8fb4e50b1bb` に対してresearch branchが`ahead 129 / behind 0`であることを再確認し、research HEAD `0956b5b17085714c1fb9df8ef82f29f6b6ff0f53`をnon-force fast-forward統合した。
+
+統合中のscientific rerun、`public/`変更、public AI production変更、G4-10 depth-11 accessはない。
+
 詳細:
 
 - [`../rule-semantic-geometry-transition/README.md`](../rule-semantic-geometry-transition/README.md)
@@ -124,22 +131,22 @@ Stage 2全1024 trajectoriesとStage 1 v3全512 identity rowsに共通するply-0
 - [`../rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json)
 - [`../rule-semantic-geometry-transition/checkpoints/2026-09-27-stage-2-formal-complete.md`](../rule-semantic-geometry-transition/checkpoints/2026-09-27-stage-2-formal-complete.md)
 - [`../research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md`](../research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md)
+- [`checkpoints/2026-09-27-g4-08-main-integration.md`](checkpoints/2026-09-27-g4-08-main-integration.md)
 
 ## 最初に読む文書
 
 1. [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — RG4全体の最新状態
 2. [`RESUME_HERE.md`](RESUME_HERE.md) — 安全な再開位置
-3. [`../rule-semantic-geometry-transition/CURRENT_STATUS.md`](../rule-semantic-geometry-transition/CURRENT_STATUS.md) — G4-08 closure
+3. [`../rule-semantic-geometry-transition/CURRENT_STATUS.md`](../rule-semantic-geometry-transition/CURRENT_STATUS.md) — G4-08 closure / main統合状態
 4. [`../rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json) — G4-08 canonical formal summary
-5. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — frozen prospective program contract
+5. [`checkpoints/2026-09-27-g4-08-main-integration.md`](checkpoints/2026-09-27-g4-08-main-integration.md) — G4-08 main統合記録
+6. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — frozen prospective program contract
 
 ## 次に許可される作業
 
-G4-08はscientific executionを閉じたが、まだ`main`へ統合していない。
+G4-08はscientific execution・closure・main統合まで完了した。
 
-現在許可されるのはG4-08関連文書の最終整合性監査と、ユーザーの明示指示がある場合のmain統合準備・統合である。
-
-G4-09 / G4-10はG4-08 closureによって自動認可されない。新しいscientific agendaへ進む場合は独立authorization reviewが必要。
+G4-09 / G4-10はG4-08 main統合によって自動認可されない。新しいscientific agendaへ進む場合は、fresh evidence access前に独立authorization reviewが必要。
 
 ## 解釈・保護境界
 
@@ -148,4 +155,3 @@ G4-09 / G4-10はG4-08 closureによって自動認可されない。新しいsci
 - G4-08 NON-ESTIMABLEをno-effect / counterexampleへ読み替えない。
 - G4-10 depth-11へアクセスしない。
 - RG4結果をpublic AIへ自動反映しない。
-- 明示指示なしにG4-08をmainへ統合しない。
