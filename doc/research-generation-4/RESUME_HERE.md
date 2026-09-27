@@ -1,17 +1,17 @@
 # Research Generation 4 — 再開位置
 
-更新日: 2026-09-27  
-状態: **`G4-08 CLOSED / MAIN INTEGRATED / NEXT SCIENTIFIC AGENDA NOT AUTHORIZED`**
+更新日: 2026-09-28  
+状態: **`G4-09 CLOSED ON RESEARCH BRANCH / PRE-MAIN CONSISTENCY AUDIT NEXT / G4-10 PROTECTED`**
 
 ## 再開時の読む順序
 
-1. `main` のHEADと[`CURRENT_STATUS.md`](CURRENT_STATUS.md)でRG4全体の状態を確認する。
-2. [`checkpoints/2026-09-27-g4-08-main-integration.md`](checkpoints/2026-09-27-g4-08-main-integration.md)でG4-08のmain統合記録を確認する。
-3. [`../rule-semantic-geometry-transition/CURRENT_STATUS.md`](../rule-semantic-geometry-transition/CURRENT_STATUS.md)でG4-08 closure / integration statusを確認する。
-4. [`../rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json)でStage 2 canonical resultを確認する。
-5. [`../rule-semantic-geometry-transition/checkpoints/2026-09-27-stage-2-formal-complete.md`](../rule-semantic-geometry-transition/checkpoints/2026-09-27-stage-2-formal-complete.md)でrun / artifact / firewall provenanceを確認する。
-6. [`../research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md`](../research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md)でclosure decisionを確認する。
-7. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)で次agendaのfrozen dependencyを確認する。
+1. remote `main` HEADと[`CURRENT_STATUS.md`](CURRENT_STATUS.md)でRG4全体の状態を確認する。
+2. [`../geometry-conditioned-search-reliability-exact-agreement/CURRENT_STATUS.md`](../geometry-conditioned-search-reliability-exact-agreement/CURRENT_STATUS.md)でG4-09 closure状態を確認する。
+3. [`../geometry-conditioned-search-reliability-exact-agreement/results/stage-1/STAGE_1_CANONICAL_RECORD.json`](../geometry-conditioned-search-reliability-exact-agreement/results/stage-1/STAGE_1_CANONICAL_RECORD.json)でModule A closure basisを確認する。
+4. [`../geometry-conditioned-search-reliability-exact-agreement/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../geometry-conditioned-search-reliability-exact-agreement/results/stage-2/STAGE_2_CANONICAL_RECORD.json)でModule B exact-census resultを確認する。
+5. [`../geometry-conditioned-search-reliability-exact-agreement/checkpoints/2026-09-28-stage-2-exact-census-complete.md`](../geometry-conditioned-search-reliability-exact-agreement/checkpoints/2026-09-28-stage-2-exact-census-complete.md)でrun / artifact / lease / protected boundaryを確認する。
+6. [`../research-program-decisions/2026-09-28-g4-09-search-reliability-exact-agreement-study1-closure.md`](../research-program-decisions/2026-09-28-g4-09-search-reliability-exact-agreement-study1-closure.md)でclosure decisionを確認する。
+7. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)はprospective frozen planとして変更せず参照する。
 
 ## 現在地
 
@@ -24,105 +24,105 @@ G4-05 = COMPLETE / EXACT-ORACLE-FOUNDATION / MAIN INTEGRATED
 G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING / MAIN INTEGRATED
 G4-07 = COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED
 G4-08 = CLOSED / STAGE2-FORMAL-COMPLETE / 24 NON-ESTIMABLE / MAIN INTEGRATED
-G4-09 = DEPENDENCY-GATED / NOT AUTHORIZED
+G4-09 = CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / NOT YET MAIN INTEGRATED
 G4-10 = PROTECTED / NOT AUTHORIZED / NOT ACCESSED
 public AI change = false
 ```
 
-## G4-08 canonical result
+## G4-09 Module A
 
-### Stage 1 v3
+Stage 1 canonical run:
 
 ```text
-run = 36303568642 / attempt 1 / success
-fresh reads = 512
-measured event units = 64
-unique geometry roots = 97
-support-only formal candidates = 24 / 24
+run = 36326278830 / attempt 1
+fresh reads = 768
+selected roots = 128
+SC1 / SC2 / SC3 search-defined = 109 / 109 / 109
+frozen minimum = 120
+formal candidate slots = 9
+SUPPORTED = 0
+NOT-SUPPORTED = 9
 formal inference = false
 ```
 
-### Stage 2
+Module Aは`NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT`として閉鎖。これはno-effect resultではない。
+
+候補general Stage 2 namespace `40923001...`は未読であり、同Studyでは使用しない。
+
+## G4-09 Module B
+
+One-shot exact census:
 
 ```text
-pre-fresh audit run = 36314109864 / attempt 1 / PASS
-audit HEAD = d2e22fa9b4ca8286480beda2a89b5e287bcdad9c
-formal run = 36314208922 / attempt 1 / success
-job = 108605721107
-execution HEAD = 692d2d718ab55348e7fb4f8190476524b0a5bc95
-artifact ID = 10929684128
-artifact SHA-256 = bbbe1e2206c9f439168829581d1bce1ef03dddaec1fe0914b8888a63767bcb1b
-fresh Stage 2 reads = 1024 / 1024
-accepted source trajectories = 0
-measured event units = 0
-formal family = 24
-NON-ESTIMABLE = 24
-production / independent exact agreement = true
+run = 36359283198 / attempt 1 / success
+code freeze = c1425c6b67d85f4e7f42032fc04aaf968f151454
+trigger SHA = d0f276262944edc6fd1143e6b71d6526ad4221c5
+lease commit = 05bcd129dfc84193bd786a27b9a6adcdeeca88e5
+final artifact ID = 10945085978
+artifact ZIP SHA-256 = 9a02241b2fb28d9aac936d3d203e39d9a2bba3eee5905fa02aa4ecbca725ef7b
+result core SHA-256 = c74f9f3baa5065c5ae6df70dbbccdeb50c0adba5006d2d647fa6931cd3764e20
+scientific measurement = 1 / 1
+scientific rerun = 0
+```
+
+Fixed census result:
+
+```text
+fixed exact domains = 8
+forced = 2
+nontrivial = 6
+search configurations = 6
+nontrivial cells = 36 / 36 estimable
+canonical-best in exact optimal set = 36 / 36
+PV first move in exact optimal set = 36 / 36
+TopSet EQUAL = 35 / 36
+TopSet SEARCH-SUBSET-EXACT = 1 / 36
+production / independent search exact = true
+production / independent classifier exact = true
+```
+
+唯一のnon-EQUALは`D2_Q0 × domain 4`の`SEARCH-SUBSET-EXACT`。search TopSetがexact-optimal 2手のうち1手だけを残したもので、canonical-best / PV firstはexact-optimalだった。
+
+この結果をwhole-Bao correctness probabilityへ一般化しない。
+
+## Protected boundary
+
+```text
+Stage 2 general fresh reads = 0
+G4-05 rescan = 0
+G4-05 replacement = 0
 G4-10 depth-11 access = 0
+public AI change = false
+main integration = not performed
 ```
 
-Frozen firewall source rejection:
-
-```text
-UPSTREAM-REACHABLE-RAW-ROOT = 1011
-UPSTREAM-TRAJECTORY = 6
-UPSTREAM-OPENING-PREFIX = 7
-```
-
-`NON-ESTIMABLE`はno-effectを意味しない。frozen freshness gate後にformal event unitsが残らなかったためdirectional conclusionを形成できなかった。
-
-## Freshness exhaustion diagnostic
-
-Stage 2全1024 trajectoriesとStage 1 v3全512 identity rowsが同じply-0 initial RAW rootを含む。
-
-```text
-2c13e69c51d58e2605bf6018ac848d99685aa4d4fe78c0af9f8e0fc07e1d3fd6
-```
-
-このrootはfrozen firewallに含まれていたため、trajectory/prefix collisionで先に除外された13件を除く1011件はreachable-root collisionとなった。
-
-この診断を使ったStage 2 rescueは禁止。ply-0除外、firewall grammar変更、seed extension、replacement population、same-evidence rerunを行わない。
-
-## Main統合
-
-main統合前最終監査は **`PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`** だった。
-
-```text
-reviewed main HEAD = 2023860419d13b6f294b0600943de8fb4e50b1bb
-audited research HEAD = 62b8961a416fa8140de2163d682a92b1fafea848
-behind main = 0
-merge base = reviewed main HEAD
-public/ changed files = 0
-public AI production changes = 0
-G4-10 depth-11 access = 0
-```
-
-統合直前にremote `main`が同じbaselineであることを再確認し、research HEAD `0956b5b17085714c1fb9df8ef82f29f6b6ff0f53`へnon-force fast-forwardした。
-
-```text
-pre-integration main HEAD = 2023860419d13b6f294b0600943de8fb4e50b1bb
-integrated research HEAD = 0956b5b17085714c1fb9df8ef82f29f6b6ff0f53
-integration method = non-force fast-forward
-force = false
-```
-
-監査記録: [`checkpoints/2026-09-27-g4-08-pre-main-audit.md`](checkpoints/2026-09-27-g4-08-pre-main-audit.md)  
-統合記録: [`checkpoints/2026-09-27-g4-08-main-integration.md`](checkpoints/2026-09-27-g4-08-main-integration.md)
+Durable leaseが存在するため、Stage 2 exact censusはrerunしない。
 
 ## 次の作業
 
-G4-08 scientific execution、closure、main統合は完了済み。
+G4-09 scientific executionとclosureは完了済み。
 
-次のscientific agendaを開始する場合は、G4-09またはその他の候補について独立authorization reviewを行う。G4-10 depth-11は引き続きprotectedで、明示的authorizationなしにアクセスしない。
+次は**main統合前の最終整合監査**を行う。
+
+確認対象:
+
+- G4-09 current-facing文書とcanonical recordsの整合
+- RG4入口文書 / research index / future agendaの状態表記
+- research branchとremote `main`のahead / behind / merge base
+- `public/`変更の有無
+- public AI production変更の有無
+- G4-10 depth-11 accessが0のままか
+- no-rerun / no-rescue境界
+
+監査がPASSしても、自動で`main`へ統合しない。統合は別の明示的操作として行う。
 
 ## No-rescue / protected boundary
 
-- G4-08 Stage 0 v1 rerun禁止。
-- G4-08 Stage 1 v1/v2/v3 rerun・seed reuse禁止。
-- G4-08 Stage 2 v1 rerun禁止。
-- Stage 2 block `40823001..40824024` reuse禁止。
-- Stage 2 firewallの事後修正によるrescue禁止。
-- `NON-ESTIMABLE`をnegative scientific resultへ変換しない。
+- closed Studyのrerun / rescue禁止。
+- G4-09 Module A support threshold relaxation禁止。
+- G4-09 Module A seed extension / replacement / subgroup rescue禁止。
+- G4-09 Stage 2 exact-census rerun禁止。
+- fixed-eight resultのwhole-Bao一般化禁止。
 - G3-11 depth-10 rerun禁止。
 - G4-10 depth-11 access禁止。
 - public AIへの自動反映禁止。
