@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRSGT-STUDY1",
+  "stageId": "BRSGT-S0-TECHNICAL-2026-09-27-v2",
+  "supersedesTechnicalStage": "BRSGT-S0-TECHNICAL-2026-09-27-v1 / TECHNICAL-INVALID / NO-RERUN",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "scientificOutcomeAuthorized": false,
+  "freshScientificSeedAccessAuthorized": false,
+  "protectedDepth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "relativeDepth": 5,
+  "fixturePolicy": {
+    "scientificSeedUse": false,
+    "nyumbaFixture": "64-SEED-HAND-CONSTRUCTED / OLD FRONT SEMANTICS + NONACTIVE OPPONENT BACK-ROW MASS BALANCE",
+    "phaseFixture": "DETERMINISTIC-SEED-FREE-ENGINE-REACHABLE / CANONICAL-NONTERMINAL-PATH",
+    "requiredRepresentedSeedTotal": 64,
+    "historicalScientificTrajectoryUse": false
+  },
+  "eventFamilies": [
+    "BRSGT-E1-CAPTURE",
+    "BRSGT-E2-NYUMBA-USE-VS-STOP",
+    "BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION",
+    "BRSGT-E4-NAMUA-TO-MTAJI"
+  ],
+  "metrics": [
+    "BRSGT-M1-ROOT-LEGAL-WIDTH",
+    "BRSGT-M2-CUMULATIVE-TREE-OCCURRENCE",
+    "BRSGT-M3-GLOBAL-DISTINCT-RAW-STATES",
+    "BRSGT-M4-DUPLICATE-TRANSITION-FRACTION",
+    "BRSGT-M5-CUMULATIVE-TREE-RAW-RATIO",
+    "BRSGT-M6-UNIT-WIDTH-OCCUPANCY-FRACTION"
+  ],
+  "requiredGates": [
+    "ALL-FIXTURE-RAW-STATE-64-SEED-VALID",
+    "PHASE-FIXTURE-ENGINE-REACHABLE-SEED-FREE",
+    "RAW-IDENTITY-AND-MOVE-SERIALIZATION-EXACT",
+    "COMPLETE-MOVE-APPLICATION-EXACT",
+    "E1-E4-PREDICATE-COVERAGE",
+    "NYUMBA-SAME-ROOT-PAIR-EXTRACTION",
+    "COMPOUND-LABEL-VECTOR",
+    "PRODUCTION-INDEPENDENT-UNIT-BY-UNIT-SELECTION-EXACT",
+    "PREPOST-MEASUREMENT-BINDING",
+    "M1-M6-ENDPOINT-EXACT-AGREEMENT",
+    "EXACT-DIFFERENCE-AND-PAIR-ARITHMETIC",
+    "UNDEFINED-DENOMINATOR-FAIL-CLOSED",
+    "CANONICAL-JSON-AND-DIGEST-DETERMINISM",
+    "RESOURCE-CEILING",
+    "SCIENTIFIC-EXECUTION-FALSE",
+    "FRESH-SCIENTIFIC-SEED-READS-ZERO",
+    "G4-10-DEPTH11-ACCESS-ZERO"
+  ],
+  "resourceCeiling": {
+    "maxGeometryRootMeasurements": 8,
+    "maxEventTransitionsMaterialized": 128,
+    "maxDeterministicPhaseSearchPlies": 160,
+    "relativeDepth": 5
+  },
+  "failureDisposition": "TECHNICAL-INVALID",
+  "stage1AutomaticallyAuthorizedOnPass": false
+}
