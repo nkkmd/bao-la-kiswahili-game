@@ -5,7 +5,7 @@ Version: 5.9.0
 更新日: 2026-09-27  
 Research Generation 2: **Closed (2026-08-31)**（完了）  
 Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了・統合済み）  
-Research Generation 4: **G4-01〜G4-06 complete and integrated to `main` / G4-07 formal complete on research branch / pre-main audit next**
+Research Generation 4: **G4-01〜G4-06 complete and integrated to `main` / G4-07 formal complete and pre-main audit passed / main integration review next**
 
 この文書は、完了した研究を短く振り返りながら、次に研究する価値のある問いを整理するためのものです。候補として記載しただけでは、Study開始、seedアクセス、計算実行、公開AI変更は承認されません。
 
@@ -28,7 +28,7 @@ G4-03 = COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED
 G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED
 G4-05 = COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED
 G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED
-G4-07 = COMPLETE / FORMAL-COMPLETE / RESEARCH BRANCH CLOSED / MAIN NOT INTEGRATED
+G4-07 = COMPLETE / FORMAL-COMPLETE / PRE-MAIN-AUDIT-PASS / MAIN NOT INTEGRATED
 G4-08..G4-09 = DEPENDENCY-GATED / NOT AUTHORIZED
 G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 ```
@@ -47,7 +47,7 @@ G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 | A | `G4-04` | G3-10由来geometry-trajectory transfer | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
 | B | `G4-05` | fresh exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED` |
 | B | `G4-06` | geometry / game-theoretic consequence bridge | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED` |
-| C | `G4-07` | multiscale memory / return | `COMPLETE / FORMAL-COMPLETE / RESEARCH BRANCH CLOSED / MAIN NOT INTEGRATED` |
+| C | `G4-07` | multiscale memory / return | `COMPLETE / FORMAL-COMPLETE / PRE-MAIN-AUDIT-PASS / MAIN NOT INTEGRATED` |
 | C | `G4-08..G4-09` | rule-semantic transition、search reliability | `DEPENDENCY-GATED / NOT AUTHORIZED` |
 | D | `G4-10` | protected fresh depth-11 exact reachability topology | `PROTECTED / NOT AUTHORIZED / NOT ACCESSED` |
 | 独立 | `G4-P01`、`G4-H01` | canonicalization再基礎化とhuman / expert研究 | `NOT AUTHORIZED / DEFERRED` |
@@ -184,13 +184,13 @@ preregistered contiguous-persistence summaryでは全6 axisが`confirmedContiguo
 
 return endpointはdescriptive onlyです。universal oscillation / mean-reversion law、causal rule-event mechanism、physical half-life、AI strength、人間のdifficultyへ読み替えません。
 
-G4-07 scientific executionは研究ブランチ上でclosedです。main統合は未実施です。
+G4-07 scientific executionは研究ブランチ上でclosedです。pre-main consistency auditはPASS、main統合は未実施です。
 
 詳細は[`multiscale-local-geometry-memory-return/FINAL_REPORT.md`](multiscale-local-geometry-memory-return/FINAL_REPORT.md)と[`multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json)を参照してください。
 
 ## 2. 今後の優先課題
 
-以下は科学的価値の高い候補です。優先順位はauthorizationではありません。G4-07のmain統合前監査が完了するまで次のscientific agendaを開始しません。
+以下は科学的価値の高い候補です。優先順位はauthorizationではありません。G4-07はpre-main auditをPASSしており、次はmain-integration reviewです。明示的な統合判断前にはmainを変更せず、main統合前に次のscientific agendaを開始しません。
 
 ### 2.1 G4-08 / G4-09 — 次のWave C候補
 
@@ -310,7 +310,7 @@ standard initial RAW rootでは、depth 8・9・10までのbounded exact results
 1. **[完了] Baoを記述する語彙とRAW identityの構築**
 2. **[完了] 限定domainにおけるexact analysisと独立検証**
 3. **[完了] Local game-tree geometryのbounded measurement**
-4. **[進行] Research Generation 4 — G4-01/G4-03/G4-04/G4-05/G4-06/G4-07完了。G4-01〜G4-06はmain統合済み、G4-07はpre-main audit段階。G4-02は科学的判定なしで終了。次のscientific候補はG4-08/G4-09だが未認可**
+4. **[進行] Research Generation 4 — G4-01/G4-03/G4-04/G4-05/G4-06/G4-07完了。G4-01〜G4-06はmain統合済み、G4-07はpre-main audit PASS / main-integration review待ち。G4-02は科学的判定なしで終了。次のscientific候補はG4-08/G4-09だが未認可**
 5. **[完了] 逆転可能性と勝負手 — Study 1（Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`）**
 6. **[独立・未承認] G4-H01によるqualified human / expert evidenceの収集**
 7. **[計画済み・未承認] G4-10によるfresh depth-11 exact研究**
