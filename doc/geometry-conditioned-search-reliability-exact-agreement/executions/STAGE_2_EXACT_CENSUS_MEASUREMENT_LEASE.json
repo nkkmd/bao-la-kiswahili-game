@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GCSREA-STUDY1",
+  "stageId": "GCSREA-S2-EXACT-CENSUS-2026-09-27-v1",
+  "leaseClass": "DURABLE-GITHUB-ACTIONS-SINGLE-EXACT-CENSUS-MEASUREMENT-LEASE",
+  "effectiveAuthorization": "GCSREA-STUDY1-STAGE2-EXACT-CENSUS-MEASUREMENT-AUTHORIZED-ONCE",
+  "fixedDomainCount": 8,
+  "forcedDomainCount": 2,
+  "nontrivialDomainCount": 6,
+  "searchConfigurationCount": 6,
+  "maximumSearchExecutionsPerImplementation": 36,
+  "maximumTotalSearchExecutions": 72,
+  "workflowRunId": 36359283198,
+  "workflowRunAttempt": 1,
+  "triggerCommitSha": "d0f276262944edc6fd1143e6b71d6526ad4221c5",
+  "acquiredBeforeActualMeasurement": true,
+  "generalStage2FreshSeedReadAuthorized": false,
+  "g405CandidateRescanAuthorized": false,
+  "g405DomainReplacementAuthorized": false,
+  "g410Depth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "acquiredAt": "2026-09-27T23:37:00.356Z"
+}
