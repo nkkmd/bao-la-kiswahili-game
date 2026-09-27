@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRSGT-STUDY1",
+  "stageId": "BRSGT-S1-DEVELOPMENT-2026-09-27-v3",
+  "recordType": "CANONICAL-STAGE1-DEVELOPMENT-SUMMARY-AND-PROVENANCE",
+  "disposition": "STAGE1-DEVELOPMENT-COMPLETE",
+  "evidenceClass": "FRESH-DEVELOPMENT-SUPPORT-ONLY",
+  "scientificOutcomeClass": "DEVELOPMENT-SUPPORT-ONLY",
+  "formalInferencePerformed": false,
+  "effectValuesRetained": false,
+  "effectSignsRetained": false,
+  "execution": {
+    "workflowRunId": 36303568642,
+    "jobId": 108575705651,
+    "runAttempt": 1,
+    "headSha": "b59918149fdceac5f619328aa82771abdbfa5994",
+    "auditedSourceSha": "27f2129d7ed434377c363b1f89534c7cd5cad7fb",
+    "bindingDisposition": "STAGE1-V3-BINDING-PASS",
+    "bindingId": "BRSGT-STUDY1-STAGE1-V3-BINDING-2026-09-27-V1",
+    "conclusion": "success",
+    "artifactId": 10926322837,
+    "artifactName": "brsgt-stage1-v3-development-36303568642-1",
+    "artifactZipSha256": "c93ae26b019edde841e58a4f452aa8bacd45c0954937294ca2c12c786d916140",
+    "executionContextJsonSha256": "b45e2f3d0ab48a28c5fd330cbaea00ee04eefc9ac435d07d6c155ed0865cef30",
+    "resultJsonSha256": "2fbacc87b88a74c7c06070d8365c9c45ec55e4080c4aa8be55d173457359db4e",
+    "identityJsonSha256": "31c8307b2221544fb388db03333959a06ef212d3bdc5322861a1352261b64e40",
+    "firewallSummaryJsonSha256": "4c1556a6f69b0d7ebae3f405697155fb012f443bf757ba804f79cefaacc1868e",
+    "generatedRunnerSha256": "180b02e89b60b3a83fa201a9f67a9d3ace08f5e96a57c47db93ec0a88bd48e65"
+  },
+  "preFreshVerification": {
+    "staticAuditRunId": 36303292448,
+    "staticAuditJobId": 108574922365,
+    "staticAuditArtifactId": 10926253945,
+    "staticAuditArtifactZipSha256": "1ebbfec51a513f840f02ebd780e41db29096c7166b36a3ff81ed60344463f7d5",
+    "staticAuditDisposition": "STAGE1-V3-PRE-FRESH-STATIC-AUDIT-PASS",
+    "catchSelfTest": "PASS",
+    "preflightContractSelfTest": "BRSGT-STAGE1-V3-PREFLIGHT-CONTRACT-SELF-TEST-PASS",
+    "preflightReasonCode": "ELIGIBLE",
+    "freshScientificSeedReads": 0
+  },
+  "firewall": {
+    "digest": "6dd29d162df43fc4e36bcb9323aecf30d98cda18e8aeeffa1424c865cd658f7a",
+    "setSizes": {
+      "seed": 9472,
+      "trajectory": 1041,
+      "prefix": 657,
+      "root": 9355
+    },
+    "verifiedBeforeFirstFreshSeedRead": true,
+    "freshScientificSeedReadsBeforeFirewallComplete": 0,
+    "priorStage1V1SeedBlockQuarantined": true,
+    "priorStage1V2SeedBlockQuarantined": true,
+    "stage1ConsumedIdentityRowCount": 512,
+    "scientificOutcomeFieldsRetained": false
+  },
+  "freshAccess": {
+    "seedBlock": {
+      "start": 40815001,
+      "end": 40815512,
+      "slots": 512,
+      "slotsPerPolicy": 256
+    },
+    "freshScientificSeedReads": 512,
+    "firstSeedRead": 40815001,
+    "lastSeedRead": 40815512,
+    "stage2SeedReads": 0,
+    "g4_10Depth11AccessCount": 0,
+    "priorStage1V1SeedReuse": false,
+    "priorStage1V2SeedReuse": false
+  },
+  "source": {
+    "identityRows": 512,
+    "uniqueSourceTrajectories": 512,
+    "uniqueOpeningPrefixes": 512,
+    "sourceRejectionCounts": {
+      "UPSTREAM-TRAJECTORY": 1,
+      "UPSTREAM-OPENING-PREFIX": 2
+    },
+    "candidateCounts": {
+      "BRSGT-E1-CAPTURE|LGTTCI-P1-UNIFORM-LEGAL": 255,
+      "BRSGT-E1-CAPTURE|LGTTCI-P2-MIN-IMMEDIATE-CAPTURE": 254,
+      "BRSGT-E2-NYUMBA-USE-VS-STOP|LGTTCI-P1-UNIFORM-LEGAL": 234,
+      "BRSGT-E2-NYUMBA-USE-VS-STOP|LGTTCI-P2-MIN-IMMEDIATE-CAPTURE": 248,
+      "BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION|LGTTCI-P1-UNIFORM-LEGAL": 255,
+      "BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION|LGTTCI-P2-MIN-IMMEDIATE-CAPTURE": 254,
+      "BRSGT-E4-NAMUA-TO-MTAJI|LGTTCI-P1-UNIFORM-LEGAL": 180,
+      "BRSGT-E4-NAMUA-TO-MTAJI|LGTTCI-P2-MIN-IMMEDIATE-CAPTURE": 253
+    }
+  },
+  "measurement": {
+    "measuredEventUnitCount": 64,
+    "measuredPerEventFamilyPerPolicy": 8,
+    "allEightEventPolicyCellsReachedTarget": true,
+    "preflightRejectionReasonCountsAllEmpty": true,
+    "uniqueGeometryRootCount": 97,
+    "productionIndependentExact": true,
+    "representation": "RAW-ONLY",
+    "relativeDepth": 5,
+    "resourceObservation": {
+      "elapsedMs": 334326,
+      "rssBytes": 398503936,
+      "stageElapsedCeilingMs": 10800000,
+      "stagePeakRssBytes": 4294967296
+    }
+  },
+  "supportOnlyPromotion": {
+    "effectDirectionUsedForPromotion": false,
+    "slotCount": 24,
+    "supportedSlotCount": 24,
+    "allSlotsSupportedForFormalHoldout": true,
+    "minimumExactDefinedPerPolicy": 6,
+    "minimumExactDefinedCombined": 12,
+    "observedExactDefinedPerSupportedSlotPerPolicy": 8,
+    "observedExactDefinedPerSupportedSlotCombined": 16,
+    "supportedSlotIds": [
+      "BRSGT-E1-CAPTURE/BRSGT-M1-ROOT-LEGAL-WIDTH",
+      "BRSGT-E1-CAPTURE/BRSGT-M2-CUMULATIVE-TREE-OCCURRENCE",
+      "BRSGT-E1-CAPTURE/BRSGT-M3-GLOBAL-DISTINCT-RAW-STATES",
+      "BRSGT-E1-CAPTURE/BRSGT-M4-DUPLICATE-TRANSITION-FRACTION",
+      "BRSGT-E1-CAPTURE/BRSGT-M5-CUMULATIVE-TREE-RAW-RATIO",
+      "BRSGT-E1-CAPTURE/BRSGT-M6-UNIT-WIDTH-OCCUPANCY-FRACTION",
+      "BRSGT-E2-NYUMBA-USE-VS-STOP/BRSGT-M1-ROOT-LEGAL-WIDTH",
+      "BRSGT-E2-NYUMBA-USE-VS-STOP/BRSGT-M2-CUMULATIVE-TREE-OCCURRENCE",
+      "BRSGT-E2-NYUMBA-USE-VS-STOP/BRSGT-M3-GLOBAL-DISTINCT-RAW-STATES",
+      "BRSGT-E2-NYUMBA-USE-VS-STOP/BRSGT-M4-DUPLICATE-TRANSITION-FRACTION",
+      "BRSGT-E2-NYUMBA-USE-VS-STOP/BRSGT-M5-CUMULATIVE-TREE-RAW-RATIO",
+      "BRSGT-E2-NYUMBA-USE-VS-STOP/BRSGT-M6-UNIT-WIDTH-OCCUPANCY-FRACTION",
+      "BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION/BRSGT-M1-ROOT-LEGAL-WIDTH",
+      "BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION/BRSGT-M2-CUMULATIVE-TREE-OCCURRENCE",
+      "BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION/BRSGT-M3-GLOBAL-DISTINCT-RAW-STATES",
+      "BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION/BRSGT-M4-DUPLICATE-TRANSITION-FRACTION",
+      "BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION/BRSGT-M5-CUMULATIVE-TREE-RAW-RATIO",
+      "BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION/BRSGT-M6-UNIT-WIDTH-OCCUPANCY-FRACTION",
+      "BRSGT-E4-NAMUA-TO-MTAJI/BRSGT-M1-ROOT-LEGAL-WIDTH",
+      "BRSGT-E4-NAMUA-TO-MTAJI/BRSGT-M2-CUMULATIVE-TREE-OCCURRENCE",
+      "BRSGT-E4-NAMUA-TO-MTAJI/BRSGT-M3-GLOBAL-DISTINCT-RAW-STATES",
+      "BRSGT-E4-NAMUA-TO-MTAJI/BRSGT-M4-DUPLICATE-TRANSITION-FRACTION",
+      "BRSGT-E4-NAMUA-TO-MTAJI/BRSGT-M5-CUMULATIVE-TREE-RAW-RATIO",
+      "BRSGT-E4-NAMUA-TO-MTAJI/BRSGT-M6-UNIT-WIDTH-OCCUPANCY-FRACTION"
+    ]
+  },
+  "stage2IdentityExclusion": {
+    "identityRowCount": 512,
+    "consumedSeedNamespace": {
+      "start": 40815001,
+      "end": 40815512
+    },
+    "scientificOutcomeFieldsRetained": false
+  },
+  "guards": {
+    "sameEvidenceRerunAllowed": false,
+    "seedExtensionAllowed": false,
+    "replacementPopulationAllowed": false,
+    "stage2Authorized": false,
+    "g4_10Depth11Authorized": false,
+    "publicAiChange": false,
+    "mainIntegration": false
+  },
+  "interpretationBoundary": "Stage 1 establishes support/estimability only. It does not establish the sign, magnitude, causality, or formal confirmation status of any event-conditioned geometry contrast.",
+  "rawArtifactRetentionNote": "The GitHub Actions artifact is the byte-exact raw Stage 1 v3 output; this repository record preserves the prospectively relevant support result and provenance digests."
+}
