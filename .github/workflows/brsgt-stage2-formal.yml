@@ -100,6 +100,14 @@ jobs:
           run-id: 36303568642
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Normalize frozen G4-08 Stage 1 v3 identity artifact
+        run: |
+          set -euo pipefail
+          src='upstream/brsgt-stage2/g4-08-stage1-v3/doc/rule-semantic-geometry-transition/results/stage-1-v3/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json'
+          dst='upstream/brsgt-stage2/g4-08-stage1-v3/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json'
+          test -f "$src"
+          cp "$src" "$dst"
+
       - name: Verify frozen upstream identity sources
         run: |
           test -d upstream/brsgt-stage2/g4-01/source/GCLD
