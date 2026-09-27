@@ -1,0 +1,214 @@
+name: GCSREA G4-09 Stage 2 exact-census authorized once
+
+on:
+  push:
+    branches:
+      - research/g4-09-search-reliability-exact-agreement
+    paths:
+      - doc/geometry-conditioned-search-reliability-exact-agreement/authorizations/STAGE_2_EXACT_MEASUREMENT_TRIGGER.json
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: gcsrea-g4-09-stage2-exact-census-authorized-once
+  cancel-in-progress: false
+
+jobs:
+  exact-census-authorized-once:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - name: Checkout exact trigger commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Syntax and frozen source-binding checks
+        run: |
+          set -euo pipefail
+          node --check tools/experiments/run-gcsrea-stage2-exact-census.js
+          node --check tools/experiments/verify-gcsrea-stage2-exact-result.js
+          node --check tools/experiments/verify-gcsrea-stage2-exact-binding.js
+          node --check tools/experiments/verify-gcsrea-stage1-exact-oracle-preflight.js
+          node --check tools/experiments/lib/gcsrea-exact-agreement-production.js
+          node --check tools/experiments/lib/gcsrea-exact-agreement-independent.js
+          mkdir -p artifacts/gcsrea-stage2-exact
+          node tools/experiments/verify-gcsrea-stage2-exact-binding.js \
+            > artifacts/gcsrea-stage2-exact/SOURCE_BINDING_VERIFICATION.json
+
+      - name: Refuse if durable Stage 2 exact-census lease already exists
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          url='https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/contents/doc/geometry-conditioned-search-reliability-exact-agreement/executions/STAGE_2_EXACT_CENSUS_MEASUREMENT_LEASE.json?ref=research%2Fg4-09-search-reliability-exact-agreement'
+          status="$(curl --silent --show-error --location --output /tmp/gcsrea-stage2-lease-check.json --write-out '%{http_code}' \
+            --header "Authorization: Bearer ${GH_TOKEN}" --header 'Accept: application/vnd.github+json' "${url}")"
+          case "${status}" in
+            404) echo 'durable Stage 2 exact-census lease absent' ;;
+            200) echo 'durable Stage 2 exact-census lease already exists; refusing second execution' >&2; cat /tmp/gcsrea-stage2-lease-check.json >&2; exit 1 ;;
+            *) echo "unexpected lease lookup HTTP ${status}" >&2; cat /tmp/gcsrea-stage2-lease-check.json >&2; exit 1 ;;
+          esac
+
+      - name: Download and verify technical evidence artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/gcsrea-stage2-exact/upstream-evidence
+          get_zip() {
+            id="$1"; digest="$2"; name="$3"
+            curl --fail --silent --show-error --location \
+              --header "Authorization: Bearer ${GH_TOKEN}" \
+              --header 'Accept: application/vnd.github+json' \
+              "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/${id}/zip" \
+              --output "artifacts/gcsrea-stage2-exact/upstream-evidence/${name}.zip"
+            echo "${digest}  artifacts/gcsrea-stage2-exact/upstream-evidence/${name}.zip" | sha256sum --check --strict
+          }
+          get_zip 10934528767 b878b4b5fa04458f171621d24b3be17afe39c1c08b64c9ee2fc66e2673876929 classifier-preflight
+          get_zip 10934489177 e312b91a0d8273ce5b697b9cf830ecf8ac6429c0fb726f55027282dc8f1780dd premeasurement-audit
+
+      - name: Re-verify fixed-8 exact oracle integrity without search measurement
+        run: |
+          set -euo pipefail
+          node tools/experiments/verify-gcsrea-stage1-exact-oracle-preflight.js \
+            artifacts/gcsrea-stage2-exact/EXACT_ORACLE_INTEGRITY_PREFLIGHT.json
+
+      - name: Re-run structural premeasurement audit with zero search execution
+        run: |
+          set -euo pipefail
+          node tools/experiments/run-gcsrea-stage2-exact-census.js \
+            --preflight-only \
+            --output artifacts/gcsrea-stage2-exact/PREMEASUREMENT_STRUCTURAL_RESULT.json
+          node <<'NODE'
+          const fs=require('node:fs');
+          const x=JSON.parse(fs.readFileSync('artifacts/gcsrea-stage2-exact/PREMEASUREMENT_STRUCTURAL_RESULT.json','utf8'));
+          const need=(v,m)=>{if(!v)throw new Error(m);};
+          need(x.disposition==='STAGE2-EXACT-CENSUS-PREMEASUREMENT-STRUCTURAL-PASS','structural premeasurement disposition mismatch');
+          need(x.fixedDomainCount===8&&x.forcedRootCount===2&&x.nontrivialRootCount===6,'fixed census mismatch');
+          need(x.actualFixed8SearchMeasurements===0&&x.productionSearchExecutions===0&&x.independentSearchExecutions===0,'search executed before lease');
+          need(x.generalStage2FreshSeedReads===0&&x.g410Depth11AccessCount===0&&x.scientificMeasurementPerformed===false,'protected boundary violation before lease');
+          NODE
+
+      - name: Acquire durable one-shot exact-census lease before measurement
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          node <<'NODE' > artifacts/gcsrea-stage2-exact/STAGE_2_EXACT_CENSUS_MEASUREMENT_LEASE.json
+          const row={
+            schemaVersion:1,
+            studyId:'GCSREA-STUDY1',
+            stageId:'GCSREA-S2-EXACT-CENSUS-2026-09-27-v1',
+            leaseClass:'DURABLE-GITHUB-ACTIONS-SINGLE-EXACT-CENSUS-MEASUREMENT-LEASE',
+            effectiveAuthorization:'GCSREA-STUDY1-STAGE2-EXACT-CENSUS-MEASUREMENT-AUTHORIZED-ONCE',
+            fixedDomainCount:8,
+            forcedDomainCount:2,
+            nontrivialDomainCount:6,
+            searchConfigurationCount:6,
+            maximumSearchExecutionsPerImplementation:36,
+            maximumTotalSearchExecutions:72,
+            workflowRunId:Number(process.env.GITHUB_RUN_ID),
+            workflowRunAttempt:Number(process.env.GITHUB_RUN_ATTEMPT),
+            triggerCommitSha:process.env.GITHUB_SHA,
+            acquiredBeforeActualMeasurement:true,
+            generalStage2FreshSeedReadAuthorized:false,
+            g405CandidateRescanAuthorized:false,
+            g405DomainReplacementAuthorized:false,
+            g410Depth11AccessAuthorized:false,
+            publicAiChangeAuthorized:false,
+            acquiredAt:new Date().toISOString()
+          };
+          process.stdout.write(JSON.stringify(row,null,2)+'\n');
+          NODE
+          lease_b64="$(base64 -w0 artifacts/gcsrea-stage2-exact/STAGE_2_EXACT_CENSUS_MEASUREMENT_LEASE.json)"
+          gh api --method PUT \
+            -H 'Accept: application/vnd.github+json' \
+            '/repos/nkkmd/bao-la-kiswahili-game/contents/doc/geometry-conditioned-search-reliability-exact-agreement/executions/STAGE_2_EXACT_CENSUS_MEASUREMENT_LEASE.json' \
+            -f message='research(g4-09): acquire Stage 2 exact-census measurement lease' \
+            -f content="${lease_b64}" \
+            -f branch='research/g4-09-search-reliability-exact-agreement' \
+            > artifacts/gcsrea-stage2-exact/LEASE_COMMIT_RESPONSE.json
+
+      - name: Execute single authorized fixed-8 exact census
+        run: |
+          set -euo pipefail
+          set +e
+          /usr/bin/time -f '%e %M' -o artifacts/gcsrea-stage2-exact/RESOURCE_USAGE.raw \
+            node tools/experiments/run-gcsrea-stage2-exact-census.js \
+              --execute-authorized-once \
+              --lease artifacts/gcsrea-stage2-exact/STAGE_2_EXACT_CENSUS_MEASUREMENT_LEASE.json \
+              --output-dir artifacts/gcsrea-stage2-exact/result
+          status=$?
+          set -e
+          read -r elapsed rss < artifacts/gcsrea-stage2-exact/RESOURCE_USAGE.raw
+          ELAPSED="${elapsed}" RSS="${rss}" node <<'NODE' > artifacts/gcsrea-stage2-exact/RESOURCE_USAGE.json
+          const row={elapsedSeconds:Number(process.env.ELAPSED),maxRssKb:Number(process.env.RSS)};
+          if(!Number.isFinite(row.elapsedSeconds)||!Number.isFinite(row.maxRssKb)) throw new Error('invalid resource measurement');
+          process.stdout.write(JSON.stringify(row,null,2)+'\n');
+          NODE
+          exit "${status}"
+
+      - name: Upload raw post-measurement evidence immediately
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gcsrea-stage2-exact-raw-${{ github.run_id }}
+          path: artifacts/gcsrea-stage2-exact
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Verify exact-census result structurally
+        if: success()
+        run: |
+          set -euo pipefail
+          node tools/experiments/verify-gcsrea-stage2-exact-result.js \
+            artifacts/gcsrea-stage2-exact/result/STAGE_2_EXACT_CENSUS_RESULT.json \
+            artifacts/gcsrea-stage2-exact/RESOURCE_USAGE.json \
+            artifacts/gcsrea-stage2-exact/STRUCTURED_RESULT_VERIFICATION.json
+          total_bytes="$(du -sb artifacts/gcsrea-stage2-exact | cut -f1)"
+          test "${total_bytes}" -le 33554432
+          printf '%s\n' "${total_bytes}" > artifacts/gcsrea-stage2-exact/TOTAL_EVIDENCE_BYTES.txt
+
+      - name: Record execution metadata and hashes
+        if: always()
+        run: |
+          set -euo pipefail
+          node <<'NODE' > artifacts/gcsrea-stage2-exact/ACTIONS_EXECUTION_METADATA.json
+          const fs=require('node:fs');
+          const row={
+            schemaVersion:1,
+            studyId:'GCSREA-STUDY1',
+            stageId:'GCSREA-S2-EXACT-CENSUS-2026-09-27-v1',
+            workflowRunId:Number(process.env.GITHUB_RUN_ID),
+            workflowRunAttempt:Number(process.env.GITHUB_RUN_ATTEMPT),
+            triggerCommitSha:process.env.GITHUB_SHA,
+            repository:process.env.GITHUB_REPOSITORY,
+            ref:process.env.GITHUB_REF,
+            durableLeasePresent:fs.existsSync('artifacts/gcsrea-stage2-exact/STAGE_2_EXACT_CENSUS_MEASUREMENT_LEASE.json'),
+            measurementResultPresent:fs.existsSync('artifacts/gcsrea-stage2-exact/result/STAGE_2_EXACT_CENSUS_RESULT.json'),
+            structuredVerificationPresent:fs.existsSync('artifacts/gcsrea-stage2-exact/STRUCTURED_RESULT_VERIFICATION.json'),
+            generalStage2FreshSeedReads:0,
+            g410Depth11AccessCount:0,
+            publicAiChanged:false,
+            recordedAt:new Date().toISOString()
+          };
+          process.stdout.write(JSON.stringify(row,null,2)+'\n');
+          NODE
+          find artifacts/gcsrea-stage2-exact -type f ! -name SHA256SUMS.txt -print0 | sort -z | xargs -0 sha256sum > artifacts/gcsrea-stage2-exact/SHA256SUMS.txt
+
+      - name: Upload final durable exact-census evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gcsrea-stage2-exact-census-${{ github.run_id }}
+          path: artifacts/gcsrea-stage2-exact
+          if-no-files-found: error
+          retention-days: 90
