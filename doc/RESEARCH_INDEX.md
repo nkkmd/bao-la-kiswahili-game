@@ -75,7 +75,7 @@ COUNTEREXAMPLE-CONFIRMED = 0
 G3-10でformal confirmationされたC1・C2・C3・C5のtrajectory-level directionを、fresh P1/P2 source-policy domainsへprospectiveに移送検証しました。
 
 ```text
-Stage 2 canonical run = 36095820136 / attempt 1 / success
+Stage 2 canonical run = 36095831961 / attempt 1 / success
 fresh seed block = 40423001..40424024 / 1024
 seed reads = 369
 formal measured trajectories = 64
