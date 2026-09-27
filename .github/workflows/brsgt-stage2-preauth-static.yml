@@ -1,0 +1,122 @@
+name: BRSGT Stage 2 Pre-Fresh Static Audit
+
+on:
+  push:
+    branches:
+      - research/g4-08-rule-semantic-geometry-transition
+    paths:
+      - doc/rule-semantic-geometry-transition/executions/STAGE_2_STATIC_AUDIT_TRIGGER.json
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: brsgt-stage2-pre-fresh-static
+  cancel-in-progress: false
+
+jobs:
+  pre-fresh-static:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout research branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Syntax checks
+        run: |
+          node --check tools/experiments/run-brsgt-stage2-formal.js
+          node --check tools/experiments/run-brsgt-stage2-authorized.js
+          node --check tools/experiments/verify-brsgt-stage2-binding.js
+          node --check tools/experiments/audit-brsgt-stage2-static.js
+          node --check tools/experiments/lib/brsgt-stage2-firewall.js
+          node --check tools/experiments/lib/brsgt-stage2-inference-production.js
+          node --check tools/experiments/lib/brsgt-stage2-inference-independent.js
+          node --check tools/experiments/lib/brsgt-production.js
+          node --check tools/experiments/lib/brsgt-independent.js
+
+      - name: Download frozen G4-01 identity source artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: lgttci-stage1r-recovery-source-bundle
+          path: upstream/brsgt-stage2/g4-01
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 35265290422
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download frozen G4-04 Stage 1 identity artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: gttd-stage1-result
+          path: upstream/brsgt-stage2/g4-04-stage1
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 36089520136
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download frozen G4-04 Stage 2 identity artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: gttd-stage2-formal
+          path: upstream/brsgt-stage2/g4-04-stage2
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 36095831961
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download frozen G4-07 Stage 1 identity artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: mlgmr-stage1-development-result
+          path: upstream/brsgt-stage2/g4-07-stage1
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 36247459779
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download frozen G4-07 Stage 2 identity artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: mlgmr-stage2-formal-result
+          path: upstream/brsgt-stage2/g4-07-stage2
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 36278926636
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download frozen G4-08 Stage 1 v3 identity artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: brsgt-stage1-v3-development-36303568642-1
+          path: upstream/brsgt-stage2/g4-08-stage1-v3
+          repository: nkkmd/bao-la-kiswahili-game
+          run-id: 36303568642
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify upstream artifact presence
+        run: |
+          test -d upstream/brsgt-stage2/g4-01/source/GCLD
+          test -f upstream/brsgt-stage2/g4-04-stage1/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json
+          test -f upstream/brsgt-stage2/g4-04-stage2/STAGE_2_CANDIDATE_MANIFEST.json
+          test -f upstream/brsgt-stage2/g4-07-stage1/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json
+          test -f upstream/brsgt-stage2/g4-07-stage2/STAGE_2_CANDIDATE_MANIFEST.json
+          test -f upstream/brsgt-stage2/g4-08-stage1-v3/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json
+
+      - name: Run Stage 2 pre-fresh static audit
+        env:
+          BRSGT_STAGE2_UPSTREAM_DIR: ${{ github.workspace }}/upstream/brsgt-stage2
+        run: |
+          set -o pipefail
+          mkdir -p artifacts/brsgt-stage2-static
+          node tools/experiments/audit-brsgt-stage2-static.js | tee artifacts/brsgt-stage2-static/STATIC_AUDIT_RESULT.json
+
+      - name: Upload static audit result
+        uses: actions/upload-artifact@v4
+        with:
+          name: brsgt-stage2-pre-fresh-static-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/brsgt-stage2-static/STATIC_AUDIT_RESULT.json
+          if-no-files-found: error
+          retention-days: 30
