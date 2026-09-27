@@ -1,0 +1,114 @@
+name: GCSREA G4-09 Stage 1 pre-fresh audit
+
+on:
+  push:
+    branches:
+      - research/g4-09-search-reliability-exact-agreement
+    paths:
+      - doc/geometry-conditioned-search-reliability-exact-agreement/executions/STAGE_1_PREFRESH_AUDIT_TRIGGER.json
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: gcsrea-g4-09-stage1-prefresh-audit
+  cancel-in-progress: false
+
+jobs:
+  pre-fresh-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Static syntax and protected-boundary checks
+        run: |
+          set -euo pipefail
+          node --check tools/experiments/lib/gcsrea-stage1-production.js
+          node --check tools/experiments/lib/gcsrea-stage1-independent.js
+          node --check tools/experiments/lib/gcsrea-stage1-firewall.js
+          node --check tools/experiments/verify-gcsrea-stage1-exact-oracle-preflight.js
+          node --check tools/experiments/run-gcsrea-stage1-development.js
+          node --check tools/experiments/verify-gcsrea-stage1-binding.js
+          node <<'NODE'
+          const fs=require('node:fs');
+          const spec=JSON.parse(fs.readFileSync('doc/geometry-conditioned-search-reliability-exact-agreement/prereg/STAGE_1_DEVELOPMENT_SPEC.json','utf8'));
+          const fw=JSON.parse(fs.readFileSync('doc/geometry-conditioned-search-reliability-exact-agreement/prereg/UPSTREAM_IDENTITY_FIREWALL.json','utf8'));
+          const need=(x,m)=>{if(!x)throw new Error(m)};
+          need(spec.moduleA.seedBlock.accessedAtFreeze===false,'fresh block marked accessed');
+          need(spec.moduleB.actualSearchVsExactMeasurementAuthorized===false,'fixed-8 actual search measurement enabled');
+          need(spec.protectedBoundary.stage2SeedAccess===false&&spec.protectedBoundary.g410Depth11Access===false&&spec.protectedBoundary.publicAiChange===false,'protected boundary open');
+          need(fw.status==='FROZEN-PRE-FRESH'&&fw.freshStage1SeedAccessDuringMaterialization===false,'firewall not pre-fresh');
+          const runner=fs.readFileSync('tools/experiments/run-gcsrea-stage1-development.js','utf8');
+          need(!runner.includes('40923001'),'runner references Stage2 candidate namespace');
+          NODE
+
+      - name: Download and verify immutable upstream identity artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p upstream/zips
+          get_zip() {
+            id="$1"; digest="$2"; out="$3"; dir="$4"
+            curl --fail --silent --show-error --location --header "Authorization: Bearer ${GH_TOKEN}" --header 'Accept: application/vnd.github+json' \
+              "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/${id}/zip" --output "upstream/zips/${out}.zip"
+            echo "${digest}  upstream/zips/${out}.zip" | sha256sum --check --strict
+            mkdir -p "upstream/${dir}"; unzip -q "upstream/zips/${out}.zip" -d "upstream/${dir}"
+          }
+          get_zip 9651424447 2c90e3cdd935bdbeab4e79f99eba3b59968763327cd78e8e912cfc7864e04627 g2-02-stage1 g2-02-stage1
+          get_zip 9672561139 c107773d7f7a7cd9ba05a875305486738e10268435730283d6aa46cb5340e47a g2-02-stage2 g2-02-stage2
+          get_zip 9879091983 5ada1dcb0ceab7d89ea0bfc78410a14c3875ba03a01e31a243950706349de70a g3-07-stage2 g3-07-stage2
+          get_zip 10517090411 3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b g4-01 g4-01
+          get_zip 10803311137 aaea8b1c564dbe400d2d1fc00ebfa58f23cd485d9ae994af88cd4ceaf6b621a6 g4-03-stage1 g4-03-stage1
+          get_zip 10805571797 c4449f9a034f30a501f60c6ee90b07426bd1c42aa3b0bbc150fd8d3e1199b597 g4-03-stage2 g4-03-stage2
+          get_zip 10846181741 fa14e0c56d7d7f7088684eb715b1bf26b307cb22459741dfe4a7629cf40b3183 g4-04-stage1 g4-04-stage1
+          get_zip 10849029913 fe165e6c1735cb07e71ed49e2a1c4d3f7446e796ab63936d90c7e982edfc4bd7 g4-04-stage2 g4-04-stage2
+          get_zip 10908816662 65081316d7f3dc0f59b7da5a527af65c052ea33b0ab7e8e8b07d06d764f27469 g4-07-stage1 g4-07-stage1
+          get_zip 10919769185 4d8370ccad1be7fa4052a4293e6b64c4e1b77f7c11c94c1f4dbabead694394f2 g4-07-stage2 g4-07-stage2
+          get_zip 10926322837 c93ae26b019edde841e58a4f452aa8bacd45c0954937294ca2c12c786d916140 g4-08-stage1-v3 g4-08-stage1-v3
+          get_zip 10929684128 bbbe1e2206c9f439168829581d1bce1ef03dddaec1fe0914b8888a63767bcb1b g4-08-stage2 g4-08-stage2
+
+      - name: Full identity-firewall rematerialization
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/gcsrea-stage1-prefresh
+          node tools/experiments/run-gcsrea-stage1-development.js --dry-run-firewall-only --upstream-root upstream \
+            > artifacts/gcsrea-stage1-prefresh/FIREWALL_PREFLIGHT.json
+
+      - name: Fixed-8 exact-oracle integrity preflight
+        run: |
+          set -euo pipefail
+          node tools/experiments/verify-gcsrea-stage1-exact-oracle-preflight.js \
+            artifacts/gcsrea-stage1-prefresh/EXACT_ORACLE_INTEGRITY_PREFLIGHT.json
+          node <<'NODE'
+          const fs=require('node:fs');
+          const x=JSON.parse(fs.readFileSync('artifacts/gcsrea-stage1-prefresh/EXACT_ORACLE_INTEGRITY_PREFLIGHT.json','utf8'));
+          if(x.disposition!=='EXACT-ORACLE-INTEGRITY-PREFLIGHT-PASS')throw new Error('exact oracle preflight failed');
+          if(x.core.fixedDomainCount!==8||x.core.actualSearchVsExactMeasurements!==0||x.core.freshStage1SeedReads!==0||x.core.g410Depth11AccessCount!==0)throw new Error('exact preflight boundary mismatch');
+          NODE
+
+      - name: Record audit context and hashes
+        if: always()
+        run: |
+          mkdir -p artifacts/gcsrea-stage1-prefresh
+          node <<'NODE' > artifacts/gcsrea-stage1-prefresh/AUDIT_CONTEXT.json
+          const row={schemaVersion:1,studyId:'GCSREA-STUDY1',stageId:'GCSREA-S1-DEVELOPMENT-2026-09-27-v1',auditClass:'PRE-FRESH-NON-SCIENTIFIC',sourceSha:process.env.GITHUB_SHA,runId:Number(process.env.GITHUB_RUN_ID),runAttempt:Number(process.env.GITHUB_RUN_ATTEMPT),freshScientificSeedReads:0,actualG405SearchVsExactMeasurements:0,g410Depth11Access:0,publicAiChange:false};
+          process.stdout.write(JSON.stringify(row,null,2)+'\n');
+          NODE
+          find artifacts/gcsrea-stage1-prefresh -type f ! -name SHA256SUMS.txt -print0 | sort -z | xargs -0 sha256sum > artifacts/gcsrea-stage1-prefresh/SHA256SUMS.txt
+
+      - name: Upload pre-fresh audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gcsrea-stage1-prefresh-${{ github.run_id }}
+          path: artifacts/gcsrea-stage1-prefresh
+          if-no-files-found: error
+          retention-days: 30
