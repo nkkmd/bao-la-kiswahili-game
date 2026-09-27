@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GCSREA-STUDY1",
+  "stageId": "GCSREA-S1-DEVELOPMENT-2026-09-27-v1",
+  "action": "AUDIT-CANONICAL-STAGE1-ARTIFACT-ONLY",
+  "canonicalScientificRunId": 36326278830,
+  "canonicalScientificRunAttempt": 1,
+  "canonicalScientificArtifactId": 10934387075,
+  "canonicalScientificArtifactZipSha256": "2ee8edf9c988de7a721f14887181b80bf517e810a2d49f6d429228eeeb425cd0",
+  "expectedStage1ResultSha256": "353906fc38939c2a02fd99e46ca7f44af8bc36d99fa71e9bd3fec1757ae7f499",
+  "expectedStage2IdentityExclusionSha256": "8526e4c01ba304eb88721c80c5c4280f6806dae2e7007a1a4fbcbcc191a4e8f4",
+  "scientificRerunAuthorized": false,
+  "freshScientificSeedReadAuthorized": false,
+  "actualG405SearchVsExactMeasurementAuthorized": false,
+  "g410Depth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false
+}
