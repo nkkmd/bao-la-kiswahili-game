@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRSGT-STUDY1",
+  "stageId": "BRSGT-S2-FORMAL-2026-09-27-v1",
+  "triggerType": "PRE-FRESH-STATIC-AUDIT-ONLY",
+  "auditAttempt": 1,
+  "freshScientificSeedAccessAuthorized": false,
+  "formalInferenceAuthorized": false,
+  "stage2ScientificTriggerAuthorized": false,
+  "g4_10Depth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "note": "Static verification only. This trigger does not authorize Stage 2 scientific execution."
+}
