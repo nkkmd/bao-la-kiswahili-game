@@ -2,7 +2,7 @@
 
 更新日: 2026-09-27  
 対象: Research Generation 1〜4  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01〜G4-07 main統合済み。G4-08〜G4-09は未認可、G4-10は保護・未アクセス**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01〜G4-07 main統合済み。G4-08は研究閉鎖・main未統合、G4-09は未認可、G4-10は保護・未アクセス**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`または`FINAL_REPORT.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
@@ -20,6 +20,7 @@
 | G4-06の正式結果 | [`local-game-tree-geometry-exact-consequence-bridge/README.md`](local-game-tree-geometry-exact-consequence-bridge/README.md) |
 | G4-07の正式結果 | [`multiscale-local-geometry-memory-return/FINAL_REPORT.md`](multiscale-local-geometry-memory-return/FINAL_REPORT.md) |
 | G4-07 main統合記録 | [`research-generation-4/checkpoints/2026-09-27-g4-07-main-integration.md`](research-generation-4/checkpoints/2026-09-27-g4-07-main-integration.md) |
+| G4-08の正式結果 | [`rule-semantic-geometry-transition/CURRENT_STATUS.md`](rule-semantic-geometry-transition/CURRENT_STATUS.md) |
 | 第三世代の全体像 | [`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md) |
 | 第二世代の全体像 | [`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md) |
 | 今後の研究課題 | [`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md) |
@@ -41,7 +42,7 @@
 | `G4-05` / [`RLEMOF-STUDY1`](reachable-late-game-exact-microdomain-oracle-foundation/) | exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED` |
 | `G4-06` / [`LGTGECB-STUDY1`](local-game-tree-geometry-exact-consequence-bridge/) | geometry / exact consequence bridge | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED` |
 | `G4-07` / [`MLGMR-STUDY1`](multiscale-local-geometry-memory-return/) | multiscale memory / return | `COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED` |
-| `G4-08` | rule-semantic transition | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
+| `G4-08` / [`BRSGT-STUDY1`](rule-semantic-geometry-transition/) | rule-semantic transition | `CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN NOT INTEGRATED` |
 | `G4-09` | search reliability / exact agreement | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-10` | protected depth-11 exact topology | `PROTECTED / NOT-AUTHORIZED-NOT-ACCESSED` |
 | `G4-P01` | canonicalization re-foundation | `INDEPENDENT / NON-BLOCKING / NOT-AUTHORIZED` |
@@ -178,6 +179,38 @@ return endpointはdescriptive onlyです。universal oscillation / mean-reversio
 G4-07はscientific execution、pre-main audit、最終文書整合性チェックを完了後、2026-09-27にresearch HEAD `0130bc4e4a7b5ec0c96a026a846fdbf75530f02a` を`main`へnon-force fast-forward統合しました。統合中のscientific rerun、`public/`変更、public AI production変更、G4-10 depth-11 accessはありません。
 
 詳しくは、[`multiscale-local-geometry-memory-return/FINAL_REPORT.md`](multiscale-local-geometry-memory-return/FINAL_REPORT.md)、[`multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json)、[`multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md`](multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md)、[`research-generation-4/checkpoints/2026-09-27-g4-07-main-integration.md`](research-generation-4/checkpoints/2026-09-27-g4-07-main-integration.md)を参照してください。
+
+### G4-08
+
+G4-08 `BRSGT-STUDY1` は、capture、nyumba use-vs-stop、reserve decrement nontransition、Namua→Mtajiの4 event familyについて、RAW relative depth 5 local geometryのevent-conditioned transitionをprospectiveに検証しました。
+
+Stage 1 v3では4 event families × 6 metricsの24 slotsすべてがsupport gateを通過しましたが、effect direction/valueはformal family選定へ使用していません。
+
+```text
+Stage 2 canonical run = 36314208922 / attempt 1 / success
+execution HEAD = 692d2d718ab55348e7fb4f8190476524b0a5bc95
+artifact ID = 10929684128
+artifact ZIP SHA-256 = bbbe1e2206c9f439168829581d1bce1ef03dddaec1fe0914b8888a63767bcb1b
+fresh seed block = 40823001..40824024 / 1024
+fresh scientific seed reads = 1024 / 1024
+production / independent exact agreement = true
+UPSTREAM-REACHABLE-RAW-ROOT = 1011
+UPSTREAM-TRAJECTORY = 6
+UPSTREAM-OPENING-PREFIX = 7
+accepted source trajectories = 0
+measured event units = 0
+formal family = 24
+NON-ESTIMABLE = 24
+G4-10 depth-11 access = 0
+```
+
+frozen freshness firewallにより1024/1024 source trajectoriesがformal event selection前に除外されたため、24 formal slotsすべてが`NON-ESTIMABLE`となりました。これはno-effectのnegative resultではありません。capture、nyumba、reserve decrement、Namua→Mtajiのgeometry directionについてformal confirmationは得られておらず、causal effect、whole-Bao law、game-theoretic consequence、AI strength、人間のdifficultyへ拡張しません。
+
+post-execution identity diagnosticでは、Stage 2全1024 trajectoriesとStage 1 v3全512 rowsが同じply-0 initial RAW rootを持ち、そのrootがfrozen firewallに含まれていたことを確認しました。この診断はfreshness exhaustionの説明専用であり、ply-0除外、firewall grammar変更、seed extension、replacement population、same-evidence rerunによるrescueには使用しません。
+
+G4-08は`CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / NO DIRECTIONAL SCIENTIFIC CONCLUSION`として研究実行を閉じています。`main`への統合はまだ行っていません。
+
+詳しくは、[`rule-semantic-geometry-transition/CURRENT_STATUS.md`](rule-semantic-geometry-transition/CURRENT_STATUS.md)、[`rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json)、[`research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md`](research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md)を参照してください。
 
 ## Research Generation 3 — 局所ゲーム木幾何
 
