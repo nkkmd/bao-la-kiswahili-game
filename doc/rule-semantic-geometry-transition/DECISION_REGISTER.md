@@ -29,3 +29,9 @@
 | BRSGT-D023 | G4-10 | `PROTECTED / NO ACCESS` | depth-11 holdoutは別authorizationまで封印。 |
 | BRSGT-D024 | Public AI | `NO CHANGE` | scientific resultをproductionへ自動接続しない。 |
 | BRSGT-D025 | Stage 1 authorization | `SEPARATE REVIEW REQUIRED` | Stage 0 PASSはfresh scientific accessを自動認可しない。 |
+| BRSGT-D026 | Stage 0 v1 | `TECHNICAL-INVALID / NO-RERUN` | Run `36295138475`。binding/syntax PASS後、NYUMBA fixtureがrepresented seed total 34でRAW validatorにfail。scientific reads 0。 |
+| BRSGT-D027 | Stage 0 v2 fixture invariant | `ALL FIXTURES MUST REPRESENT 64 SEEDS BEFORE SELECTION` | v1のtechnical defectをfresh evidence前に新versionで是正。 |
+| BRSGT-D028 | Stage 0 v2 NYUMBA fixture | `64-SEED SYNTHETIC` | v1のfront semanticsを維持し、不足30石を非active opponent back rowへ配置してmass balanceを満たす。 |
+| BRSGT-D029 | Stage 0 v2 phase fixture | `ENGINE-REACHABLE / SEED-FREE DETERMINISTIC PATH` | manual reserve mutationを廃止し、initial stateからcanonical nonterminal legal pathでNamua→Mtaji pre-stateへ到達する。 |
+| BRSGT-D030 | Stage 0 v2 path ceiling | `MAX 160 PLIES` | deterministic technical searchをboundedにし、超過はtechnical-invalidとしてfail closed。 |
+| BRSGT-D031 | Stage 0 version isolation | `V1 AUTH/TRIGGER NOT REUSED` | v2はnew spec、new source audit、new authorization、new trigger、new workflowを要求。 |
