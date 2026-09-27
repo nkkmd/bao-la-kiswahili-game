@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRSGT-STUDY1",
+  "stageId": "BRSGT-S2-FORMAL-2026-09-27-v1",
+  "agendaId": "G4-08",
+  "recordType": "STAGE-2-FORMAL-CANONICAL-SUMMARY",
+  "stageDisposition": "STAGE2-FORMAL-COMPLETE",
+  "scientificDecision": "ALL-FORMAL-SLOTS-NON-ESTIMABLE",
+  "interpretationClass": "NO-DIRECTIONAL-SCIENTIFIC-CONCLUSION",
+  "workflow": {
+    "runId": 36314208922,
+    "runAttempt": 1,
+    "jobId": 108605721107,
+    "executionHead": "692d2d718ab55348e7fb4f8190476524b0a5bc95",
+    "auditedSourceSha": "d2e22fa9b4ca8286480beda2a89b5e287bcdad9c"
+  },
+  "artifact": {
+    "artifactId": 10929684128,
+    "artifactName": "brsgt-stage2-formal-36314208922-1",
+    "artifactZipSha256": "bbbe1e2206c9f439168829581d1bce1ef03dddaec1fe0914b8888a63767bcb1b",
+    "files": {
+      "STAGE_2_EXECUTION_CONTEXT.json": "e75dde20099d5c7c61aad33aed8e8f5b77e6d65671a4025907c4209b6c592c21",
+      "STAGE_2_RESULT.json": "0ffa3c7949efea601f41550fd25a5075cdae58c105b0c83cdd904c76f92d290e",
+      "STAGE_2_CANDIDATE_MANIFEST.json": "3a5ffd6cdfeffddf1fb00d4289e5f278dfc319b260c99cf05d5c956244f4c13f",
+      "STAGE_2_FIREWALL_SUMMARY.json": "2d65262989d9f35d977ee250285b23e28dbbee1507d43a9f5cd76e6e5a160265"
+    }
+  },
+  "seedAccounting": {
+    "seedBlock": {
+      "start": 40823001,
+      "end": 40824024,
+      "slots": 1024,
+      "slotsPerPolicy": 512,
+      "scanRule": "READ-ALL-SLOTS-IN-ASCENDING-ORDER",
+      "seedExtensionAuthorized": false,
+      "replacementPopulationAuthorized": false
+    },
+    "freshScientificSeedReads": 1024,
+    "firstSeedRead": 40823001,
+    "lastSeedRead": 40824024,
+    "noRescueBoundaryCrossed": true,
+    "sameVersionRerunAuthorized": false
+  },
+  "freshnessFirewall": {
+    "firewallDigestSha256": "38ccbc1ace22a921c8f340c1ae9a56cfab5451208898f629810de9a06af982f7",
+    "setSizes": {
+      "seed": 9984,
+      "trajectory": 1552,
+      "prefix": 1166,
+      "root": 37188
+    },
+    "freshScientificSeedReadsBeforeFirewallComplete": 0,
+    "sourceRejectionCounts": {
+      "UPSTREAM-REACHABLE-RAW-ROOT": 1011,
+      "UPSTREAM-TRAJECTORY": 6,
+      "UPSTREAM-OPENING-PREFIX": 7
+    },
+    "totalRejectedSourceTrajectories": 1024,
+    "acceptedSourceTrajectories": 0
+  },
+  "formalOutcome": {
+    "formalFamilySize": 24,
+    "measuredEventUnitCount": 0,
+    "uniqueGeometryRootCount": 0,
+    "labelCounts": {
+      "NON-ESTIMABLE": 24
+    },
+    "productionIndependentExactAgreement": true,
+    "slots": [
+      {"slotId":"BRSGT-E1-CAPTURE/BRSGT-M1-ROOT-LEGAL-WIDTH","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E1-CAPTURE/BRSGT-M2-CUMULATIVE-TREE-OCCURRENCE","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E1-CAPTURE/BRSGT-M3-GLOBAL-DISTINCT-RAW-STATES","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E1-CAPTURE/BRSGT-M4-DUPLICATE-TRANSITION-FRACTION","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E1-CAPTURE/BRSGT-M5-CUMULATIVE-TREE-RAW-RATIO","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E1-CAPTURE/BRSGT-M6-UNIT-WIDTH-OCCUPANCY-FRACTION","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E2-NYUMBA-USE-VS-STOP/BRSGT-M1-ROOT-LEGAL-WIDTH","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E2-NYUMBA-USE-VS-STOP/BRSGT-M2-CUMULATIVE-TREE-OCCURRENCE","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E2-NYUMBA-USE-VS-STOP/BRSGT-M3-GLOBAL-DISTINCT-RAW-STATES","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E2-NYUMBA-USE-VS-STOP/BRSGT-M4-DUPLICATE-TRANSITION-FRACTION","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E2-NYUMBA-USE-VS-STOP/BRSGT-M5-CUMULATIVE-TREE-RAW-RATIO","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E2-NYUMBA-USE-VS-STOP/BRSGT-M6-UNIT-WIDTH-OCCUPANCY-FRACTION","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION/BRSGT-M1-ROOT-LEGAL-WIDTH","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION/BRSGT-M2-CUMULATIVE-TREE-OCCURRENCE","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION/BRSGT-M3-GLOBAL-DISTINCT-RAW-STATES","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION/BRSGT-M4-DUPLICATE-TRANSITION-FRACTION","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION/BRSGT-M5-CUMULATIVE-TREE-RAW-RATIO","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION/BRSGT-M6-UNIT-WIDTH-OCCUPANCY-FRACTION","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E4-NAMUA-TO-MTAJI/BRSGT-M1-ROOT-LEGAL-WIDTH","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E4-NAMUA-TO-MTAJI/BRSGT-M2-CUMULATIVE-TREE-OCCURRENCE","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E4-NAMUA-TO-MTAJI/BRSGT-M3-GLOBAL-DISTINCT-RAW-STATES","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E4-NAMUA-TO-MTAJI/BRSGT-M4-DUPLICATE-TRANSITION-FRACTION","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E4-NAMUA-TO-MTAJI/BRSGT-M5-CUMULATIVE-TREE-RAW-RATIO","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false},
+      {"slotId":"BRSGT-E4-NAMUA-TO-MTAJI/BRSGT-M6-UNIT-WIDTH-OCCUPANCY-FRACTION","decision":"NON-ESTIMABLE","estimable":false,"exactDefined":0,"nonzero":0,"holmSignificant":false}
+    ]
+  },
+  "postExecutionIdentityDiagnostic": {
+    "purpose": "EXPLAIN-FRESHNESS-EXHAUSTION-ONLY / NO-RESCUE / NO-RECLASSIFICATION",
+    "commonInitialRawRootSha256": "2c13e69c51d58e2605bf6018ac848d99685aa4d4fe78c0af9f8e0fc07e1d3fd6",
+    "stage2IdentityRows": 1024,
+    "stage2RowsWithSamePly0Root": 1024,
+    "stage1V3IdentityRowsWithSamePly0Root": 512,
+    "initialRootAlreadyInFrozenFirewall": true,
+    "diagnosticConclusion": "After the 6 trajectory and 7 opening-prefix collisions are rejected first, every remaining Stage 2 trajectory necessarily collides at ply 0 with the frozen reachable-RAW-root firewall. This explains the 1011 UPSTREAM-REACHABLE-RAW-ROOT rejections.",
+    "scientificEffectInferenceFromDiagnostic": false
+  },
+  "scientificBoundaries": {
+    "nonEstimableDoesNotMeanNoEffect": true,
+    "causalEffectClaimAuthorized": false,
+    "wholeBaoLawClaimAuthorized": false,
+    "gameTheoreticClaimAuthorized": false,
+    "aiStrengthClaimAuthorized": false,
+    "humanDifficultyClaimAuthorized": false,
+    "stage1EffectDirectionUsedForFamilyMembership": false,
+    "stage1EffectValueUsedForFamilyMembership": false
+  },
+  "protectedBoundaries": {
+    "g4_10Depth11AccessCount": 0,
+    "publicAiChanged": false,
+    "mainIntegrationPerformed": false
+  }
+}
