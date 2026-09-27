@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "authorizationId": "GCSREA-G4-09-STAGE2-EXACT-CENSUS-AUTH-2026-09-28-V1",
+  "studyId": "GCSREA-STUDY1",
+  "stageId": "GCSREA-S2-EXACT-CENSUS-2026-09-27-v1",
+  "action": "EXECUTE-SINGLE-AUTHORIZED-FIXED8-EXACT-CENSUS-MEASUREMENT",
+  "codeFreezeHead": "c1425c6b67d85f4e7f42032fc04aaf968f151454",
+  "sourceBranch": "research/g4-09-search-reliability-exact-agreement",
+  "authorizedScientificMeasurements": 1,
+  "rerunAuthorized": false,
+  "generalStage2FreshSeedReadAuthorized": false,
+  "g405CandidateRescanAuthorized": false,
+  "g405DomainReplacementAuthorized": false,
+  "g410Depth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "interpretationBoundary": "FIXED-FINITE-EXACT-CENSUS-DESCRIPTIVE-ONLY"
+}
