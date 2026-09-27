@@ -2,7 +2,7 @@
 
 更新日: 2026-09-27  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`G4-01..G4-06 MAIN INTEGRATED / G4-07 COMPLETE ON RESEARCH BRANCH / PRE-MAIN AUDIT NEXT`**
+状態: **`G4-01..G4-06 MAIN INTEGRATED / G4-07 PRE-MAIN-AUDIT-PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`**
 
 ## このProgramが調べること
 
@@ -24,7 +24,7 @@ Program: `Bao Fourth-Generation Research Program`
 | A | `G4-04` | G3-10由来geometry-trajectory transfer | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
 | B | `G4-05` | exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED` |
 | B | `G4-06` | geometry / exact consequence bridge | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED` |
-| C | `G4-07` | multiscale memory / return | `COMPLETE / FORMAL-COMPLETE / RESEARCH BRANCH CLOSED / MAIN NOT INTEGRATED` |
+| C | `G4-07` | multiscale memory / return | `COMPLETE / FORMAL-COMPLETE / PRE-MAIN-AUDIT-PASS / MAIN NOT INTEGRATED` |
 | C | `G4-08..G4-09` | rule-semantic transition、search reliability | `DEPENDENCY-GATED / NOT AUTHORIZED` |
 | D | `G4-10` | protected depth-11 exact topology | `PROTECTED / NOT AUTHORIZED / NOT ACCESSED` |
 | 独立 | `G4-P01` | canonicalization re-foundation | `NOT AUTHORIZED` |
@@ -89,12 +89,15 @@ confirmedContiguousPersistenceLagMax = NONE
 
 return endpointはdescriptive onlyで、universal oscillation / mean-reversion law、causal rule-event mechanism、physical half-lifeへ昇格しない。
 
+pre-main consistency auditはPASSし、branch scope・canonical provenance・protected boundary・current-facing文書整合を確認済み。main統合はまだ行っていない。
+
 詳細:
 
 - [`../multiscale-local-geometry-memory-return/FINAL_REPORT.md`](../multiscale-local-geometry-memory-return/FINAL_REPORT.md)
 - [`../multiscale-local-geometry-memory-return/CURRENT_STATUS.md`](../multiscale-local-geometry-memory-return/CURRENT_STATUS.md)
 - [`../multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json)
 - [`../multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md`](../multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md)
+- [`checkpoints/2026-09-27-g4-07-pre-main-audit.md`](checkpoints/2026-09-27-g4-07-pre-main-audit.md)
 - [`../research-program-decisions/2026-09-27-g4-07-multiscale-local-geometry-memory-return-study1-closure.md`](../research-program-decisions/2026-09-27-g4-07-multiscale-local-geometry-memory-return-study1-closure.md)
 
 ## 最初に読む文書
@@ -103,14 +106,15 @@ return endpointはdescriptive onlyで、universal oscillation / mean-reversion l
 2. [`../multiscale-local-geometry-memory-return/FINAL_REPORT.md`](../multiscale-local-geometry-memory-return/FINAL_REPORT.md) — G4-07正式結果
 3. [`../multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json) — G4-07 canonical formal summary
 4. [`../multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md`](../multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md) — execution / provenance checkpoint
-5. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — frozen prospective program contract
-6. [`RESUME_HERE.md`](RESUME_HERE.md) — 安全な再開位置
+5. [`checkpoints/2026-09-27-g4-07-pre-main-audit.md`](checkpoints/2026-09-27-g4-07-pre-main-audit.md) — main統合前監査
+6. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — frozen prospective program contract
+7. [`RESUME_HERE.md`](RESUME_HERE.md) — 安全な再開位置
 
 ## 次に許可される作業
 
-G4-07 scientific executionは研究ブランチ上で完了した。追加Stage 2 run、seed extension、replacement population、lag/axis/checkpoint変更、subgroup rescueは行わない。
+G4-07 scientific executionとpre-main consistency auditは完了した。追加Stage 2 run、seed extension、replacement population、lag/axis/checkpoint変更、subgroup rescueは行わない。
 
-次に行うのは **G4-07 pre-main consistency audit / main-integration review**。問題がなければ、その後にのみmain統合を検討する。
+次に許可されるのは **G4-07 main-integration review**。明示的な統合判断前にはmainを変更しない。
 
 G4-08、G4-09、G4-10は自動認可されない。
 
