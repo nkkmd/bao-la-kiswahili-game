@@ -1,7 +1,7 @@
 # G4-08 / BRSGT-STUDY1 — Bao Rule-Semantic Geometry Transition Study 1
 
 更新日: 2026-09-27  
-状態: **CLOSED / STAGE 2 FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE**
+状態: **CLOSED / STAGE 2 FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRATED**
 
 ## 目的
 
@@ -156,7 +156,8 @@ Stage 1 v1/v2/v3 rerun = prohibited
 Stage 2 v1 rerun = prohibited
 G4-10 depth-11 access = 0 / prohibited
 public AI change = none
-main integration = not performed
+main integration = COMPLETE / FAST-FORWARD
+integrated research HEAD = 0956b5b17085714c1fb9df8ef82f29f6b6ff0f53
 ```
 
 ## Records
@@ -167,5 +168,6 @@ main integration = not performed
 - Stage 2 closure checkpoint: [`checkpoints/2026-09-27-stage-2-formal-complete.md`](checkpoints/2026-09-27-stage-2-formal-complete.md)
 - Stage 2 preregistration: [`prereg/STAGE_2_FORMAL_SPEC.json`](prereg/STAGE_2_FORMAL_SPEC.json)
 - Stage 2 identity firewall: [`prereg/STAGE_2_IDENTITY_FIREWALL.json`](prereg/STAGE_2_IDENTITY_FIREWALL.json)
+- main integration checkpoint: [`../research-generation-4/checkpoints/2026-09-27-g4-08-main-integration.md`](../research-generation-4/checkpoints/2026-09-27-g4-08-main-integration.md)
 
 Research branch: `research/g4-08-rule-semantic-geometry-transition`
