@@ -14,7 +14,8 @@ function sha256Bytes(value) { return crypto.createHash("sha256").update(value).d
 function sha256Text(value) { return sha256Bytes(Buffer.from(String(value), "utf8")); }
 function fileSha256(file) { return sha256Bytes(fs.readFileSync(file)); }
 function setDigest(values) { return sha256Text([...values].sort().join("\n")); }
-function rowDigest(rows) { return sha256Text(rows.map(stable).sort().join("\n")); }
+function legacySetDigest(values) { return sha256Text([...values].sort().map((value) => `${value}\n`).join("")); }
+function rowDigest(rows) { return sha256Text(rows.map(stable).sort().map((value) => `${value}\n`).join("")); }
 function makeSets() { return { seed: new Set(), trajectory: new Set(), prefix: new Set(), root: new Set() }; }
 
 function addRange(range, sets) {
@@ -52,9 +53,10 @@ function findUniqueFile(dir, basename) {
   need(hits.length === 1, `expected exactly one ${basename} below ${dir}, found ${hits.length}`);
   return hits[0];
 }
-function verifySet(values, expected, label) {
+function verifySet(values, expected, label, grammar = "plain") {
   need(values.size === expected.uniqueCount, `${label} unique count mismatch: ${values.size}`);
-  need(setDigest(values) === expected.sha256.replace(/^sha256:/, ""), `${label} digest mismatch`);
+  const digest = grammar === "legacy-newline" ? legacySetDigest(values) : setDigest(values);
+  need(digest === expected.sha256.replace(/^sha256:/, ""), `${label} digest mismatch`);
 }
 
 function loadG202(dir, meta, sets, label) {
@@ -127,9 +129,9 @@ function loadG307Stage2(dir, meta, sets) {
   const roots = new Set(rows.map((row) => row.rootRawSha256));
   const trajectories = new Set(rows.map((row) => row.fullTrajectorySha256));
   const prefixes = new Set(rows.map((row) => row.openingPrefixSha256));
-  verifySet(roots, meta.setDigests.rootRawSha256, "G3-07 Stage2 root set");
-  verifySet(trajectories, meta.setDigests.fullTrajectorySha256, "G3-07 Stage2 trajectory set");
-  verifySet(prefixes, meta.setDigests.openingPrefixSha256, "G3-07 Stage2 prefix set");
+  verifySet(roots, meta.setDigests.rootRawSha256, "G3-07 Stage2 root set", "legacy-newline");
+  verifySet(trajectories, meta.setDigests.fullTrajectorySha256, "G3-07 Stage2 trajectory set", "legacy-newline");
+  verifySet(prefixes, meta.setDigests.openingPrefixSha256, "G3-07 Stage2 prefix set", "legacy-newline");
   for (const row of rows) addIdentityRow(row, sets);
   return { identityRowCount: rows.length, sourceFileSha256: fileSha256(file) };
 }
@@ -151,9 +153,9 @@ function loadG401Silgm(dir, meta, sets) {
     if (rootRawSha256) { roots.add(rootRawSha256); sets.root.add(rootRawSha256); }
   }
   need(rowDigest(rows) === meta.canonicalIdentityRowDigest.replace(/^sha256:/, ""), "G4-01 SILGM canonical identity row digest mismatch");
-  verifySet(sourceSeeds, meta.setDigests.sourceSeed, "G4-01 SILGM source-seed set");
-  verifySet(trajectories, meta.setDigests.fullTrajectorySha256, "G4-01 SILGM trajectory set");
-  verifySet(roots, meta.setDigests.rootRawSha256, "G4-01 SILGM root set");
+  verifySet(sourceSeeds, meta.setDigests.sourceSeed, "G4-01 SILGM source-seed set", "legacy-newline");
+  verifySet(trajectories, meta.setDigests.fullTrajectorySha256, "G4-01 SILGM trajectory set", "legacy-newline");
+  verifySet(roots, meta.setDigests.rootRawSha256, "G4-01 SILGM root set", "legacy-newline");
   return { sourceRowCount: rows.length, trajectoryUniqueCount: trajectories.size, rootUniqueCount: roots.size };
 }
 
@@ -226,4 +228,4 @@ function materialize({ repoRoot, upstreamRoot, firewall }) {
   return { sets, summary };
 }
 
-module.exports = { materialize, stable, sha256Text, fileSha256, setDigest };
+module.exports = { materialize, stable, sha256Text, fileSha256, setDigest, legacySetDigest };
