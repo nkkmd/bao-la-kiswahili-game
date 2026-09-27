@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "program": "Research Generation 4",
+  "agenda": "G4-08",
+  "studyId": "BRSGT-STUDY1",
+  "title": "Bao Rule-Semantic Geometry Transition Study 1",
+  "reviewId": "G4-08-AUTHORIZATION-REVIEW-2026-09-27-V1",
+  "reviewedMainSha": "2023860419d13b6f294b0600943de8fb4e50b1bb",
+  "branch": "research/g4-08-rule-semantic-geometry-transition",
+  "status": "PREREGISTERED-STAGE0-ONLY",
+  "representation": {
+    "stateIdentityFields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "moveIdentityFields": ["type", "phase", "row", "index", "direction", "side", "houseChoice", "houseTwo"],
+    "mode": "RAW-ONLY",
+    "validatedTransforms": [],
+    "relativeDepth": 5,
+    "measurementFoundation": "LGTGMIV-STUDY1 / CLOSED / FORMAL-ELIGIBLE-ALL"
+  },
+  "eventFamilies": [
+    {
+      "id": "BRSGT-E1-CAPTURE",
+      "kind": "MOVE-TRANSITION",
+      "predicate": "canonical legal move type is capture",
+      "interpretation": "EVENT-CONDITIONED-PREPOST-ASSOCIATION"
+    },
+    {
+      "id": "BRSGT-E2-NYUMBA-USE-VS-STOP",
+      "kind": "SAME-ROOT-VARIANT-PAIR",
+      "predicate": "Namua capture physical move has legal stop/use variants with distinct complete post RAW states and true/true/false houseOwned contract",
+      "interpretation": "SAME-ROOT-PAIR-ASSOCIATION"
+    },
+    {
+      "id": "BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION",
+      "kind": "MOVE-TRANSITION",
+      "predicate": "pre.phase=namua, post.phase=namua, mover reserve decrements exactly 1",
+      "interpretation": "EVENT-CONDITIONED-PREPOST-ASSOCIATION"
+    },
+    {
+      "id": "BRSGT-E4-NAMUA-TO-MTAJI",
+      "kind": "MOVE-TRANSITION",
+      "predicate": "pre.phase=namua and post.phase=mtaji",
+      "interpretation": "EVENT-CONDITIONED-PREPOST-ASSOCIATION"
+    }
+  ],
+  "metrics": [
+    "BRSGT-M1-ROOT-LEGAL-WIDTH",
+    "BRSGT-M2-CUMULATIVE-TREE-OCCURRENCE",
+    "BRSGT-M3-GLOBAL-DISTINCT-RAW-STATES",
+    "BRSGT-M4-DUPLICATE-TRANSITION-FRACTION",
+    "BRSGT-M5-CUMULATIVE-TREE-RAW-RATIO",
+    "BRSGT-M6-UNIT-WIDTH-OCCUPANCY-FRACTION"
+  ],
+  "arithmetic": "EXACT-INTEGER-OR-REDUCED-RATIONAL",
+  "defaultInterpretation": "EVENT-CONDITIONED PRE/POST ASSOCIATION",
+  "causalEffectAuthorized": false,
+  "historicalBoundaries": {
+    "g3_06Repair": false,
+    "g3_06ScientificEvidenceReuse": false,
+    "g3_06UnusedStage2NamespaceReuse": false,
+    "g4_02ScientificContribution": "NONE",
+    "g4_07CausalInterpretation": false
+  },
+  "candidateFutureNamespaces": {
+    "stage1Start": 40813001,
+    "stage2Start": 40823001,
+    "authorizedForRead": false
+  },
+  "stages": {
+    "stage0": {
+      "stageId": "BRSGT-S0-TECHNICAL-2026-09-27-v1",
+      "authorized": true,
+      "evidenceClass": "TECHNICAL-FIXTURE",
+      "freshScientificSeedReadsAllowed": false,
+      "scientificOutcomeAllowed": false
+    },
+    "stage1": {
+      "authorized": false,
+      "freshScientificSeedReadsAllowed": false
+    },
+    "stage2": {
+      "authorized": false,
+      "freshScientificSeedReadsAllowed": false
+    }
+  },
+  "protected": {
+    "g4_10Depth11AccessAllowed": false,
+    "publicAiChangeAllowed": false
+  }
+}
