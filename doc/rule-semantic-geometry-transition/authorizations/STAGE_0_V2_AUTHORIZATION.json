@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRSGT-STUDY1",
+  "stageId": "BRSGT-S0-TECHNICAL-2026-09-27-v2",
+  "reviewId": "G4-08-AUTHORIZATION-REVIEW-2026-09-27-V1",
+  "decision": "AUTHORIZED",
+  "authorizationType": "TECHNICAL-ONLY",
+  "maxExecutions": 1,
+  "freshScientificSeedAccessAuthorized": false,
+  "scientificOutcomeAuthorized": false,
+  "protectedDepth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "executionBinding": {
+    "status": "FROZEN",
+    "branch": "research/g4-08-rule-semantic-geometry-transition",
+    "auditedSourceSha": "e0c7a359af5d37875cb914eae19a142d4c86f427",
+    "allowedPostAuditPaths": [
+      "doc/rule-semantic-geometry-transition/authorizations/STAGE_0_V2_AUTHORIZATION.json",
+      "doc/rule-semantic-geometry-transition/executions/STAGE_0_V2_TRIGGER.json"
+    ]
+  },
+  "requiredEvidenceClass": "TECHNICAL-FIXTURE",
+  "requiredRelativeDepth": 5,
+  "resourceCeiling": {
+    "maxGeometryRootMeasurements": 8,
+    "maxEventTransitionsMaterialized": 128,
+    "maxDeterministicPhaseSearchPlies": 160
+  },
+  "failureRule": "FAIL-CLOSED-AS-TECHNICAL-INVALID",
+  "stage1AutomaticallyAuthorizedOnPass": false
+}
