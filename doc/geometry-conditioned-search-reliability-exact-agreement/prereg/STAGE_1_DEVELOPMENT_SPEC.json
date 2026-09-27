@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "agenda": "G4-09",
+  "studyId": "GCSREA-STUDY1",
+  "stageId": "GCSREA-S1-DEVELOPMENT-2026-09-27-v1",
+  "freezeDate": "2026-09-27",
+  "statusAtFreeze": "DESIGN-AND-SOURCE-FREEZE-AUTHORIZED / FRESH-EXECUTION-NOT-YET-AUTHORIZED",
+  "authorizationReviewId": "GCSREA-STUDY1-STAGE1-DESIGN-AUTH-2026-09-27-V1",
+  "evidenceClass": "FRESH-DEVELOPMENT",
+  "formalInferenceAuthorized": false,
+  "moduleA": {
+    "id": "GENERAL-SEARCH-STABILITY",
+    "seedBlock": {"start": 40913001, "end": 40913768, "count": 768, "accessedAtFreeze": false},
+    "maxSourcePly": 80,
+    "policies": ["LGTTCI-P1-UNIFORM-LEGAL", "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE"],
+    "rootFamilies": ["LGTTCI-RF1-MID-ANCHOR", "LGTTCI-RF2-OFFSET-ANCHOR"],
+    "phases": ["namua", "mtaji"],
+    "assignmentNamespace": "GCSREA-S1-ASSIGN-2026-09-27-v1",
+    "selectionNamespace": "GCSREA-S1-SELECT-2026-09-27-v1",
+    "targetPerPolicyRootFamilyPhaseCell": 16,
+    "cellCount": 8,
+    "maximumSelectedRoots": 128,
+    "selectionUsesGeometry": false,
+    "selectionUsesSearchOutput": false,
+    "selectionUsesWinner": false,
+    "rawRootDeduplication": "KEEP-LOWEST-FROZEN-SELECTION-RANK",
+    "replacementAfterDeduplication": false
+  },
+  "geometry": {
+    "representation": "RAW-ONLY",
+    "relativeDepth": 5,
+    "validatedTransformSet": [],
+    "primary": [
+      "SILGM-G1-ROOT-LEGAL-WIDTH",
+      "SILGM-G4-CUMULATIVE-TREE-RAW-RATIO",
+      "SILGM-G5-UNIT-WIDTH-OCCUPANCY-FRACTION"
+    ],
+    "secondary": [
+      "SILGM-G2-CUMULATIVE-TREE-OCCURRENCE",
+      "SILGM-G3-DUPLICATE-TRANSITION-FRACTION"
+    ],
+    "thresholdFreeze": {
+      "source": "STAGE1-GEOMETRY-ONLY",
+      "perPhase": true,
+      "rule": "EXACT-RATIONAL-MEDIAN; EVEN-N-EXACT-MIDPOINT",
+      "equalToThresholdDisposition": "EXCLUDE-FROM-FORMAL-HIGH-LOW",
+      "searchOutcomeInputAllowed": false,
+      "winnerInputAllowed": false
+    }
+  },
+  "search": {
+    "configurations": [
+      {"id": "D2_Q1", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 1},
+      {"id": "D3_Q1", "kind": "exact-depth", "depth": 3, "quiescenceDepth": 1},
+      {"id": "D2_Q0", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 0},
+      {"id": "D2_Q2", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 2},
+      {"id": "B256_Q1_MAXD3", "kind": "node-budget", "nodeBudget": 256, "maxDepth": 3, "quiescenceDepth": 1},
+      {"id": "B1024_Q1_MAXD3", "kind": "node-budget", "nodeBudget": 1024, "maxDepth": 3, "quiescenceDepth": 1}
+    ],
+    "contrasts": [
+      {"id": "SC1-DEPTH", "a": "D2_Q1", "b": "D3_Q1"},
+      {"id": "SC2-NODE-BUDGET", "a": "B256_Q1_MAXD3", "b": "B1024_Q1_MAXD3"},
+      {"id": "SC3-QUIESCENCE", "a": "D2_Q0", "b": "D2_Q2"}
+    ],
+    "primaryEndpoint": "RANKING-PREORDER-CHANGE",
+    "secondaryEndpoints": ["CANONICAL-BEST-CHANGE", "TOPSET-CHANGE", "TOPSET-RELATION", "PV-PREFIX2-CHANGE"],
+    "higherResourceSearchIsTruth": false
+  },
+  "supportGate": {
+    "allEightSourceCellsRepresented": true,
+    "requiredProductionIndependentExactAgreement": true,
+    "minimumGeometryDefinedRoots": 120,
+    "minimumSearchContrastDefinedRoots": 120,
+    "requireGeometryVariationInBothPhases": true,
+    "minimumHighRootsOverall": 20,
+    "minimumLowRootsOverall": 20,
+    "effectDirectionUsed": false,
+    "associationPValueUsed": false,
+    "passToken": "SUPPORTED-FOR-FORMAL-HOLDOUT",
+    "failToken": "NOT-SUPPORTED-FOR-FORMAL-HOLDOUT"
+  },
+  "moduleB": {
+    "id": "EXACT-MICRODOMAIN-AGREEMENT",
+    "fixedManifestPath": "doc/local-game-tree-geometry-exact-consequence-bridge/preregistration/STAGE_1_FORMAL_INPUT_MANIFEST.json",
+    "fixedDomainCount": 8,
+    "stage1Role": "ORACLE-INTEGRITY-AND-REMATERIALIZATION-READINESS-ONLY",
+    "actualSearchVsExactMeasurementAuthorized": false,
+    "candidateRescan": false,
+    "domainReplacement": false,
+    "stateLimitRescue": false,
+    "requiredIntegrityFields": ["rootStateKey", "stateSetSha256", "transitionSetSha256", "solutionSha256", "rootStatus", "rootDtf", "rootOptimalMoveKeys"]
+  },
+  "outputBoundary": {
+    "allowed": [
+      "seed accounting",
+      "firewall rejection counts",
+      "cell support counts",
+      "selected identity rows",
+      "geometry definedness and variation counts",
+      "geometry-only threshold candidates",
+      "search-condition estimability counts",
+      "contrast endpoint definedness counts",
+      "production-independent agreement booleans/hashes",
+      "support-only slot classifications",
+      "resource accounting",
+      "Stage2 identity exclusion material"
+    ],
+    "prohibited": [
+      "geometry-class by search-change risk difference",
+      "effect direction",
+      "association p-value",
+      "formal confirmation or counterexample label",
+      "favorable subgroup ranking",
+      "winner subgroup summary",
+      "actual fixed-8 search-vs-exact agreement values"
+    ]
+  },
+  "resourceCeiling": {
+    "sourceSlots": 768,
+    "maxSourcePly": 80,
+    "selectedRoots": 128,
+    "geometryRootMeasurements": 128,
+    "searchConditionMeasurements": 768,
+    "perGeometryRootDistinctRawStates": 100000,
+    "perGeometryRootUniqueTransitions": 750000,
+    "perGeometryRootTreeOccurrence": 1000000000,
+    "perGeometryRootElapsedMs": 180000,
+    "stageElapsedMs": 10800000,
+    "peakRssBytes": 4294967296,
+    "artifactBytes": 134217728
+  },
+  "protectedBoundary": {
+    "stage2SeedAccess": false,
+    "g405ActualSearchVsExactMeasurement": false,
+    "g405CandidateRescan": false,
+    "g410Depth11Access": false,
+    "publicAiChange": false,
+    "mainIntegration": false
+  },
+  "noRescueAfterFirstFreshRead": true
+}
