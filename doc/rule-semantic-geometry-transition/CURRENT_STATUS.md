@@ -1,7 +1,7 @@
 # G4-08 / BRSGT-STUDY1 — 現在の状態
 
 更新日: 2026-09-27  
-状態: **STAGE 0 v2 PASS / STAGE 1 v3 DEVELOPMENT-COMPLETE / 24-OF-24 SUPPORTED-FOR-FORMAL-HOLDOUT / STAGE 2 NOT AUTHORIZED**
+状態: **STUDY CLOSED / STAGE 2 FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / NO DIRECTIONAL SCIENTIFIC CONCLUSION**
 
 ## Formal identity
 
@@ -23,198 +23,168 @@ Stage 1 v2 = TECHNICAL-INVALID / NO-RERUN-SAME-VERSION
 Stage 1 v2 block = 40814001..40814512 / CONSUMED / NO REUSE
 Stage 1 v3 = STAGE1-DEVELOPMENT-COMPLETE / SUPPORT-ONLY
 Stage 1 v3 block = 40815001..40815512 / 512 READ / CONSUMED / NO REUSE
-Stage 2 = NOT AUTHORIZED / NOT ACCESSED
+Stage 2 v1 = STAGE2-FORMAL-COMPLETE / 24 NON-ESTIMABLE / NO RERUN
+Stage 2 block = 40823001..40824024 / 1024 READ / CONSUMED / NO REUSE
 G4-10 depth-11 = NOT AUTHORIZED / NOT ACCESSED
 public AI change = NONE / NOT AUTHORIZED
-main integration = NOT AUTHORIZED
+main integration = NOT PERFORMED / REQUIRES EXPLICIT INSTRUCTION
 ```
 
-## Stage 0 v2
+## Stage 0
 
-`BRSGT-S0-TECHNICAL-2026-09-27-v2` is `STAGE0-PASS`.
+Stage 0 v1はtechnical fixture不整合で`TECHNICAL-INVALID / NO-RERUN`。Stage 0 v2はRun `36295553800`で`STAGE0-PASS`となった。
 
 ```text
-workflow run = 36295553800
-fixture count = 4
-all represented seed totals = 64
+fixtures = 4
+represented seed total = 64 for every fixture
 E1-E4 = covered
 production / independent exact agreement = true
 fresh scientific seed reads = 0
-Stage 2 reads = 0
-G4-10 depth-11 access = 0
 ```
 
 Canonical record: `results/stage-0-v2/STAGE_0_V2_CANONICAL_RECORD.json`
 
-## Stage 1 v1 / v2 technical closure
+## Stage 1 closure
 
 ### v1
 
-```text
-stage = BRSGT-S1-DEVELOPMENT-2026-09-27-v1
-run = 36298620437
-binding = PASS
-stage disposition = STAGE1-TECHNICAL-INVALID
-terminal error = ReferenceError: freshScientificSeedReads is not defined
-exact fresh read count = unknown
-seed block = 40813001..40813512 / conservatively consumed
-scientific outcome = NONE
-```
-
-v1は未定義shorthandが正常系とcatch系の双方に存在したため、同version rerunを禁止し、block全体を隔離した。
-
-Canonical record: `results/stage-1-v1/STAGE_1_V1_CANONICAL_FAILURE_RECORD.json`  
-Checkpoint: `checkpoints/2026-09-27-stage-1-v1-technical-invalid.md`
+Run `36298620437`。counter shorthand defectにより`STAGE1-TECHNICAL-INVALID`。exact fresh-read countを保存できなかったため`40813001..40813512`全体を安全側で隔離した。同version rerun禁止。
 
 ### v2
 
-```text
-pre-fresh audit run = 36299573408 / PASS
-execution run = 36299638508 / attempt 1
-binding = STAGE1-V2-BINDING-PASS
-stage disposition = STAGE1-TECHNICAL-INVALID
-technical error = missing limit distinctRawStates
-fresh scientific seed reads = 512
-seed block = 40814001..40814512 / consumed
-formal inference = false
-effect values/signs retained = false
-Stage 2 reads = 0
-G4-10 depth-11 access = 0
-```
+Run `36299638508`。512 slotsをread後、CRCLGR preflight limit-key interface mismatchで`STAGE1-TECHNICAL-INVALID`。`40814001..40814512`は全消費・再利用禁止。
 
-原因は`CRCLGR boundedPreflight()`へ渡す3つのlimit-key名のinterface mismatchで、科学的negative resultではない。v2は同version rerun禁止。
+### v3
 
-Canonical record: `results/stage-1-v2/STAGE_1_V2_CANONICAL_FAILURE_RECORD.json`  
-Checkpoint: `checkpoints/2026-09-27-stage-1-v2-technical-invalid.md`
-
-## Stage 1 v3 pre-fresh verification
-
-v3は科学設計を変更せず、v1のfresh-read shorthand修正とv2で判明した3つのpreflight limit-key修正のみをversion-isolatedに適用した。
-
-最初のstatic-audit attempt `36303146973` は、生成runner内の正常なself-test mappingを含めた件数をauditが誤って4件と期待したため、**fresh access前にtechnical audit assertion failure**で停止した。科学seed accessは0。
-
-監査条件だけを修正したattempt 2:
+pre-fresh static auditを経てone-shot実行を行い、Run `36303568642`で`STAGE1-DEVELOPMENT-COMPLETE`。
 
 ```text
-static audit run = 36303292448
-job = 108574922365
-audit HEAD = 27f2129d7ed434377c363b1f89534c7cd5cad7fb
-disposition = STAGE1-V3-PRE-FRESH-STATIC-AUDIT-PASS
-catch self-test = PASS
-preflight-contract self-test = PASS / ELIGIBLE
-fresh reads at audit = 0
-Stage 2 reads at audit = 0
-G4-10 access at audit = 0
-generated runner SHA-256 = 180b02e89b60b3a83fa201a9f67a9d3ace08f5e96a57c47db93ec0a88bd48e65
-```
-
-監査HEAD以後、execution前に変更されたのはv3 authorizationとv3 triggerの2ファイルだけで、binding verifierがこれを確認した。
-
-## Stage 1 v3 one-shot execution
-
-```text
-stage = BRSGT-S1-DEVELOPMENT-2026-09-27-v3
-workflow run = 36303568642 / attempt 1
-job = 108575705651
 execution HEAD = b59918149fdceac5f619328aa82771abdbfa5994
-binding = STAGE1-V3-BINDING-PASS
-stage disposition = STAGE1-DEVELOPMENT-COMPLETE
 artifact ID = 10926322837
 artifact ZIP SHA-256 = c93ae26b019edde841e58a4f452aa8bacd45c0954937294ca2c12c786d916140
-fresh scientific seed reads = 512
-identity rows = 512
+fresh reads = 512
 measured event units = 64
 unique geometry roots = 97
 production / independent exact agreement = true
 formal inference = false
-effect values retained = false
-effect signs retained = false
-Stage 2 reads = 0
-G4-10 depth-11 access = 0
-public AI changed = false
+effect value/sign/direction retained for promotion = false
 ```
 
-Artifact SHA manifestはdownload後にも再検証し、execution context / result / Stage 2 identity exclusion / firewall summaryの全ファイルが一致した。
+4 event families × 6 metricsの全24 slotsがStage 1 support gateを通り、`SUPPORTED-FOR-FORMAL-HOLDOUT`となった。これはdirectional resultではない。
 
 Canonical record: `results/stage-1-v3/STAGE_1_V3_CANONICAL_RECORD.json`  
 Checkpoint: `checkpoints/2026-09-27-stage-1-v3-development-complete.md`
 
-## Stage 1 v3 support-only result
+## Stage 2 pre-fresh verification
 
-Stage 1 support familyは4 event families × 6 metrics = 24 slots。
+Stage 2はfixed 24-slot formal family、fresh block `40823001..40824024`、RAW depth 5、exact two-sided binomial sign test、Holm-Bonferroni、policy concordanceを事前登録した。
 
-全8 event-family × policy cellで8 event unitsずつ計測し、合計64 event unitsを得た。選択されたmeasurement sequenceではpreflight rejectionは0。
+最初のpre-fresh audit Run `36313405735` は、G4-08 Stage 1 v3 artifact内のidentity fileがnested pathに保存されていた一方、workflowがtop-level pathを期待していたため、fresh access前のpresence checkで停止した。scientific seed readは0。
+
+artifact layout normalizationとstatic-auditの現行spec-key参照だけをtechnical correctionし、科学spec・seed block・formal family・inference ruleは変更しなかった。
+
+再監査:
 
 ```text
-E1 capture: P1 8 / P2 8
-E2 nyumba use-vs-stop: P1 8 / P2 8
-E3 reserve decrement nontransition: P1 8 / P2 8
-E4 Namua→Mtaji: P1 8 / P2 8
+static audit run = 36314109864 / attempt 1 / PASS
+job = 108605445752
+audit HEAD = d2e22fa9b4ca8286480beda2a89b5e287bcdad9c
+disposition = STAGE2-PRE-FRESH-STATIC-AUDIT-PASS
+audit scope = 2
+artifact ID = 10930605637
+artifact ZIP SHA-256 = 00a84324547b1ffd1718283a1afbc3ae5d5dbe76776af8a5c816ade06b98c6e7
+fresh Stage 2 reads = 0
+G4-10 access = 0
+public AI changed = false
 ```
 
-全24 slotsについて:
+監査HEAD以後、formal execution前に変更されたのは`STAGE_2_AUTHORIZATION.json`と`STAGE_2_TRIGGER.json`の2 pathのみ。
+
+## Stage 2 one-shot formal execution
 
 ```text
-exact-defined P1 = 8
-exact-defined P2 = 8
-combined = 16
-frozen minimum per policy = 6
-frozen minimum combined = 12
-classification = SUPPORTED-FOR-FORMAL-HOLDOUT
-effect direction used = false
-```
-
-したがって **24 / 24 slotsがformal holdout候補にsupportされる**。
-
-これはdirectional resultではない。Stage 1はcontrast value/signを保持せず、増加・減少・因果効果・formal confirmationを判定していない。
-
-## Firewall / identity exclusion
-
-```text
-firewall digest = 6dd29d162df43fc4e36bcb9323aecf30d98cda18e8aeeffa1424c865cd658f7a
-seed identities = 9472
-trajectory identities = 1041
-prefix identities = 657
-root identities = 9355
-fresh reads before firewall complete = 0
-Stage 1 v3 identity exclusion rows = 512
-scientific outcome fields retained in identity exclusion = false
-```
-
-v1/v2/v3 Stage 1 namespacesはすべて再利用禁止。
-
-## Scientific interpretation to date
-
-```text
-Stage 1 v1 scientific outcome = NONE / TECHNICAL-INVALID
-Stage 1 v2 scientific outcome = NONE / TECHNICAL-INVALID
-Stage 1 v3 scientific outcome class = DEVELOPMENT-SUPPORT-ONLY
-formal inference performed = false
-effect values/signs retained as evidence = false
-Stage 2 seed reads = 0
+stage = BRSGT-S2-FORMAL-2026-09-27-v1
+workflow run = 36314208922 / attempt 1 / success
+job = 108605721107
+execution HEAD = 692d2d718ab55348e7fb4f8190476524b0a5bc95
+binding = PASS
+stage disposition = STAGE2-FORMAL-COMPLETE
+artifact ID = 10929684128
+artifact name = brsgt-stage2-formal-36314208922-1
+artifact ZIP SHA-256 = bbbe1e2206c9f439168829581d1bce1ef03dddaec1fe0914b8888a63767bcb1b
+fresh scientific seed reads = 1024 / 1024
+first / last = 40823001 / 40824024
+no-rescue boundary crossed = true
+production / independent exact agreement = true
 G4-10 depth-11 access = 0
 public AI changed = false
 ```
 
-Stage 1 v3が示したのは、固定fresh-development populationとRAW depth-5測定契約の下で、24 event-family × metric slotsすべてがformal heldout検証に十分なexact-defined supportを持ったことだけである。
+## Stage 2 formal result
 
-## Protected boundaries
+frozen freshness firewallはfresh access前に完成し、その後1024 fresh source trajectoriesを固定順でreadした。
 
-- Stage 0 v1 rerun禁止
-- Stage 1 v1/v2/v3 rerun禁止
-- Stage 1 v1 block `40813001..40813512` reuse禁止
-- Stage 1 v2 block `40814001..40814512` reuse禁止
-- Stage 1 v3 block `40815001..40815512` reuse禁止
-- Stage 2 seed accessは別authorization前禁止
-- Stage 1 effect方向をStage 2 family選定へ使用禁止
-- G4-10 depth-11 access禁止
-- public AI変更禁止
-- main integration禁止
+```text
+UPSTREAM-REACHABLE-RAW-ROOT = 1011
+UPSTREAM-TRAJECTORY = 6
+UPSTREAM-OPENING-PREFIX = 7
+total rejected = 1024
+accepted source trajectories = 0
+measured event units = 0
+unique geometry roots measured = 0
+```
 
-## Next gate — Stage 2 formal preregistration / authorization review
+このため4 event families × 6 metricsの24 formal slotsすべてがestimability gateを満たさなかった。
 
-24 / 24 slotsがsupport gateを通過したため、Stage 2 formal holdoutを設計する資格は得た。ただしStage 2はまだ未認可。
+```text
+INCREASE-CONFIRMED = 0
+DECREASE-CONFIRMED = 0
+NOT-CONFIRMED = 0
+NON-ESTIMABLE = 24
+TECHNICAL-INVALID = 0
+```
 
-次は、Stage 1のsupport classificationとidentity exclusionだけを使用し、effect方向を参照せずにStage 2 formal family、fresh seed block、identity firewall、event別inference、multiplicity、formal labels、resource/no-rescue境界を別途freezeする。
+**正式結論は24 / 24 `NON-ESTIMABLE`。**
 
-Stage 2 fresh seed accessは、そのpreregistration・static verification・source-bound one-shot authorizationが完了するまで行わない。
+これは「effectなし」を意味しない。freshness gate後にformal event unitsが残らなかったため、capture、nyumba、reserve decrement、Namua→Mtajiのgeometry directionについて科学的結論を形成できなかった。
+
+Canonical record: `results/stage-2/STAGE_2_CANONICAL_RECORD.json`  
+Checkpoint: `checkpoints/2026-09-27-stage-2-formal-complete.md`
+
+## Freshness exhaustion diagnostic
+
+結果を変更しないpost-execution identity diagnosticで、全1024 Stage 2 trajectoriesのply 0 RAW rootが同一であることを確認した。
+
+```text
+initial RAW root = 2c13e69c51d58e2605bf6018ac848d99685aa4d4fe78c0af9f8e0fc07e1d3fd6
+Stage 2 rows with this ply-0 root = 1024 / 1024
+Stage 1 v3 rows with this ply-0 root = 512 / 512
+initial root already in frozen firewall = true
+```
+
+collision判定はtrajectory → opening prefix → reachable RAW rootの順であり、先にtrajectory 6件、prefix 7件が除外された後、残る1011件は全て共通initial rootでRAW-root collisionとなった。
+
+この診断を使って同Stage/versionを修正再実行しない。ply 0除外、freshness grammar変更、seed extension、replacement populationはno-rescue契約により禁止される。
+
+## Scientific interpretation
+
+G4-08から許される結論は次に限定する。
+
+- Stage 1では24/24 slotsにformal holdoutを実行できるsupportが存在した。
+- Stage 2のfrozen identity firewallではfresh population 1024/1024が除外された。
+- そのためStage 2 formal family 24/24はNON-ESTIMABLEとなった。
+- rule-semantic eventによるgeometryの増減方向についてformal confirmationは得られていない。
+- `NON-ESTIMABLE`をnegative result、no-effect、counterexampleとして扱わない。
+- causal effect、whole-Bao law、game-theoretic consequence、AI strength、人間のdifficultyへ拡張しない。
+
+## Protected boundaries / closure
+
+- Stage 0 v1 rerun禁止。
+- Stage 1 v1/v2/v3 rerun禁止、各namespace再利用禁止。
+- Stage 2 v1 rerun禁止、`40823001..40824024`再利用禁止。
+- Stage 2のpost-hoc firewall修正によるrescue禁止。
+- G4-10 depth-11 access禁止、実アクセス0。
+- public AI変更なし。
+- main integration未実施。
+
+**BRSGT-STUDY1は、Stage 2 formal holdoutの完了と24/24 NON-ESTIMABLEをもって研究実行を閉じる。** 次の作業は文書整合性の最終確認と、別途明示された場合のみmain統合である。
