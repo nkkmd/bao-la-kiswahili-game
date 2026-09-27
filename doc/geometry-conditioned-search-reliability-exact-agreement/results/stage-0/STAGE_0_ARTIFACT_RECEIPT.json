@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GCSREA-STUDY1",
+  "stageId": "GCSREA-S0-TECHNICAL-2026-09-27-v1",
+  "workflowRunId": 36322244107,
+  "runAttempt": 1,
+  "jobId": 108628190493,
+  "executionSha": "47d5d0849fcc288ae58415a0d5dceef98bad17a8",
+  "artifact": {
+    "id": 10932344799,
+    "name": "gcsrea-stage0-technical-36322244107-1",
+    "sizeBytes": 3100,
+    "zipSha256": "d702890ce8697fde6d52f763f4e1fdcbcebdcd6b02900ea87e1daec8f41865ae"
+  },
+  "files": {
+    "STAGE_0_TECHNICAL_RESULT.json": "1beab06edf7e86227cdb50e4a7d9aefe8b8c577b9ccff399d340c96965f2e5f2",
+    "STAGE_0_EXECUTION_CONTEXT.json": "e1172f3e144abed9e8e0746683ba2594d762c2ff9e757a0450704ad8eec91f45"
+  },
+  "verifiedDisposition": "STAGE0-PASS",
+  "scientificExecution": false,
+  "freshScientificSeedReads": 0,
+  "g4_05ExactDomainNewMeasurements": 0,
+  "g4_10Depth11AccessCount": 0,
+  "publicAiChanged": false
+}
