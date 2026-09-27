@@ -83,7 +83,7 @@
       "artifactName": "mlgmr-stage2-formal-result",
       "identityFile": "STAGE_2_CANDIDATE_MANIFEST.json",
       "identityFileSha256": "1c4b8479a04169a50e89e4c33b79fc4a95930c2d61c52f1d6ddb51cf958b28af",
-      "identityRowCount": 96,
+      "identityRowCount": 363,
       "artifactZipSha256": "4d8370ccad1be7fa4052a4293e6b64c4e1b77f7c11c94c1f4dbabead694394f2"
     }
   },
