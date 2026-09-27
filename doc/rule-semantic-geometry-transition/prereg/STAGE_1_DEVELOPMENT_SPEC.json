@@ -44,6 +44,8 @@
     "reachablePreStateRequired": true,
     "e1e3e4TieBreak": "canonical move key ascending",
     "e2TieBreak": "canonical physical move key ascending",
+    "relayLimitTransitionDisposition": "TECHNICAL-INELIGIBLE-SKIP-IN-FIXED-CANONICAL-ORDER",
+    "relayLimitNyumbaVariantPairDisposition": "TECHNICAL-INELIGIBLE-SKIP-IN-FIXED-CANONICAL-ORDER",
     "eventFamilies": [
       "BRSGT-E1-CAPTURE",
       "BRSGT-E2-NYUMBA-USE-VS-STOP",
