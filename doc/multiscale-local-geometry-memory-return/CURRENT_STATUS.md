@@ -3,7 +3,7 @@
 更新日: 2026-09-27  
 Program: `Research Generation 4 / G4-07`  
 Study: `MLGMR-STUDY1`  
-状態: **`COMPLETE / FORMAL-COMPLETE / RESEARCH-BRANCH-CLOSED`**
+状態: **`COMPLETE / FORMAL-COMPLETE / PRE-MAIN-AUDIT-PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`**
 
 ## 現在地
 
@@ -19,6 +19,7 @@ REVERSAL-CONFIRMED = 6
 PERSISTENCE-CONFIRMED = 0
 NOT-CONFIRMED = 10
 NON-ESTIMABLE = 0
+pre-main audit = PASS
 G4-10 depth-11 access = 0 / NOT AUTHORIZED
 public AI change = false
 main integration = NOT AUTHORIZED / NOT EXECUTED
@@ -176,14 +177,26 @@ Final report:
 
 `MLGMR-STUDY1`のscientific executionは完了した。追加scientific runは不要かつ未認可。
 
+## Pre-main audit
+
+最終整合性監査はPASS。確認済み:
+
+- canonical Stage 2 result / closure / current-facing文書のformal counts一致
+- raw artifact digestとcanonical provenanceの一致
+- research branchはreviewed `main`に対してbehind 0
+- branch差分に`public/`変更なし
+- public AI production changeなし
+- G4-10 depth-11 access = 0
+- same-evidence rerun / seed extension / replacement populationなし
+- frozen [`../research-generation-4/PROGRAM_PLAN.md`](../research-generation-4/PROGRAM_PLAN.md) 未変更
+
+監査checkpoint: [`../research-generation-4/checkpoints/2026-09-27-g4-07-pre-main-audit.md`](../research-generation-4/checkpoints/2026-09-27-g4-07-pre-main-audit.md)
+
 ## 次に許可される作業
 
-1. G4-07関連文書の最終整合性監査
-2. central RG4 current-facing文書の同期
-3. branch scope / protected boundary / public AI非変更の確認
-4. 問題がなければ別途main-integration review
+次は **main-integration reviewのみ**。main統合はまだ未認可・未実施であり、明示的な統合判断前には行わない。
 
-main統合はまだ認可されていない。
+G4-08 / G4-09 / G4-10 scientific executionは本Studyのclosureや監査PASSによって自動認可されない。
 
 ## 正本
 
