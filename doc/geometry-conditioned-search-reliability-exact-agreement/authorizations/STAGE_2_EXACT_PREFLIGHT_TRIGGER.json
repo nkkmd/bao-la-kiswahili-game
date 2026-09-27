@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GCSREA-STUDY1",
+  "stageId": "GCSREA-S2-EXACT-CENSUS-2026-09-27-v1",
+  "action": "RUN-TECHNICAL-PREFLIGHT-WITHOUT-ACTUAL-FIXED8-SEARCH-MEASUREMENT",
+  "actualFixed8SearchMeasurementAuthorized": false,
+  "generalStage2FreshSeedReadAuthorized": false,
+  "g405CandidateRescanAuthorized": false,
+  "g405DomainReplacementAuthorized": false,
+  "g410Depth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false
+}
