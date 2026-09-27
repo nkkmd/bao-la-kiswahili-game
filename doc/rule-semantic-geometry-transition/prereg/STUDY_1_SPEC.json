@@ -7,7 +7,7 @@
   "reviewId": "G4-08-AUTHORIZATION-REVIEW-2026-09-27-V1",
   "reviewedMainSha": "2023860419d13b6f294b0600943de8fb4e50b1bb",
   "branch": "research/g4-08-rule-semantic-geometry-transition",
-  "status": "PREREGISTERED-STAGE0-ONLY",
+  "status": "PREREGISTERED-STAGE0-V2-PREPARATION-ONLY",
   "representation": {
     "stateIdentityFields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
     "moveIdentityFields": ["type", "phase", "row", "index", "direction", "side", "houseChoice", "houseTwo"],
@@ -66,13 +66,21 @@
     "authorizedForRead": false
   },
   "stages": {
-    "stage0": {
-      "stageId": "BRSGT-S0-TECHNICAL-2026-09-27-v1",
-      "authorized": true,
-      "evidenceClass": "TECHNICAL-FIXTURE",
-      "freshScientificSeedReadsAllowed": false,
-      "scientificOutcomeAllowed": false
-    },
+    "stage0Versions": [
+      {
+        "stageId": "BRSGT-S0-TECHNICAL-2026-09-27-v1",
+        "disposition": "TECHNICAL-INVALID / NO-RERUN",
+        "freshScientificSeedReads": 0,
+        "scientificOutcomeGenerated": false
+      },
+      {
+        "stageId": "BRSGT-S0-TECHNICAL-2026-09-27-v2",
+        "status": "PREPARATION-ONLY / NOT-YET-AUTHORIZED-FOR-EXECUTION",
+        "evidenceClass": "TECHNICAL-FIXTURE",
+        "freshScientificSeedReadsAllowed": false,
+        "scientificOutcomeAllowed": false
+      }
+    ],
     "stage1": {
       "authorized": false,
       "freshScientificSeedReadsAllowed": false
