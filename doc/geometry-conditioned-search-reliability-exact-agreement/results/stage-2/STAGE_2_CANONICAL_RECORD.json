@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "agenda": "G4-09",
+  "studyId": "GCSREA-STUDY1",
+  "stageId": "GCSREA-S2-EXACT-CENSUS-2026-09-27-v1",
+  "canonicalDisposition": "STAGE2-EXACT-CENSUS-COMPLETE / 36-OF-36-NONTRIVIAL-ESTIMABLE / CANONICAL-BEST-AND-PV-FIRST-IN-EXACT-36-OF-36 / TOPSET-EQUAL-35-OF-36",
+  "evidenceClass": "FIXED-FINITE-EXACT-CENSUS",
+  "scientificExecution": {
+    "workflowRunId": 36359283198,
+    "workflowRunAttempt": 1,
+    "triggerCommitSha": "d0f276262944edc6fd1143e6b71d6526ad4221c5",
+    "leaseCommitSha": "05bcd129dfc84193bd786a27b9a6adcdeeca88e5",
+    "codeFreezeHead": "c1425c6b67d85f4e7f42032fc04aaf968f151454",
+    "rawArtifactId": 10945220729,
+    "rawArtifactZipSha256": "ef5f36298844fe7b9f6d5a62d478d05131f314cd8e766affe3e6c4cdde5ff600",
+    "finalArtifactId": 10945085978,
+    "finalArtifactZipSha256": "9a02241b2fb28d9aac936d3d203e39d9a2bba3eee5905fa02aa4ecbca725ef7b",
+    "resultCoreSha256": "c74f9f3baa5065c5ae6df70dbbccdeb50c0adba5006d2d647fa6931cd3764e20",
+    "authorizedScientificMeasurements": 1,
+    "actualScientificMeasurements": 1,
+    "scientificRerunPerformed": false
+  },
+  "premeasurementIntegrity": {
+    "exactOracleIntegrityDisposition": "EXACT-ORACLE-INTEGRITY-PREFLIGHT-PASS",
+    "exactOracleCoreSha256": "924922e5072cfe19facb954ce24cf8207d15a38f3fb861e08a4e4d5f1daf8a7c",
+    "actualSearchVsExactMeasurementsBeforeLease": 0,
+    "durableLeaseAcquiredBeforeMeasurement": true
+  },
+  "population": {
+    "fixedDomainCount": 8,
+    "forcedDomainCount": 2,
+    "nontrivialDomainCount": 6,
+    "searchConfigurationCount": 6,
+    "searchConfigurationIds": [
+      "D2_Q1",
+      "D3_Q1",
+      "D2_Q0",
+      "D2_Q2",
+      "B256_Q1_MAXD3",
+      "B1024_Q1_MAXD3"
+    ],
+    "nontrivialDomainConfigurationCells": 36,
+    "nontrivialEstimableCells": 36,
+    "nontrivialNonEstimableCells": 0
+  },
+  "implementationAgreement": {
+    "productionSearchExecutions": 36,
+    "independentSearchExecutions": 36,
+    "totalSearchExecutions": 72,
+    "productionIndependentSearchExact": true,
+    "productionIndependentClassifierExact": true
+  },
+  "aggregateExactAgreement": {
+    "canonicalBestInExactOptimalSet": {
+      "true": 36,
+      "false": 0
+    },
+    "pvFirstMoveInExactOptimalSet": {
+      "true": 36,
+      "false": 0
+    },
+    "topSetRelationCounts": {
+      "EQUAL": 35,
+      "SEARCH-SUBSET-EXACT": 1,
+      "SEARCH-SUPERSET-EXACT": 0,
+      "OVERLAP": 0,
+      "DISJOINT": 0
+    },
+    "exactOptimalBestRankHistogram": {
+      "1": 36
+    },
+    "exactOptimalWorstRankHistogram": {
+      "1": 35,
+      "2": 1
+    }
+  },
+  "byConfiguration": [
+    {
+      "configurationId": "D2_Q1",
+      "nontrivialEstimableDomains": 6,
+      "canonicalBestInExactCount": 6,
+      "pvFirstInExactCount": 6,
+      "topSetRelationCounts": {"EQUAL": 6, "SEARCH-SUBSET-EXACT": 0, "SEARCH-SUPERSET-EXACT": 0, "OVERLAP": 0, "DISJOINT": 0}
+    },
+    {
+      "configurationId": "D3_Q1",
+      "nontrivialEstimableDomains": 6,
+      "canonicalBestInExactCount": 6,
+      "pvFirstInExactCount": 6,
+      "topSetRelationCounts": {"EQUAL": 6, "SEARCH-SUBSET-EXACT": 0, "SEARCH-SUPERSET-EXACT": 0, "OVERLAP": 0, "DISJOINT": 0}
+    },
+    {
+      "configurationId": "D2_Q0",
+      "nontrivialEstimableDomains": 6,
+      "canonicalBestInExactCount": 6,
+      "pvFirstInExactCount": 6,
+      "topSetRelationCounts": {"EQUAL": 5, "SEARCH-SUBSET-EXACT": 1, "SEARCH-SUPERSET-EXACT": 0, "OVERLAP": 0, "DISJOINT": 0}
+    },
+    {
+      "configurationId": "D2_Q2",
+      "nontrivialEstimableDomains": 6,
+      "canonicalBestInExactCount": 6,
+      "pvFirstInExactCount": 6,
+      "topSetRelationCounts": {"EQUAL": 6, "SEARCH-SUBSET-EXACT": 0, "SEARCH-SUPERSET-EXACT": 0, "OVERLAP": 0, "DISJOINT": 0}
+    },
+    {
+      "configurationId": "B256_Q1_MAXD3",
+      "nontrivialEstimableDomains": 6,
+      "canonicalBestInExactCount": 6,
+      "pvFirstInExactCount": 6,
+      "topSetRelationCounts": {"EQUAL": 6, "SEARCH-SUBSET-EXACT": 0, "SEARCH-SUPERSET-EXACT": 0, "OVERLAP": 0, "DISJOINT": 0}
+    },
+    {
+      "configurationId": "B1024_Q1_MAXD3",
+      "nontrivialEstimableDomains": 6,
+      "canonicalBestInExactCount": 6,
+      "pvFirstInExactCount": 6,
+      "topSetRelationCounts": {"EQUAL": 6, "SEARCH-SUBSET-EXACT": 0, "SEARCH-SUPERSET-EXACT": 0, "OVERLAP": 0, "DISJOINT": 0}
+    }
+  ],
+  "singleNonEqualTopSetCell": {
+    "configurationId": "D2_Q0",
+    "domainIndex": 4,
+    "relation": "SEARCH-SUBSET-EXACT",
+    "exactOptimalMoveKeys": [
+      "capture:mtaji:1:4:left:::false",
+      "capture:mtaji:1:7:left:::false"
+    ],
+    "searchTopSetMoveKeys": [
+      "capture:mtaji:1:4:left:::false"
+    ],
+    "canonicalBestInExactOptimalSet": true,
+    "pvFirstMoveInExactOptimalSet": true,
+    "exactOptimalBestRank": 1,
+    "exactOptimalWorstRank": 2
+  },
+  "forcedRoots": {
+    "domainIndices": [6, 8],
+    "searchHelperExecuted": false,
+    "classification": "TRIVIAL-FORCED-LEGAL",
+    "reportedSeparately": true
+  },
+  "formalBoundary": {
+    "pValuesComputed": false,
+    "confidenceIntervalsComputed": false,
+    "configurationWinnerSelected": false,
+    "wholeBaoProbabilityEstimated": false,
+    "higherResourceSearchUsedAsTruth": false
+  },
+  "protectedBoundary": {
+    "generalStage2FreshSeedReads": 0,
+    "g405CandidateRescanCount": 0,
+    "g405DomainReplacementCount": 0,
+    "g410Depth11AccessCount": 0,
+    "publicAiChanged": false,
+    "mainIntegrated": false
+  },
+  "resourceUse": {
+    "elapsedSeconds": 0.55,
+    "maxRssKb": 73556,
+    "resultBytes": 68023
+  },
+  "interpretation": {
+    "fixed8RepresentsWholeBaoCorrectnessRate": false,
+    "topSet35Of36IsWholeBaoAccuracyEstimate": false,
+    "canonicalBest36Of36IsWholeBaoAccuracyEstimate": false,
+    "configurationRankingAuthorized": false,
+    "publicAiAdoptionAuthorized": false
+  }
+}
