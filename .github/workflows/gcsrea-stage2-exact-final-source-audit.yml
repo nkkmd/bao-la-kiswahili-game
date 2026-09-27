@@ -1,0 +1,105 @@
+name: GCSREA G4-09 Stage 2 exact-census final source audit
+
+on:
+  push:
+    branches:
+      - research/g4-09-search-reliability-exact-agreement
+    paths:
+      - doc/geometry-conditioned-search-reliability-exact-agreement/authorizations/STAGE_2_EXACT_FINAL_SOURCE_AUDIT_TRIGGER.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gcsrea-g4-09-stage2-exact-final-source-audit
+  cancel-in-progress: false
+
+jobs:
+  final-source-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout candidate freeze source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Syntax and pre-authorization boundary checks
+        run: |
+          set -euo pipefail
+          node --check tools/experiments/run-gcsrea-stage2-exact-census.js
+          node --check tools/experiments/verify-gcsrea-stage2-exact-result.js
+          node --check tools/experiments/verify-gcsrea-stage2-exact-binding.js
+          node --check tools/experiments/verify-gcsrea-stage1-exact-oracle-preflight.js
+          node --check tools/experiments/lib/gcsrea-exact-agreement-production.js
+          node --check tools/experiments/lib/gcsrea-exact-agreement-independent.js
+          test ! -e doc/geometry-conditioned-search-reliability-exact-agreement/authorizations/STAGE_2_EXACT_MEASUREMENT_AUTHORIZATION.json
+          test ! -e doc/geometry-conditioned-search-reliability-exact-agreement/authorizations/STAGE_2_EXACT_MEASUREMENT_TRIGGER.json
+          test ! -e doc/geometry-conditioned-search-reliability-exact-agreement/executions/STAGE_2_EXACT_CENSUS_MEASUREMENT_LEASE.json
+
+      - name: Re-verify exact oracle integrity without search measurement
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/gcsrea-stage2-final-source-audit
+          node tools/experiments/verify-gcsrea-stage1-exact-oracle-preflight.js \
+            artifacts/gcsrea-stage2-final-source-audit/EXACT_ORACLE_INTEGRITY_PREFLIGHT.json
+
+      - name: Run final runner structural preflight only
+        run: |
+          set -euo pipefail
+          node tools/experiments/run-gcsrea-stage2-exact-census.js \
+            --preflight-only \
+            --output artifacts/gcsrea-stage2-final-source-audit/PREMEASUREMENT_STRUCTURAL_RESULT.json
+          node <<'NODE'
+          const fs=require('node:fs');
+          const x=JSON.parse(fs.readFileSync('artifacts/gcsrea-stage2-final-source-audit/PREMEASUREMENT_STRUCTURAL_RESULT.json','utf8'));
+          const need=(v,m)=>{if(!v)throw new Error(m);};
+          need(x.disposition==='STAGE2-EXACT-CENSUS-PREMEASUREMENT-STRUCTURAL-PASS','runner structural preflight failed');
+          need(x.fixedDomainCount===8&&x.forcedRootCount===2&&x.nontrivialRootCount===6,'fixed census mismatch');
+          need(x.actualFixed8SearchMeasurements===0&&x.productionSearchExecutions===0&&x.independentSearchExecutions===0,'search executed during final source audit');
+          need(x.generalStage2FreshSeedReads===0&&x.g410Depth11AccessCount===0&&x.scientificMeasurementPerformed===false,'protected boundary violation');
+          NODE
+
+      - name: Audit one-shot workflow structure
+        run: |
+          set -euo pipefail
+          node <<'NODE' > artifacts/gcsrea-stage2-final-source-audit/WORKFLOW_STRUCTURE_AUDIT.json
+          const fs=require('node:fs');
+          const p='.github/workflows/gcsrea-stage2-exact-measurement-once.yml';
+          const s=fs.readFileSync(p,'utf8');
+          const need=(v,m)=>{if(!v)throw new Error(m);};
+          const count=(needle)=>s.split(needle).length-1;
+          need(s.includes('STAGE_2_EXACT_MEASUREMENT_TRIGGER.json'),'measurement workflow trigger path missing');
+          need(s.includes('Refuse if durable Stage 2 exact-census lease already exists'),'preexisting lease refusal missing');
+          need(s.includes('Acquire durable one-shot exact-census lease before measurement'),'durable lease acquisition missing');
+          need(s.includes('acquiredBeforeActualMeasurement:true'),'lease-before-measurement contract missing');
+          need(count('--execute-authorized-once')===1,'authorized measurement command must appear exactly once');
+          need(s.includes('Upload raw post-measurement evidence immediately'),'immediate raw evidence upload missing');
+          need(s.includes('if: always()'),'always-upload protection missing');
+          need(s.includes('verify-gcsrea-stage2-exact-result.js'),'structured result verifier missing');
+          need(s.includes('maximumTotalSearchExecutions:72'),'lease resource ceiling mismatch');
+          need(s.includes('g410Depth11AccessAuthorized:false'),'G4-10 protected boundary missing');
+          need(s.includes('publicAiChangeAuthorized:false'),'public AI protected boundary missing');
+          const out={disposition:'FINAL-ONE-SHOT-WORKFLOW-STRUCTURE-PASS',authorizedMeasurementCommandCount:count('--execute-authorized-once'),actualFixed8SearchMeasurements:0};
+          process.stdout.write(JSON.stringify(out,null,2)+'\n');
+          NODE
+
+      - name: Record final source audit metadata and hashes
+        run: |
+          set -euo pipefail
+          node <<'NODE' > artifacts/gcsrea-stage2-final-source-audit/ACTIONS_EXECUTION_METADATA.json
+          const row={schemaVersion:1,studyId:'GCSREA-STUDY1',stageId:'GCSREA-S2-EXACT-CENSUS-2026-09-27-v1',workflowRunId:Number(process.env.GITHUB_RUN_ID),workflowRunAttempt:Number(process.env.GITHUB_RUN_ATTEMPT),sourceSha:process.env.GITHUB_SHA,auditClass:'FINAL-SOURCE / PRE-AUTHORIZATION / ZERO-ACTUAL-SEARCH',actualFixed8SearchMeasurements:0,generalStage2FreshSeedReads:0,g410Depth11AccessCount:0,publicAiChanged:false};
+          process.stdout.write(JSON.stringify(row,null,2)+'\n');
+          NODE
+          find artifacts/gcsrea-stage2-final-source-audit -type f ! -name SHA256SUMS.txt -print0 | sort -z | xargs -0 sha256sum > artifacts/gcsrea-stage2-final-source-audit/SHA256SUMS.txt
+
+      - name: Upload final source audit evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: gcsrea-stage2-final-source-audit-${{ github.run_id }}
+          path: artifacts/gcsrea-stage2-final-source-audit
+          if-no-files-found: error
+          retention-days: 90
