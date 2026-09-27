@@ -1,18 +1,19 @@
 # Research Generation 4 — 再開位置
 
 更新日: 2026-09-27  
-状態: **`G4-07 COMPLETE ON RESEARCH BRANCH / PRE-MAIN AUDIT NEXT`**
+状態: **`G4-07 PRE-MAIN-AUDIT-PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`**
 
 ## 再開時の読む順序
 
 1. remote `main` HEADを確認する。
 2. [`CURRENT_STATUS.md`](CURRENT_STATUS.md)でRG4全体の状態を確認する。
-3. [`../multiscale-local-geometry-memory-return/CURRENT_STATUS.md`](../multiscale-local-geometry-memory-return/CURRENT_STATUS.md)でG4-07 closure状態を確認する。
-4. [`../multiscale-local-geometry-memory-return/FINAL_REPORT.md`](../multiscale-local-geometry-memory-return/FINAL_REPORT.md)で正式解釈を確認する。
-5. [`../multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json)でcanonical formal resultを確認する。
-6. [`../multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md`](../multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md)でrun / artifact / firewall provenanceを確認する。
-7. [`../research-program-decisions/2026-09-27-g4-07-multiscale-local-geometry-memory-return-study1-closure.md`](../research-program-decisions/2026-09-27-g4-07-multiscale-local-geometry-memory-return-study1-closure.md)でclosure decisionを確認する。
-8. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)でfrozen program roleと次agendaのdependencyを確認する。
+3. [`checkpoints/2026-09-27-g4-07-pre-main-audit.md`](checkpoints/2026-09-27-g4-07-pre-main-audit.md)でmain統合前監査を確認する。
+4. [`../multiscale-local-geometry-memory-return/CURRENT_STATUS.md`](../multiscale-local-geometry-memory-return/CURRENT_STATUS.md)でG4-07 closure状態を確認する。
+5. [`../multiscale-local-geometry-memory-return/FINAL_REPORT.md`](../multiscale-local-geometry-memory-return/FINAL_REPORT.md)で正式解釈を確認する。
+6. [`../multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json)でcanonical formal resultを確認する。
+7. [`../multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md`](../multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md)でrun / artifact / firewall provenanceを確認する。
+8. [`../research-program-decisions/2026-09-27-g4-07-multiscale-local-geometry-memory-return-study1-closure.md`](../research-program-decisions/2026-09-27-g4-07-multiscale-local-geometry-memory-return-study1-closure.md)でclosure decisionを確認する。
+9. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)でfrozen program roleと次agendaのdependencyを確認する。
 
 ## 現在地
 
@@ -23,7 +24,7 @@ G4-03 = COMPLETE / MAIN INTEGRATED
 G4-04 = COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED
 G4-05 = COMPLETE / EXACT-ORACLE-FOUNDATION / MAIN INTEGRATED
 G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING / MAIN INTEGRATED
-G4-07 = COMPLETE / FORMAL-COMPLETE / RESEARCH BRANCH CLOSED / MAIN NOT INTEGRATED
+G4-07 = COMPLETE / FORMAL-COMPLETE / PRE-MAIN-AUDIT-PASS / MAIN NOT INTEGRATED
 G4-08..G4-09 = DEPENDENCY-GATED / NOT AUTHORIZED
 G4-10 = PROTECTED / NOT AUTHORIZED / NOT ACCESSED
 public AI change = false
@@ -67,6 +68,24 @@ A6 = NONE
 
 return endpointはdescriptive only。universal oscillation / mean-reversion law、causal mechanism、physical half-lifeへ読み替えない。
 
+## Pre-main audit
+
+```text
+pre-main consistency audit = PASS
+reviewed main = 8edf791aa789d77ba27d3d7704ab02acd6e35eac
+research branch behind main = 0
+public/ changes = 0
+public AI production changes = 0
+G4-10 depth-11 access = 0
+same-evidence rerun = false
+seed extension = false
+replacement population = false
+PROGRAM_PLAN mutation = false
+```
+
+監査正本:
+[`checkpoints/2026-09-27-g4-07-pre-main-audit.md`](checkpoints/2026-09-27-g4-07-pre-main-audit.md)
+
 ## No-rescue / protected boundary
 
 G4-07 Stage 2はone-shot formal executionとして完了済み。以下は禁止。
@@ -84,18 +103,11 @@ G4-07 Stage 2はone-shot formal executionとして完了済み。以下は禁止
 
 ## 次にRG4を進める場合
 
-まず **G4-07 pre-main consistency audit / main-integration review** を行う。
+次の作業は **G4-07 main-integration review** のみ。
 
-確認対象:
+main統合を行う場合は、直前にremote `main`を再確認し、この監査後にmain側へdriftがないか、research branchがbehind 0のままかを確認する。そのうえで明示的な統合判断がある場合に限り統合する。
 
-- G4-07 canonical recordとraw artifact digestの一致
-- FINAL_REPORT / CURRENT_STATUS / closure decisionの整合
-- RG4中央README / CURRENT_STATUS / RESUME_HEREとの整合
-- branch scopeにpublic AI production changeがないこと
-- G4-10 depth-11 accessが0であること
-- same-evidence rerun / seed extensionが発生していないこと
-
-問題がなければmain統合を別途判断する。main統合前にG4-08やG4-09へ進まない。
+main統合前にG4-08やG4-09へ進まない。G4-08 / G4-09 / G4-10は独立authorization reviewが必要。
 
 ## 禁止事項
 
