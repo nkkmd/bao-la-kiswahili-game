@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "agenda": "G4-09",
+  "studyId": "GCSREA-STUDY1",
+  "stageId": "GCSREA-S1-DEVELOPMENT-2026-09-27-v1",
+  "canonicalDisposition": "STAGE1-DEVELOPMENT-COMPLETE / MODULE-A-0-OF-9-SUPPORTED / MODULE-B-ORACLE-INTEGRITY-READY",
+  "scientificExecution": {
+    "workflowRunId": 36326278830,
+    "workflowRunAttempt": 1,
+    "triggerCommitSha": "2102cf7aa9b55cb0d630ffcbaf7c37ae2607241b",
+    "leaseCommitSha": "9c103c25bc9ddb87a74f97531dcd6be9b895d373",
+    "artifactId": 10934387075,
+    "artifactZipSha256": "2ee8edf9c988de7a721f14887181b80bf517e810a2d49f6d429228eeeb425cd0",
+    "stage1ResultSha256": "353906fc38939c2a02fd99e46ca7f44af8bc36d99fa71e9bd3fec1757ae7f499",
+    "stage2IdentityExclusionSha256": "8526e4c01ba304eb88721c80c5c4280f6806dae2e7007a1a4fbcbcc191a4e8f4",
+    "scientificSeedsRead": 768,
+    "authorizedScientificExecutions": 1,
+    "actualScientificExecutions": 1,
+    "scientificRerunPerformed": false
+  },
+  "postExecutionAudit": {
+    "workflowRunId": 36327949203,
+    "workflowRunAttempt": 1,
+    "sourceSha": "672b1250650d40842a2df3ffe9dabf2a3a03570f",
+    "artifactId": 10935245092,
+    "artifactZipSha256": "28e42a14789dcb25e1c7133b888d31e384cbcfade3d97b01099ba373c318fc15",
+    "disposition": "STAGE1-POSTEXECUTION-ARTIFACT-AUDIT-PASS",
+    "auditClass": "POST-EXECUTION-ARTIFACT-ONLY / NO-SCIENTIFIC-RERUN",
+    "freshScientificSeedReadsByAudit": 0,
+    "scientificRerunPerformed": false,
+    "originalWorkflowFailureClassification": "OUTPUT-BOUNDARY-VERIFIER-FALSE-POSITIVE-ON-NEGATIVE-BOOLEAN-FIELD-NAME",
+    "originalMatchedToken": "pValue",
+    "originalMatchedField": "pValuesComputed:false"
+  },
+  "moduleA": {
+    "id": "GENERAL-SEARCH-STABILITY",
+    "sourceCellCount": 8,
+    "allEightSourceCellsRepresented": true,
+    "targetPerCell": 16,
+    "selectedRootCount": 128,
+    "productionIndependentExact": true,
+    "searchConfigurationDefinedness": {
+      "D2_Q1": 109,
+      "D3_Q1": 109,
+      "D2_Q0": 109,
+      "D2_Q2": 109,
+      "B256_Q1_MAXD3": 109,
+      "B1024_Q1_MAXD3": 109
+    },
+    "searchContrastDefinedness": {
+      "SC1-DEPTH": 109,
+      "SC2-NODE-BUDGET": 109,
+      "SC3-QUIESCENCE": 109
+    },
+    "frozenMinimumSearchContrastDefinedRoots": 120,
+    "formalCandidateSlotCount": 9,
+    "supportedSlotCount": 0,
+    "slotDisposition": "9-OF-9 NOT-SUPPORTED-FOR-FORMAL-HOLDOUT",
+    "reason": "all nine geometry x search-contrast slots have searchDefined=109, below the prospectively frozen minimum of 120",
+    "formalInferencePerformed": false,
+    "pValuesComputed": false,
+    "riskDifferencesComputed": false,
+    "effectDirectionSummarized": false,
+    "generalStage2FreshHoldoutAuthorized": false,
+    "candidateStage2GeneralSeedNamespaceRead": false
+  },
+  "moduleB": {
+    "id": "EXACT-MICRODOMAIN-AGREEMENT",
+    "fixedDomainCount": 8,
+    "stage1Role": "ORACLE-INTEGRITY-AND-REMATERIALIZATION-READINESS-ONLY",
+    "exactOracleIntegrityPreflight": "PASS",
+    "actualSearchVsExactMeasurements": 0,
+    "g405CandidateRescanCount": 0,
+    "g405DomainReplacementCount": 0,
+    "nextDisposition": "ELIGIBLE-FOR-SEPARATE-PROSPECTIVE-EXACT-CENSUS-PREREGISTRATION",
+    "actualMeasurementAuthorizedByThisRecord": false
+  },
+  "protectedBoundary": {
+    "g410Depth11AccessCount": 0,
+    "stage2SeedAccess": false,
+    "publicAiChanged": false,
+    "mainIntegrated": false
+  },
+  "interpretation": {
+    "moduleANoSupportIsNoEffectClaim": false,
+    "higherResourceSearchIsTruth": false,
+    "moduleBFixed8RepresentsWholeBaoCorrectnessRate": false,
+    "publicAiAdoptionAuthorized": false
+  }
+}
