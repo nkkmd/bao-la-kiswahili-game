@@ -51,7 +51,13 @@
 | BRSGT-D045 | Stage 1 v1 scientific interpretation | `NONE-TECHNICAL-INVALID` | formal inferenceなし。Stage 2 seed read 0、G4-10 depth-11 access 0、public AI変更なし。 |
 | BRSGT-D046 | Stage 1 v2 prerequisite | `NEW VERSION + NEW SEED BLOCK + CATCH SELF-TEST` | v1の修復再実行を禁止し、別namespace・別spec・別binding・別authorizationを要求。 |
 | BRSGT-D047 | Stage 1 v2 identity | `BRSGT-S1-DEVELOPMENT-2026-09-27-v2` | v1と科学的に区別可能な新versionとしてtechnical correctionを隔離。 |
-| BRSGT-D048 | Stage 1 v2 seed block | `40814001..40814512 / 512 / NOT AUTHORIZED` | v1 blockと非重複。v1 blockはv2 firewallで明示除外し再利用しない。 |
+| BRSGT-D048 | Stage 1 v2 seed block | `40814001..40814512 / 512` | v1 blockと非重複。v1 blockはv2 firewallで明示除外し再利用しない。 |
 | BRSGT-D049 | Stage 1 v2 runner construction | `PINNED V1 SOURCE + COUNT-CHECKED DETERMINISTIC MATERIALIZATION` | frozen v1 runner SHA-256を固定し、spec/firewall/auth/version/output pathと4箇所のcounter mappingのみを厳密変換する。 |
 | BRSGT-D050 | Stage 1 v2 failure-path gate | `PRE-FRESH CATCH SELF-TEST REQUIRED` | fresh access前にintentional exceptionで実際のcatchを通し、failure artifact・read count 0・no-rescue falseを確認する。 |
 | BRSGT-D051 | Stage 1 v2 execution boundary | `STATIC AUDIT THEN SEPARATE ONE-SHOT AUTHORIZATION` | static audit PASSだけでは実行しない。audit後の許可差分はv2 authorization + triggerの2 pathのみ。 |
+| BRSGT-D052 | Stage 1 v2 static audit | `PASS / RUN 36299573408` | HEAD `d5cc6be4...`。catch self-test PASS、generated runner SHA固定、fresh reads 0、v1 block quarantine、Stage2/G4-10 0。 |
+| BRSGT-D053 | Stage 1 v2 execution | `TECHNICAL-INVALID / NO-RERUN-SAME-VERSION` | Run `36299638508`。failure artifactが正常保存され、error=`missing limit distinctRawStates`、fresh reads=512、first=40814001、last=40814512。 |
+| BRSGT-D054 | Stage 1 v2 root cause | `PREFLIGHT LIMIT INTERFACE SCHEMA MISMATCH` | CRCLGR preflightは`distinctRawStates/uniqueTransitions/legalMoveEvaluations`を要求するがBRSGTは別名3項目を渡した。G4-04 technical runnerのmappingが正しい参照実装。 |
+| BRSGT-D055 | Stage 1 v2 seed block | `CONSUMED-NO-REUSE` | 512 slotsすべてをexactly read済み。`40814001..40814512`を永久隔離しv2 rerun禁止。 |
+| BRSGT-D056 | Stage 1 v2 scientific interpretation | `NONE-TECHNICAL-INVALID` | formal inferenceなし、effect値/sign保持なし、Stage2/G4-10 read 0、public AI変更なし。 |
+| BRSGT-D057 | Stage 1 v3 prerequisite | `NEW VERSION + NEW BLOCK + PREFLIGHT-CONTRACT SELF-TEST` | 科学条件は維持し、3つのlimit keyだけを修正。fresh access前に同じ`preflightContinuous()` interfaceをtechnical fixtureで実動検証する。 |
