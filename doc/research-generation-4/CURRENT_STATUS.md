@@ -1,8 +1,8 @@
 # Research Generation 4 — 現在の状態
 
-更新日: 2026-09-26  
+更新日: 2026-09-27  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`G4-01 COMPLETE / G4-02 CLOSED WITHOUT SCIENTIFIC DECISION / G4-03 COMPLETE / G4-04 COMPLETE / G4-05 COMPLETE / G4-06 COMPLETE / MAIN INTEGRATED`**
+状態: **`G4-01..G4-06 MAIN INTEGRATED / G4-07 COMPLETE ON RESEARCH BRANCH / PRE-MAIN AUDIT NEXT`**
 
 ## Program全体
 
@@ -13,9 +13,9 @@ G4-01 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED
 G4-02 = CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED
 G4-03 = COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED
 G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED
-G4-05 = COMPLETE / FORMAL-COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED
+G4-05 = COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED
 G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED
-G4-07 = NEXT AUTHORIZATION-REVIEW CANDIDATE / NOT-AUTHORIZED
+G4-07 = COMPLETE / FORMAL-COMPLETE / RESEARCH BRANCH CLOSED / MAIN NOT INTEGRATED
 G4-08..G4-09 = DEPENDENCY-GATED / NOT-AUTHORIZED
 G4-10 depth 11 = PROTECTED / NOT-AUTHORIZED / NOT-ACCESSED
 G4-P01 = INDEPENDENT / NOT-AUTHORIZED
@@ -29,44 +29,19 @@ G4-01 `LGTTCI-STUDY1` はSFCDF・SILGM・GCLDの3 familyについてfresh-domain
 
 ## G4-02 — corridor / tree-graph transfer
 
-G4-02はG3-04由来C1/C6のfresh-domain transferをStudy 1〜4としてprospectiveに実施したが、no-rescue ruleに従い、最終的に有効なformal Stage 2 measurementへ到達しなかった。
-
-```text
-G4-02 = CLOSED / NO SCIENTIFIC DECISION
-scientific transfer decision = NONE
-final formal Stage 2 status = TECHNICAL-INVALID
-main integration = COMPLETE / PR #154
-```
-
-これはC1/C6の一般化失敗やcounterexampleのnegative scientific evidenceではない。
+G4-02はG3-04由来C1/C6のfresh-domain transferをprospectiveに実施したが、no-rescue ruleに従い有効なformal Stage 2 measurementへ到達せず、`CLOSED / NO SCIENTIFIC DECISION`で閉じた。generalization failureやcounterexampleのnegative scientific evidenceではない。`main`統合済み。
 
 ## G4-03 — width / search-ranking transfer
 
-G4-03 `LWSRT-STUDY1` はG3-07由来associationをfresh source-policy × root-family domainsへ移送検証した。
-
-```text
-canonical Stage 2 run = 35993172710 / attempt 1 / success
-stage disposition = STAGE2-COMPLETE-WITH-NON-ESTIMABLE
-GENERALIZATION-CONFIRMED = 9
-NOT-GENERALIZED = 1
-NON-ESTIMABLE = 2
-COUNTEREXAMPLE-CONFIRMED = 0
-main integration = COMPLETE / PR #164
-```
-
-対象associationはfresh domainsへ広く移送されたが、無条件のuniversal lawではない。public AI変更は認可しない。
+G4-03 `LWSRT-STUDY1` はfresh source-policy × root-family domainsで12 testを行い、9 `GENERALIZATION-CONFIRMED`、1 `NOT-GENERALIZED`、2 `NON-ESTIMABLE`、counterexample 0で完了した。`main`統合済み。
 
 ## G4-04 — geometry trajectory dynamics transfer
 
-G4-04 `GTTD-STUDY1` はG3-10でformal confirmationされたC1・C2・C3・C5のtrajectory-level directionをfresh P1/P2 source-policy domainsへ移送検証した。
+G4-04 `GTTD-STUDY1` はG3-10由来C1・C2・C3・C5のdirectionをfresh P1/P2 domainsへ移送検証した。
 
 ```text
-Stage 1 run = 36089520136 / attempt 1 / success
-Stage 1 disposition = STAGE1-PASS
 Stage 2 canonical run = 36095831961 / attempt 1 / success
-Stage 2 disposition = FORMAL-COMPLETE
 formal measured trajectories = 64
-production / independent exact = true
 GENERALIZATION-CONFIRMED = 8
 COUNTEREXAMPLE-CONFIRMED = 0
 NOT-GENERALIZED = 0
@@ -74,82 +49,79 @@ NON-ESTIMABLE = 0
 main integration = COMPLETE / PR #165
 ```
 
-G3-10でconfirmedだった4 directionは、本Studyで固定したfresh P1/P2 domainsへ8/8で同方向に移送された。ただしformal domainはP1/P2 full trajectoriesであり、RF1/RF2 subgroup、whole-Bao universal law、game-theoretic value、best move correctness、AI strength、人間のdifficultyは主張しない。
+8/8で同方向移送を確認したが、whole-Bao law、game-theoretic value、AI strength、人間のdifficultyは主張しない。
 
-## G4-05 — reachable late-game exact microdomain oracle foundation
+## G4-05 — exact microdomain oracle foundation
 
-G4-05 `RLEMOF-STUDY1` は、outcome-blind / resource-feasibility-onlyに選択したfresh reachable late-game rootsについてcomplete legal-transition closureを構築し、production / independent solverがexact valueとsolution structureを一致して再構築できるかを検証した。
+G4-05 `RLEMOF-STUDY1` はfresh reachable late-game rootsから限定microdomainを構築し、complete legal-transition closureと独立exact solver agreementをprospectiveに検証した。
 
 ```text
-Stage 0 = STAGE0-TECHNICAL-PASS
-Stage 1 = STAGE1-DEVELOPMENT-ACCEPTED / selected tier T3
 Stage 2 canonical run = 36120286922 / attempt 1 / success
-execution SHA = 72e45631112359346a83f9399be32ee3e6420ccb
-artifact ID = 10858056244
 formal complete domains = 8
-production / independent agreement = true
 formal decision = EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN
 main integration = COMPLETE / PR #166
 ```
 
-candidate 1と4は`STATE-LIMIT`でcomplete closureにならず、そのままfail-closedした。cap増加、root replacement、seed extension、same-evidence rerunは行っていない。8 domainのrecurrent countは0だったが、`RECURRENT`を公式ルール上の`DRAW`へ読み替えていない。
+resource capでcomplete closureにならなかったcandidateを救済せず、recurrent resultを公式DRAWへ読み替えていない。
 
 ## G4-06 — local geometry / exact-consequence bridge
 
-G4-06 `LGTGECB-STUDY1` は、G4-05の固定8 complete microdomainをimmutable upstream populationとして受け取り、relative depth 5のRAW local geometryとexact value・DTF・value-preserving move countをprospectiveに接続した。
-
-### Stage 0
+G4-06 `LGTGECB-STUDY1` はG4-05の固定8 exact microdomain内でrelative depth 5 local geometryとexact value・DTF・value-preserving move countを接続した。
 
 ```text
-canonical run = 36211754989 / attempt 1 / success
-stage decision = STAGE0-TECHNICAL-PASS
-mandatory gates = 12 / 12 PASS
-production / independent agreement = true
-G4-05 formal-domain scientific bridge reads = 0
-```
-
-### Stage 1 formal
-
-```text
-canonical run = 36214800357 / attempt 1 / success
-execution SHA = 90283d1680cef8feda02e11b072e98b145d5d786
-artifact ID = 10897225431
-artifact SHA-256 = 1a087b4bccfb0c941e9895d2bf35cce41fcbee5f0194de1c43f2293ea593c688
+Stage 1 canonical run = 36214800357 / attempt 1 / success
 formal domains = 8 / 8
 relations emitted = 12 / 12
-all production / independent agreement = true
 formal decision = FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS
-G4-05 candidate rescan = 0
-G4-10 depth-11 access = 0
-```
-
-固定8 rootではTree/RAW inflationが全root `1`、transposition occupancyが全root `0`で、これらはgeometry variation不足によりexact consequenceとの関係が`NON-ESTIMABLE`となった。Corridorとreply widthにはvariationがあり、exact valueとの関係はmixedだった。
-
-事前登録したfinite ordering ruleでは、`DTF × reply width`と`value-preserving move count × corridor`が`MONOTONE-DECREASING-ORDER-CONSISTENT`となった。ただしこれはN=8の限定late-game exact microdomain内の結果であり、whole-Bao一般則、因果関係、探索難易度、AI strength、公開AI feature採用へ一般化しない。
-
-### main統合前監査
-
-```text
-pre-main audit = PASS
-readiness = READY-FOR-MAIN-INTEGRATION-REVIEW
-public/ changes = 0
-public AI production changes = 0
-G4-10 depth-11 access = 0
-```
-
-G4-06正本、中央研究文書、branch scope、protected boundaryを横断監査し、main統合を阻害する不整合は確認されなかった。
-
-### main統合
-
-```text
-integration method = FAST-FORWARD
-main baseline before integration = 6a005d9f84d222126dc41abfe17ad5baa4c96629
-integrated research HEAD = 889b3d16f09517e5b8aa6621cfd347d4b8902891
 main integration = COMPLETE
-public AI change = false
 ```
 
-統合直前は`ahead 43 / behind 0`で、merge baseはmain baselineと一致していた。統合によってformal result、解釈境界、no-rescue rule、G4-10保護境界は変更していない。統合記録は[`checkpoints/2026-09-26-g4-06-main-integration.md`](checkpoints/2026-09-26-g4-06-main-integration.md)に固定した。
+Tree/RAW inflationとtransposition occupancyはvariation不足で`NON-ESTIMABLE`。DTF × reply width、VPMC × corridorは事前登録finite ordering ruleで`MONOTONE-DECREASING-ORDER-CONSISTENT`となったが、N=8限定結果をwhole-Baoへ一般化しない。
+
+## G4-07 — multiscale geometry memory / return
+
+G4-07 `MLGMR-STUDY1` は、fresh P1/P2 trajectories上で6つのcontinuous local-geometry axisについてlagged sign persistence / reversalをprospectiveに検証した。
+
+Stage 1はsupport-onlyで24 slot中16 slotをeffect direction非使用でformal familyへ送った。
+
+Stage 2 canonical execution:
+
+```text
+run = 36278926636 / attempt 1 / success
+head = f73e2ade42b3379b9eaf2007292a057cfeaf88f0
+artifact ID = 10919769185
+artifact ZIP SHA-256 = 4d8370ccad1be7fa4052a4293e6b64c4e1b77f7c11c94c1f4dbabead694394f2
+fresh scientific seed reads = 363
+formal measured trajectories = 64 / P1 32 / P2 32
+production / independent exact agreement = true
+formal family = 16
+REVERSAL-CONFIRMED = 6
+PERSISTENCE-CONFIRMED = 0
+NOT-CONFIRMED = 10
+NON-ESTIMABLE = 0
+G4-10 depth-11 access = 0
+```
+
+全6 axisのlag 1が`REVERSAL-CONFIRMED`。lag 2の6 slotとformal-family内lag 4の4 slotは`NOT-CONFIRMED`。lag 8はStage 1 support不足でformal family外。
+
+preregistered contiguous-persistence summaryは全6 axisで:
+
+```text
+confirmedContiguousPersistenceLagMax = NONE
+```
+
+これはtemporal structure不在を意味しない。固定P1/P2 populationでは、same-sign persistence chainがlag 1から始まらず、最短lagでopposite-sign relationがformal confirmationに到達したという限定結果である。
+
+return endpointはdescriptive only。universal oscillation / mean-reversion law、因果的rule-event mechanism、physical half-life、AI strengthへの読み替えは禁止する。
+
+G4-07 scientific executionは研究ブランチ上で閉じた。main統合は未認可・未実施。
+
+詳細:
+
+- [`../multiscale-local-geometry-memory-return/FINAL_REPORT.md`](../multiscale-local-geometry-memory-return/FINAL_REPORT.md)
+- [`../multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json)
+- [`../multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md`](../multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md)
+- [`../research-program-decisions/2026-09-27-g4-07-multiscale-local-geometry-memory-return-study1-closure.md`](../research-program-decisions/2026-09-27-g4-07-multiscale-local-geometry-memory-return-study1-closure.md)
 
 ## Agenda別の状態
 
@@ -161,7 +133,7 @@ public AI change = false
 | `G4-04` | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
 | `G4-05` | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED` |
 | `G4-06` | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED` |
-| `G4-07` | `NEXT AUTHORIZATION-REVIEW CANDIDATE / NOT-AUTHORIZED` |
+| `G4-07` | `COMPLETE / FORMAL-COMPLETE / RESEARCH BRANCH CLOSED / MAIN NOT INTEGRATED` |
 | `G4-08`〜`G4-09` | `DEPENDENCY-GATED / NOT-AUTHORIZED` |
 | `G4-10` | `PROTECTED / NOT-AUTHORIZED / NOT-ACCESSED` |
 | `G4-P01` | `INDEPENDENT / NOT-AUTHORIZED` |
@@ -169,11 +141,11 @@ public AI change = false
 
 ## 次に許可される作業
 
-G4-06はscientific execution、closure、main統合まで完了した。同一formal Stageの追加run、metric変更、depth変更、domain除外、seed extension等は行わない。
+G4-07 scientific executionは完了した。同一Stageの追加run、seed extension、replacement population、lag/axis/checkpoint変更、subgroup rescueは行わない。
 
-次のcore candidateはG4-07 — 多時間尺度geometry memoryと回帰 — のauthorization reviewである。G4-07は現在`NOT-AUTHORIZED`であり、fresh evidenceへのアクセスやStudy executionは行わない。
+次に行うのは **G4-07 pre-main consistency audit / main-integration review** である。関連文書、canonical record、branch scope、protected boundaries、public AI非変更を横断確認し、問題がなければその後にのみmain統合を検討する。
 
-G4-02は`CLOSED / NO SCIENTIFIC DECISION`であるため、G4-07 reviewではProgram Planのdependencyをpositive scientific evidenceへ機械的に読み替えず、利用可能な上流evidenceを改めて明示的に判定する。
+G4-08 / G4-09 / G4-10は本closureによって自動認可されない。
 
 ## 保護境界
 
@@ -182,13 +154,10 @@ G4-02は`CLOSED / NO SCIENTIFIC DECISION`であるため、G4-07 reviewではPro
 - G4-04 Stage 1 / Stage 2をrerunしない。
 - G4-05 Stage 0 / Stage 1 / Stage 2をrerunしない。
 - G4-05 candidate poolをrescanしない。
-- G4-05 `STATE-LIMIT` candidateをresource増加で救済しない。
-- G4-05 seed blockをextensionしない。
-- G4-05 recurrent resultをDRAWへ読み替えない。
-- G4-05 resultをwhole-Bao solutionへ拡張しない。
-- G4-06 Stage 1をoutcome確認後にrerun / rescueしない。
-- G4-06のN=8結果をwhole-Bao ruleへ一般化しない。
-- G3-12をrepair / replayしない。
+- G4-06 formal Stageをrerun / rescueしない。
+- G4-07 Stage 1 / Stage 2をrerun / rescueしない。
+- G4-07 seed extension / replacement populationを行わない。
+- G4-07 resultをuniversal oscillation / causal lawへ拡張しない。
 - G3-11 depth-10をrerunしない。
 - G4-10 depth-11へアクセスしない。
 - RG4 resultをpublic AIへ自動反映しない。
@@ -197,10 +166,8 @@ G4-02は`CLOSED / NO SCIENTIFIC DECISION`であるため、G4-07 reviewではPro
 
 - [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)
 - [`RESUME_HERE.md`](RESUME_HERE.md)
-- [`../local-game-tree-geometry-exact-consequence-bridge/README.md`](../local-game-tree-geometry-exact-consequence-bridge/README.md)
-- [`../local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md`](../local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md)
-- [`../local-game-tree-geometry-exact-consequence-bridge/results/stage-1/STAGE_1_FORMAL_RECEIPT.json`](../local-game-tree-geometry-exact-consequence-bridge/results/stage-1/STAGE_1_FORMAL_RECEIPT.json)
-- [`../local-game-tree-geometry-exact-consequence-bridge/checkpoints/2026-09-26-stage-1-formal-complete.md`](../local-game-tree-geometry-exact-consequence-bridge/checkpoints/2026-09-26-stage-1-formal-complete.md)
-- [`checkpoints/2026-09-26-g4-06-pre-main-audit.md`](checkpoints/2026-09-26-g4-06-pre-main-audit.md)
-- [`checkpoints/2026-09-26-g4-06-main-integration.md`](checkpoints/2026-09-26-g4-06-main-integration.md)
-- [`../reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md`](../reachable-late-game-exact-microdomain-oracle-foundation/FINAL_REPORT.md)
+- [`../multiscale-local-geometry-memory-return/FINAL_REPORT.md`](../multiscale-local-geometry-memory-return/FINAL_REPORT.md)
+- [`../multiscale-local-geometry-memory-return/CURRENT_STATUS.md`](../multiscale-local-geometry-memory-return/CURRENT_STATUS.md)
+- [`../multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json)
+- [`../multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md`](../multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md)
+- [`../research-program-decisions/2026-09-27-g4-07-multiscale-local-geometry-memory-return-study1-closure.md`](../research-program-decisions/2026-09-27-g4-07-multiscale-local-geometry-memory-return-study1-closure.md)
