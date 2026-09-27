@@ -1,84 +1,125 @@
 # G4-09 / GCSREA-STUDY1 — Current Status
 
-Date: 2026-09-27  
+Date: 2026-09-28  
 Branch: `research/g4-09-search-reliability-exact-agreement`
 
 ## Current disposition
 
-**`STAGE1-CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-EXACT-CENSUS-PREPARATION-AUTHORIZED`**
+**`G4-09 CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE`**
 
-## Completed
+GCSREA-STUDY1の科学実行は完了し、same-Studyで追加実行しない。
 
-- Stage 0 technical-only validation: PASS.
-- Stage 1 pre-fresh audit: PASS.
-- Stage 1 one-shot authorization: completed.
-- Stage 1 fresh development execution: completed once.
-- Stage 1 post-execution artifact-only audit: PASS.
-- Stage 1 canonical record: fixed.
+## Module A — GENERAL-SEARCH-STABILITY
 
-## Stage 1 canonical evidence
+Stage 1 one-shot scientific execution:
 
 ```text
-scientific run = 36326278830 / attempt 1
-scientific artifact ID = 10934387075
-scientific artifact ZIP SHA-256 = 2ee8edf9c988de7a721f14887181b80bf517e810a2d49f6d429228eeeb425cd0
+run = 36326278830 / attempt 1
+artifact ID = 10934387075
+artifact ZIP SHA-256 = 2ee8edf9c988de7a721f14887181b80bf517e810a2d49f6d429228eeeb425cd0
 fresh scientific reads = 768
 selected roots = 128
 production / independent exact = true
 scientific rerun = 0
-
-post-execution audit run = 36327949203 / attempt 1 / success
-audit artifact ID = 10935245092
-audit artifact ZIP SHA-256 = 28e42a14789dcb25e1c7133b888d31e384cbcfade3d97b01099ba373c318fc15
 ```
 
-元scientific workflowの最終failureは`pValuesComputed:false`を禁止substring `pValue`として誤検出したoutput-boundary verifier false positiveであり、artifact-only auditによりscientific payload violationではないことを確認した。
-
-## Module A — GENERAL-SEARCH-STABILITY
+Frozen support gateに対し:
 
 ```text
-source cells = 8 / 8 represented
-selected roots = 128
 SC1-DEPTH defined = 109
 SC2-NODE-BUDGET defined = 109
 SC3-QUIESCENCE defined = 109
-frozen minimum search-defined = 120
+minimum required = 120
 formal candidate slots = 9
 SUPPORTED = 0
 NOT-SUPPORTED = 9
 formal inference performed = false
 ```
 
-Module Aはformal Stage 2へ進めない。これはno-effect resultではない。
+したがってModule Aはformal Stage 2へ進めない。これはno-effect resultではない。
 
-候補Stage 2 general-domain namespace `40923001...` は未読のまま保持する。
+候補Stage 2 general-domain namespace `40923001...` は未読のまま封印する。
 
 ## Module B — EXACT-MICRODOMAIN-AGREEMENT
 
+Stage 2 fixed-eight exact censusはone-shot認可とdurable premeasurement leaseの下で完了した。
+
 ```text
-fixed G4-05 exact domains = 8
-oracle integrity = PASS
-actual search-vs-exact measurements = 0
-G4-05 candidate rescan = 0
-G4-05 replacement = 0
+run = 36359283198 / attempt 1 / success
+code freeze = c1425c6b67d85f4e7f42032fc04aaf968f151454
+trigger SHA = d0f276262944edc6fd1143e6b71d6526ad4221c5
+lease commit = 05bcd129dfc84193bd786a27b9a6adcdeeca88e5
+final artifact ID = 10945085978
+final artifact ZIP SHA-256 = 9a02241b2fb28d9aac936d3d203e39d9a2bba3eee5905fa02aa4ecbca725ef7b
+result core SHA-256 = c74f9f3baa5065c5ae6df70dbbccdeb50c0adba5006d2d647fa6931cd3764e20
+scientific measurements = 1 / 1
+scientific rerun = 0
 ```
 
-現在認可されているのは、固定8 domainをfinite censusとして扱うexact moduleのpreregistrationとtechnical preflightまでである。
+Fixed finite census:
 
-actual search-vs-exact measurementはまだ未認可。
+```text
+fixed G4-05 exact domains = 8
+forced width-1 domains = 2
+nontrivial domains = 6
+search configurations = 6
+nontrivial domain×configuration cells = 36
+estimable = 36 / 36
+production search executions = 36
+independent search executions = 36
+production / independent search exact = true
+production / independent classifier exact = true
+```
+
+Exact-agreement summary within the fixed census:
+
+```text
+canonical-best in exact optimal set = 36 / 36
+PV first move in exact optimal set = 36 / 36
+TopSet EQUAL = 35 / 36
+TopSet SEARCH-SUBSET-EXACT = 1 / 36
+TopSet SUPERSET / OVERLAP / DISJOINT = 0
+```
+
+唯一のTopSet非一致は`D2_Q0 × domain 4`の`SEARCH-SUBSET-EXACT`である。exact optimal setの2手のうちsearch TopSetが1手だけを含んだが、canonical-bestとPV firstはexact optimal set内にあり、exact-optimal best rankは1だった。
+
+Forced roots `domain 6` / `domain 8`はpreregistrationどおりsearch helperを実行せず、別枠でforced legal classificationを記録した。
+
+## Interpretation boundary
+
+固定8 domainはrandom sampleではない。したがって`36/36`や`35/36`をwhole-Bao correctness probability / accuracyへ一般化しない。
+
+```text
+p-values = not computed
+confidence intervals = not computed
+configuration winner = not selected
+whole-Bao probability estimate = not computed
+higher-resource search treated as truth = false
+public AI adoption authorized = false
+```
 
 ## Protected boundaries
 
 ```text
-G4-10 depth-11 access = 0
 Stage 2 general-domain fresh access = 0
+candidate namespace 40923001... = unread
+G4-05 candidate rescan = 0
+G4-05 domain replacement = 0
+G4-10 depth-11 access = 0
 public AI change = false
 main integration = not performed
 ```
 
+## Canonical records
+
+1. [`results/stage-1/STAGE_1_CANONICAL_RECORD.json`](results/stage-1/STAGE_1_CANONICAL_RECORD.json)
+2. [`results/stage-2/STAGE_2_CANONICAL_RECORD.json`](results/stage-2/STAGE_2_CANONICAL_RECORD.json)
+3. [`checkpoints/2026-09-27-stage-1-development-complete.md`](checkpoints/2026-09-27-stage-1-development-complete.md)
+4. [`checkpoints/2026-09-28-stage-2-exact-census-complete.md`](checkpoints/2026-09-28-stage-2-exact-census-complete.md)
+5. [`../research-program-decisions/2026-09-28-g4-09-search-reliability-exact-agreement-study1-closure.md`](../research-program-decisions/2026-09-28-g4-09-search-reliability-exact-agreement-study1-closure.md)
+
 ## Next
 
-1. Module B exact-census preregistrationを固定する。
-2. actual fixed-8 measurementを行わないtechnical preflightを実施する。
-3. preflight PASS後、別のfinal measurement authorization reviewを行う。
-4. その認可がある場合だけfixed-8 actual search-vs-exact censusを一回実行する。
+G4-09に対する追加科学実行は行わない。
+
+`main`統合を検討する場合は、current-facing文書、canonical records、branch scope、`public/`差分、G4-10保護境界を別途最終監査する。G4-10 depth-11は引き続き別authorizationなしにアクセスしない。
