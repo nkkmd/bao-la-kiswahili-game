@@ -1,14 +1,14 @@
 # Research Generation 4 — 再開位置
 
 更新日: 2026-09-27  
-状態: **`G4-07 PRE-MAIN-AUDIT-PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`**
+状態: **`G4-07 MAIN-INTEGRATED / NEXT AGENDA NOT AUTHORIZED`**
 
 ## 再開時の読む順序
 
 1. remote `main` HEADを確認する。
 2. [`CURRENT_STATUS.md`](CURRENT_STATUS.md)でRG4全体の状態を確認する。
-3. [`checkpoints/2026-09-27-g4-07-pre-main-audit.md`](checkpoints/2026-09-27-g4-07-pre-main-audit.md)でmain統合前監査を確認する。
-4. [`../multiscale-local-geometry-memory-return/CURRENT_STATUS.md`](../multiscale-local-geometry-memory-return/CURRENT_STATUS.md)でG4-07 closure状態を確認する。
+3. [`checkpoints/2026-09-27-g4-07-main-integration.md`](checkpoints/2026-09-27-g4-07-main-integration.md)でG4-07のmain統合記録を確認する。
+4. [`../multiscale-local-geometry-memory-return/CURRENT_STATUS.md`](../multiscale-local-geometry-memory-return/CURRENT_STATUS.md)でG4-07最終状態を確認する。
 5. [`../multiscale-local-geometry-memory-return/FINAL_REPORT.md`](../multiscale-local-geometry-memory-return/FINAL_REPORT.md)で正式解釈を確認する。
 6. [`../multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json)でcanonical formal resultを確認する。
 7. [`../multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md`](../multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md)でrun / artifact / firewall provenanceを確認する。
@@ -24,7 +24,7 @@ G4-03 = COMPLETE / MAIN INTEGRATED
 G4-04 = COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED
 G4-05 = COMPLETE / EXACT-ORACLE-FOUNDATION / MAIN INTEGRATED
 G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING / MAIN INTEGRATED
-G4-07 = COMPLETE / FORMAL-COMPLETE / PRE-MAIN-AUDIT-PASS / MAIN NOT INTEGRATED
+G4-07 = COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED
 G4-08..G4-09 = DEPENDENCY-GATED / NOT AUTHORIZED
 G4-10 = PROTECTED / NOT AUTHORIZED / NOT ACCESSED
 public AI change = false
@@ -68,12 +68,15 @@ A6 = NONE
 
 return endpointはdescriptive only。universal oscillation / mean-reversion law、causal mechanism、physical half-lifeへ読み替えない。
 
-## Pre-main audit
+## Main integration
 
 ```text
+pre-integration main = 8edf791aa789d77ba27d3d7704ab02acd6e35eac
+integrated research HEAD = 0130bc4e4a7b5ec0c96a026a846fdbf75530f02a
+integration method = FAST-FORWARD / force=false
 pre-main consistency audit = PASS
-reviewed main = 8edf791aa789d77ba27d3d7704ab02acd6e35eac
-research branch behind main = 0
+final documentation consistency check = PASS
+scientific rerun during integration = false
 public/ changes = 0
 public AI production changes = 0
 G4-10 depth-11 access = 0
@@ -83,8 +86,8 @@ replacement population = false
 PROGRAM_PLAN mutation = false
 ```
 
-監査正本:
-[`checkpoints/2026-09-27-g4-07-pre-main-audit.md`](checkpoints/2026-09-27-g4-07-pre-main-audit.md)
+統合正本:
+[`checkpoints/2026-09-27-g4-07-main-integration.md`](checkpoints/2026-09-27-g4-07-main-integration.md)
 
 ## No-rescue / protected boundary
 
@@ -103,11 +106,11 @@ G4-07 Stage 2はone-shot formal executionとして完了済み。以下は禁止
 
 ## 次にRG4を進める場合
 
-次の作業は **G4-07 main-integration review** のみ。
+G4-07はmain統合まで完了した。
 
-main統合を行う場合は、直前にremote `main`を再確認し、この監査後にmain側へdriftがないか、research branchがbehind 0のままかを確認する。そのうえで明示的な統合判断がある場合に限り統合する。
+次のscientific agendaはまだ認可されていない。G4-08 / G4-09 / G4-10のいずれかへ進む場合は、`PROGRAM_PLAN.md`と現在の依存関係を確認し、**新しいauthorization reviewから開始する**。
 
-main統合前にG4-08やG4-09へ進まない。G4-08 / G4-09 / G4-10は独立authorization reviewが必要。
+G4-10 depth 11は引き続き保護対象で、明示的な独立認可なしにアクセスしない。
 
 ## 禁止事項
 
