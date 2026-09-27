@@ -95,6 +95,7 @@ jobs:
         env:
           BRSGT_STAGE1_UPSTREAM_DIR: ${{ github.workspace }}/upstream/brsgt-stage1
         run: |
+          set -o pipefail
           mkdir -p artifacts/brsgt-stage1-static
           node tools/experiments/audit-brsgt-stage1-static.js | tee artifacts/brsgt-stage1-static/STATIC_AUDIT_RESULT.json
 
