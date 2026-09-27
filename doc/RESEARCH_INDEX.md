@@ -1,10 +1,10 @@
 # Bao研究成果索引
 
-更新日: 2026-09-26  
+更新日: 2026-09-27  
 対象: Research Generation 1〜4  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01完了、G4-02は科学的判定なしで終了、G4-03完了、G4-04完了、G4-05完了、G4-06完了・main統合済み**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01〜G4-06 main統合済み、G4-07 formal complete・研究ブランチclosed・main未統合**
 
-この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
+この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`または`FINAL_REPORT.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
 ## はじめに読む文書
 
@@ -18,6 +18,7 @@
 | G4-04の正式結果 | [`geometry-trajectory-dynamics-transfer/README.md`](geometry-trajectory-dynamics-transfer/README.md) |
 | G4-05の正式結果 | [`reachable-late-game-exact-microdomain-oracle-foundation/README.md`](reachable-late-game-exact-microdomain-oracle-foundation/README.md) |
 | G4-06の正式結果 | [`local-game-tree-geometry-exact-consequence-bridge/README.md`](local-game-tree-geometry-exact-consequence-bridge/README.md) |
+| G4-07の正式結果 | [`multiscale-local-geometry-memory-return/FINAL_REPORT.md`](multiscale-local-geometry-memory-return/FINAL_REPORT.md) |
 | 第三世代の全体像 | [`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md) |
 | 第二世代の全体像 | [`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md) |
 | 今後の研究課題 | [`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md) |
@@ -28,7 +29,7 @@
 
 ## Research Generation 4 — 局所幾何の意味・移送可能性・exact帰結
 
-第四世代はprospective Program計画を固定したうえで、G3由来claimのfresh-domain transferやexact consequenceを検証しています。
+第四世代はprospective Program計画を固定したうえで、G3由来claimのfresh-domain transfer、exact consequence、時間構造を検証しています。
 
 | Agenda | 計画上の役割 | 現在の状態 |
 | --- | --- | --- |
@@ -38,7 +39,7 @@
 | `G4-04` / [`GTTD-STUDY1`](geometry-trajectory-dynamics-transfer/) | geometry-trajectory transfer | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
 | `G4-05` / [`RLEMOF-STUDY1`](reachable-late-game-exact-microdomain-oracle-foundation/) | exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED` |
 | `G4-06` / [`LGTGECB-STUDY1`](local-game-tree-geometry-exact-consequence-bridge/) | geometry / exact consequence bridge | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED` |
-| `G4-07` | multiscale memory / return | `NEXT AUTHORIZATION-REVIEW CANDIDATE / NOT-AUTHORIZED-NOT-EXECUTED` |
+| `G4-07` / [`MLGMR-STUDY1`](multiscale-local-geometry-memory-return/) | multiscale memory / return | `COMPLETE / FORMAL-COMPLETE / RESEARCH BRANCH CLOSED / MAIN NOT INTEGRATED` |
 | `G4-08` | rule-semantic transition | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-09` | search reliability / exact agreement | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-10` | protected depth-11 exact topology | `PROTECTED / NOT-AUTHORIZED-NOT-ACCESSED` |
@@ -141,9 +142,41 @@ Tree/RAW inflationは8 rootすべて`1`、transposition occupancyは8 rootすべ
 
 この結果はN=8の固定late-game exact microdomain内のfinite ordering summaryです。whole-Bao universal law、因果関係、AI棋力、人間のdifficulty、public AI変更を意味しません。
 
-G4-06は科学実行、closure、main統合まで完了しています。統合はformal result、no-rescue boundary、G4-10保護境界、public AI非変更を変更しません。次のcore candidateはG4-07 authorization reviewです。
+G4-06は科学実行、closure、main統合まで完了しています。統合はformal result、no-rescue boundary、G4-10保護境界、public AI非変更を変更しません。
 
 詳しくは、[`research-generation-4/README.md`](research-generation-4/README.md)、[`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md)、[`local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md`](local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md)、[`research-generation-4/checkpoints/2026-09-26-g4-06-main-integration.md`](research-generation-4/checkpoints/2026-09-26-g4-06-main-integration.md)を参照してください。
+
+### G4-07
+
+G4-07 `MLGMR-STUDY1` は、fresh P1/P2 trajectories上で6つのcontinuous local-geometry axisについてlagged sign persistence / reversalをprospectiveに検証しました。
+
+Stage 1では24 axis×lag slotをsupport sufficiencyだけで評価し、effect directionをpromotionに使わず16 slotをfixed Stage 2 formal familyへ送りました。
+
+```text
+Stage 2 canonical run = 36278926636 / attempt 1 / success
+head = f73e2ade42b3379b9eaf2007292a057cfeaf88f0
+artifact ID = 10919769185
+artifact ZIP SHA-256 = 4d8370ccad1be7fa4052a4293e6b64c4e1b77f7c11c94c1f4dbabead694394f2
+fresh scientific seed reads = 363
+formal measured trajectories = 64 / P1 32 / P2 32
+production / independent exact agreement = true
+formal family = 16
+REVERSAL-CONFIRMED = 6
+PERSISTENCE-CONFIRMED = 0
+NOT-CONFIRMED = 10
+NON-ESTIMABLE = 0
+G4-10 depth-11 access = 0
+```
+
+6つのlag-1 slotはすべて`REVERSAL-CONFIRMED`。lag 2の6 slotとformal-family内lag 4の4 slotは`NOT-CONFIRMED`です。lag 8はStage 1 support不足でformal family外でした。
+
+preregistered contiguous-persistence summaryでは、6 axisすべて`confirmedContiguousPersistenceLagMax = NONE`です。これはtemporal structureが存在しないことを意味せず、固定P1/P2 populationにおいてsame-sign persistence chainがlag 1から始まらず、最短lagでopposite-sign relationがformal confirmationに到達したことを示します。
+
+return endpointはdescriptive onlyです。universal oscillation / mean-reversion law、causal rule-event mechanism、physical half-life、AI strength、best-move correctness、人間のdifficultyへの読み替えは行いません。
+
+G4-07 scientific executionは研究ブランチ上でclosedです。main統合はまだ実行していません。
+
+詳しくは、[`multiscale-local-geometry-memory-return/FINAL_REPORT.md`](multiscale-local-geometry-memory-return/FINAL_REPORT.md)、[`multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json)、[`multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md`](multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md)を参照してください。
 
 ## Research Generation 3 — 局所ゲーム木幾何
 
@@ -254,6 +287,7 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 ## 結果を読むときの注意
 
 - `CONFIRMED` / `GENERALIZATION-CONFIRMED`は、事前に固定した対象・endpoint・判定条件の範囲で確認されたことを示します。普遍的なBao法則を意味しません。
+- `REVERSAL-CONFIRMED`は、事前登録したsign-balance endpointでopposite-sign側がformal conditionを満たしたことを示します。周期運動、因果的反転機構、mean reversion lawを自動的に意味しません。
 - `NOT-CONFIRMED` / `NOT-GENERALIZED`は、仮説全般の不存在を証明するものではありません。
 - `INCONCLUSIVE`と`NON-ESTIMABLE`はnegative resultと同義ではありません。
 - `COUNTEREXAMPLE-CONFIRMED`は事前登録された反対方向条件をformalに満たした場合だけ用います。
