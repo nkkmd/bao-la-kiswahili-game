@@ -77,4 +77,6 @@
 | BRSGT-D071 | Freshness exhaustion diagnostic | `COMMON PLY-0 INITIAL RAW ROOT EXPLAINS 1011 ROOT REJECTIONS` | Stage 2全1024 rowsとStage 1 v3全512 rowsが同じinitial RAW rootを持ち、frozen root firewallに含まれる。post-hoc rescueには使用しない。 |
 | BRSGT-D072 | Stage 2 no-rescue closure | `NO RERUN / NO FIREWALL GRAMMAR REPAIR / NO SEED EXTENSION` | fresh boundary通過後のply-0除外、root freshness定義変更、replacement population等を禁止。 |
 | BRSGT-D073 | G4-08 study disposition | `CLOSED / NO DIRECTIONAL SCIENTIFIC CONCLUSION` | Stage 2 formal executionは完遂したが24/24 NON-ESTIMABLE。rule-semantic geometry directionについてformal confirmationなし。 |
-| BRSGT-D074 | Protected final boundary | `G4-10=0 / PUBLIC AI UNCHANGED / MAIN NOT INTEGRATED` | G4-08 closureはprotected evidence、production AI、mainへ自動波及しない。 |
+| BRSGT-D074 | Pre-integration protected boundary | `G4-10=0 / PUBLIC AI UNCHANGED / MAIN NOT INTEGRATED` | G4-08 scientific closure時点ではmain統合未実施。protected evidenceとproduction AIへ自動波及しない。 |
+| BRSGT-D075 | Main integration | `COMPLETE / NON-FORCE FAST-FORWARD` | 2026-09-27、pre-integration main `2023860419d13b6f294b0600943de8fb4e50b1bb`からresearch HEAD `0956b5b17085714c1fb9df8ef82f29f6b6ff0f53`へfast-forward。統合直前compareはahead 129 / behind 0。 |
+| BRSGT-D076 | Post-integration protected boundary | `G4-10=0 / PUBLIC AI UNCHANGED / NEXT SCIENTIFIC AGENDA NOT AUTHORIZED` | main統合は科学結果・no-rescue境界・G4-10保護・public AIを変更しない。G4-09/G4-10は独立authorizationなしに開始しない。 |
