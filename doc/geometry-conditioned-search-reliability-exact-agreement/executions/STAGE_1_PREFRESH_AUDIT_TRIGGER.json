@@ -3,6 +3,8 @@
   "studyId": "GCSREA-STUDY1",
   "stageId": "GCSREA-S1-DEVELOPMENT-2026-09-27-v1",
   "action": "RUN-PRE-FRESH-NON-SCIENTIFIC-AUDIT",
+  "auditRevision": 2,
+  "reason": "align G3-07/G4-01 legacy identity digest grammar with frozen upstream verifier",
   "freshScientificSeedAccess": false,
   "actualG405SearchVsExactMeasurement": false,
   "g410Depth11Access": false,
