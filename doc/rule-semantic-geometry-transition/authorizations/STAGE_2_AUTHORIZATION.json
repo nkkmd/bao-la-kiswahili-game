@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRSGT-STUDY1",
+  "stageId": "BRSGT-S2-FORMAL-2026-09-27-v1",
+  "reviewId": "BRSGT-STUDY1-STAGE2-FORMAL-AUTH-2026-09-27-V1",
+  "decision": "AUTHORIZED",
+  "authorizationType": "FRESH-FORMAL-HOLDOUT-ONE-SHOT",
+  "maxScientificExecutions": 1,
+  "singleAttemptOnly": true,
+  "formalInferenceAuthorized": true,
+  "seedBlock": {
+    "start": 40823001,
+    "end": 40824024,
+    "slots": 1024
+  },
+  "preFreshAudit": {
+    "workflowRunId": 36314109864,
+    "workflowRunAttempt": 1,
+    "auditHead": "d2e22fa9b4ca8286480beda2a89b5e287bcdad9c",
+    "disposition": "STAGE2-PRE-FRESH-STATIC-AUDIT-PASS",
+    "auditScopeVersion": 2,
+    "artifactId": 10930605637,
+    "artifactName": "brsgt-stage2-pre-fresh-static-36314109864-1",
+    "artifactZipSha256": "00a84324547b1ffd1718283a1afbc3ae5d5dbe76776af8a5c816ade06b98c6e7",
+    "freshStage2SeedReads": 0,
+    "firewallDigestSha256": "38ccbc1ace22a921c8f340c1ae9a56cfab5451208898f629810de9a06af982f7"
+  },
+  "executionBinding": {
+    "status": "FROZEN",
+    "branch": "research/g4-08-rule-semantic-geometry-transition",
+    "auditedSourceSha": "d2e22fa9b4ca8286480beda2a89b5e287bcdad9c",
+    "postAuditAllowedFiles": [
+      "doc/rule-semantic-geometry-transition/authorizations/STAGE_2_AUTHORIZATION.json",
+      "doc/rule-semantic-geometry-transition/executions/STAGE_2_TRIGGER.json"
+    ],
+    "specSha256": "0875468681f8546b8d158e5dc328b43a66037f25aa35e7c7dae0b69e4a74fe4f",
+    "firewallSpecSha256": "d76084156f1e5cc2603908230ca3ca3724201070d8f00ddf88e2640d4f2dcf02",
+    "stage1CanonicalRecordSha256": "3b7a63991705d77a04b75d2db3bb54602e876a6c6aebfe03b4d188f158985fde",
+    "firewallImplementationSha256": "76e849ef8e440fecf51c2a34f0ca0366679162fe0c5aa03a13efa2f4674ad730",
+    "inferenceProductionSha256": "a2d05cbebb781f432efffface5f646a019588ed6c72a4b8441a84b8ce16c886b",
+    "inferenceIndependentSha256": "f99768806b89460943157453810f248fe76dece71b27b207d04de8de9fc7d47d",
+    "formalRunnerSha256": "4fb9368b28a3dbf581749cee38db196c4e67b910f5662270c0a899bb5d034e45",
+    "authorizedWrapperSha256": "a4b085863f154182f22d35cf10c971bf9e5a3a59ccb31d75c50d9f9917556821",
+    "bindingVerifierSha256": "0e999ac096e23ff58d7eb5cbbf8c3623019e0d4f26f20530e216de4da5a32514",
+    "formalWorkflowSha256": "e5f68990530632486c793ab71a72c76a447eeb5e86fabb262e615a03c85f5e8a",
+    "staticWorkflowSha256": "9f8ba1fa8738a388a8491c119beb2baf73ad91d7dbda1be31b876cd5b25646ca"
+  },
+  "scientificBoundaries": {
+    "sameEvidenceRerunAuthorized": false,
+    "seedExtensionAuthorized": false,
+    "replacementPopulationAuthorized": false,
+    "postAccessDesignChangeAuthorized": false,
+    "stage1EffectDirectionUsedForFamilySelection": false,
+    "stage1EffectValueUsedForFamilySelection": false
+  },
+  "g4_10Depth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false
+}
