@@ -1,7 +1,7 @@
 # G4-08 / BRSGT-STUDY1 — 現在の状態
 
 更新日: 2026-09-27  
-状態: **STUDY CLOSED / STAGE 2 FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / NO DIRECTIONAL SCIENTIFIC CONCLUSION / PRE-MAIN AUDIT PASS**
+状態: **STUDY CLOSED / STAGE 2 FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / NO DIRECTIONAL SCIENTIFIC CONCLUSION / MAIN INTEGRATED**
 
 ## Formal identity
 
@@ -10,6 +10,7 @@ Agenda = Research Generation 4 / G4-08
 Study ID = BRSGT-STUDY1
 Branch = research/g4-08-rule-semantic-geometry-transition
 Reviewed main = 2023860419d13b6f294b0600943de8fb4e50b1bb
+Integrated research HEAD = 0956b5b17085714c1fb9df8ef82f29f6b6ff0f53
 ```
 
 ## Current boundary
@@ -28,7 +29,7 @@ Stage 2 block = 40823001..40824024 / 1024 READ / CONSUMED / NO REUSE
 G4-10 depth-11 = NOT AUTHORIZED / NOT ACCESSED
 public AI change = NONE / NOT AUTHORIZED
 pre-main audit = PASS / READY-FOR-MAIN-INTEGRATION-REVIEW
-main integration = NOT PERFORMED / REQUIRES EXPLICIT INSTRUCTION
+main integration = COMPLETE / FAST-FORWARD
 ```
 
 ## Stage 0
@@ -93,7 +94,7 @@ audit HEAD = d2e22fa9b4ca8286480beda2a89b5e287bcdad9c
 disposition = STAGE2-PRE-FRESH-STATIC-AUDIT-PASS
 audit scope = 2
 artifact ID = 10930605637
-artifact ZIP SHA-256 = 00a84324547b1ffd1718283a1afbc3ae5d5be76776af8a5c816ade06b98c6e7
+artifact ZIP SHA-256 = 00a84324547b1ffd1718283a1afbc3ae5d5dbe76776af8a5c816ade06b98c6e7
 fresh Stage 2 reads = 0
 G4-10 access = 0
 public AI changed = false
@@ -194,6 +195,25 @@ G4-10 depth-11 access = 0
 
 監査記録: `../research-generation-4/checkpoints/2026-09-27-g4-08-pre-main-audit.md`
 
+## Main統合
+
+2026-09-27、remote `main`が監査baseline `2023860419d13b6f294b0600943de8fb4e50b1bb`から動いていないことを再確認し、research branchが`ahead 129 / behind 0`、merge baseが同じcurrent `main` HEADであることを確認した。
+
+その後、research HEAD `0956b5b17085714c1fb9df8ef82f29f6b6ff0f53` へnon-force fast-forwardした。
+
+```text
+pre-integration main HEAD = 2023860419d13b6f294b0600943de8fb4e50b1bb
+integrated research HEAD = 0956b5b17085714c1fb9df8ef82f29f6b6ff0f53
+integration method = non-force fast-forward
+force = false
+scientific rerun during integration = false
+public/ changed files = 0
+public AI production changes = 0
+G4-10 depth-11 access = 0
+```
+
+統合記録: `../research-generation-4/checkpoints/2026-09-27-g4-08-main-integration.md`
+
 ## Protected boundaries / closure
 
 - Stage 0 v1 rerun禁止。
@@ -202,6 +222,6 @@ G4-10 depth-11 access = 0
 - Stage 2のpost-hoc firewall修正によるrescue禁止。
 - G4-10 depth-11 access禁止、実アクセス0。
 - public AI変更なし。
-- main integration未実施。
+- main integration完了。統合によって科学結果・no-rescue境界・G4-10保護境界は変更しない。
 
-**BRSGT-STUDY1は、Stage 2 formal holdoutの完了と24/24 NON-ESTIMABLEをもって研究実行を閉じ、main統合前最終監査もPASSした。** 次の作業は、実際の統合直前にremote `main`のdriftを再確認し、ユーザーから明示された場合のみmainへ統合することである。
+**BRSGT-STUDY1は、Stage 2 formal holdoutの完了と24/24 NON-ESTIMABLEをもって研究実行を閉じ、main統合まで完了した。** G4-09 / G4-10は自動認可されず、次のscientific agendaには独立authorization reviewが必要である。
