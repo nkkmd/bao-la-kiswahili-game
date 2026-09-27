@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GCSREA-STUDY1",
+  "stageId": "GCSREA-S1-DEVELOPMENT-2026-09-27-v1",
+  "leaseClass": "DURABLE-GITHUB-ACTIONS-SINGLE-EXECUTION-LEASE",
+  "effectiveAuthorization": "GCSREA-STUDY1-STAGE1-AUTHORIZED-GITHUB-ACTIONS-ONCE",
+  "freshSeedBlock": {
+    "start": 40913001,
+    "end": 40913768,
+    "count": 768
+  },
+  "workflowRunId": 36326278830,
+  "workflowRunAttempt": 1,
+  "triggerCommitSha": "2102cf7aa9b55cb0d630ffcbaf7c37ae2607241b",
+  "acquiredBeforeFreshSeedRead": true,
+  "actualG405SearchVsExactMeasurementAuthorized": false,
+  "g410Depth11AccessAuthorized": false,
+  "acquiredAt": "2026-09-27T14:32:57.860Z"
+}
