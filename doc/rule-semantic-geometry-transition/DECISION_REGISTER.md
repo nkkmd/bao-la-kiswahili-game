@@ -61,3 +61,20 @@
 | BRSGT-D055 | Stage 1 v2 seed block | `CONSUMED-NO-REUSE` | 512 slotsすべてをexactly read済み。`40814001..40814512`を永久隔離しv2 rerun禁止。 |
 | BRSGT-D056 | Stage 1 v2 scientific interpretation | `NONE-TECHNICAL-INVALID` | formal inferenceなし、effect値/sign保持なし、Stage2/G4-10 read 0、public AI変更なし。 |
 | BRSGT-D057 | Stage 1 v3 prerequisite | `NEW VERSION + NEW BLOCK + PREFLIGHT-CONTRACT SELF-TEST` | 科学条件は維持し、3つのlimit keyだけを修正。fresh access前に同じ`preflightContinuous()` interfaceをtechnical fixtureで実動検証する。 |
+| BRSGT-D058 | Stage 1 v3 static audit | `PASS / RUN 36303292448` | audit HEAD `27f2129d...`。catch self-test・preflight-contract self-testともPASS、fresh reads 0。 |
+| BRSGT-D059 | Stage 1 v3 execution | `STAGE1-DEVELOPMENT-COMPLETE / SUPPORT-ONLY` | Run `36303568642`。512 fresh reads、64 event units、97 geometry roots、production/independent exact agreement。 |
+| BRSGT-D060 | Stage 1 v3 promotion | `24-OF-24 SUPPORTED-FOR-FORMAL-HOLDOUT` | 4 events × 6 metrics全slotがsupport gateを満たした。effect direction/valueはformal family membershipへ使用しない。 |
+| BRSGT-D061 | Stage 2 formal family | `FIXED 24 SLOTS / FRESH FORMAL HOLDOUT` | Stage 1 v3 support classificationだけから固定し、effect directionを参照しない。 |
+| BRSGT-D062 | Stage 2 inference | `EXACT TWO-SIDED BINOMIAL SIGN TEST + HOLM-BONFERRONI + POLICY CONCORDANCE` | family alpha 1/20、24 familyを固定し、directional confirmationにはP1/P2双方のstrict same-sign majorityを要求。 |
+| BRSGT-D063 | Stage 2 namespace | `40823001..40824024 / 1024` | 512 slots per policy、ascending full scan、extension/replacement禁止。 |
+| BRSGT-D064 | Stage 2 pre-fresh audit attempt 1 | `TECHNICAL PRE-FRESH FAILURE / READS 0` | Run `36313405735`。G4-08 Stage 1 v3 artifactのidentity fileがnested pathで、workflowのtop-level presence assertionと不一致。 |
+| BRSGT-D065 | Stage 2 audit correction | `TECHNICAL-ONLY / SCIENTIFIC CONTRACT UNCHANGED` | G4-08 artifact layout normalizationとstatic auditの現行spec-key参照・command ordering checkだけを修正。seed/family/inference/no-rescue条件は不変。 |
+| BRSGT-D066 | Stage 2 pre-fresh audit attempt 2 | `PASS / SCOPE-V2 / RUN 36314109864` | audit HEAD `d2e22fa9...`。artifact ID `10930605637`、fresh reads 0、firewall/inference/binding/protected boundaries PASS。 |
+| BRSGT-D067 | Stage 2 authorization | `FRESH-FORMAL-HOLDOUT-ONE-SHOT` | audit HEADへsource-bindし、post-audit変更をauthorization + triggerの2 pathだけに限定。attempt 1・max execution 1。 |
+| BRSGT-D068 | Stage 2 execution | `STAGE2-FORMAL-COMPLETE / RUN 36314208922` | execution HEAD `692d2d718...`、1024/1024 fresh reads、artifact ID `10929684128`、artifact ZIP SHA-256 `bbbe1e22...bcb1b`。 |
+| BRSGT-D069 | Stage 2 source eligibility | `1024-OF-1024 REJECTED BY FROZEN FRESHNESS FIREWALL` | RAW-root 1011、trajectory 6、opening-prefix 7。accepted source trajectory 0、measured event units 0。 |
+| BRSGT-D070 | Stage 2 formal result | `24-OF-24 NON-ESTIMABLE` | estimability gateを満たすevent unitsが0。INCREASE/DECREASE/NOT-CONFIRMEDは0。NON-ESTIMABLEをno-effect/negative resultへ読み替えない。 |
+| BRSGT-D071 | Freshness exhaustion diagnostic | `COMMON PLY-0 INITIAL RAW ROOT EXPLAINS 1011 ROOT REJECTIONS` | Stage 2全1024 rowsとStage 1 v3全512 rowsが同じinitial RAW rootを持ち、frozen root firewallに含まれる。post-hoc rescueには使用しない。 |
+| BRSGT-D072 | Stage 2 no-rescue closure | `NO RERUN / NO FIREWALL GRAMMAR REPAIR / NO SEED EXTENSION` | fresh boundary通過後のply-0除外、root freshness定義変更、replacement population等を禁止。 |
+| BRSGT-D073 | G4-08 study disposition | `CLOSED / NO DIRECTIONAL SCIENTIFIC CONCLUSION` | Stage 2 formal executionは完遂したが24/24 NON-ESTIMABLE。rule-semantic geometry directionについてformal confirmationなし。 |
+| BRSGT-D074 | Protected final boundary | `G4-10=0 / PUBLIC AI UNCHANGED / MAIN NOT INTEGRATED` | G4-08 closureはprotected evidence、production AI、mainへ自動波及しない。 |
