@@ -35,3 +35,12 @@
 | BRSGT-D029 | Stage 0 v2 phase fixture | `ENGINE-REACHABLE / SEED-FREE DETERMINISTIC PATH` | manual reserve mutationを廃止し、initial stateからcanonical nonterminal legal pathでNamua→Mtaji pre-stateへ到達する。 |
 | BRSGT-D030 | Stage 0 v2 path ceiling | `MAX 160 PLIES` | deterministic technical searchをboundedにし、超過はtechnical-invalidとしてfail closed。 |
 | BRSGT-D031 | Stage 0 version isolation | `V1 AUTH/TRIGGER NOT REUSED` | v2はnew spec、new source audit、new authorization、new trigger、new workflowを要求。 |
+| BRSGT-D032 | Stage 0 v2 disposition | `STAGE0-PASS` | Run `36295553800`。4 fixturesすべて64 seeds、E1-E4 coverage、production/independent exact agreement、fresh reads 0。 |
+| BRSGT-D033 | Stage 1 role | `FRESH-DEVELOPMENT / SUPPORT-ONLY / NO FORMAL INFERENCE` | effect value/signを保持せず、definedness/supportだけをStage 2 candidate preparationへ使用する。 |
+| BRSGT-D034 | Stage 1 frozen namespace | `40813001..40813512 / 512 / NOT YET ACCESSED` | fresh access前にseed block・policy assignment・resource ceilingをfreeze。 |
+| BRSGT-D035 | Stage 1 firewall | `FROZEN-PRE-FRESH / IDENTITY-ONLY` | G4-01/G4-04/G4-07等のseed・trajectory・opening-prefix・RAW-root identityを除外し、scientific effect値はselectionへ使わない。 |
+| BRSGT-D036 | Earlier Stage 1 static audit | `PASS SUPERSEDED FOR CURRENT-HEAD BINDING` | PASS後にworkflow/binding/relay-limit処理が変更されたためcurrent HEADへの流用を禁止。 |
+| BRSGT-D037 | Hardened Stage 1 static audit | `PASS / SCOPE-V2` | Run `36298236747`、audit HEAD `bc390876...`。workflow/binding/runner ordering、relay-limit、auth/trigger absenceまで再監査。 |
+| BRSGT-D038 | Hardened audit fresh access | `0` | Stage 1 scientific authorization/triggerはaudit時に不在。fresh Stage 1 / Stage 2 / G4-10 readは0。 |
+| BRSGT-D039 | Post-audit documentation | `DOCUMENT THEN FINAL-FREEZE REAUDIT` | audit結果文書化でHEADが進むため、その文書込みHEADを再度pre-fresh auditしてからauthorizationを検討する。 |
+| BRSGT-D040 | Stage 1 scientific execution | `NOT AUTHORIZED` | final-freeze audit PASSもexecution authorizationを自動付与しない。別authorization reviewが必要。 |
