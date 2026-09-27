@@ -27,11 +27,13 @@ The scientific runner failed during the one-shot execution. The terminal error p
 
 at `tools/experiments/run-brsgt-stage1-development.js:486`.
 
-The runner's outer catch block attempted to build `STAGE_1_FAILURE.json` using the undefined identifier `freshScientificSeedReads`; the actual counter variable is `freshSeedReads`. Therefore the catch handler itself failed while handling an earlier technical exception.
+The actual fresh-read counter is `freshSeedReads`. A source audit found four object-shorthand references to the undefined identifier `freshScientificSeedReads`: the identity-exclusion construction, result construction, summary logging, and catch/failure-artifact construction.
+
+Therefore the retained terminal error proves the catch path also contained the defect, but it does **not** prove that a distinct earlier technical exception occurred. The initiating exception may have been the same undefined identifier on the normal completion path, or it may have been an earlier technical error. Because the catch path itself failed with the same defect, the initiating exception cannot be distinguished from retained evidence.
 
 Consequences:
 
-1. The original technical exception was masked and is not recoverable from the retained log/artifact.
+1. The initiating technical exception is not recoverable with confidence.
 2. `STAGE_1_FAILURE.json` was not created.
 3. The exact number of fresh seed reads at failure was not preserved.
 4. The artifact contains only `STAGE_1_EXECUTION_CONTEXT.json` and `SHA256SUMS.txt`.
@@ -43,7 +45,7 @@ The frozen v1 block was:
 
 `40813001..40813512` / 512 slots.
 
-The execution context proves the count was zero immediately before fresh access, but the exact count after execution began is unknown because the failure handler failed. To avoid reuse of possibly exposed evidence, the **entire block is conservatively treated as consumed and permanently excluded from reuse**.
+The execution context proves the count was zero immediately before fresh access, but the exact count after execution began is unknown. Control flow cannot establish whether an earlier exception occurred before the normal-path undefined identifier. To avoid reuse of possibly exposed evidence, the **entire block is conservatively treated as consumed and permanently excluded from reuse**.
 
 Do not rerun v1. Do not repair v1 and reuse the same seed block.
 
@@ -63,7 +65,7 @@ A v2 may only proceed after all of the following are complete:
 
 1. new Stage 1 version identity;
 2. new non-overlapping fresh seed block;
-3. corrected failure-handler variable;
+3. all four undefined `freshScientificSeedReads` shorthands corrected to explicit `freshSeedReads` mapping;
 4. explicit pre-fresh self-test of the catch/failure-artifact path;
 5. new pre-fresh static audit;
 6. new frozen source binding;
