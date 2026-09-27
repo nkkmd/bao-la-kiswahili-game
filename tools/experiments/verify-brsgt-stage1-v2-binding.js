@@ -1,0 +1,108 @@
+#!/usr/bin/env node
+"use strict";
+
+const fs = require("node:fs");
+const path = require("node:path");
+const cp = require("node:child_process");
+const crypto = require("node:crypto");
+
+const ROOT = path.resolve(__dirname, "../..");
+const SPEC_PATH = "doc/rule-semantic-geometry-transition/prereg/STAGE_1_V2_DEVELOPMENT_SPEC.json";
+const FIREWALL_PATH = "doc/rule-semantic-geometry-transition/prereg/UPSTREAM_IDENTITY_FIREWALL_V2.json";
+const AUTH_PATH = "doc/rule-semantic-geometry-transition/authorizations/STAGE_1_V2_AUTHORIZATION.json";
+const TRIGGER_PATH = "doc/rule-semantic-geometry-transition/executions/STAGE_1_V2_TRIGGER.json";
+const MATERIALIZER_PATH = "tools/experiments/materialize-brsgt-stage1-v2-runner.js";
+
+function need(value, message) { if (!value) throw new Error(message); }
+function readJson(rel) { return JSON.parse(fs.readFileSync(path.join(ROOT, rel), "utf8")); }
+function git(args) { return cp.execFileSync("git", args, { cwd: ROOT, encoding: "utf8" }).trim(); }
+function fileSha(rel) { return crypto.createHash("sha256").update(fs.readFileSync(path.join(ROOT, rel))).digest("hex"); }
+
+function main() {
+  const spec = readJson(SPEC_PATH);
+  const firewall = readJson(FIREWALL_PATH);
+  const auth = readJson(AUTH_PATH);
+  const trigger = readJson(TRIGGER_PATH);
+
+  need(spec.studyId === "BRSGT-STUDY1" && spec.stageId === "BRSGT-S1-DEVELOPMENT-2026-09-27-v2", "Stage1 v2 spec identity mismatch");
+  need(spec.formalInferenceAllowed === false, "formal inference unexpectedly allowed");
+  need(spec.effectValueRetentionAllowed === false && spec.effectSignRetentionAllowed === false, "effect-retention blindness mismatch");
+  need(spec.seedBlock.start === 40814001 && spec.seedBlock.end === 40814512 && spec.seedBlock.slots === 512, "v2 seed block mismatch");
+  need(spec.quarantinedPriorStage1Block.start === 40813001 && spec.quarantinedPriorStage1Block.end === 40813512 && spec.quarantinedPriorStage1Block.reuseAuthorized === false, "v1 quarantine mismatch");
+  need(spec.candidateStage2.authorizedForRead === false, "Stage2 seed access unexpectedly authorized");
+  need(spec.protected.g4_10Depth11Access === false && spec.protected.publicAiChange === false && spec.protected.mainIntegration === false, "protected boundary mismatch");
+  need(spec.failureHandling.catchPathSelfTestRequiredBeforeAuthorization === true, "catch-path self-test requirement missing");
+
+  need(firewall.targetStage === spec.stageId && firewall.status === "FROZEN-PRE-FRESH", "v2 firewall identity/status mismatch");
+  need(firewall.stage1Reservation.start === spec.seedBlock.start && firewall.stage1Reservation.end === spec.seedBlock.end && firewall.stage1Reservation.accessed === false, "v2 firewall reservation mismatch");
+  need(firewall.priorStage1V1Reservation.start === 40813001 && firewall.priorStage1V1Reservation.end === 40813512 && firewall.priorStage1V1Reservation.reuseAuthorized === false, "firewall v1 quarantine missing");
+  need(firewall.excludedSeedNamespaces.some((row) => row.range === "40813001..40813512"), "v1 namespace absent from exclusions");
+  need(firewall.g4_08Stage1V1ScientificEvidenceReuse === false, "v1 scientific evidence reuse unexpectedly enabled");
+  need(firewall.g4_10Depth11Access === false && firewall.publicAiChange === false, "firewall protected boundary mismatch");
+
+  need(auth.studyId === spec.studyId && auth.stageId === spec.stageId, "authorization identity mismatch");
+  need(auth.reviewId === spec.authorizationReviewId, "authorization review mismatch");
+  need(auth.decision === "AUTHORIZED", "Stage1 v2 not authorized");
+  need(auth.authorizationType === "FRESH-DEVELOPMENT-ONE-SHOT", "authorization type mismatch");
+  need(auth.maxScientificExecutions === 1 && auth.singleAttemptOnly === true, "v2 must be exactly one scientific attempt");
+  need(auth.formalInferenceAuthorized === false, "authorization permits formal inference");
+  need(auth.effectValueRetentionAuthorized === false && auth.effectSignRetentionAuthorized === false, "authorization permits effect retention");
+  need(auth.stage2SeedAccessAuthorized === false && auth.g4_10Depth11AccessAuthorized === false, "authorization permits protected evidence access");
+  need(auth.publicAiChangeAuthorized === false && auth.mainIntegrationAuthorized === false, "authorization permits deployment/integration");
+  need(auth.seedBlock.start === spec.seedBlock.start && auth.seedBlock.end === spec.seedBlock.end && auth.seedBlock.slots === spec.seedBlock.slots, "authorization seed block mismatch");
+  need(auth.priorStage1V1SeedReuseAuthorized === false, "authorization permits v1 seed reuse");
+  need(auth.executionBinding && auth.executionBinding.status === "FROZEN", "execution binding not frozen");
+  need(auth.executionBinding.branch === "research/g4-08-rule-semantic-geometry-transition", "authorization branch mismatch");
+  need(/^[0-9a-f]{40}$/.test(auth.executionBinding.auditedSourceSha), "invalid audited source SHA");
+  need(/^[0-9a-f]{64}$/.test(auth.executionBinding.generatedRunnerSha256), "invalid generated runner SHA-256");
+  need(auth.executionBinding.materializerSha256 === fileSha(MATERIALIZER_PATH), "materializer SHA-256 differs from authorized binding");
+  need(auth.executionBinding.specSha256 === fileSha(SPEC_PATH), "v2 spec SHA-256 differs from authorized binding");
+  need(auth.executionBinding.firewallSha256 === fileSha(FIREWALL_PATH), "v2 firewall SHA-256 differs from authorized binding");
+
+  need(trigger.studyId === spec.studyId && trigger.stageId === spec.stageId, "trigger identity mismatch");
+  need(trigger.authorizationReviewId === auth.reviewId, "trigger authorization review mismatch");
+  need(trigger.executionIntent === "FRESH-DEVELOPMENT-ONE-SHOT", "trigger intent mismatch");
+  need(trigger.seedBlock.start === spec.seedBlock.start && trigger.seedBlock.end === spec.seedBlock.end && trigger.seedBlock.slots === spec.seedBlock.slots, "trigger seed block mismatch");
+  need(trigger.formalInference === false && trigger.effectValueRetention === false && trigger.effectSignRetention === false, "trigger blindness mismatch");
+  need(trigger.stage2SeedAccess === false && trigger.protectedDepth11Access === false && trigger.publicAiChange === false && trigger.mainIntegration === false, "trigger protected boundary mismatch");
+  need(trigger.priorStage1V1SeedReuse === false, "trigger permits v1 seed reuse");
+  need(trigger.auditedSourceSha === auth.executionBinding.auditedSourceSha, "trigger audited source mismatch");
+  need(trigger.expectedGeneratedRunnerSha256 === auth.executionBinding.generatedRunnerSha256, "trigger generated runner mismatch");
+
+  const branch = process.env.GITHUB_REF_NAME || git(["rev-parse", "--abbrev-ref", "HEAD"]);
+  need(branch === auth.executionBinding.branch, `unexpected execution branch ${branch}`);
+  need(process.env.GITHUB_RUN_ATTEMPT === "1", "scientific workflow run attempt must be exactly 1");
+  const head = git(["rev-parse", "HEAD"]);
+  git(["merge-base", "--is-ancestor", auth.executionBinding.auditedSourceSha, head]);
+
+  const changedText = git(["diff", "--name-only", `${auth.executionBinding.auditedSourceSha}..HEAD`]);
+  const changed = changedText ? changedText.split(/\r?\n/).filter(Boolean) : [];
+  const allowed = new Set([AUTH_PATH, TRIGGER_PATH]);
+  need(changed.length === 2, `unexpected post-audit change count ${changed.length}`);
+  need(changed.every((file) => allowed.has(file)), `unauthorized post-audit path: ${changed.join(",")}`);
+  need(changed.includes(AUTH_PATH) && changed.includes(TRIGGER_PATH), "v2 authorization/trigger paths not both present after audit");
+
+  console.log(JSON.stringify({
+    disposition: "STAGE1-V2-BINDING-PASS",
+    studyId: spec.studyId,
+    stageId: spec.stageId,
+    auditedSourceSha: auth.executionBinding.auditedSourceSha,
+    executionHead: head,
+    branch,
+    postAuditChangedPaths: changed,
+    seedBlock: auth.seedBlock,
+    priorStage1V1SeedReuseAuthorized: false,
+    maxScientificExecutions: 1,
+    generatedRunnerSha256: auth.executionBinding.generatedRunnerSha256,
+    materializerSha256: auth.executionBinding.materializerSha256,
+    formalInferenceAuthorized: false,
+    effectValueRetentionAuthorized: false,
+    effectSignRetentionAuthorized: false,
+    stage2SeedAccessAuthorized: false,
+    g4_10Depth11AccessAuthorized: false,
+    publicAiChangeAuthorized: false,
+    mainIntegrationAuthorized: false
+  }, null, 2));
+}
+
+main();
