@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRSGT-STUDY1",
+  "stageId": "BRSGT-S1-DEVELOPMENT-2026-09-27-v2",
+  "action": "RUN-PRE-FRESH-STATIC-AUDIT-ONLY",
+  "staticAuditAttempt": 1,
+  "scientificExecution": false,
+  "freshScientificSeedAccess": false,
+  "priorStage1V1SeedReuse": false,
+  "stage2SeedAccess": false,
+  "protectedDepth11Access": false,
+  "publicAiChange": false,
+  "mainIntegration": false
+}
