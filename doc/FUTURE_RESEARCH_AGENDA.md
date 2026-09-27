@@ -1,11 +1,11 @@
 # Bao今後の研究アジェンダ
 
-Version: 5.8.0
+Version: 5.9.0
 
-更新日: 2026-09-26  
+更新日: 2026-09-27  
 Research Generation 2: **Closed (2026-08-31)**（完了）  
 Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了・統合済み）  
-Research Generation 4: **G4-01 complete / G4-02 closed without scientific decision / G4-03 complete / G4-04 complete / G4-05 complete / G4-06 complete and integrated to `main`**
+Research Generation 4: **G4-01〜G4-06 complete and integrated to `main` / G4-07 formal complete on research branch / pre-main audit next**
 
 この文書は、完了した研究を短く振り返りながら、次に研究する価値のある問いを整理するためのものです。候補として記載しただけでは、Study開始、seedアクセス、計算実行、公開AI変更は承認されません。
 
@@ -28,8 +28,8 @@ G4-03 = COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED
 G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED
 G4-05 = COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED
 G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED
-G4-07 = NEXT AUTHORIZATION-REVIEW CANDIDATE / NOT AUTHORIZED
-G4-08..G4-09 = NOT AUTHORIZED
+G4-07 = COMPLETE / FORMAL-COMPLETE / RESEARCH BRANCH CLOSED / MAIN NOT INTEGRATED
+G4-08..G4-09 = DEPENDENCY-GATED / NOT AUTHORIZED
 G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 ```
 
@@ -47,9 +47,9 @@ G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 | A | `G4-04` | G3-10由来geometry-trajectory transfer | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
 | B | `G4-05` | fresh exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED` |
 | B | `G4-06` | geometry / game-theoretic consequence bridge | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED` |
-| C | `G4-07` | multiscale memory / return | `NEXT AUTHORIZATION-REVIEW CANDIDATE / NOT AUTHORIZED` |
-| C | `G4-08..G4-09` | rule-semantic transition、search reliability | `NOT AUTHORIZED` |
-| D | `G4-10` | protected fresh depth-11 exact reachability topology | `PROTECTED / NOT AUTHORIZED` |
+| C | `G4-07` | multiscale memory / return | `COMPLETE / FORMAL-COMPLETE / RESEARCH BRANCH CLOSED / MAIN NOT INTEGRATED` |
+| C | `G4-08..G4-09` | rule-semantic transition、search reliability | `DEPENDENCY-GATED / NOT AUTHORIZED` |
+| D | `G4-10` | protected fresh depth-11 exact reachability topology | `PROTECTED / NOT AUTHORIZED / NOT ACCESSED` |
 | 独立 | `G4-P01`、`G4-H01` | canonicalization再基礎化とhuman / expert研究 | `NOT AUTHORIZED / DEFERRED` |
 
 ### G4-01
@@ -157,19 +157,48 @@ G4-06は科学実行、closure、main統合まで完了しています。統合�
 
 詳細は[`local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md`](local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md)と[`research-generation-4/checkpoints/2026-09-26-g4-06-main-integration.md`](research-generation-4/checkpoints/2026-09-26-g4-06-main-integration.md)を参照してください。
 
+### G4-07
+
+G4-07 `MLGMR-STUDY1` は、fresh P1/P2 trajectories上で6つのcontinuous local-geometry axisについてlagged sign persistence / reversalをprospectiveに検証しました。
+
+Stage 1では24 axis×lag slotをsupport sufficiencyだけで評価し、effect directionを使わず16 slotをfixed Stage 2 formal familyへ送りました。
+
+```text
+Stage 2 canonical run = 36278926636 / attempt 1 / success
+artifact ID = 10919769185
+artifact ZIP SHA-256 = 4d8370ccad1be7fa4052a4293e6b64c4e1b77f7c11c94c1f4dbabead694394f2
+fresh scientific seed reads = 363
+formal measured trajectories = 64 / P1 32 / P2 32
+production / independent exact agreement = true
+formal family = 16
+REVERSAL-CONFIRMED = 6
+PERSISTENCE-CONFIRMED = 0
+NOT-CONFIRMED = 10
+NON-ESTIMABLE = 0
+G4-10 depth-11 access = 0
+```
+
+6つのlag-1 slotはすべて`REVERSAL-CONFIRMED`、lag 2の6 slotとformal-family内lag 4の4 slotは`NOT-CONFIRMED`でした。lag 8はStage 1 support不足でformal family外です。
+
+preregistered contiguous-persistence summaryでは全6 axisが`confirmedContiguousPersistenceLagMax = NONE`です。これはtemporal structureの不存在ではなく、固定P1/P2 populationでsame-sign persistence chainがlag 1から開始せず、最短lagでopposite-sign relationがformal confirmationに到達したという限定結果です。
+
+return endpointはdescriptive onlyです。universal oscillation / mean-reversion law、causal rule-event mechanism、physical half-life、AI strength、人間のdifficultyへ読み替えません。
+
+G4-07 scientific executionは研究ブランチ上でclosedです。main統合は未実施です。
+
+詳細は[`multiscale-local-geometry-memory-return/FINAL_REPORT.md`](multiscale-local-geometry-memory-return/FINAL_REPORT.md)と[`multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json)を参照してください。
+
 ## 2. 今後の優先課題
 
-以下は科学的価値の高い候補です。優先順位はauthorizationではありません。
+以下は科学的価値の高い候補です。優先順位はauthorizationではありません。G4-07のmain統合前監査が完了するまで次のscientific agendaを開始しません。
 
-### 2.1 G4-07 — multiscale geometry memory / return
+### 2.1 G4-08 / G4-09 — 次のWave C候補
 
-次のcore candidateはG4-07です。G3-10のformal resultを仮説生成にだけ用い、fresh trajectory、事前固定したlag family、trajectory-level experimental unit、欠測・phase crossing規則により、局所幾何の各axisが複数lagでどの程度持続し、どのrule eventまたはphase crossingで消失・反転・回帰するかをprospectiveに検証する候補です。
+G4-08はcapture、nyumba、reserve、Namua→Mtaji等のrule-semantic eventごとに局所geometry変化を分解する候補です。G4-07のlag-1 reversal confirmationをrule eventの因果効果へ直接読み替えず、event-specific selection contract、reachable context、独立一致gateをfresh evidence access前に固定する必要があります。
 
-Program Plan上、G4-07はG4-02..G4-04 eligible closuresを上流条件とします。これらは既に閉じていますが、G4-07そのものは未認可です。開始する場合は新しいauthorization reviewから始め、fresh population、lag family、trajectory contract、missingness / phase-crossing rule、formal endpoint、resource ceiling、independent verification、no-rescue / no-rerun ruleをscientific evidence access前に固定します。
+G4-09はgeometry-conditioned search reliabilityと、G4-05 exact microdomainに限定したexact agreement moduleを分離して検証する候補です。一般domainではhigher-resource searchをtruthとして扱わず、exact correctnessを主張するmoduleはformal-eligible exact domainへ限定します。
 
-G4-02は`CLOSED / NO SCIENTIFIC DECISION`であるため、Program Plan上のdependencyをpositive scientific evidenceへ機械的に読み替えず、authorization reviewで利用可能な上流evidenceを明示的に判定します。
-
-G3-08をrepair / rerunしません。`half-life`という語を用いる場合もbounded operational definitionとして固定し、物理的減衰法則を意味させません。
+どちらも**未認可**です。G4-07のclosureはG4-08/G4-09のscientific executionを自動承認しません。開始する場合は、G4-07 main統合後にそれぞれ独立authorization reviewを行います。
 
 ### 2.2 一般化と反例の境界
 
@@ -205,7 +234,7 @@ terminal stateを含むfull identity fields、move equivariance、winner / pendi
 
 評価値、empirical outcome、search reliability、practical comebackはそれぞれ異なるendpointです。将来の研究でも単一の「強さ」へまとめず、測定対象とpopulationを明示します。
 
-G4-03のsearch-ranking result、G4-04のtrajectory-transfer result、G4-05のexact microdomain result、G4-06のgeometry / exact-consequence bridge resultはいずれも、公開AIの棋力改善を直接示すものではありません。
+G4-03のsearch-ranking result、G4-04のtrajectory-transfer result、G4-05のexact microdomain result、G4-06のgeometry / exact-consequence bridge result、G4-07のmultiscale memory / reversal resultはいずれも、公開AIの棋力改善を直接示すものではありません。
 
 ## 3. 新しいStudyに共通する必須条件
 
@@ -240,7 +269,7 @@ Mtajiではbounded two-type morphologyが確認されましたが、普遍的な
 
 局面複雑度、local width、search instability、continuous geometry trajectoryは別constructです。限定domainでformalな関係やdirectionが確認された例がありますが、それらを単一の普遍的difficulty指標とは扱いません。
 
-G4-03はroot legal widthとranking-preorder changeのassociationがfresh domainsへ広く移ることを示しました。G4-04はG3-10由来C1/C2/C3/C5 directionがfresh P1/P2 domainsへ8/8で移送されることを確認しました。G4-06では固定8 exact microdomain内でbounded geometryとexact consequenceを接続しました。ただし、いずれも固定domain外へ無条件に一般化しません。
+G4-03はroot legal widthとranking-preorder changeのassociationがfresh domainsへ広く移ることを示しました。G4-04はG3-10由来C1/C2/C3/C5 directionがfresh P1/P2 domainsへ8/8で移送されることを確認しました。G4-06では固定8 exact microdomain内でbounded geometryとexact consequenceを接続しました。G4-07では固定P1/P2 trajectoriesの最短lagで全6 geometry axisが`REVERSAL-CONFIRMED`となりました。ただし、いずれも固定domain外へ無条件に一般化しません。
 
 ### 4.4 手筋・悪手・錯覚
 
@@ -281,7 +310,7 @@ standard initial RAW rootでは、depth 8・9・10までのbounded exact results
 1. **[完了] Baoを記述する語彙とRAW identityの構築**
 2. **[完了] 限定domainにおけるexact analysisと独立検証**
 3. **[完了] Local game-tree geometryのbounded measurement**
-4. **[進行] Research Generation 4 — G4-01/G4-03/G4-04/G4-05/G4-06完了・G4-06 main統合済み。G4-02は科学的判定なしで終了。次候補はG4-07 multiscale geometry memory / returnのauthorization review**
+4. **[進行] Research Generation 4 — G4-01/G4-03/G4-04/G4-05/G4-06/G4-07完了。G4-01〜G4-06はmain統合済み、G4-07はpre-main audit段階。G4-02は科学的判定なしで終了。次のscientific候補はG4-08/G4-09だが未認可**
 5. **[完了] 逆転可能性と勝負手 — Study 1（Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`）**
 6. **[独立・未承認] G4-H01によるqualified human / expert evidenceの収集**
 7. **[計画済み・未承認] G4-10によるfresh depth-11 exact研究**
