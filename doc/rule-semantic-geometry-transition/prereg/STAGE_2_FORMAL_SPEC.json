@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRSGT-STUDY1",
+  "stageId": "BRSGT-S2-FORMAL-2026-09-27-v1",
+  "statusAtFreeze": "STAGE2-DESIGN-AND-STATIC-VERIFICATION-AUTHORIZED / SCIENTIFIC-EXECUTION-NOT-YET-AUTHORIZED",
+  "authorizationReviewId": "BRSGT-STUDY1-STAGE2-DESIGN-AUTH-2026-09-27-V1",
+  "evidenceClass": "FRESH-FORMAL-HOLDOUT",
+  "scientificExecutionAuthorized": false,
+  "formalInferenceAuthorized": false,
+  "seedBlock": {
+    "start": 40823001,
+    "end": 40824024,
+    "slots": 1024,
+    "slotsPerPolicy": 512,
+    "scanRule": "READ-ALL-SLOTS-IN-ASCENDING-ORDER",
+    "seedExtensionAuthorized": false,
+    "replacementPopulationAuthorized": false
+  },
+  "sourcePolicies": [
+    {
+      "policyId": "LGTTCI-P1-UNIFORM-LEGAL",
+      "slotParity": "EVEN-OFFSET-FROM-SEED-START"
+    },
+    {
+      "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE",
+      "slotParity": "ODD-OFFSET-FROM-SEED-START"
+    }
+  ],
+  "sourceTrajectory": {
+    "maxPly": 72,
+    "terminalBefore72AllowedForEventScanning": true,
+    "relayLimitDisposition": "SOURCE-TECHNICAL-REJECT",
+    "primaryFreshnessIdentity": [
+      "sourceSeed",
+      "fullTrajectorySha256",
+      "openingPrefixSha256",
+      "reachableRawStateSha256"
+    ]
+  },
+  "eventUnitSelection": {
+    "perTrajectoryPerFamilyMax": 1,
+    "familyRule": "EARLIEST-REACHABLE-PLY-THEN-CANONICAL-EVENT-KEY",
+    "actualSourceMoveRequired": false,
+    "reachablePreStateRequired": true,
+    "e1e3e4TieBreak": "canonical move key ascending",
+    "e2TieBreak": "canonical physical move key ascending",
+    "relayLimitTransitionDisposition": "TECHNICAL-INELIGIBLE-SKIP-IN-FIXED-CANONICAL-ORDER",
+    "relayLimitNyumbaVariantPairDisposition": "TECHNICAL-INELIGIBLE-SKIP-IN-FIXED-CANONICAL-ORDER",
+    "eventFamilies": [
+      "BRSGT-E1-CAPTURE",
+      "BRSGT-E2-NYUMBA-USE-VS-STOP",
+      "BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION",
+      "BRSGT-E4-NAMUA-TO-MTAJI"
+    ]
+  },
+  "measurementSelection": {
+    "ordering": ["sourceSeed", "eventPly", "canonicalEventKey"],
+    "targetPerFamilyPerPolicy": 32,
+    "maxMeasuredEventUnits": 256,
+    "replacementAfterIneligibility": "NEXT-CANDIDATE-WITHIN-SAME-FROZEN-SEED-BLOCK-AND-POLICY-FAMILY-ORDER",
+    "crossPolicyBorrowing": false,
+    "crossFamilyBorrowing": false
+  },
+  "geometry": {
+    "representation": "RAW-ONLY",
+    "relativeDepth": 5,
+    "validatedTransformSet": [],
+    "measurementFoundation": "LGTGMIV-STUDY1 / CLOSED / FORMAL-ELIGIBLE-ALL",
+    "metrics": [
+      "BRSGT-M1-ROOT-LEGAL-WIDTH",
+      "BRSGT-M2-CUMULATIVE-TREE-OCCURRENCE",
+      "BRSGT-M3-GLOBAL-DISTINCT-RAW-STATES",
+      "BRSGT-M4-DUPLICATE-TRANSITION-FRACTION",
+      "BRSGT-M5-CUMULATIVE-TREE-RAW-RATIO",
+      "BRSGT-M6-UNIT-WIDTH-OCCUPANCY-FRACTION"
+    ],
+    "e1e3e4Contrast": "post-minus-pre",
+    "e2Contrast": "use-post-minus-stop-post",
+    "arithmetic": "EXACT-INTEGER-OR-REDUCED-RATIONAL"
+  },
+  "formalFamily": {
+    "derivation": "STAGE1-V3-FROZEN-SUPPORT-GATE-ONLY",
+    "effectDirectionUsedForMembership": false,
+    "fixedFamilySize": 24,
+    "slotIds": [
+      "BRSGT-E1-CAPTURE/BRSGT-M1-ROOT-LEGAL-WIDTH",
+      "BRSGT-E1-CAPTURE/BRSGT-M2-CUMULATIVE-TREE-OCCURRENCE",
+      "BRSGT-E1-CAPTURE/BRSGT-M3-GLOBAL-DISTINCT-RAW-STATES",
+      "BRSGT-E1-CAPTURE/BRSGT-M4-DUPLICATE-TRANSITION-FRACTION",
+      "BRSGT-E1-CAPTURE/BRSGT-M5-CUMULATIVE-TREE-RAW-RATIO",
+      "BRSGT-E1-CAPTURE/BRSGT-M6-UNIT-WIDTH-OCCUPANCY-FRACTION",
+      "BRSGT-E2-NYUMBA-USE-VS-STOP/BRSGT-M1-ROOT-LEGAL-WIDTH",
+      "BRSGT-E2-NYUMBA-USE-VS-STOP/BRSGT-M2-CUMULATIVE-TREE-OCCURRENCE",
+      "BRSGT-E2-NYUMBA-USE-VS-STOP/BRSGT-M3-GLOBAL-DISTINCT-RAW-STATES",
+      "BRSGT-E2-NYUMBA-USE-VS-STOP/BRSGT-M4-DUPLICATE-TRANSITION-FRACTION",
+      "BRSGT-E2-NYUMBA-USE-VS-STOP/BRSGT-M5-CUMULATIVE-TREE-RAW-RATIO",
+      "BRSGT-E2-NYUMBA-USE-VS-STOP/BRSGT-M6-UNIT-WIDTH-OCCUPANCY-FRACTION",
+      "BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION/BRSGT-M1-ROOT-LEGAL-WIDTH",
+      "BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION/BRSGT-M2-CUMULATIVE-TREE-OCCURRENCE",
+      "BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION/BRSGT-M3-GLOBAL-DISTINCT-RAW-STATES",
+      "BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION/BRSGT-M4-DUPLICATE-TRANSITION-FRACTION",
+      "BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION/BRSGT-M5-CUMULATIVE-TREE-RAW-RATIO",
+      "BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION/BRSGT-M6-UNIT-WIDTH-OCCUPANCY-FRACTION",
+      "BRSGT-E4-NAMUA-TO-MTAJI/BRSGT-M1-ROOT-LEGAL-WIDTH",
+      "BRSGT-E4-NAMUA-TO-MTAJI/BRSGT-M2-CUMULATIVE-TREE-OCCURRENCE",
+      "BRSGT-E4-NAMUA-TO-MTAJI/BRSGT-M3-GLOBAL-DISTINCT-RAW-STATES",
+      "BRSGT-E4-NAMUA-TO-MTAJI/BRSGT-M4-DUPLICATE-TRANSITION-FRACTION",
+      "BRSGT-E4-NAMUA-TO-MTAJI/BRSGT-M5-CUMULATIVE-TREE-RAW-RATIO",
+      "BRSGT-E4-NAMUA-TO-MTAJI/BRSGT-M6-UNIT-WIDTH-OCCUPANCY-FRACTION"
+    ]
+  },
+  "formalEstimabilityGate": {
+    "targetEventUnitsPerPolicyPerEventFamily": 32,
+    "exactDefinedPerPolicyRequired": 24,
+    "exactDefinedCombinedRequired": 48,
+    "nonzeroPerPolicyRequired": 16,
+    "nonzeroCombinedRequired": 40,
+    "zeroContrastsInSignTestDenominator": false,
+    "nonEstimableHolmInput": {
+      "numerator": "1",
+      "denominator": "1",
+      "defined": true
+    }
+  },
+  "formalInference": {
+    "experimentalUnit": "EVENT-UNIT / MAX-ONE-PER-SOURCE-TRAJECTORY-PER-EVENT-FAMILY",
+    "test": "EXACT-TWO-SIDED-BINOMIAL-SIGN-TEST",
+    "multiplicity": "HOLM-BONFERRONI",
+    "fixedFamilySize": 24,
+    "familyAlpha": {
+      "numerator": "1",
+      "denominator": "20",
+      "defined": true
+    },
+    "policyConcordanceRequiredForDirectionalConfirmation": true,
+    "policyConcordanceRule": "CONFIRMED-DIRECTION-MUST-HAVE-STRICT-SAME-SIGN-MAJORITY-WITHIN-P1-AND-P2",
+    "labels": [
+      "INCREASE-CONFIRMED",
+      "DECREASE-CONFIRMED",
+      "NOT-CONFIRMED",
+      "NON-ESTIMABLE",
+      "TECHNICAL-INVALID"
+    ],
+    "decisionRule": "NON-ESTIMABLE if exact-defined/nonzero gate fails; otherwise Holm-significant pooled positive majority plus strict positive majority in both policies => INCREASE-CONFIRMED; Holm-significant pooled negative majority plus strict negative majority in both policies => DECREASE-CONFIRMED; otherwise NOT-CONFIRMED"
+  },
+  "interpretation": {
+    "default": "EVENT-CONDITIONED-ASSOCIATION",
+    "increaseMeaningE1E3E4": "POST-GEOMETRY-METRIC-GREATER-THAN-PRE",
+    "decreaseMeaningE1E3E4": "POST-GEOMETRY-METRIC-LESS-THAN-PRE",
+    "increaseMeaningE2": "NYUMBA-USE-POST-GREATER-THAN-STOP-POST",
+    "decreaseMeaningE2": "NYUMBA-USE-POST-LESS-THAN-STOP-POST",
+    "causalEffectClaimAuthorized": false,
+    "wholeBaoLawClaimAuthorized": false,
+    "gameTheoreticClaimAuthorized": false,
+    "aiStrengthClaimAuthorized": false,
+    "humanDifficultyClaimAuthorized": false
+  },
+  "preflightLimitContract": {
+    "consumer": "CRCLGR boundedPreflight",
+    "requiredKeys": [
+      "distinctRawStates",
+      "uniqueTransitions",
+      "parentExpansions",
+      "legalMoveEvaluations",
+      "treeNodeOccurrences"
+    ]
+  },
+  "stage1Source": {
+    "canonicalRecordPath": "doc/rule-semantic-geometry-transition/results/stage-1-v3/STAGE_1_V3_CANONICAL_RECORD.json",
+    "workflowRunId": 36303568642,
+    "artifactId": 10926322837,
+    "artifactName": "brsgt-stage1-v3-development-36303568642-1",
+    "artifactZipSha256": "c93ae26b019edde841e58a4f452aa8bacd45c0954937294ca2c12c786d916140",
+    "resultFile": "STAGE_1_RESULT.json",
+    "resultFileSha256": "2fbacc87b88a74c7c06070d8365c9c45ec55e4080c4aa8be55d173457359db4e",
+    "identityFile": "STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json",
+    "identityFileSha256": "31c8307b2221544fb388db03333959a06ef212d3bdc5322861a1352261b64e40",
+    "identityRowCount": 512,
+    "formalFamilyMembershipUsesOnlySupportClassification": true,
+    "stage1EffectDirectionMayInfluenceFamily": false
+  },
+  "resourceCeilings": {
+    "sourceSlots": 1024,
+    "sourceMaxPly": 72,
+    "maxMeasuredEventUnits": 256,
+    "maxGeometryRoots": 768,
+    "perDepth5Root": {
+      "maxDistinctRawStates": 100000,
+      "maxUniqueTransitions": 750000,
+      "maxParentExpansions": 100000,
+      "maxLegalMoveEvaluations": 750000,
+      "maxTreeNodeOccurrences": 1000000000,
+      "elapsedMs": 180000
+    },
+    "stageElapsedMs": 21600000,
+    "stagePeakRssBytes": 4294967296,
+    "resultArtifactBytes": 536870912
+  },
+  "noRescue": {
+    "sameEvidenceRerunAllowed": false,
+    "seedExtensionAllowed": false,
+    "replacementPopulationAllowed": false,
+    "postAccessDesignChangeAllowed": false,
+    "policyReplacementAllowed": false,
+    "eventGrammarChangeAllowed": false,
+    "measurementTargetReductionAllowed": false,
+    "supportGateRelaxationAllowed": false,
+    "metricOrDepthChangeAllowed": false,
+    "multiplicityOrAlphaChangeAllowed": false,
+    "policyConcordanceRuleChangeAllowed": false,
+    "resourceCeilingRelaxationAllowed": false,
+    "favorableSubgroupRescueAllowed": false
+  },
+  "protectedEvidence": {
+    "g4_10Depth11AccessAuthorized": false
+  },
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false
+}
