@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GCSREA-STUDY1",
+  "stageId": "GCSREA-S1-DEVELOPMENT-2026-09-27-v1",
+  "action": "EXECUTE-AUTHORIZED-STAGE1-ONCE",
+  "effectiveAuthorization": "GCSREA-STUDY1-STAGE1-AUTHORIZED-GITHUB-ACTIONS-ONCE",
+  "seedBlock": {
+    "start": 40913001,
+    "end": 40913768,
+    "count": 768
+  },
+  "acknowledgeNoRerun": true,
+  "acknowledgeNoSeedExtension": true,
+  "acknowledgeNoReplacement": true,
+  "acknowledgeNoThresholdRelaxation": true,
+  "actualG405SearchVsExactMeasurement": false,
+  "g410Depth11Access": false,
+  "publicAiChange": false
+}
