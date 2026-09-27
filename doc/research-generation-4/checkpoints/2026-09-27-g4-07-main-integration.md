@@ -54,11 +54,20 @@ G3-11 depth-10 rerun = false
 G4-10 depth-11 access = 0 / NOT AUTHORIZED
 ```
 
-Research workflows and experiment tools are research infrastructure and do not alter the deployed public game or public AI.
+Research workflows and experiment tools remain research infrastructure and do not alter the deployed public game or public AI.
 
 ## Post-integration documentation
 
-After the fast-forward, current-facing documents are being synchronized on `main` to record `G4-07 = MAIN INTEGRATED`. These documentation-only commits do not change scientific evidence or the public game.
+After the fast-forward, current-facing documents were synchronized on `main` to record `G4-07 = MAIN INTEGRATED`. These documentation-only commits do not change scientific evidence or the public game.
+
+Updated current-facing records include:
+
+- `doc/multiscale-local-geometry-memory-return/CURRENT_STATUS.md`
+- `doc/research-generation-4/CURRENT_STATUS.md`
+- `doc/research-generation-4/README.md`
+- `doc/research-generation-4/RESUME_HERE.md`
+- `doc/RESEARCH_INDEX.md`
+- `doc/FUTURE_RESEARCH_AGENDA.md`
 
 ## Program continuation
 
