@@ -35,6 +35,7 @@ jobs:
           node --check tools/experiments/lib/brsgt-production.js
           node --check tools/experiments/lib/brsgt-independent.js
           node --check tools/experiments/lib/brsgt-stage1-firewall.js
+          node --check tools/experiments/verify-brsgt-stage1-binding.js
           node --check tools/experiments/run-brsgt-stage1-development.js
           node --check tools/experiments/audit-brsgt-stage1-static.js
 
