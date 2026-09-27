@@ -3,7 +3,7 @@
   "studyId": "BRSGT-STUDY1",
   "stageId": "BRSGT-S2-FORMAL-2026-09-27-v1",
   "triggerType": "PRE-FRESH-STATIC-AUDIT-ONLY",
-  "auditAttempt": 1,
+  "auditAttempt": 2,
   "freshScientificSeedAccessAuthorized": false,
   "formalInferenceAuthorized": false,
   "stage2ScientificTriggerAuthorized": false,
