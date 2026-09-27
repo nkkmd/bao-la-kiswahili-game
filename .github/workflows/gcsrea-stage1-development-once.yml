@@ -1,0 +1,182 @@
+name: GCSREA G4-09 Stage 1 authorized once
+
+on:
+  push:
+    branches:
+      - research/g4-09-search-reliability-exact-agreement
+    paths:
+      - doc/geometry-conditioned-search-reliability-exact-agreement/authorizations/STAGE_1_ACTIONS_EXECUTION_TRIGGER.json
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: gcsrea-g4-09-stage1-authorized-once
+  cancel-in-progress: false
+
+jobs:
+  stage1-authorized-once:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 210
+    steps:
+      - name: Checkout exact trigger commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Syntax and one-shot source-binding checks
+        run: |
+          set -euo pipefail
+          node --check tools/experiments/lib/gcsrea-stage1-production.js
+          node --check tools/experiments/lib/gcsrea-stage1-independent.js
+          node --check tools/experiments/lib/gcsrea-stage1-firewall.js
+          node --check tools/experiments/verify-gcsrea-stage1-exact-oracle-preflight.js
+          node --check tools/experiments/run-gcsrea-stage1-development.js
+          node --check tools/experiments/verify-gcsrea-stage1-binding.js
+          node tools/experiments/verify-gcsrea-stage1-binding.js
+
+      - name: Refuse if durable Stage 1 execution lease already exists
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          url='https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/contents/doc/geometry-conditioned-search-reliability-exact-agreement/executions/STAGE_1_ACTIONS_EXECUTION_LEASE.json?ref=research%2Fg4-09-search-reliability-exact-agreement'
+          status="$(curl --silent --show-error --location --output /tmp/gcsrea-lease-check.json --write-out '%{http_code}' \
+            --header "Authorization: Bearer ${GH_TOKEN}" --header 'Accept: application/vnd.github+json' "${url}")"
+          case "${status}" in
+            404) echo 'durable Stage 1 execution lease absent' ;;
+            200) echo 'durable Stage 1 execution lease already exists; refusing second execution' >&2; cat /tmp/gcsrea-lease-check.json >&2; exit 1 ;;
+            *) echo "unexpected lease lookup HTTP ${status}" >&2; cat /tmp/gcsrea-lease-check.json >&2; exit 1 ;;
+          esac
+
+      - name: Download and verify immutable upstream identity artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p upstream/zips
+          get_zip() {
+            id="$1"; digest="$2"; out="$3"; dir="$4"
+            curl --fail --silent --show-error --location \
+              --header "Authorization: Bearer ${GH_TOKEN}" \
+              --header 'Accept: application/vnd.github+json' \
+              "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/${id}/zip" \
+              --output "upstream/zips/${out}.zip"
+            echo "${digest}  upstream/zips/${out}.zip" | sha256sum --check --strict
+            mkdir -p "upstream/${dir}"
+            unzip -q "upstream/zips/${out}.zip" -d "upstream/${dir}"
+          }
+          get_zip 9651424447 2c90e3cdd935bdbeab4e79f99eba3b59968763327cd78e8e912cfc7864e04627 g2-02-stage1 g2-02-stage1
+          get_zip 9672561139 c107773d7f7a7cd9ba05a875305486738e10268435730283d6aa46cb5340e47a g2-02-stage2 g2-02-stage2
+          get_zip 9879091983 5ada1dcb0ceab7d89ea0bfc78410a14c3875ba03a01e31a243950706349de70a g3-07-stage2 g3-07-stage2
+          get_zip 10517090411 3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b g4-01 g4-01
+          get_zip 10803311137 aaea8b1c564dbe400d2d1fc00ebfa58f23cd485d9ae994af88cd4ceaf6b621a6 g4-03-stage1 g4-03-stage1
+          get_zip 10805571797 c4449f9a034f30a501f60c6ee90b07426bd1c42aa3b0bbc150fd8d3e1199b597 g4-03-stage2 g4-03-stage2
+          get_zip 10846181741 fa14e0c56d7d7f7088684eb715b1bf26b307cb22459741dfe4a7629cf40b3183 g4-04-stage1 g4-04-stage1
+          get_zip 10849029913 fe165e6c1735cb07e71ed49e2a1c4d3f7446e796ab63936d90c7e982edfc4bd7 g4-04-stage2 g4-04-stage2
+          get_zip 10908816662 65081316d7f3dc0f59b7da5a527af65c052ea33b0ab7e8e8b07d06d764f27469 g4-07-stage1 g4-07-stage1
+          get_zip 10919769185 4d8370ccad1be7fa4052a4293e6b64c4e1b77f7c11c94c1f4dbabead694394f2 g4-07-stage2 g4-07-stage2
+          get_zip 10926322837 c93ae26b019edde841e58a4f452aa8bacd45c0954937294ca2c12c786d916140 g4-08-stage1-v3 g4-08-stage1-v3
+          get_zip 10929684128 bbbe1e2206c9f439168829581d1bce1ef03dddaec1fe0914b8888a63767bcb1b g4-08-stage2 g4-08-stage2
+
+      - name: Re-materialize upstream freshness firewall before fresh access
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/gcsrea-stage1
+          node tools/experiments/run-gcsrea-stage1-development.js \
+            --dry-run-firewall-only \
+            --upstream-root upstream \
+            > artifacts/gcsrea-stage1/PRE_FRESH_FIREWALL_CHECK.json
+
+      - name: Verify fixed G4-05 exact-oracle integrity without G4-09 search measurement
+        run: |
+          set -euo pipefail
+          node tools/experiments/verify-gcsrea-stage1-exact-oracle-preflight.js \
+            artifacts/gcsrea-stage1/EXACT_ORACLE_INTEGRITY_PREFLIGHT.json
+
+      - name: Acquire durable one-shot lease before first fresh seed read
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          node <<'NODE' > artifacts/gcsrea-stage1/STAGE_1_ACTIONS_EXECUTION_LEASE.json
+          const row={
+            schemaVersion:1,
+            studyId:'GCSREA-STUDY1',
+            stageId:'GCSREA-S1-DEVELOPMENT-2026-09-27-v1',
+            leaseClass:'DURABLE-GITHUB-ACTIONS-SINGLE-EXECUTION-LEASE',
+            effectiveAuthorization:'GCSREA-STUDY1-STAGE1-AUTHORIZED-GITHUB-ACTIONS-ONCE',
+            freshSeedBlock:{start:40913001,end:40913768,count:768},
+            workflowRunId:Number(process.env.GITHUB_RUN_ID),
+            workflowRunAttempt:Number(process.env.GITHUB_RUN_ATTEMPT),
+            triggerCommitSha:process.env.GITHUB_SHA,
+            acquiredBeforeFreshSeedRead:true,
+            actualG405SearchVsExactMeasurementAuthorized:false,
+            g410Depth11AccessAuthorized:false,
+            acquiredAt:new Date().toISOString()
+          };
+          process.stdout.write(JSON.stringify(row,null,2)+'\n');
+          NODE
+          lease_b64="$(base64 -w0 artifacts/gcsrea-stage1/STAGE_1_ACTIONS_EXECUTION_LEASE.json)"
+          gh api --method PUT \
+            -H 'Accept: application/vnd.github+json' \
+            '/repos/nkkmd/bao-la-kiswahili-game/contents/doc/geometry-conditioned-search-reliability-exact-agreement/executions/STAGE_1_ACTIONS_EXECUTION_LEASE.json' \
+            -f message='research(g4-09): acquire Stage 1 Actions execution lease' \
+            -f content="${lease_b64}" \
+            -f branch='research/g4-09-search-reliability-exact-agreement' \
+            > artifacts/gcsrea-stage1/LEASE_COMMIT_RESPONSE.json
+
+      - name: Execute single authorized Stage 1 development population
+        run: |
+          set -euo pipefail
+          node tools/experiments/run-gcsrea-stage1-development.js \
+            --execute-authorized-once \
+            --upstream-root upstream \
+            --output-dir artifacts/gcsrea-stage1/result \
+            --lease artifacts/gcsrea-stage1/FRESH_ACCESS_LEASE.json
+
+      - name: Verify output-boundary firewall
+        if: success()
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs=require('node:fs');
+          const p='artifacts/gcsrea-stage1/result/STAGE_1_RESULT.json';
+          const x=JSON.parse(fs.readFileSync(p,'utf8'));
+          const need=(v,m)=>{if(!v)throw new Error(m);};
+          need(x.stageDisposition==='STAGE1-DEVELOPMENT-COMPLETE','Stage1 did not complete');
+          need(x.scientificSeedsRead===768,'fresh seed accounting mismatch');
+          need(x.formalInferencePerformed===false,'formal inference must be false');
+          need(x.pValuesComputed===false&&x.riskDifferencesComputed===false&&x.effectDirectionSummarized===false,'forbidden association outputs detected');
+          need(x.actualG405SearchVsExactMeasurements===0&&x.g405CandidateRescanCount===0&&x.g405DomainReplacementCount===0,'G4-05 protected boundary violated');
+          need(x.g410Depth11AccessCount===0&&x.publicAiChanged===false&&x.stage2SeedAccess===false,'protected boundary violated');
+          const raw=fs.readFileSync(p,'utf8');
+          for(const banned of ['pValue','p-value','riskDifference','HIGHER-IN-HIGH','LOWER-IN-HIGH','COUNTEREXAMPLE-CONFIRMED','GENERALIZATION-CONFIRMED']) need(!raw.includes(banned),`forbidden development output token ${banned}`);
+          NODE
+
+      - name: Record execution metadata and hashes
+        if: always()
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/gcsrea-stage1
+          node <<'NODE' > artifacts/gcsrea-stage1/ACTIONS_EXECUTION_METADATA.json
+          const fs=require('node:fs');
+          const row={schemaVersion:1,studyId:'GCSREA-STUDY1',stageId:'GCSREA-S1-DEVELOPMENT-2026-09-27-v1',workflowRunId:Number(process.env.GITHUB_RUN_ID),workflowRunAttempt:Number(process.env.GITHUB_RUN_ATTEMPT),triggerCommitSha:process.env.GITHUB_SHA,repository:process.env.GITHUB_REPOSITORY,ref:process.env.GITHUB_REF,resultPresent:fs.existsSync('artifacts/gcsrea-stage1/result/STAGE_1_RESULT.json'),recordedAt:new Date().toISOString()};
+          process.stdout.write(JSON.stringify(row,null,2)+'\n');
+          NODE
+          find artifacts/gcsrea-stage1 -type f ! -name SHA256SUMS.txt -print0 | sort -z | xargs -0 sha256sum > artifacts/gcsrea-stage1/SHA256SUMS.txt
+
+      - name: Upload durable Stage 1 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gcsrea-stage1-actions-once-${{ github.run_id }}
+          path: artifacts/gcsrea-stage1
+          if-no-files-found: error
+          retention-days: 90
