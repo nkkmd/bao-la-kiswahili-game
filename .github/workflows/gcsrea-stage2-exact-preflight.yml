@@ -1,0 +1,102 @@
+name: GCSREA G4-09 Stage 2 exact-census technical preflight
+
+on:
+  push:
+    branches:
+      - research/g4-09-search-reliability-exact-agreement
+    paths:
+      - doc/geometry-conditioned-search-reliability-exact-agreement/authorizations/STAGE_2_EXACT_PREFLIGHT_TRIGGER.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gcsrea-g4-09-stage2-exact-preflight
+  cancel-in-progress: false
+
+jobs:
+  exact-census-technical-preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact preflight source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Syntax and protected-boundary checks
+        run: |
+          set -euo pipefail
+          node --check tools/experiments/lib/gcsrea-exact-agreement-production.js
+          node --check tools/experiments/lib/gcsrea-exact-agreement-independent.js
+          node --check tools/experiments/verify-gcsrea-stage2-exact-preflight.js
+          node --check tools/experiments/verify-gcsrea-stage1-exact-oracle-preflight.js
+          node <<'NODE'
+          const fs=require('node:fs');
+          const s=JSON.parse(fs.readFileSync('doc/geometry-conditioned-search-reliability-exact-agreement/prereg/STAGE_2_EXACT_CENSUS_SPEC.json','utf8'));
+          const need=(v,m)=>{if(!v)throw new Error(m);};
+          need(s.technicalPreflight.actualFixed8SearchMeasurementAuthorized===false,'actual measurement must remain unauthorized');
+          need(s.generalDomainStage2.authorized===false&&s.generalDomainStage2.readsAuthorized===0,'general Stage 2 must remain closed');
+          need(s.protectedBoundary.g410Depth11Access===false&&s.protectedBoundary.publicAiChange===false,'protected boundary mismatch');
+          NODE
+
+      - name: Re-verify fixed-8 exact oracle integrity only
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/gcsrea-stage2-exact-preflight
+          node tools/experiments/verify-gcsrea-stage1-exact-oracle-preflight.js \
+            artifacts/gcsrea-stage2-exact-preflight/EXACT_ORACLE_INTEGRITY_PREFLIGHT.json
+
+      - name: Run exact-census classifier technical preflight
+        run: |
+          set -euo pipefail
+          node tools/experiments/verify-gcsrea-stage2-exact-preflight.js \
+            artifacts/gcsrea-stage2-exact-preflight/EXACT_ORACLE_INTEGRITY_PREFLIGHT.json \
+            artifacts/gcsrea-stage2-exact-preflight/STAGE_2_EXACT_PREFLIGHT_RESULT.json
+
+      - name: Verify no scientific measurement occurred
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs=require('node:fs');
+          const x=JSON.parse(fs.readFileSync('artifacts/gcsrea-stage2-exact-preflight/STAGE_2_EXACT_PREFLIGHT_RESULT.json','utf8'));
+          const need=(v,m)=>{if(!v)throw new Error(m);};
+          need(x.disposition==='STAGE2-EXACT-CENSUS-PREFLIGHT-PASS','preflight did not pass');
+          need(x.actualFixed8SearchMeasurements===0,'actual fixed-8 search measurement detected');
+          need(x.generalStage2FreshSeedReads===0,'general Stage 2 seed read detected');
+          need(x.g410Depth11AccessCount===0,'G4-10 access detected');
+          need(x.scientificMeasurementPerformed===false,'scientific measurement must remain false');
+          NODE
+
+      - name: Record execution metadata and hashes
+        run: |
+          set -euo pipefail
+          node <<'NODE' > artifacts/gcsrea-stage2-exact-preflight/ACTIONS_EXECUTION_METADATA.json
+          const row={
+            schemaVersion:1,
+            studyId:'GCSREA-STUDY1',
+            stageId:'GCSREA-S2-EXACT-CENSUS-2026-09-27-v1',
+            workflowRunId:Number(process.env.GITHUB_RUN_ID),
+            workflowRunAttempt:Number(process.env.GITHUB_RUN_ATTEMPT),
+            sourceSha:process.env.GITHUB_SHA,
+            auditClass:'TECHNICAL-PREFLIGHT / NO-ACTUAL-FIXED8-SEARCH-MEASUREMENT',
+            actualFixed8SearchMeasurements:0,
+            generalStage2FreshSeedReads:0,
+            g410Depth11AccessCount:0,
+            scientificMeasurementPerformed:false,
+            recordedAt:new Date().toISOString()
+          };
+          process.stdout.write(JSON.stringify(row,null,2)+'\n');
+          NODE
+          find artifacts/gcsrea-stage2-exact-preflight -type f ! -name SHA256SUMS.txt -print0 | sort -z | xargs -0 sha256sum > artifacts/gcsrea-stage2-exact-preflight/SHA256SUMS.txt
+
+      - name: Upload exact-census preflight evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: gcsrea-stage2-exact-preflight-${{ github.run_id }}
+          path: artifacts/gcsrea-stage2-exact-preflight
+          if-no-files-found: error
+          retention-days: 90
