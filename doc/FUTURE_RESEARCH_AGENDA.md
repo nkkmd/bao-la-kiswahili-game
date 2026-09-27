@@ -1,11 +1,11 @@
 # Bao今後の研究アジェンダ
 
-Version: 5.10.0
+Version: 5.10.1
 
 更新日: 2026-09-27  
 Research Generation 2: **Closed (2026-08-31)**（完了）  
 Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了・統合済み）  
-Research Generation 4: **G4-01〜G4-07 complete and integrated to `main` / G4-08 closed on research branch / G4-09 not authorized / G4-10 protected**
+Research Generation 4: **G4-01〜G4-08 complete/closed and integrated to `main` / G4-09 not authorized / G4-10 protected**
 
 この文書は、完了した研究を短く振り返りながら、次に研究する価値のある問いを整理するためのものです。候補として記載しただけでは、Study開始、seedアクセス、計算実行、公開AI変更は承認されません。
 
@@ -29,7 +29,7 @@ G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTE
 G4-05 = COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED
 G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED
 G4-07 = COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED
-G4-08 = CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN NOT INTEGRATED
+G4-08 = CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRATED
 G4-09 = DEPENDENCY-GATED / NOT AUTHORIZED
 G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 ```
@@ -49,7 +49,7 @@ G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 | B | `G4-05` | fresh exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED` |
 | B | `G4-06` | geometry / game-theoretic consequence bridge | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED` |
 | C | `G4-07` | multiscale memory / return | `COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED` |
-| C | `G4-08` | rule-semantic geometry transition | `CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN NOT INTEGRATED` |
+| C | `G4-08` | rule-semantic geometry transition | `CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRATED` |
 | C | `G4-09` | search reliability / exact agreement | `DEPENDENCY-GATED / NOT AUTHORIZED` |
 | D | `G4-10` | protected fresh depth-11 exact reachability topology | `PROTECTED / NOT AUTHORIZED / NOT ACCESSED` |
 | 独立 | `G4-P01`、`G4-H01` | canonicalization再基礎化とhuman / expert研究 | `NOT AUTHORIZED / DEFERRED` |
@@ -218,13 +218,13 @@ frozen freshness firewallにより1024/1024 source trajectoriesがformal event s
 
 post-execution identity diagnosticでは、Stage 2全1024 trajectoriesとStage 1 v3全512 rowsが同じply-0 initial RAW rootを持ち、そのrootがfrozen firewallに含まれていたことを確認しました。この診断はfreshness exhaustionの説明専用であり、ply-0除外、firewall grammar変更、seed extension、replacement population、same-evidence rerunによるrescueには使用しません。
 
-G4-08は`CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / NO DIRECTIONAL SCIENTIFIC CONCLUSION`として研究実行を閉じています。main統合は別作業です。
+G4-08は`CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / NO DIRECTIONAL SCIENTIFIC CONCLUSION`として研究実行を閉じ、2026-09-27にresearch HEAD `0956b5b17085714c1fb9df8ef82f29f6b6ff0f53`を`main`へnon-force fast-forward統合しました。統合中のscientific rerun、`public/`変更、public AI production変更、G4-10 depth-11 accessはありません。
 
-詳細は[`rule-semantic-geometry-transition/CURRENT_STATUS.md`](rule-semantic-geometry-transition/CURRENT_STATUS.md)、[`rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json)、[`research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md`](research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md)を参照してください。
+詳細は[`rule-semantic-geometry-transition/CURRENT_STATUS.md`](rule-semantic-geometry-transition/CURRENT_STATUS.md)、[`rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json)、[`research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md`](research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md)、[`research-generation-4/checkpoints/2026-09-27-g4-08-main-integration.md`](research-generation-4/checkpoints/2026-09-27-g4-08-main-integration.md)を参照してください。
 
 ## 2. 今後の優先課題
 
-以下は科学的価値の高い候補です。優先順位はauthorizationではありません。G4-08 scientific executionは閉じています。次のscientific agendaを開始する場合は、fresh evidence access前に独立authorization reviewを行います。
+以下は科学的価値の高い候補です。優先順位はauthorizationではありません。G4-08 scientific execution・closure・main統合は完了しています。次のscientific agendaを開始する場合は、fresh evidence access前に独立authorization reviewを行います。
 
 ### 2.1 G4-09 — 次のWave C候補
 
@@ -232,7 +232,7 @@ G4-08はformal holdoutまで完了し、24/24 `NON-ESTIMABLE`で閉じました�
 
 G4-09はgeometry-conditioned search reliabilityと、G4-05 exact microdomainに限定したexact agreement moduleを分離して検証する候補です。一般domainではhigher-resource searchをtruthとして扱わず、exact correctnessを主張するmoduleはformal-eligible exact domainへ限定します。
 
-G4-09は**未認可**です。G4-08 closureや将来のmain統合はG4-09のscientific executionを自動承認しません。開始する場合は独立authorization reviewを行います。
+G4-09は**未認可**です。G4-08 closureやmain統合はG4-09のscientific executionを自動承認しません。開始する場合は独立authorization reviewを行います。
 
 ### 2.2 一般化と反例の境界
 
@@ -344,7 +344,7 @@ standard initial RAW rootでは、depth 8・9・10までのbounded exact results
 1. **[完了] Baoを記述する語彙とRAW identityの構築**
 2. **[完了] 限定domainにおけるexact analysisと独立検証**
 3. **[完了] Local game-tree geometryのbounded measurement**
-4. **[進行] Research Generation 4 — G4-01/G4-03/G4-04/G4-05/G4-06/G4-07は完了・main統合済み。G4-02は科学的判定なしで終了。G4-08は24/24 NON-ESTIMABLEで研究閉鎖・main未統合。次のscientific候補はG4-09だが未認可**
+4. **[進行] Research Generation 4 — G4-01/G4-03/G4-04/G4-05/G4-06/G4-07は完了・main統合済み。G4-02は科学的判定なしで終了。G4-08は24/24 NON-ESTIMABLEで研究閉鎖・main統合済み。次のscientific候補はG4-09だが未認可**
 5. **[完了] 逆転可能性と勝負手 — Study 1（Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`）**
 6. **[独立・未承認] G4-H01によるqualified human / expert evidenceの収集**
 7. **[計画済み・未承認] G4-10によるfresh depth-11 exact研究**
