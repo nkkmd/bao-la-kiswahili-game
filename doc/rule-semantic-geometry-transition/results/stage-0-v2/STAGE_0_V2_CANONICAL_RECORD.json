@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRSGT-STUDY1",
+  "stageId": "BRSGT-S0-TECHNICAL-2026-09-27-v2",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "stageDisposition": "STAGE0-PASS",
+  "workflow": {
+    "runId": 36295553800,
+    "runAttempt": 1,
+    "jobId": 108553613736,
+    "sourceSha": "dbd15518791515a08570f9e7065c1b02cb7ec254",
+    "auditedSourceSha": "e0c7a359af5d37875cb914eae19a142d4c86f427"
+  },
+  "artifact": {
+    "artifactId": 10923364588,
+    "name": "brsgt-stage0-v2-technical-36295553800-1",
+    "zipSha256": "fb19763c2f2bcd29ddf2d84a776ad28cf787e8727ee1857e9a0e44f680535177",
+    "technicalResultSha256": "3474e55298a41f76f54184027352c5d1bcbb06cbabad5241020a926d077cb1aa",
+    "executionContextSha256": "502b5d1a027d2a4dfcea2261ff443b48f1bd58f80db4655b42d1cd8e7c835488"
+  },
+  "deterministicCoreSha256": "915d6146e92c8f7006f093512891911315943328e25e683fd66b4cd2bd4073f5",
+  "fixtureValidation": {
+    "allRepresentedSeedTotals": 64,
+    "fixtureCount": 4,
+    "phaseFixtureSourcePly": 43,
+    "phaseFixturePathLength": 43,
+    "phaseFixturePathDigestSha256": "1928fa27ce1838b2424302e03cf6f8393d08be174eefac9a96b82f95b86b0b60",
+    "phasePreRawSha256": "45629395991a29e4a4081f164257264ae2e5d39332206af1c7a984467bd91f67",
+    "phasePostRawSha256": "f6182944d8fb14db6f1133ddf8b1b5cd5874929c9ac74ff703f04f637cd1b999"
+  },
+  "coverage": {
+    "transitionRows": 10,
+    "nyumbaRows": 1,
+    "geometryMeasurements": 7,
+    "capture": true,
+    "nyumbaUseVsStop": true,
+    "reserveDecrementNontransition": true,
+    "namuaToMtaji": true,
+    "compoundLabelVector": true
+  },
+  "agreement": {
+    "rawIdentityAndMoveSerializationExact": true,
+    "completeMoveApplicationExact": true,
+    "unitByUnitSelectionExact": true,
+    "prepostMeasurementBindingExact": true,
+    "endpointAgreementExact": true,
+    "exactDifferenceArithmetic": true,
+    "nyumbaPairArithmetic": true,
+    "canonicalDigestDeterministic": true
+  },
+  "resourceAndFirewall": {
+    "resourceCeilingPassed": true,
+    "scientificExecution": false,
+    "freshScientificSeedReads": 0,
+    "stage1CandidateNamespaceReads": 0,
+    "stage2CandidateNamespaceReads": 0,
+    "g4_10Depth11AccessCount": 0,
+    "publicAiChanged": false
+  },
+  "scientificInterpretation": "NONE / TECHNICAL READINESS ONLY",
+  "stage1AutomaticallyAuthorized": false
+}
