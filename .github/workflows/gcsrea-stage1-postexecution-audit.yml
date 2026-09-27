@@ -1,0 +1,83 @@
+name: GCSREA G4-09 Stage 1 postexecution artifact audit
+
+on:
+  push:
+    branches:
+      - research/g4-09-search-reliability-exact-agreement
+    paths:
+      - doc/geometry-conditioned-search-reliability-exact-agreement/authorizations/STAGE_1_POSTEXECUTION_AUDIT_TRIGGER.json
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: gcsrea-g4-09-stage1-postexecution-audit
+  cancel-in-progress: false
+
+jobs:
+  stage1-postexecution-artifact-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout audit source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Download canonical Stage 1 artifact only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p audit/input audit/output
+          curl --fail --silent --show-error --location \
+            --header "Authorization: Bearer ${GH_TOKEN}" \
+            --header 'Accept: application/vnd.github+json' \
+            'https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/10934387075/zip' \
+            --output audit/input/stage1.zip
+          echo '2ee8edf9c988de7a721f14887181b80bf517e810a2d49f6d429228eeeb425cd0  audit/input/stage1.zip' | sha256sum --check --strict
+          mkdir -p audit/input/extracted
+          unzip -q audit/input/stage1.zip -d audit/input/extracted
+
+      - name: Verify canonical result without scientific rerun
+        run: |
+          set -euo pipefail
+          node --check tools/experiments/verify-gcsrea-stage1-postexecution-artifact.js
+          node tools/experiments/verify-gcsrea-stage1-postexecution-artifact.js \
+            audit/input/extracted \
+            audit/output/STAGE_1_POSTEXECUTION_AUDIT.json
+
+      - name: Record audit metadata
+        run: |
+          set -euo pipefail
+          node <<'NODE' > audit/output/AUDIT_EXECUTION_METADATA.json
+          const row={
+            schemaVersion:1,
+            studyId:'GCSREA-STUDY1',
+            stageId:'GCSREA-S1-DEVELOPMENT-2026-09-27-v1',
+            auditClass:'POST-EXECUTION-ARTIFACT-ONLY / NO-SCIENTIFIC-RERUN',
+            workflowRunId:Number(process.env.GITHUB_RUN_ID),
+            workflowRunAttempt:Number(process.env.GITHUB_RUN_ATTEMPT),
+            sourceSha:process.env.GITHUB_SHA,
+            canonicalScientificRunId:36326278830,
+            canonicalScientificArtifactId:10934387075,
+            scientificRerunPerformed:false,
+            freshScientificSeedReadsByAudit:0,
+            actualG405SearchVsExactMeasurementsByAudit:0,
+            g410Depth11AccessByAudit:0
+          };
+          process.stdout.write(JSON.stringify(row,null,2)+'\n');
+          NODE
+          find audit/output -type f ! -name SHA256SUMS.txt -print0 | sort -z | xargs -0 sha256sum > audit/output/SHA256SUMS.txt
+
+      - name: Upload postexecution audit evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: gcsrea-stage1-postexecution-audit-${{ github.run_id }}
+          path: audit/output
+          if-no-files-found: error
+          retention-days: 90
