@@ -1,0 +1,102 @@
+name: GCSREA Stage 0 Technical
+
+on:
+  push:
+    branches:
+      - research/g4-09-search-reliability-exact-agreement
+    paths:
+      - doc/geometry-conditioned-search-reliability-exact-agreement/executions/STAGE_0_TRIGGER.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gcsrea-stage0-technical-v1
+  cancel-in-progress: false
+
+jobs:
+  stage0-technical:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout frozen research branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Syntax checks
+        run: |
+          node --check tools/experiments/lib/gcsrea-stage0-production.js
+          node --check tools/experiments/lib/gcsrea-stage0-independent.js
+          node --check tools/experiments/verify-gcsrea-stage0-binding.js
+          node --check tools/experiments/run-gcsrea-stage0-technical.js
+
+      - name: Verify authorization and frozen binding
+        run: node tools/experiments/verify-gcsrea-stage0-binding.js
+
+      - name: Run technical-only Stage 0
+        run: node tools/experiments/run-gcsrea-stage0-technical.js
+
+      - name: Verify resource ceilings
+        env:
+          RESULT: doc/geometry-conditioned-search-reliability-exact-agreement/results/stage-0/STAGE_0_TECHNICAL_RESULT.json
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const result = JSON.parse(fs.readFileSync(process.env.RESULT, 'utf8'));
+          if (result.elapsedMs > 900000) throw new Error(`elapsed ceiling exceeded: ${result.elapsedMs}`);
+          if (result.peakRssBytes > 1500000000) throw new Error(`RSS ceiling exceeded: ${result.peakRssBytes}`);
+          if (fs.statSync(process.env.RESULT).size > 8000000) throw new Error('result artifact size ceiling exceeded');
+          if (result.scientificExecution !== false) throw new Error('scientific execution flag must be false');
+          if (result.freshScientificSeedReads !== 0) throw new Error('fresh scientific seed reads must be zero');
+          if (result.g4_05ExactDomainNewMeasurements !== 0) throw new Error('G4-05 new exact-domain measurements must be zero');
+          if (result.g4_10Depth11AccessCount !== 0) throw new Error('G4-10 depth11 access must be zero');
+          if (result.publicAiChanged !== false) throw new Error('public AI changed flag must be false');
+          NODE
+
+      - name: Materialize execution metadata
+        env:
+          OUT: doc/geometry-conditioned-search-reliability-exact-agreement/results/stage-0/STAGE_0_EXECUTION_CONTEXT.json
+        run: |
+          mkdir -p "$(dirname "$OUT")"
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const row = {
+            schemaVersion: 1,
+            studyId: 'GCSREA-STUDY1',
+            stageId: 'GCSREA-S0-TECHNICAL-2026-09-27-v1',
+            evidenceClass: 'TECHNICAL-FIXTURE',
+            repository: process.env.GITHUB_REPOSITORY,
+            sourceSha: process.env.GITHUB_SHA,
+            refName: process.env.GITHUB_REF_NAME,
+            runId: process.env.GITHUB_RUN_ID,
+            runAttempt: process.env.GITHUB_RUN_ATTEMPT,
+            scientificExecution: false,
+            freshScientificSeedReads: 0,
+            g4_05ExactDomainNewMeasurements: 0,
+            g4_10Depth11AccessCount: 0,
+            publicAiChanged: false
+          };
+          fs.writeFileSync(process.env.OUT, JSON.stringify(row, null, 2) + '\n');
+          NODE
+
+      - name: Hash technical artifacts
+        run: |
+          cd doc/geometry-conditioned-search-reliability-exact-agreement/results/stage-0
+          sha256sum STAGE_0_TECHNICAL_RESULT.json STAGE_0_EXECUTION_CONTEXT.json > SHA256SUMS.txt
+
+      - name: Upload technical artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: gcsrea-stage0-technical-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            doc/geometry-conditioned-search-reliability-exact-agreement/results/stage-0/STAGE_0_TECHNICAL_RESULT.json
+            doc/geometry-conditioned-search-reliability-exact-agreement/results/stage-0/STAGE_0_EXECUTION_CONTEXT.json
+            doc/geometry-conditioned-search-reliability-exact-agreement/results/stage-0/SHA256SUMS.txt
+          if-no-files-found: error
+          retention-days: 30
