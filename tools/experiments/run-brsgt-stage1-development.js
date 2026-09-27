@@ -64,7 +64,8 @@ function replayResult(lib, policyId, seed) {
 }
 function openingPrefixSha(replay) { return TP.digest(replay.moveKeys.slice(0, 16).join("\n")); }
 function reachableRows(replay) {
-  const rows = [{ ply: 0, rawStateSha256: TP.stateKey(E.initialState()), state: E.initialState(), terminal: false }];
+  const initial = E.initialState();
+  const rows = [{ ply: 0, rawStateSha256: TP.stateKey(initial), state: initial, terminal: false }];
   for (const row of replay.rows) rows.push({ ply: row.ply, rawStateSha256: row.rawStateSha256, state: row.state, terminal: row.terminal });
   return rows;
 }
@@ -86,13 +87,15 @@ function firewallCollision(sets, seed, replay, prefix) {
   return null;
 }
 function preStates(replay) {
-  const out = [{ eventPly: 1, state: E.initialState(), rawStateSha256: TP.stateKey(E.initialState()) }];
+  const initial = E.initialState();
+  const out = [{ eventPly: 1, state: initial, rawStateSha256: TP.stateKey(initial) }];
   for (const row of replay.rows) {
     if (row.ply >= SPEC.sourceTrajectory.maxPly || row.terminal) continue;
     out.push({ eventPly: row.ply + 1, state: row.state, rawStateSha256: row.rawStateSha256 });
   }
   return out;
 }
+function relayLimit(state) { return Boolean(state && state.reason === "relay-limit"); }
 function publicCandidate(candidate) {
   if (!candidate) return null;
   if (candidate.eventFamily === "BRSGT-E2-NYUMBA-USE-VS-STOP") {
@@ -120,9 +123,8 @@ function extractCandidates(lib, replay) {
   const found = Object.fromEntries(FAMILIES.map((family) => [family, null]));
   for (const pre of preStates(replay)) {
     if (!found["BRSGT-E2-NYUMBA-USE-VS-STOP"]) {
-      const pairs = lib.nyumbaPairs(E, pre.state);
-      if (pairs.length > 0) {
-        const pair = pairs[0];
+      const pair = lib.nyumbaPairs(E, pre.state).find((row) => !relayLimit(row.stop.post) && !relayLimit(row.use.post));
+      if (pair) {
         found["BRSGT-E2-NYUMBA-USE-VS-STOP"] = {
           eventFamily: "BRSGT-E2-NYUMBA-USE-VS-STOP",
           eventPly: pre.eventPly,
@@ -141,6 +143,7 @@ function extractCandidates(lib, replay) {
     const moves = lib.canonicalMoves(E, pre.state);
     for (const moveRow of moves) {
       const transition = lib.applyComplete(E, pre.state, moveRow.move);
+      if (relayLimit(transition.post)) continue;
       const labels = lib.eventLabels(transition);
       for (const family of [FAMILIES[0], FAMILIES[2], FAMILIES[3]]) {
         if (!found[family] && labels.includes(family)) {
@@ -175,10 +178,10 @@ function candidateRoots(candidate) {
 function rawLimits() {
   const source = SPEC.resourceCeilings.perDepth5Root;
   return {
-    distinctRawStates: source.maxDistinctRawStates,
-    uniqueTransitions: source.maxUniqueTransitions,
+    globalDistinctRawStates: source.maxDistinctRawStates,
+    uniqueCanonicalTransitions: source.maxUniqueTransitions,
     parentExpansions: source.maxParentExpansions,
-    legalMoveEvaluations: source.maxLegalMoveEvaluations,
+    legalMoveVariantsEnumerated: source.maxLegalMoveEvaluations,
     treeNodeOccurrences: source.maxTreeNodeOccurrences,
   };
 }
@@ -290,6 +293,7 @@ function main() {
     need(AUTH.formalInferenceAuthorized === false, "formal inference unexpectedly authorized");
     need(AUTH.effectValueRetentionAuthorized === false && AUTH.effectSignRetentionAuthorized === false, "Stage1 blindness guard invalid");
     need(AUTH.seedBlock.start === SPEC.seedBlock.start && AUTH.seedBlock.end === SPEC.seedBlock.end, "authorized seed block mismatch");
+    need(TP.P1 === SPEC.sourcePolicies[0].policyId && TP.P2 === SPEC.sourcePolicies[1].policyId, "source policy binding mismatch");
     need(process.env.BRSGT_STAGE1_EXECUTION_TRIGGER_OK === "1", "Stage1 execution trigger env missing");
     need(process.env.GITHUB_RUN_ATTEMPT === "1", "Stage1 run attempt must be 1");
 
