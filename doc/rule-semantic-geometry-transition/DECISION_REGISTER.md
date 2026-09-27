@@ -1,0 +1,31 @@
+# G4-08 / BRSGT-STUDY1 — Decision Register
+
+更新日: 2026-09-27
+
+| ID | Topic | Decision | Rationale |
+|---|---|---|---|
+| BRSGT-D001 | Program authorization | `PREREGISTRATION + STAGE0 TECHNICAL-ONLY` | G4-08 authorization review V1。fresh scientific accessは別reviewまで禁止。 |
+| BRSGT-D002 | Study identity | `BRSGT-STUDY1` | G3-06 repair/version incrementではない独立prospective Study。 |
+| BRSGT-D003 | Research branch | `research/g4-08-rule-semantic-geometry-transition` | `main`を進行中実験領域にしない。 |
+| BRSGT-D004 | Representation | `RAW-ONLY` | authoritative identityは`pits,reserve,houseOwned,player,phase,winner,pending`。validated transform setは`[]`。 |
+| BRSGT-D005 | Local horizon | `relative depth 5` | LGTGMIV formal-eligible boundary内に限定。 |
+| BRSGT-D006 | Event family | `E1 CAPTURE` | mandatory captureのsame-root generic non-capture counterfactualを要求しない。 |
+| BRSGT-D007 | Event family | `E2 NYUMBA USE-vs-STOP` | same-root / same-physical-move variant pairとして分離。 |
+| BRSGT-D008 | Event family | `E3 RESERVE-DECREMENT-NONTRANSITION` | Namua内reserve decrementをphase transitionから分離。 |
+| BRSGT-D009 | Event family | `E4 NAMUA-TO-MTAJI` | reserve decrement familyへpoolしない。 |
+| BRSGT-D010 | Compound handling | `FULL LABEL VECTOR` | outcome後のcompound exclusion / favorable subtype rescueを禁止。 |
+| BRSGT-D011 | Default interpretation | `EVENT-CONDITIONED PRE/POST ASSOCIATION` | 有効counterfactual不在時に一般的causal effectを主張しない。 |
+| BRSGT-D012 | Geometry metrics | `M1..M6 exact` | LGTGMIV F1-F5からdeterministicに派生。 |
+| BRSGT-D013 | Arithmetic | `INTEGER / REDUCED RATIONAL` | float toleranceとpost-hoc roundingを使わない。 |
+| BRSGT-D014 | G3-06 boundary | `NO REPAIR / NO SCIENTIFIC REUSE` | `BRMGI-STUDY1` technical-invalid closureを保持。 |
+| BRSGT-D015 | G4-02 boundary | `SCIENTIFIC CONTRIBUTION NONE` | no-decisionをpositive/negative evidenceへ読み替えない。 |
+| BRSGT-D016 | G4-07 boundary | `NO CAUSAL REINTERPRETATION` | lag-1 reversalをevent mechanismへ昇格しない。 |
+| BRSGT-D017 | Stage 0 evidence | `TECHNICAL-FIXTURE ONLY` | scientific seed/trajectory/rootを使用しない。 |
+| BRSGT-D018 | Selector gate | `UNIT-BY-UNIT CANONICAL EXACT` | G3-06のselection mismatch再発防止。count一致だけではPASSしない。 |
+| BRSGT-D019 | Stage 0 resource ceiling | `8 geometry roots / 128 transitions / depth 5` | technical executionをboundedに固定。 |
+| BRSGT-D020 | Future Stage 1 namespace candidate | `start 40813001` | default branch衝突なし。read未認可。 |
+| BRSGT-D021 | Future Stage 2 namespace candidate | `start 40823001` | default branch衝突なし。read未認可。 |
+| BRSGT-D022 | Long execution path | `GitHub Actions first candidate` | source/run/artifact provenanceを保存し、中断耐性を持たせる。 |
+| BRSGT-D023 | G4-10 | `PROTECTED / NO ACCESS` | depth-11 holdoutは別authorizationまで封印。 |
+| BRSGT-D024 | Public AI | `NO CHANGE` | scientific resultをproductionへ自動接続しない。 |
+| BRSGT-D025 | Stage 1 authorization | `SEPARATE REVIEW REQUIRED` | Stage 0 PASSはfresh scientific accessを自動認可しない。 |
