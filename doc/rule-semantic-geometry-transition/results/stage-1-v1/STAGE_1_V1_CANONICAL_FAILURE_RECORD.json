@@ -17,10 +17,7 @@
     "artifactId": 10924827904,
     "name": "brsgt-stage1-development-36298620437-1",
     "zipSha256": "f95452e80b6e70bb6801c59c9767dc0231ae1522415dd12e9f9259e1c31b121d",
-    "filesPresent": [
-      "STAGE_1_EXECUTION_CONTEXT.json",
-      "SHA256SUMS.txt"
-    ],
+    "filesPresent": ["STAGE_1_EXECUTION_CONTEXT.json", "SHA256SUMS.txt"],
     "executionContextSha256": "91644a7baabc0e5ee727e3593eed2526f4f248ba5ab9167d3f95f9d187f2085f",
     "stage1ResultPresent": false,
     "stage1FailurePresent": false
@@ -29,21 +26,28 @@
     "observedTerminalError": "ReferenceError: freshScientificSeedReads is not defined",
     "observedTerminalErrorLocation": "tools/experiments/run-brsgt-stage1-development.js:486",
     "failureHandlerBug": true,
-    "primaryTechnicalErrorRecovered": false,
-    "primaryTechnicalError": null,
-    "explanation": "The runner entered its catch path after an earlier technical exception, but construction of STAGE_1_FAILURE.json referenced the undefined identifier freshScientificSeedReads instead of freshSeedReads. The catch-path ReferenceError masked the original exception and prevented failure-artifact creation."
+    "sourceAudit": {
+      "actualCounterVariable": "freshSeedReads",
+      "undefinedIdentifier": "freshScientificSeedReads",
+      "undefinedIdentifierObjectShorthandOccurrences": 4,
+      "affectedPaths": [
+        "success-path identity exclusion construction",
+        "success-path result construction",
+        "success-path summary logging",
+        "catch-path failure artifact construction"
+      ]
+    },
+    "initiatingTechnicalErrorRecovered": false,
+    "initiatingTechnicalError": null,
+    "explanation": "The retained terminal exception comes from the catch path. Source audit shows the same undefined identifier also exists on the normal completion path, so the initiating exception may have been that defect or an earlier technical exception. Because the catch path failed with the same defect, the initiating exception cannot be distinguished from retained evidence."
   },
   "freshEvidenceAccounting": {
-    "seedBlock": {
-      "start": 40813001,
-      "end": 40813512,
-      "slots": 512
-    },
+    "seedBlock": {"start": 40813001, "end": 40813512, "slots": 512},
     "freshScientificSeedReadsAtExecutionContextWrite": 0,
     "freshScientificSeedReadsExactAtFailure": null,
     "exactReadCountRecoverable": false,
     "seedBlockDisposition": "CONSERVATIVELY-CONSUMED-NO-REUSE",
-    "reason": "Fresh execution started and the exact read count was not preserved because the failure handler itself failed. The entire reserved v1 block is therefore quarantined from reuse."
+    "reason": "Fresh execution started and exact read count was not retained. Control flow alone cannot establish whether an earlier exception occurred before the normal-path undefined identifier. The entire reserved v1 block is therefore quarantined from reuse."
   },
   "scientificBoundary": {
     "formalInferencePerformed": false,
@@ -58,7 +62,7 @@
   "nextVersionRequirements": [
     "new Stage 1 version identity",
     "new non-overlapping fresh seed block",
-    "failure-handler variable fix",
+    "replace all four undefined freshScientificSeedReads shorthands with explicit freshSeedReads mapping",
     "explicit catch-path self-test before fresh access",
     "new pre-fresh static audit",
     "new source binding",
