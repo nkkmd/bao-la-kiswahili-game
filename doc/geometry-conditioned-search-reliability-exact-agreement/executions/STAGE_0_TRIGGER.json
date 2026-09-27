@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GCSREA-STUDY1",
+  "stageId": "GCSREA-S0-TECHNICAL-2026-09-27-v1",
+  "authorizationReviewId": "G4-09-AUTHORIZATION-REVIEW-2026-09-27-V1",
+  "executionIntent": "TECHNICAL-ONLY",
+  "freshScientificSeedAccess": false,
+  "g4_05ExactDomainScientificMeasurement": false,
+  "protectedDepth11Access": false,
+  "publicAiChange": false,
+  "authorizedExecutionOrdinal": 1
+}
