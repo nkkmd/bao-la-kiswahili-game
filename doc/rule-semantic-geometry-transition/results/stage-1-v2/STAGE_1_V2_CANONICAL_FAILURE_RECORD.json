@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRSGT-STUDY1",
+  "stageId": "BRSGT-S1-DEVELOPMENT-2026-09-27-v2",
+  "evidenceClass": "FRESH-DEVELOPMENT",
+  "stageDisposition": "STAGE1-TECHNICAL-INVALID",
+  "rerunDisposition": "NO-RERUN-SAME-VERSION",
+  "workflow": {
+    "runId": 36299638508,
+    "runAttempt": 1,
+    "jobId": 108564791144,
+    "sourceSha": "9c2bf9c9b66622e0830d351fe32db97151d5a5af",
+    "auditedSourceSha": "d5cc6be4a8bc883841484d74b4e861751548e04c",
+    "bindingDisposition": "STAGE1-V2-BINDING-PASS"
+  },
+  "runner": {
+    "sourceV1RunnerSha256": "9f5bd50a4027fb5df97788d98203f177f53b5ee31326fdc6fd4ed847505f2b12",
+    "materializerSha256": "9149439f5ffee993b4dce33cc398e1cb8b65d0632fd86bbaf0b0750370690820",
+    "generatedRunnerSha256": "06b787a2f9b9da26f701a575cead722efab16450bbf33c1ecfd66f46afb874f0",
+    "catchSelfTestDisposition": "BRSGT-STAGE1-V2-CATCH-SELF-TEST-PASS"
+  },
+  "artifact": {
+    "artifactId": 10924877658,
+    "name": "brsgt-stage1-v2-development-36299638508-1",
+    "zipSha256": "66b4c37e6d623af645944745da7a0c99698053a3b2a8e5e95076cbf20dc04976",
+    "executionContextSha256": "09931005ab97429801e592b4170d9fdf486bfc399829f80cf8148e523563884c",
+    "failureSha256": "29e51970c6358d89087602aa390261451568c47becb6572ba4a80db3cd9855fe",
+    "stage1ResultPresent": false,
+    "identityExclusionResultPresent": false,
+    "firewallSummaryResultPresent": false,
+    "failureArtifactPresent": true
+  },
+  "failure": {
+    "technicalError": "missing limit distinctRawStates",
+    "failureArtifactWorking": true,
+    "rootCauseClass": "PREFLIGHT-LIMIT-INTERFACE-SCHEMA-MISMATCH",
+    "rootCause": {
+      "consumer": "tools/experiments/lib/crclgr-production.js::boundedPreflight limits()",
+      "requiredKeys": [
+        "distinctRawStates",
+        "uniqueTransitions",
+        "parentExpansions",
+        "legalMoveEvaluations",
+        "treeNodeOccurrences"
+      ],
+      "runnerProvidedKeys": [
+        "globalDistinctRawStates",
+        "uniqueCanonicalTransitions",
+        "parentExpansions",
+        "legalMoveVariantsEnumerated",
+        "treeNodeOccurrences"
+      ],
+      "mismatchedMappings": [
+        {"provided":"globalDistinctRawStates","required":"distinctRawStates"},
+        {"provided":"uniqueCanonicalTransitions","required":"uniqueTransitions"},
+        {"provided":"legalMoveVariantsEnumerated","required":"legalMoveEvaluations"}
+      ],
+      "referenceCorrectMapping": "tools/experiments/run-gttd-stage0-technical.js::limitsFromSpec"
+    }
+  },
+  "freshEvidenceAccounting": {
+    "seedBlock": {"start": 40814001, "end": 40814512, "slots": 512},
+    "freshScientificSeedReads": 512,
+    "firstSeedRead": 40814001,
+    "lastSeedRead": 40814512,
+    "noRescueBoundaryCrossed": true,
+    "seedBlockDisposition": "CONSUMED-NO-REUSE"
+  },
+  "scientificBoundary": {
+    "formalInferencePerformed": false,
+    "scientificOutcome": "NONE-TECHNICAL-INVALID",
+    "effectValuesRetainedAsEvidence": false,
+    "effectSignsRetainedAsEvidence": false,
+    "stage2SeedReads": 0,
+    "g4_10Depth11AccessCount": 0,
+    "publicAiChanged": false,
+    "mainIntegrationAuthorized": false
+  },
+  "nextVersionRequirements": [
+    "new Stage 1 version identity",
+    "new non-overlapping fresh seed block",
+    "quarantine v1 and v2 Stage 1 seed blocks",
+    "correct the three preflight limit-key mappings without changing scientific design",
+    "add a pre-fresh preflight-contract self-test using the exact generated runner limit object",
+    "retain the v2 catch-path self-test",
+    "new pre-fresh static audit",
+    "new frozen source binding",
+    "new one-shot authorization and trigger"
+  ]
+}
