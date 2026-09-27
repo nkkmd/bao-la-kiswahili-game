@@ -1,105 +1,110 @@
 # Research Generation 4 — 再開位置
 
-更新日: 2026-09-26  
-状態: **`G4-06 COMPLETE / MAIN INTEGRATED / NEXT CANDIDATE = G4-07 AUTHORIZATION REVIEW`**
+更新日: 2026-09-27  
+状態: **`G4-07 COMPLETE ON RESEARCH BRANCH / PRE-MAIN AUDIT NEXT`**
 
 ## 再開時の読む順序
 
 1. remote `main` HEADを確認する。
 2. [`CURRENT_STATUS.md`](CURRENT_STATUS.md)でRG4全体の状態を確認する。
-3. [`checkpoints/2026-09-26-g4-06-main-integration.md`](checkpoints/2026-09-26-g4-06-main-integration.md)でG4-06 main統合記録を確認する。
-4. [`../local-game-tree-geometry-exact-consequence-bridge/CURRENT_STATUS.md`](../local-game-tree-geometry-exact-consequence-bridge/CURRENT_STATUS.md)でG4-06 closure状態を確認する。
-5. [`../local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md`](../local-game-tree-geometry-exact-consequence-bridge/FINAL_REPORT.md)で正式解釈を確認する。
-6. [`../local-game-tree-geometry-exact-consequence-bridge/results/stage-1/STAGE_1_FORMAL_RECEIPT.json`](../local-game-tree-geometry-exact-consequence-bridge/results/stage-1/STAGE_1_FORMAL_RECEIPT.json)でcanonical formal resultを確認する。
-7. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)でG4-07のfrozen program roleとdependencyを確認する。
+3. [`../multiscale-local-geometry-memory-return/CURRENT_STATUS.md`](../multiscale-local-geometry-memory-return/CURRENT_STATUS.md)でG4-07 closure状態を確認する。
+4. [`../multiscale-local-geometry-memory-return/FINAL_REPORT.md`](../multiscale-local-geometry-memory-return/FINAL_REPORT.md)で正式解釈を確認する。
+5. [`../multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json)でcanonical formal resultを確認する。
+6. [`../multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md`](../multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md)でrun / artifact / firewall provenanceを確認する。
+7. [`../research-program-decisions/2026-09-27-g4-07-multiscale-local-geometry-memory-return-study1-closure.md`](../research-program-decisions/2026-09-27-g4-07-multiscale-local-geometry-memory-return-study1-closure.md)でclosure decisionを確認する。
+8. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)でfrozen program roleと次agendaのdependencyを確認する。
 
 ## 現在地
 
 ```text
-G4-01 = COMPLETE / COMPATIBILITY-ELIGIBLE-ALL / MAIN INTEGRATED
+G4-01 = COMPLETE / MAIN INTEGRATED
 G4-02 = CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED
-G4-03 = COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED
-G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED
-G4-05 = COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED
-G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED
-G4-07 = NEXT AUTHORIZATION-REVIEW CANDIDATE / NOT AUTHORIZED
+G4-03 = COMPLETE / MAIN INTEGRATED
+G4-04 = COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED
+G4-05 = COMPLETE / EXACT-ORACLE-FOUNDATION / MAIN INTEGRATED
+G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING / MAIN INTEGRATED
+G4-07 = COMPLETE / FORMAL-COMPLETE / RESEARCH BRANCH CLOSED / MAIN NOT INTEGRATED
 G4-08..G4-09 = DEPENDENCY-GATED / NOT AUTHORIZED
 G4-10 = PROTECTED / NOT AUTHORIZED / NOT ACCESSED
 public AI change = false
 ```
 
-## G4-06 canonical result
+## G4-07 canonical result
 
 ```text
-Stage 0 canonical run = 36211754989 / attempt 1 / success
-Stage 0 decision = STAGE0-TECHNICAL-PASS
-Stage 0 mandatory gates = 12 / 12 PASS
-Stage 1 canonical run = 36214800357 / attempt 1 / success
-Stage 1 execution SHA = 90283d1680cef8feda02e11b072e98b145d5d786
-Stage 1 artifact ID = 10897225431
-Stage 1 artifact SHA-256 = 1a087b4bccfb0c941e9895d2bf35cce41fcbee5f0194de1c43f2293ea593c688
-fixed formal domains = 8 / 8
-relations emitted = 12 / 12
-all production / independent agreement = true
-formal decision = FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS
-G4-05 candidate rescan = 0
+Stage 0 = STAGE0-PASS
+Stage 1 canonical run = 36247459779 / attempt 1 / success
+Stage 1 support-only promoted slots = 16 / 24
+Stage 2 canonical run = 36278926636 / attempt 1 / success
+Stage 2 head = f73e2ade42b3379b9eaf2007292a057cfeaf88f0
+Stage 2 artifact ID = 10919769185
+Stage 2 artifact SHA-256 = 4d8370ccad1be7fa4052a4293e6b64c4e1b77f7c11c94c1f4dbabead694394f2
+fresh Stage 2 scientific seed reads = 363
+formal measured trajectories = 64 / P1 32 / P2 32
+formal family = 16
+REVERSAL-CONFIRMED = 6
+PERSISTENCE-CONFIRMED = 0
+NOT-CONFIRMED = 10
+NON-ESTIMABLE = 0
+production / independent exact agreement = true
 G4-10 depth-11 access = 0
 ```
 
-## G4-06の解釈
+全6 axisのlag 1が`REVERSAL-CONFIRMED`。lag 2の6 slotとformal-family内lag 4の4 slotは`NOT-CONFIRMED`。
 
-G4-06は、G4-05で完全解析済みとなった固定8 microdomainに限定し、relative depth 5のbounded RAW local game-tree geometryとexact value・DTF・value-preserving move countをprospectiveに接続した。
-
-固定populationではTree/RAW inflationが全rootで`1`、transposition occupancyが全rootで`0`となり、これらのexact-consequence relationはvariation不足で`NON-ESTIMABLE`となった。
-
-corridorとreply widthにはvariationがあった。事前登録したfinite ordering ruleでは次の結果になった。
+preregistered bounded persistence summary:
 
 ```text
-VALUE × CORRIDOR = MIXED-ORDER
-VALUE × REPLY = MIXED-ORDER
-DTF × CORRIDOR = MIXED-ORDER
-DTF × REPLY = MONOTONE-DECREASING-ORDER-CONSISTENT
-VPMC × CORRIDOR = MONOTONE-DECREASING-ORDER-CONSISTENT
-VPMC × REPLY = MIXED-ORDER
+A1 = NONE
+A2 = NONE
+A3 = NONE
+A4 = NONE
+A5 = NONE
+A6 = NONE
 ```
 
-この結果はN=8の固定late-game exact microdomain内だけを対象とする。whole-Bao一般則、因果関係、AI棋力、human difficulty、public AI feature採用を意味しない。
+これは「temporal structureなし」を意味しない。same-sign persistence chainがlag 1から始まらず、最短lagで全6 axisにopposite-sign confirmationが出たという限定結果である。
 
-## main統合
+return endpointはdescriptive only。universal oscillation / mean-reversion law、causal mechanism、physical half-lifeへ読み替えない。
 
-G4-06のmain統合は完了した。
+## No-rescue / protected boundary
 
-```text
-pre-main audit = PASS
-integration method = FAST-FORWARD
-main baseline before integration = 6a005d9f84d222126dc41abfe17ad5baa4c96629
-integrated research HEAD = 889b3d16f09517e5b8aa6621cfd347d4b8902891
-main integration = COMPLETE
-public/ changes = 0
-public AI production changes = 0
-G4-10 depth-11 access = 0
-```
+G4-07 Stage 2はone-shot formal executionとして完了済み。以下は禁止。
 
-統合後もformal result、no-rescue rule、G4-10保護境界、public AI非変更は維持される。
+- Stage 1 / Stage 2 same-evidence rerun
+- seed extension
+- replacement population
+- lag / axis / checkpoint / policyの事後変更
+- threshold relaxation
+- favorable subgroup rescue
+- formal familyの結果後変更
+- G3-11 depth-10 rerun
+- G4-10 depth-11 access without separate authorization
+- public AIへの自動反映
 
 ## 次にRG4を進める場合
 
-次のcandidateは **G4-07 — 多時間尺度geometry memoryと回帰** のauthorization reviewである。
+まず **G4-07 pre-main consistency audit / main-integration review** を行う。
 
-ただしG4-07は未認可である。またG4-02は`CLOSED / NO SCIENTIFIC DECISION`であるため、G4-07 authorization reviewではProgram Planのdependencyを機械的にpositive evidenceとせず、利用可能な上流evidenceを改めて明示的に判定する。
+確認対象:
 
-fresh evidence access、Study ID付与、formal executionはauthorization review完了前に行わない。
+- G4-07 canonical recordとraw artifact digestの一致
+- FINAL_REPORT / CURRENT_STATUS / closure decisionの整合
+- RG4中央README / CURRENT_STATUS / RESUME_HEREとの整合
+- branch scopeにpublic AI production changeがないこと
+- G4-10 depth-11 accessが0であること
+- same-evidence rerun / seed extensionが発生していないこと
+
+問題がなければmain統合を別途判断する。main統合前にG4-08やG4-09へ進まない。
 
 ## 禁止事項
 
-- G4-02 Study 1〜4のrepair / reopen / rerun
-- G4-03 Stage 1 / Stage 2のrerun
-- G4-04 Stage 1 / Stage 2のrerun
-- G4-05 Stage 0 / Stage 1 / Stage 2のrerun
+- G4-02 closed Studiesのrepair / reopen / rerun
+- G4-03 / G4-04 formal stagesのrerun
 - G4-05 candidate rescan / seed extension / root replacement / resource rescue
-- G4-05 resultのwhole-Bao solutionへの拡張
-- G4-06 Stage 1のpost-outcome rerun / metric変更 / depth変更 / subgroup rescue
-- G4-06 resultのwhole-Bao lawへの一般化
+- G4-06 post-outcome rerun / metric変更 / depth変更 / subgroup rescue
+- G4-07 Stage 1 / Stage 2のrerun / rescue
+- G4-07 resultのwhole-Bao lawへの一般化
 - G3-11 depth-10 rerun
 - G4-10 depth-11 access
 - public AIへの自動反映
