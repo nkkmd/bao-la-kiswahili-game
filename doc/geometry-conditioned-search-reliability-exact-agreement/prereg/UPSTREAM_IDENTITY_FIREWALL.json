@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GCSREA-STUDY1",
+  "targetStage": "GCSREA-S1-DEVELOPMENT-2026-09-27-v1",
+  "purpose": "UPSTREAM-IDENTITY-ONLY-FRESHNESS-FIREWALL",
+  "status": "FROZEN-PRE-FRESH",
+  "scientificOutcomeFieldsRetained": false,
+  "freshStage1SeedAccessDuringMaterialization": false,
+  "excludedSeedNamespaces": [
+    {"source":"G2-02 Stage 1","range":"25011001..25012280"},
+    {"source":"G2-02 Stage 2","range":"25021001..25022536"},
+    {"source":"G3-06 Stage 1","range":"31610001..31610256"},
+    {"source":"G3-06 Stage 2","range":"31620001..31620384"},
+    {"source":"G3-07 Stage 1","range":"31710001..31710256"},
+    {"source":"G3-07 Stage 2","range":"31720001..31720384"},
+    {"source":"G3-08 Stage 1","range":"31810001..31810256"},
+    {"source":"G3-08 Stage 2","range":"31820001..31820384"},
+    {"source":"G3-10 Stage 1","range":"32210001..32210256"},
+    {"source":"G3-10 Stage 2","range":"32220001..32220384"},
+    {"source":"G4-01 interrupted SILGM","range":"40112001..40112768"},
+    {"source":"G4-01 Stage 1R SILGM primary","range":"40212001..40212768"},
+    {"source":"G4-01 Stage 1R SILGM reserve","range":"41212001..41212768"},
+    {"source":"G4-03 Stage 1","range":"40312001..40312768"},
+    {"source":"G4-03 Stage 2","range":"40322001..40323536"},
+    {"source":"G4-04 Stage 1","range":"40413001..40413512"},
+    {"source":"G4-04 Stage 2","range":"40423001..40424024"},
+    {"source":"G4-05 Stage 2 general-source quarantine only","range":"40523001..40524024"},
+    {"source":"G4-07 Stage 1","range":"40713001..40713512"},
+    {"source":"G4-07 Stage 2","range":"40723001..40724024"},
+    {"source":"G4-08 Stage 1 v1","range":"40813001..40813512"},
+    {"source":"G4-08 Stage 1 v2","range":"40814001..40814512"},
+    {"source":"G4-08 Stage 1 v3","range":"40815001..40815512"},
+    {"source":"G4-08 Stage 2","range":"40823001..40824024"}
+  ],
+  "identitySources": {
+    "g2_02_stage1": {
+      "sourceClass": "UPSTREAM-WORKFLOW-ARTIFACT-FULL-IDENTITY-MATERIALIZATION",
+      "runId": 33067208005,
+      "artifactId": 9651424447,
+      "artifactName": "g2-02-stage1-development-v1",
+      "artifactZipSha256": "2c90e3cdd935bdbeab4e79f99eba3b59968763327cd78e8e912cfc7864e04627",
+      "gameCount": 1280,
+      "gameIdentityRowsSha256": "c3bddc78a64f79adaafe88447dfd1b7c133b71c41ed9c94dd14579f9db2d0de1",
+      "trajectorySet": {"uniqueCount":1057,"sha256":"2a6ea599b5a20965935e3a8b085faaf5ad02e903796a6d4f2d6c4e29efb025cf"},
+      "openingPrefixSet": {"uniqueCount":1057,"sha256":"8e9a4f504eb91413038ba1385443c45b0535f52e38e0f52a8f3a58fac4572ea6"},
+      "reachableRootSet": {"uniqueCount":50636,"sha256":"6250ab3e2311d19a014a16d0ca2741f0d0d0f170d583b7eb3a78a26e1cc3b55f"},
+      "selectedStateFile": "stage1-selected-states.json",
+      "selectedStateFileSha256": "4ee7e09663fe6a3544e2b6180d68ff3bbedd74a816d8b6dd89470c0da512d7fd",
+      "selectedCount": 1018
+    },
+    "g2_02_stage2": {
+      "sourceClass": "UPSTREAM-WORKFLOW-ARTIFACT-FULL-IDENTITY-MATERIALIZATION",
+      "runId": 33124538584,
+      "artifactId": 9672561139,
+      "artifactName": "g2-02-stage2-formal-v1",
+      "artifactZipSha256": "c107773d7f7a7cd9ba05a875305486738e10268435730283d6aa46cb5340e47a",
+      "gameCount": 1536,
+      "gameIdentityRowsSha256": "02f8d6168591e86594bb142934f007bfd768a7f3fad3c2b3b7b6abb55da6da79",
+      "trajectorySet": {"uniqueCount":1271,"sha256":"a42837b98c05fc7a959a2fd3583e21b7bea741eed185de5c1d0308ecd02f3cfd"},
+      "openingPrefixSet": {"uniqueCount":1271,"sha256":"e7405f162cf20e08e377f14bbb5c603d9872cfa8e54ffa08b7678b1da554e626"},
+      "reachableRootSet": {"uniqueCount":60694,"sha256":"2947f4e3bbe184eb6842718a3f3a4035efd27ef6568a6110ba2fe20d7cd2e14b"},
+      "selectedStateFile": "stage2-selected-states.json",
+      "selectedStateFileSha256": "1c30b384c4afc38d6505f7065b1faba94111731a844565f55dd5b10d6996f263",
+      "selectedCount": 1007
+    },
+    "g3_07_stage1": {
+      "sourceClass": "REPOSITORY-IDENTITY-ONLY",
+      "path": "doc/search-instability-local-geometry-mechanism/prereg/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json",
+      "identityRowCount": 48
+    },
+    "g3_07_stage2": {
+      "sourceClass": "UPSTREAM-WORKFLOW-ARTIFACT-IDENTITY-ONLY",
+      "runId": 33716884975,
+      "artifactId": 9879091983,
+      "artifactName": "silgm-stage2-v1-result-33716884975",
+      "artifactZipSha256": "5ada1dcb0ceab7d89ea0bfc78410a14c3875ba03a01e31a243950706349de70a",
+      "selectedIdentityRowCount": 72,
+      "canonicalIdentityRowDigest": "d1eee423d3185c8b1547c0c61c5de4b2dec4d68175763ebffe02e51f5395b51d",
+      "setDigests": {
+        "rootRawSha256": {"uniqueCount":72,"sha256":"d5e50f419ca98cff1f5a4f781f0eace3a23257195b1c82a7f58dac0f518353d5"},
+        "fullTrajectorySha256": {"uniqueCount":72,"sha256":"85d86e0ce7041ad1456e1599f5a9c071fcf44ec091b56c09afa410f174cb2482"},
+        "openingPrefixSha256": {"uniqueCount":72,"sha256":"521a3a95482fd0ac83140c50ce31003ae02dc4b5ac2c364d3ad3148d08875d1d"}
+      }
+    },
+    "g3_10_stage1": {
+      "sourceClass": "REPOSITORY-IDENTITY-ONLY",
+      "path": "doc/geometry-conditioned-longitudinal-dynamics/results/stage-1/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json",
+      "identityRowCount": 24,
+      "fileSha256": "9d869d2f1b967d9a34e7e9ef20e780f149d3a90d3dc430805e43f5f0a73e8d0f"
+    },
+    "g3_10_stage2": {
+      "sourceClass": "REPOSITORY-IDENTITY-ONLY",
+      "path": "doc/geometry-conditioned-longitudinal-dynamics/results/stage-2/STAGE_2_CANDIDATE_MANIFEST.json",
+      "identityRowCount": 48,
+      "fileSha256": "b46288a8c25c3d00d0cb84500bda8af9adea943cc372cfbde467e05f59a0fb97"
+    },
+    "g4_01_stage1r_silgm": {
+      "sourceClass": "UPSTREAM-WORKFLOW-ARTIFACT-IDENTITY-ONLY",
+      "runId": 35265290422,
+      "artifactId": 10517090411,
+      "artifactName": "lgttci-stage1r-recovery-source-bundle",
+      "artifactZipSha256": "3e1312fbd2fed104dc25ea53448b5f76feee2f37bc2b34ef09274e4df690a65b",
+      "artifactBlock": "source/SILGM",
+      "sourceRowCount": 768,
+      "canonicalIdentityRowDigest": "d80056712e69dd518eb77710e3ff070bda436bb23c8f3f1c19d77ae6465455a2",
+      "setDigests": {
+        "sourceSeed": {"uniqueCount":768,"sha256":"8d0033306422680b29e7d4e78ed00bedabde225e530579e4e301836827d7c38d"},
+        "fullTrajectorySha256": {"uniqueCount":766,"sha256":"9572e25dc2a4d9dad3726fc30541caa923c1585417bfb31cebecc2ea45d8c74e"},
+        "rootRawSha256": {"uniqueCount":665,"sha256":"8e30417d3fc58aa010cf3b7625175662e017950e94181e04375c7c47becd7b1e"}
+      }
+    },
+    "g4_03_stage1": {
+      "sourceClass": "UPSTREAM-WORKFLOW-ARTIFACT-SELECTED-IDENTITY-ONLY",
+      "runId": 35987703180,
+      "artifactId": 10803311137,
+      "artifactName": "lwsrt-stage1-actions-once-35987703180",
+      "artifactZipSha256": "aaea8b1c564dbe400d2d1fc00ebfa58f23cd485d9ae994af88cd4ceaf6b621a6",
+      "identityFile": "STAGE_1_RESULT.json",
+      "identityFileSha256": "58d5489ce918bc57b599ca168fdcefbd4e741892ad123d96d27439fb06085ac8",
+      "identityRowCount": 128,
+      "identityManifestSha256": "4a1dd1f3bc516734c91f99fbd9bf63ff966e3ed0568cb1b21c3fa6ccd290a979"
+    },
+    "g4_03_stage2": {
+      "sourceClass": "UPSTREAM-WORKFLOW-ARTIFACT-SELECTED-IDENTITY-ONLY",
+      "runId": 35993172710,
+      "artifactId": 10805571797,
+      "artifactName": "lwsrt-stage2-actions-once-35993172710",
+      "artifactZipSha256": "c4449f9a034f30a501f60c6ee90b07426bd1c42aa3b0bbc150fd8d3e1199b597",
+      "identityFile": "STAGE_2_RESULT.json",
+      "identityFileSha256": "88dd8c2e586f36692d5d0cb1d66847affe0151a803f9230eb7d8425f93469bf3",
+      "identityRowCount": 192,
+      "identityManifestSha256": "9989a42656cac788e6d6207516103ba5f79678d4ba1d501fb2c676ef83ae1312"
+    },
+    "g4_04_stage1": {
+      "sourceClass": "UPSTREAM-WORKFLOW-ARTIFACT-IDENTITY-ONLY",
+      "runId": 36089520136,
+      "artifactId": 10846181741,
+      "artifactName": "gttd-stage1-result",
+      "identityFile": "STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json",
+      "identityFileSha256": "0935cd3c6f35ca8dfe68e268337ba7f4bb55e615d726e8919594d7f52eebcd3e",
+      "identityRowCount": 32
+    },
+    "g4_04_stage2": {
+      "sourceClass": "UPSTREAM-WORKFLOW-ARTIFACT-IDENTITY-ONLY",
+      "runId": 36095831961,
+      "artifactId": 10849029913,
+      "artifactName": "gttd-stage2-formal",
+      "identityFile": "STAGE_2_CANDIDATE_MANIFEST.json",
+      "identityFileSha256": "08df728a97e90a3bef84c24eb107871cf93b48af8fed961fa11b42bdd8febab3",
+      "identityRowCount": 96
+    },
+    "g4_07_stage1": {
+      "sourceClass": "UPSTREAM-WORKFLOW-ARTIFACT-IDENTITY-ONLY",
+      "runId": 36247459779,
+      "artifactId": 10908816662,
+      "artifactName": "mlgmr-stage1-development-result",
+      "identityFile": "STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json",
+      "identityFileSha256": "bcc53e7f7a561552e0a67ac0225b0da29da6d7904834b6b8130531cc48b6e13b",
+      "identityRowCount": 96
+    },
+    "g4_07_stage2": {
+      "sourceClass": "UPSTREAM-WORKFLOW-ARTIFACT-IDENTITY-ONLY",
+      "runId": 36278926636,
+      "artifactId": 10919769185,
+      "artifactName": "mlgmr-stage2-formal-result",
+      "identityFile": "STAGE_2_CANDIDATE_MANIFEST.json",
+      "identityFileSha256": "1c4b8479a04169a50e89e4c33b79fc4a95930c2d61c52f1d6ddb51cf958b28af",
+      "identityRowCount": 363
+    },
+    "g4_08_stage1_v3": {
+      "sourceClass": "UPSTREAM-WORKFLOW-ARTIFACT-FULL-IDENTITY-ONLY",
+      "runId": 36303568642,
+      "artifactId": 10926322837,
+      "artifactName": "brsgt-stage1-v3-development-36303568642-1",
+      "identityFile": "doc/rule-semantic-geometry-transition/results/stage-1-v3/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json",
+      "identityFileSha256": "31c8307b2221544fb388db03333959a06ef212d3bdc5322861a1352261b64e40",
+      "identityRowCount": 512,
+      "trajectorySet": {"uniqueCount":512,"sha256":"f358801d3a8ed64fedc9443043dec84f75ed306976e6faf8e6a68034de3f1738"},
+      "openingPrefixSet": {"uniqueCount":512,"sha256":"3a6159b3567674c6d0e8cdf89554ec7e0fd08d68b9da22670f11a98f08fb7947"},
+      "reachableRootSet": {"uniqueCount":27836,"sha256":"7e1c24f501f907f0b1ffb1096607273b7e159220ca016dbcc5efb94da1a76d93"}
+    },
+    "g4_08_stage2": {
+      "sourceClass": "UPSTREAM-WORKFLOW-ARTIFACT-FULL-IDENTITY-ONLY",
+      "runId": 36314208922,
+      "artifactId": 10929684128,
+      "artifactName": "brsgt-stage2-formal-36314208922-1",
+      "identityFile": "STAGE_2_CANDIDATE_MANIFEST.json",
+      "identityFileSha256": "3a5ffd6cdfeffddf1fb00d4289e5f278dfc319b260c99cf05d5c956244f4c13f",
+      "identityRowCount": 1024,
+      "trajectorySet": {"uniqueCount":1020,"sha256":"eddad576825060db7a44aa1a6543092a86e1a4982988b450a435dd1a609953a6"},
+      "openingPrefixSet": {"uniqueCount":1016,"sha256":"f0c4cebc4636f5dca61d707debdbb1e2ce11c7bad8d60711a9c44b309bc87d33"},
+      "reachableRootSet": {"uniqueCount":54207,"sha256":"13ea348c1f42e5d375455d41f222a68c6e9d28b41d4f3fcee17d7cf2c509beed"}
+    }
+  },
+  "unavailableIdentityClasses": [
+    {"source":"G3-06 Stage 1 technical-invalid and Stage 2 unused","identityClass":"complete trajectory/opening/root identity","nonOverlapClaimed":false,"mitigation":"entire seed namespaces quarantined"},
+    {"source":"G3-08 technical-invalid / protected","identityClass":"complete trajectory/opening/root identity","nonOverlapClaimed":false,"mitigation":"entire seed namespaces quarantined"},
+    {"source":"G4-01 interrupted SILGM","identityClass":"full trajectory/opening/root identity","nonOverlapClaimed":false,"mitigation":"entire namespace quarantined"},
+    {"source":"G4-01 Stage1R SILGM","identityClass":"openingPrefixSha256","nonOverlapClaimed":false,"mitigation":"source seed/full trajectory/root audited; opening-prefix non-overlap not claimed"},
+    {"source":"G4-03 Stage 1/2","identityClass":"complete unselected source trajectory/opening/root sets","nonOverlapClaimed":false,"mitigation":"full seed namespaces quarantined; selected scientific identities audited"},
+    {"source":"G4-08 Stage 1 v1/v2","identityClass":"complete generated trajectory/opening/root identity","nonOverlapClaimed":false,"mitigation":"entire namespaces quarantined"}
+  ],
+  "runtimeExclusionRule": {
+    "rejectIfExcludedSourceSeed": true,
+    "rejectIfAuditedFullTrajectoryCollision": true,
+    "rejectIfAuditedOpeningPrefixCollision": true,
+    "rejectIfAuditedSelectedOrReachableRootCollision": true,
+    "trajectoryReplacementAfterCollision": false,
+    "rootReplacementAfterCollision": false,
+    "seedExtension": false,
+    "artifactOrDigestMismatch": "FAIL-CLOSED-BEFORE-FRESH-SEED-READ",
+    "missingRequiredIdentitySource": "FAIL-CLOSED-BEFORE-FRESH-SEED-READ"
+  },
+  "stage1Reservation": {"start":40913001,"end":40913768,"count":768,"accessed":false},
+  "moduleBExactOracleUse": "G4-05 fixed 8 is explicitly allowed only for integrity preflight; not added as scientific exclusion against Module B",
+  "g4_10Depth11Access": false,
+  "publicAiChange": false
+}
