@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRSGT-STUDY1",
+  "stageId": "BRSGT-S1-DEVELOPMENT-2026-09-27-v2",
+  "reviewId": "BRSGT-STUDY1-STAGE1-V2-DESIGN-AUTH-2026-09-27-V1",
+  "decision": "AUTHORIZED",
+  "authorizationType": "FRESH-DEVELOPMENT-ONE-SHOT",
+  "authorizationBasis": {
+    "priorStage1V1Disposition": "STAGE1-TECHNICAL-INVALID / NO-RERUN-SAME-VERSION",
+    "priorStage1V1ScientificOutcome": "NONE-TECHNICAL-INVALID",
+    "priorStage1V1SeedBlockDisposition": "CONSERVATIVELY-CONSUMED-NO-REUSE",
+    "preFreshStaticAuditDisposition": "STAGE1-V2-PRE-FRESH-STATIC-AUDIT-PASS",
+    "preFreshStaticAuditRunId": 36299573408,
+    "preFreshStaticAuditJobId": 108564609695,
+    "preFreshStaticAuditArtifactId": 10925008557,
+    "preFreshStaticAuditArtifactZipSha256": "424ebb1b512cba1cfd66777aad960ffaa2e78124c48d81a65b28c8602a6bb7b5",
+    "auditHeadSha": "d5cc6be4a8bc883841484d74b4e861751548e04c",
+    "catchSelfTestDisposition": "BRSGT-STAGE1-V2-CATCH-SELF-TEST-PASS",
+    "catchSelfTestFreshScientificSeedReads": 0,
+    "scientificAuthorizationPresentAtAudit": false,
+    "scientificTriggerPresentAtAudit": false,
+    "freshScientificSeedReadsAtAudit": 0,
+    "stage2SeedReadsAtAudit": 0,
+    "g4_10Depth11AccessCountAtAudit": 0,
+    "priorStage1V1SeedBlockQuarantined": true
+  },
+  "freshScientificSeedAccessAuthorized": true,
+  "stage1SeedAccessAuthorized": true,
+  "priorStage1V1SeedReuseAuthorized": false,
+  "stage2SeedAccessAuthorized": false,
+  "formalInferenceAuthorized": false,
+  "effectValueRetentionAuthorized": false,
+  "effectSignRetentionAuthorized": false,
+  "g4_10Depth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "maxScientificExecutions": 1,
+  "singleAttemptOnly": true,
+  "seedBlock": {
+    "start": 40814001,
+    "end": 40814512,
+    "slots": 512,
+    "seedExtensionAuthorized": false,
+    "replacementPopulationAuthorized": false
+  },
+  "noRescueBoundary": "EARLIEST-OF-FIRST-FRESH-SEED-GENERATION-OR-READ",
+  "executionBinding": {
+    "status": "FROZEN",
+    "bindingId": "BRSGT-STUDY1-STAGE1-V2-BINDING-2026-09-27-V1",
+    "branch": "research/g4-08-rule-semantic-geometry-transition",
+    "auditedSourceSha": "d5cc6be4a8bc883841484d74b4e861751548e04c",
+    "staticAuditRunId": 36299573408,
+    "specSha256": "0f980e93ba84426d46fddb50a3d15ffa3e63ddff4153df223057ad2bda2a32f6",
+    "firewallSha256": "6a9175b2c632906d9cccd1493263a1681b6942434cdd7b1f161f371210983f15",
+    "materializerSha256": "9149439f5ffee993b4dce33cc398e1cb8b65d0632fd86bbaf0b0750370690820",
+    "generatedRunnerSha256": "06b787a2f9b9da26f701a575cead722efab16450bbf33c1ecfd66f46afb874f0",
+    "postAuditAllowedFiles": [
+      "doc/rule-semantic-geometry-transition/authorizations/STAGE_1_V2_AUTHORIZATION.json",
+      "doc/rule-semantic-geometry-transition/executions/STAGE_1_V2_TRIGGER.json"
+    ]
+  }
+}
