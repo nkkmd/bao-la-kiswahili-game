@@ -3,13 +3,14 @@
 更新日: 2026-09-27  
 Program: `Research Generation 4 / G4-07`  
 Study: `MLGMR-STUDY1`  
-状態: **`COMPLETE / FORMAL-COMPLETE / PRE-MAIN-AUDIT-PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`**
+状態: **`COMPLETE / FORMAL-COMPLETE / MAIN-INTEGRATED`**
 
 ## 現在地
 
 ```text
-reviewed main HEAD = 8edf791aa789d77ba27d3d7704ab02acd6e35eac
+reviewed pre-integration main HEAD = 8edf791aa789d77ba27d3d7704ab02acd6e35eac
 research branch = research/g4-07-multiscale-geometry-memory-return
+integrated research HEAD = 0130bc4e4a7b5ec0c96a026a846fdbf75530f02a
 Study ID = MLGMR-STUDY1
 Stage 0 = COMPLETE / STAGE0-PASS
 Stage 1 = COMPLETE / DEVELOPMENT-SUPPORT-ONLY
@@ -22,7 +23,7 @@ NON-ESTIMABLE = 0
 pre-main audit = PASS
 G4-10 depth-11 access = 0 / NOT AUTHORIZED
 public AI change = false
-main integration = NOT AUTHORIZED / NOT EXECUTED
+main integration = COMPLETE / FAST-FORWARD
 ```
 
 ## Stage 0 canonical execution
@@ -192,11 +193,26 @@ Final report:
 
 監査checkpoint: [`../research-generation-4/checkpoints/2026-09-27-g4-07-pre-main-audit.md`](../research-generation-4/checkpoints/2026-09-27-g4-07-pre-main-audit.md)
 
+## Main integration
+
+2026-09-27、pre-integration `main` `8edf791aa789d77ba27d3d7704ab02acd6e35eac` から、最終文書監査済みresearch HEAD `0130bc4e4a7b5ec0c96a026a846fdbf75530f02a` へ**non-force fast-forward**で統合した。
+
+```text
+integration method = FAST-FORWARD
+integrated research HEAD = 0130bc4e4a7b5ec0c96a026a846fdbf75530f02a
+scientific rerun during integration = false
+public/ change = false
+public AI production change = false
+G4-10 depth-11 access = 0
+```
+
+統合は既存のformal result、no-rescue boundary、解釈境界を変更しない。
+
 ## 次に許可される作業
 
-次は **main-integration reviewのみ**。main統合はまだ未認可・未実施であり、明示的な統合判断前には行わない。
+G4-07は科学実行・文書監査・main統合まで完了した。
 
-G4-08 / G4-09 / G4-10 scientific executionは本Studyのclosureや監査PASSによって自動認可されない。
+G4-08 / G4-09 / G4-10 scientific executionは本Studyのclosureやmain統合によって自動認可されない。次のagendaへ進む場合は、独立したauthorization reviewから開始する。
 
 ## 正本
 
@@ -208,4 +224,5 @@ G4-08 / G4-09 / G4-10 scientific executionは本Studyのclosureや監査PASSに�
 - [`results/stage-2/STAGE_2_CANONICAL_RECORD.json`](results/stage-2/STAGE_2_CANONICAL_RECORD.json)
 - [`checkpoints/2026-09-27-stage-1-development-complete.md`](checkpoints/2026-09-27-stage-1-development-complete.md)
 - [`checkpoints/2026-09-27-stage-2-formal-complete.md`](checkpoints/2026-09-27-stage-2-formal-complete.md)
+- [`../research-generation-4/checkpoints/2026-09-27-g4-07-pre-main-audit.md`](../research-generation-4/checkpoints/2026-09-27-g4-07-pre-main-audit.md)
 - [`../research-program-decisions/2026-09-27-g4-07-multiscale-local-geometry-memory-return-study1-closure.md`](../research-program-decisions/2026-09-27-g4-07-multiscale-local-geometry-memory-return-study1-closure.md)
