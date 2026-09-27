@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "programPosition": "Research Generation 4 / G4-09",
+  "studyId": "GCSREA-STUDY1",
+  "titles": {
+    "ja": "Bao局所ゲーム木幾何によるsearch reliability境界のprospective検証 — 一般domainの出力安定性とexact microdomainのvalue agreementを分離した解析",
+    "en": "Geometry-Conditioned Search Reliability and Exact Agreement Study 1"
+  },
+  "status": "PREREGISTERED-STAGE0-ONLY",
+  "authorizationDecision": "G4-09-AUTHORIZED-FOR-PREREGISTRATION-AND-STAGE0-ONLY",
+  "authorizationReviewPath": "doc/research-program-decisions/2026-09-27-post-g4-08-g4-09-authorization-review.md",
+  "sourceMain": {
+    "repository": "nkkmd/bao-la-kiswahili-game",
+    "headSha": "fc0f345034639c03dc10b0537c331ae44ee47b3b",
+    "researchBranch": "research/g4-09-search-reliability-exact-agreement"
+  },
+  "stageStructure": [
+    {
+      "stageId": "GCSREA-S0-TECHNICAL-2026-09-27-v1",
+      "evidenceClass": "TECHNICAL-FIXTURE",
+      "freshScientificSeedAccessAuthorized": false,
+      "scientificOutcomeAuthorized": false,
+      "g4_05ExactDomainScientificMeasurementAuthorized": false,
+      "statusAtFreeze": "AUTHORIZED-NOT-EXECUTED"
+    },
+    {
+      "stageId": "GCSREA-S1-DEVELOPMENT-2026-09-27-v1",
+      "evidenceClass": "FRESH-DEVELOPMENT",
+      "freshScientificSeedAccessAuthorized": false,
+      "scientificOutcomeAuthorized": false,
+      "requiresSeparatePostStage0Authorization": true,
+      "statusAtFreeze": "NOT-AUTHORIZED-NOT-EXECUTED"
+    },
+    {
+      "stageId": "GCSREA-S2-FORMAL-2026-09-27-v1",
+      "evidenceClass": "FRESH-FORMAL-HELDOUT",
+      "freshScientificSeedAccessAuthorized": false,
+      "scientificOutcomeAuthorized": false,
+      "requiresSeparatePostStage1Authorization": true,
+      "statusAtFreeze": "NOT-AUTHORIZED-NOT-EXECUTED"
+    }
+  ],
+  "moduleSeparation": {
+    "moduleA": {
+      "id": "GENERAL-SEARCH-STABILITY",
+      "population": "future fresh general-domain RAW states only",
+      "truthInterpretation": false,
+      "construct": "search-output stability across frozen search configurations",
+      "candidateEndpoints": [
+        "canonical-best agreement",
+        "TopSet equality / overlap",
+        "ranking-preorder stability",
+        "PV-prefix stability"
+      ]
+    },
+    "moduleB": {
+      "id": "EXACT-MICRODOMAIN-AGREEMENT",
+      "population": "G4-05 fixed eight exact microdomain roots only after separate authorization",
+      "truthSource": "G4-05 immutable exact oracle",
+      "construct": "search-output agreement with exact value-preserving / optimal move information",
+      "wholeBaoRateInterpretation": false
+    }
+  },
+  "upstreamScientificBoundaries": {
+    "g4_02": "administrative closure satisfied; no scientific decision contribution",
+    "g4_03": "general-domain hypothesis and methodology reference only; no seed/root/result reuse",
+    "g4_04": "methodological reference; not a search-correctness truth source",
+    "g4_05": "exact prerequisite satisfied; fixed eight domains immutable; no rescan/replacement/rescue",
+    "g4_06": "exact rematerialization methodology reference only; relation outcomes not used for threshold selection",
+    "g4_07": "methodological reference only",
+    "g4_08": "24/24 NON-ESTIMABLE is not evidence of no search-reliability relation",
+    "g2_02": "INCONCLUSIVE historical design reference only; no primary-result rescue or evidence reuse"
+  },
+  "representation": {
+    "authoritativeStateIdentity": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "mode": "RAW-ONLY",
+    "validatedTransformSet": [],
+    "localGeometryRelativeDepth": 5,
+    "higherResourceSearchIsTruth": false
+  },
+  "searchConfigurations": [
+    {"id": "D2_Q1", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 1},
+    {"id": "D3_Q1", "kind": "exact-depth", "depth": 3, "quiescenceDepth": 1},
+    {"id": "D2_Q0", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 0},
+    {"id": "D2_Q2", "kind": "exact-depth", "depth": 2, "quiescenceDepth": 2},
+    {"id": "B256_Q1_MAXD3", "kind": "node-budget", "nodeBudget": 256, "maxDepth": 3, "quiescenceDepth": 1},
+    {"id": "B1024_Q1_MAXD3", "kind": "node-budget", "nodeBudget": 1024, "maxDepth": 3, "quiescenceDepth": 1}
+  ],
+  "technicalContrasts": [
+    {"id": "TC-DEPTH", "a": "D2_Q1", "b": "D3_Q1"},
+    {"id": "TC-NODE-BUDGET", "a": "B256_Q1_MAXD3", "b": "B1024_Q1_MAXD3"},
+    {"id": "TC-QUIESCENCE", "a": "D2_Q0", "b": "D2_Q2"}
+  ],
+  "geometryTechnicalFamily": [
+    "SILGM-G1-ROOT-LEGAL-WIDTH",
+    "SILGM-G2-CUMULATIVE-TREE-OCCURRENCE",
+    "SILGM-G3-DUPLICATE-TRANSITION-FRACTION",
+    "SILGM-G4-CUMULATIVE-TREE-RAW-RATIO",
+    "SILGM-G5-UNIT-WIDTH-OCCUPANCY-FRACTION"
+  ],
+  "candidateFutureNamespaces": {
+    "stage1": {"candidateStart": 40913001, "authorizedForRead": false},
+    "stage2": {"candidateStart": 40923001, "authorizedForRead": false},
+    "note": "starts only; end/count/policy assignment remain unfrozen until separate authorization"
+  },
+  "freshnessFirewallBeforeStage1": [
+    "G2-02 Stage 1/2 scientific seeds, trajectories, opening prefixes, selected RAW states",
+    "G4-01 relevant compatibility scientific/reserve identities",
+    "G4-03 Stage 1/2 seeds, trajectories, opening prefixes, selected RAW roots",
+    "G4-04 scientific identities when source overlap is possible",
+    "G4-07 scientific identities when source overlap is possible",
+    "G4-08 scientific identities when source overlap is possible"
+  ],
+  "exactModuleBoundary": {
+    "g4_05FormalCompleteDomainCount": 8,
+    "candidateRescan": false,
+    "stateLimitCandidateRescue": false,
+    "seedExtension": false,
+    "domainReplacement": false,
+    "formalDecisionReevaluation": false,
+    "stage0ActualExactDomainMeasurement": false,
+    "futureRootRematerializationRequiresExactIntegrityMatch": [
+      "seed",
+      "ply",
+      "rootStateKey",
+      "state-set",
+      "transition-set",
+      "solution digest",
+      "root exact value",
+      "DTF",
+      "optimalMoveKeys"
+    ]
+  },
+  "protectedEvidence": {
+    "g3_11Depth10Rerun": false,
+    "g4_10Depth11Access": false,
+    "unvalidatedSymmetryCanonicalization": false,
+    "publicAiChange": false
+  },
+  "noRescueAfterFreshAccess": [
+    "seed extension",
+    "root replacement",
+    "source-policy replacement",
+    "search-grid replacement",
+    "geometry-family post-hoc selection",
+    "exact-domain replacement",
+    "support-threshold relaxation",
+    "multiplicity relaxation",
+    "favorable subgroup rescue",
+    "same-evidence repair-and-rerun"
+  ]
+}
