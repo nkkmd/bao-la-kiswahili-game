@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "authorizationId": "GCSREA-G4-09-STAGE2-EXACT-CENSUS-AUTH-2026-09-28-V1",
+  "studyId": "GCSREA-STUDY1",
+  "stageId": "GCSREA-S2-EXACT-CENSUS-2026-09-27-v1",
+  "decision": "GCSREA-STUDY1-STAGE2-EXACT-CENSUS-MEASUREMENT-AUTHORIZED-ONCE",
+  "authorizationDate": "2026-09-28",
+  "reviewPath": "doc/research-program-decisions/2026-09-28-g4-09-stage2-exact-measurement-authorization-review.md",
+  "codeFreezeHead": "c1425c6b67d85f4e7f42032fc04aaf968f151454",
+  "fixedDomainCount": 8,
+  "forcedDomainCount": 2,
+  "nontrivialDomainCount": 6,
+  "searchConfigurationCount": 6,
+  "searchConfigurationIds": [
+    "D2_Q1",
+    "D3_Q1",
+    "D2_Q0",
+    "D2_Q2",
+    "B256_Q1_MAXD3",
+    "B1024_Q1_MAXD3"
+  ],
+  "authorizedScientificMeasurements": 1,
+  "rerunAuthorized": false,
+  "durablePremeasurementLeaseRequired": true,
+  "generalStage2FreshSeedReadAuthorized": false,
+  "newSeedNamespaceAuthorized": false,
+  "g405CandidateRescanAuthorized": false,
+  "g405DomainReplacementAuthorized": false,
+  "g405SeedExtensionAuthorized": false,
+  "g410Depth": 11,
+  "g410Depth11AccessAuthorized": false,
+  "g410MetadataAccessAuthorized": false,
+  "g410ReferenceAccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "engineChangeAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "interpretationBoundary": "FIXED-FINITE-EXACT-CENSUS-DESCRIPTIVE-ONLY",
+  "wholeBaoProbabilityEstimateAuthorized": false,
+  "configurationWinnerSelectionAuthorized": false,
+  "resourceCeiling": {
+    "maximumNontrivialSearchExecutionsPerImplementation": 36,
+    "maximumTotalNontrivialSearchExecutionsAcrossTwoImplementations": 72
+  },
+  "upstreamExactArtifact": {
+    "resultId": "RLEMOF-STUDY1-G4-05-STAGE2",
+    "fixedPopulationId": "RLEMOF-STUDY1-FIXED8",
+    "zipSha256": "90520ed47e8d314e15c0c8dab18d805fa147d69c54ab3e7a4afc2136238c2154"
+  },
+  "evidenceBindings": {
+    "classifierPreflight": {
+      "runId": 36328650822,
+      "runAttempt": 1,
+      "artifactId": 10934528767,
+      "artifactSha256": "b878b4b5fa04458f171621d24b3be17afe39c1c08b64c9ee2fc66e2673876929"
+    },
+    "premeasurementAudit": {
+      "runId": 36328833487,
+      "runAttempt": 1,
+      "artifactId": 10934489177,
+      "artifactSha256": "e312b91a0d8273ce5b697b9cf830ecf8ac6429c0fb726f55027282dc8f1780dd"
+    },
+    "finalSourceAudit": {
+      "runId": 36354788277,
+      "runAttempt": 1,
+      "sourceCommit": "b286ee4954e30877d02ffc3262806c0cb1e4d230",
+      "disposition": "PASS"
+    }
+  },
+  "sourceBindings": [
+    {
+      "path": ".github/workflows/gcsrea-stage2-exact-measurement-once.yml",
+      "blobSha": "ef27b4a86a19d12034a8d863d97a8a5cc936a0aa"
+    },
+    {
+      "path": "tools/experiments/run-gcsrea-stage2-exact-census.js",
+      "blobSha": "134632d42fd09f34be9cc18d9690b06acd8f5fa6"
+    },
+    {
+      "path": "tools/experiments/verify-gcsrea-stage2-exact-binding.js",
+      "blobSha": "28059ab7cdd64a76e2954ccce704c956e6d42d7e"
+    },
+    {
+      "path": "tools/experiments/verify-gcsrea-stage2-exact-result.js",
+      "blobSha": "12534b9348b71a08697db9d60972454b2a9cec55"
+    },
+    {
+      "path": "tools/experiments/verify-gcsrea-stage1-exact-oracle-preflight.js",
+      "blobSha": "57579e0dbd28e453087e98274c68ea83ded00724"
+    },
+    {
+      "path": "tools/experiments/lib/gcsrea-exact-agreement-production.js",
+      "blobSha": "46b43b16c7b6a98afafa07cb209893846f1ecf3b"
+    },
+    {
+      "path": "tools/experiments/lib/gcsrea-exact-agreement-independent.js",
+      "blobSha": "fe28d3e4505655647bb1b1c4d9e36c89e068d401"
+    },
+    {
+      "path": "tools/experiments/lib/silgm-production.js",
+      "blobSha": "9712e897540b54ff5fe3aa6acd997d286b09331d"
+    },
+    {
+      "path": "tools/experiments/lib/silgm-independent.js",
+      "blobSha": "0bd60c96e5abfce9d1c99b474709177d52509138"
+    },
+    {
+      "path": "tools/experiments/lib/lgtgmiv-stage1-production.js",
+      "blobSha": "a4664f01535d6abbf6f83821befbb2fafd55cde6"
+    },
+    {
+      "path": "tools/experiments/lib/lgtgmiv-stage1-independent.js",
+      "blobSha": "0c7239ac7acf146e9aee63dae66194681b8631d6"
+    },
+    {
+      "path": "tools/experiments/lib/search-reliability-decision-robustness.js",
+      "blobSha": "f3a6951fe711db62e164910cfb248a9cbc2cac1a"
+    },
+    {
+      "path": "tools/experiments/lib/restricted-endgame-transition.js",
+      "blobSha": "7ca35ef03ecad102b9a9e1fa6c4767f72d409961"
+    },
+    {
+      "path": "tools/experiments/lib/restricted-endgame-independent-verifier.js",
+      "blobSha": "94a79d140803802acf607bbaf02d570aa3b6f362"
+    },
+    {
+      "path": "tools/experiments/lib/restricted-endgame-tablebase.js",
+      "blobSha": "f41ef2538b41e8ca9ed50f79cdab4bfa910989ef"
+    },
+    {
+      "path": "tools/experiments/lib/restricted-endgame-tablebase-independent.js",
+      "blobSha": "e5caa7b42f2cd4c04b98183886136471b1ae9807"
+    },
+    {
+      "path": "tools/benchmark.js",
+      "blobSha": "88a2543157eacf15693b30c589b0fbcc616223a6"
+    },
+    {
+      "path": "public/engine.js",
+      "blobSha": "1527bb3665228b7a5bd9f03153567aedbaaa22d7"
+    },
+    {
+      "path": "public/ai.js",
+      "blobSha": "ac2b4fd66a2555c50a362c39a828515323bba18a"
+    },
+    {
+      "path": "public/ai-weights.js",
+      "blobSha": "98969eb4c8e1403beedcf5c139a07166aa78175c"
+    },
+    {
+      "path": "doc/geometry-conditioned-search-reliability-exact-agreement/prereg/STAGE_2_EXACT_CENSUS_SPEC.json",
+      "blobSha": "bd98551213d485b61a997202796360c3dbac0c3d"
+    },
+    {
+      "path": "doc/geometry-conditioned-search-reliability-exact-agreement/prereg/STAGE_1_DEVELOPMENT_SPEC.json",
+      "blobSha": "20f92937c4b7e49285ab1e2c36e08e3b8c5f61bd"
+    },
+    {
+      "path": "doc/local-game-tree-geometry-exact-consequence-bridge/preregistration/STAGE_1_FORMAL_INPUT_MANIFEST.json",
+      "blobSha": "346f8200cd5bb52a6de412b551d72a1919e0aeef"
+    }
+  ],
+  "postFreezeChangePolicy": "Only the authorization review, this authorization file, and the single execution trigger may be added before measurement. Any source change requires a new freeze and authorization."
+}
