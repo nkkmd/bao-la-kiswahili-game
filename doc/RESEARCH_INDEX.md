@@ -2,7 +2,7 @@
 
 更新日: 2026-09-27  
 対象: Research Generation 1〜4  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01〜G4-07 main統合済み。G4-08は研究閉鎖・main未統合、G4-09は未認可、G4-10は保護・未アクセス**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01〜G4-08 main統合済み。G4-09は未認可、G4-10は保護・未アクセス**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`または`FINAL_REPORT.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
@@ -21,6 +21,7 @@
 | G4-07の正式結果 | [`multiscale-local-geometry-memory-return/FINAL_REPORT.md`](multiscale-local-geometry-memory-return/FINAL_REPORT.md) |
 | G4-07 main統合記録 | [`research-generation-4/checkpoints/2026-09-27-g4-07-main-integration.md`](research-generation-4/checkpoints/2026-09-27-g4-07-main-integration.md) |
 | G4-08の正式結果 | [`rule-semantic-geometry-transition/CURRENT_STATUS.md`](rule-semantic-geometry-transition/CURRENT_STATUS.md) |
+| G4-08 main統合記録 | [`research-generation-4/checkpoints/2026-09-27-g4-08-main-integration.md`](research-generation-4/checkpoints/2026-09-27-g4-08-main-integration.md) |
 | 第三世代の全体像 | [`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md) |
 | 第二世代の全体像 | [`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md) |
 | 今後の研究課題 | [`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md) |
@@ -42,7 +43,7 @@
 | `G4-05` / [`RLEMOF-STUDY1`](reachable-late-game-exact-microdomain-oracle-foundation/) | exact microdomain oracle foundation | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED` |
 | `G4-06` / [`LGTGECB-STUDY1`](local-game-tree-geometry-exact-consequence-bridge/) | geometry / exact consequence bridge | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED` |
 | `G4-07` / [`MLGMR-STUDY1`](multiscale-local-geometry-memory-return/) | multiscale memory / return | `COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED` |
-| `G4-08` / [`BRSGT-STUDY1`](rule-semantic-geometry-transition/) | rule-semantic transition | `CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN NOT INTEGRATED` |
+| `G4-08` / [`BRSGT-STUDY1`](rule-semantic-geometry-transition/) | rule-semantic transition | `CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRATED` |
 | `G4-09` | search reliability / exact agreement | `DEPENDENCY-GATED / NOT-AUTHORIZED-NOT-EXECUTED` |
 | `G4-10` | protected depth-11 exact topology | `PROTECTED / NOT-AUTHORIZED-NOT-ACCESSED` |
 | `G4-P01` | canonicalization re-foundation | `INDEPENDENT / NON-BLOCKING / NOT-AUTHORIZED` |
@@ -208,9 +209,9 @@ frozen freshness firewallにより1024/1024 source trajectoriesがformal event s
 
 post-execution identity diagnosticでは、Stage 2全1024 trajectoriesとStage 1 v3全512 rowsが同じply-0 initial RAW rootを持ち、そのrootがfrozen firewallに含まれていたことを確認しました。この診断はfreshness exhaustionの説明専用であり、ply-0除外、firewall grammar変更、seed extension、replacement population、same-evidence rerunによるrescueには使用しません。
 
-G4-08は`CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / NO DIRECTIONAL SCIENTIFIC CONCLUSION`として研究実行を閉じています。`main`への統合はまだ行っていません。
+G4-08は`CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / NO DIRECTIONAL SCIENTIFIC CONCLUSION`として研究実行を閉じ、2026-09-27にresearch HEAD `0956b5b17085714c1fb9df8ef82f29f6b6ff0f53`を`main`へnon-force fast-forward統合しました。統合中のscientific rerun、`public/`変更、public AI production変更、G4-10 depth-11 accessはありません。
 
-詳しくは、[`rule-semantic-geometry-transition/CURRENT_STATUS.md`](rule-semantic-geometry-transition/CURRENT_STATUS.md)、[`rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json)、[`research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md`](research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md)を参照してください。
+詳しくは、[`rule-semantic-geometry-transition/CURRENT_STATUS.md`](rule-semantic-geometry-transition/CURRENT_STATUS.md)、[`rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json)、[`research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md`](research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md)、[`research-generation-4/checkpoints/2026-09-27-g4-08-main-integration.md`](research-generation-4/checkpoints/2026-09-27-g4-08-main-integration.md)を参照してください。
 
 ## Research Generation 3 — 局所ゲーム木幾何
 
