@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "studyId": "GCSREA-STUDY1",
+  "stageId": "GCSREA-S0-TECHNICAL-2026-09-27-v1",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "disposition": "STAGE0-PASS",
+  "canonicalExecution": {
+    "workflowRunId": 36322244107,
+    "runAttempt": 1,
+    "jobId": 108628190493,
+    "executionSha": "47d5d0849fcc288ae58415a0d5dceef98bad17a8",
+    "auditedSourceSha": "0d47638f187c19e4f1d4d199394e44f380747ac0",
+    "artifactId": 10932344799,
+    "artifactName": "gcsrea-stage0-technical-36322244107-1",
+    "artifactZipSha256": "d702890ce8697fde6d52f763f4e1fdcbcebdcd6b02900ea87e1daec8f41865ae",
+    "technicalResultSha256": "1beab06edf7e86227cdb50e4a7d9aefe8b8c577b9ccff399d340c96965f2e5f2",
+    "executionContextSha256": "e1172f3e144abed9e8e0746683ba2594d762c2ff9e757a0450704ad8eec91f45",
+    "resultCoreSha256": "40dc758faeb66bc1c3b2e2e17a3278f77732663a4913846e96be439f4b16fa7d"
+  },
+  "mandatoryChecks": {
+    "contractAndAuthorization": true,
+    "searchProductionIndependentExact": true,
+    "searchStabilitySemanticsExact": true,
+    "geometryProductionIndependentExact": true,
+    "exactAgreementProductionIndependentExact": true,
+    "exactAgreementClassificationCoverage": true,
+    "futureScientificNamespacesSealed": true,
+    "protectedBoundariesSealed": true
+  },
+  "executionFirewall": {
+    "scientificExecution": false,
+    "freshScientificSeedReads": 0,
+    "g4_05ExactDomainNewMeasurements": 0,
+    "g4_10Depth11AccessCount": 0,
+    "publicAiChanged": false
+  },
+  "resourceUse": {
+    "elapsedMs": 1717,
+    "peakRssBytes": 86577152,
+    "resourceCeilingsPassed": true
+  },
+  "technicalSearchValidation": {
+    "conditionsMeasured": 6,
+    "allProductionIndependentExact": true,
+    "technicalContrastsEstimable": 3,
+    "scientificInferenceAuthorized": false,
+    "note": "Technical fixture observations validate semantics only and are not G4-09 scientific evidence."
+  },
+  "technicalGeometryValidation": {
+    "rootsMeasured": 2,
+    "relativeDepth": 5,
+    "representation": "RAW-ONLY",
+    "validatedTransformSet": [],
+    "allProductionIndependentExact": true,
+    "scientificInferenceAuthorized": false
+  },
+  "exactAgreementSemanticValidation": {
+    "actualG4_05ExactRootsUsed": false,
+    "syntheticFixtureCount": 5,
+    "coveredRelations": [
+      "EQUAL",
+      "A-SUBSET-B",
+      "A-SUPERSET-B",
+      "OVERLAP",
+      "DISJOINT"
+    ],
+    "allProductionIndependentExact": true,
+    "scientificInferenceAuthorized": false
+  },
+  "nextStage": {
+    "stage1Status": "NOT-AUTHORIZED",
+    "freshScientificAccess": "NOT-AUTHORIZED",
+    "requiresSeparateAuthorizationReview": true
+  }
+}
