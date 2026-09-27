@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRSGT-STUDY1",
+  "stageId": "BRSGT-S1-DEVELOPMENT-2026-09-27-v3",
+  "authorizationReviewId": "BRSGT-STUDY1-STAGE1-V3-DESIGN-AUTH-2026-09-27-V1",
+  "executionIntent": "FRESH-DEVELOPMENT-ONE-SHOT",
+  "auditedSourceSha": "27f2129d7ed434377c363b1f89534c7cd5cad7fb",
+  "expectedGeneratedRunnerSha256": "180b02e89b60b3a83fa201a9f67a9d3ace08f5e96a57c47db93ec0a88bd48e65",
+  "seedBlock": {
+    "start": 40815001,
+    "end": 40815512,
+    "slots": 512
+  },
+  "formalInference": false,
+  "effectValueRetention": false,
+  "effectSignRetention": false,
+  "stage2SeedAccess": false,
+  "protectedDepth11Access": false,
+  "publicAiChange": false,
+  "mainIntegration": false,
+  "priorStage1V1SeedReuse": false,
+  "priorStage1V2SeedReuse": false,
+  "singleAttemptOnly": true
+}
