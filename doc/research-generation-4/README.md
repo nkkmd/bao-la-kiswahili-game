@@ -1,8 +1,8 @@
 # Research Generation 4 — 入口
 
-更新日: 2026-09-27  
+更新日: 2026-09-28  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`G4-01..G4-08 MAIN INTEGRATED / G4-09 NOT AUTHORIZED / G4-10 PROTECTED`**
+状態: **`G4-01..G4-08 MAIN INTEGRATED / G4-09 CLOSED ON RESEARCH BRANCH / G4-10 PROTECTED`**
 
 ## このProgramが調べること
 
@@ -26,7 +26,7 @@ Program: `Bao Fourth-Generation Research Program`
 | B | `G4-06` | geometry / exact consequence bridge | `COMPLETE / MAIN INTEGRATED` |
 | C | `G4-07` | multiscale memory / return | `COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED` |
 | C | `G4-08` | rule-semantic geometry transition | `CLOSED / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRATED` |
-| C | `G4-09` | search reliability / exact agreement | `DEPENDENCY-GATED / NOT AUTHORIZED` |
+| C | `G4-09` | search reliability / exact agreement | `CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / NOT YET MAIN INTEGRATED` |
 | D | `G4-10` | protected depth-11 exact topology | `PROTECTED / NOT AUTHORIZED / NOT ACCESSED` |
 | 独立 | `G4-P01` | canonicalization re-foundation | `NOT AUTHORIZED` |
 | 独立 | `G4-H01` | human / expert evidence | `DEFERRED` |
@@ -35,7 +35,7 @@ Public AI change authorized by RG4 = `false`。
 
 ## G4-01〜G4-08
 
-G4-01〜G4-08は研究実行と文書closureを完了し、`main`へ統合済み。
+G4-01〜G4-08は研究実行と文書closureを完了し、`main`へ統合済み。詳細は各Studyのcanonical recordを参照する。
 
 - G4-01: `COMPATIBILITY-ELIGIBLE-ALL`
 - G4-02: `CLOSED / NO SCIENTIFIC DECISION`
@@ -48,110 +48,73 @@ G4-01〜G4-08は研究実行と文書closureを完了し、`main`へ統合済み
 
 これらをwhole-Bao universal law、public AI adoption、human difficultyへ自動拡張しない。
 
-## G4-08 — rule-semantic geometry transition
+## G4-09 — search reliability / exact agreement
 
-G4-08 `BRSGT-STUDY1` は、次の4 event familyをpoolせず個別に扱った。
+G4-09 `GCSREA-STUDY1` は、一般domainでのsearch-output stabilityと、fixed exact microdomainでのexact agreementを分離して扱った。
 
-1. capture
-2. nyumba use-vs-stop
-3. reserve decrement nontransition
-4. Namua→Mtaji
+### Module A
 
-RepresentationはRAW-only、relative depth 5、validated transform set `[]`。
-
-### Stage 1 v3
+Stage 1では768 fresh seedsから128 rootsを選定したが、3 search contrastsすべてでdefined rootsが109となり、事前固定minimum 120を満たさなかった。
 
 ```text
-run = 36303568642 / success
-fresh reads = 512
-measured event units = 64
-unique geometry roots = 97
-formal-holdout-supported slots = 24 / 24
+formal candidate slots = 9
+SUPPORTED = 0
+NOT-SUPPORTED = 9
 formal inference = false
 ```
 
-Stage 1 effect direction/valueはformal family選定へ使用していない。
+したがってgeneral-domain formal holdoutへ進まない。これはno-effect resultではない。候補Stage 2 namespace `40923001...`は未読のまま封印する。
 
-### Stage 2
+### Module B
 
-pre-fresh audit attempt 1はartifact nested pathのtechnical mismatchでfresh access前に停止。scientific contractを変更せずartifact normalizationとaudit-key参照だけを修正し、Run `36314109864`でpre-fresh static auditをPASSした。
-
-one-shot formal execution:
+G4-05固定8 exact microdomainをfinite censusとして一度だけ測定した。
 
 ```text
-run = 36314208922 / attempt 1 / success
-job = 108605721107
-execution HEAD = 692d2d718ab55348e7fb4f8190476524b0a5bc95
-artifact ID = 10929684128
-artifact SHA-256 = bbbe1e2206c9f439168829581d1bce1ef03dddaec1fe0914b8888a63767bcb1b
-fresh block = 40823001..40824024
-fresh reads = 1024 / 1024
-accepted source trajectories = 0
-measured event units = 0
-formal family = 24
-NON-ESTIMABLE = 24
+run = 36359283198 / attempt 1 / success
+final artifact ID = 10945085978
+artifact ZIP SHA-256 = 9a02241b2fb28d9aac936d3d203e39d9a2bba3eee5905fa02aa4ecbca725ef7b
+result core SHA-256 = c74f9f3baa5065c5ae6df70dbbccdeb50c0adba5006d2d647fa6931cd3764e20
+fixed domains = 8
+forced domains = 2
+nontrivial domains = 6
+search configurations = 6
+nontrivial cells = 36 / 36 estimable
+canonical-best in exact optimal set = 36 / 36
+PV first move in exact optimal set = 36 / 36
+TopSet EQUAL = 35 / 36
+TopSet SEARCH-SUBSET-EXACT = 1 / 36
 ```
 
-Frozen freshness firewall source rejection:
+唯一の非EQUALセルは`D2_Q0 × domain 4`で、exact-optimal 2手のうちsearch TopSetが1手だけを含む`SEARCH-SUBSET-EXACT`だった。canonical-bestとPV firstはいずれもexact optimal set内だった。
 
-```text
-UPSTREAM-REACHABLE-RAW-ROOT = 1011
-UPSTREAM-TRAJECTORY = 6
-UPSTREAM-OPENING-PREFIX = 7
-```
+このfixed-eight censusをwhole-Bao accuracy / correctness probabilityへ一般化しない。configuration winnerも選ばない。
 
-正式closureは:
+正式closure:
 
-**`CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / NO DIRECTIONAL SCIENTIFIC CONCLUSION`**
-
-`NON-ESTIMABLE`はno-effectのnegative resultではない。freshness gate後にformal event unitsが残らなかったため、capture / nyumba / reserve decrement / Namua→Mtajiのgeometry directionを推定できなかった。
-
-### Freshness exhaustion diagnostic
-
-Stage 2全1024 trajectoriesとStage 1 v3全512 identity rowsに共通するply-0 initial RAW rootがfrozen firewallへ含まれていた。
-
-```text
-2c13e69c51d58e2605bf6018ac848d99685aa4d4fe78c0af9f8e0fc07e1d3fd6
-```
-
-このためtrajectory/prefix collisionで先に除外された13件以外の1011件はreachable-root collisionとなった。
-
-このpost-execution diagnosticを使ったsame-Study rescue、ply-0除外、firewall grammar変更、seed extension、replacement populationは行わない。
-
-### Main統合
-
-2026-09-27、pre-integration `main` `2023860419d13b6f294b0600943de8fb4e50b1bb` に対してresearch branchが`ahead 129 / behind 0`であることを再確認し、research HEAD `0956b5b17085714c1fb9df8ef82f29f6b6ff0f53`をnon-force fast-forward統合した。
-
-統合中のscientific rerun、`public/`変更、public AI production変更、G4-10 depth-11 accessはない。
-
-詳細:
-
-- [`../rule-semantic-geometry-transition/README.md`](../rule-semantic-geometry-transition/README.md)
-- [`../rule-semantic-geometry-transition/CURRENT_STATUS.md`](../rule-semantic-geometry-transition/CURRENT_STATUS.md)
-- [`../rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json)
-- [`../rule-semantic-geometry-transition/checkpoints/2026-09-27-stage-2-formal-complete.md`](../rule-semantic-geometry-transition/checkpoints/2026-09-27-stage-2-formal-complete.md)
-- [`../research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md`](../research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md)
-- [`checkpoints/2026-09-27-g4-08-main-integration.md`](checkpoints/2026-09-27-g4-08-main-integration.md)
+**`CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE`**
 
 ## 最初に読む文書
 
 1. [`CURRENT_STATUS.md`](CURRENT_STATUS.md) — RG4全体の最新状態
 2. [`RESUME_HERE.md`](RESUME_HERE.md) — 安全な再開位置
-3. [`../rule-semantic-geometry-transition/CURRENT_STATUS.md`](../rule-semantic-geometry-transition/CURRENT_STATUS.md) — G4-08 closure / main統合状態
-4. [`../rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json) — G4-08 canonical formal summary
-5. [`checkpoints/2026-09-27-g4-08-main-integration.md`](checkpoints/2026-09-27-g4-08-main-integration.md) — G4-08 main統合記録
+3. [`../geometry-conditioned-search-reliability-exact-agreement/CURRENT_STATUS.md`](../geometry-conditioned-search-reliability-exact-agreement/CURRENT_STATUS.md) — G4-09最新状態
+4. [`../geometry-conditioned-search-reliability-exact-agreement/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../geometry-conditioned-search-reliability-exact-agreement/results/stage-2/STAGE_2_CANONICAL_RECORD.json) — G4-09 exact-census canonical record
+5. [`../research-program-decisions/2026-09-28-g4-09-search-reliability-exact-agreement-study1-closure.md`](../research-program-decisions/2026-09-28-g4-09-search-reliability-exact-agreement-study1-closure.md) — G4-09 closure
 6. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — frozen prospective program contract
 
 ## 次に許可される作業
 
-G4-08はscientific execution・closure・main統合まで完了した。
+G4-09のscientific executionは閉じた。次はG4-09 branchの最終文書整合・scope監査を行い、`main`統合可否を判断する段階である。
 
-G4-09 / G4-10はG4-08 main統合によって自動認可されない。新しいscientific agendaへ進む場合は、fresh evidence access前に独立authorization reviewが必要。
+G4-10はG4-09 closureや将来のmain統合によって自動認可されない。depth-11 accessには別の明示的authorization reviewが必要。
 
 ## 解釈・保護境界
 
 - closed Studyのsame-evidence rerun / rescueを行わない。
-- G4-08 Stage 2 block `40823001..40824024`を再利用しない。
 - G4-08 NON-ESTIMABLEをno-effect / counterexampleへ読み替えない。
+- G4-09 Module A support gateを事後緩和しない。
+- G4-09候補general Stage 2 namespaceを同Studyで読まない。
+- G4-09 fixed-8 exact censusをrerunしない。
+- fixed-8結果をwhole-Bao correctness probabilityへ一般化しない。
 - G4-10 depth-11へアクセスしない。
 - RG4結果をpublic AIへ自動反映しない。
