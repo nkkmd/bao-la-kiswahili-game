@@ -1,7 +1,7 @@
 # G4-08 / BRSGT-STUDY1 — 現在の状態
 
 更新日: 2026-09-27  
-状態: **STUDY CLOSED / STAGE 2 FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / NO DIRECTIONAL SCIENTIFIC CONCLUSION**
+状態: **STUDY CLOSED / STAGE 2 FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / NO DIRECTIONAL SCIENTIFIC CONCLUSION / PRE-MAIN AUDIT PASS**
 
 ## Formal identity
 
@@ -27,6 +27,7 @@ Stage 2 v1 = STAGE2-FORMAL-COMPLETE / 24 NON-ESTIMABLE / NO RERUN
 Stage 2 block = 40823001..40824024 / 1024 READ / CONSUMED / NO REUSE
 G4-10 depth-11 = NOT AUTHORIZED / NOT ACCESSED
 public AI change = NONE / NOT AUTHORIZED
+pre-main audit = PASS / READY-FOR-MAIN-INTEGRATION-REVIEW
 main integration = NOT PERFORMED / REQUIRES EXPLICIT INSTRUCTION
 ```
 
@@ -92,7 +93,7 @@ audit HEAD = d2e22fa9b4ca8286480beda2a89b5e287bcdad9c
 disposition = STAGE2-PRE-FRESH-STATIC-AUDIT-PASS
 audit scope = 2
 artifact ID = 10930605637
-artifact ZIP SHA-256 = 00a84324547b1ffd1718283a1afbc3ae5d5dbe76776af8a5c816ade06b98c6e7
+artifact ZIP SHA-256 = 00a84324547b1ffd1718283a1afbc3ae5d5be76776af8a5c816ade06b98c6e7
 fresh Stage 2 reads = 0
 G4-10 access = 0
 public AI changed = false
@@ -177,6 +178,22 @@ G4-08から許される結論は次に限定する。
 - `NON-ESTIMABLE`をnegative result、no-effect、counterexampleとして扱わない。
 - causal effect、whole-Bao law、game-theoretic consequence、AI strength、人間のdifficultyへ拡張しない。
 
+## Main統合前最終監査
+
+G4-08 closure後のcanonical record、closure record、current-facing文書、prospective Program Plan、branch scope、protected boundaryを再監査し、`PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`と判定した。
+
+```text
+reviewed main HEAD = 2023860419d13b6f294b0600943de8fb4e50b1bb
+audited research HEAD = 62b8961a416fa8140de2163d682a92b1fafea848
+behind main = 0
+merge base = reviewed main HEAD
+public/ changed files = 0
+public AI production changes = 0
+G4-10 depth-11 access = 0
+```
+
+監査記録: `../research-generation-4/checkpoints/2026-09-27-g4-08-pre-main-audit.md`
+
 ## Protected boundaries / closure
 
 - Stage 0 v1 rerun禁止。
@@ -187,4 +204,4 @@ G4-08から許される結論は次に限定する。
 - public AI変更なし。
 - main integration未実施。
 
-**BRSGT-STUDY1は、Stage 2 formal holdoutの完了と24/24 NON-ESTIMABLEをもって研究実行を閉じる。** 次の作業は文書整合性の最終確認と、別途明示された場合のみmain統合である。
+**BRSGT-STUDY1は、Stage 2 formal holdoutの完了と24/24 NON-ESTIMABLEをもって研究実行を閉じ、main統合前最終監査もPASSした。** 次の作業は、実際の統合直前にremote `main`のdriftを再確認し、ユーザーから明示された場合のみmainへ統合することである。
