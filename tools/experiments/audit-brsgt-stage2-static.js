@@ -73,10 +73,10 @@ function main() {
   need(spec.studyId === "BRSGT-STUDY1" && spec.stageId === "BRSGT-S2-FORMAL-2026-09-27-v1", "Stage2 spec identity mismatch");
   need(spec.seedBlock.start === 40823001 && spec.seedBlock.end === 40824024 && spec.seedBlock.slots === 1024, "Stage2 seed block drift");
   need(spec.formalFamily.fixedFamilySize === 24 && spec.formalFamily.slotIds.length === 24, "Stage2 formal family size drift");
-  need(spec.inference && spec.inference.test === "EXACT-TWO-SIDED-SIGN-TEST", "Stage2 sign-test contract drift");
-  need(spec.inference.multiplicity === "HOLM-BONFERRONI-ACROSS-24-FROZEN-SLOTS", "Stage2 multiplicity contract drift");
-  need(spec.stage1Source.effectDirectionAllowed === false && spec.stage1Source.effectValueAllowed === false, "Stage1 effect leakage allowed by spec");
-  need(spec.protectedBoundaries.g4_10Depth11Access === false && spec.protectedBoundaries.publicAiChange === false && spec.protectedBoundaries.mainIntegration === false, "Stage2 protected boundary drift");
+  need(spec.formalInference && spec.formalInference.test === "EXACT-TWO-SIDED-BINOMIAL-SIGN-TEST", "Stage2 sign-test contract drift");
+  need(spec.formalInference.multiplicity === "HOLM-BONFERRONI" && spec.formalInference.fixedFamilySize === 24, "Stage2 multiplicity contract drift");
+  need(spec.stage1Source.formalFamilyMembershipUsesOnlySupportClassification === true && spec.stage1Source.stage1EffectDirectionMayInfluenceFamily === false, "Stage1 effect leakage allowed by spec");
+  need(spec.protectedEvidence.g4_10Depth11AccessAuthorized === false && spec.publicAiChangeAuthorized === false && spec.mainIntegrationAuthorized === false, "Stage2 protected boundary drift");
   need(firewallSpec.status === "FROZEN-PRE-FRESH" && firewallSpec.scientificOutcomeFieldsRetained === false && firewallSpec.freshStage2SeedAccessDuringMaterialization === false, "Stage2 firewall contract drift");
   need(stage1.disposition === "STAGE1-DEVELOPMENT-COMPLETE", "Stage1 canonical source not complete");
   need(stage1.supportOnlyPromotion.effectDirectionUsedForPromotion === false, "Stage1 promotion used effect direction");
@@ -104,11 +104,15 @@ function main() {
 
   const exactTriggerPath = "doc/rule-semantic-geometry-transition/executions/STAGE_2_TRIGGER.json";
   const exactStaticPath = "doc/rule-semantic-geometry-transition/executions/STAGE_2_STATIC_AUDIT_TRIGGER.json";
+  const bindingRunCommand = "run: node tools/experiments/verify-brsgt-stage2-binding.js";
+  const authorizedRunCommand = "run: node tools/experiments/run-brsgt-stage2-authorized.js";
+  const normalizedStage1V3Identity = "upstream/brsgt-stage2/g4-08-stage1-v3/STAGE_1_IDENTITY_EXCLUSION_FOR_STAGE_2.json";
   need(formalWorkflow.includes(exactTriggerPath), "formal workflow exact trigger path missing");
   need(staticWorkflow.includes(exactStaticPath), "static workflow exact trigger path missing");
   need(!formalWorkflow.includes("workflow_dispatch") && !formalWorkflow.includes("schedule:"), "formal workflow must not have manual/scheduled trigger");
   need(!staticWorkflow.includes("workflow_dispatch") && !staticWorkflow.includes("schedule:"), "static workflow must not have manual/scheduled trigger");
-  need(formalWorkflow.indexOf("verify-brsgt-stage2-binding.js") < formalWorkflow.indexOf("run-brsgt-stage2-authorized.js"), "binding verifier must run before authorized runner");
+  need(formalWorkflow.indexOf(bindingRunCommand) >= 0 && formalWorkflow.indexOf(bindingRunCommand) < formalWorkflow.indexOf(authorizedRunCommand), "binding verifier must run before authorized runner");
+  need(formalWorkflow.includes(normalizedStage1V3Identity) && staticWorkflow.includes(normalizedStage1V3Identity), "G4-08 Stage1 v3 identity normalization/presence contract missing");
   need(count(formalWorkflow, exactTriggerPath) === 1, "formal workflow trigger path must appear exactly once");
   need(count(staticWorkflow, exactStaticPath) === 1, "static workflow trigger path must appear exactly once");
 
@@ -125,7 +129,7 @@ function main() {
     disposition: "STAGE2-PRE-FRESH-STATIC-AUDIT-PASS",
     studyId: spec.studyId,
     stageId: spec.stageId,
-    auditScopeVersion: 1,
+    auditScopeVersion: 2,
     auditHead: process.env.GITHUB_SHA || null,
     seedBlock: spec.seedBlock,
     formalFamilySize: spec.formalFamily.fixedFamilySize,
