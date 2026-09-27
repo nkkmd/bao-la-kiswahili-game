@@ -2,7 +2,7 @@
 
 更新日: 2026-09-27  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`G4-01..G4-07 MAIN INTEGRATED / G4-08 CLOSED・PRE-MAIN AUDIT PASS・MAIN NOT INTEGRATED / G4-09 NOT AUTHORIZED / G4-10 PROTECTED`**
+状態: **`G4-01..G4-08 MAIN INTEGRATED / G4-09 NOT AUTHORIZED / G4-10 PROTECTED`**
 
 ## Program全体
 
@@ -16,7 +16,7 @@ G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTE
 G4-05 = COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED
 G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED
 G4-07 = COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED
-G4-08 = CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / PRE-MAIN AUDIT PASS / MAIN NOT INTEGRATED
+G4-08 = CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRATED
 G4-09 = DEPENDENCY-GATED / NOT-AUTHORIZED
 G4-10 depth 11 = PROTECTED / NOT-AUTHORIZED / NOT-ACCESSED
 G4-P01 = INDEPENDENT / NOT-AUTHORIZED
@@ -24,9 +24,9 @@ G4-H01 = DEFERRED
 Public AI change authorized by RG4 = false
 ```
 
-## G4-01〜G4-07
+## G4-01〜G4-08
 
-G4-01〜G4-07は各Studyのno-rescue / protected-boundaryを保持したまま研究完了し、`main`へ統合済み。
+G4-01〜G4-08は各Studyのno-rescue / protected-boundaryを保持したまま研究完了し、`main`へ統合済み。
 
 主要な最終状態:
 
@@ -37,6 +37,7 @@ G4-01〜G4-07は各Studyのno-rescue / protected-boundaryを保持したまま�
 - `G4-05`: 8 complete exact microdomains
 - `G4-06`: 12 / 12 relations emitted within frozen N=8 microdomains
 - `G4-07`: 16-slot formal family = 6 `REVERSAL-CONFIRMED` / 10 `NOT-CONFIRMED`
+- `G4-08`: 24 / 24 `NON-ESTIMABLE` / no directional scientific conclusion
 
 これらの結果をwhole-Bao law、game-theoretic value、AI strength、人間のdifficultyへ拡張しない。
 
@@ -148,6 +149,25 @@ G4-10 depth-11 access = 0
 
 監査記録: [`checkpoints/2026-09-27-g4-08-pre-main-audit.md`](checkpoints/2026-09-27-g4-08-pre-main-audit.md)
 
+### Main integration
+
+統合直前にremote `main`が`2023860419d13b6f294b0600943de8fb4e50b1bb`のままであることを再確認し、research branchが`ahead 129 / behind 0`、merge baseがcurrent `main` HEADであることを確認した。
+
+その後、research HEAD `0956b5b17085714c1fb9df8ef82f29f6b6ff0f53`へnon-force fast-forwardした。
+
+```text
+pre-integration main HEAD = 2023860419d13b6f294b0600943de8fb4e50b1bb
+integrated research HEAD = 0956b5b17085714c1fb9df8ef82f29f6b6ff0f53
+integration method = non-force fast-forward
+force = false
+scientific rerun during integration = false
+public/ changed files = 0
+public AI production changes = 0
+G4-10 depth-11 access = 0
+```
+
+統合記録: [`checkpoints/2026-09-27-g4-08-main-integration.md`](checkpoints/2026-09-27-g4-08-main-integration.md)
+
 G4-08 canonical records:
 
 - [`../rule-semantic-geometry-transition/CURRENT_STATUS.md`](../rule-semantic-geometry-transition/CURRENT_STATUS.md)
@@ -155,6 +175,7 @@ G4-08 canonical records:
 - [`../rule-semantic-geometry-transition/checkpoints/2026-09-27-stage-2-formal-complete.md`](../rule-semantic-geometry-transition/checkpoints/2026-09-27-stage-2-formal-complete.md)
 - [`../research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md`](../research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md)
 - [`checkpoints/2026-09-27-g4-08-pre-main-audit.md`](checkpoints/2026-09-27-g4-08-pre-main-audit.md)
+- [`checkpoints/2026-09-27-g4-08-main-integration.md`](checkpoints/2026-09-27-g4-08-main-integration.md)
 
 ## Agenda別の状態
 
@@ -167,7 +188,7 @@ G4-08 canonical records:
 | `G4-05` | `COMPLETE / EXACT-ORACLE-FOUNDATION / MAIN INTEGRATED` |
 | `G4-06` | `COMPLETE / FORMAL-BRIDGE-MAPPING / MAIN INTEGRATED` |
 | `G4-07` | `COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED` |
-| `G4-08` | `CLOSED / FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / PRE-MAIN AUDIT PASS / MAIN NOT INTEGRATED` |
+| `G4-08` | `CLOSED / FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRATED` |
 | `G4-09` | `DEPENDENCY-GATED / NOT-AUTHORIZED` |
 | `G4-10` | `PROTECTED / NOT-AUTHORIZED / NOT-ACCESSED` |
 | `G4-P01` | `INDEPENDENT / NOT-AUTHORIZED` |
@@ -175,9 +196,9 @@ G4-08 canonical records:
 
 ## 次に許可される作業
 
-G4-08 scientific executionとmain統合前最終整合性監査は完了した。
+G4-08 scientific execution、closure、main統合は完了した。
 
-現在許可される次の作業は、実際の統合直前にremote `main`を再読込してdriftがないことを確認し、ユーザーから明示的なmain統合指示がある場合のみG4-08 research branchを`main`へ統合すること。G4-09 / G4-10はG4-08 closureやmain統合によって自動認可されない。
+次のscientific agendaへ進む場合は、G4-09またはその他の候補についてfresh evidence access前に独立authorization reviewを行う。G4-10は引き続きprotectedで、明示的authorizationなしにdepth-11へアクセスしない。
 
 ## 保護境界
 
@@ -189,13 +210,13 @@ G4-08 scientific executionとmain統合前最終整合性監査は完了した�
 - G3-11 depth-10をrerunしない。
 - G4-10 depth-11へアクセスしない。
 - RG4 resultをpublic AIへ自動反映しない。
-- G4-08をユーザーの明示なしに`main`へ統合しない。
 
 ## 正本
 
 - [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)
 - [`RESUME_HERE.md`](RESUME_HERE.md)
 - [`checkpoints/2026-09-27-g4-08-pre-main-audit.md`](checkpoints/2026-09-27-g4-08-pre-main-audit.md)
+- [`checkpoints/2026-09-27-g4-08-main-integration.md`](checkpoints/2026-09-27-g4-08-main-integration.md)
 - [`../rule-semantic-geometry-transition/README.md`](../rule-semantic-geometry-transition/README.md)
 - [`../rule-semantic-geometry-transition/CURRENT_STATUS.md`](../rule-semantic-geometry-transition/CURRENT_STATUS.md)
 - [`../rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json)
