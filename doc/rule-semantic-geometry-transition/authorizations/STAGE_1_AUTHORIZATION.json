@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRSGT-STUDY1",
+  "stageId": "BRSGT-S1-DEVELOPMENT-2026-09-27-v1",
+  "reviewId": "BRSGT-STUDY1-STAGE1-DESIGN-AUTH-2026-09-27-V1",
+  "decision": "AUTHORIZED",
+  "authorizationType": "FRESH-DEVELOPMENT-ONE-SHOT",
+  "authorizationBasis": {
+    "stage0v2Disposition": "STAGE0-PASS",
+    "stage0v2CanonicalRecord": "doc/rule-semantic-geometry-transition/results/stage-0-v2/STAGE_0_V2_CANONICAL_RECORD.json",
+    "stage0v2FreshScientificSeedReads": 0,
+    "preFreshStaticAuditDisposition": "STAGE1-PRE-FRESH-STATIC-AUDIT-PASS",
+    "finalFreezeAuditRunId": 36298395328,
+    "finalFreezeAuditHeadSha": "4f307a5502abc1b5748c4080cdcbe7ef7d53dc71",
+    "scientificAuthorizationPresentAtAudit": false,
+    "scientificTriggerPresentAtAudit": false,
+    "freshScientificSeedReadsAtAudit": 0,
+    "stage2SeedReadsAtAudit": 0,
+    "g4_10Depth11AccessCountAtAudit": 0,
+    "upstreamIdentityFirewallRequiredBeforeFirstFreshRead": true
+  },
+  "freshScientificSeedAccessAuthorized": true,
+  "stage1SeedAccessAuthorized": true,
+  "stage2SeedAccessAuthorized": false,
+  "formalInferenceAuthorized": false,
+  "effectValueRetentionAuthorized": false,
+  "effectSignRetentionAuthorized": false,
+  "g4_10Depth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false,
+  "maxScientificExecutions": 1,
+  "singleAttemptOnly": true,
+  "seedBlock": {
+    "start": 40813001,
+    "end": 40813512,
+    "slots": 512,
+    "seedExtensionAuthorized": false,
+    "replacementPopulationAuthorized": false
+  },
+  "noRescueBoundary": "EARLIEST-OF-FIRST-FRESH-SEED-GENERATION-OR-READ",
+  "executionBinding": {
+    "status": "FROZEN",
+    "bindingId": "BRSGT-STUDY1-STAGE1-BINDING-2026-09-27-V1",
+    "branch": "research/g4-08-rule-semantic-geometry-transition",
+    "auditedSourceSha": "4f307a5502abc1b5748c4080cdcbe7ef7d53dc71",
+    "finalFreezeAuditRunId": 36298395328,
+    "postAuditAllowedFiles": [
+      "doc/rule-semantic-geometry-transition/authorizations/STAGE_1_AUTHORIZATION.json",
+      "doc/rule-semantic-geometry-transition/executions/STAGE_1_TRIGGER.json"
+    ]
+  }
+}
