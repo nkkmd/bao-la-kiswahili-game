@@ -1,17 +1,18 @@
 # Research Generation 4 — 再開位置
 
 更新日: 2026-09-27  
-状態: **`G4-08 CLOSED / MAIN NOT INTEGRATED / NEXT SCIENTIFIC AGENDA NOT AUTHORIZED`**
+状態: **`G4-08 CLOSED / PRE-MAIN AUDIT PASS / READY FOR MAIN INTEGRATION REVIEW / MAIN NOT INTEGRATED / NEXT SCIENTIFIC AGENDA NOT AUTHORIZED`**
 
 ## 再開時の読む順序
 
 1. research branch `research/g4-08-rule-semantic-geometry-transition` のHEADを確認する。
 2. [`CURRENT_STATUS.md`](CURRENT_STATUS.md)でRG4全体の状態を確認する。
-3. [`../rule-semantic-geometry-transition/CURRENT_STATUS.md`](../rule-semantic-geometry-transition/CURRENT_STATUS.md)でG4-08 closureを確認する。
-4. [`../rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json)でStage 2 canonical resultを確認する。
-5. [`../rule-semantic-geometry-transition/checkpoints/2026-09-27-stage-2-formal-complete.md`](../rule-semantic-geometry-transition/checkpoints/2026-09-27-stage-2-formal-complete.md)でrun / artifact / firewall provenanceを確認する。
-6. [`../research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md`](../research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md)でclosure decisionを確認する。
-7. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)で次agendaのfrozen dependencyを確認する。
+3. [`checkpoints/2026-09-27-g4-08-pre-main-audit.md`](checkpoints/2026-09-27-g4-08-pre-main-audit.md)でmain統合前監査結果を確認する。
+4. [`../rule-semantic-geometry-transition/CURRENT_STATUS.md`](../rule-semantic-geometry-transition/CURRENT_STATUS.md)でG4-08 closureを確認する。
+5. [`../rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json)でStage 2 canonical resultを確認する。
+6. [`../rule-semantic-geometry-transition/checkpoints/2026-09-27-stage-2-formal-complete.md`](../rule-semantic-geometry-transition/checkpoints/2026-09-27-stage-2-formal-complete.md)でrun / artifact / firewall provenanceを確認する。
+7. [`../research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md`](../research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md)でclosure decisionを確認する。
+8. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)で次agendaのfrozen dependencyを確認する。
 
 ## 現在地
 
@@ -23,7 +24,7 @@ G4-04 = COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED
 G4-05 = COMPLETE / EXACT-ORACLE-FOUNDATION / MAIN INTEGRATED
 G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING / MAIN INTEGRATED
 G4-07 = COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED
-G4-08 = CLOSED / STAGE2-FORMAL-COMPLETE / 24 NON-ESTIMABLE / MAIN NOT INTEGRATED
+G4-08 = CLOSED / STAGE2-FORMAL-COMPLETE / 24 NON-ESTIMABLE / PRE-MAIN AUDIT PASS / MAIN NOT INTEGRATED
 G4-09 = DEPENDENCY-GATED / NOT AUTHORIZED
 G4-10 = PROTECTED / NOT AUTHORIZED / NOT ACCESSED
 public AI change = false
@@ -83,15 +84,31 @@ Stage 2全1024 trajectoriesとStage 1 v3全512 identity rowsが同じply-0 initi
 
 この診断を使ったStage 2 rescueは禁止。ply-0除外、firewall grammar変更、seed extension、replacement population、same-evidence rerunを行わない。
 
+## Main統合前監査
+
+最終整合性監査は完了し、**`PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`** と判定した。
+
+```text
+reviewed main HEAD = 2023860419d13b6f294b0600943de8fb4e50b1bb
+audited research HEAD = 62b8961a416fa8140de2163d682a92b1fafea848
+behind main = 0
+merge base = reviewed main HEAD
+public/ changed files = 0
+public AI production changes = 0
+G4-10 depth-11 access = 0
+```
+
+監査記録: [`checkpoints/2026-09-27-g4-08-pre-main-audit.md`](checkpoints/2026-09-27-g4-08-pre-main-audit.md)
+
 ## 次の作業
 
-G4-08 scientific executionは完了・閉鎖済みだが、**まだ`main`へ統合していない**。
+G4-08 scientific executionとmain統合前最終整合性監査は完了済みだが、**まだ`main`へ統合していない**。
 
 次に行う場合の順序:
 
-1. G4-08関連文書とRG4 current-facing文書の最終整合性監査。
-2. public / public AI / protected evidenceに意図しない差分がないことを確認。
-3. ユーザーから明示的に指示された場合のみ、G4-08 research branchを`main`へ統合。
+1. remote `main`を再読込し、監査時baselineからdriftしていないことを確認する。
+2. driftがなければcompareで`behind = 0`、merge base、意図しない差分の不在を再確認する。
+3. ユーザーから明示的に指示された場合のみ、G4-08 research branchを`main`へ統合する。
 4. G4-09またはG4-10へ進む場合は、統合とは別に独立authorization reviewを行う。
 
 ## No-rescue / protected boundary
