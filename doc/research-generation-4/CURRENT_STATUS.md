@@ -2,7 +2,7 @@
 
 更新日: 2026-09-27  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`G4-01..G4-06 MAIN INTEGRATED / G4-07 PRE-MAIN-AUDIT-PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`**
+状態: **`G4-01..G4-07 MAIN INTEGRATED / G4-08..G4-09 NOT AUTHORIZED / G4-10 PROTECTED`**
 
 ## Program全体
 
@@ -15,7 +15,7 @@ G4-03 = COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED
 G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED
 G4-05 = COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED
 G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED
-G4-07 = COMPLETE / FORMAL-COMPLETE / PRE-MAIN-AUDIT-PASS / MAIN NOT INTEGRATED
+G4-07 = COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED
 G4-08..G4-09 = DEPENDENCY-GATED / NOT-AUTHORIZED
 G4-10 depth 11 = PROTECTED / NOT-AUTHORIZED / NOT-ACCESSED
 G4-P01 = INDEPENDENT / NOT-AUTHORIZED
@@ -114,14 +114,16 @@ confirmedContiguousPersistenceLagMax = NONE
 
 return endpointはdescriptive only。universal oscillation / mean-reversion law、因果的rule-event mechanism、physical half-life、AI strengthへの読み替えは禁止する。
 
-G4-07 scientific executionは研究ブランチ上で閉じた。pre-main consistency auditもPASSしたが、main統合は未認可・未実施。
+G4-07 scientific executionは閉じ、pre-main consistency auditをPASSした後、2026-09-27にresearch HEAD `0130bc4e4a7b5ec0c96a026a846fdbf75530f02a` を`main`へnon-force fast-forward統合した。統合中のscientific rerun、`public/`変更、public AI production変更、G4-10 depth-11 accessはない。
 
 詳細:
 
 - [`../multiscale-local-geometry-memory-return/FINAL_REPORT.md`](../multiscale-local-geometry-memory-return/FINAL_REPORT.md)
+- [`../multiscale-local-geometry-memory-return/CURRENT_STATUS.md`](../multiscale-local-geometry-memory-return/CURRENT_STATUS.md)
 - [`../multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json)
 - [`../multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md`](../multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md)
 - [`checkpoints/2026-09-27-g4-07-pre-main-audit.md`](checkpoints/2026-09-27-g4-07-pre-main-audit.md)
+- [`checkpoints/2026-09-27-g4-07-main-integration.md`](checkpoints/2026-09-27-g4-07-main-integration.md)
 - [`../research-program-decisions/2026-09-27-g4-07-multiscale-local-geometry-memory-return-study1-closure.md`](../research-program-decisions/2026-09-27-g4-07-multiscale-local-geometry-memory-return-study1-closure.md)
 
 ## Agenda別の状態
@@ -134,35 +136,33 @@ G4-07 scientific executionは研究ブランチ上で閉じた。pre-main consis
 | `G4-04` | `COMPLETE / FORMAL-COMPLETE / 8-OF-8-GENERALIZATION-CONFIRMED / MAIN INTEGRATED` |
 | `G4-05` | `COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN / MAIN INTEGRATED` |
 | `G4-06` | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED` |
-| `G4-07` | `COMPLETE / FORMAL-COMPLETE / PRE-MAIN-AUDIT-PASS / MAIN NOT INTEGRATED` |
+| `G4-07` | `COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED` |
 | `G4-08`〜`G4-09` | `DEPENDENCY-GATED / NOT-AUTHORIZED` |
 | `G4-10` | `PROTECTED / NOT-AUTHORIZED / NOT-ACCESSED` |
 | `G4-P01` | `INDEPENDENT / NOT-AUTHORIZED` |
 | `G4-H01` | `DEFERRED` |
 
-## Pre-main audit
+## G4-07 main integration
 
-G4-07 pre-main consistency audit = **PASS**。
+```text
+pre-integration main = 8edf791aa789d77ba27d3d7704ab02acd6e35eac
+integrated research HEAD = 0130bc4e4a7b5ec0c96a026a846fdbf75530f02a
+integration method = FAST-FORWARD / force=false
+pre-main consistency audit = PASS
+final documentation consistency check = PASS
+scientific rerun during integration = false
+public/ changes = 0
+public AI production changes = 0
+G4-10 depth-11 access = 0
+```
 
-確認事項:
-
-- Stage 2 canonical counts / digests / closure decisionが一致
-- current-facing RG4文書と研究索引・将来アジェンダを同期
-- frozen `PROGRAM_PLAN.md` は未変更
-- reviewed `main`とのmerge baseは現行`main`
-- research branch behind = 0
-- branch差分に`public/`変更なし
-- public AI production changeなし
-- G4-10 depth-11 access = 0
-- Stage 1 / Stage 2 rerun、seed extension、replacement populationなし
-
-監査checkpoint: [`checkpoints/2026-09-27-g4-07-pre-main-audit.md`](checkpoints/2026-09-27-g4-07-pre-main-audit.md)
+統合後のcurrent-facing文書同期は科学結果を変更しない。
 
 ## 次に許可される作業
 
-次に許可されるのは **G4-07 main-integration review**。main統合は明示的な判断前には実施しない。
+G4-07はmain統合まで完了した。
 
-G4-08 / G4-09 / G4-10は本closureやpre-main audit PASSによって自動認可されない。
+G4-08 / G4-09 / G4-10は本統合によって自動認可されない。次の研究を開始する場合は、依存関係を再確認したうえで独立authorization reviewから開始する。
 
 ## 保護境界
 
@@ -188,4 +188,5 @@ G4-08 / G4-09 / G4-10は本closureやpre-main audit PASSによって自動認可
 - [`../multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../multiscale-local-geometry-memory-return/results/stage-2/STAGE_2_CANONICAL_RECORD.json)
 - [`../multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md`](../multiscale-local-geometry-memory-return/checkpoints/2026-09-27-stage-2-formal-complete.md)
 - [`checkpoints/2026-09-27-g4-07-pre-main-audit.md`](checkpoints/2026-09-27-g4-07-pre-main-audit.md)
+- [`checkpoints/2026-09-27-g4-07-main-integration.md`](checkpoints/2026-09-27-g4-07-main-integration.md)
 - [`../research-program-decisions/2026-09-27-g4-07-multiscale-local-geometry-memory-return-study1-closure.md`](../research-program-decisions/2026-09-27-g4-07-multiscale-local-geometry-memory-return-study1-closure.md)
