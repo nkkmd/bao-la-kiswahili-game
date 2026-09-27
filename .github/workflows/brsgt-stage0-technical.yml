@@ -1,0 +1,84 @@
+name: BRSGT Stage 0 Technical
+
+on:
+  push:
+    branches:
+      - research/g4-08-rule-semantic-geometry-transition
+    paths:
+      - doc/rule-semantic-geometry-transition/executions/STAGE_0_TRIGGER.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: brsgt-stage0-technical-v1
+  cancel-in-progress: false
+
+jobs:
+  stage0-technical:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout frozen research branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Syntax checks
+        run: |
+          node --check tools/experiments/lib/brsgt-production.js
+          node --check tools/experiments/lib/brsgt-independent.js
+          node --check tools/experiments/verify-brsgt-stage0-binding.js
+          node --check tools/experiments/run-brsgt-stage0-technical.js
+
+      - name: Verify authorization and frozen binding
+        run: node tools/experiments/verify-brsgt-stage0-binding.js
+
+      - name: Run technical-only Stage 0
+        run: node tools/experiments/run-brsgt-stage0-technical.js
+
+      - name: Materialize execution metadata
+        env:
+          OUT: doc/rule-semantic-geometry-transition/results/stage-0/STAGE_0_EXECUTION_CONTEXT.json
+        run: |
+          mkdir -p "$(dirname "$OUT")"
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const out = process.env.OUT;
+          const row = {
+            schemaVersion: 1,
+            studyId: 'BRSGT-STUDY1',
+            stageId: 'BRSGT-S0-TECHNICAL-2026-09-27-v1',
+            evidenceClass: 'TECHNICAL-FIXTURE',
+            repository: process.env.GITHUB_REPOSITORY,
+            sourceSha: process.env.GITHUB_SHA,
+            refName: process.env.GITHUB_REF_NAME,
+            runId: process.env.GITHUB_RUN_ID,
+            runAttempt: process.env.GITHUB_RUN_ATTEMPT,
+            scientificExecution: false,
+            freshScientificSeedReads: 0,
+            g4_10Depth11AccessCount: 0
+          };
+          fs.writeFileSync(out, JSON.stringify(row, null, 2) + '\n');
+          NODE
+
+      - name: Hash technical artifacts
+        run: |
+          cd doc/rule-semantic-geometry-transition/results/stage-0
+          sha256sum STAGE_0_TECHNICAL_RESULT.json STAGE_0_EXECUTION_CONTEXT.json > SHA256SUMS.txt
+
+      - name: Upload technical artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: brsgt-stage0-technical-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            doc/rule-semantic-geometry-transition/results/stage-0/STAGE_0_TECHNICAL_RESULT.json
+            doc/rule-semantic-geometry-transition/results/stage-0/STAGE_0_EXECUTION_CONTEXT.json
+            doc/rule-semantic-geometry-transition/results/stage-0/SHA256SUMS.txt
+          if-no-files-found: error
+          retention-days: 30
