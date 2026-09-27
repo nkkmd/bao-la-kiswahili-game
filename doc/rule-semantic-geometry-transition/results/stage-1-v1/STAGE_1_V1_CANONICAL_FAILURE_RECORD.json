@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRSGT-STUDY1",
+  "stageId": "BRSGT-S1-DEVELOPMENT-2026-09-27-v1",
+  "evidenceClass": "FRESH-DEVELOPMENT",
+  "stageDisposition": "STAGE1-TECHNICAL-INVALID",
+  "rerunDisposition": "NO-RERUN-SAME-VERSION",
+  "workflow": {
+    "runId": 36298620437,
+    "runAttempt": 1,
+    "jobId": 108561989069,
+    "sourceSha": "eb8220af5e1c17bb89f4bde28b6025e7b10803d1",
+    "auditedSourceSha": "4f307a5502abc1b5748c4080cdcbe7ef7d53dc71",
+    "bindingDisposition": "STAGE1-BINDING-PASS"
+  },
+  "artifact": {
+    "artifactId": 10924827904,
+    "name": "brsgt-stage1-development-36298620437-1",
+    "zipSha256": "f95452e80b6e70bb6801c59c9767dc0231ae1522415dd12e9f9259e1c31b121d",
+    "filesPresent": [
+      "STAGE_1_EXECUTION_CONTEXT.json",
+      "SHA256SUMS.txt"
+    ],
+    "executionContextSha256": "91644a7baabc0e5ee727e3593eed2526f4f248ba5ab9167d3f95f9d187f2085f",
+    "stage1ResultPresent": false,
+    "stage1FailurePresent": false
+  },
+  "failure": {
+    "observedTerminalError": "ReferenceError: freshScientificSeedReads is not defined",
+    "observedTerminalErrorLocation": "tools/experiments/run-brsgt-stage1-development.js:486",
+    "failureHandlerBug": true,
+    "primaryTechnicalErrorRecovered": false,
+    "primaryTechnicalError": null,
+    "explanation": "The runner entered its catch path after an earlier technical exception, but construction of STAGE_1_FAILURE.json referenced the undefined identifier freshScientificSeedReads instead of freshSeedReads. The catch-path ReferenceError masked the original exception and prevented failure-artifact creation."
+  },
+  "freshEvidenceAccounting": {
+    "seedBlock": {
+      "start": 40813001,
+      "end": 40813512,
+      "slots": 512
+    },
+    "freshScientificSeedReadsAtExecutionContextWrite": 0,
+    "freshScientificSeedReadsExactAtFailure": null,
+    "exactReadCountRecoverable": false,
+    "seedBlockDisposition": "CONSERVATIVELY-CONSUMED-NO-REUSE",
+    "reason": "Fresh execution started and the exact read count was not preserved because the failure handler itself failed. The entire reserved v1 block is therefore quarantined from reuse."
+  },
+  "scientificBoundary": {
+    "formalInferencePerformed": false,
+    "scientificOutcome": "NONE-TECHNICAL-INVALID",
+    "effectValuesRetainedAsEvidence": false,
+    "effectSignsRetainedAsEvidence": false,
+    "stage2SeedReads": 0,
+    "g4_10Depth11AccessCount": 0,
+    "publicAiChanged": false,
+    "mainIntegrationAuthorized": false
+  },
+  "nextVersionRequirements": [
+    "new Stage 1 version identity",
+    "new non-overlapping fresh seed block",
+    "failure-handler variable fix",
+    "explicit catch-path self-test before fresh access",
+    "new pre-fresh static audit",
+    "new source binding",
+    "new one-shot authorization and trigger"
+  ]
+}
