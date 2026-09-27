@@ -43,4 +43,10 @@
 | BRSGT-D037 | Hardened Stage 1 static audit | `PASS / SCOPE-V2` | Run `36298236747`、audit HEAD `bc390876...`。workflow/binding/runner ordering、relay-limit、auth/trigger absenceまで再監査。 |
 | BRSGT-D038 | Hardened audit fresh access | `0` | Stage 1 scientific authorization/triggerはaudit時に不在。fresh Stage 1 / Stage 2 / G4-10 readは0。 |
 | BRSGT-D039 | Post-audit documentation | `DOCUMENT THEN FINAL-FREEZE REAUDIT` | audit結果文書化でHEADが進むため、その文書込みHEADを再度pre-fresh auditしてからauthorizationを検討する。 |
-| BRSGT-D040 | Stage 1 scientific execution | `NOT AUTHORIZED` | final-freeze audit PASSもexecution authorizationを自動付与しない。別authorization reviewが必要。 |
+| BRSGT-D040 | Stage 1 scientific execution precondition | `SEPARATE AUTHORIZATION REQUIRED` | final-freeze audit PASSだけではfresh scientific executionを自動認可しない。 |
+| BRSGT-D041 | Stage 1 final-freeze audit | `PASS / RUN 36298395328` | HEAD `4f307a5502...`。scientific auth/trigger不在、fresh reads 0、Stage 2/G4-10 read 0を再確認。 |
+| BRSGT-D042 | Stage 1 v1 authorization | `FRESH-DEVELOPMENT-ONE-SHOT` | final-freeze HEADへsource-bindし、post-audit差分をauthorization + triggerの2 pathだけに限定。 |
+| BRSGT-D043 | Stage 1 v1 execution | `TECHNICAL-INVALID / NO-RERUN-SAME-VERSION` | Run `36298620437`。binding PASS後のscientific runnerがfailure。catch-path自身の`freshScientificSeedReads`未定義参照で元例外をmask。 |
+| BRSGT-D044 | Stage 1 v1 seed block | `CONSERVATIVELY-CONSUMED-NO-REUSE` | exact fresh-read countがfailure-handler bugで保存されなかったため、`40813001..40813512`全体を安全側で隔離。 |
+| BRSGT-D045 | Stage 1 v1 scientific interpretation | `NONE-TECHNICAL-INVALID` | formal inferenceなし。Stage 2 seed read 0、G4-10 depth-11 access 0、public AI変更なし。 |
+| BRSGT-D046 | Stage 1 v2 prerequisite | `NEW VERSION + NEW SEED BLOCK + CATCH SELF-TEST` | v1の修復再実行を禁止し、別namespace・別spec・別binding・別authorizationを要求。 |
