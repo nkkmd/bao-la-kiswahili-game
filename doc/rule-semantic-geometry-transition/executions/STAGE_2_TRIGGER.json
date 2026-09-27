@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRSGT-STUDY1",
+  "stageId": "BRSGT-S2-FORMAL-2026-09-27-v1",
+  "triggerType": "FRESH-FORMAL-HOLDOUT-ONE-SHOT",
+  "authorizationReviewId": "BRSGT-STUDY1-STAGE2-FORMAL-AUTH-2026-09-27-V1",
+  "auditedSourceSha": "d2e22fa9b4ca8286480beda2a89b5e287bcdad9c",
+  "seedBlock": {
+    "start": 40823001,
+    "end": 40824024,
+    "slots": 1024
+  },
+  "formalInferenceAuthorized": true,
+  "sameEvidenceRerunAuthorized": false,
+  "seedExtensionAuthorized": false,
+  "replacementPopulationAuthorized": false,
+  "g4_10Depth11AccessAuthorized": false,
+  "publicAiChangeAuthorized": false,
+  "mainIntegrationAuthorized": false
+}
