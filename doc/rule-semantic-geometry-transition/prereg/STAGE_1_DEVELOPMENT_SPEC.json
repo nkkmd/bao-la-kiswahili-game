@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BRSGT-STUDY1",
+  "stageId": "BRSGT-S1-DEVELOPMENT-2026-09-27-v1",
+  "evidenceClass": "FRESH-DEVELOPMENT",
+  "authorizationReviewId": "BRSGT-STUDY1-STAGE1-DESIGN-AUTH-2026-09-27-V1",
+  "statusAtFreeze": "DESIGN-FROZEN / EXECUTION-NOT-AUTHORIZED",
+  "scientificExecutionAuthorized": false,
+  "formalInferenceAllowed": false,
+  "effectValueRetentionAllowed": false,
+  "effectSignRetentionAllowed": false,
+  "seedBlock": {
+    "start": 40813001,
+    "end": 40813512,
+    "slots": 512,
+    "slotsPerPolicy": 256,
+    "scanRule": "READ-ALL-SLOTS-IN-ASCENDING-ORDER",
+    "seedExtensionAuthorized": false,
+    "replacementPopulationAuthorized": false
+  },
+  "sourcePolicies": [
+    {
+      "policyId": "LGTTCI-P1-UNIFORM-LEGAL",
+      "slotParity": "EVEN-OFFSET-FROM-SEED-START",
+      "selection": "canonical legal moves; seeded uniform index floor(u * legalMoveCount)"
+    },
+    {
+      "policyId": "LGTTCI-P2-MIN-IMMEDIATE-CAPTURE",
+      "slotParity": "ODD-OFFSET-FROM-SEED-START",
+      "selection": "minimum authoritative immediate capture-event seed-count pool; seeded uniform within pool",
+      "forbiddenInputs": ["geometry", "search output", "engine evaluation", "winner", "historical scientific result"]
+    }
+  ],
+  "sourceTrajectory": {
+    "maxPly": 72,
+    "terminalBefore72AllowedForEventScanning": true,
+    "relayLimitDisposition": "SOURCE-TECHNICAL-REJECT",
+    "primaryFreshnessIdentity": ["sourceSeed", "fullTrajectorySha256", "openingPrefixSha256", "reachableRawStateSha256"]
+  },
+  "eventUnitSelection": {
+    "perTrajectoryPerFamilyMax": 1,
+    "familyRule": "EARLIEST-REACHABLE-PLY-THEN-CANONICAL-EVENT-KEY",
+    "actualSourceMoveRequired": false,
+    "reachablePreStateRequired": true,
+    "e1e3e4TieBreak": "canonical move key ascending",
+    "e2TieBreak": "canonical physical move key ascending",
+    "eventFamilies": [
+      "BRSGT-E1-CAPTURE",
+      "BRSGT-E2-NYUMBA-USE-VS-STOP",
+      "BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION",
+      "BRSGT-E4-NAMUA-TO-MTAJI"
+    ]
+  },
+  "measurementSelection": {
+    "ordering": ["sourceSeed", "eventPly", "canonicalEventKey"],
+    "targetPerFamilyPerPolicy": 8,
+    "maxMeasuredEventUnits": 64,
+    "replacementAfterIneligibility": "NEXT-CANDIDATE-WITHIN-SAME-FROZEN-SEED-BLOCK-AND-POLICY-FAMILY-ORDER",
+    "crossPolicyBorrowing": false,
+    "crossFamilyBorrowing": false
+  },
+  "supportFamily": {
+    "construction": "4 EVENT FAMILIES x 6 METRICS = 24 SLOTS",
+    "metrics": [
+      "BRSGT-M1-ROOT-LEGAL-WIDTH",
+      "BRSGT-M2-CUMULATIVE-TREE-OCCURRENCE",
+      "BRSGT-M3-GLOBAL-DISTINCT-RAW-STATES",
+      "BRSGT-M4-DUPLICATE-TRANSITION-FRACTION",
+      "BRSGT-M5-CUMULATIVE-TREE-RAW-RATIO",
+      "BRSGT-M6-UNIT-WIDTH-OCCUPANCY-FRACTION"
+    ],
+    "contrast": {
+      "BRSGT-E1-CAPTURE": "post-pre",
+      "BRSGT-E2-NYUMBA-USE-VS-STOP": "use-post minus stop-post",
+      "BRSGT-E3-RESERVE-DECREMENT-NONTRANSITION": "post-pre",
+      "BRSGT-E4-NAMUA-TO-MTAJI": "post-pre"
+    },
+    "minimumExactDefinedPerPolicy": 6,
+    "minimumExactDefinedCombined": 12,
+    "productionIndependentExactRequired": true,
+    "promotionUsesEffectDirection": false,
+    "supportedLabel": "SUPPORTED-FOR-FORMAL-HOLDOUT",
+    "unsupportedLabel": "NOT-SUPPORTED-FOR-FORMAL-HOLDOUT"
+  },
+  "geometry": {
+    "representation": "RAW-ONLY",
+    "relativeDepth": 5,
+    "measurementFoundation": "LGTGMIV-STUDY1 / CLOSED / FORMAL-ELIGIBLE-ALL",
+    "e1e3e4Roots": ["pre", "post"],
+    "e2Roots": ["common-pre", "stop-post", "use-post"],
+    "arithmetic": "EXACT-INTEGER-OR-REDUCED-RATIONAL"
+  },
+  "resultBoundary": {
+    "retain": [
+      "fresh seed read accounting",
+      "candidate/rejection/support counts",
+      "event-unit identities",
+      "measured root identities and hashes",
+      "per-slot exact-defined counts",
+      "production-independent agreement booleans",
+      "support-only classifications",
+      "resource accounting",
+      "firewall digest"
+    ],
+    "forbid": [
+      "contrast exact values",
+      "contrast signs",
+      "majority direction",
+      "p-values",
+      "formal confirmation labels",
+      "winner-conditioned subgroup output"
+    ]
+  },
+  "resourceCeilings": {
+    "sourceSlots": 512,
+    "sourceMaxPly": 72,
+    "maxMeasuredEventUnits": 64,
+    "maxGeometryRoots": 192,
+    "perDepth5Root": {
+      "maxDistinctRawStates": 100000,
+      "maxUniqueTransitions": 750000,
+      "maxParentExpansions": 100000,
+      "maxLegalMoveEvaluations": 750000,
+      "maxTreeNodeOccurrences": 1000000000,
+      "elapsedMs": 180000
+    },
+    "stageElapsedMs": 10800000,
+    "stagePeakRssBytes": 4294967296,
+    "resultArtifactBytes": 134217728
+  },
+  "candidateStage2": {
+    "seedStart": 40823001,
+    "authorizedForRead": false,
+    "formalFamily": "MUST-BE-DERIVED-ONLY-FROM-FROZEN-STAGE1-SUPPORT-GATE",
+    "stage1EffectDirectionMayInfluenceFamily": false
+  },
+  "protected": {
+    "g4_10Depth11Access": false,
+    "publicAiChange": false,
+    "mainIntegration": false
+  },
+  "noRescueAfterFirstFreshRead": [
+    "seed extension",
+    "replacement seed block",
+    "policy change",
+    "source horizon change",
+    "event predicate change",
+    "candidate ordering change",
+    "per-trajectory unit cap change",
+    "measurement target change",
+    "support threshold relaxation",
+    "metric or relative-depth change",
+    "firewall relaxation",
+    "resource ceiling relaxation",
+    "favorable subgroup rescue",
+    "same-evidence repair rerun"
+  ]
+}
