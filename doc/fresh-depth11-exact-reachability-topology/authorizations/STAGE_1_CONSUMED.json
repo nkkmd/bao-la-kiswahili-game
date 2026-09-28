@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "studyId": "FDERT-STUDY1",
+  "stageId": "FDERT-S1-PROTECTED-EXACT-HOLDOUT-2026-09-28-v1",
+  "authorizationConsumed": true,
+  "scientificExecutionClaimed": true,
+  "scientificEvidenceAccessOccurredAtMarkerWrite": false,
+  "sourceCommit": "787105a3016bac1172e669faf400fcc7cdd70dd5",
+  "workflowRunId": "36368880428",
+  "workflowRunAttempt": "1",
+  "authorizationFileSha256": "a316a83c059cae3d49f3e87be5281488adc4c7cc9742cac2325b7444bdf9b07b",
+  "sameEvidenceRerunAuthorized": false,
+  "depth12AccessAuthorized": false
+}
