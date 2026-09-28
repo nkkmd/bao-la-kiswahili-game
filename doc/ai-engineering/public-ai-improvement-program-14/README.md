@@ -4,31 +4,32 @@
 英語作業名: **AI-GEN4 Search-Transition Reuse Feasibility**  
 対象: 現行の公開 `AI-GEN4 / AI-GEN4-RELEASE-001`（hard・expertの既定経路）  
 開始日: 2026-09-28  
-状態: **`AUTHORIZED / STAGED-IMPROVEMENT-IN-PROGRESS`**  
+状態: **`COMPLETE / NO-MATERIAL-WALL-CLOCK-IMPROVEMENT / KEEP-AI-GEN4`**  
 公開AI変更: **なし**  
 Candidate ID: **`PBAI-C017-v1`**（development-only）
 
 ## 1. 目的
 
-改善案A1「同一ノードで既に作った遷移結果の再利用」を、現行の本番探索経路で検証する。baseline supportと隔離候補のfixed-depth development gateはPASSした。これらは候補の実時間短縮率、棋力改善、公開採用の証明ではない。
+改善案A1「同一ノードで既に作った遷移結果の再利用」を、現行の公開探索経路と同じ構成で検証した。baseline supportと隔離候補の固定深度開発検証はPASSした。未計装の実時間計測は技術的に有効だったが、事前に固定した3.0%の時間短縮基準を満たさず、PBAI-P14を終了した。
 
 このProgramはResearch Generation 4とは独立した工学作業である。P1〜P12の閉鎖判断、Jev比較、RG4の研究Studyを再開・救済・変更しない。
 
-## 2. 現在状態
+## 2. 最終状態
 
-baseline supportの結果は[`BASELINE_SUPPORT_RESULT.md`](../../../artifacts/pbai-p14/BASELINE_SUPPORT_RESULT.md)、candidate development gateの結果は[`C017_DEVELOPMENT_RESULT.md`](../../../artifacts/pbai-p14/C017_DEVELOPMENT_RESULT.md)にある。2つのcanonical JSONはそれぞれ[`baseline-support.json`](../../../artifacts/pbai-p14/baseline-support.json)、[`c017-development.json`](../../../artifacts/pbai-p14/c017-development.json)。fresh seed・診断計装なしのwall-clock validationを別契約として設計する段階。
+正式判断は**`NO-MATERIAL-WALL-CLOCK-IMPROVEMENT / KEEP-AI-GEN4`**である。8 shard・64 seedから106局面を得て、固定深度4の出力同値性と計時条件を確認した。推定時間短縮は2.9795%（seed単位bootstrapの95%区間1.7091%〜4.1921%）で、事前固定した点推定3.0%以上の基準を0.0205 percentage point下回った。区間の下限が正でも、別条件である点推定基準を変更しない。
+
+性能検証の証拠は[結果記録](../../../artifacts/pbai-p14/C017_PERFORMANCE_002_RESULT.md)と[canonical JSON](../../../artifacts/pbai-p14/c017-performance-002.json)、正式判断は[最終報告](PROGRAM_FINAL_REPORT.md)にある。公開既定、main、release、AI世代は変更していない。
 
 ## 3. 段階
 
-1. **A — 認可・baseline固定:** 完了。ユーザーの改善着手指示により隔離Programを開始。
-2. **B/C — baseline supportとcandidate契約:** 完了。support gateをPASSし、`PBAI-C017-v1`の実装・seed・開発gateを結果前に固定。
-3. **D — isolated development:** 完了。fixed-depth意味同値性と遷移再適用の機械的削減を確認。
-4. **E — performance validation:** 未開始。新規seed、未計装のpaired/counterbalanced timing、shard保存とaggregate gateを事前固定する。
-5. **F以降 — strength / release:** Eの結果と各段階の新しい事前契約に基づいて進める。公開AI採用、main統合、release、AI世代昇格は自動化しない。
+1. **認可・baseline固定とsupport:** 完了。baseline supportは8 shard、111局面でPASS。
+2. **隔離候補の開発:** `PBAI-C017-v1`を発行し、固定深度の意味同値性と遷移再適用18,686回の削減を確認。
+3. **独立した実時間計測:** 最初の試行は技術的不成立としてseedを再利用しなかった。新しいseedを使った性能検証002は有効で、事前の3.0%基準には未達。
+4. **正式判断:** 候補を不採用とし、棋力比較・release holdoutへは進まず終了。公開AIは`AI-GEN4 / AI-GEN4-RELEASE-001`を維持。
 
 ## 4. 実行環境
 
-baseline supportと候補developmentは、GitHub Actionsの8 shard、個別artifact、全shard成功後のaggregateで完了した。次のwall-clock validationと長時間対局比較もActionsを第一候補にし、job timeout、部分artifact保全、全shard完了時だけの正式判定を設ける。未完了を不合格へ変換せず、seedを追加しない。実測からActions上限が不適切と分かった場合だけ、根拠と再現性・中断対策を先に記録して別環境を検討する。
+support、development、performanceをGitHub Actionsのshardで実行した。性能検証002では各shardのcheckpointとartifactを保存し、8 shardの完了後に集計した。ローカル環境へ切り替える必要はなかった。Actionsの失敗表示は、性能検証002では技術的不成立を意味せず、事前の時間短縮基準に届かなかったことを示す。
 
 ## 5. 文書
 
@@ -38,6 +39,8 @@ baseline supportと候補developmentは、GitHub Actionsの8 shard、個別artif
 - [baseline support結果](../../../artifacts/pbai-p14/BASELINE_SUPPORT_RESULT.md)
 - [candidate開発契約](CANDIDATE_SPEC.md)
 - [candidate development結果](../../../artifacts/pbai-p14/C017_DEVELOPMENT_RESULT.md)
+- [性能検証002の契約](C017_PERFORMANCE_002_SPEC.md)
+- [性能検証002の結果](../../../artifacts/pbai-p14/C017_PERFORMANCE_002_RESULT.md)
 - [現在状態](CURRENT_STATUS.md)
 - [判断記録](DECISION_REGISTER.md)
-- [終了報告](PROGRAM_FINAL_REPORT.md)（完了時作成）
+- [終了報告](PROGRAM_FINAL_REPORT.md)
