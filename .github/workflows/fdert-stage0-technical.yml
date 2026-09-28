@@ -1,0 +1,50 @@
+name: FDERT G4-10 Stage 0 technical
+
+on:
+  push:
+    branches:
+      - research/g4-10-fresh-depth11-exact-reachability-topology
+    paths:
+      - doc/fresh-depth11-exact-reachability-topology/authorizations/STAGE_0_EXECUTE.json
+
+permissions:
+  contents: read
+
+jobs:
+  technical:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+
+      - name: Run technical-only controls
+        id: technical
+        shell: bash
+        run: |
+          set +e
+          export FDERT_STAGE0_OUT="$RUNNER_TEMP/fdert-stage0"
+          node tools/experiments/run-fdert-stage0-technical.js
+          code=$?
+          echo "$code" > "$RUNNER_TEMP/fdert-stage0-exit-code"
+          exit 0
+
+      - name: Upload durable Stage 0 artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fdert-stage0-technical-${{ github.run_id }}
+          path: ${{ runner.temp }}/fdert-stage0/
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Enforce technical runner exit status
+        if: always()
+        shell: bash
+        run: |
+          code=$(cat "$RUNNER_TEMP/fdert-stage0-exit-code")
+          if [ "$code" != "0" ]; then
+            exit "$code"
+          fi
