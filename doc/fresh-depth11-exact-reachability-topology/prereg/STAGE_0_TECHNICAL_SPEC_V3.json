@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G4-10",
+  "studyId": "FDERT-STUDY1",
+  "stageId": "FDERT-S0-HARDENING-2026-09-28-v3",
+  "status": "FROZEN-BEFORE-TECHNICAL-EXECUTION",
+  "purpose": "validate the G4-10 bounded-memory production enumerator against the historical exact enumerator on shallow fixtures only",
+  "scientificInferenceAuthorized": false,
+  "protectedDepth11AccessAuthorized": false,
+  "maximumRealFixtureDepth": 2,
+  "requiredRootRawStateKey": "2c13e69c51d58e2605bf6018ac848d99685aa4d4fe78c0af9f8e0fc07e1d3fd6",
+  "mandatoryControls": [
+    "legacy and hardened depth-2 projectForComparison exact equality",
+    "legacy and hardened state-file byte equality",
+    "legacy and hardened edge-file byte equality",
+    "hardened materialized independent verification",
+    "hardened full independent shallow recomputation",
+    "hardened forced unique-state cap fail-closed",
+    "hardened forced move-work cap fail-closed",
+    "hardened forced tree-occurrence cap fail-closed",
+    "hardened forced artifact-byte cap fail-closed",
+    "hardened materialization mode is ROW-STREAMED-BOUNDED-MEMORY",
+    "protected depth-11 access false"
+  ],
+  "technicalProfile": {
+    "maxCumulativeDistinctRawStates": 1000,
+    "maxDepthLabelledEdges": 5000,
+    "maxParentStateExpansions": 1000,
+    "maxMoveEvaluations": 5000,
+    "maxCumulativeTreeNodeOccurrences": 100000,
+    "maxResidentSetBytes": 2147483648,
+    "maxWallClockSeconds": 120,
+    "maxUncompressedArtifactBytes": 67108864
+  },
+  "passRule": "all mandatory controls pass and all real enumeration target depths equal 2",
+  "failureRule": "STAGE0-HARDENING-TECHNICAL-INVALID / no protected evidence consumption",
+  "stage1AuthorizationOnPass": false
+}
