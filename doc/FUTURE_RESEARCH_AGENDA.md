@@ -1,6 +1,6 @@
 # Bao今後の研究アジェンダ
 
-Version: 5.13.0
+Version: 5.13.1
 
 更新日: 2026-09-28  
 Research Generation 2: **Closed (2026-08-31)**（完了）  
@@ -40,7 +40,7 @@ G4-10 main integration = COMPLETE / FAST-FORWARD
 
 研究成果の索引は[`RESEARCH_INDEX.md`](RESEARCH_INDEX.md)、第二・第三世代の統合結果はそれぞれ[`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md)と[`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md)、第四世代の最新状態は[`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md)を参照してください。
 
-## Research Generation 4 — 現在のProgram
+## Research Generation 4 — 完了したProgram
 
 第四世代は、第三世代で測定可能になった局所ゲーム木幾何について、**意味、移送可能性、exact帰結**を検証するProgramです。計画の正本[`research-generation-4/PROGRAM_PLAN.md`](research-generation-4/PROGRAM_PLAN.md)はprospective freezeとして保持し、事後結果に合わせて書き換えません。
 
@@ -58,7 +58,7 @@ G4-10 main integration = COMPLETE / FAST-FORWARD
 | D | `G4-10` | protected fresh depth-11 exact reachability topology | `CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP / MAIN INTEGRATED` |
 | 独立 | `G4-P01`、`G4-H01` | canonicalization再基礎化とhuman / expert研究 | `NOT AUTHORIZED / DEFERRED` |
 
-### G4-10 closure
+### G4-10の終了判断
 
 `FDERT-STUDY1`はone-shot protected depth-11 exact Studyとして実行されましたが、depth 11構築中に事前固定した`2,000,000 cumulative distinct RAW states` ceilingへ到達しました。complete depth-11 layerは成立せず、formal decisionは`NON-ESTIMABLE`、T1〜T4もすべて`NON-ESTIMABLE`です。
 
@@ -236,13 +236,13 @@ G4-08は`CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / NO DIRECTION
 
 ## 2. 今後の優先課題
 
-以下は科学的価値の高い候補です。優先順位はauthorizationではありません。G4-09 scientific execution・closure・main統合は完了しています。次のscientific agendaを開始する場合は、fresh evidence access前に独立authorization reviewを行います。G4-10は引き続きprotectedであり、G4-09 closureによって自動認可されません。
+以下は科学的価値の高い候補です。優先順位はauthorizationではありません。G4-09とG4-10はそれぞれの終了条件で閉じ、第四世代core agendaのmain統合まで完了しました。次のscientific agendaを開始する場合は、fresh evidence access前に独立authorization reviewを行います。
 
-### 2.1 G4-09 closure後の次研究境界
+### 2.1 G4-09・G4-10終了後の次研究境界
 
 G4-09 `GCSREA-STUDY1` は`CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE`として研究実行を閉じました。Module Aのsupport gateを結果後に緩和せず、general Stage 2 namespaceは未読のまま封印します。Module Bのfixed-8 exact censusもrerun・domain追加を行いません。
 
-次のscientific agendaはG4-09のrepairやrescueとして開始せず、新しいprospective Study identity、fresh evidence境界、独立authorization reviewを必要とします。G4-10 depth 11は独立したprotected holdoutであり、引き続き`NOT AUTHORIZED / NOT ACCESSED`です。
+G4-10も`CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP`で終了しました。depth 11の部分出力をformalな結果へ昇格させず、同Studyで上限増加・再実行・代替runnerによる救済・depth 12拡張を行いません。今後の新たな研究はG4-09またはG4-10のrepairとして開始せず、新しいStudy identity、fresh evidence境界、独立authorization reviewを必要とします。
 
 ### 2.2 一般化と反例の境界
 
@@ -250,11 +250,11 @@ G3-12は`TECHNICAL-INVALID`で閉じ、G4-02もscientific decisionなしで終�
 
 今後一般化境界を追加検証する場合も、closed Studyのrepair/reopenやsame-evidence rescueではなく、新しいprospective Study identityを用います。G4-04の8/8をRF1/RF2 subgroupや任意source policy、whole-Bao universal lawへ拡張しません。
 
-### 2.3 depth 11以深を扱うexact研究
+### 2.3 深い完全解析の資源境界
 
-G3-11はstandard initial RAW rootのdepth 10を一度だけ完全列挙しました。depth 11は未承認・未アクセスです。
+G3-11はstandard initial RAW rootのdepth 10を一度だけ完全列挙しました。続くG4-10は独立の認可を受けてdepth 11に一度アクセスしましたが、事前固定の累積200万RAW状態上限で停止し、complete depth-11 layerは成立しませんでした。G4-10の正式判断は`NON-ESTIMABLE`です。
 
-新しい研究では必要資源、停止条件、partial resultの扱い、独立再列挙方法を事前固定します。depth 10のsame-evidence rerunや、depth 0〜10からの事後的whole-game extrapolationは行いません。
+同Studyの上限を増やした救済・再実行やdepth 12への拡張は行いません。別の科学的問いを扱うなら、新しいStudyの対象、必要資源、停止条件、partial resultの扱い、独立検証を結果を見る前に固定します。depth 10のsame-evidence rerunや、depth 0〜10からの事後的whole-game extrapolationも行いません。
 
 ### 2.4 state representationとlong-horizon transition
 
@@ -278,7 +278,7 @@ terminal stateを含むfull identity fields、move equivariance、winner / pendi
 
 評価値、empirical outcome、search reliability、practical comebackはそれぞれ異なるendpointです。将来の研究でも単一の「強さ」へまとめず、測定対象とpopulationを明示します。
 
-G4-03のsearch-ranking result、G4-04のtrajectory-transfer result、G4-05のexact microdomain result、G4-06のgeometry / exact-consequence bridge result、G4-07のmultiscale memory / reversal result、G4-08のrule-semantic transition `NON-ESTIMABLE` closureはいずれも、公開AIの棋力改善を直接示すものではありません。
+G4-03のsearch-ranking result、G4-04のtrajectory-transfer result、G4-05のexact microdomain result、G4-06のgeometry / exact-consequence bridge result、G4-07のmultiscale memory / reversal result、G4-08のrule-semantic transition `NON-ESTIMABLE` closure、G4-09の固定8領域のexact census、G4-10の資源上限による終了は、いずれも公開AIの棋力改善を直接示すものではありません。AI改善案への接続と検証条件は[公開AIの改善候補](ai-engineering/AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md)を参照してください。
 
 ## 3. 新しいStudyに共通する必須条件
 
@@ -354,10 +354,10 @@ standard initial RAW rootでは、depth 8・9・10までのbounded exact results
 1. **[完了] Baoを記述する語彙とRAW identityの構築**
 2. **[完了] 限定domainにおけるexact analysisと独立検証**
 3. **[完了] Local game-tree geometryのbounded measurement**
-4. **[進行] Research Generation 4 — G4-01〜G4-09は各final dispositionでmain統合済み。次のscientific agendaは未選定で、G4-10 depth 11はprotected / not authorized / not accessed**
+4. **[完了] Research Generation 4 — core G4-01〜G4-10は各終了判断を保持してmain統合済み。G4-10は`NON-ESTIMABLE`で閉じた**
 5. **[完了] 逆転可能性と勝負手 — Study 1（Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`）**
 6. **[独立・未承認] G4-H01によるqualified human / expert evidenceの収集**
-7. **[計画済み・未承認] G4-10によるfresh depth-11 exact研究**
+7. **[完了] G4-10のfresh depth-11 exact研究 — 資源上限で`NON-ESTIMABLE`。同Studyでの救済・再実行は行わない**
 
 ## 6. 研究と公開AI改善の分離
 
@@ -482,7 +482,9 @@ qualified participantへのアクセスを確保できず、`DEFERRED / INDEPEND
 
 一方、これらはwhole-Bao law、causal mechanism、game-theoretic value、人間の難しさ、普遍的なgeneralizationを示しません。G3-12がtechnical-invalidで閉じたため、formalなgeneralization / counterexample decisionもありません。
 
-### 10.3 保護された証拠と今後の扱い
+### 10.3 第三世代終了時点の保護状態と現在の扱い
+
+次の記録は**第三世代が終了した時点**の状態です。depth 11は後にG4-10で別途認可され、一回だけ実行されました。現在も未アクセスという意味ではありません。
 
 ```text
 G3-11 depth 10 = OPENED / CONSUMED EXACTLY ONCE
@@ -491,4 +493,4 @@ depth 11 = NOT AUTHORIZED / NOT ACCESSED
 G3-12 Stage 2 = NOT AUTHORIZED / NOT EXECUTED / seeds UNREAD
 ```
 
-後続研究は第三世代のrepairではなく、新しいprospective Studyまたは新しいResearch Generationとして計画します。詳細は[`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md)を参照してください。
+後続研究は第三世代のrepairではなく、新しいprospective Studyまたは新しいResearch Generationとして計画します。G4-10の現在の終了状態は[第四世代の最終統合](research-generation-4/FINAL_SYNTHESIS.md)を参照してください。詳細は[`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md)を参照してください。
