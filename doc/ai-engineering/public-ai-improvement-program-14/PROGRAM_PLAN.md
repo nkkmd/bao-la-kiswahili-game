@@ -16,18 +16,20 @@ baseline support gateはPASSし、111局面・全64 seedでの対象頻度と計
 
 ## 段階とexit criteria
 
-| 段階 | 作業 | 次へ進む条件 |
+| 段階 | 作業 | 結果・次へ進む条件 |
 | --- | --- | --- |
 | A | 最新main・過去のProgram境界・実release sourceを照合 | 完了 |
 | B | support測定spec、計測器、tests、Actions matrix jobsを固定 | PASS |
-| C | support結果の独立集計とsource/hash監査 | 完了、canonical recordをarchive |
+| C | support結果の独立集計とsource/hash監査 | 完了・canonical archive |
 | D | A1 candidate mechanism、ID、dev/validation分割、gateを結果前に固定 | 完了、`PBAI-C017-v1` |
-| E | candidate developmentと意味同値性・費用測定 | CANDIDATE DEVELOPMENT PASS |
-| F | fresh independent validationと先後交換対局 | 別途固定するvalidation contractの全gateを満たす |
-| G | release準備とproduct decision | 明示判断と実機・互換性確認。自動昇格なし |
+| E | candidate developmentと意味同値性・費用測定 | PASS、104 paired samples |
+| F1 | 性能計測runner初回試行 | technical invalid。完了rowがなくseed blockは再利用禁止 |
+| F2 | fresh uninstrumented wall-clock validation | 技術・標本・同値性PASS。事前の3.0%点推定gateは2.9795%でFAIL |
+| G | 強度比較、release holdout、公開準備 | performance gate未達のため未認可・未実行 |
+| H | 最終判断と記録 | `COMPLETE / NO-MATERIAL-WALL-CLOCK-IMPROVEMENT / KEEP-AI-GEN4` |
 
-support不足、技術不成立、source mismatch、探索出力差のいずれかが起きたら該当段階で停止し、データ条件を後から変更しない。
+support不足、技術不成立、source mismatch、探索出力差のいずれかが起きた場合は該当段階で停止し、データ条件を後から変更しない。このProgramはF2の固定gateを満たさなかったため終了し、同seedでの救済再試験や強度比較へ進まない。
 
 ## 長時間試験の設計方針
 
-固定depthの大規模比較と対局比較はGitHub Actionsを第一候補とする。今回のsupport runでは8 matrix shard、各shard個別artifact、全shard成功後だけaggregateを使って中断に耐えた。以後も事前固定seed/opening blockでshardを分け、`fail-fast: false`、job timeout、`always()` artifact uploadを使う。未完了shardを敗局・引分け・不合格にせず、消費済みseedで補完しない。各artifactはbranch/source SHA、seed、shard、baseline hashes、完了数、statusを保存する。Actions上限・runnerの再現性が実測上不適切なら、その根拠、環境固定、チェックポイント/再開、hash検証を記録してからローカル等へ切り替える。
+固定depthの大規模比較と対局比較はGitHub Actionsを第一候補とする。support、development、PERFORMANCE-002は8 matrix shard、各shard artifact、checkpoint/aggregateを使って実行・保全できた。PERFORMANCE-001のrunner不成立後はそのseed blockを再利用せず、別blockのPERFORMANCE-002ではsample/repeatごとのatomic checkpointを追加した。今回の全試験でActions上限やrunner制約は観察されず、ローカル実行への切替は不要だった。
