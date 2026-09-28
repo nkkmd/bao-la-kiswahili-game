@@ -24,7 +24,7 @@ jobs:
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
-          import json, re, sys
+          import json, re, sys, subprocess
 
           active = [
               Path('README.md'),
@@ -63,7 +63,6 @@ jobs:
                   if s in text:
                       errors.append(f'stale current-state text in {p}: {s}')
 
-          # Required current-state anchors.
           required = {
               Path('doc/research-generation-4/CURRENT_STATUS.md'): [
                   'G4-10 = CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP / RESEARCH BRANCH',
@@ -71,7 +70,7 @@ jobs:
               ],
               Path('doc/research-generation-4/RESUME_HERE.md'): [
                   'G4-10 = CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP / RESEARCH BRANCH',
-                  'PRE-MAIN CONSISTENCY AUDIT',
+                  'pre-main consistency audit',
               ],
               Path('doc/fresh-depth11-exact-reachability-topology/CURRENT_STATUS.md'): [
                   'formal decision = NON-ESTIMABLE',
@@ -92,9 +91,9 @@ jobs:
                   if s not in text:
                       errors.append(f'missing required anchor in {p}: {s}')
 
-          # Parse all G4-10 JSON records and verify canonical outcome.
           g4dir = Path('doc/fresh-depth11-exact-reachability-topology')
-          for p in g4dir.rglob('*.json'):
+          json_files = list(g4dir.rglob('*.json'))
+          for p in json_files:
               try:
                   json.loads(p.read_text(encoding='utf-8'))
               except Exception as e:
@@ -119,11 +118,12 @@ jobs:
           for ok, label in checks:
               if not ok:
                   errors.append(f'failed {label}')
-          if any(v != 'NON-ESTIMABLE' for v in canon.get('targetDecisions', {}).values()):
-              errors.append('canonical T1..T4 are not all NON-ESTIMABLE')
+          if set(canon.get('targetDecisions', {})) != {'T1','T2','T3','T4'} or any(v != 'NON-ESTIMABLE' for v in canon.get('targetDecisions', {}).values()):
+              errors.append('canonical T1..T4 are not exactly all NON-ESTIMABLE')
 
-          # Relative Markdown link audit for active docs. Directories resolve to README.md.
+          # Relative Markdown links: file or directory targets are both valid on GitHub.
           link_re = re.compile(r'(?<!!)\[[^\]]*\]\(([^)]+)\)')
+          root = Path.cwd().resolve()
           for p in active:
               if not p.exists():
                   continue
@@ -137,17 +137,13 @@ jobs:
                       continue
                   q = (p.parent / target).resolve()
                   try:
-                      q.relative_to(Path.cwd().resolve())
+                      q.relative_to(root)
                   except ValueError:
                       errors.append(f'link escapes repository in {p}: {raw}')
                       continue
-                  if q.is_dir():
-                      q = q / 'README.md'
                   if not q.exists():
                       errors.append(f'broken relative link in {p}: {raw}')
 
-          # Repository-scope boundary against main.
-          import subprocess
           subprocess.run(['git','fetch','origin','main:refs/remotes/origin/main'], check=True)
           changed = subprocess.check_output(['git','diff','--name-only','origin/main...HEAD'], text=True).splitlines()
           if any(x.startswith('public/') for x in changed):
@@ -157,28 +153,29 @@ jobs:
           if 'doc/research-generation-4/PROGRAM_PLAN.md' in changed:
               errors.append('frozen RG4 PROGRAM_PLAN.md changed relative to main')
 
-          report = []
-          report.append('# G4-10 final documentation audit — machine check')
-          report.append('')
-          report.append('Branch: `research/g4-10-fresh-depth11-exact-reachability-topology`')
-          report.append('')
-          report.append(f'Active documents checked: {len(active)}')
-          report.append(f'G4-10 JSON files parsed: {len(list(g4dir.rglob("*.json")))}')
-          report.append(f'Changed paths vs main: {len(changed)}')
-          report.append('')
+          report = [
+              '# G4-10 final documentation audit — machine check',
+              '',
+              'Branch: `research/g4-10-fresh-depth11-exact-reachability-topology`',
+              '',
+              f'Active documents checked: {len(active)}',
+              f'G4-10 JSON files parsed: {len(json_files)}',
+              f'Changed paths vs main: {len(changed)}',
+              '',
+          ]
           if errors:
-              report.append('Decision: **FAIL**')
-              report.append('')
-              report.extend(f'- {e}' for e in errors)
+              report += ['Decision: **FAIL**', ''] + [f'- {e}' for e in errors]
           else:
-              report.append('Decision: **PASS**')
-              report.append('')
-              report.append('- no stale current-state marker in active documents')
-              report.append('- required G4-10 closure anchors present')
-              report.append('- all G4-10 JSON files parse successfully')
-              report.append('- canonical outcome and no-rescue/public-AI boundaries match')
-              report.append('- active-document relative Markdown links resolve')
-              report.append('- no `public/`, root `README.md`, or frozen RG4 `PROGRAM_PLAN.md` change vs main')
+              report += [
+                  'Decision: **PASS**',
+                  '',
+                  '- no stale current-state marker in active documents',
+                  '- required G4-10 closure anchors present',
+                  '- all G4-10 JSON files parse successfully',
+                  '- canonical outcome and no-rescue/public-AI boundaries match',
+                  '- active-document relative Markdown links resolve to existing files or directories',
+                  '- no `public/`, root `README.md`, or frozen RG4 `PROGRAM_PLAN.md` change vs main',
+              ]
           Path('/tmp/g4-10-final-doc-audit.md').write_text('\n'.join(report) + '\n', encoding='utf-8')
           print('\n'.join(report))
           if errors:
