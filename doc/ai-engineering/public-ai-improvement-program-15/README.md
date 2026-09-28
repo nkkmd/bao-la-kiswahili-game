@@ -2,7 +2,7 @@
 
 正式作業名: **探索データを持ち越さないWorker再利用 — F1成立性確認**  
 開始日: 2026-09-28  
-状態: **baseline support契約を固定 / 測定前**  
+状態: **preflight技術条件の修正中 / baseline support seed未使用**  
 比較対象: `AI-GEN4 / AI-GEN4-RELEASE-001`  
 baseline commit: `22537fb192b6c5bd1e2f3e6bca7488d7baa6f91b`  
 Candidate ID: **未発行**

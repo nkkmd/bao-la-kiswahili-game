@@ -6,6 +6,6 @@
 | 2026-09-28 | A | F1をP15として独立評価 | 公開AI改善案の優先候補に従い、Worker instance再利用だけを扱う。前手番のTT、評価cache、検索結果等は持ち越さない。 |
 | 2026-09-28 | A | baselineを`AI-GEN4-BASELINE-2026-09-28-v1` / `main@22537fb192b6c5bd1e2f3e6bca7488d7baa6f91b`に固定 | P14/C017の実装branchではなく、現行mainの公開releaseをbaselineとする。 |
 | 2026-09-28 | B | `WORKER_SUPPORT_SPEC.md`を測定前に固定 | fresh seed `2026100201..2026100264`、Chromium standard hard/expert、cold-vs-warm paired latency、long-session memory、cancellation、Actions shard/checkpoint、coverageとscreening gateを固定。まだseed/clockを消費していない。 |
-| pending | C | Actions preflight | Browser version、cross-origin isolation、`measureUserAgentSpecificMemory()`、Worker message path、checkpoint/artifact recoveryをseed sample測定前に確認。 |
+| pending | C | Actions preflight | 初回preflight `36415107712`でChromiumの`measureUserAgentSpecificMemory()`が使用不可と判明。CDPのWorker isolate heapを計測する契約へ測定前に改訂したが、再実行`36415634228`も旧APIを呼ぶpreflightコードが残っていたため失敗。seed・latency標本は未使用。改訂契約に合わせたpreflightを再確認する。 |
 | pending | D | baseline support | 64 fresh seedを8 Actions shardで実行。未完了blockは再利用しない。 |
 | pending | E | Candidate ID発行または`HOLD` | timing・memory・cancellation・source gatesを満たす場合のみ別のdevelopment contractへ進む。 |

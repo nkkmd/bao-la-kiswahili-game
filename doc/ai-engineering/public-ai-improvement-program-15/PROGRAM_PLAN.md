@@ -25,10 +25,10 @@
 | E | 結果を独立集計し、source/seed/hashを監査 | gateに従いCandidate ID発行または`HOLD` |
 | F以降 | default-off candidate開発、独立validation | Eが成立し、別契約を結果確認前に固定した場合のみ |
 
-Supportの待ち時間screeningは、各難易度で少なくとも192のpaired positionsがあり、warm-workerのseed-cluster bootstrap 95%区間下限が0を上回り、paired median削減が5%以上の場合に成立する。どちらか一方の難易度だけが成立した場合、次段階はその難易度に限定する。memory APIの成功、worker realmを含むmemory attribution、および長時間sessionでの増加gateも必要条件とする。数値・対象を結果後に変更しない。
+Supportの待ち時間screeningは、各難易度で少なくとも192のpaired positionsがあり、warm-workerのseed-cluster bootstrap 95%区間下限が0を上回り、paired median削減が5%以上の場合に成立する。どちらか一方の難易度だけが成立した場合、次段階はその難易度に限定する。Worker targetへのCDP接続、Worker isolateのheap計測、および長時間sessionでの増加gateも必要条件とする。数値・対象を結果後に変更しない。
 
 ## 長時間試験と中断耐性
 
 support runはGitHub Actionsを第一候補とし、Ubuntu 24.04、Node 24、固定Playwright/Chromium、64 fresh seedを8 shardに分ける。各shardは独立seed list、atomic row checkpoint、`fail-fast: false`、30分timeout、`always()` artifact uploadを持つ。aggregateは8 artifactが揃い、hash・重複・coverage検査が通った時だけ作る。途中失敗したseed blockは消費済みとし、完了rowは保存するが、欠損分を同じseedで再実行しない。
 
-browser API非対応、cross-origin isolation不成立、Actions quota/runnerの再現性不足、memory計測がWorkerを含まない場合はsupportをPASSに読み替えない。その場合はP15を`HOLD / KEEP-AI-GEN4`とし、次の作業で実機または別計測環境が必要なら、その根拠を記録してから実行先を判断する。
+Worker CDP計測非対応、cross-origin isolation不成立、Actions quota/runnerの再現性不足、memory計測がWorker isolateを指さない場合はsupportをPASSに読み替えない。その場合はP15を`HOLD / KEEP-AI-GEN4`とし、次の作業で実機または別計測環境が必要なら、その根拠を記録してから実行先を判断する。

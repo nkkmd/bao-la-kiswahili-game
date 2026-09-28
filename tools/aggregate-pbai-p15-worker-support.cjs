@@ -48,7 +48,7 @@ function bootstrap(clusters, level) {
   return { clusters: values.length, medianPct: median(values), lower95Pct: quantile(reps, 0.025), upper95Pct: quantile(reps, 0.975) };
 }
 function checkpointBytes(checkpoint) {
-  return median((checkpoint.memory && checkpoint.memory.samples || []).map((sample) => sample.bytes));
+  return median((checkpoint.memory && checkpoint.memory.samples || []).map((sample) => sample.usedSize));
 }
 const shardFiles = filesUnder(root).filter((file) => /shard-[0-7][0-9]\.json$/.test(file)).sort();
 const shards = [];
@@ -104,8 +104,13 @@ const memory = sessions.map((session) => {
   const at64 = checkpoints.find((checkpoint) => checkpoint.afterRequests === 64);
   const delta = at16 && at64 ? checkpointBytes(at64) - checkpointBytes(at16) : null;
   const limit = at16 ? Math.max(8 * 1024 * 1024, checkpointBytes(at16) * 0.1) : null;
-  const attributed = session.workerAttribution || [];
-  const requestCheckpointsAttributed = attributed.slice(1, 5);
+  const requestCheckpoints = [1, 16, 32, 64].map((count) =>
+    checkpoints.find((checkpoint) => checkpoint.afterRequests === count));
+  const requestCheckpointsAttributed = requestCheckpoints.map((checkpoint) =>
+    !!(checkpoint && checkpoint.workerTarget && checkpoint.workerTarget.type === "worker"
+      && checkpoint.workerTarget.url.endsWith("/public/ai-release-worker.js")
+      && checkpoint.memory && checkpoint.memory.afterGarbageCollection === true
+      && checkpoint.memory.samples && checkpoint.memory.samples.length === 3));
   return {
     shard: session.shard,
     seed: session.seed,

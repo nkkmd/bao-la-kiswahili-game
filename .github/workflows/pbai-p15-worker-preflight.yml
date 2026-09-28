@@ -26,10 +26,11 @@ jobs:
           node "$RUNNER_TEMP/pbaip15/node_modules/playwright/cli.js" install --with-deps chromium
       - name: 事前構文確認
         run: |
+          node --check tools/pbai-p15-worker-cdp.cjs
           node --check tools/pbai-p15-worker-preflight.cjs
           node --check tools/pbai-p15-worker-support.cjs
           node --check tools/aggregate-pbai-p15-worker-support.cjs
-      - name: COOP/COEP、Worker、memory API、取消・再起動を検査
+      - name: COOP/COEP、Worker isolate heap、取消・再起動を検査
         env:
           NODE_PATH: ${{ runner.temp }}/pbaip15/node_modules
         run: node tools/pbai-p15-worker-preflight.cjs

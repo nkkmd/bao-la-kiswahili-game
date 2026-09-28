@@ -6,6 +6,7 @@ const path = require("node:path");
 const crypto = require("node:crypto");
 const { execFileSync } = require("node:child_process");
 const { chromium } = require("playwright");
+const { browserSession, attachWorker, heapSamples } = require("./pbai-p15-worker-cdp.cjs");
 
 const ROOT = process.cwd();
 const BASELINE = "22537fb192b6c5bd1e2f3e6bca7488d7baa6f91b";
@@ -103,15 +104,11 @@ async function main() {
   const page = await activeBrowser.newPage();
   page.setDefaultTimeout(30000);
   await page.goto("http://127.0.0.1:" + address.port + "/__p15", { waitUntil: "load" });
-  const ready = await page.evaluate(() => ({
-    crossOriginIsolated: PBAIP15.crossOriginIsolated(),
-    memoryAPI: PBAIP15.hasMemoryAPI(),
-  }));
+  const ready = { crossOriginIsolated: await page.evaluate(() => PBAIP15.crossOriginIsolated()) };
   data.preconditions = ready;
   writeAtomic(data);
-  if (!ready.crossOriginIsolated || !ready.memoryAPI) {
-    throw new Error("cross-origin isolated memory API precondition failed");
-  }
+  if (!ready.crossOriginIsolated) throw new Error("cross-origin isolation failed");
+  const cdp = await browserSession(activeBrowser);
 
   function recordSampleMode(row, order) {
     let sample = data.samples.find((item) => item.seed === row.seed && item.level === row.level && item.ply === row.ply);
@@ -189,19 +186,43 @@ async function main() {
   const longSeed = seedList[0];
   const trajectory = await page.evaluate((seed) => PBAIP15.gameStates(seed, 64, []).trajectory, longSeed);
   for (const level of ["hard", "expert"]) {
+    const session = { seed: longSeed, level, status: "RUNNING",
+      requestCount: 0, checkpoints: [], rows: [], workerTarget: null };
+    data.longSessions.push(session);
+    writeAtomic(data);
+    let worker = null;
     try {
-      const session = await page.evaluate(async (args) =>
-        PBAIP15.measureLongSession(args.states, args.seed, args.level),
-      { states: trajectory, seed: longSeed, level });
+      await page.evaluate(() => PBAIP15.openLongWorker());
+      worker = await attachWorker(cdp);
+      session.workerTarget = worker.target;
+      writeAtomic(data);
+      for (let index = 0; index < trajectory.length; index += 1) {
+        const row = await page.evaluate((args) =>
+          PBAIP15.longSessionRequest(args.item, args.seed, args.level, args.index),
+        { item: trajectory[index], seed: longSeed, level, index });
+        if (!row.legalMove || !row.positionKeyMatch) throw new Error("long-session result contract failed");
+        session.rows.push(row);
+        session.requestCount = session.rows.length;
+        writeAtomic(data);
+        if ([1, 16, 32, 64].includes(session.requestCount)) {
+          session.checkpoints.push({
+            afterRequests: session.requestCount, memory: await heapSamples(worker),
+            workerTarget: worker.target,
+          });
+          writeAtomic(data);
+        }
+      }
       session.reaches64 = session.requestCount === 64;
-      session.workerAttribution = session.checkpoints.map((checkpoint) =>
-        JSON.stringify(checkpoint.memory.samples).includes("DedicatedWorkerGlobalScope"));
-      data.longSessions.push(session);
+      session.status = "PASS";
       writeAtomic(data);
     } catch (error) {
-      data.longSessions.push({ seed: longSeed, level, status: "ERROR", error: String(error && error.stack || error) });
-      data.errors.push({ seed: longSeed, level, stage: "long-session", error: String(error && error.stack || error) });
+      session.status = "ERROR";
+      session.error = String(error && error.stack || error);
+      data.errors.push({ seed: longSeed, level, stage: "long-session", error: session.error });
       writeAtomic(data);
+    } finally {
+      if (worker) await worker.detach().catch(() => {});
+      await page.evaluate(() => PBAIP15.endLongWorker()).catch(() => {});
     }
   }
 

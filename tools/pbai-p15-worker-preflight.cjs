@@ -3,6 +3,7 @@ const fs = require("node:fs");
 const http = require("node:http");
 const path = require("node:path");
 const { chromium } = require("playwright");
+const { browserSession, attachWorker, heapSamples } = require("./pbai-p15-worker-cdp.cjs");
 
 const ROOT = process.cwd();
 const outDir = path.join(ROOT, "artifacts/local/pbai-p15-preflight");
@@ -36,26 +37,24 @@ async function main() {
   const page = await browser.newPage();
   const address = server.address();
   await page.goto("http://127.0.0.1:" + address.port + "/__p15");
-  const preconditions = await page.evaluate(() => ({
-    crossOriginIsolated: PBAIP15.crossOriginIsolated(),
-    memoryAPI: PBAIP15.hasMemoryAPI(),
-  }));
-  if (!preconditions.crossOriginIsolated || !preconditions.memoryAPI) {
-    throw new Error("browser memory precondition failed: " + JSON.stringify(preconditions));
-  }
+  const crossOriginIsolated = await page.evaluate(() => PBAIP15.crossOriginIsolated());
+  if (!crossOriginIsolated) throw new Error("cross-origin isolation preflight failed");
+  const cdp = await browserSession(browser);
   const state = await page.evaluate(() => BaoEngine.initialState());
-  const baselineMemory = await page.evaluate(() => PBAIP15.memorySamples("pre-worker"));
-  const sample = await page.evaluate(async (stateArg) => {
-    const worker = new Worker("/public/ai-release-worker.js");
-    try {
-      const result = await PBAIP15.measureMode([{ ply: 0, state: stateArg }], 901001, "hard", "warm");
-      const memory = await PBAIP15.memorySamples("worker-loaded");
-      return { result, memory };
-    } finally { worker.terminate(); }
-  }, state);
-  const workerAttribution = JSON.stringify(sample.memory.samples).includes("DedicatedWorkerGlobalScope");
-  if (!sample.result[0].legalMove || !sample.result[0].positionKeyMatch || !workerAttribution) {
-    throw new Error("worker response or memory attribution preflight failed");
+  // Measure a real, still-running dedicated Worker after a normal request.
+  await page.evaluate(() => PBAIP15.openLongWorker());
+  let worker;
+  let row;
+  let heap;
+  try {
+    worker = await attachWorker(cdp);
+    row = await page.evaluate((item) =>
+      PBAIP15.longSessionRequest({ ply: 0, state: item }, 901001, "hard", 0), state);
+    if (!row.legalMove || !row.positionKeyMatch) throw new Error("Worker response preflight failed");
+    heap = await heapSamples(worker);
+  } finally {
+    if (worker) await worker.detach().catch(() => {});
+    await page.evaluate(() => PBAIP15.endLongWorker()).catch(() => {});
   }
   const cancellation = await page.evaluate(async () => {
     const initial = BaoEngine.initialState();
@@ -85,8 +84,9 @@ async function main() {
   const report = {
     status: "PASS",
     browser: { name: "chromium", version: browser.version(), playwright: require("playwright/package.json").version },
-    preconditions, workerAttribution, baselineMemory, memory: sample.memory, cancellation,
-    checkpointRecovery: "PASS",
+    crossOriginIsolated, workerTarget: worker.target, workerHeap: heap,
+    workerResponse: { legalMove: row.legalMove, positionKeyMatch: row.positionKeyMatch },
+    cancellation, checkpointRecovery: "PASS",
   };
   fs.writeFileSync(outputPath + ".tmp", JSON.stringify(report, null, 2) + "\n");
   fs.renameSync(outputPath + ".tmp", outputPath);

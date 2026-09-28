@@ -95,51 +95,27 @@
       if (worker) worker.terminate();
     }
   }
-  async function memorySamples(label) {
-    if (typeof performance.measureUserAgentSpecificMemory !== "function") {
-      throw new Error("measureUserAgentSpecificMemory unavailable");
-    }
-    const samples = [];
-    for (let index = 0; index < 3; index += 1) {
-      if (index) await new Promise((resolve) => setTimeout(resolve, 100));
-      const result = await performance.measureUserAgentSpecificMemory();
-      samples.push({ bytes: result.bytes, breakdown: result.breakdown });
-    }
-    return { label, samples };
+  function openLongWorker() {
+    if (window.__p15LongWorker) throw new Error("long Worker already active");
+    window.__p15LongWorker = new Worker("/public/ai-release-worker.js");
+    return true;
   }
-  async function measureLongSession(states, seed, level) {
-    const checkpoints = [];
-    const rows = [];
-    let memory = await memorySamples("before");
-    checkpoints.push({ afterRequests: 0, memory });
-    const startedAt = performance.now();
-    const worker = new Worker("/public/ai-release-worker.js");
-    try {
-      for (let index = 0; index < states.length; index += 1) {
-        const item = states[index];
-        const id = seed * 100000 + (level === "expert" ? 10000 : 0) + index + 1;
-        const result = await send(worker, item.state, level, id, index === 0, undefined, index === 0 ? startedAt : undefined);
-        rows.push({ index, ply: item.ply, ...result });
-        const count = index + 1;
-        if ([1, 16, 32, 64].includes(count)) {
-          memory = await memorySamples("after-" + count);
-          checkpoints.push({ afterRequests: count, memory });
-        }
-      }
-    } finally {
-      worker.terminate();
-    }
-    await new Promise((resolve) => setTimeout(resolve, 30000));
-    memory = await memorySamples("after-30s-idle");
-    checkpoints.push({ afterRequests: rows.length, idleMs: 30000, memory });
-    return { seed, level, requestCount: rows.length, checkpoints, rows };
+  async function longSessionRequest(item, seed, level, index) {
+    const worker = window.__p15LongWorker;
+    if (!worker) throw new Error("long Worker is not active");
+    const id = seed * 100000 + (level === "expert" ? 10000 : 0) + index + 1;
+    const result = await send(worker, item.state, level, id, index === 0);
+    return { index, ply: item.ply, ...result };
+  }
+  function endLongWorker() {
+    if (window.__p15LongWorker) window.__p15LongWorker.terminate();
+    window.__p15LongWorker = null;
   }
   window.PBAIP15 = {
-    gameStates, measureMode, measureLongSession, memorySamples,
+    gameStates, measureMode, openLongWorker, longSessionRequest, endLongWorker,
     resetProgress: () => { window.__p15Progress = []; },
     drainProgress: () => { const rows = window.__p15Progress || []; window.__p15Progress = []; return rows; },
     crossOriginIsolated: () => self.crossOriginIsolated === true,
-    hasMemoryAPI: () => typeof performance.measureUserAgentSpecificMemory === "function",
   };
 })();
 </script>
