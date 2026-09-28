@@ -8,7 +8,7 @@ on:
       - '.github/workflows/pbai-p14-c017-performance-002-result.yml'
 
 permissions:
-  contents: read
+  contents: write
   actions: read
 
 jobs:
@@ -45,6 +45,22 @@ jobs:
             artifacts/pbai-p14/c017-performance-002-canonical/c017-performance-002.json
           if-no-files-found: error
           retention-days: 90
+      - name: Commit the canonical machine-readable result on this isolated branch
+        if: always() && hashFiles('artifacts/pbai-p14/c017-performance-002-canonical/c017-performance-002.json') != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = 'artifacts/pbai-p14/c017-performance-002.json';
+            const body = fs.readFileSync('artifacts/pbai-p14/c017-performance-002-canonical/c017-performance-002.json', 'utf8');
+            await github.rest.repos.createOrUpdateFileContents({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              path,
+              message: 'data(ai): archive C017 performance 002 result',
+              content: Buffer.from(body).toString('base64'),
+              branch: 'engineering/pbai-p14-c017-performance-002',
+            });
       - name: Enforce the prospective speed threshold after preserving evidence
         if: always()
         run: |
