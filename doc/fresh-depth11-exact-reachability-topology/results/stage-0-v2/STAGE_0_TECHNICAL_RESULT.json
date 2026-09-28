@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G4-10",
+  "studyId": "FDERT-STUDY1",
+  "stageId": "FDERT-S0-TECHNICAL-2026-09-28-v2",
+  "stageDisposition": "STAGE0-PASS",
+  "scientificInferencePerformed": false,
+  "protectedDepth11Access": false,
+  "stage1ExecutionAuthorized": false,
+  "maximumRealFixtureDepthAuthorized": 2,
+  "realEnumerationTargetDepthsObserved": [
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "maximumRealFixtureDepthObserved": 2,
+  "currentEngineStandardRootIdentityMatched": true,
+  "positiveControl": {
+    "rootRawStateKey": "2c13e69c51d58e2605bf6018ac848d99685aa4d4fe78c0af9f8e0fc07e1d3fd6",
+    "layerRawCounts": [
+      1,
+      4,
+      14
+    ],
+    "layerTreeOccurrences": [
+      "1",
+      "4",
+      "14"
+    ],
+    "materializedIndependentVerification": true,
+    "fullIndependentRecomputation": true
+  },
+  "forcedStops": {
+    "uniqueState": "UNIQUE_STATE_CAP",
+    "work": "MOVE_EVALUATION_CAP",
+    "tree": "TREE_OCCURRENCE_CAP",
+    "artifact": "ARTIFACT_BYTE_CAP"
+  },
+  "finalResourceBoundaryControls": {
+    "belowCapPassed": true,
+    "aboveCapRejected": true
+  },
+  "completionMetadataCorruptionRejected": true,
+  "partialResultQuarantinePassed": true,
+  "classificationControls": {
+    "exact": "EXACT-WITHIN-FROZEN-DOMAIN",
+    "resourceCutoff": "NON-ESTIMABLE",
+    "integrityDefect": "TECHNICAL-INVALID"
+  },
+  "staticImplementationSeparationPassed": true,
+  "runtimeRealFixtureDepthGuardPassed": true,
+  "allMandatoryControlsPassed": true,
+  "runtime": {
+    "node": "v22.23.2",
+    "platform": "linux",
+    "arch": "x64"
+  }
+}
