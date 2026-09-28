@@ -204,7 +204,17 @@ function preflight(output) {
   const sample = sampleStates(base.BaoEngine, developmentSeed)
     .find(item => item.phase === 'namua');
   assert.ok(sample, 'development-only preflight Namua sample is required');
-  const row = measureSample(base, candidate, sample, developmentSeed);
+  const checkpointPath = (output || path.join(ROOT,
+    'artifacts/pbai-p14/c017-performance-preflight.json')) + '.checkpoint-test';
+  let checkpointWrites = 0;
+  const row = measureSample(base, candidate, sample, developmentSeed, partial => {
+    checkpointWrites += 1;
+    writeAtomic(checkpointPath, { status: 'IN_PROGRESS', row: partial });
+    const saved = JSON.parse(fs.readFileSync(checkpointPath, 'utf8'));
+    assert.deepEqual(saved.row, clone(partial), 'atomic checkpoint did not preserve the latest paired run');
+  });
+  assert.equal(checkpointWrites, REPEATS + 2);
+  fs.unlinkSync(checkpointPath);
   assert.equal(row.pairedRuns.length, REPEATS);
   assert.equal(row.allOutputsEqual, true);
   assert.equal(row.allDepth4, true);
