@@ -1,0 +1,83 @@
+name: PBAI-C017 candidate development gate
+
+on:
+  push:
+    branches:
+      - engineering/pbai-p14-c017-development
+    paths:
+      - '.github/workflows/pbai-p14-c017-development.yml'
+      - 'public/engine.js'
+      - 'public/ai-candidate.js'
+      - 'tools/engineering/pbai-p14/**'
+      - 'tools/engineering/measure-pbai-c017-development.cjs'
+      - 'tools/engineering/aggregate-pbai-c017-development.cjs'
+      - 'test/pbai-c017-transition-reuse.test.cjs'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+jobs:
+  candidate-shard:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Fetch exact baseline source
+        run: git fetch --no-tags --depth=1 origin 22537fb192b6c5bd1e2f3e6bca7488d7baa6f91b
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Existing release and candidate tests
+        run: node --test test/ai-generation-release.test.js test/pbai-c017-transition-reuse.test.cjs
+      - name: Syntax validation
+        run: |
+          node --check public/engine.js
+          node --check public/ai-candidate.js
+          node --check tools/engineering/measure-pbai-c017-development.cjs
+          node --check tools/engineering/aggregate-pbai-c017-development.cjs
+      - name: Fixed-depth candidate shard ${{ matrix.shard }}
+        run: node tools/engineering/measure-pbai-c017-development.cjs ${{ matrix.shard }} artifacts/pbai-p14/c017-shards/shard-${{ matrix.shard }}.json
+      - name: Preserve shard result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pbai-p14-c017-development-shard-${{ matrix.shard }}-${{ github.run_id }}
+          path: artifacts/pbai-p14/c017-shards/shard-${{ matrix.shard }}.json
+          if-no-files-found: warn
+          retention-days: 30
+  aggregate-candidate:
+    if: always() && needs.candidate-shard.result == 'success'
+    needs: [candidate-shard]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Download completed shard outputs
+        uses: actions/download-artifact@v4
+        with:
+          pattern: pbai-p14-c017-development-shard-*
+          path: artifacts/pbai-p14/c017-downloaded
+      - name: Verify complete coverage and candidate gates
+        run: |
+          mkdir -p artifacts/pbai-p14/c017-canonical
+          node tools/engineering/aggregate-pbai-c017-development.cjs artifacts/pbai-p14/c017-downloaded artifacts/pbai-p14/c017-canonical/c017-development.json
+      - name: Save canonical development record
+        uses: actions/upload-artifact@v4
+        with:
+          name: pbai-p14-c017-development-${{ github.run_id }}
+          path: artifacts/pbai-p14/c017-canonical/c017-development.json
+          if-no-files-found: error
+          retention-days: 90
