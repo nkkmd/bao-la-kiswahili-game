@@ -116,7 +116,7 @@ async function main() {
   for (const seed of seedList) {
     const generated = await page.evaluate((value) =>
       PBAIP15.gameStates(value, 64, [0, 8, 16, 32]), seed);
-    const seedRecord = { seed, reachedTerminal: generated.terminal, terminalPly: generated.terminalPly,
+    const seedRecord = { seed, reachedTerminal: generated.terminal, terminalTurn: generated.terminalTurn,
       availablePly: generated.states.map((item) => item.ply) };
     if (generated.states.length < 4) {
       data.errors.push({ seed, stage: "sample-generation", error: "required phase state unavailable" });
