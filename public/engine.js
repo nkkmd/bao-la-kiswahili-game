@@ -365,7 +365,46 @@
     return moveVariants(state, moves, SEARCH_RECORDING);
   }
 
-  const api = { applyMoveForSearch, moveVariantsForSearch, initialState, legalMoves, moveVariants, applyMove, ring, nextPit, clone, FRONT, BACK, HOUSE };
+  // The search-only form carries the stop/use transition that variant expansion
+  // already computed, so move ordering can reuse it without changing UI callers.
+  function moveVariantsWithTransitionsForSearch(state, moves = legalMoves(state)) {
+    return moves.flatMap((move) => {
+      if (move.phase !== "namua" || move.type !== "capture") {
+        return [{ move, transition: null }];
+      }
+      const stop = { ...move, houseChoice: "stop" };
+      const use = { ...move, houseChoice: "use" };
+      try {
+        const stopTransition = applyMove(state, stop, SEARCH_RECORDING);
+        const useTransition = applyMove(state, use, SEARCH_RECORDING);
+        if (JSON.stringify(stopTransition.state) === JSON.stringify(useTransition.state)) {
+          return [{ move, transition: stopTransition }];
+        }
+        return [
+          { move: stop, transition: stopTransition },
+          { move: use, transition: useTransition },
+        ];
+      } catch {
+        return [{ move, transition: null }];
+      }
+    });
+  }
+
+  const api = {
+    applyMoveForSearch,
+    moveVariantsForSearch,
+    moveVariantsWithTransitionsForSearch,
+    initialState,
+    legalMoves,
+    moveVariants,
+    applyMove,
+    ring,
+    nextPit,
+    clone,
+    FRONT,
+    BACK,
+    HOUSE,
+  };
   root.BaoEngine = api;
   if (typeof module !== "undefined" && module.exports) module.exports = api;
 }(typeof window !== "undefined" ? window : globalThis));
