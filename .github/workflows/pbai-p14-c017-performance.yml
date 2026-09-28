@@ -1,4 +1,4 @@
-name: PBAI-C017 performance validation preflight
+name: PBAI-C017 paired performance validation
 
 on:
   push:
@@ -33,7 +33,69 @@ jobs:
           node-version: '24'
       - name: Regression and pinned-source preflight
         run: node --test test/ai-generation-release.test.js test/pbai-c017-performance-contract.test.cjs
-      - name: Syntax validation before any performance seed is consumed
+      - name: Syntax validation
         run: |
           node --check tools/engineering/measure-pbai-c017-performance.cjs
           node --check tools/engineering/aggregate-pbai-c017-performance.cjs
+
+  performance-shard:
+    needs: [preflight]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Fetch pinned baseline and candidate commits
+        run: |
+          git fetch --no-tags --depth=1 origin 22537fb192b6c5bd1e2f3e6bca7488d7baa6f91b
+          git fetch --no-tags --depth=1 origin e9e98290d600bc342a748b80d4589473a0b5ac57
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Fixed-depth paired timing shard ${{ matrix.shard }}
+        run: node tools/engineering/measure-pbai-c017-performance.cjs ${{ matrix.shard }} artifacts/pbai-p14/c017-performance/shard-${{ matrix.shard }}.json
+      - name: Preserve all raw timing observations
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pbai-p14-c017-performance-shard-${{ matrix.shard }}-${{ github.run_id }}
+          path: artifacts/pbai-p14/c017-performance/shard-${{ matrix.shard }}.json
+          if-no-files-found: warn
+          retention-days: 30
+
+  aggregate-performance:
+    if: always() && needs.performance-shard.result == 'success'
+    needs: [performance-shard]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Download all successful timing shards
+        uses: actions/download-artifact@v4
+        with:
+          pattern: pbai-p14-c017-performance-shard-*
+          path: artifacts/pbai-p14/c017-performance-downloads
+      - name: Verify coverage, paired outputs, and frozen speed gate
+        run: |
+          mkdir -p artifacts/pbai-p14/c017-performance-canonical
+          node tools/engineering/aggregate-pbai-c017-performance.cjs artifacts/pbai-p14/c017-performance-downloads artifacts/pbai-p14/c017-performance-canonical/c017-performance.json
+      - name: Save canonical performance record
+        uses: actions/upload-artifact@v4
+        with:
+          name: pbai-p14-c017-performance-${{ github.run_id }}
+          path: artifacts/pbai-p14/c017-performance-canonical/c017-performance.json
+          if-no-files-found: error
+          retention-days: 90
