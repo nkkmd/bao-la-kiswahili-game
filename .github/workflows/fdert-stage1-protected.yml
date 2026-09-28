@@ -1,0 +1,273 @@
+name: FDERT G4-10 Stage 1 protected exact holdout
+
+on:
+  push:
+    branches:
+      - research/g4-10-fresh-depth11-exact-reachability-topology
+    paths:
+      - doc/fresh-depth11-exact-reachability-topology/authorizations/STAGE_1_EXECUTE.json
+
+jobs:
+  lease:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+
+      - name: Validate one-shot release authorization
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_RUN_ATTEMPT" = "1"
+          branch="research/g4-10-fresh-depth11-exact-reachability-topology"
+          git fetch origin "$branch"
+          marker="doc/fresh-depth11-exact-reachability-topology/authorizations/STAGE_1_CONSUMED.json"
+          if git cat-file -e "origin/$branch:$marker" 2>/dev/null; then
+            echo "Stage 1 authorization already consumed" >&2
+            exit 1
+          fi
+          python3 - <<'PY'
+          import hashlib, json, subprocess
+          from pathlib import Path
+          root=Path.cwd()
+          spec_path=root/'doc/fresh-depth11-exact-reachability-topology/prereg/STAGE_1_PROTECTED_EXACT_SPEC.json'
+          auth_path=root/'doc/fresh-depth11-exact-reachability-topology/authorizations/STAGE_1_EXECUTE.json'
+          s0_path=root/'doc/fresh-depth11-exact-reachability-topology/results/stage-0-v3/STAGE_0_HARDENING_RESULT.json'
+          spec=json.loads(spec_path.read_text())
+          auth=json.loads(auth_path.read_text())
+          s0=json.loads(s0_path.read_text())
+          assert auth['authorizationDecision']=='RELEASE-TO-PROTECTED-DEPTH11-EVIDENCE'
+          assert auth['studyId']==spec['studyId']=='FDERT-STUDY1'
+          assert auth['stageId']==spec['stageId']=='FDERT-S1-PROTECTED-EXACT-HOLDOUT-2026-09-28-v1'
+          assert auth['executionAuthorized'] is True and auth['scientificInferenceAuthorized'] is True
+          assert auth['protectedDepth11AccessAuthorized'] is True and auth['authorizedDepth']==11
+          assert auth['executionCountAuthorized']==1 and auth['maximumScientificExecutionsAuthorized']==1
+          assert auth['depth12AccessAuthorized'] is False and auth['sameEvidenceRerunAuthorized'] is False
+          assert auth['partialFormalPromotionAuthorized'] is False
+          assert auth['g2_12EstimatorScientificInputAuthorized'] is False
+          assert auth['historicalSearchDepth11ScientificInputAuthorized'] is False
+          assert auth['stage0Decision']=='STAGE0-HARDENING-PASS'
+          assert s0['stageDisposition']=='STAGE0-HARDENING-PASS' and s0['protectedDepth11Access'] is False
+          assert auth['specSha256']==hashlib.sha256(spec_path.read_bytes()).hexdigest()
+          assert auth['stage0ResultSha256']==hashlib.sha256(s0_path.read_bytes()).hexdigest()
+          expected={k:spec['resourceProfile'][k] for k in [
+            'maxCumulativeDistinctRawStates','maxDepthLabelledEdges','maxParentStateExpansions',
+            'maxMoveEvaluations','maxCumulativeTreeNodeOccurrences','maxResidentSetBytes',
+            'maxWallClockSeconds','maxUncompressedArtifactBytes','maxNodeOldSpaceMiB']}
+          assert auth['resourceCeiling']==expected
+          for rel, expected_sha in auth['sourceGitBlobSha'].items():
+            actual=subprocess.check_output(['git','hash-object',rel], text=True).strip()
+            assert actual==expected_sha, f'source freeze mismatch {rel}: {actual} != {expected_sha}'
+          print('FDERT_STAGE1_RELEASE_VALIDATION=PASS')
+          PY
+
+      - name: Materialize durable pre-computation lease
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/fdert-stage1-lease"
+          python3 - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          root=Path(os.environ['GITHUB_WORKSPACE'])
+          auth_path=root/'doc/fresh-depth11-exact-reachability-topology/authorizations/STAGE_1_EXECUTE.json'
+          auth=json.loads(auth_path.read_text())
+          out=Path(os.environ['RUNNER_TEMP'])/'fdert-stage1-lease'/'PRECOMPUTATION_LEASE.json'
+          out.write_text(json.dumps({
+            'schemaVersion':1,
+            'programLabel':'G4-10',
+            'studyId':'FDERT-STUDY1',
+            'stageId':'FDERT-S1-PROTECTED-EXACT-HOLDOUT-2026-09-28-v1',
+            'durableLease':True,
+            'protectedDepth11AccessAuthorized':True,
+            'sourceCommit':os.environ['GITHUB_SHA'],
+            'workflowRunId':os.environ['GITHUB_RUN_ID'],
+            'workflowRunAttempt':os.environ['GITHUB_RUN_ATTEMPT'],
+            'authorizationNonce':auth['authorizationNonce'],
+            'authorizationFileSha256':hashlib.sha256(auth_path.read_bytes()).hexdigest(),
+            'sameEvidenceRerunAuthorized':False,
+            'depth12AccessAuthorized':False
+          }, indent=2)+'\n')
+          PY
+
+      - name: Upload lease before protected access
+        uses: actions/upload-artifact@v4
+        with:
+          name: fdert-stage1-precomputation-lease-${{ github.run_id }}
+          path: ${{ runner.temp }}/fdert-stage1-lease/PRECOMPUTATION_LEASE.json
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Durably consume one-shot authorization
+        shell: bash
+        run: |
+          set -euo pipefail
+          marker="doc/fresh-depth11-exact-reachability-topology/authorizations/STAGE_1_CONSUMED.json"
+          python3 - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          root=Path.cwd()
+          auth=root/'doc/fresh-depth11-exact-reachability-topology/authorizations/STAGE_1_EXECUTE.json'
+          marker=root/'doc/fresh-depth11-exact-reachability-topology/authorizations/STAGE_1_CONSUMED.json'
+          marker.write_text(json.dumps({
+            'schemaVersion':1,
+            'studyId':'FDERT-STUDY1',
+            'stageId':'FDERT-S1-PROTECTED-EXACT-HOLDOUT-2026-09-28-v1',
+            'authorizationConsumed':True,
+            'scientificExecutionClaimed':True,
+            'scientificEvidenceAccessOccurredAtMarkerWrite':False,
+            'sourceCommit':os.environ['GITHUB_SHA'],
+            'workflowRunId':os.environ['GITHUB_RUN_ID'],
+            'workflowRunAttempt':os.environ['GITHUB_RUN_ATTEMPT'],
+            'authorizationFileSha256':hashlib.sha256(auth.read_bytes()).hexdigest(),
+            'sameEvidenceRerunAuthorized':False,
+            'depth12AccessAuthorized':False
+          }, indent=2)+'\n')
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$marker"
+          git commit -m "Consume G4-10 Stage 1 one-shot authorization"
+          git push origin HEAD:research/g4-10-fresh-depth11-exact-reachability-topology
+
+  production:
+    needs: lease
+    runs-on: ubuntu-24.04
+    timeout-minutes: 160
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: fdert-stage1-precomputation-lease-${{ github.run_id }}
+          path: ${{ runner.temp }}/fdert-stage1-lease
+      - name: Execute protected production enumeration once
+        shell: bash
+        run: |
+          set +e
+          export FDERT_STAGE1_LEASE="$RUNNER_TEMP/fdert-stage1-lease/PRECOMPUTATION_LEASE.json"
+          export FDERT_STAGE1_OUT="$RUNNER_TEMP/fdert-stage1-production"
+          export NODE_OPTIONS="--max-old-space-size=10240"
+          timeout --signal=TERM 7500s node tools/experiments/run-fdert-stage1-protected.js
+          echo "$?" > "$RUNNER_TEMP/fdert-production-exit-code"
+          exit 0
+      - name: Upload durable production artifact
+        id: production_upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: fdert-stage1-production-${{ github.run_id }}
+          path: ${{ runner.temp }}/fdert-stage1-production/
+          if-no-files-found: error
+          retention-days: 90
+          compression-level: 6
+      - name: Preserve production exit code
+        shell: bash
+        run: |
+          code=$(cat "$RUNNER_TEMP/fdert-production-exit-code")
+          echo "production runner exit=$code"
+          test -d "$RUNNER_TEMP/fdert-stage1-production"
+
+  independent:
+    needs: production
+    runs-on: ubuntu-24.04
+    timeout-minutes: 160
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: fdert-stage1-precomputation-lease-${{ github.run_id }}
+          path: ${{ runner.temp }}/fdert-stage1-lease
+      - uses: actions/download-artifact@v4
+        with:
+          name: fdert-stage1-production-${{ github.run_id }}
+          path: ${{ runner.temp }}/fdert-stage1-production
+      - name: Independent full re-enumeration and formal classification
+        shell: bash
+        run: |
+          set +e
+          export FDERT_STAGE1_LEASE="$RUNNER_TEMP/fdert-stage1-lease/PRECOMPUTATION_LEASE.json"
+          export FDERT_STAGE1_OUT="$RUNNER_TEMP/fdert-stage1-production"
+          export NODE_OPTIONS="--max-old-space-size=10240"
+          timeout --signal=TERM 7500s node tools/experiments/verify-fdert-stage1-independent.js
+          code=$?
+          echo "$code" > "$RUNNER_TEMP/fdert-independent-exit-code"
+          if [ ! -f "$RUNNER_TEMP/fdert-stage1-production/STAGE_1_FORMAL_RESULT.json" ]; then
+            python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          out=Path(os.environ['RUNNER_TEMP'])/'fdert-stage1-production'
+          out.mkdir(parents=True, exist_ok=True)
+          (out/'STAGE_1_FORMAL_RESULT.json').write_text(json.dumps({
+            'schemaVersion':1,
+            'programLabel':'G4-10',
+            'studyId':'FDERT-STUDY1',
+            'stageId':'FDERT-S1-PROTECTED-EXACT-HOLDOUT-2026-09-28-v1',
+            'evidenceClass':'FRESH-DEEPER-EXACT-HOLDOUT',
+            'formalDecisionEstablished':True,
+            'formalDecision':'TECHNICAL-INVALID',
+            'integrityPassed':False,
+            'classification':'INDEPENDENT-VERIFIER-NO-RESULT',
+            'protectedDepth11AccessOccurred':True,
+            'sameEvidenceRerunAuthorized':False,
+            'depth12AccessAuthorized':False
+          }, indent=2)+'\n')
+          PY
+          fi
+          exit 0
+      - name: Build compact canonical bundle
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          src="$RUNNER_TEMP/fdert-stage1-production"
+          dst="$RUNNER_TEMP/fdert-stage1-compact"
+          mkdir -p "$dst"
+          for f in STAGE_1_FORMAL_RESULT.json STAGE_1_PRODUCTION_SUMMARY.json STAGE_1_PRODUCTION_FAILURE.json result-core.json; do
+            if [ -f "$src/$f" ]; then cp "$src/$f" "$dst/$f"; fi
+          done
+          python3 - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          root=Path(os.environ['RUNNER_TEMP'])/'fdert-stage1-compact'
+          rows=[]
+          for p in sorted(x for x in root.iterdir() if x.is_file()):
+            data=p.read_bytes()
+            rows.append({'path':p.name,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()})
+          (root/'COMPACT_MANIFEST.json').write_text(json.dumps({'schemaVersion':1,'files':rows}, indent=2)+'\n')
+          PY
+      - name: Upload compact canonical result bundle
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fdert-stage1-compact-${{ github.run_id }}
+          path: ${{ runner.temp }}/fdert-stage1-compact/
+          if-no-files-found: error
+          retention-days: 90
+      - name: Report formal disposition without rerun
+        if: always()
+        shell: bash
+        run: |
+          code=$(cat "$RUNNER_TEMP/fdert-independent-exit-code" 2>/dev/null || echo 2)
+          echo "independent verifier exit=$code"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP'])/'fdert-stage1-production'/'STAGE_1_FORMAL_RESULT.json'
+          r=json.loads(p.read_text())
+          print('FDERT_FORMAL_DECISION='+str(r.get('formalDecision')))
+          print('FDERT_RERUN_AUTHORIZED=false')
+          PY
