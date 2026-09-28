@@ -2,7 +2,7 @@
 
 更新日: 2026-09-28  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`CORE G4-01..G4-10 SCIENTIFIC AGENDA COMPLETE / G4-10 CLOSED NON-ESTIMABLE ON RESEARCH BRANCH`**
+状態: **`CORE G4-01..G4-10 SCIENTIFIC AGENDA COMPLETE / MAIN INTEGRATED`**
 
 ## このProgramが調べたこと
 
@@ -28,7 +28,7 @@ Program: `Bao Fourth-Generation Research Program`
 | C | `G4-07` | multiscale memory / return | `COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED` |
 | C | `G4-08` | rule-semantic geometry transition | `CLOSED / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRATED` |
 | C | `G4-09` | search reliability / exact agreement | `CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / MAIN INTEGRATED` |
-| D | `G4-10` | protected depth-11 exact topology | `CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP / RESEARCH BRANCH` |
+| D | `G4-10` | protected depth-11 exact topology | `CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP / MAIN INTEGRATED` |
 | 独立 | `G4-P01` | canonicalization re-foundation | `NOT AUTHORIZED / NON-BLOCKING` |
 | 独立 | `G4-H01` | human / expert evidence | `DEFERRED / NON-BLOCKING` |
 
@@ -84,13 +84,14 @@ G4-01〜G4-10はすべてformal closureを持つ。Program Planはpositive resul
 5. [`../fresh-depth11-exact-reachability-topology/FINAL_REPORT.md`](../fresh-depth11-exact-reachability-topology/FINAL_REPORT.md) — G4-10 final report
 6. [`../fresh-depth11-exact-reachability-topology/results/stage-1/STAGE_1_CANONICAL_RECORD.json`](../fresh-depth11-exact-reachability-topology/results/stage-1/STAGE_1_CANONICAL_RECORD.json) — G4-10 canonical summary
 7. [`checkpoints/2026-09-28-g4-10-pre-main-consistency-audit.md`](checkpoints/2026-09-28-g4-10-pre-main-consistency-audit.md) — pre-main consistency audit PASS
-8. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — frozen prospective contract / outcome-editしない
+8. [`checkpoints/2026-09-28-g4-10-main-integration.md`](checkpoints/2026-09-28-g4-10-main-integration.md) — main integration record
+9. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — frozen prospective contract / outcome-editしない
 
 ## 次に許可される作業
 
 G4-10に対する追加scientific executionは行わない。RG4 final synthesis、current-facing文書同期、リンク・状態整合確認、pre-main consistency auditは完了した。
 
-次に許可されるrepository operationは、Study closureと監査から分離した別gateとしての`main`統合判断である。明示的な統合作業までresearch branchに留める。
+G4-10 / Research Generation 4の`main`統合は、pre-main consistency auditとfinal documentation auditのPASS後にnon-force fast-forwardで完了した。追加scientific executionは行っていない。
 
 ## 解釈・保護境界
 

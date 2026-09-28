@@ -2,7 +2,7 @@
 
 更新日: 2026-09-28  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`G4-01..G4-09 MAIN INTEGRATED / G4-10 CLOSED NON-ESTIMABLE ON RESEARCH BRANCH / CORE SCIENTIFIC AGENDA COMPLETE`**
+状態: **`G4-01..G4-10 MAIN INTEGRATED / CORE SCIENTIFIC AGENDA COMPLETE`**
 
 ## Program全体
 
@@ -18,12 +18,12 @@ G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / M
 G4-07 = COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED
 G4-08 = CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRATED
 G4-09 = CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE / MAIN INTEGRATED
-G4-10 = CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP / RESEARCH BRANCH
+G4-10 = CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP / MAIN INTEGRATED
 G4-P01 = INDEPENDENT / NOT-AUTHORIZED
 G4-H01 = DEFERRED
 RG4 core G4-01..G4-10 scientific agenda = COMPLETE / ALL CLOSED
 Public AI change authorized by RG4 = false
-main integration of G4-10 = NOT YET PERFORMED
+main integration of G4-10 = COMPLETE / FAST-FORWARD
 ```
 
 ## G4-01〜G4-08
@@ -156,7 +156,7 @@ Canonical records:
 | `G4-07` | `COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED` |
 | `G4-08` | `CLOSED / FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRATED` |
 | `G4-09` | `CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / MAIN INTEGRATED` |
-| `G4-10` | `CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP / RESEARCH BRANCH` |
+| `G4-10` | `CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP / MAIN INTEGRATED` |
 | `G4-P01` | `INDEPENDENT / NOT-AUTHORIZED` |
 | `G4-H01` | `DEFERRED` |
 
@@ -164,7 +164,7 @@ Canonical records:
 
 G4-01〜G4-10はすべてformal closureを持つ。Program Planはpositive resultの数ではなく、dependency gateと事前固定stop ruleに従ったclosureをcore completion条件としているため、G4-10 `NON-ESTIMABLE`は正当なcore completion resultである。
 
-Research Generation 4 final synthesisとpre-main consistency auditは完了した。監査判定は`PASS / READY FOR SEPARATE MAIN-INTEGRATION GATE`。次は別gateとして`main`統合を判断する。
+Research Generation 4 final synthesis、pre-main consistency audit、final documentation auditを完了後、G4-10 research HEADを`main`へnon-force fast-forward統合した。統合中のscientific rerun、resource ceiling変更、`public/`変更、public AI変更はない。
 
 ## 保護境界
 
@@ -185,6 +185,7 @@ Research Generation 4 final synthesisとpre-main consistency auditは完了し�
 - [`FINAL_SYNTHESIS.md`](FINAL_SYNTHESIS.md)
 - [`RESUME_HERE.md`](RESUME_HERE.md)
 - [`checkpoints/2026-09-28-g4-10-pre-main-consistency-audit.md`](checkpoints/2026-09-28-g4-10-pre-main-consistency-audit.md) — pre-main audit PASS
+- [`checkpoints/2026-09-28-g4-10-main-integration.md`](checkpoints/2026-09-28-g4-10-main-integration.md) — G4-10 / RG4 main integration record
 - [`../fresh-depth11-exact-reachability-topology/README.md`](../fresh-depth11-exact-reachability-topology/README.md)
 - [`../fresh-depth11-exact-reachability-topology/CURRENT_STATUS.md`](../fresh-depth11-exact-reachability-topology/CURRENT_STATUS.md)
 - [`../fresh-depth11-exact-reachability-topology/FINAL_REPORT.md`](../fresh-depth11-exact-reachability-topology/FINAL_REPORT.md)

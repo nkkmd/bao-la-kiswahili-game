@@ -22,7 +22,7 @@ target T4 = NON-ESTIMABLE
 same-evidence rerun = NOT AUTHORIZED
 depth 12 = NOT AUTHORIZED
 public AI change = NOT AUTHORIZED
-main integration = NOT YET PERFORMED
+main integration = COMPLETE / FAST-FORWARD
 ```
 
 ## Stage 1 結果
@@ -128,4 +128,4 @@ G4-10はこの`NON-ESTIMABLE`で閉じる。
 - whole-Bao size / growth lawへ外挿する
 - public AI変更へ自動接続する
 
-G4-10 closure document、Research Generation 4 final synthesis、current-facing文書同期、pre-main consistency auditは完了した。監査は`PASS / READY FOR SEPARATE MAIN-INTEGRATION GATE`。`main`統合は引き続き別gateであり、まだ実施していない。
+G4-10 closure document、Research Generation 4 final synthesis、pre-main consistency audit、final documentation auditを完了後、research HEAD `0a2fb472686f90f0cdb70f89b6d9daaf91068764`を`main`へnon-force fast-forward統合した。追加scientific executionは行っていない。

@@ -104,3 +104,7 @@ same-evidence rerun = NOT AUTHORIZED
 - public AI improvement
 
 `NON-ESTIMABLE`は科学的な失敗ではなく、事前に固定したresource boundaryを守った正式closureである。
+
+## Repository integration
+
+2026-09-28、pre-main consistency auditとfinal documentation auditのPASS後、research HEAD `0a2fb472686f90f0cdb70f89b6d9daaf91068764`を`main`へnon-force fast-forward統合した。統合中のscientific rerun、resource ceiling変更、`public/`変更、public AI変更はない。

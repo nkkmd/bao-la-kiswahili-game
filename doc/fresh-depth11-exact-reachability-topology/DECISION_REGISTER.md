@@ -37,6 +37,7 @@
 | FDERT-D031 | whole-Bao extrapolation | `PROHIBITED` | resource cutoffをstate-space growth lawへ読み替えない。 |
 | FDERT-D032 | public AI | `NO CHANGE / NOT AUTHORIZED` | research closureをproduction engineeringへ自動接続しない。 |
 | FDERT-D033 | main integration | `SEPARATE GATE` | Study closureとmain統合を分離する。 |
+| FDERT-D034 | main integration result | `COMPLETE / FAST-FORWARD` | pre-main consistency auditとfinal documentation auditのPASS後、scientific rerunなしで統合。 |
 
 ## 最終決定
 

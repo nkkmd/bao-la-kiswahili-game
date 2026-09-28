@@ -1,7 +1,7 @@
 # Research Generation 4 — 再開位置
 
 更新日: 2026-09-28  
-状態: **`G4-01..G4-10 CORE SCIENTIFIC AGENDA COMPLETE / G4-10 CLOSED NON-ESTIMABLE / MAIN INTEGRATION PENDING`**
+状態: **`G4-01..G4-10 CORE SCIENTIFIC AGENDA COMPLETE / G4-10 CLOSED NON-ESTIMABLE / MAIN INTEGRATED`**
 
 ## 再開時の読む順序
 
@@ -13,7 +13,8 @@
 6. [`../fresh-depth11-exact-reachability-topology/REPRODUCIBILITY_INDEX.md`](../fresh-depth11-exact-reachability-topology/REPRODUCIBILITY_INDEX.md)でsource/artifact identityを確認する。
 7. [`../research-program-decisions/2026-09-28-g4-10-fresh-depth11-exact-reachability-topology-study1-closure.md`](../research-program-decisions/2026-09-28-g4-10-fresh-depth11-exact-reachability-topology-study1-closure.md)でG4-10 closure decisionを確認する。
 8. [`checkpoints/2026-09-28-g4-10-pre-main-consistency-audit.md`](checkpoints/2026-09-28-g4-10-pre-main-consistency-audit.md)でpre-main audit PASSを確認する。
-9. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)はprospective frozen planとして変更せず参照する。
+9. [`checkpoints/2026-09-28-g4-10-main-integration.md`](checkpoints/2026-09-28-g4-10-main-integration.md)でmain統合記録を確認する。
+10. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)はprospective frozen planとして変更せず参照する。
 
 ## 現在地
 
@@ -27,12 +28,12 @@ G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING / MAIN INTEGRATED
 G4-07 = COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED
 G4-08 = CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRATED
 G4-09 = CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / MAIN INTEGRATED
-G4-10 = CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP / RESEARCH BRANCH
+G4-10 = CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP / MAIN INTEGRATED
 RG4 core G4-01..G4-10 = SCIENTIFIC AGENDA COMPLETE
 G4-P01 = INDEPENDENT / NOT AUTHORIZED
 G4-H01 = DEFERRED
 public AI change = false
-G4-10 main integration = NOT YET PERFORMED
+G4-10 main integration = COMPLETE / FAST-FORWARD
 ```
 
 ## G4-10 canonical outcome
@@ -100,9 +101,9 @@ one-shot authorizationは消費済みであり、same-evidence rerunは認可さ
 
 G4-10に対する追加scientific executionは行わない。
 
-Research Generation 4 final synthesis、current-facing文書同期、研究索引・future agenda更新、pre-main consistency auditは完了した。監査判定は **`PASS / READY FOR SEPARATE MAIN-INTEGRATION GATE`**。
+Research Generation 4 final synthesis、current-facing文書同期、研究索引・future agenda更新、pre-main consistency audit、final documentation audit、`main`統合まで完了した。
 
-次に許可されるrepository operationは、別gateとしての`main`統合判断である。明示的に統合作業へ進むまではresearch branchに留め、科学結果、resource ceiling、formal classification、no-rescue boundaryを変更しない。
+G4-10に対する追加scientific executionは行わない。次の研究へ進む場合は、新しいStudy identity、prospective preregistration、別authorizationを必要とする。
 
 ## No-rescue / protected boundary
 

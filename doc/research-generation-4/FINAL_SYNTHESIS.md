@@ -3,7 +3,7 @@
 更新日: 2026-09-28  
 Program: `Bao Fourth-Generation Research Program`  
 対象: `G4-01`〜`G4-10`  
-状態: **`CORE SCIENTIFIC AGENDA COMPLETE / G4-10 CLOSED NON-ESTIMABLE / PRE-MAIN REVIEW PENDING`**
+状態: **`CORE SCIENTIFIC AGENDA COMPLETE / G4-10 CLOSED NON-ESTIMABLE / MAIN INTEGRATED`**
 
 ## 1. 統合結論
 
@@ -220,7 +220,7 @@ Program-level status:
 
 **`CORE G4-01..G4-10 SCIENTIFIC AGENDA COMPLETE`**
 
-ただし、この文書作成時点ではG4-10の`main`統合は未実施である。次のgateはcurrent-facing文書、リンク、状態表記、canonical provenanceのpre-main consistency auditである。
+G4-10はpre-main consistency auditとfinal documentation auditのPASS後、research HEAD `0a2fb472686f90f0cdb70f89b6d9daaf91068764`を`main`へnon-force fast-forward統合した。統合によってscientific result、resource ceiling、formal classification、no-rescue boundary、public AI状態は変更していない。
 
 ## 12. 正本
 
@@ -232,4 +232,4 @@ Program-level status:
 - [`../fresh-depth11-exact-reachability-topology/results/stage-1/STAGE_1_CANONICAL_RECORD.json`](../fresh-depth11-exact-reachability-topology/results/stage-1/STAGE_1_CANONICAL_RECORD.json) — G4-10 canonical result。
 - [`../research-program-decisions/2026-09-28-g4-10-fresh-depth11-exact-reachability-topology-study1-closure.md`](../research-program-decisions/2026-09-28-g4-10-fresh-depth11-exact-reachability-topology-study1-closure.md) — G4-10 closure。
 
-`main` integrationはこのsynthesisとは別の明示gateとする。
+`main` integrationは別の明示gateとして完了した。統合記録は[`checkpoints/2026-09-28-g4-10-main-integration.md`](checkpoints/2026-09-28-g4-10-main-integration.md)を参照する。
