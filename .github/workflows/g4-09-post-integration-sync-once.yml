@@ -1,0 +1,255 @@
+name: G4-09 post-integration documentation sync once
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/g4-09-post-integration-sync-once.yml
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Synchronize current-facing G4-09 integration state
+        shell: python
+        run: |
+          from pathlib import Path
+
+          def replace_exact(path, old, new, expected=1):
+              p = Path(path)
+              text = p.read_text()
+              count = text.count(old)
+              if count != expected:
+                  raise SystemExit(f"{path}: expected {expected} occurrences, found {count}: {old!r}")
+              p.write_text(text.replace(old, new))
+
+          # Central research index.
+          replace_exact(
+              "doc/RESEARCH_INDEX.md",
+              "Research Generation 4はG4-01〜G4-08 main統合済み。G4-09は研究完了・research branch上でclosed、G4-10は保護・未アクセス",
+              "Research Generation 4はG4-01〜G4-09 main統合済み。G4-10は保護・未アクセス",
+          )
+          replace_exact(
+              "doc/RESEARCH_INDEX.md",
+              "`CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE / NOT YET MAIN INTEGRATED`",
+              "`CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE / MAIN INTEGRATED`",
+          )
+
+          # Future research agenda.
+          replace_exact(
+              "doc/FUTURE_RESEARCH_AGENDA.md",
+              "Research Generation 4: **G4-01〜G4-08 complete/closed and integrated to `main` / G4-09 closed on research branch / G4-10 protected**",
+              "Research Generation 4: **G4-01〜G4-09 complete/closed and integrated to `main` / G4-10 protected**",
+          )
+          replace_exact(
+              "doc/FUTURE_RESEARCH_AGENDA.md",
+              "G4-09 = CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE / NOT YET MAIN INTEGRATED",
+              "G4-09 = CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE / MAIN INTEGRATED",
+          )
+          replace_exact(
+              "doc/FUTURE_RESEARCH_AGENDA.md",
+              "`CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / NOT YET MAIN INTEGRATED`",
+              "`CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / MAIN INTEGRATED`",
+          )
+          replace_exact(
+              "doc/FUTURE_RESEARCH_AGENDA.md",
+              "G4-09 scientific execution・closureはresearch branch上で完了しています。",
+              "G4-09 scientific execution・closure・main統合は完了しています。",
+          )
+          replace_exact(
+              "doc/FUTURE_RESEARCH_AGENDA.md",
+              "4. **[進行] Research Generation 4 — G4-01〜G4-08は各final dispositionでmain統合済み。G4-09は研究完了・research branch上でclosed。次のscientific agendaは未選定で、G4-10 depth 11はprotected / not authorized / not accessed**",
+              "4. **[進行] Research Generation 4 — G4-01〜G4-09は各final dispositionでmain統合済み。次のscientific agendaは未選定で、G4-10 depth 11はprotected / not authorized / not accessed**",
+          )
+
+          # RG4 entry point.
+          replace_exact(
+              "doc/research-generation-4/README.md",
+              "状態: **`G4-01..G4-08 MAIN INTEGRATED / G4-09 CLOSED ON RESEARCH BRANCH / G4-10 PROTECTED`**",
+              "状態: **`G4-01..G4-09 MAIN INTEGRATED / G4-10 PROTECTED`**",
+          )
+          replace_exact(
+              "doc/research-generation-4/README.md",
+              "`CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / NOT YET MAIN INTEGRATED`",
+              "`CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / MAIN INTEGRATED`",
+          )
+          replace_exact(
+              "doc/research-generation-4/README.md",
+              "G4-09のscientific executionとclosureは完了し、pre-main consistency auditは`PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`となった。次は別の明示的操作として`main`統合をレビューする段階である。統合直前にはresearch branchとremote `main`のHEAD、ahead / behind、merge base、`public/`差分、G4-10保護境界を再確認する。",
+              "G4-09のscientific execution・closure・pre-main consistency audit・`main`統合は完了した。G4-09に対する追加科学実行は行わない。次のscientific agendaを開始する場合は別の明示的authorization reviewを必要とする。",
+          )
+
+          # RG4 current status.
+          replace_exact(
+              "doc/research-generation-4/CURRENT_STATUS.md",
+              "状態: **`G4-01..G4-08 MAIN INTEGRATED / G4-09 CLOSED ON RESEARCH BRANCH / G4-10 PROTECTED`**",
+              "状態: **`G4-01..G4-09 MAIN INTEGRATED / G4-10 PROTECTED`**",
+          )
+          replace_exact(
+              "doc/research-generation-4/CURRENT_STATUS.md",
+              "G4-09 = CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE / NOT YET MAIN INTEGRATED",
+              "G4-09 = CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE / MAIN INTEGRATED",
+          )
+          replace_exact(
+              "doc/research-generation-4/CURRENT_STATUS.md",
+              "`CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / NOT YET MAIN INTEGRATED`",
+              "`CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / MAIN INTEGRATED`",
+          )
+          replace_exact(
+              "doc/research-generation-4/CURRENT_STATUS.md",
+              "G4-09のscientific executionとclosureは完了し、pre-main consistency auditは`PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`となった。次は別の明示的操作として`main`統合をレビューする段階である。統合直前にはresearch branchとremote `main`のHEAD、ahead / behind、merge base、`public/`差分、G4-10保護境界を再確認する。",
+              "G4-09のscientific execution・closure・pre-main consistency audit・`main`統合は完了した。G4-09に対する追加科学実行は行わない。次のscientific agendaを開始する場合は別の明示的authorization reviewを必要とする。",
+          )
+
+          # RG4 resume point.
+          replace_exact(
+              "doc/research-generation-4/RESUME_HERE.md",
+              "状態: **`G4-09 CLOSED ON RESEARCH BRANCH / PRE-MAIN CONSISTENCY AUDIT PASS / MAIN INTEGRATION REVIEW NEXT / G4-10 PROTECTED`**",
+              "状態: **`G4-09 MAIN INTEGRATED / G4-10 PROTECTED / NEXT SCIENTIFIC AGENDA NOT AUTHORIZED`**",
+          )
+          replace_exact(
+              "doc/research-generation-4/RESUME_HERE.md",
+              "G4-09 = CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / NOT YET MAIN INTEGRATED",
+              "G4-09 = CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / MAIN INTEGRATED",
+          )
+          replace_exact(
+              "doc/research-generation-4/RESUME_HERE.md",
+              "main integration = not performed",
+              "main integration = COMPLETE / FAST-FORWARD",
+          )
+          old_resume_next = """G4-09 scientific executionとclosureは完了し、pre-main consistency auditも`PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`で完了した。\n\n次は**別の明示的操作としてmain統合をレビューする段階**である。統合操作の直前にresearch branch HEADとremote `main` HEADを再取得し、ahead-only / behind 0 / merge base一致、`public/`差分0、G4-10 depth-11 access 0を再確認する。\n\n監査PASSは自動統合を意味しない。G4-10も引き続き別authorizationなしにアクセスしない。"""
+          new_resume_next = """G4-09 scientific execution・closure・pre-main consistency audit・`main`統合は完了した。G4-09に対する追加科学実行やsame-Study rescueは行わない。\n\n次のscientific agendaは未認可である。G4-10も引き続き別authorizationなしにアクセスしない。新しい研究へ進む場合はfresh evidence access前に独立authorization reviewを行う。"""
+          replace_exact("doc/research-generation-4/RESUME_HERE.md", old_resume_next, new_resume_next)
+
+          # Study-level current-facing records. Historical canonical/closure records stay immutable.
+          replace_exact(
+              "doc/geometry-conditioned-search-reliability-exact-agreement/README.md",
+              "main integration = not performed",
+              "main integration = COMPLETE / FAST-FORWARD",
+          )
+          replace_exact(
+              "doc/geometry-conditioned-search-reliability-exact-agreement/CURRENT_STATUS.md",
+              "main integration = not performed",
+              "main integration = COMPLETE / FAST-FORWARD",
+          )
+          old_study_next = """G4-09に対する追加科学実行は行わない。pre-main consistency auditは`PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`で完了している。\n\n次は別の明示的操作として`main`統合をレビューする段階である。統合直前にresearch branchとremote `main`のHEAD、ahead / behind、merge base、`public/`差分、G4-10保護境界を再確認する。G4-10 depth-11は引き続き別authorizationなしにアクセスしない。"""
+          new_study_next = """G4-09に対する追加科学実行は行わない。pre-main consistency auditと`main`へのnon-force fast-forward統合は完了している。\n\n同Studyをreopen / rerun / rescueしない。新しいscientific agendaへ進む場合は別Study / 別authorizationを必要とする。G4-10 depth-11は引き続き別authorizationなしにアクセスしない。"""
+          replace_exact("doc/geometry-conditioned-search-reliability-exact-agreement/CURRENT_STATUS.md", old_study_next, new_study_next)
+
+          checkpoint = Path("doc/research-generation-4/checkpoints/2026-09-28-g4-09-main-integration.md")
+          if checkpoint.exists():
+              raise SystemExit(f"checkpoint already exists: {checkpoint}")
+          checkpoint.write_text("""# G4-09 — main integration checkpoint
+
+Date: 2026-09-28  
+Agenda: `Research Generation 4 / G4-09`  
+Study: `GCSREA-STUDY1`  
+Decision: **`MAIN-INTEGRATION-COMPLETE / FAST-FORWARD`**
+
+## Integration anchors
+
+```text
+repository = nkkmd/bao-la-kiswahili-game
+source branch = research/g4-09-search-reliability-exact-agreement
+pre-integration main HEAD = fc0f345034639c03dc10b0537c331ae44ee47b3b
+integrated research HEAD = bae7e5a1f0feb77e1f843c159bf498864c3d10de
+integration method = non-force fast-forward
+force = false
+pre-main audit = PASS
+final documentation consistency check = PASS
+pre-integration ahead = 90
+pre-integration behind = 0
+pre-integration merge base = fc0f345034639c03dc10b0537c331ae44ee47b3b
+```
+
+Immediately before integration, remote `main` remained at `fc0f345034639c03dc10b0537c331ae44ee47b3b`. The research branch was `ahead 90 / behind 0`, and its merge base equaled that current `main` HEAD.
+
+`main` was advanced directly to `bae7e5a1f0feb77e1f843c159bf498864c3d10de` using a non-force ref update. No merge conflict resolution, rebase, squash, force update, or scientific rerun was involved.
+
+## Scientific result retained
+
+G4-09 remains closed as:
+
+**`CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE`**
+
+```text
+Stage 1 scientific run = 36326278830 / attempt 1
+Stage 1 fresh reads = 768
+Stage 1 selected roots = 128
+SC1 / SC2 / SC3 defined roots = 109 / 109 / 109
+formal holdout minimum = 120
+formal candidate slots = 9
+SUPPORTED = 0
+NOT-SUPPORTED = 9
+Stage 2 exact scientific run = 36359283198 / attempt 1 / success
+fixed exact domains = 8
+nontrivial domain×configuration cells = 36 / 36 estimable
+canonical-best in exact optimal set = 36 / 36
+PV first move in exact optimal set = 36 / 36
+TopSet EQUAL = 35 / 36
+TopSet SEARCH-SUBSET-EXACT = 1 / 36
+```
+
+The integration does not alter canonical records, preregistration, durable lease, no-rescue boundaries, or interpretation limits. The fixed-eight result remains a finite-census description and is not a whole-Bao correctness probability or configuration ranking.
+
+## Protected boundaries retained
+
+```text
+scientific rerun during integration = false
+candidate general Stage 2 namespace read = false
+G4-05 candidate rescan = 0
+G4-05 domain replacement = 0
+PROGRAM_PLAN mutation = false
+public/ changed files in integrated research diff = 0
+public AI production change = false
+G3-11 depth-10 rerun = false
+G4-10 depth-11 access = 0 / NOT AUTHORIZED
+```
+
+Research workflows and experiment tools remain research infrastructure and do not alter the deployed public game or public AI.
+
+## Post-integration documentation
+
+After the fast-forward, current-facing documents are synchronized on `main` to record `G4-09 = MAIN INTEGRATED`. Historical preregistration, canonical scientific records, closure records, and pre-main audit checkpoints remain unchanged as point-in-time records.
+
+Updated current-facing records include:
+
+- `doc/geometry-conditioned-search-reliability-exact-agreement/CURRENT_STATUS.md`
+- `doc/geometry-conditioned-search-reliability-exact-agreement/README.md`
+- `doc/research-generation-4/CURRENT_STATUS.md`
+- `doc/research-generation-4/README.md`
+- `doc/research-generation-4/RESUME_HERE.md`
+- `doc/RESEARCH_INDEX.md`
+- `doc/FUTURE_RESEARCH_AGENDA.md`
+
+## Program continuation
+
+G4-09 is complete through main integration.
+
+G4-10 remains **PROTECTED / NOT AUTHORIZED / NOT ACCESSED**. No next scientific agenda is authorized by this integration. Any next Study requires its own dependency check and authorization review before fresh evidence access.
+""")
+
+      - name: Commit synchronized documentation
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add doc/RESEARCH_INDEX.md doc/FUTURE_RESEARCH_AGENDA.md \
+            doc/research-generation-4/README.md \
+            doc/research-generation-4/CURRENT_STATUS.md \
+            doc/research-generation-4/RESUME_HERE.md \
+            doc/geometry-conditioned-search-reliability-exact-agreement/README.md \
+            doc/geometry-conditioned-search-reliability-exact-agreement/CURRENT_STATUS.md \
+            doc/research-generation-4/checkpoints/2026-09-28-g4-09-main-integration.md
+          git diff --cached --check
+          git commit -m "docs(g4-09): record main integration"
+          git push origin HEAD:main
