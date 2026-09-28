@@ -1,7 +1,7 @@
 # Research Generation 4 — 再開位置
 
 更新日: 2026-09-28  
-状態: **`G4-09 CLOSED ON RESEARCH BRANCH / PRE-MAIN CONSISTENCY AUDIT PASS / MAIN INTEGRATION REVIEW NEXT / G4-10 PROTECTED`**
+状態: **`G4-09 MAIN INTEGRATED / G4-10 PROTECTED / NEXT SCIENTIFIC AGENDA NOT AUTHORIZED`**
 
 ## 再開時の読む順序
 
@@ -24,7 +24,7 @@ G4-05 = COMPLETE / EXACT-ORACLE-FOUNDATION / MAIN INTEGRATED
 G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING / MAIN INTEGRATED
 G4-07 = COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED
 G4-08 = CLOSED / STAGE2-FORMAL-COMPLETE / 24 NON-ESTIMABLE / MAIN INTEGRATED
-G4-09 = CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / NOT YET MAIN INTEGRATED
+G4-09 = CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / MAIN INTEGRATED
 G4-10 = PROTECTED / NOT AUTHORIZED / NOT ACCESSED
 public AI change = false
 ```
@@ -93,18 +93,16 @@ G4-05 rescan = 0
 G4-05 replacement = 0
 G4-10 depth-11 access = 0
 public AI change = false
-main integration = not performed
+main integration = COMPLETE / FAST-FORWARD
 ```
 
 Durable leaseが存在するため、Stage 2 exact censusはrerunしない。
 
 ## 次の作業
 
-G4-09 scientific executionとclosureは完了し、pre-main consistency auditも`PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`で完了した。
+G4-09 scientific execution・closure・pre-main consistency audit・`main`統合は完了した。G4-09に対する追加科学実行やsame-Study rescueは行わない。
 
-次は**別の明示的操作としてmain統合をレビューする段階**である。統合操作の直前にresearch branch HEADとremote `main` HEADを再取得し、ahead-only / behind 0 / merge base一致、`public/`差分0、G4-10 depth-11 access 0を再確認する。
-
-監査PASSは自動統合を意味しない。G4-10も引き続き別authorizationなしにアクセスしない。
+次のscientific agendaは未認可である。G4-10も引き続き別authorizationなしにアクセスしない。新しい研究へ進む場合はfresh evidence access前に独立authorization reviewを行う。
 
 ## No-rescue / protected boundary
 

@@ -107,7 +107,7 @@ G4-05 candidate rescan = 0
 G4-05 domain replacement = 0
 G4-10 depth-11 access = 0
 public AI change = false
-main integration = not performed
+main integration = COMPLETE / FAST-FORWARD
 ```
 
 ## Canonical records
@@ -120,6 +120,6 @@ main integration = not performed
 
 ## Next
 
-G4-09に対する追加科学実行は行わない。pre-main consistency auditは`PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`で完了している。
+G4-09に対する追加科学実行は行わない。pre-main consistency auditと`main`へのnon-force fast-forward統合は完了している。
 
-次は別の明示的操作として`main`統合をレビューする段階である。統合直前にresearch branchとremote `main`のHEAD、ahead / behind、merge base、`public/`差分、G4-10保護境界を再確認する。G4-10 depth-11は引き続き別authorizationなしにアクセスしない。
+同Studyをreopen / rerun / rescueしない。新しいscientific agendaへ進む場合は別Study / 別authorizationを必要とする。G4-10 depth-11は引き続き別authorizationなしにアクセスしない。

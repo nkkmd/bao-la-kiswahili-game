@@ -75,7 +75,7 @@ Stage 2 general fresh seed access = 0
 G4-05 candidate rescan / replacement = 0
 G4-10 depth-11 access = 0
 public AI change = false
-main integration = not performed
+main integration = COMPLETE / FAST-FORWARD
 scientific rerun after lease = 0 / not authorized
 ```
 

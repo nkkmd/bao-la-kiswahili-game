@@ -5,7 +5,7 @@ Version: 5.11.0
 更新日: 2026-09-28  
 Research Generation 2: **Closed (2026-08-31)**（完了）  
 Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了・統合済み）  
-Research Generation 4: **G4-01〜G4-08 complete/closed and integrated to `main` / G4-09 closed on research branch / G4-10 protected**
+Research Generation 4: **G4-01〜G4-09 complete/closed and integrated to `main` / G4-10 protected**
 
 この文書は、完了した研究を短く振り返りながら、次に研究する価値のある問いを整理するためのものです。候補として記載しただけでは、Study開始、seedアクセス、計算実行、公開AI変更は承認されません。
 
@@ -30,7 +30,7 @@ G4-05 = COMPLETE / EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN
 G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED
 G4-07 = COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED
 G4-08 = CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRATED
-G4-09 = CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE / NOT YET MAIN INTEGRATED
+G4-09 = CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE / MAIN INTEGRATED
 G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 ```
 
@@ -50,7 +50,7 @@ G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 | B | `G4-06` | geometry / game-theoretic consequence bridge | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED` |
 | C | `G4-07` | multiscale memory / return | `COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED` |
 | C | `G4-08` | rule-semantic geometry transition | `CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRATED` |
-| C | `G4-09` | search reliability / exact agreement | `CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / NOT YET MAIN INTEGRATED` |
+| C | `G4-09` | search reliability / exact agreement | `CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / MAIN INTEGRATED` |
 | D | `G4-10` | protected fresh depth-11 exact reachability topology | `PROTECTED / NOT AUTHORIZED / NOT ACCESSED` |
 | 独立 | `G4-P01`、`G4-H01` | canonicalization再基礎化とhuman / expert研究 | `NOT AUTHORIZED / DEFERRED` |
 
@@ -224,7 +224,7 @@ G4-08は`CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / NO DIRECTION
 
 ## 2. 今後の優先課題
 
-以下は科学的価値の高い候補です。優先順位はauthorizationではありません。G4-09 scientific execution・closureはresearch branch上で完了しています。次のscientific agendaを開始する場合は、fresh evidence access前に独立authorization reviewを行います。G4-10は引き続きprotectedであり、G4-09 closureによって自動認可されません。
+以下は科学的価値の高い候補です。優先順位はauthorizationではありません。G4-09 scientific execution・closure・main統合は完了しています。次のscientific agendaを開始する場合は、fresh evidence access前に独立authorization reviewを行います。G4-10は引き続きprotectedであり、G4-09 closureによって自動認可されません。
 
 ### 2.1 G4-09 closure後の次研究境界
 
@@ -342,7 +342,7 @@ standard initial RAW rootでは、depth 8・9・10までのbounded exact results
 1. **[完了] Baoを記述する語彙とRAW identityの構築**
 2. **[完了] 限定domainにおけるexact analysisと独立検証**
 3. **[完了] Local game-tree geometryのbounded measurement**
-4. **[進行] Research Generation 4 — G4-01〜G4-08は各final dispositionでmain統合済み。G4-09は研究完了・research branch上でclosed。次のscientific agendaは未選定で、G4-10 depth 11はprotected / not authorized / not accessed**
+4. **[進行] Research Generation 4 — G4-01〜G4-09は各final dispositionでmain統合済み。次のscientific agendaは未選定で、G4-10 depth 11はprotected / not authorized / not accessed**
 5. **[完了] 逆転可能性と勝負手 — Study 1（Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`）**
 6. **[独立・未承認] G4-H01によるqualified human / expert evidenceの収集**
 7. **[計画済み・未承認] G4-10によるfresh depth-11 exact研究**

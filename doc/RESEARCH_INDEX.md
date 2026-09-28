@@ -2,7 +2,7 @@
 
 更新日: 2026-09-28  
 対象: Research Generation 1〜4  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01〜G4-08 main統合済み。G4-09は研究完了・research branch上でclosed、G4-10は保護・未アクセス**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01〜G4-09 main統合済み。G4-10は保護・未アクセス**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`または`FINAL_REPORT.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
@@ -45,7 +45,7 @@
 | `G4-06` / [`LGTGECB-STUDY1`](local-game-tree-geometry-exact-consequence-bridge/) | geometry / exact consequence bridge | `COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / MAIN INTEGRATED` |
 | `G4-07` / [`MLGMR-STUDY1`](multiscale-local-geometry-memory-return/) | multiscale memory / return | `COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED` |
 | `G4-08` / [`BRSGT-STUDY1`](rule-semantic-geometry-transition/) | rule-semantic transition | `CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRATED` |
-| `G4-09` / [`GCSREA-STUDY1`](geometry-conditioned-search-reliability-exact-agreement/) | search reliability / exact agreement | `CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE / NOT YET MAIN INTEGRATED` |
+| `G4-09` / [`GCSREA-STUDY1`](geometry-conditioned-search-reliability-exact-agreement/) | search reliability / exact agreement | `CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE / MAIN INTEGRATED` |
 | `G4-10` | protected depth-11 exact topology | `PROTECTED / NOT-AUTHORIZED-NOT-ACCESSED` |
 | `G4-P01` | canonicalization re-foundation | `INDEPENDENT / NON-BLOCKING / NOT-AUTHORIZED` |
 | `G4-H01` | human / expert evidence | `DEFERRED / INDEPENDENT / NON-BLOCKING` |

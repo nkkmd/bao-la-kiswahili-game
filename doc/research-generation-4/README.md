@@ -2,7 +2,7 @@
 
 更新日: 2026-09-28  
 Program: `Bao Fourth-Generation Research Program`  
-状態: **`G4-01..G4-08 MAIN INTEGRATED / G4-09 CLOSED ON RESEARCH BRANCH / G4-10 PROTECTED`**
+状態: **`G4-01..G4-09 MAIN INTEGRATED / G4-10 PROTECTED`**
 
 ## このProgramが調べること
 
@@ -26,7 +26,7 @@ Program: `Bao Fourth-Generation Research Program`
 | B | `G4-06` | geometry / exact consequence bridge | `COMPLETE / MAIN INTEGRATED` |
 | C | `G4-07` | multiscale memory / return | `COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED` |
 | C | `G4-08` | rule-semantic geometry transition | `CLOSED / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRATED` |
-| C | `G4-09` | search reliability / exact agreement | `CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / NOT YET MAIN INTEGRATED` |
+| C | `G4-09` | search reliability / exact agreement | `CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / MAIN INTEGRATED` |
 | D | `G4-10` | protected depth-11 exact topology | `PROTECTED / NOT AUTHORIZED / NOT ACCESSED` |
 | 独立 | `G4-P01` | canonicalization re-foundation | `NOT AUTHORIZED` |
 | 独立 | `G4-H01` | human / expert evidence | `DEFERRED` |
@@ -104,7 +104,7 @@ TopSet SEARCH-SUBSET-EXACT = 1 / 36
 
 ## 次に許可される作業
 
-G4-09のscientific executionとclosureは完了し、pre-main consistency auditは`PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`となった。次は別の明示的操作として`main`統合をレビューする段階である。統合直前にはresearch branchとremote `main`のHEAD、ahead / behind、merge base、`public/`差分、G4-10保護境界を再確認する。
+G4-09のscientific execution・closure・pre-main consistency audit・`main`統合は完了した。G4-09に対する追加科学実行は行わない。次のscientific agendaを開始する場合は別の明示的authorization reviewを必要とする。
 
 G4-10はG4-09 closureや将来のmain統合によって自動認可されない。depth-11 accessには別の明示的authorization reviewが必要。
 
