@@ -84,7 +84,10 @@
           worker = new Worker("/public/ai-release-worker.js");
         }
         const row = await send(worker, sample.state, level, id, startupIncluded, undefined, startedAt);
-        rows.push({ seed, ply: sample.ply, level, mode, ...row });
+        const completeRow = { seed, ply: sample.ply, level, mode, ...row };
+        rows.push(completeRow);
+        window.__p15Progress = window.__p15Progress || [];
+        window.__p15Progress.push(completeRow);
         if (mode === "cold") worker.terminate();
       }
       return rows;
@@ -133,6 +136,8 @@
   }
   window.PBAIP15 = {
     gameStates, measureMode, measureLongSession, memorySamples,
+    resetProgress: () => { window.__p15Progress = []; },
+    drainProgress: () => { const rows = window.__p15Progress || []; window.__p15Progress = []; return rows; },
     crossOriginIsolated: () => self.crossOriginIsolated === true,
     hasMemoryAPI: () => typeof performance.measureUserAgentSpecificMemory === "function",
   };
