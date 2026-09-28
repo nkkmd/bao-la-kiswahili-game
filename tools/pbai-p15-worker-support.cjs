@@ -113,6 +113,54 @@ async function main() {
     throw new Error("cross-origin isolated memory API precondition failed");
   }
 
+  function recordSampleMode(row, order) {
+    let sample = data.samples.find((item) => item.seed === row.seed && item.level === row.level && item.ply === row.ply);
+    if (!sample) {
+      sample = { seed: row.seed, level: row.level, ply: row.ply, status: "PENDING", order };
+      data.samples.push(sample);
+    }
+    const prefix = row.mode;
+    sample[prefix + "Ms"] = row.elapsedMs;
+    sample[prefix + "Move"] = row.move;
+    sample[prefix + "PositionKeyMatch"] = row.positionKeyMatch;
+    sample[prefix + "LegalMove"] = row.legalMove;
+    sample[prefix + "Depth"] = row.stats && row.stats.completedDepth;
+    sample[prefix + "Nodes"] = row.stats && row.stats.nodes;
+    if (row.mode === "warm") sample.warmFirstRequest = row.startupIncluded;
+    if (Number.isFinite(sample.coldMs) && Number.isFinite(sample.warmMs)) {
+      const valid = sample.coldPositionKeyMatch && sample.warmPositionKeyMatch
+        && sample.coldLegalMove && sample.warmLegalMove && sample.coldMs > 0 && sample.warmMs > 0;
+      sample.status = valid ? "OK" : "INVALID";
+      if (!valid) data.errors.push({ seed: row.seed, level: row.level, ply: row.ply,
+        stage: "paired-sample", error: "result contract failed" });
+    }
+    writeAtomic(data);
+  }
+  async function runModeWithCheckpoints(states, seed, level, mode, order) {
+    await page.evaluate(() => PBAIP15.resetProgress());
+    let finished = false;
+    let failure = null;
+    let resultRows = [];
+    const task = page.evaluate((args) =>
+      PBAIP15.measureMode(args.states, args.seed, args.level, args.mode),
+    { states, seed, level, mode }).then((value) => {
+      resultRows = value;
+      finished = true;
+    }, (error) => {
+      failure = error;
+      finished = true;
+    });
+    while (!finished) {
+      await new Promise((resolve) => setTimeout(resolve, 250));
+      const progress = await page.evaluate(() => PBAIP15.drainProgress());
+      for (const row of progress) recordSampleMode(row, order);
+    }
+    await task;
+    const finalProgress = await page.evaluate(() => PBAIP15.drainProgress());
+    for (const row of finalProgress) recordSampleMode(row, order);
+    if (failure) throw failure;
+    return resultRows;
+  }
   for (const seed of seedList) {
     const generated = await page.evaluate((value) =>
       PBAIP15.gameStates(value, 64, [0, 8, 16, 32]), seed);
@@ -125,49 +173,11 @@ async function main() {
       continue;
     }
     for (const level of ["hard", "expert"]) {
+      const coldFirst = seed % 2 === 0;
+      const order = coldFirst ? "cold-first" : "warm-first";
+      const modes = coldFirst ? ["cold", "warm"] : ["warm", "cold"];
       try {
-        let coldRows;
-        let warmRows;
-        const coldFirst = seed % 2 === 0;
-        if (coldFirst) {
-          coldRows = await page.evaluate(async (args) =>
-            PBAIP15.measureMode(args.states, args.seed, args.level, "cold"),
-          { states: generated.states, seed, level });
-          warmRows = await page.evaluate(async (args) =>
-            PBAIP15.measureMode(args.states, args.seed, args.level, "warm"),
-          { states: generated.states, seed, level });
-        } else {
-          warmRows = await page.evaluate(async (args) =>
-            PBAIP15.measureMode(args.states, args.seed, args.level, "warm"),
-          { states: generated.states, seed, level });
-          coldRows = await page.evaluate(async (args) =>
-            PBAIP15.measureMode(args.states, args.seed, args.level, "cold"),
-          { states: generated.states, seed, level });
-        }
-        const byPly = new Map(warmRows.map((row) => [row.ply, row]));
-        for (const cold of coldRows) {
-          const warm = byPly.get(cold.ply);
-          const valid = Boolean(warm && cold.positionKeyMatch && warm.positionKeyMatch
-            && cold.legalMove && warm.legalMove && Number.isFinite(cold.elapsedMs)
-            && Number.isFinite(warm.elapsedMs) && cold.elapsedMs > 0 && warm.elapsedMs > 0);
-          const row = {
-            seed, level, ply: cold.ply, status: valid ? "OK" : "INVALID",
-            order: coldFirst ? "cold-first" : "warm-first",
-            coldMs: cold.elapsedMs, warmMs: warm.elapsedMs,
-            warmFirstRequest: warm.startupIncluded,
-            coldMove: cold.move, warmMove: warm.move,
-            coldPositionKeyMatch: cold.positionKeyMatch,
-            warmPositionKeyMatch: warm.positionKeyMatch,
-            coldLegalMove: cold.legalMove, warmLegalMove: warm.legalMove,
-            coldDepth: cold.stats && cold.stats.completedDepth,
-            warmDepth: warm.stats && warm.stats.completedDepth,
-            coldNodes: cold.stats && cold.stats.nodes,
-            warmNodes: warm.stats && warm.stats.nodes,
-          };
-          data.samples.push(row);
-          if (!valid) data.errors.push({ seed, level, ply: cold.ply, stage: "paired-sample", error: "result contract failed" });
-          writeAtomic(data);
-        }
+        for (const mode of modes) await runModeWithCheckpoints(generated.states, seed, level, mode, order);
       } catch (error) {
         data.errors.push({ seed, level, stage: "latency", error: String(error && error.stack || error) });
         data.samples.push({ seed, level, status: "ERROR" });
