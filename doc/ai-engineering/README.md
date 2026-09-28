@@ -12,7 +12,7 @@ AI世代、Program ID、Candidate IDの命名と区別は[`AI_GENERATION_NAMING.
 
 ## 今後の改善候補
 
-[AI-GEN4以降の候補一覧](AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md)に、重複計算の削減、Worker再利用、教師・教材を改善する軽量モデルの再学習を中心に、探索・評価・学習系の案を記録する。各案の仕組み、適用条件、最小比較、見送り条件を示し、第四世代研究の完了後には診断の優先対象と限定厳密解の使い方・使えない範囲を追記した。研究結果だけから公開AIの改善効果や採用を判断しない。この一覧のA1は後続のPBAI-P14で検証済みで、事前の性能基準未達により不採用となった。ほかの案の実施・採否はそれぞれ独立のProgramで判断する。公開版の変更はない。
+[AI-GEN4以降の候補一覧](AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md)に、重複計算の削減、Worker再利用、教師・教材を改善する軽量モデルの再学習を中心に、探索・評価・学習系の案を記録する。各案の仕組み、適用条件、最小比較、見送り条件を示し、第四世代研究の完了後には診断の優先対象と限定厳密解の使い方・使えない範囲を追記した。研究結果だけから公開AIの改善効果や採用を判断しない。この一覧のA1は後続のPBAI-P14で検証済みで、事前の性能基準未達により不採用となった。F1はPBAI-P15のbaseline support gateに届かず、候補未発行で終了した。ほかの案の実施・採否はそれぞれ独立のProgramで判断する。公開版の変更はない。
 
 ## PBAI-P12 — マージン制限型選択探索
 
@@ -25,6 +25,10 @@ AI世代、Program ID、Candidate IDの命名と区別は[`AI_GENERATION_NAMING.
 詳細は[`public-ai-improvement-program-12/README.md`](public-ai-improvement-program-12/README.md)と[`public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md`](public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md)を参照する。
 
 元の候補概念と開始前調査は[`NEXT_IMPROVEMENT_CANDIDATE.md`](NEXT_IMPROVEMENT_CANDIDATE.md)および[`NEXT_IMPROVEMENT_PREFLIGHT_2026-09-14.md`](NEXT_IMPROVEMENT_PREFLIGHT_2026-09-14.md)に履歴として保持する。
+
+## PBAI-P15 — Worker再利用のbaseline support
+
+2026-09-28、固定64 seedを処理したが、7 seedで指定plyに達せず、hard/expert各171 paired positionsは最低192件に未達。長時間sessionも16件中6件のみ64要求に到達した。最終判断は**`HOLD / KEEP-AI-GEN4`**。hardの観測値は標本不足の参考値であり、Candidate ID・候補実装・公開変更はない。[最終報告](public-ai-improvement-program-15/PROGRAM_FINAL_REPORT.md)と[正式結果](../../artifacts/pbai-p15/WORKER_SUPPORT_RESULT.md)を参照する。
 
 ## PBAI-P14 — 遷移再利用の成立性確認
 
