@@ -13,7 +13,7 @@
 
 [十分良い手を基準にしたマージン制限型選択探索](ai-engineering/NEXT_IMPROVEMENT_CANDIDATE.md)は、2026年9月17日に`PBAI-P12 / PBAI-C016-v1`として実装・development検証まで実施しました。baseline supportはPASSしましたが、prospectiveに固定した`Δ = 16 / 32 / 64`の全候補でeligible局面のnode削減gateを満たさず、最終判断は`COMPLETE / DEVELOPMENT-GATE-FAIL / KEEP-AI-GEN4`です。[PBAI-P12最終報告](ai-engineering/public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md)を参照してください。independent validationとrelease holdoutは未実行で、公開AI・release・AI世代に変更はありません。
 
-**PBAI-P14は2026-09-28に終了**し、正式判断は`COMPLETE / NO-MATERIAL-WALL-CLOCK-IMPROVEMENT / KEEP-AI-GEN4`。baseline supportとcandidate developmentはPASSしたが、fresh uninstrumented paired testの点推定2.9795%が事前固定3.0% gateをわずかに下回った。再試験・強度比較・release holdout・main統合は行わず、公開AI・release・lineageは変更なし。[最終報告](ai-engineering/public-ai-improvement-program-14/PROGRAM_FINAL_REPORT.md)と[performance evidence](artifacts/pbai-p14/C017_PERFORMANCE_002_RESULT.md)を参照する。
+**PBAI-P14は2026-09-28に終了**し、正式判断は`COMPLETE / NO-MATERIAL-WALL-CLOCK-IMPROVEMENT / KEEP-AI-GEN4`。baseline supportとcandidate developmentはPASSしたが、fresh uninstrumented paired testの点推定2.9795%が事前固定3.0% gateをわずかに下回った。再試験・強度比較・release holdout・main統合は行わず、公開AI・release・lineageは変更なし。[最終報告](ai-engineering/public-ai-improvement-program-14/PROGRAM_FINAL_REPORT.md)と[performance evidence](../artifacts/pbai-p14/C017_PERFORMANCE_002_RESULT.md)を参照する。
 
 ## 今後の改善案（検討中）
 
