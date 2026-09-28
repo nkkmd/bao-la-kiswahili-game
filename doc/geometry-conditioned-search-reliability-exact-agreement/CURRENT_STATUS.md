@@ -120,6 +120,6 @@ main integration = not performed
 
 ## Next
 
-G4-09に対する追加科学実行は行わない。
+G4-09に対する追加科学実行は行わない。pre-main consistency auditは`PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`で完了している。
 
-`main`統合を検討する場合は、current-facing文書、canonical records、branch scope、`public/`差分、G4-10保護境界を別途最終監査する。G4-10 depth-11は引き続き別authorizationなしにアクセスしない。
+次は別の明示的操作として`main`統合をレビューする段階である。統合直前にresearch branchとremote `main`のHEAD、ahead / behind、merge base、`public/`差分、G4-10保護境界を再確認する。G4-10 depth-11は引き続き別authorizationなしにアクセスしない。
