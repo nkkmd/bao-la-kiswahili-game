@@ -9,7 +9,7 @@ candidate: `PBAI-C017-v1`
 
 ## 固定条件と標本
 
-baseline support、developmentとは別のseed block `2026100101..2026100164`を使い、64 seedすべてをActionsの8 shardで処理した。得られた局面は106件（Namua 61、Mtaji 45）で、局面が得られたseedは64件だった。選定規則は計測前に固定したため、欠測補充は行っていない。
+baseline support、developmentとは別のseed block `2026100101..2026100164`を使い、64 seedすべてをActionsの8 shardで処理した。得られた局面は106件（Namua 61、Mtaji 45）で、局面が得られたseedは61件だった。残る3 seedは処理を完了したが、選定条件に合う局面がなかった。選定規則は計測前に固定したため、欠測補充は行っていない。
 
 計測はdiagnostic instrumentationなしで、expert release経路、固定depth 4、時間制限なし、各局面7 paired repetitions、1 warm-upとした。baseline/candidateの順序を事前規則でcounterbalanceし、同seed内の複数phaseをclusterとして扱った。95%区間はseed単位10,000回percentile bootstrapである。
 
@@ -27,6 +27,12 @@ baseline support、developmentとは別のseed block `2026100101..2026100164`を
 | gate | **FAIL**（推定値が3.0%を0.0205 percentage point下回る） |
 
 結果は正のwall-clock差を示すが、正式な採用基準として事前に定めた3.0%の点推定を満たさない。区間の下限が0を上回っていても、点推定gateは別条件なので合格へ読み替えない。これは効果がゼロと証明されたという意味ではなく、PBAI-P14が求めた「意味のある実時間改善」の条件を満たさなかったという判断である。
+
+## 完了seedと計測seedの区別
+
+結果後の独立照合では、64 seedの処理完了記録に対し、計測行と`seedClusters`に含まれるseedは61件だった。`2026100110`、`2026100125`、`2026100141`には選定条件に合う局面がなく、計測行がない。事前契約は全seedの処理と局面・phaseの最小件数を別々に定めており、どちらも満たしている。点推定とbootstrapは実際に計測した61 seed clusterから計算され、基準未達の判断は変わらない。
+
+canonical JSONの`distinctSampleSeeds: 64`は、集計コードが各shardの割当seed集合から計算した値である。名称から想起される「計測行を持つseed数」ではないため、この違いを明記する。凍結済みのcanonical JSONや判定条件は書き換えない。
 
 ## 証拠と解釈範囲
 
