@@ -91,15 +91,16 @@ const server = http.createServer((request, response) => {
   fs.createReadStream(resolved).pipe(response);
 });
 
+let activeBrowser = null;
 async function main() {
   await new Promise((resolve, reject) => {
     server.once("error", reject);
     server.listen(0, "127.0.0.1", resolve);
   });
   const address = server.address();
-  const browser = await chromium.launch({ headless: true });
-  data.browser = { name: "chromium", version: browser.version(), playwright: require("playwright/package.json").version };
-  const page = await browser.newPage();
+  activeBrowser = await chromium.launch({ headless: true });
+  data.browser = { name: "chromium", version: activeBrowser.version(), playwright: require("playwright/package.json").version };
+  const page = await activeBrowser.newPage();
   page.setDefaultTimeout(30000);
   await page.goto("http://127.0.0.1:" + address.port + "/__p15", { waitUntil: "load" });
   const ready = await page.evaluate(() => ({
@@ -124,14 +125,25 @@ async function main() {
       continue;
     }
     for (const level of ["hard", "expert"]) {
-      const coldFirst = seed % 2 === 0;
       try {
-        const coldRows = await page.evaluate(async (args) =>
-          PBAIP15.measureMode(args.states, args.seed, args.level, "cold"),
-        { states: generated.states, seed, level });
-        const warmRows = await page.evaluate(async (args) =>
-          PBAIP15.measureMode(args.states, args.seed, args.level, "warm"),
-        { states: generated.states, seed, level });
+        let coldRows;
+        let warmRows;
+        const coldFirst = seed % 2 === 0;
+        if (coldFirst) {
+          coldRows = await page.evaluate(async (args) =>
+            PBAIP15.measureMode(args.states, args.seed, args.level, "cold"),
+          { states: generated.states, seed, level });
+          warmRows = await page.evaluate(async (args) =>
+            PBAIP15.measureMode(args.states, args.seed, args.level, "warm"),
+          { states: generated.states, seed, level });
+        } else {
+          warmRows = await page.evaluate(async (args) =>
+            PBAIP15.measureMode(args.states, args.seed, args.level, "warm"),
+          { states: generated.states, seed, level });
+          coldRows = await page.evaluate(async (args) =>
+            PBAIP15.measureMode(args.states, args.seed, args.level, "cold"),
+          { states: generated.states, seed, level });
+        }
         const byPly = new Map(warmRows.map((row) => [row.ply, row]));
         for (const cold of coldRows) {
           const warm = byPly.get(cold.ply);
@@ -228,7 +240,8 @@ async function main() {
     samples: data.samples, longSessions: data.longSessions, cancellation: data.cancellation,
   })).digest("hex");
   writeAtomic(data);
-  await browser.close();
+  await activeBrowser.close();
+  activeBrowser = null;
   await new Promise((resolve) => server.close(resolve));
   process.stdout.write(JSON.stringify({ shard: SHARD, seeds: seedList, technicalStatus: data.technicalStatus,
     samples: data.samples.length, errors: data.errors.length, outputPath }) + "\n");
@@ -242,5 +255,6 @@ main().catch((error) => {
   process.stderr.write(String(error && error.stack || error) + "\n");
   process.exitCode = 1;
 }).finally(async () => {
+  if (activeBrowser) await activeBrowser.close().catch(() => {});
   if (server.listening) await new Promise((resolve) => server.close(resolve));
 });
