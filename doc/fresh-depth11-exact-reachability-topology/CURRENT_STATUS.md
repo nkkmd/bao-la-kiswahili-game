@@ -128,4 +128,4 @@ G4-10はこの`NON-ESTIMABLE`で閉じる。
 - whole-Bao size / growth lawへ外挿する
 - public AI変更へ自動接続する
 
-次はG4-10 closure document、Research Generation 4 current-facing文書の同期、最終整合監査である。`main`統合は別gateとする。
+G4-10 closure document、Research Generation 4 final synthesis、current-facing文書同期、pre-main consistency auditは完了した。監査は`PASS / READY FOR SEPARATE MAIN-INTEGRATION GATE`。`main`統合は引き続き別gateであり、まだ実施していない。

@@ -71,9 +71,9 @@ partial depth-11 dataはformal evidenceへ昇格しない。state ceiling増加�
 
 ## Program completion
 
-G4-01〜G4-10はすべてformal closureを持つ。Program Planはpositive resultの数をcompletion条件としていないため、G4-10のpreregistered resource closure `NON-ESTIMABLE`を含め、RG4 core scientific agendaは完了条件を満たす方向にある。
+G4-01〜G4-10はすべてformal closureを持つ。Program Planはpositive resultの数をcompletion条件としていないため、G4-10のpreregistered resource closure `NON-ESTIMABLE`を含め、RG4 core scientific agendaは完了した。
 
-最終判断は[`FINAL_SYNTHESIS.md`](FINAL_SYNTHESIS.md)とpre-main consistency auditで固定する。
+[`FINAL_SYNTHESIS.md`](FINAL_SYNTHESIS.md)と[`checkpoints/2026-09-28-g4-10-pre-main-consistency-audit.md`](checkpoints/2026-09-28-g4-10-pre-main-consistency-audit.md)でProgram-level conclusionとpre-main audit PASSを固定した。
 
 ## 最初に読む文書
 
@@ -83,13 +83,14 @@ G4-01〜G4-10はすべてformal closureを持つ。Program Planはpositive resul
 4. [`../fresh-depth11-exact-reachability-topology/CURRENT_STATUS.md`](../fresh-depth11-exact-reachability-topology/CURRENT_STATUS.md) — G4-10 latest
 5. [`../fresh-depth11-exact-reachability-topology/FINAL_REPORT.md`](../fresh-depth11-exact-reachability-topology/FINAL_REPORT.md) — G4-10 final report
 6. [`../fresh-depth11-exact-reachability-topology/results/stage-1/STAGE_1_CANONICAL_RECORD.json`](../fresh-depth11-exact-reachability-topology/results/stage-1/STAGE_1_CANONICAL_RECORD.json) — G4-10 canonical summary
-7. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — frozen prospective contract / outcome-editしない
+7. [`checkpoints/2026-09-28-g4-10-pre-main-consistency-audit.md`](checkpoints/2026-09-28-g4-10-pre-main-consistency-audit.md) — pre-main consistency audit PASS
+8. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — frozen prospective contract / outcome-editしない
 
 ## 次に許可される作業
 
-G4-10に対する追加scientific executionは行わない。次に行うのはRG4 final synthesis、current-facing文書同期、日本語品質・リンク・状態整合監査、pre-main auditである。
+G4-10に対する追加scientific executionは行わない。RG4 final synthesis、current-facing文書同期、リンク・状態整合確認、pre-main consistency auditは完了した。
 
-`main`統合はStudy closureから分離した別gateとする。
+次に許可されるrepository operationは、Study closureと監査から分離した別gateとしての`main`統合判断である。明示的な統合作業までresearch branchに留める。
 
 ## 解釈・保護境界
 

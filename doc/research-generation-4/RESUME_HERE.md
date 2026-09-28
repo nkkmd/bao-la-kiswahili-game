@@ -12,7 +12,8 @@
 5. [`../fresh-depth11-exact-reachability-topology/results/stage-1/STAGE_1_CANONICAL_RECORD.json`](../fresh-depth11-exact-reachability-topology/results/stage-1/STAGE_1_CANONICAL_RECORD.json)でcanonical numeric/provenance recordを確認する。
 6. [`../fresh-depth11-exact-reachability-topology/REPRODUCIBILITY_INDEX.md`](../fresh-depth11-exact-reachability-topology/REPRODUCIBILITY_INDEX.md)でsource/artifact identityを確認する。
 7. [`../research-program-decisions/2026-09-28-g4-10-fresh-depth11-exact-reachability-topology-study1-closure.md`](../research-program-decisions/2026-09-28-g4-10-fresh-depth11-exact-reachability-topology-study1-closure.md)でG4-10 closure decisionを確認する。
-8. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)はprospective frozen planとして変更せず参照する。
+8. [`checkpoints/2026-09-28-g4-10-pre-main-consistency-audit.md`](checkpoints/2026-09-28-g4-10-pre-main-consistency-audit.md)でpre-main audit PASSを確認する。
+9. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)はprospective frozen planとして変更せず参照する。
 
 ## 現在地
 
@@ -99,11 +100,9 @@ one-shot authorizationは消費済みであり、same-evidence rerunは認可さ
 
 G4-10に対する追加scientific executionは行わない。
 
-次に許可されるのは、Research Generation 4のcurrent-facing文書・研究索引・future agenda・リンク・canonical provenanceを照合する**pre-main consistency audit**である。
+Research Generation 4 final synthesis、current-facing文書同期、研究索引・future agenda更新、pre-main consistency auditは完了した。監査判定は **`PASS / READY FOR SEPARATE MAIN-INTEGRATION GATE`**。
 
-監査で不整合が見つかった場合はresearch branch上で文書のみ修正する。科学結果、resource ceiling、formal classification、no-rescue boundaryは変更しない。
-
-監査PASS後も`main`統合は別gateとし、明示的に統合作業へ進むまでresearch branchに留める。
+次に許可されるrepository operationは、別gateとしての`main`統合判断である。明示的に統合作業へ進むまではresearch branchに留め、科学結果、resource ceiling、formal classification、no-rescue boundaryを変更しない。
 
 ## No-rescue / protected boundary
 

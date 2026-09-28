@@ -164,7 +164,7 @@ Canonical records:
 
 G4-01〜G4-10はすべてformal closureを持つ。Program Planはpositive resultの数ではなく、dependency gateと事前固定stop ruleに従ったclosureをcore completion条件としているため、G4-10 `NON-ESTIMABLE`は正当なcore completion resultである。
 
-次はResearch Generation 4 final synthesisとpre-main documentation consistency auditを行う。
+Research Generation 4 final synthesisとpre-main consistency auditは完了した。監査判定は`PASS / READY FOR SEPARATE MAIN-INTEGRATION GATE`。次は別gateとして`main`統合を判断する。
 
 ## 保護境界
 
@@ -182,7 +182,9 @@ G4-01〜G4-10はすべてformal closureを持つ。Program Planはpositive resul
 ## 正本
 
 - [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md) — frozen prospective plan / outcome-editしない
+- [`FINAL_SYNTHESIS.md`](FINAL_SYNTHESIS.md)
 - [`RESUME_HERE.md`](RESUME_HERE.md)
+- [`checkpoints/2026-09-28-g4-10-pre-main-consistency-audit.md`](checkpoints/2026-09-28-g4-10-pre-main-consistency-audit.md) — pre-main audit PASS
 - [`../fresh-depth11-exact-reachability-topology/README.md`](../fresh-depth11-exact-reachability-topology/README.md)
 - [`../fresh-depth11-exact-reachability-topology/CURRENT_STATUS.md`](../fresh-depth11-exact-reachability-topology/CURRENT_STATUS.md)
 - [`../fresh-depth11-exact-reachability-topology/FINAL_REPORT.md`](../fresh-depth11-exact-reachability-topology/FINAL_REPORT.md)
