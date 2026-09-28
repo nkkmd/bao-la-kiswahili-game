@@ -43,8 +43,8 @@
   function options(level, state) {
     return BaoReleaseConfig.searchOptions(level, { hardwareConcurrency: 4, deviceMemory: 4 }, state);
   }
-  function send(worker, state, level, id, startupIncluded, timeoutMs) {
-    const started = performance.now();
+  function send(worker, state, level, id, startupIncluded, timeoutMs, startedAt) {
+    const started = Number.isFinite(startedAt) ? startedAt : performance.now();
     return new Promise((resolve, reject) => {
       const timeout = setTimeout(() => {
         worker.removeEventListener("message", onMessage);
@@ -78,8 +78,12 @@
         const sample = states[index];
         const id = seed * 1000 + (level === "expert" ? 100 : 0) + sample.ply;
         const startupIncluded = mode === "cold" || index === 0;
-        if (mode === "cold" || index === 0) worker = new Worker("/public/ai-release-worker.js");
-        const row = await send(worker, sample.state, level, id, startupIncluded);
+        let startedAt;
+        if (mode === "cold" || index === 0) {
+          startedAt = performance.now();
+          worker = new Worker("/public/ai-release-worker.js");
+        }
+        const row = await send(worker, sample.state, level, id, startupIncluded, undefined, startedAt);
         rows.push({ seed, ply: sample.ply, level, mode, ...row });
         if (mode === "cold") worker.terminate();
       }
@@ -103,6 +107,7 @@
   async function measureLongSession(states, seed, level) {
     const checkpoints = [];
     const rows = [];
+    const startedAt = performance.now();
     const worker = new Worker("/public/ai-release-worker.js");
     let memory = await memorySamples("before");
     checkpoints.push({ afterRequests: 0, memory });
@@ -110,7 +115,7 @@
       for (let index = 0; index < states.length; index += 1) {
         const item = states[index];
         const id = seed * 100000 + (level === "expert" ? 10000 : 0) + index + 1;
-        const result = await send(worker, item.state, level, id, index === 0);
+        const result = await send(worker, item.state, level, id, index === 0, undefined, index === 0 ? startedAt : undefined);
         rows.push({ index, ply: item.ply, ...result });
         const count = index + 1;
         if ([1, 16, 32, 64].includes(count)) {
