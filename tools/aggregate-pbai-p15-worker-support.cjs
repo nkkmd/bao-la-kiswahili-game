@@ -105,18 +105,19 @@ const memory = sessions.map((session) => {
   const delta = at16 && at64 ? checkpointBytes(at64) - checkpointBytes(at16) : null;
   const limit = at16 ? Math.max(8 * 1024 * 1024, checkpointBytes(at16) * 0.1) : null;
   const attributed = session.workerAttribution || [];
+  const requestCheckpointsAttributed = attributed.slice(1, 5);
   return {
     shard: session.shard,
     seed: session.seed,
     level: session.level,
     requestCount: session.requestCount,
     reaches64: session.reaches64,
-    allCheckpointsAttributedToWorker: attributed.length >= 4 && attributed.slice(0, 4).every(Boolean),
+    allRequestCheckpointsAttributedToWorker: requestCheckpointsAttributed.length === 4 && requestCheckpointsAttributed.every(Boolean),
     bytesAt16: at16 ? checkpointBytes(at16) : null,
     bytesAt64: at64 ? checkpointBytes(at64) : null,
     deltaBytes16To64: delta,
     limitBytes: limit,
-    gate: session.reaches64 === true && attributed.length >= 4 && attributed.slice(0, 4).every(Boolean)
+    gate: session.reaches64 === true && requestCheckpointsAttributed.length === 4 && requestCheckpointsAttributed.every(Boolean)
       && Number.isFinite(delta) && delta <= limit,
   };
 });
@@ -136,7 +137,7 @@ const gates = {
   sampleValidity: samples.filter((row) => row.status === "OK").length >= 2 * 192
     && !samples.some((row) => row.status !== "OK"),
   latencyScreening: levels.hard.gate || levels.expert.gate,
-  memoryApiAndWorkerAttribution: memory.length === 16 && memory.every((item) => item.allCheckpointsAttributedToWorker),
+  memoryApiAndWorkerAttribution: memory.length === 16 && memory.every((item) => item.allRequestCheckpointsAttributedToWorker),
   longSessionMemoryGrowth: memory.length === 16 && memory.every((item) => item.gate),
   cancellationAndFreshRestart: cancelGate,
 };
