@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G4-10",
+  "studyId": "FDERT-STUDY1",
+  "stageId": "FDERT-S1-PROTECTED-EXACT-HOLDOUT-2026-09-28-v1",
+  "sourceCommit": "0a63a2c5c4acb2fed71e84adab31c2fb5b22d29d",
+  "protectedDepth11Access": false,
+  "scientificInferencePerformed": false,
+  "nodeVersion": "v22.23.2",
+  "runnerOS": "Linux",
+  "runnerArch": "X64",
+  "files": [
+    {"path":".github/workflows/fdert-stage1-protected.yml","bytes":12441,"sha256":"9678bf5b9c844b10e5ee1883ba8ba4f06a487e4b5b07dd425a139c05e40b6392","gitBlobSha":"b376674193bbb7ca2d0525eef4da59cbb62650a9"},
+    {"path":"doc/fresh-depth11-exact-reachability-topology/prereg/STAGE_1_PROTECTED_EXACT_SPEC.json","bytes":6617,"sha256":"995f06aada8816435893077ec7f756d98e9e898169b5e038356e2a1b4b9b7e36","gitBlobSha":"39c3242f09175da7b808c5e46597d412198ef6b3"},
+    {"path":"doc/fresh-depth11-exact-reachability-topology/results/stage-0-v3/STAGE_0_HARDENING_RESULT.json","bytes":909,"sha256":"bf2f6ddef1e478176b369e3ccf6ad8d52829e0923ef04d2e8a5ba1523e7166a9","gitBlobSha":"af0015dd5b17d00305f1fe95ffe531319673ffd0"},
+    {"path":"doc/fresh-depth11-exact-reachability-topology/results/stage-1-preaccess/PREACCESS_AUDIT_RESULT.json","bytes":603,"sha256":"1816bd171c65102b096de0305d928983bec5d06961fa41ee7d448eb55c2efefe","gitBlobSha":"32b9a79b93ea001506b5ad465cede75eb317566b"},
+    {"path":"tools/experiments/lib/fdert-production.js","bytes":16675,"sha256":"deff3183b1abe45da783ba1428836cb283b05223e72dc856c471050e324b12fa","gitBlobSha":"2307c6fe318550c4556cff336b2019fe98da933e"},
+    {"path":"tools/experiments/lib/fdert-stage1-contract.js","bytes":5318,"sha256":"90b296f6cb94b94141629aca40ee22fc6474bba2adb6cb9f03316b10b6ec75fe","gitBlobSha":"77ff041181bc6c975291298461530875c3dec904"},
+    {"path":"tools/experiments/lib/fdert-contract.js","bytes":3589,"sha256":"fa13952f1af32fc4c90e906054507a3c6575663da4086ecf90275c93b945507e","gitBlobSha":"5c564745e44860fa904a2b06cebade2590d43c95"},
+    {"path":"tools/experiments/lib/drsse-production.js","bytes":20550,"sha256":"70cd7ce1cf5c4a2f36a9acbceb779adfb4b9123a9b974116a501c957fa0a76aa","gitBlobSha":"e8fc23799415f566850c817c22cf658216bb98be"},
+    {"path":"tools/experiments/lib/drsse-independent.js","bytes":18889,"sha256":"c9c15aef8a1d6fd3b9f5328879b2a964a7b4a8d16b04c1c62298f3a88a1b69cd","gitBlobSha":"906e0412bcf47fe37d95ac29ad83f9c83bc52857"},
+    {"path":"tools/experiments/run-fdert-stage1-protected.js","bytes":9134,"sha256":"0bf0920e1edd1bde13c5c3c1f7c38c2beb0930ffd8c8b10a261637da7ee60e62","gitBlobSha":"2577e3c1a2f665ab5b105b72d9dd3145b2ff06ba"},
+    {"path":"tools/experiments/verify-fdert-stage1-independent.js","bytes":14487,"sha256":"811da4da091e7858a0bbfc3bf1ef9d98d25ad87e72fddfe920ba7585ddc7fd95","gitBlobSha":"eb85a5cf0ad31083ea9d7a087e8943c0d8317465"},
+    {"path":"public/engine.js","bytes":14106,"sha256":"2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3","gitBlobSha":"1527bb3665228b7a5bd9f03153567aedbaaa22d7"},
+    {"path":"doc/fresh-depth10-exact-geometry-holdout/results/stage-1/STAGE_1_FORMAL_RESULT.json","bytes":17775,"sha256":"4b7c283cef58aeba24759711d71bd59378e7b4e39bfc5c780df4e3c1bd0b8a93","gitBlobSha":"59375ab4af1a0e29d167e07e507339bd903fb0ff"}
+  ]
+}
