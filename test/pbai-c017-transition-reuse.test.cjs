@@ -1,7 +1,7 @@
 'use strict';
 const assert=require('node:assert/strict');
 const test=require('node:test');
-const E=require('../../public/engine.js');
+const E=require('../public/engine.js');
 function rng(seed){let v=seed>>>0;return()=>{v=(v+1831565813)>>>0;let z=Math.imul(v^(v>>>15),v|1);z=(z^(z+Math.imul(z^(z>>>7),z|61)))>>>0;return((z^(z>>>14))>>>0)/4294967296;};}
 function meaning(events){return events.map(({state,...e})=>e);}
 function sample(seed){const random=rng(seed);let s=E.initialState();for(let p=0;p<128&&s.winner===null;p++){if(s.phase==='namua'&&p>=12)return s;const vs=E.moveVariants(s);if(!vs.length)break;s=E.applyMove(s,vs[Math.floor(random()*vs.length)]).state;}return null;}
