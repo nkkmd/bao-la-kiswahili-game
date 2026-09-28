@@ -19,7 +19,9 @@ Namua captureの`nyumba stop/use`候補を列挙するときに作った遷移�
 | baseline support | PASS | Actions run `36408095064`。64 seedから111局面を取得、全局面depth4、timeoutなし、診断計装前後のmove・root score・安定statsが一致。capture variant inputは103,788件。 |
 | C017開発gate | PASS | Actions run `36409930392`。別64 seedをすべて処理し、104 paired局面（Namua 62、Mtaji 42）。全局面でdepth4の出力がbaselineと一致。 |
 | 機械的費用 | 開発仮説を支持 | 318,039 baseline `applyMove`呼出しに対してcandidateは299,353回。18,686件を再利用し、同数の再適用を削減。観測sample上では呼出し数が5.88%減った。 |
-| uninstrumented wall-clock | 事前gate未達 | Actions run `36411624798`。別64 seed、106局面、7 paired repeats。推定時間削減2.9795%、seed-cluster bootstrap 95%区間1.7091%〜4.1921%。事前閾値の点推定3.0%を0.0205 percentage point下回った。 |
+| uninstrumented wall-clock | 事前gate未達 | Actions run `36411624798`。別64 seedを処理し、うち61 seedから106局面、7 paired repeats。推定時間削減2.9795%、seed-cluster bootstrap 95%区間1.7091%〜4.1921%。事前閾値の点推定3.0%を0.0205 percentage point下回った。 |
+
+PERFORMANCE-002の61 seed clusterから点推定と区間を計算した。局面のなかった3 seedと、canonical JSONの`distinctSampleSeeds`という項目名の扱いは[結果記録](../../../artifacts/pbai-p14/C017_PERFORMANCE_002_RESULT.md)に明記した。
 
 最初のperformance study `PBAI-C017-PERFORMANCE-001`はrunnerの変数名誤りで技術的不成立となった。seed/sample timerは完成rowへ保存できなかったため、このblock全体を消費済み扱いにして再利用せず、[技術的不成立記録](../../../artifacts/pbai-p14/C017_PERFORMANCE_001_TECHNICAL_FAILURE.md)に残した。修正後のPERFORMANCE-002ではpreflightでrunnerとatomic checkpointを確認してから、新しいseed blockを実行した。
 
