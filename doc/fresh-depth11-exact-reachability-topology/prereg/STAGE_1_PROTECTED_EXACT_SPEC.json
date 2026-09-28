@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G4-10",
+  "studyId": "FDERT-STUDY1",
+  "stageId": "FDERT-S1-PROTECTED-EXACT-HOLDOUT-2026-09-28-v1",
+  "status": "FROZEN-BEFORE-PROTECTED-DEPTH11-ACCESS",
+  "evidenceClass": "FRESH-DEEPER-EXACT-HOLDOUT",
+  "formalQuestion": "Can the standard initial Bao RAW root be completely and independently enumerated through exact depth 11 under the frozen resource contract, and what exact novelty, transposition, and tree/graph-divergence topology occurs at the fresh depth-11 layer?",
+  "formalDomain": {
+    "root": "fresh reconstruction of public/engine.js initialState()",
+    "requiredRootRawStateKey": "2c13e69c51d58e2605bf6018ac848d99685aa4d4fe78c0af9f8e0fc07e1d3fd6",
+    "targetDepth": 11,
+    "requiredCompleteReachableLayers": [0,1,2,3,4,5,6,7,8,9,10,11],
+    "requiredCompleteParentExpansionLayers": [0,1,2,3,4,5,6,7,8,9,10],
+    "completeForwardClosureToTerminalRequired": false,
+    "depth12AccessAuthorized": false
+  },
+  "representation": {
+    "mode": "RAW-ONLY",
+    "identityFields": ["pits", "reserve", "houseOwned", "player", "phase", "winner", "pending"],
+    "excludedIdentityFields": ["turn", "reason"],
+    "pendingRequired": true,
+    "representedSeedInvariant": 64,
+    "validatedTransformSet": [],
+    "symmetryReductionAuthorized": false,
+    "canonicalizationAuthorized": false,
+    "quotientGraphAuthorized": false
+  },
+  "moveIdentity": {
+    "fields": ["type", "phase", "row", "index", "direction", "side", "houseChoice", "houseTwo"],
+    "binding": "source RAW key -> exact move key -> successor RAW key"
+  },
+  "historicalPrefixIntegrityReference": {
+    "studyId": "FDEGHV-STUDY1",
+    "sourceRole": "HISTORICAL-G3-REFERENCE / INTEGRITY ONLY",
+    "canonicalResultPath": "doc/fresh-depth10-exact-geometry-holdout/results/stage-1/STAGE_1_FORMAL_RESULT.json",
+    "canonicalResultGitBlobSha": "59375ab4af1a0e29d167e07e507339bd903fb0ff",
+    "requiredHistoricalFormalDecision": "EXACT-WITHIN-FROZEN-DEPTH-10-DOMAIN",
+    "requiredHistoricalTargetDepth": 10,
+    "comparisonScope": "G4-10 reconstructed layers 0..10 and parent layers 0..9 must exactly match historical per-layer counts/digests/topology descriptors before depth-11 exact classification",
+    "g3_11FormalDecisionReevaluationAuthorized": false,
+    "g3_11TargetRedecisionAuthorized": false
+  },
+  "endpoints": {
+    "E0": "complete exact RAW reachability domain through depth 11",
+    "T1": "newRawStateCount[11] == uniqueRawStateCount[11]",
+    "T2": "treeNodeOccurrences[11] > uniqueRawStateCount[11]",
+    "T3": "treeThrough11 * rawThrough10 > treeThrough10 * rawThrough11",
+    "T4": "duplicateArrivalCount[11] > 0 AND statesWithMultiplePredecessors[11] > 0"
+  },
+  "descriptiveTopologyOutputs": [
+    "per-layer unique RAW state count",
+    "per-layer new RAW state count",
+    "cumulative distinct RAW state count",
+    "parent-layer legal edge count",
+    "per-layer and cumulative state/edge digests",
+    "tree-node and tree-edge occurrence count",
+    "duplicate arrival count",
+    "predecessor multiplicity and multi-predecessor state count",
+    "parent-depth-10 branching distribution",
+    "layer and cumulative tree/RAW relation"
+  ],
+  "resourceProfile": {
+    "maxCumulativeDistinctRawStates": 2000000,
+    "maxDepthLabelledEdges": 12000000,
+    "maxParentStateExpansions": 2000000,
+    "maxMoveEvaluations": 12000000,
+    "maxCumulativeTreeNodeOccurrences": 50000000000,
+    "maxResidentSetBytes": 12884901888,
+    "maxWallClockSeconds": 7200,
+    "maxUncompressedArtifactBytes": 2147483648,
+    "maxNodeOldSpaceMiB": 10240,
+    "executionEnvironment": "GitHub-hosted ubuntu-24.04 standard public-repository runner",
+    "artifactScope": "uncompressed production materialization plus compact result/checkpoint files; checkout/cache and compressed Actions transport excluded",
+    "restartRule": "no checkpoint resume; the single authorized scientific execution starts from depth 0"
+  },
+  "hardening": {
+    "studyOwnedBoundedMemoryProductionEnumeratorRequired": true,
+    "streamingJsonlMaterializationRequired": true,
+    "chunkedFileHashingRequired": true,
+    "independentEveryClaimedCompleteLayer": true,
+    "finalResourceRecheckBeforeExactClassification": true,
+    "preAccessTechnicalValidationRequired": true,
+    "newProspectiveSourceIdentityRequired": true,
+    "postClosureAuditReadOnly": true
+  },
+  "independentVerification": {
+    "mandatory": true,
+    "productionEnumeratorImportAuthorized": false,
+    "productionSerializerImportAuthorized": false,
+    "productionTargetEvaluatorImportAuthorized": false,
+    "sharedRuleEngineImportAuthorized": true,
+    "fullIndependentDepth11ReenumerationRequiredForExact": true,
+    "productionMaterializedFileHashVerificationRequired": true,
+    "resourceCensoredPrefixFormalPromotionAuthorized": false,
+    "requiredChecks": [
+      "root RAW identity",
+      "historical depth-0..10 prefix integrity binding",
+      "state-set summary per depth 0..11",
+      "cumulative RAW state set",
+      "source-move-successor edge summary for parent depths 0..10",
+      "tree occurrence propagation",
+      "branching distribution",
+      "duplicate arrival and predecessor/multi-parent accounting",
+      "per-layer and cumulative hashes",
+      "T1-T4 independent target recomputation"
+    ]
+  },
+  "decisionRule": {
+    "exact": "EXACT-WITHIN-FROZEN-DEPTH-11-DOMAIN",
+    "targetTrue": "DEEPER-CONFIRMED",
+    "targetFalse": "COUNTEREXAMPLE-BOUNDARY",
+    "resourceOrAdminIncompleteWithValidIntegrity": "NON-ESTIMABLE",
+    "technicalOrVerificationDefect": "TECHNICAL-INVALID",
+    "partialFormalPromotionAuthorized": false
+  },
+  "firewall": {
+    "g2_12EstimatorScientificInputAuthorized": false,
+    "historicalSearchDepth11ScientificInputAuthorized": false,
+    "depth11PartialProbeBeforeAuthorizationAuthorized": false,
+    "depth11CachedOutcomeLookupAuthorized": false,
+    "outcomeDrivenCapIncreaseAuthorized": false,
+    "outcomeDrivenEndpointChangeAuthorized": false,
+    "outcomeDrivenDepth12ExtensionAuthorized": false,
+    "sameEvidenceRerunAuthorized": false,
+    "subsetRescueAuthorized": false,
+    "postOutcomeCanonicalizationAuthorized": false,
+    "publicAiChangeAuthorized": false
+  },
+  "interpretationBoundary": {
+    "g3_11DecisionRevisionAuthorized": false,
+    "wholeBaoStateSpaceEstimateAuthorized": false,
+    "wholeBaoGameTreeEstimateAuthorized": false,
+    "asymptoticGrowthLawAuthorized": false,
+    "gameTheoreticValueClaimAuthorized": false,
+    "searchStrengthClaimAuthorized": false,
+    "humanDifficultyClaimAuthorized": false,
+    "publicAiImprovementClaimAuthorized": false
+  }
+}
