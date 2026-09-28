@@ -20,7 +20,7 @@ Workerプロセスだけを維持し、探索呼出しごとの置換表、評�
 ## 正本
 
 - [Program計画](PROGRAM_PLAN.md)
-- [baseline support計測契約](WORKER_SUPPORT_SPEC.md)
+- [baseline support計測契約](WORKER_SUPPORT_SPEC.md)（冒頭の状態は契約改訂時点の履歴。終了時点の判定は現在状態と最終報告を参照）
 - [現在状態](CURRENT_STATUS.md)
 - [判断記録](DECISION_REGISTER.md)
 - [正式結果](../../../artifacts/pbai-p15/WORKER_SUPPORT_RESULT.md)と[canonical JSON](../../../artifacts/pbai-p15/worker-support.json)
