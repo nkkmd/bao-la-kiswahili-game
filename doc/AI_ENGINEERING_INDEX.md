@@ -1,9 +1,9 @@
 # Bao公開AI改善の索引
 
-更新日: 2026-09-23
+更新日: 2026-09-28
 現在の公開AI系統: **`AI-GEN4`**
 現在の正式release: **`AI-GEN4-RELEASE-001`**
-完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`、`PBAI-P7`、`PBAI-P8`、`PBAI-P9`、`PBAI-P10`、`PBAI-P11`、`PBAI-P12`**
+完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`、`PBAI-P7`、`PBAI-P8`、`PBAI-P9`、`PBAI-P10`、`PBAI-P11`、`PBAI-P12`、`PBAI-P14`**
 現在状態: **hard・expertの正式採用・本番配信内容確認・AI-GEN4正式昇格・世代表示の配信内容確認が完了**。[正式判断と再開手順](ai-engineering/ai-gen4-release/README.md)を参照する。release IDは`AI-GEN4-RELEASE-001`。easy・normalは従来構成を維持する。以下のProgram別記録は各終了時点の証拠を保持する。
 公開状態: [hardの正式採用](ai-engineering/pbai-c015-adoption-review/ADOPTION.md)は`ADOPT`、本番配信状態は`DEPLOYED-ASSETS-VERIFIED`。[expertの正式採用](ai-engineering/public-ai-improvement-program-11/ADOPTION.md)は`ADOPT`、本番配信状態は`DEPLOYED-ASSETS-VERIFIED`。
 
@@ -13,9 +13,11 @@
 
 [十分良い手を基準にしたマージン制限型選択探索](ai-engineering/NEXT_IMPROVEMENT_CANDIDATE.md)は、2026年9月17日に`PBAI-P12 / PBAI-C016-v1`として実装・development検証まで実施しました。baseline supportはPASSしましたが、prospectiveに固定した`Δ = 16 / 32 / 64`の全候補でeligible局面のnode削減gateを満たさず、最終判断は`COMPLETE / DEVELOPMENT-GATE-FAIL / KEEP-AI-GEN4`です。[PBAI-P12最終報告](ai-engineering/public-ai-improvement-program-12/PROGRAM_FINAL_REPORT.md)を参照してください。independent validationとrelease holdoutは未実行で、公開AI・release・AI世代に変更はありません。
 
+**PBAI-P14は2026-09-28に終了**し、正式判断は`COMPLETE / NO-MATERIAL-WALL-CLOCK-IMPROVEMENT / KEEP-AI-GEN4`。baseline supportとcandidate developmentはPASSしたが、fresh uninstrumented paired testの点推定2.9795%が事前固定3.0% gateをわずかに下回った。再試験・強度比較・release holdout・候補コードのmain統合は行わず、公開AI・release・lineageは変更なし。[最終報告](ai-engineering/public-ai-improvement-program-14/PROGRAM_FINAL_REPORT.md)と[performance evidence](../artifacts/pbai-p14/C017_PERFORMANCE_002_RESULT.md)を参照する。
+
 ## 今後の改善案（検討中）
 
-[AI-GEN4以降の公開AI改善案](ai-engineering/AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md)に、現行コードと過去の結果を照合した検討順序を記録する。短期候補は同じ判断を保つ重複計算の削減と、探索データを持ち越さないWorker再利用。中期候補には教師・教材を改善する軽量モデルの再学習を加えた。各案の成立条件・最小比較・見送り条件と、固定深度・同時間対局・応答時間を区別した検証設計を詳述する。第四世代研究の完了後、幅別の探索順位変化、固定8厳密解析領域、時間的変化を先行診断と回帰検査の材料として追記した。深さ11の未完成出力は利用しない。強制勝敗探索等は実際の見逃しと費用を確認してから検討する。優先順位は効果の証明ではなく、新規試験・実装は未実施、正式Program ID・Candidate IDも未発行である。P1〜P12の終了判断とAI-GEN4の公開状態は維持する。
+[AI-GEN4以降の公開AI改善案](ai-engineering/AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md)に、現行コードと過去の結果を照合した検討順序を記録する。当初の短期案は同じ判断を保つ重複計算の削減と、探索データを持ち越さないWorker再利用。前者のA1はPBAI-P14で検証・不採用となり、現在の次候補は後者のF1。中期候補には教師・教材を改善する軽量モデルの再学習を加えた。各案の成立条件・最小比較・見送り条件と、固定深度・同時間対局・応答時間を区別した検証設計を詳述する。第四世代研究の完了後、幅別の探索順位変化、固定8厳密解析領域、時間的変化を先行診断と回帰検査の材料として追記した。深さ11の未完成出力は利用しない。強制勝敗探索等は実際の見逃しと費用を確認してから検討する。優先順位は効果の証明ではない。PBAI-P14ではA1を独立検証してwall-clock gate未達で終了した。次順位F1（探索データを持ち越さないWorker再利用）は、P14とは独立の新しいbaseline・seed・Programで検討する。公開状態はAI-GEN4のまま維持する。
 
 ## 完了済みのJev比較試験
 
@@ -44,7 +46,7 @@ formal 32 fresh openings × side swap = 64局は全局terminalまで完走した
 - `AI-GEN2`はAI-GEN3より前の公開AI系統です。
 - `AI-GEN3`は探索専用軽量局面遷移を採用した継承元の系統で、最初の正式releaseは`AI-GEN3-RELEASE-001`です。
 - `AI-GEN4`はhard・expertに論理ゲート型評価器を採用した現在の系統で、正式releaseは`AI-GEN4-RELEASE-001`です。
-- `PBAI-P1`から`PBAI-P12`までは、候補を評価するengineering programのIDです。
+- `PBAI-P1`から`PBAI-P12`および`PBAI-P14`は、候補を評価するengineering programのIDです。
 - `PBAI-Cxxx`は個別candidateのIDです。
 - `Research Generation 1..4`は研究世代であり、AI世代とは別です。
 - `legacy`、`bao`、`bao-v2`はprofile identifierであり、AI世代名ではありません。
@@ -69,6 +71,7 @@ P1〜P12は完了済みです。下表は各プログラムで確定した結果
 | [PBAI-P10](ai-engineering/public-ai-improvement-program-10/README.md) | expertの3設定 | `PBAI-C015-v1` | `TECHNICAL-INVALID / HOLD` | hardの採用を維持し、expertは変更せず |
 | [PBAI-P11](ai-engineering/public-ai-improvement-program-11/README.md) | 新規seedとGitHub実行基盤によるexpert再試験 | `PBAI-C015-v1` | 実験終了時は`EXPERT-STRENGTH-PASS / ADOPTION-PENDING`、後続判断で`ADOPT` | 実機確認・本番組込み・配信確認を経てAI-GEN4へ昇格 |
 | [PBAI-P12](ai-engineering/public-ai-improvement-program-12/README.md) | AI-GEN4のPVS再探索コストに対する独立工学検証 | `PBAI-C016-v1` | `DEVELOPMENT-GATE-FAIL / KEEP-AI-GEN4` | なし。candidate不採用・公開AI変更なし |
+| [PBAI-P14](ai-engineering/public-ai-improvement-program-14/README.md) | AI-GEN4の探索候補遷移再利用・A1成立性確認 | `PBAI-C017-v1` | `NO-MATERIAL-WALL-CLOCK-IMPROVEMENT / KEEP-AI-GEN4` | なし。点推定2.9795%で事前3.0% gate未達、候補不採用・公開AI変更なし |
 
 `KEEP-AI-GEN2`は失敗時の代替措置ではなく、採用条件を満たす候補がない場合に事前に認められた正式結果です。結果確認後にthreshold、population、seed、candidate mechanismを都合よく変更して救済していません。
 
