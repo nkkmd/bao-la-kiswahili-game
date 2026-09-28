@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G4-10",
+  "studyId": "FDERT-STUDY1",
+  "stageId": "FDERT-S1-PROTECTED-EXACT-HOLDOUT-2026-09-28-v1",
+  "evidenceClass": "FRESH-DEEPER-EXACT-HOLDOUT",
+  "formalDecisionEstablished": true,
+  "formalDecision": "NON-ESTIMABLE",
+  "formalResultArtifactFileSha256": "7be828231d25ad0e9ee0a698992c3ccb726768b6329a6ad935548d4a46c72e1d",
+  "scientificResultCoreSha256": "c3cbf462a1750230a41a79000dba15892652cb9c0ca785b94bc3c49d66e01bc7",
+  "productionResultCoreSha256": "81915a36f5350ae5559f5e82dbde8248776e628a5e54862b4accfe21054341b5",
+  "independentCoreSha256": "2e913c8458037db33de0083981bf4442316bb28d7bf7dc4d05419b8e4a0057d5",
+  "targetDecisions": {
+    "T1": "NON-ESTIMABLE",
+    "T2": "NON-ESTIMABLE",
+    "T3": "NON-ESTIMABLE",
+    "T4": "NON-ESTIMABLE"
+  },
+  "domain": {
+    "rootRawStateKey": "2c13e69c51d58e2605bf6018ac848d99685aa4d4fe78c0af9f8e0fc07e1d3fd6",
+    "targetDepth": 11,
+    "targetComplete": false,
+    "lastCompleteDepth": 10,
+    "firstIncompleteDepth": 11,
+    "stopReason": "UNIQUE_STATE_CAP",
+    "depth12Accessed": false
+  },
+  "completePrefixThroughDepth10": {
+    "distinctRawStates": 451127,
+    "depthLabelledLegalEdgesThroughParentDepth9": 466768,
+    "uniqueRawGraphEdgesThroughParentDepth9": 466768,
+    "treeNodeOccurrences": "631101",
+    "treeEdgeOccurrences": "631100",
+    "cumulativeRawStateSetSha256": "7cff40d1c55876555bd3dc07cb0836bc209ed83554847ab297a51e3fb95748f7",
+    "cumulativeGlobalRawGraphEdgeSetSha256": "f8ecc7f399994407c13dc76aedec013ee6d38d728cf2cd6f6ed7421980db42c1",
+    "cumulativeDepthLabelledEdgeSetSha256": "f96a0750891c255f87fbb5692a7caae4afad23acaa24034a8bda3a18395b63f4"
+  },
+  "historicalPrefixIntegrity": {
+    "passed": true,
+    "currentPrefixSha256": "6d3e6fac2ce0dc996d314e1e5aa5342482727231f46e76d7738c663cd7ef55a7",
+    "historicalPrefixSha256": "6d3e6fac2ce0dc996d314e1e5aa5342482727231f46e76d7738c663cd7ef55a7"
+  },
+  "independentVerification": {
+    "productionMaterializedFileHashVerificationPassed": true,
+    "fullIndependentExactRecomputationPerformed": false,
+    "fullIndependentExactRecomputationPassed": false,
+    "independentCompletePrefixVerificationPassed": true,
+    "independentStoppedForResource": false,
+    "integrityPassed": true
+  },
+  "resourceDisposition": {
+    "frozenMaxCumulativeDistinctRawStates": 2000000,
+    "stopAtFrozenCeiling": "UNIQUE_STATE_CAP",
+    "productionFinalResourceGatePassed": true,
+    "productionArtifactBytes": 369298243,
+    "productionElapsedSeconds": 427.201679358,
+    "productionPeakResidentSetBytes": 3472441344,
+    "independentResourceGatePassed": true,
+    "independentElapsedSeconds": 43.037369478,
+    "independentPeakResidentSetBytes": 1247752192
+  },
+  "execution": {
+    "actionsRunId": 36368880428,
+    "attempt": 1,
+    "triggerSha": "787105a3016bac1172e669faf400fcc7cdd70dd5",
+    "scientificExecutionsAuthorized": 1,
+    "scientificExecutionsActual": 1,
+    "sameEvidenceRerunAuthorized": false,
+    "partialFormalPromotionAuthorized": false
+  },
+  "artifacts": {
+    "lease": {
+      "artifactId": 10948226759,
+      "digest": "sha256:575b35ee5963d9846d363680c5718184bdae9d1339d91bc1f484fe35fedf11fc"
+    },
+    "production": {
+      "artifactId": 10949100069,
+      "digest": "sha256:af6654f082da6478ed94f6852b57b1330ae77f3ed2eb491644844a108c4ec0c8",
+      "compressedBytes": 83285199
+    },
+    "compact": {
+      "artifactId": 10948857115,
+      "digest": "sha256:ae7ff0f641f0997687268c3bc804f3128feac1c1bb48b7a5c61b027cde26991d",
+      "formalResultSha256": "7be828231d25ad0e9ee0a698992c3ccb726768b6329a6ad935548d4a46c72e1d",
+      "productionSummarySha256": "2629336107d663c4236df186cb541c00e0115ed146e16ad01943ec8dae17bd85",
+      "resultCoreFileSha256": "ac9e7044484e96318ac7bf1b94497e51618565aca1ed8631f1c6f1107145130d",
+      "compactManifestSha256": "4bf865d5241aa851c4f7acbdab2b18a5586bd01f35c5d9cb4ff2261809933071"
+    }
+  },
+  "interpretation": {
+    "depth11ExactTopologyEstablished": false,
+    "depth11PartialTopologyFormalUseAuthorized": false,
+    "wholeBaoExtrapolationAuthorized": false,
+    "publicAiChangeAuthorized": false
+  }
+}
