@@ -4,6 +4,7 @@
 測定run: [GitHub Actions #36420438844](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/36420438844)  
 preflight PASS: [GitHub Actions #36420017985](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/36420017985)  
 baseline: `AI-GEN4-BASELINE-2026-09-28-v1` / `22537fb192b6c5bd1e2f3e6bca7488d7baa6f91b`  
+測定器・workflowをcheckoutしたcommit: `671d01619b2cb913a4201801e78e26c32fe0d383`（隔離ブランチ）  
 Candidate ID: 未発行
 
 ## 固定条件と証拠
