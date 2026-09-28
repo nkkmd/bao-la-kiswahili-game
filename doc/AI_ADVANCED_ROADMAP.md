@@ -2,14 +2,14 @@
 
 現在の公開AIは[AI-GEN4](ai-engineering/ai-gen4-release/README.md)です。本書のPhase別計画・結果とP4・P5の追記は各時点の開発記録であり、最新の採用・配信状態は[AI開発の中央索引](AI_ENGINEERING_INDEX.md)を参照してください。P6〜P11を通じた学習済み論理ゲート型評価器の検証・正式採用は、初期Phase計画とは別の改善プログラムとして完了しています。
 
-2026年9月17日には`PBAI-P12 / PBAI-C016-v1`としてマージン制限型選択探索を検証しましたが、development gateを通過せず不採用・閉鎖となり、公開AIは`AI-GEN4`を維持しています。P12を含む最新のAI Engineering状態は[AI開発の中央索引](AI_ENGINEERING_INDEX.md)を正本とします。
+2026年9月17日には`PBAI-P12 / PBAI-C016-v1`としてマージン制限型選択探索を検証しましたが、development gateを通過せず不採用・閉鎖となり、公開AIは`AI-GEN4`を維持しています。P12以降を含む最新のAI Engineering状態は[AI開発の中央索引](AI_ENGINEERING_INDEX.md)を正本とします。
 
-2026年9月23日に[AI-GEN4以降の改善候補](ai-engineering/AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md)を別文書へ記録し、最終精査で重複計算の削減、Worker再利用、教師・教材の改善を独立案として具体化しました。優先順位と検証方法は今後の検討案です。新特徴量の追加は本書のPhase 10B・12の反例条件を引き継ぎ、教師・教材の独立案を過去の重み再探索の再開理由にはしません。本書のPhaseの実施状況、過去の不採用結果、既存の局数・判断条件は変更しません。
+2026年9月23日に[AI-GEN4以降の改善候補](ai-engineering/AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md)を別文書へ記録し、最終精査で重複計算の削減、Worker再利用、教師・教材の改善を独立案として具体化しました。記載の優先順位と検証方法は当時の検討案です。A1は後続の[PBAI-P14](ai-engineering/public-ai-improvement-program-14/PROGRAM_FINAL_REPORT.md)で性能基準未達のため不採用、F1は[PBAI-P15](ai-engineering/public-ai-improvement-program-15/PROGRAM_FINAL_REPORT.md)でbaseline supportの標本・長時間session条件未達のため候補未発行で終了しました。ほかの案は個別に判断します。新特徴量の追加は本書のPhase 10B・12の反例条件を引き継ぎ、教師・教材の独立案を過去の重み再探索の再開理由にはしません。本書のPhaseの実施状況、過去の不採用結果、既存の局数・判断条件は変更しません。
 
-Version: 0.3.0  
+Version: 0.3.1  
 Status: Active  
 作成日: 2026-07-07  
-更新日: 2026-09-23
+更新日: 2026-09-28
 
 この文書は、`AI_ROADMAP.md`のPhase 0〜5完了後に進める追加強化計画である。正式な測定条件と基準成績は`AI_BENCHMARK.md`、設計判断、試行錯誤、既知の限界は`AI_DEVELOPMENT_LOG.md`へ記録する。
 
