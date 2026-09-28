@@ -100,8 +100,34 @@
     }
     return { label, samples };
   }
+  async function measureLongSession(states, seed, level) {
+    const checkpoints = [];
+    const rows = [];
+    const worker = new Worker("/public/ai-release-worker.js");
+    let memory = await memorySamples("before");
+    checkpoints.push({ afterRequests: 0, memory });
+    try {
+      for (let index = 0; index < states.length; index += 1) {
+        const item = states[index];
+        const id = seed * 100000 + (level === "expert" ? 10000 : 0) + index + 1;
+        const result = await send(worker, item.state, level, id, index === 0);
+        rows.push({ index, ply: item.ply, ...result });
+        const count = index + 1;
+        if ([1, 16, 32, 64].includes(count)) {
+          memory = await memorySamples("after-" + count);
+          checkpoints.push({ afterRequests: count, memory });
+        }
+      }
+    } finally {
+      worker.terminate();
+    }
+    await new Promise((resolve) => setTimeout(resolve, 30000));
+    memory = await memorySamples("after-30s-idle");
+    checkpoints.push({ afterRequests: rows.length, idleMs: 30000, memory });
+    return { seed, level, requestCount: rows.length, checkpoints, rows };
+  }
   window.PBAIP15 = {
-    gameStates, measureMode, memorySamples,
+    gameStates, measureMode, measureLongSession, memorySamples,
     crossOriginIsolated: () => self.crossOriginIsolated === true,
     hasMemoryAPI: () => typeof performance.measureUserAgentSpecificMemory === "function",
   };
