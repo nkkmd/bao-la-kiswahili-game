@@ -1,6 +1,8 @@
 # `PBAI-P15` — Worker再利用 baseline support契約
 
-状態: **FROZEN BEFORE PREFLIGHT / MEASUREMENT**  
+状態: **測定契約改訂 / fresh preflight前 / seed未消費**
+
+初回preflight run 36415107712は`measureUserAgentSpecificMemory()`呼出しがChromium 151で利用不可となり失敗した。P15 seed sample・latency計測は未実行。API名の存在だけではmemory測定可能性を示さなかったため、本契約をCDPのWorker isolate heap取得へ改訂した。  
 固定日: 2026-09-28  
 baseline: `main@22537fb192b6c5bd1e2f3e6bca7488d7baa6f91b`  
 seed block: `2026100201..2026100264`  
@@ -20,7 +22,7 @@ seed block: `2026100201..2026100264`
 - `public/ai-release.js`: blob `724bb412528f6b0b635e81c2992f1834063dffc6`
 - `public/ai-config.js`: blob `dc56e1a9c4af8999045cbf91c530a39ed1d4b8a2`
 
-測定用HTML/Node harnessは`tools/`に追加し、同一originで`public/`を配信する。全responseにCOOP `same-origin`、COEP `require-corp`を付けてcross-origin isolated contextを作る。AI script/Worker自体は変更しない。Git diffで`public/**`がbaselineと完全一致することを必須とする。
+測定用HTML/Node harnessは`tools/`に追加し、同一originで`public/`を配信する。AI script/Worker自体は変更しない。Git diffで`public/**`がbaselineと完全一致することを必須とする。ChromiumのCDP browser sessionでWorker targetへ接続し、`Runtime.getHeapUsage`から当該Worker isolateのheapを記録する。
 
 ## 3. 64 seedの再現方法と標本
 
@@ -42,11 +44,11 @@ seed block: `2026100201..2026100264`
 
 各shardで固定割当した1 seedをlong sessionとして、同じWorkerに最大64個の連続する合法state requestを送る。各checkpointは1・16・32・64完了後。状態がterminalとなった場合はその時点を記録し、同じ状態を繰り返して水増ししない。hardとexpertを別Worker sessionにし、各検索にはstandard tierのrelease optionsを使う。
 
-pageは`crossOriginIsolated === true`および`performance.measureUserAgentSpecificMemory`の存在を要求する。baseline前、request 1後、16/32/64後、終了後30秒時点で3回ずつmemory estimateを採り、中央値・breakdown・各realm attributionを保存する。memory API結果はbrowser version間で比較しない。worker attributionが検出できない、APIが拒否される、long sessionで測定できない場合はmemory condition不成立でsupportはHOLD。
+Node runnerはPlaywrightのChromium browser CDP sessionで`Target.getTargets`から`ai-release-worker.js` worker targetを特定し、`Target.attachToTarget`（flatten false）と`Target.sendMessageToTarget`を使って`Runtime.getHeapUsage`を呼び出す。Worker sourceやsearch codeへ計測処理は注入しない。要求処理中ではなく、1/16/32/64 request checkpointで同一Worker isolateの`usedSize`と`totalSize`をそれぞれ3回採取し中央値を保存する。可能なら`HeapProfiler.collectGarbage`後の値も記録し、gateはGC後の`usedSize`を使う。CDP targetのURL、session attach、heap responseを保存し、worker targetが捕捉できなければsupportはHOLD。memory値は固定Playwright/Chromium version内だけで比較する。
 
 取消し確認ではexpert requestを送ってから固定20msでWorkerをterminateし、500ms以内にresultが届かないこと、次に作るfresh Workerが同じsourceで応答することを検査する。これはUI全体のcancel latencyを測るものではなく、Worker terminate経路のsupport checkである。
 
-長時間増加gate: 各long sessionで、3回採取したmemory estimateの中央値について、16 request後から64 request後への増分が`max(8 MiB, 16-request値の10%)`以下であること。8 shard中すべての有効sessionで成立しなければP15 supportはPASSしない。この値はscreening thresholdであり、candidate adoptionのmemory上限ではない。
+長時間増加gate: 各long sessionで、3回採取したGC後heap `usedSize`中央値について、16 request後から64 request後への増分が`max(8 MiB, 16-request値の10%)`以下であること。8 shard中すべての有効sessionで成立しなければP15 supportはPASSしない。この値はscreening thresholdであり、candidate adoptionのmemory上限ではない。
 
 ## 6. prospective support gates
 
@@ -55,7 +57,7 @@ pageは`crossOriginIsolated === true`および`performance.measureUserAgentSpeci
 1. 8/8 shard、64/64 unique seed、required source hashes、valid checkpoint/artifact、0 duplicate seed。
 2. 各難易度で192以上のpaired positions・48以上のdistinct seed、合法move/stateKey/result verification 100%、timeout/error 0。
 3. cold/warm saving = `100 × (cold_ms - warm_ms) / cold_ms`。per-seed paired mediansをunitとした10,000 resample percentile bootstrapの95% CIを計算する。hardまたはexpertの少なくとも一方でmedian saving >=5.0%かつ95%区間下限 >0。
-4. `measureUserAgentSpecificMemory()`が全8 browser sessionで成功し、long-session measurementにDedicatedWorkerGlobalScope attributionがあり、全valid sessionでlong-session increase gateを満たす。
+4. 各shardでWorker CDP targetをattachでき、8/8 shardでheap checkpointが1/16/32/64件後に採れ、Dedicated Worker isolateを指すtarget URLと`Runtime.getHeapUsage` responseがある。全16 long-sessionでlong-session increase gateを満たす。
 5. cancel testでstale response 0件、fresh post-cancel worker success 100%。
 6. public source diff 0、seed/order/option contract drift 0。
 
@@ -69,4 +71,4 @@ aggregate jobは8 artifactがdownloadできてhashを検証し、seed listが連
 
 ## 8. 既知の解釈境界
 
-Chromium/Ubuntu Actionsで得る値はこの固定runner上のbrowser evidenceである。Android端末・Safari・Firefoxの待ち時間やmemoryに一般化せず、実機採用を意味しない。memory API値は推定値であり、GC timingに影響される。起動時間screening PASS後も、candidateは別fresh validation、取消・長期対局memory gate、端末確認を通過するまで公開defaultへ昇格しない。
+Chromium/Ubuntu Actionsで得る値はこの固定runner上のbrowser evidenceである。Android端末・Safari・Firefoxの待ち時間やmemoryに一般化せず、実機採用を意味しない。CDP値はChromium isolateのJavaScript heapであり、native/external memoryや端末全体のRSSを含まない。強制GC値は保持されたheapのscreeningに使う。起動時間screening PASS後も、candidateは別fresh validation、取消・長期対局memory gate、端末確認を通過するまで公開defaultへ昇格しない。
