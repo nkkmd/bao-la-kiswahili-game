@@ -2,7 +2,7 @@
 
 正式作業名: **AI-GEN4の探索候補遷移再利用 — A1成立性確認**  
 期間: 2026-09-28  
-正式状態: **`COMPLETE / NO-MATERIAL-WALL-CLOCK-IMPROVEMENT / KEEP-AI-GEN4**  
+正式状態: **`COMPLETE / NO-MATERIAL-WALL-CLOCK-IMPROVEMENT / KEEP-AI-GEN4`**  
 比較元: `AI-GEN4-BASELINE-2026-09-28-v1` / commit `22537fb192b6c5bd1e2f3e6bca7488d7baa6f91b`  
 candidate: `PBAI-C017-v1`（development-only）
 
