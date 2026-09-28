@@ -45,8 +45,6 @@ jobs:
           old = 'G4-09のscientific executionは閉じた。次はG4-09 branchのcurrent-facing文書、canonical records、branch scope、`public/`差分、G4-10保護境界を最終監査し、`main`統合可否を判断する段階である。\n\nG4-10は引き続きprotectedであり、G4-09 closureや将来のmain統合によって自動認可されない。depth-11へ進む場合は別の明示的authorization reviewが必須である。'
           new = 'G4-09のscientific executionとclosureは完了し、pre-main consistency auditは`PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`となった。次は別の明示的操作として`main`統合をレビューする段階である。統合直前にはresearch branchとremote `main`のHEAD、ahead / behind、merge base、`public/`差分、G4-10保護境界を再確認する。\n\nG4-10は引き続きprotectedであり、G4-09 closureや将来のmain統合によって自動認可されない。depth-11へ進む場合は別の明示的authorization reviewが必須である。'
           s = once(s, old, new, 'current-status next work')
-          marker = '- [`../research-program-decisions/2026-09-28-g4-09-search-reliability-exact-agreement-study1-closure.md`](../research-program-decisions/2026-09-28-g4-09-search-reliability-exact-agreement-study1-closure.md)'
-          s = once(s, marker, marker + '\n- [`checkpoints/2026-09-28-g4-09-pre-main-audit-pass.md`](checkpoints/2026-09-28-g4-09-pre-main-audit-pass.md)', 'current-status audit link')
           p.write_text(s, encoding='utf-8')
           PY
 
@@ -59,7 +57,6 @@ jobs:
           test "$changed" = $'doc/research-generation-4/CURRENT_STATUS.md\ndoc/research-generation-4/RESUME_HERE.md'
           grep -Fq 'PRE-MAIN CONSISTENCY AUDIT PASS / MAIN INTEGRATION REVIEW NEXT' doc/research-generation-4/RESUME_HERE.md
           grep -Fq 'PASS / READY-FOR-MAIN-INTEGRATION-REVIEW' doc/research-generation-4/CURRENT_STATUS.md
-          grep -Fq '2026-09-28-g4-09-pre-main-audit-pass.md' doc/research-generation-4/CURRENT_STATUS.md
           grep -Fq 'G4-10 = PROTECTED / NOT AUTHORIZED / NOT ACCESSED' doc/research-generation-4/RESUME_HERE.md
 
       - name: Commit post-audit status synchronization
