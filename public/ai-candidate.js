@@ -382,10 +382,15 @@
 
   function enhancedOrdered(
     state, player, evaluator, preferredMove, killerMove, ttMoveFirst = false, history = null,
+    reuseSearchTransitions = false,
   ) {
     const maximizing = state.player === player;
-    return movesFor(state).map((move) => {
-      const result = E.applyMove(state, move);
+    const candidates = reuseSearchTransitions
+      && typeof E.moveVariantsWithTransitionsForSearch === "function"
+      ? E.moveVariantsWithTransitionsForSearch(state)
+      : movesFor(state).map((move) => ({ move, transition: null }));
+    return candidates.map(({ move, transition }) => {
+      const result = transition || E.applyMove(state, move);
       const captured = captureCount(result.events);
       const immediateWin = result.state.winner === state.player ? 1 : 0;
       return {
@@ -481,7 +486,7 @@
 
     const choices = enhancedOrdered(
       state, player, context.evaluator, cached?.bestMove || "", context.killers.get(ply) || "",
-      context.ttMoveFirst, context.history,
+      context.ttMoveFirst, context.history, context.reuseSearchTransitions,
     );
     if (!choices.length) return state.player === player ? -WIN + ply : WIN - ply;
     const maximizing = state.player === player;
@@ -882,6 +887,7 @@
         quiescenceDepth: options.quiescenceDepth ?? 1,
         maxTableEntries: options.maxTableEntries ?? 50_000,
         ttMoveFirst: options.ttMoveFirst ?? false,
+        reuseSearchTransitions: options.pbaiC017ReuseSearchTransitions === true,
         orderQuiescenceCaptures: options.orderQuiescenceCaptures ?? false,
         normalizeTtMateScores: options.normalizeTtMateScores ?? false,
       };
