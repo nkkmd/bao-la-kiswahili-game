@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G4-10",
+  "studyId": "FDERT-STUDY1",
+  "stageId": "FDERT-S1-PROTECTED-EXACT-HOLDOUT-2026-09-28-v1",
+  "preAccessDisposition": "PASS",
+  "protectedDepth11Access": false,
+  "scientificInferencePerformed": false,
+  "stage0V2": "PASS",
+  "stage0V3Hardening": "PASS",
+  "currentEngineRootIdentity": "PASS",
+  "historicalG3_11PrefixReferenceIntegrity": "PASS",
+  "productionIndependentSourceSeparation": "PASS",
+  "resourceCeilingFreeze": "PASS",
+  "targetLogicSyntheticControls": "PASS",
+  "depth12AccessAuthorized": false,
+  "sameEvidenceRerunAuthorized": false
+}
