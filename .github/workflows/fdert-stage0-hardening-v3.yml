@@ -1,0 +1,46 @@
+name: FDERT G4-10 Stage 0 hardening v3
+
+on:
+  push:
+    branches:
+      - research/g4-10-fresh-depth11-exact-reachability-topology
+    paths:
+      - doc/fresh-depth11-exact-reachability-topology/authorizations/STAGE_0_EXECUTE_V3.json
+
+permissions:
+  contents: read
+
+jobs:
+  technical:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Run bounded-memory hardening controls
+        shell: bash
+        run: |
+          set +e
+          export FDERT_STAGE0_OUT="$RUNNER_TEMP/fdert-stage0-v3"
+          node tools/experiments/run-fdert-stage0-hardening-v3.js
+          code=$?
+          echo "$code" > "$RUNNER_TEMP/fdert-stage0-v3-exit-code"
+          exit 0
+      - name: Upload durable Stage 0 v3 artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fdert-stage0-v3-hardening-${{ github.run_id }}
+          path: ${{ runner.temp }}/fdert-stage0-v3/
+          if-no-files-found: error
+          retention-days: 90
+      - name: Enforce hardening runner exit status
+        if: always()
+        shell: bash
+        run: |
+          code=$(cat "$RUNNER_TEMP/fdert-stage0-v3-exit-code")
+          if [ "$code" != "0" ]; then
+            exit "$code"
+          fi
