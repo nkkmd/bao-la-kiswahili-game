@@ -1,0 +1,81 @@
+name: FDERT G4-10 Stage 1 source freeze
+
+on:
+  push:
+    branches:
+      - research/g4-10-fresh-depth11-exact-reachability-topology
+    paths:
+      - doc/fresh-depth11-exact-reachability-topology/authorizations/STAGE_1_SOURCE_FREEZE_EXECUTE.json
+
+permissions:
+  contents: read
+
+jobs:
+  freeze:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Materialize exact source identities
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib, json, os, subprocess
+          from pathlib import Path
+          root=Path.cwd()
+          trigger=json.loads((root/'doc/fresh-depth11-exact-reachability-topology/authorizations/STAGE_1_SOURCE_FREEZE_EXECUTE.json').read_text())
+          assert trigger['authorizationDecision']=='SOURCE-FREEZE-AUDIT-ONLY'
+          assert trigger['protectedDepth11AccessAuthorized'] is False
+          assert trigger['scientificInferenceAuthorized'] is False
+          paths=[
+            '.github/workflows/fdert-stage1-protected.yml',
+            'doc/fresh-depth11-exact-reachability-topology/prereg/STAGE_1_PROTECTED_EXACT_SPEC.json',
+            'doc/fresh-depth11-exact-reachability-topology/results/stage-0-v3/STAGE_0_HARDENING_RESULT.json',
+            'doc/fresh-depth11-exact-reachability-topology/results/stage-1-preaccess/PREACCESS_AUDIT_RESULT.json',
+            'tools/experiments/lib/fdert-production.js',
+            'tools/experiments/lib/fdert-stage1-contract.js',
+            'tools/experiments/lib/fdert-contract.js',
+            'tools/experiments/lib/drsse-production.js',
+            'tools/experiments/lib/drsse-independent.js',
+            'tools/experiments/run-fdert-stage1-protected.js',
+            'tools/experiments/verify-fdert-stage1-independent.js',
+            'public/engine.js',
+            'doc/fresh-depth10-exact-geometry-holdout/results/stage-1/STAGE_1_FORMAL_RESULT.json'
+          ]
+          files=[]
+          for rel in paths:
+            p=root/rel
+            files.append({
+              'path':rel,
+              'bytes':p.stat().st_size,
+              'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),
+              'gitBlobSha':subprocess.check_output(['git','hash-object',rel], text=True).strip()
+            })
+          out={
+            'schemaVersion':1,
+            'programLabel':'G4-10',
+            'studyId':'FDERT-STUDY1',
+            'stageId':'FDERT-S1-PROTECTED-EXACT-HOLDOUT-2026-09-28-v1',
+            'sourceCommit':os.environ['GITHUB_SHA'],
+            'protectedDepth11Access':False,
+            'scientificInferencePerformed':False,
+            'nodeVersion':subprocess.check_output(['node','--version'], text=True).strip(),
+            'runnerOS':os.environ.get('RUNNER_OS'),
+            'runnerArch':os.environ.get('RUNNER_ARCH'),
+            'files':files
+          }
+          dest=Path(os.environ['RUNNER_TEMP'])/'fdert-stage1-source-freeze.json'
+          dest.write_text(json.dumps(out, indent=2)+'\n')
+          print(json.dumps(out, indent=2))
+          PY
+      - name: Upload source-freeze manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: fdert-stage1-source-freeze-${{ github.run_id }}
+          path: ${{ runner.temp }}/fdert-stage1-source-freeze.json
+          if-no-files-found: error
+          retention-days: 90
