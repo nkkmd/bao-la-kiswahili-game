@@ -16,7 +16,7 @@ Candidate ID: **`PBAI-C017-v1`**（development-only）
 
 ## 2. 最終状態
 
-正式判断は**`NO-MATERIAL-WALL-CLOCK-IMPROVEMENT / KEEP-AI-GEN4`**である。8 shard・64 seedから106局面を得て、固定深度4の出力同値性と計時条件を確認した。推定時間短縮は2.9795%（seed単位bootstrapの95%区間1.7091%〜4.1921%）で、事前固定した点推定3.0%以上の基準を0.0205 percentage point下回った。区間の下限が正でも、別条件である点推定基準を変更しない。
+正式判断は**`NO-MATERIAL-WALL-CLOCK-IMPROVEMENT / KEEP-AI-GEN4`**である。8 shardで64 seedを処理し、そのうち61 seedから106局面を得て、固定深度4の出力同値性と計時条件を確認した。推定時間短縮は2.9795%（seed単位bootstrapの95%区間1.7091%〜4.1921%）で、事前固定した点推定3.0%以上の基準を0.0205 percentage point下回った。区間の下限が正でも、別条件である点推定基準を変更しない。
 
 性能検証の証拠は[結果記録](../../../artifacts/pbai-p14/C017_PERFORMANCE_002_RESULT.md)と[canonical JSON](../../../artifacts/pbai-p14/c017-performance-002.json)、正式判断は[最終報告](PROGRAM_FINAL_REPORT.md)にある。公開既定、main、release、AI世代は変更していない。
 
