@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G4-10",
+  "studyId": "FDERT-STUDY1",
+  "stageId": "FDERT-S1-PROTECTED-EXACT-HOLDOUT-2026-09-28-v1",
+  "authorizationDecision": "SOURCE-FREEZE-AUDIT-ONLY",
+  "sourceFreezeAuditAuthorized": true,
+  "scientificInferenceAuthorized": false,
+  "protectedDepth11AccessAuthorized": false,
+  "stage1ScientificExecutionAuthorized": false
+}
