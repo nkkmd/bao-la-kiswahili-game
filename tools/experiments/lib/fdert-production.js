@@ -200,6 +200,7 @@ function enumerateExactDepth({ engine, rootState, targetDepth, outDir, profile, 
     const nextPredecessors = new Map();
     const newGlobalKeys = new Set();
     const layerEdgeFingerprints = [];
+    const layerGlobalFingerprints = [];
     const layerBranching = [];
     let terminalParents = 0;
     let zeroLegalMoveNonterminal = 0;
@@ -288,6 +289,7 @@ function enumerateExactDepth({ engine, rootState, targetDepth, outDir, profile, 
         nextPredecessors.get(childKey).add(sourceKey);
 
         const globalFingerprint = `${sourceKey}|${exactMoveKey}|${childKey}`;
+        layerGlobalFingerprints.push(globalFingerprint);
         layerEdgeFingerprints.push(base.sha256Text(globalFingerprint));
       }
     }
@@ -317,20 +319,11 @@ function enumerateExactDepth({ engine, rootState, targetDepth, outDir, profile, 
     cumulativeTreeNodes += nextTreeNodes;
 
     let newGlobalEdges = 0;
-    for (const sourceKey of orderedParents) {
-      const source = currentStates.get(sourceKey);
-      if (source.winner !== null) continue;
-      const moves = guardedMoves(source);
-      for (const move of moves) {
-        const child = guardedApply(source, move);
-        const childKey = base.stateKey(child);
-        const globalFingerprint = `${sourceKey}|${base.moveKey(move)}|${childKey}`;
-        const depthFingerprint = `${parentDepth}|${globalFingerprint}`;
-        depthLabelledEdges.add(base.sha256Text(depthFingerprint));
-        if (!globalEdges.has(globalFingerprint)) {
-          globalEdges.add(globalFingerprint);
-          newGlobalEdges += 1;
-        }
+    for (const globalFingerprint of layerGlobalFingerprints) {
+      depthLabelledEdges.add(base.sha256Text(`${parentDepth}|${globalFingerprint}`));
+      if (!globalEdges.has(globalFingerprint)) {
+        globalEdges.add(globalFingerprint);
+        newGlobalEdges += 1;
       }
     }
 
@@ -377,12 +370,6 @@ function enumerateExactDepth({ engine, rootState, targetDepth, outDir, profile, 
       precedingEdgeSetSha256: parentLayers[parentLayers.length - 1].edgeSetSha256,
       complete: true,
     });
-
-    if (contract.directoryBytes(outDir) + ARTIFACT_RESERVE_BYTES > profile.maxUncompressedArtifactBytes) {
-      stopReason = "ARTIFACT_BYTE_CAP";
-      firstIncompleteDepth = parentDepth + 2;
-      break;
-    }
   }
 
   updateRss();
