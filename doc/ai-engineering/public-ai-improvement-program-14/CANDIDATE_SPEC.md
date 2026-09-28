@@ -1,6 +1,6 @@
 # `PBAI-C017-v1` — A1候補開発契約
 
-状態: **FROZEN BEFORE CANDIDATE IMPLEMENTATION**  
+状態: **FROZEN BEFORE FIXED-DEPTH MEASUREMENT; SCOPE AMENDMENT RECORDED BEFORE MEASUREMENT**  
 固定日: 2026-09-28  
 分類: **DEVELOPMENT-ONLY / SINGLE-MECHANISM CANDIDATE**  
 比較元: `AI-GEN4-BASELINE-2026-09-28-v1`  
@@ -15,7 +15,7 @@ Candidate IDは `PBAI-C017-v1`。これはPBAI-P14の隔離開発用IDであり�
 
 ## 2. 凍結する実装範囲
 
-変更を許可する本体ファイルは `public/ai-candidate.js` のみ。`public/engine.js` は継承済みAI-GEN3 manifestに固定された公開資産として変更しない。追加可能なものはPBAI-P14専用tests、measurement tools、workflow、文書、artifactである。
+変更を許可する本体ファイルは `public/ai-candidate.js` のみ。`public/engine.js` は継承済みAI-GEN3 manifestに固定された公開資産として変更しない。追加可能なものはPBAI-P14専用tests、measurement tools、workflow、文書、artifactである。初期実装でengine.jsを変更したが、既存のimmutable-asset回帰testで検出したため、測定seedを処理する前に変更を完全に戻し、候補helperを `ai-candidate.js` 内部へ移した。以後のmeasurementは許可された公開ファイルが候補側の同ファイル1件のみであることをhash gateで検証する。
 
 1. `BaoCandidateAI` 内部に探索専用のvariant-with-transition helperを置く。`E.legalMoves`の順序と既存 `moveVariants` の展開規則を保ち、Namua captureについてstop/useの遷移を一度ずつ評価する。AI-GEN3の固定済みengine assetは変更しない。
 2. after-stateが一致した場合は既存と同じbare moveを返し、そのbare moveの意味（houseChoice既定stop）に対応するstop遷移をキャッシュとして添える。状態が異なる場合は従来どおりstop、useの順に返し、それぞれの遷移・eventsを添える。
@@ -30,7 +30,7 @@ Candidate IDは `PBAI-C017-v1`。これはPBAI-P14の隔離開発用IDであり�
 - development seed block: **`2026092901..2026092964`**（64 seeds）
 - 2026-09-28のrepo code searchではrange両端 `2026092901` と `2026092964` の既存一致は0件。support rangeのseedは流用しない。
 - sample生成はbaseline support specと同じdeterministic self-play prefix/phase selectionを使う。欠測seed・局面を差し替えない。
-- 開発比較はbaseline sourceを正確なcommitから読み、candidate sourceは開発branchから読む。全7公開AI source fileのhashを結果に保存し、意図した差分がengine/ai-candidateに限られることを確認する。
+- 開発比較はbaseline sourceを正確なcommitから読み、candidate sourceは開発branchから読む。全7公開AI source fileのhashを結果に保存し、意図した公開実装差分が `ai-candidate.js` だけであることを確認する。
 - search options: release expert/hard profile, maxDepth 4, timeLimit Infinity, aspirationWindow 0, stableBestDepths 0, PBAI-C015 evaluation gate/profileを固定。random stateとsample setをbaseline/candidateで対にする。
 
 ## 4. 事前固定の開発gate
