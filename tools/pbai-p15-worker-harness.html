@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>PBAI-P15 Worker support harness</title></head>
+<body>
+<script src="/public/engine.js"></script>
+<script src="/public/ai-weights.js"></script>
+<script src="/public/ai.js"></script>
+<script src="/public/ai-config.js"></script>
+<script src="/public/logic-evaluator.js"></script>
+<script src="/public/ai-candidate.js"></script>
+<script src="/public/ai-release.js"></script>
+<script>
+"use strict";
+(function () {
+  function rng(seed) {
+    let value = seed >>> 0;
+    return function next() {
+      value ^= value << 13; value ^= value >>> 17; value ^= value << 5;
+      return value >>> 0;
+    };
+  }
+  function gameStates(seed, maxPly, targets) {
+    const random = rng(seed);
+    let state = BaoEngine.initialState();
+    const states = [];
+    const trajectory = [];
+    const targetSet = new Set(targets);
+    for (let ply = 0; ply <= maxPly; ply += 1) {
+      if (targetSet.has(ply)) states.push({ ply, state: BaoEngine.clone(state) });
+      if (ply < maxPly) trajectory.push(BaoEngine.clone(state));
+      if (ply === maxPly || state.winner !== null) break;
+      const moves = BaoEngine.legalMoves(state);
+      if (!moves.length) break;
+      state = BaoEngine.applyMove(state, moves[random() % moves.length]).state;
+    }
+    return { states, trajectory, terminal: state.winner !== null, terminalPly: state.turn };
+  }
+  function sameMove(a, b) {
+    return a && b && a.type === b.type && a.row === b.row && a.index === b.index
+      && a.direction === b.direction && a.side === b.side
+      && Boolean(a.houseTwo) === Boolean(b.houseTwo);
+  }
+  function options(level, state) {
+    return BaoReleaseConfig.searchOptions(level, { hardwareConcurrency: 4, deviceMemory: 4 }, state);
+  }
+  function send(worker, state, level, id, startupIncluded, timeoutMs) {
+    const started = performance.now();
+    return new Promise((resolve, reject) => {
+      const timeout = setTimeout(() => {
+        worker.removeEventListener("message", onMessage);
+        reject(new Error("worker response timeout"));
+      }, timeoutMs || (level === "expert" ? 20000 : 12000));
+      const onMessage = (event) => {
+        if (!event.data || event.data.id !== id) return;
+        clearTimeout(timeout);
+        worker.removeEventListener("message", onMessage);
+        const elapsedMs = performance.now() - started;
+        if (event.data.type !== "result") {
+          reject(new Error("worker returned error: " + String(event.data.message || "unknown")));
+          return;
+        }
+        const legal = BaoEngine.legalMoves(state).some((move) => sameMove(move, event.data.move));
+        resolve({
+          id, elapsedMs, startupIncluded,
+          positionKeyMatch: event.data.positionKey === BaoReleaseAI.stateKey(state),
+          legalMove: legal, move: event.data.move, stats: event.data.stats,
+        });
+      };
+      worker.addEventListener("message", onMessage);
+      worker.postMessage({ type: "search", id, state: BaoEngine.clone(state), level, options: options(level, state) });
+    });
+  }
+  async function measureMode(states, seed, level, mode) {
+    const rows = [];
+    let worker = null;
+    try {
+      for (let index = 0; index < states.length; index += 1) {
+        const sample = states[index];
+        const id = seed * 1000 + (level === "expert" ? 100 : 0) + sample.ply;
+        const startupIncluded = mode === "cold" || index === 0;
+        if (mode === "cold" || index === 0) worker = new Worker("/public/ai-release-worker.js");
+        const row = await send(worker, sample.state, level, id, startupIncluded);
+        rows.push({ seed, ply: sample.ply, level, mode, ...row });
+        if (mode === "cold") worker.terminate();
+      }
+      return rows;
+    } finally {
+      if (worker) worker.terminate();
+    }
+  }
+  async function memorySamples(label) {
+    if (typeof performance.measureUserAgentSpecificMemory !== "function") {
+      throw new Error("measureUserAgentSpecificMemory unavailable");
+    }
+    const samples = [];
+    for (let index = 0; index < 3; index += 1) {
+      if (index) await new Promise((resolve) => setTimeout(resolve, 100));
+      const result = await performance.measureUserAgentSpecificMemory();
+      samples.push({ bytes: result.bytes, breakdown: result.breakdown });
+    }
+    return { label, samples };
+  }
+  window.PBAIP15 = {
+    gameStates, measureMode, memorySamples,
+    crossOriginIsolated: () => self.crossOriginIsolated === true,
+    hasMemoryAPI: () => typeof performance.measureUserAgentSpecificMemory === "function",
+  };
+})();
+</script>
+</body>
+</html>
