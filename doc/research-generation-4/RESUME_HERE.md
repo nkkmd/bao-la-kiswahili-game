@@ -1,7 +1,7 @@
 # Research Generation 4 — 再開位置
 
 更新日: 2026-09-28  
-状態: **`G4-09 CLOSED ON RESEARCH BRANCH / PRE-MAIN CONSISTENCY AUDIT NEXT / G4-10 PROTECTED`**
+状態: **`G4-09 CLOSED ON RESEARCH BRANCH / PRE-MAIN CONSISTENCY AUDIT PASS / MAIN INTEGRATION REVIEW NEXT / G4-10 PROTECTED`**
 
 ## 再開時の読む順序
 
@@ -100,21 +100,11 @@ Durable leaseが存在するため、Stage 2 exact censusはrerunしない。
 
 ## 次の作業
 
-G4-09 scientific executionとclosureは完了済み。
+G4-09 scientific executionとclosureは完了し、pre-main consistency auditも`PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`で完了した。
 
-次は**main統合前の最終整合監査**を行う。
+次は**別の明示的操作としてmain統合をレビューする段階**である。統合操作の直前にresearch branch HEADとremote `main` HEADを再取得し、ahead-only / behind 0 / merge base一致、`public/`差分0、G4-10 depth-11 access 0を再確認する。
 
-確認対象:
-
-- G4-09 current-facing文書とcanonical recordsの整合
-- RG4入口文書 / research index / future agendaの状態表記
-- research branchとremote `main`のahead / behind / merge base
-- `public/`変更の有無
-- public AI production変更の有無
-- G4-10 depth-11 accessが0のままか
-- no-rerun / no-rescue境界
-
-監査がPASSしても、自動で`main`へ統合しない。統合は別の明示的操作として行う。
+監査PASSは自動統合を意味しない。G4-10も引き続き別authorizationなしにアクセスしない。
 
 ## No-rescue / protected boundary
 

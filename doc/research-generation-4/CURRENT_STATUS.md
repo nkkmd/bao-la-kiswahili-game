@@ -143,7 +143,7 @@ Canonical records:
 
 ## 次に許可される作業
 
-G4-09のscientific executionは閉じた。次はG4-09 branchのcurrent-facing文書、canonical records、branch scope、`public/`差分、G4-10保護境界を最終監査し、`main`統合可否を判断する段階である。
+G4-09のscientific executionとclosureは完了し、pre-main consistency auditは`PASS / READY-FOR-MAIN-INTEGRATION-REVIEW`となった。次は別の明示的操作として`main`統合をレビューする段階である。統合直前にはresearch branchとremote `main`のHEAD、ahead / behind、merge base、`public/`差分、G4-10保護境界を再確認する。
 
 G4-10は引き続きprotectedであり、G4-09 closureや将来のmain統合によって自動認可されない。depth-11へ進む場合は別の明示的authorization reviewが必須である。
 
