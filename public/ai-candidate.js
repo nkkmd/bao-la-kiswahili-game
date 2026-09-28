@@ -380,14 +380,36 @@
       .reduce((total, event) => total + event.count, 0);
   }
 
+  function searchVariantsWithTransitions(state) {
+    return E.legalMoves(state).flatMap((move) => {
+      if (move.phase !== "namua" || move.type !== "capture") {
+        return [{ move, transition: null }];
+      }
+      const stop = { ...move, houseChoice: "stop" };
+      const use = { ...move, houseChoice: "use" };
+      try {
+        const stopTransition = E.applyMove(state, stop);
+        const useTransition = E.applyMove(state, use);
+        if (JSON.stringify(stopTransition.state) === JSON.stringify(useTransition.state)) {
+          return [{ move, transition: stopTransition }];
+        }
+        return [
+          { move: stop, transition: stopTransition },
+          { move: use, transition: useTransition },
+        ];
+      } catch {
+        return [{ move, transition: null }];
+      }
+    });
+  }
+
   function enhancedOrdered(
     state, player, evaluator, preferredMove, killerMove, ttMoveFirst = false, history = null,
     reuseSearchTransitions = false,
   ) {
     const maximizing = state.player === player;
     const candidates = reuseSearchTransitions
-      && typeof E.moveVariantsWithTransitionsForSearch === "function"
-      ? E.moveVariantsWithTransitionsForSearch(state)
+      ? searchVariantsWithTransitions(state)
       : movesFor(state).map((move) => ({ move, transition: null }));
     return candidates.map(({ move, transition }) => {
       const result = transition || E.applyMove(state, move);
