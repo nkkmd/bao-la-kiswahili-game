@@ -2,11 +2,11 @@
 "use strict";
 
 const childProcess = require("node:child_process");
+const crypto = require("node:crypto");
 const fs = require("node:fs");
 const path = require("node:path");
 
 const engine = require("../../public/engine.js");
-const prod = require("./lib/fdert-production.js");
 const ind = require("./lib/drsse-independent.js");
 const contract = require("./lib/fdert-stage1-contract.js");
 
@@ -21,6 +21,25 @@ const OUT_DIR = process.env.FDERT_STAGE1_OUT
   : path.join(ROOT, "artifacts/local/fresh-depth11-exact-reachability-topology/stage1-protected-v1");
 
 function readJson(p) { return JSON.parse(fs.readFileSync(p, "utf8")); }
+function writeJson(p, value) {
+  fs.mkdirSync(path.dirname(p), { recursive: true });
+  fs.writeFileSync(p, `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+function sha256FileChunked(filePath) {
+  const hash = crypto.createHash("sha256");
+  const fd = fs.openSync(filePath, "r");
+  const buffer = Buffer.allocUnsafe(8 * 1024 * 1024);
+  try {
+    while (true) {
+      const n = fs.readSync(fd, buffer, 0, buffer.length, null);
+      if (!n) break;
+      hash.update(buffer.subarray(0, n));
+    }
+  } finally {
+    fs.closeSync(fd);
+  }
+  return hash.digest("hex");
+}
 function gitBlob(relative) {
   return childProcess.execFileSync("git", ["hash-object", relative], { cwd: ROOT, encoding: "utf8" }).trim();
 }
@@ -42,12 +61,12 @@ function verifyBinding(spec, auth, lease) {
   contract.ensure(auth.protectedDepth11AccessAuthorized === true && auth.authorizedDepth === 11, "depth-11 authorization missing");
   contract.ensure(auth.executionCountAuthorized === 1 && auth.maximumScientificExecutionsAuthorized === 1, "execution count invalid");
   contract.ensure(auth.depth12AccessAuthorized === false && auth.sameEvidenceRerunAuthorized === false, "no-rescue firewall invalid");
-  contract.ensure(auth.specSha256 === prod.sha256FileChunked(SPEC_PATH), "spec SHA mismatch");
+  contract.ensure(auth.specSha256 === sha256FileChunked(SPEC_PATH), "spec SHA mismatch");
   for (const [relative, expected] of Object.entries(auth.sourceGitBlobSha || {})) {
     contract.ensure(gitBlob(relative) === expected, `source freeze mismatch: ${relative}`);
   }
   contract.ensure(lease.studyId === spec.studyId && lease.stageId === spec.stageId, "lease identity mismatch");
-  contract.ensure(lease.authorizationFileSha256 === prod.sha256FileChunked(AUTH_PATH), "lease auth hash mismatch");
+  contract.ensure(lease.authorizationFileSha256 === sha256FileChunked(AUTH_PATH), "lease auth hash mismatch");
   contract.ensure(lease.sourceCommit === gitHead(), "lease source commit mismatch");
   contract.ensure(lease.durableLease === true && lease.protectedDepth11AccessAuthorized === true, "durable lease invalid");
 }
@@ -56,12 +75,12 @@ function verifyProductionFiles(core) {
   for (const layer of core.layers) {
     const p = path.join(OUT_DIR, layer.stateFile);
     contract.ensure(fs.existsSync(p), `missing production state file depth ${layer.depth}`);
-    contract.ensure(prod.sha256FileChunked(p) === layer.stateFileSha256, `production state file SHA mismatch depth ${layer.depth}`);
+    contract.ensure(sha256FileChunked(p) === layer.stateFileSha256, `production state file SHA mismatch depth ${layer.depth}`);
   }
   for (const parent of core.parentLayers) {
     const p = path.join(OUT_DIR, parent.edgeFile);
     contract.ensure(fs.existsSync(p), `missing production edge file depth ${parent.depth}`);
-    contract.ensure(prod.sha256FileChunked(p) === parent.edgeFileSha256, `production edge file SHA mismatch depth ${parent.depth}`);
+    contract.ensure(sha256FileChunked(p) === parent.edgeFileSha256, `production edge file SHA mismatch depth ${parent.depth}`);
   }
   return true;
 }
@@ -103,7 +122,7 @@ function main() {
       sameEvidenceRerunAuthorized: false,
       depth12AccessAuthorized: false
     };
-    prod.writeJson(resultPath, result);
+    writeJson(resultPath, result);
     console.log(`FDERT_STAGE1_INDEPENDENT=${JSON.stringify(result)}`);
     return;
   }
@@ -132,12 +151,7 @@ function main() {
   let independentStoppedForResource = false;
 
   if (core.targetComplete) {
-    independentSummary = ind.independentEnumerate({
-      engine,
-      rootState: engine.initialState(),
-      targetDepth: 11,
-      profile,
-    });
+    independentSummary = ind.independentEnumerate({ engine, rootState: engine.initialState(), targetDepth: 11, profile });
     if (independentSummary.targetComplete) {
       contract.ensure(
         ind.canonical(ind.projectForComparison(core)) === ind.canonical(ind.projectForComparison(independentSummary)),
@@ -157,12 +171,7 @@ function main() {
   } else {
     contract.ensure(resourceStop(core.stopReason) || production.productionCandidate.startsWith("PRODUCTION-NON-ESTIMABLE"), "incomplete production is not a resource/admin stop");
     const d = core.lastCompleteDepth;
-    independentSummary = ind.independentEnumerate({
-      engine,
-      rootState: engine.initialState(),
-      targetDepth: d,
-      profile,
-    });
+    independentSummary = ind.independentEnumerate({ engine, rootState: engine.initialState(), targetDepth: d, profile });
     contract.ensure(independentSummary.targetComplete === true, `independent complete-prefix verification stopped: ${independentSummary.stopReason}`);
     contract.ensure(
       contract.canonical(contract.completePrefixProjection(core, d)) === contract.canonical(contract.completePrefixProjection(independentSummary, d)),
@@ -256,7 +265,7 @@ function main() {
     scientificCore,
     scientificResultCoreSha256: contract.hashCanonical(scientificCore),
   };
-  prod.writeJson(resultPath, result);
+  writeJson(resultPath, result);
   console.log(`FDERT_STAGE1_INDEPENDENT=${JSON.stringify({ formalDecision, targets, scientificResultCoreSha256: result.scientificResultCoreSha256 })}`);
 }
 
@@ -279,7 +288,7 @@ try {
     sameEvidenceRerunAuthorized: false,
     depth12AccessAuthorized: false
   };
-  prod.writeJson(path.join(OUT_DIR, "STAGE_1_FORMAL_RESULT.json"), result);
+  writeJson(path.join(OUT_DIR, "STAGE_1_FORMAL_RESULT.json"), result);
   console.error(error);
   process.exitCode = 2;
 }
