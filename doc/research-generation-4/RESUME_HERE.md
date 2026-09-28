@@ -1,116 +1,122 @@
 # Research Generation 4 — 再開位置
 
 更新日: 2026-09-28  
-状態: **`G4-09 MAIN INTEGRATED / G4-10 PROTECTED / NEXT SCIENTIFIC AGENDA NOT AUTHORIZED`**
+状態: **`G4-01..G4-10 CORE SCIENTIFIC AGENDA COMPLETE / G4-10 CLOSED NON-ESTIMABLE / MAIN INTEGRATION PENDING`**
 
 ## 再開時の読む順序
 
 1. remote `main` HEADと[`CURRENT_STATUS.md`](CURRENT_STATUS.md)でRG4全体の状態を確認する。
-2. [`../geometry-conditioned-search-reliability-exact-agreement/CURRENT_STATUS.md`](../geometry-conditioned-search-reliability-exact-agreement/CURRENT_STATUS.md)でG4-09 closure状態を確認する。
-3. [`../geometry-conditioned-search-reliability-exact-agreement/results/stage-1/STAGE_1_CANONICAL_RECORD.json`](../geometry-conditioned-search-reliability-exact-agreement/results/stage-1/STAGE_1_CANONICAL_RECORD.json)でModule A closure basisを確認する。
-4. [`../geometry-conditioned-search-reliability-exact-agreement/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](../geometry-conditioned-search-reliability-exact-agreement/results/stage-2/STAGE_2_CANONICAL_RECORD.json)でModule B exact-census resultを確認する。
-5. [`../geometry-conditioned-search-reliability-exact-agreement/checkpoints/2026-09-28-stage-2-exact-census-complete.md`](../geometry-conditioned-search-reliability-exact-agreement/checkpoints/2026-09-28-stage-2-exact-census-complete.md)でrun / artifact / lease / protected boundaryを確認する。
-6. [`../research-program-decisions/2026-09-28-g4-09-search-reliability-exact-agreement-study1-closure.md`](../research-program-decisions/2026-09-28-g4-09-search-reliability-exact-agreement-study1-closure.md)でclosure decisionを確認する。
-7. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)はprospective frozen planとして変更せず参照する。
+2. [`FINAL_SYNTHESIS.md`](FINAL_SYNTHESIS.md)でG4-01〜G4-10のProgram-level conclusionを確認する。
+3. [`../fresh-depth11-exact-reachability-topology/CURRENT_STATUS.md`](../fresh-depth11-exact-reachability-topology/CURRENT_STATUS.md)でG4-10の現在状態を確認する。
+4. [`../fresh-depth11-exact-reachability-topology/FINAL_REPORT.md`](../fresh-depth11-exact-reachability-topology/FINAL_REPORT.md)でG4-10のformal resultと解釈境界を確認する。
+5. [`../fresh-depth11-exact-reachability-topology/results/stage-1/STAGE_1_CANONICAL_RECORD.json`](../fresh-depth11-exact-reachability-topology/results/stage-1/STAGE_1_CANONICAL_RECORD.json)でcanonical numeric/provenance recordを確認する。
+6. [`../fresh-depth11-exact-reachability-topology/REPRODUCIBILITY_INDEX.md`](../fresh-depth11-exact-reachability-topology/REPRODUCIBILITY_INDEX.md)でsource/artifact identityを確認する。
+7. [`../research-program-decisions/2026-09-28-g4-10-fresh-depth11-exact-reachability-topology-study1-closure.md`](../research-program-decisions/2026-09-28-g4-10-fresh-depth11-exact-reachability-topology-study1-closure.md)でG4-10 closure decisionを確認する。
+8. [`PROGRAM_PLAN.md`](PROGRAM_PLAN.md)はprospective frozen planとして変更せず参照する。
 
 ## 現在地
 
 ```text
 G4-01 = COMPLETE / MAIN INTEGRATED
 G4-02 = CLOSED / NO SCIENTIFIC DECISION / MAIN INTEGRATED
-G4-03 = COMPLETE / MAIN INTEGRATED
-G4-04 = COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED
+G4-03 = COMPLETE / STAGE2-COMPLETE-WITH-NON-ESTIMABLE / MAIN INTEGRATED
+G4-04 = COMPLETE / FORMAL-COMPLETE / 8-OF-8 GENERALIZATION-CONFIRMED / MAIN INTEGRATED
 G4-05 = COMPLETE / EXACT-ORACLE-FOUNDATION / MAIN INTEGRATED
 G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING / MAIN INTEGRATED
 G4-07 = COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED
-G4-08 = CLOSED / STAGE2-FORMAL-COMPLETE / 24 NON-ESTIMABLE / MAIN INTEGRATED
+G4-08 = CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRATED
 G4-09 = CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / MAIN INTEGRATED
-G4-10 = PROTECTED / NOT AUTHORIZED / NOT ACCESSED
+G4-10 = CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP / RESEARCH BRANCH
+RG4 core G4-01..G4-10 = SCIENTIFIC AGENDA COMPLETE
+G4-P01 = INDEPENDENT / NOT AUTHORIZED
+G4-H01 = DEFERRED
 public AI change = false
+G4-10 main integration = NOT YET PERFORMED
 ```
 
-## G4-09 Module A
+## G4-10 canonical outcome
 
-Stage 1 canonical run:
+Study: `FDERT-STUDY1`
 
 ```text
-run = 36326278830 / attempt 1
-fresh reads = 768
-selected roots = 128
-SC1 / SC2 / SC3 search-defined = 109 / 109 / 109
-frozen minimum = 120
-formal candidate slots = 9
-SUPPORTED = 0
-NOT-SUPPORTED = 9
-formal inference = false
+Stage = FDERT-S1-PROTECTED-EXACT-HOLDOUT-2026-09-28-v1
+Actions run = 36368880428 / attempt 1 / success
+scientific executions authorized = 1
+scientific executions actual = 1
+target depth = 11
+target complete = false
+last complete depth = 10
+first incomplete depth = 11
+stop reason = UNIQUE_STATE_CAP
+frozen cumulative distinct RAW-state ceiling = 2000000
+formal decision = NON-ESTIMABLE
+T1 = NON-ESTIMABLE
+T2 = NON-ESTIMABLE
+T3 = NON-ESTIMABLE
+T4 = NON-ESTIMABLE
 ```
 
-Module Aは`NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT`として閉鎖。これはno-effect resultではない。
+productionはdepth 11構築中に事前固定したstate ceilingへ到達した。partial depth-11 layerをformal evidenceへ昇格しない。
 
-候補general Stage 2 namespace `40923001...`は未読であり、同Studyでは使用しない。
+## G4-10 integrity
 
-## G4-09 Module B
-
-One-shot exact census:
+Fresh complete 0..10 prefixはhistorical G3-11 canonical exact prefixと完全一致した。
 
 ```text
-run = 36359283198 / attempt 1 / success
-code freeze = c1425c6b67d85f4e7f42032fc04aaf968f151454
-trigger SHA = d0f276262944edc6fd1143e6b71d6526ad4221c5
-lease commit = 05bcd129dfc84193bd786a27b9a6adcdeeca88e5
-final artifact ID = 10945085978
-artifact ZIP SHA-256 = 9a02241b2fb28d9aac936d3d203e39d9a2bba3eee5905fa02aa4ecbca725ef7b
-result core SHA-256 = c74f9f3baa5065c5ae6df70dbbccdeb50c0adba5006d2d647fa6931cd3764e20
-scientific measurement = 1 / 1
-scientific rerun = 0
+current prefix SHA-256 = 6d3e6fac2ce0dc996d314e1e5aa5342482727231f46e76d7738c663cd7ef55a7
+historical prefix SHA-256 = 6d3e6fac2ce0dc996d314e1e5aa5342482727231f46e76d7738c663cd7ef55a7
+production materialized-file hash verification = PASS
+independent complete-prefix verification = PASS
+integrity = PASS
 ```
 
-Fixed census result:
+Complete prefix:
 
 ```text
-fixed exact domains = 8
-forced = 2
-nontrivial = 6
-search configurations = 6
-nontrivial cells = 36 / 36 estimable
-canonical-best in exact optimal set = 36 / 36
-PV first move in exact optimal set = 36 / 36
-TopSet EQUAL = 35 / 36
-TopSet SEARCH-SUBSET-EXACT = 1 / 36
-production / independent search exact = true
-production / independent classifier exact = true
+cumulative distinct RAW states through depth 10 = 451127
+depth-labelled legal edges through parent depth 9 = 466768
+unique RAW graph edges through parent depth 9 = 466768
+tree-node occurrences through depth 10 = 631101
+tree-edge occurrences through parent depth 9 = 631100
 ```
 
-唯一のnon-EQUALは`D2_Q0 × domain 4`の`SEARCH-SUBSET-EXACT`。search TopSetがexact-optimal 2手のうち1手だけを残したもので、canonical-best / PV firstはexact-optimalだった。
+これらはG4-10のdepth-11 resultではなく、complete prefix integrity confirmationである。
 
-この結果をwhole-Bao correctness probabilityへ一般化しない。
-
-## Protected boundary
+## G4-10 provenance
 
 ```text
-Stage 2 general fresh reads = 0
-G4-05 rescan = 0
-G4-05 replacement = 0
-G4-10 depth-11 access = 0
-public AI change = false
-main integration = COMPLETE / FAST-FORWARD
+trigger SHA = 787105a3016bac1172e669faf400fcc7cdd70dd5
+formal-result file SHA-256 = 7be828231d25ad0e9ee0a698992c3ccb726768b6329a6ad935548d4a46c72e1d
+scientific-result core SHA-256 = a9649b654ae315fe7d234ccc5511252db6154e84d146bd9444185e9441f52484
+lease artifact = 10948226759
+production artifact = 10949100069
+compact artifact = 10948857115
 ```
 
-Durable leaseが存在するため、Stage 2 exact censusはrerunしない。
+one-shot authorizationは消費済みであり、same-evidence rerunは認可されない。
 
 ## 次の作業
 
-G4-09 scientific execution・closure・pre-main consistency audit・`main`統合は完了した。G4-09に対する追加科学実行やsame-Study rescueは行わない。
+G4-10に対する追加scientific executionは行わない。
 
-次のscientific agendaは未認可である。G4-10も引き続き別authorizationなしにアクセスしない。新しい研究へ進む場合はfresh evidence access前に独立authorization reviewを行う。
+次に許可されるのは、Research Generation 4のcurrent-facing文書・研究索引・future agenda・リンク・canonical provenanceを照合する**pre-main consistency audit**である。
+
+監査で不整合が見つかった場合はresearch branch上で文書のみ修正する。科学結果、resource ceiling、formal classification、no-rescue boundaryは変更しない。
+
+監査PASS後も`main`統合は別gateとし、明示的に統合作業へ進むまでresearch branchに留める。
 
 ## No-rescue / protected boundary
 
-- closed Studyのrerun / rescue禁止。
-- G4-09 Module A support threshold relaxation禁止。
-- G4-09 Module A seed extension / replacement / subgroup rescue禁止。
-- G4-09 Stage 2 exact-census rerun禁止。
-- fixed-eight resultのwhole-Bao一般化禁止。
-- G3-11 depth-10 rerun禁止。
-- G4-10 depth-11 access禁止。
-- public AIへの自動反映禁止。
+- G4-10 state ceilingを増加しない。
+- G4-10 wall-clockを延長しない。
+- larger / alternate runnerやlocal machineへ移して同Studyを救済しない。
+- G4-10 same-evidence rerun / repairを行わない。
+- partial depth-11 count / topologyをformal result、estimate、lower bound、trendへ昇格しない。
+- depth 12へ進まない。
+- symmetry / canonicalization rescueを行わない。
+- G2-12 estimatorをG4-10 reinterpretationへ使用しない。
+- G3-11 formal decisionを再判定しない。
+- G4-08 `NON-ESTIMABLE`をno-effectへ読み替えない。
+- G4-09 Module A eligibility gateを事後緩和しない。
+- G4-09 fixed-eight censusをwhole-Bao correctness probabilityへ一般化しない。
+- RG4 resultをpublic AIへ自動反映しない。
