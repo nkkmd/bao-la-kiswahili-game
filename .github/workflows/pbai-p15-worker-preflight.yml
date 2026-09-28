@@ -1,6 +1,11 @@
 name: PBAI-P15 Worker support preflight
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - 'tools/pbai-p15-*'
+      - 'doc/ai-engineering/public-ai-improvement-program-15/**'
+      - '.github/workflows/pbai-p15-worker-preflight.yml'
 permissions:
   contents: read
 jobs:
@@ -10,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.sha }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
