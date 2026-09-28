@@ -1,6 +1,9 @@
 name: PBAI-P15 Worker baseline support
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/pbai-p15-worker-support.yml'
 permissions:
   contents: read
 jobs:
@@ -14,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.sha }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
@@ -44,7 +47,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.sha }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:

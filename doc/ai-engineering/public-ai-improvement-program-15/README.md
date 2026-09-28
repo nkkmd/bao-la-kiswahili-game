@@ -2,7 +2,7 @@
 
 正式作業名: **探索データを持ち越さないWorker再利用 — F1成立性確認**  
 開始日: 2026-09-28  
-状態: **preflight技術条件の修正中 / baseline support seed未使用**  
+状態: **preflight PASS / baseline support seed未使用**  
 比較対象: `AI-GEN4 / AI-GEN4-RELEASE-001`  
 baseline commit: `22537fb192b6c5bd1e2f3e6bca7488d7baa6f91b`  
 Candidate ID: **未発行**
@@ -10,6 +10,8 @@ Candidate ID: **未発行**
 ## 目的
 
 現在の公開経路はAI要求ごとに`ai-release-worker.js`を起動し、応答後にWorkerを終了する。Worker自体だけを次の手番でも使い続ければ、script importと起動の費用を一部省ける可能性がある。
+
+preflight run `36420017985`でChromiumのWorker isolate heap計測・合法応答・取消後の再起動を確認した。詳細なseed計測は次の段階である。
 
 本Programの最初のsupport試験では、変更していない現行Workerを同一セッションで複数回使う測定用経路と、現行UIと同じ要求ごとのWorker起動を比較する。これはcandidate実装・棋力試験ではなく、導入前の起動費用・待ち時間・memory計測可能性・取消動作の確認である。
 
