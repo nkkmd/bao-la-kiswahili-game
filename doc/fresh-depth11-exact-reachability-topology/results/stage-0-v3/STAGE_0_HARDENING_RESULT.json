@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G4-10",
+  "studyId": "FDERT-STUDY1",
+  "stageId": "FDERT-S0-HARDENING-2026-09-28-v3",
+  "stageDisposition": "STAGE0-HARDENING-PASS",
+  "scientificInferencePerformed": false,
+  "protectedDepth11Access": false,
+  "stage1ExecutionAuthorized": false,
+  "maximumRealFixtureDepthObserved": 2,
+  "legacyHardenedTopologyProjectionExact": true,
+  "stateFilesByteExact": true,
+  "edgeFilesByteExact": true,
+  "hardenedMaterializedIndependentVerification": true,
+  "hardenedFullIndependentShallowRecomputation": true,
+  "hardenedMaterializationMode": "ROW-STREAMED-BOUNDED-MEMORY",
+  "forcedStops": {
+    "uniqueState": "UNIQUE_STATE_CAP",
+    "work": "MOVE_EVALUATION_CAP",
+    "tree": "TREE_OCCURRENCE_CAP",
+    "artifact": "ARTIFACT_BYTE_CAP"
+  },
+  "allMandatoryControlsPassed": true,
+  "runtime": {
+    "node": "v22.23.2",
+    "platform": "linux",
+    "arch": "x64"
+  }
+}
