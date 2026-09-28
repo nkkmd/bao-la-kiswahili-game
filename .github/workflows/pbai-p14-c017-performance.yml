@@ -1,0 +1,39 @@
+name: PBAI-C017 performance validation preflight
+
+on:
+  push:
+    branches:
+      - engineering/pbai-p14-c017-performance
+    paths:
+      - '.github/workflows/pbai-p14-c017-performance.yml'
+      - 'doc/ai-engineering/public-ai-improvement-program-14/C017_PERFORMANCE_SPEC.md'
+      - 'test/pbai-c017-performance-contract.test.cjs'
+      - 'tools/engineering/measure-pbai-c017-performance.cjs'
+      - 'tools/engineering/aggregate-pbai-c017-performance.cjs'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Fetch pinned baseline and candidate commits
+        run: |
+          git fetch --no-tags --depth=1 origin 22537fb192b6c5bd1e2f3e6bca7488d7baa6f91b
+          git fetch --no-tags --depth=1 origin e9e98290d600bc342a748b80d4589473a0b5ac57
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Regression and pinned-source preflight
+        run: node --test test/ai-generation-release.test.js test/pbai-c017-performance-contract.test.cjs
+      - name: Syntax validation before any performance seed is consumed
+        run: |
+          node --check tools/engineering/measure-pbai-c017-performance.cjs
+          node --check tools/engineering/aggregate-pbai-c017-performance.cjs
