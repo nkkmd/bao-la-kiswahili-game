@@ -31,7 +31,7 @@ baseline support、developmentとは別のseed block `2026100101..2026100164`を
 ## 証拠と解釈範囲
 
 - 正式判定に使ったcanonical JSONは[`c017-performance-002.json`](c017-performance-002.json)。Git blob SHAは`eb979df569f1e8c8d58ec8cbbf983b006a7b0af7`。
-- shard raw dataとcanonical JSONはActions artifact [`pbai-p14-c017-performance-002-result-36411624798`](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/36412188487)に90日間保存した。artifact ID `10965350074`、ZIP SHA-256 `405c5e20342f67365c2fda9db8c6b976e41f7330c25882b2277f457295ff6d4d`。
+- shard raw dataとcanonical JSONはActions artifact [`pbai-p14-c017-performance-002-result-36411624798`](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/36412188487)に90日間保存した。artifact ID `10964787533`、ZIP SHA-256 `ea4efabdecb5a54f5c459985b934ec0725e0df5bc37bd6b3905b096171c6512a`。
 - run `36411624798`では全shardが完了し、aggregateの技術・標本・意味同値性条件はすべてPASSした。閾値のみ不成立で、Actionsがexit code 2を返した。証拠はrun `36412188487`で保全し、固定gateの不合格もその後に明示した。
 - 先行する`PBAI-C017-PERFORMANCE-001`はrunnerの技術的不成立で、記録は[`C017_PERFORMANCE_001_TECHNICAL_FAILURE.md`](C017_PERFORMANCE_001_TECHNICAL_FAILURE.md)にある。001のseed blockは消費済み扱いであり、002の標本・推定へ混ぜていない。
 - 本試験は固定depth時の解析時間だけを測った。時間制限付き探索での到達深度、棋力、一般端末での速度、memory、Worker起動費用は判定していない。
