@@ -26,14 +26,14 @@
     const trajectory = [];
     const targetSet = new Set(targets);
     for (let ply = 0; ply <= maxPly; ply += 1) {
-      if (targetSet.has(ply)) states.push({ ply, state: BaoEngine.clone(state) });
-      if (ply < maxPly) trajectory.push(BaoEngine.clone(state));
+      if (state.winner === null && targetSet.has(ply)) states.push({ ply, state: BaoEngine.clone(state) });
+      if (state.winner === null && ply < maxPly) trajectory.push({ ply, state: BaoEngine.clone(state) });
       if (ply === maxPly || state.winner !== null) break;
       const moves = BaoEngine.legalMoves(state);
       if (!moves.length) break;
       state = BaoEngine.applyMove(state, moves[random() % moves.length]).state;
     }
-    return { states, trajectory, terminal: state.winner !== null, terminalPly: state.turn };
+    return { states, trajectory, terminal: state.winner !== null, terminalTurn: state.turn };
   }
   function sameMove(a, b) {
     return a && b && a.type === b.type && a.row === b.row && a.index === b.index
