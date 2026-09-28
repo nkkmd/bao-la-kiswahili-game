@@ -1,11 +1,11 @@
 # Bao今後の研究アジェンダ
 
-Version: 5.11.0
+Version: 5.12.0
 
 更新日: 2026-09-28  
 Research Generation 2: **Closed (2026-08-31)**（完了）  
 Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了・統合済み）  
-Research Generation 4: **G4-01〜G4-09 complete/closed and integrated to `main` / G4-10 protected**
+Research Generation 4: **core G4-01〜G4-10 scientific agenda complete / G4-10 CLOSED NON-ESTIMABLE on research branch / main integration pending**
 
 この文書は、完了した研究を短く振り返りながら、次に研究する価値のある問いを整理するためのものです。候補として記載しただけでは、Study開始、seedアクセス、計算実行、公開AI変更は承認されません。
 
@@ -31,7 +31,10 @@ G4-06 = COMPLETE / FORMAL-BRIDGE-MAPPING-COMPLETE-WITHIN-FROZEN-MICRODOMAINS / M
 G4-07 = COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED
 G4-08 = CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRATED
 G4-09 = CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE / MAIN INTEGRATED
-G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
+G4-10 = CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP / RESEARCH BRANCH
+RG4 core G4-01..G4-10 scientific agenda = COMPLETE
+G4-10 same-evidence rerun = NOT AUTHORIZED
+G4-10 depth 12 = NOT AUTHORIZED
 ```
 
 研究成果の索引は[`RESEARCH_INDEX.md`](RESEARCH_INDEX.md)、第二・第三世代の統合結果はそれぞれ[`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md)と[`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md)、第四世代の最新状態は[`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md)を参照してください。
@@ -51,8 +54,16 @@ G4-10 depth 11 = NOT AUTHORIZED / NOT ACCESSED
 | C | `G4-07` | multiscale memory / return | `COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED` |
 | C | `G4-08` | rule-semantic geometry transition | `CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRATED` |
 | C | `G4-09` | search reliability / exact agreement | `CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / MAIN INTEGRATED` |
-| D | `G4-10` | protected fresh depth-11 exact reachability topology | `PROTECTED / NOT AUTHORIZED / NOT ACCESSED` |
+| D | `G4-10` | protected fresh depth-11 exact reachability topology | `CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP / RESEARCH BRANCH` |
 | 独立 | `G4-P01`、`G4-H01` | canonicalization再基礎化とhuman / expert研究 | `NOT AUTHORIZED / DEFERRED` |
+
+### G4-10 closure
+
+`FDERT-STUDY1`はone-shot protected depth-11 exact Studyとして実行されましたが、depth 11構築中に事前固定した`2,000,000 cumulative distinct RAW states` ceilingへ到達しました。complete depth-11 layerは成立せず、formal decisionは`NON-ESTIMABLE`、T1〜T4もすべて`NON-ESTIMABLE`です。
+
+Fresh complete 0..10 prefixはG3-11 canonical exact prefixと一致し、integrityはPASSしました。partial depth-11 evidenceはformal result、estimate、lower bound、growth trendへ昇格しません。同Study/versionのresource増加、rerun、alternate runner rescue、depth 12 extensionは認可されません。
+
+第四世代core agendaはG4-01〜G4-10のformal closureをもってscientifically completeです。今後の新しい研究候補は、このclosureをrepairする形ではなく、新しいStudy identityとprospective authorizationを必要とします。
 
 ### G4-01
 

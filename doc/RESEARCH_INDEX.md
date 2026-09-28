@@ -2,7 +2,7 @@
 
 更新日: 2026-09-28  
 対象: Research Generation 1〜4  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はG4-01〜G4-09 main統合済み。G4-10は保護・未アクセス**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了。G4-10はCLOSED / NON-ESTIMABLE（research branch、main統合前）**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`または`FINAL_REPORT.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
@@ -12,6 +12,8 @@
 | --- | --- |
 | 第四世代の研究計画 | [`research-generation-4/PROGRAM_PLAN.md`](research-generation-4/PROGRAM_PLAN.md) |
 | 第四世代の現在状態 | [`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md) |
+| 第四世代の最終統合 | [`research-generation-4/FINAL_SYNTHESIS.md`](research-generation-4/FINAL_SYNTHESIS.md) |
+| G4-10の正式結果 | [`fresh-depth11-exact-reachability-topology/FINAL_REPORT.md`](fresh-depth11-exact-reachability-topology/FINAL_REPORT.md) |
 | G4-01の正式結果 | [`local-game-tree-geometry-transfer-compatibility-instrument/README.md`](local-game-tree-geometry-transfer-compatibility-instrument/README.md) |
 | G4-02の正式状態 | [`structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md`](structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md) |
 | G4-03の正式結果 | [`local-width-search-ranking-transfer/README.md`](local-width-search-ranking-transfer/README.md) |
@@ -46,7 +48,7 @@
 | `G4-07` / [`MLGMR-STUDY1`](multiscale-local-geometry-memory-return/) | multiscale memory / return | `COMPLETE / FORMAL-COMPLETE / MAIN INTEGRATED` |
 | `G4-08` / [`BRSGT-STUDY1`](rule-semantic-geometry-transition/) | rule-semantic transition | `CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRATED` |
 | `G4-09` / [`GCSREA-STUDY1`](geometry-conditioned-search-reliability-exact-agreement/) | search reliability / exact agreement | `CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE / MAIN INTEGRATED` |
-| `G4-10` | protected depth-11 exact topology | `PROTECTED / NOT-AUTHORIZED-NOT-ACCESSED` |
+| `G4-10` / [`FDERT-STUDY1`](fresh-depth11-exact-reachability-topology/) | protected depth-11 exact topology | `CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP / RESEARCH BRANCH` |
 | `G4-P01` | canonicalization re-foundation | `INDEPENDENT / NON-BLOCKING / NOT-AUTHORIZED` |
 | `G4-H01` | human / expert evidence | `DEFERRED / INDEPENDENT / NON-BLOCKING` |
 
@@ -213,6 +215,26 @@ post-execution identity diagnosticでは、Stage 2全1024 trajectoriesとStage 1
 G4-08は`CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / NO DIRECTIONAL SCIENTIFIC CONCLUSION`として研究実行を閉じ、2026-09-27にresearch HEAD `0956b5b17085714c1fb9df8ef82f29f6b6ff0f53`を`main`へnon-force fast-forward統合しました。統合中のscientific rerun、`public/`変更、public AI production変更、G4-10 depth-11 accessはありません。
 
 詳しくは、[`rule-semantic-geometry-transition/CURRENT_STATUS.md`](rule-semantic-geometry-transition/CURRENT_STATUS.md)、[`rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json)、[`research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md`](research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md)、[`research-generation-4/checkpoints/2026-09-27-g4-08-main-integration.md`](research-generation-4/checkpoints/2026-09-27-g4-08-main-integration.md)を参照してください。
+
+### G4-10 — protected depth-11 exact topology
+
+G4-10 `FDERT-STUDY1` はstandard initial RAW rootからcomplete exact depth 11を構築するone-shot protected Studyとして実行しました。
+
+```text
+Actions run = 36368880428 / attempt 1 / success
+target depth = 11
+target complete = false
+last complete depth = 10
+first incomplete depth = 11
+stop reason = UNIQUE_STATE_CAP
+frozen cumulative distinct RAW-state ceiling = 2000000
+formal decision = NON-ESTIMABLE
+T1..T4 = NON-ESTIMABLE
+```
+
+Fresh complete 0..10 prefixはG3-11 canonical exact prefixと完全一致し、independent complete-prefix verificationもPASSしました。partial depth-11 evidenceはformal resultへ昇格せず、state ceiling増加、alternate runner rescue、same-evidence rerun、depth 12 extensionを行いません。
+
+詳しくは、[`fresh-depth11-exact-reachability-topology/FINAL_REPORT.md`](fresh-depth11-exact-reachability-topology/FINAL_REPORT.md)、[`fresh-depth11-exact-reachability-topology/REPRODUCIBILITY_INDEX.md`](fresh-depth11-exact-reachability-topology/REPRODUCIBILITY_INDEX.md)、[`fresh-depth11-exact-reachability-topology/results/stage-1/STAGE_1_CANONICAL_RECORD.json`](fresh-depth11-exact-reachability-topology/results/stage-1/STAGE_1_CANONICAL_RECORD.json)を参照してください。
 
 ## Research Generation 3 — 局所ゲーム木幾何
 
