@@ -26,6 +26,13 @@ AI世代、Program ID、Candidate IDの命名と区別は[`AI_GENERATION_NAMING.
 
 元の候補概念と開始前調査は[`NEXT_IMPROVEMENT_CANDIDATE.md`](NEXT_IMPROVEMENT_CANDIDATE.md)および[`NEXT_IMPROVEMENT_PREFLIGHT_2026-09-14.md`](NEXT_IMPROVEMENT_PREFLIGHT_2026-09-14.md)に履歴として保持する。
 
+
+## PBAI-P14 — 遷移再利用の成立性確認
+
+2026-09-28に`PBAI-P14 / PBAI-C017-v1`を完了した。固定depthの出力同値性と18,686回の遷移再利用は確認した一方、独立64 seed・106局面・7 paired repeatsの未計装wall-clock削減点推定は2.9795%で、事前固定した3.0% gateを通過しなかった。
+
+最終判断は**`COMPLETE / NO-MATERIAL-WALL-CLOCK-IMPROVEMENT / KEEP-AI-GEN4`**。結果後の救済試験、強度比較、release holdout、main統合は行わない。公開AI・release・世代は変更なし。[Program最終報告](public-ai-improvement-program-14/PROGRAM_FINAL_REPORT.md)と[canonical performance記録](../../artifacts/pbai-p14/c017-performance-002.json)を参照する。
+
 ## 直近の独立比較試験
 
 2026-09-22、JevとAI-GEN4の比較を2つの独立Studyとして完了した。いずれも公開AI採用Programではなく、結果から直接AI世代・release・`public/`・本番配信を変更しない。
