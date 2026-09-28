@@ -1,0 +1,52 @@
+name: FDERT G4-10 Stage 1 pre-access audit
+
+on:
+  push:
+    branches:
+      - research/g4-10-fresh-depth11-exact-reachability-topology
+    paths:
+      - doc/fresh-depth11-exact-reachability-topology/authorizations/STAGE_1_PREACCESS_EXECUTE.json
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - name: Syntax-check frozen Stage 1 JavaScript
+        shell: bash
+        run: |
+          node --check tools/experiments/lib/fdert-production.js
+          node --check tools/experiments/lib/fdert-stage1-contract.js
+          node --check tools/experiments/run-fdert-stage1-protected.js
+          node --check tools/experiments/verify-fdert-stage1-independent.js
+          node --check tools/experiments/verify-fdert-stage1-preaccess.js
+      - name: Verify source-bound pre-access contract
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          auth=json.loads(Path('doc/fresh-depth11-exact-reachability-topology/authorizations/STAGE_1_PREACCESS_EXECUTE.json').read_text())
+          assert auth['authorizationDecision']=='PREACCESS-AUDIT-ONLY'
+          assert auth['protectedDepth11AccessAuthorized'] is False
+          assert auth['scientificInferenceAuthorized'] is False
+          for rel, expected in auth['sourceGitBlobSha'].items():
+            actual=subprocess.check_output(['git','hash-object',rel], text=True).strip()
+            assert actual==expected, f'source freeze mismatch {rel}: {actual} != {expected}'
+          PY
+          export FDERT_PREACCESS_OUT="$RUNNER_TEMP/fdert-stage1-preaccess.json"
+          node tools/experiments/verify-fdert-stage1-preaccess.js
+      - name: Upload pre-access audit result
+        uses: actions/upload-artifact@v4
+        with:
+          name: fdert-stage1-preaccess-${{ github.run_id }}
+          path: ${{ runner.temp }}/fdert-stage1-preaccess.json
+          if-no-files-found: error
+          retention-days: 90
