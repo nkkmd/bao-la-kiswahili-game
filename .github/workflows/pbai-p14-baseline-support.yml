@@ -1,0 +1,80 @@
+name: PBAI-P14 baseline support probe
+
+on:
+  push:
+    branches:
+      - engineering/pbai-p14-a1-support
+    paths:
+      - '.github/workflows/pbai-p14-baseline-support.yml'
+      - 'doc/ai-engineering/public-ai-improvement-program-14/BASELINE_SUPPORT_SPEC.md'
+      - 'tools/engineering/pbai-p14/**'
+      - 'tools/engineering/lib/pbai-p14-instrument.cjs'
+      - 'test/pbai-p14-instrumentation.test.cjs'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  baseline-shard:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: 現行AI-GEN4 release回帰
+        run: node --test test/ai-generation-release.test.js test/pbai-p14-instrumentation.test.cjs
+      - name: 計測器とrunnerの構文確認
+        run: |
+          node --check tools/engineering/lib/pbai-p14-instrument.cjs
+          node --check tools/engineering/measure-pbai-p14-baseline.cjs
+          node --check tools/engineering/aggregate-pbai-p14-baseline.cjs
+      - name: baseline support shard ${{ matrix.shard }}
+        run: node tools/engineering/measure-pbai-p14-baseline.cjs ${{ matrix.shard }} artifacts/pbai-p14/shards/shard-${{ matrix.shard }}.json
+      - name: Save this shard even if a later step fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pbai-p14-support-shard-${{ matrix.shard }}-${{ github.run_id }}
+          path: artifacts/pbai-p14/shards/shard-${{ matrix.shard }}.json
+          if-no-files-found: warn
+          retention-days: 30
+
+  aggregate-support:
+    if: always() && needs.baseline-shard.result == 'success'
+    needs: [baseline-shard]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Download all completed shard records
+        uses: actions/download-artifact@v4
+        with:
+          pattern: pbai-p14-support-shard-*
+          path: artifacts/pbai-p14/downloaded
+      - name: Verify seed coverage and apply frozen support gate
+        run: |
+          mkdir -p artifacts/pbai-p14/canonical
+          node tools/engineering/aggregate-pbai-p14-baseline.cjs artifacts/pbai-p14/downloaded artifacts/pbai-p14/canonical/baseline-support.json
+      - name: Save canonical support record
+        uses: actions/upload-artifact@v4
+        with:
+          name: pbai-p14-baseline-support-${{ github.run_id }}
+          path: artifacts/pbai-p14/canonical/baseline-support.json
+          if-no-files-found: error
+          retention-days: 90
