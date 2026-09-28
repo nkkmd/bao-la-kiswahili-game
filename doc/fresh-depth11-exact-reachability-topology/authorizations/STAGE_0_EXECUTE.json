@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G4-10",
+  "studyId": "FDERT-STUDY1",
+  "stageId": "FDERT-S0-TECHNICAL-2026-09-28-v1",
+  "authorizationDecision": "STAGE0-TECHNICAL-AUTHORIZED",
+  "executionAuthorized": true,
+  "executionCountAuthorized": 1,
+  "scientificInferenceAuthorized": false,
+  "protectedDepth11AccessAuthorized": false,
+  "maximumRealFixtureDepthAuthorized": 2,
+  "stage1ExecutionAuthorized": false,
+  "depth12AccessAuthorized": false,
+  "g2_12EstimatorScientificInputAuthorized": false,
+  "reviewedSourceCommit": "ee09d5de7b9df3829696dcdd83f3c596dbda5c0e",
+  "authorizationNonce": "fdert-s0-20260928-6f9a2c1d",
+  "sourceGitBlobSha": {
+    ".github/workflows/fdert-stage0-technical.yml": "e9fde7fd2516053450fb5776f3fdb872344d00b5",
+    "doc/fresh-depth11-exact-reachability-topology/prereg/STAGE_0_TECHNICAL_SPEC.json": "584f703858d7c2a9ed6beb31f9a237adaf6a5212",
+    "tools/experiments/run-fdert-stage0-technical.js": "7d85aa96e1ea348ad223b6e6734e869168f37628",
+    "tools/experiments/lib/fdert-contract.js": "5c564745e44860fa904a2b06cebade2590d43c95",
+    "tools/experiments/lib/drsse-production.js": "e8fc23799415f566850c817c22cf658216bb98be",
+    "tools/experiments/lib/drsse-independent.js": "906e0412bcf47fe37d95ac29ad83f9c83bc52857",
+    "public/engine.js": "1527bb3665228b7a5bd9f03153567aedbaaa22d7"
+  }
+}
