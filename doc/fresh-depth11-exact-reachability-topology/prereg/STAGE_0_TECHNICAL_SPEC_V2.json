@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G4-10",
+  "studyId": "FDERT-STUDY1",
+  "stageId": "FDERT-S0-TECHNICAL-2026-09-28-v2",
+  "supersedesTechnicalStage": "FDERT-S0-TECHNICAL-2026-09-28-v1",
+  "supersessionReason": "v1 self-referential static guard false positive; no protected evidence consumed",
+  "status": "FROZEN-BEFORE-TECHNICAL-EXECUTION",
+  "scientificInferenceAuthorized": false,
+  "protectedDepth11AccessAuthorized": false,
+  "maximumRealFixtureDepth": 2,
+  "realFixture": {
+    "root": "public/engine.js initialState()",
+    "targetDepth": 2,
+    "requiredRootRawStateKey": "2c13e69c51d58e2605bf6018ac848d99685aa4d4fe78c0af9f8e0fc07e1d3fd6",
+    "historicalExpectedUniqueRawStatesByDepth": [1, 4, 14],
+    "historicalExpectedTreeOccurrencesByDepth": ["1", "4", "14"]
+  },
+  "mandatoryControls": [
+    "RAW-and-move-identity binding",
+    "current-engine standard-root identity",
+    "runtime-enforced maximum real fixture depth <= 2",
+    "depth-2 production complete positive control",
+    "depth-2 independent materialized verification",
+    "depth-2 independent full recomputation agreement",
+    "forced unique-state cap fail-closed",
+    "forced move-work cap fail-closed",
+    "forced tree-occurrence cap fail-closed",
+    "forced artifact-byte cap fail-closed",
+    "final-resource-gate just-below/just-above synthetic boundary",
+    "corrupted completion metadata rejection",
+    "partial-result quarantine classification",
+    "production/independent static separation",
+    "protected depth-11 access false"
+  ],
+  "technicalProfile": {
+    "maxCumulativeDistinctRawStates": 1000,
+    "maxDepthLabelledEdges": 5000,
+    "maxParentStateExpansions": 1000,
+    "maxMoveEvaluations": 5000,
+    "maxCumulativeTreeNodeOccurrences": 100000,
+    "maxResidentSetBytes": 2147483648,
+    "maxWallClockSeconds": 120,
+    "maxUncompressedArtifactBytes": 67108864
+  },
+  "passRule": "all mandatory controls pass and runtime-observed maximum real fixture depth is <= 2",
+  "failureRule": "STAGE0-TECHNICAL-INVALID / no protected evidence consumption",
+  "rerunRule": "same Stage-0 v2 is not automatically rerun; any further correction requires another versioned technical refreeze",
+  "stage1AuthorizationOnPass": false
+}
