@@ -15,15 +15,15 @@ Candidate IDは `PBAI-C017-v1`。これはPBAI-P14の隔離開発用IDであり�
 
 ## 2. 凍結する実装範囲
 
-変更を許可する本体ファイルは `public/engine.js` と `public/ai-candidate.js` のみ。追加可能なものはPBAI-P14専用tests、measurement tools、workflow、文書、artifactである。
+変更を許可する本体ファイルは `public/ai-candidate.js` のみ。`public/engine.js` は継承済みAI-GEN3 manifestに固定された公開資産として変更しない。追加可能なものはPBAI-P14専用tests、measurement tools、workflow、文書、artifactである。
 
-1. `BaoEngine` に探索専用のvariant-with-transition APIを追加する。既存 `moveVariants` / `moveVariantsForSearch` と同じ順序・合法性・例外fallbackを保ち、Namua captureについてstop/useの遷移を一度ずつ評価する。
+1. `BaoCandidateAI` 内部に探索専用のvariant-with-transition helperを置く。`E.legalMoves`の順序と既存 `moveVariants` の展開規則を保ち、Namua captureについてstop/useの遷移を一度ずつ評価する。AI-GEN3の固定済みengine assetは変更しない。
 2. after-stateが一致した場合は既存と同じbare moveを返し、そのbare moveの意味（houseChoice既定stop）に対応するstop遷移をキャッシュとして添える。状態が異なる場合は従来どおりstop、useの順に返し、それぞれの遷移・eventsを添える。
 3. 対象以外のvariantには遷移を先行計算せず、従来どおり後段で適用する。stop/useいずれかの計算が例外になった場合もbare moveを返し、候補探索側で従来どおり遷移を再計算する。
 4. `BaoCandidateAI` のenhanced alpha-beta move orderingだけに明示的な内部option `pbaiC017ReuseSearchTransitions: true` を通す。キャッシュがある候補では順位付け用のstateとeventsに再利用し、なければ従来経路を使う。
 5. quiescence、legacy search、MCTS、UI表示、rule logic、evaluation、PBAI-C015既定、worker/message protocolは対象外。新optionが無い場合の実行は変更前と同一にする。
 
-`events` は既存transitionが生成したものを渡し、capture countとimmediate-win判定を変えない。候補中にsource stateや候補moveを変更しない。cache entryは探索nodeを越えて保持しない。候補実装はdefault-offであり、`public/ai-release.js`、configの既定、公開ページの呼出し元を変更しない。
+`events` は既存transitionが生成したものを渡し、capture countとimmediate-win判定を変えない。helperのmove順・move identityは既存 `E.moveVariants` と一致させる。候補中にsource stateや候補moveを変更しない。cache entryは探索nodeを越えて保持しない。候補実装はdefault-offであり、`public/ai-release.js`、configの既定、公開ページの呼出し元を変更しない。
 
 ## 3. 開発用データと実行条件
 
