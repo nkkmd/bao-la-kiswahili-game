@@ -9,7 +9,8 @@ const {instrumentEngine}=require('./lib/pbai-p14-instrument.cjs');
 const ROOT=path.resolve(__dirname,'../..');
 const BASE='22537fb192b6c5bd1e2f3e6bca7488d7baa6f91b';
 const FIRST=2026092901, COUNT=64, PER_SHARD=8, MAX_PLY=128, DEPTH=4;
-const FILES=['engine.js','ai.js','ai-candidate.js','ai-config.js','ai-weights.js','logic-evaluator.js','ai-release.js'];\nconst LOAD_ORDER=['engine.js','ai-weights.js','ai.js','ai-config.js','logic-evaluator.js','ai-candidate.js','ai-release.js'];
+const FILES=['engine.js','ai.js','ai-candidate.js','ai-config.js','ai-weights.js','logic-evaluator.js','ai-release.js'];
+const LOAD_ORDER=['engine.js','ai-weights.js','ai.js','ai-config.js','logic-evaluator.js','ai-candidate.js','ai-release.js'];
 const hash=s=>crypto.createHash('sha256').update(s).digest('hex');
 function rng(seed){let v=seed>>>0;return()=>{v=(v+1831565813)>>>0;let z=Math.imul(v^(v>>>15),v|1);z=(z^(z+Math.imul(z^(z>>>7),z|61)))>>>0;return((z^(z>>>14))>>>0)/4294967296;};}
 const candidateSource=name=>fs.readFileSync(path.join(ROOT,'public',name),'utf8');
