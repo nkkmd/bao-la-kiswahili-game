@@ -1,0 +1,71 @@
+name: PBAI-P15 Worker baseline support
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  support-shard:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Playwright Chromiumを準備
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pbaip15" playwright@1.62.1
+          node "$RUNNER_TEMP/pbaip15/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: runner構文確認
+        run: node --check tools/pbai-p15-worker-support.cjs
+      - name: 固定seed shardを測定し、sampleごとにcheckpoint
+        env:
+          NODE_PATH: ${{ runner.temp }}/pbaip15/node_modules
+        run: node tools/pbai-p15-worker-support.cjs ${{ matrix.shard }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p15-support-shard-${{ matrix.shard }}
+          path: artifacts/local/pbai-p15-worker-support/
+          if-no-files-found: warn
+          retention-days: 90
+  aggregate:
+    if: always()
+    needs: support-shard
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/download-artifact@v4
+        if: always()
+        with:
+          pattern: pbai-p15-support-shard-*
+          path: artifacts/local/pbai-p15-worker-support-download
+          merge-multiple: false
+      - name: raw shardを保持したcanonical resultを作成
+        id: aggregate
+        continue-on-error: true
+        run: node tools/aggregate-pbai-p15-worker-support.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p15-baseline-support-result-${{ github.run_id }}
+          path: artifacts/local/pbai-p15-worker-support/canonical.json
+          if-no-files-found: warn
+          retention-days: 90
+      - name: prospective support gateを反映
+        if: steps.aggregate.outcome == 'failure'
+        run: exit 2
