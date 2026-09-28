@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "programLabel": "G4-10",
+  "studyId": "FDERT-STUDY1",
+  "stageId": "FDERT-S0-TECHNICAL-2026-09-28-v1",
+  "stageDisposition": "STAGE0-TECHNICAL-INVALID",
+  "scientificInferencePerformed": false,
+  "protectedDepth11Access": false,
+  "stage1ExecutionAuthorized": false,
+  "message": "Stage 0 runner contains forbidden depth-11 real computation"
+}
