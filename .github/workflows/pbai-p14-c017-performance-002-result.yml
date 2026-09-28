@@ -1,0 +1,51 @@
+name: Archive PBAI-C017 performance 002 result
+
+on:
+  push:
+    branches:
+      - engineering/pbai-p14-c017-performance-002
+    paths:
+      - '.github/workflows/pbai-p14-c017-performance-002-result.yml'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  archive-result:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Download immutable shards from the completed measurement run
+        uses: actions/download-artifact@v4
+        with:
+          pattern: pbai-p14-c017-performance-002-shard-*
+          run-id: 36411624798
+          github-token: ${{ github.token }}
+          path: artifacts/pbai-p14/c017-performance-002-downloads
+      - name: Materialize canonical endpoint and gate record
+        continue-on-error: true
+        run: |
+          mkdir -p artifacts/pbai-p14/c017-performance-002-canonical
+          node tools/engineering/aggregate-pbai-c017-performance.cjs artifacts/pbai-p14/c017-performance-002-downloads artifacts/pbai-p14/c017-performance-002-canonical/c017-performance-002.json
+      - name: Preserve complete raw and canonical result records
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pbai-p14-c017-performance-002-result-36411624798
+          path: |
+            artifacts/pbai-p14/c017-performance-002-downloads
+            artifacts/pbai-p14/c017-performance-002-canonical/c017-performance-002.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Enforce the prospective speed threshold after preserving evidence
+        if: always()
+        run: |
+          node -e "const r=require('./artifacts/pbai-p14/c017-performance-002-canonical/c017-performance-002.json'); console.log(JSON.stringify(r.gate, null, 2)); if (!r.gate.pass) process.exit(2)"
