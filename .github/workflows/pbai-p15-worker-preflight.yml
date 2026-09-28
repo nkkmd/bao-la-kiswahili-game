@@ -1,0 +1,37 @@
+name: PBAI-P15 Worker support preflight
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-preflight:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Playwright Chromiumを準備
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pbaip15" playwright@1.62.1
+          node "$RUNNER_TEMP/pbaip15/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: 事前構文確認
+        run: |
+          node --check tools/pbai-p15-worker-preflight.cjs
+          node --check tools/pbai-p15-worker-support.cjs
+          node --check tools/aggregate-pbai-p15-worker-support.cjs
+      - name: COOP/COEP、Worker、memory API、取消・再起動を検査
+        env:
+          NODE_PATH: ${{ runner.temp }}/pbaip15/node_modules
+        run: node tools/pbai-p15-worker-preflight.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbai-p15-preflight-${{ github.run_id }}
+          path: artifacts/local/pbai-p15-preflight/
+          if-no-files-found: warn
+          retention-days: 90
