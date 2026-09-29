@@ -42,7 +42,7 @@
 
 ## Research Generation 4 — 局所幾何の意味・移送可能性・exact帰結
 
-第四世代はprospective Program計画を固定したうえで、G3由来claimのfresh-domain transfer、exact consequence、時間構造を検証しています。
+第四世代は事前にProgram計画を固定し、G3由来の主張の新規領域への移送、厳密解との関係、時間構造を検証しました。G4-01〜G4-10は各終了判断を保持して完了しています。
 
 | Agenda | 計画上の役割 | 現在の状態 |
 | --- | --- | --- |
