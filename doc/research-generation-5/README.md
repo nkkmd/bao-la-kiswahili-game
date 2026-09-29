@@ -22,3 +22,4 @@
 2. [現在の状態](CURRENT_STATUS.md) — 着手前に許される作業と未承認事項。
 3. [再開位置](RESUME_HERE.md) — 次の認可レビューで確認すること。
 4. [第四世代の最終統合](../research-generation-4/FINAL_SYNTHESIS.md) — 引き継ぐ成果と限界。
+5. [研究アジェンダ](../FUTURE_RESEARCH_AGENDA.md) — 第五世代以外も含む今後の候補と、過去の研究から引き継ぐ境界。
