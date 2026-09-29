@@ -238,51 +238,51 @@ G4-08は`CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / NO DIRECTION
 
 ## 2. 今後の優先課題
 
-以下は科学的価値の高い候補です。優先順位はauthorizationではありません。G4-09とG4-10はそれぞれの終了条件で閉じ、第四世代core agendaのmain統合まで完了しました。次のscientific agendaを開始する場合は、fresh evidence access前に独立authorization reviewを行います。
+第五世代の中心課題は計画済みです。続く項目には今後の候補と研究境界も含みます。計画や優先順位は個別Studyの実行認可ではありません。G4-09とG4-10はそれぞれの終了条件で閉じ、第四世代core agendaのmain統合まで完了しました。新しい個別Studyを開始する場合は、新規証拠へアクセスする前に独立した認可レビューを行います。
 
-### 2.0 第五世代の中心課題 — 順位変動と厳密価値損失
+### 2.1 第五世代の中心課題 — 順位変動と厳密価値損失
 
 [第五世代研究計画](research-generation-5/PROGRAM_PLAN.md)を作成しました。探索条件による手の順位変動が、完全解析できる新規局面における選択手の厳密価値損失と結び付くかを調べます。順位変動、着手変更、厳密最適集合からの逸脱、同価値の手の入替えを分離し、局面段階・合法手幅・解析領域による成立範囲を検証します。
 
 これはG4-03の順位変動の結果を悪手の証明へ読み替えるものではありません。G4-05・G4-09の固定8領域、G4-09の未読namespace、G4-10の未完成depth-11を新しい正式証拠へ転用しません。[現在の状態](research-generation-5/CURRENT_STATUS.md)は計画作成済み・個別Study未認可であり、正式Study IDやseed・閾値・資源上限は未固定です。科学実行と公開AIの変更は本計画では承認しません。
 
-### 2.1 G4-09・G4-10終了後の次研究境界
+### 2.2 G4-09・G4-10終了後の次研究境界
 
 G4-09 `GCSREA-STUDY1` は`CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE`として研究実行を閉じました。Module Aのsupport gateを結果後に緩和せず、general Stage 2 namespaceは未読のまま封印します。Module Bのfixed-8 exact censusもrerun・domain追加を行いません。
 
 G4-10も`CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP`で終了しました。depth 11の部分出力をformalな結果へ昇格させず、同Studyで上限増加・再実行・代替runnerによる救済・depth 12拡張を行いません。今後の新たな研究はG4-09またはG4-10のrepairとして開始せず、新しいStudy identity、fresh evidence境界、独立authorization reviewを必要とします。
 
-### 2.2 一般化と反例の境界
+### 2.3 一般化と反例の境界
 
 G3-12は`TECHNICAL-INVALID`で閉じ、G4-02もscientific decisionなしで終了しました。一方、G4-03ではfresh transfer domainにおけるpositive generalizationが多数確認され、G4-04ではprospectively frozen P1/P2 domainsで8/8 formal testsが`GENERALIZATION-CONFIRMED`となりました。
 
 今後一般化境界を追加検証する場合も、closed Studyのrepair/reopenやsame-evidence rescueではなく、新しいprospective Study identityを用います。G4-04の8/8をRF1/RF2 subgroupや任意source policy、whole-Bao universal lawへ拡張しません。
 
-### 2.3 深い完全解析の資源境界
+### 2.4 深い完全解析の資源境界
 
 G3-11はstandard initial RAW rootのdepth 10を一度だけ完全列挙しました。続くG4-10は独立の認可を受けてdepth 11に一度アクセスしましたが、事前固定の累積200万RAW状態上限で停止し、complete depth-11 layerは成立しませんでした。G4-10の正式判断は`NON-ESTIMABLE`です。
 
 同Studyの上限を増やした救済・再実行やdepth 12への拡張は行いません。別の科学的問いを扱うなら、新しいStudyの対象、必要資源、停止条件、partial resultの扱い、独立検証を結果を見る前に固定します。depth 10のsame-evidence rerunや、depth 0〜10からの事後的whole-game extrapolationも行いません。
 
-### 2.4 state representationとlong-horizon transition
+### 2.5 state representationとlong-horizon transition
 
 G2-10と`PSRRE-STUDY1`からG2-11へ渡せるeligible frozen strategic representationは得られませんでした。第三世代で成立したresource-bounded local geometry representationもstrategic regimeそのものではありません。
 
 representation-free descriptor、別のprospective representation family、または限定したlongitudinal questionを新規Studyとして設計できます。
 
-### 2.5 RAW identityを保ったcanonicalization検証
+### 2.6 RAW identityを保ったcanonicalization検証
 
 validated transform setは現在も空です。visual symmetryや便宜的なstate compressionをformal validationなしにscientific identityへ導入しません。
 
 terminal stateを含むfull identity fields、move equivariance、winner / pending semantics、independent reconstructionを事前固定した新規Studyとして扱います。
 
-### 2.6 人間・熟練者による判断研究
+### 2.7 人間・熟練者による判断研究
 
 過去のhuman trackはqualified participantへの現実的アクセスを確保できずdeferしました。`N=0`は人間に関するnegative evidenceではありません。
 
 実施する場合は参加資格、recruitment、minimum N、説明・同意、匿名化、分析計画を回答収集前に固定します。machine geometryやsearch instabilityをhuman difficultyの代用にしません。
 
-### 2.7 評価・探索・実戦性の再検証
+### 2.8 評価・探索・実戦性の再検証
 
 評価値、empirical outcome、search reliability、practical comebackはそれぞれ異なるendpointです。将来の研究でも単一の「強さ」へまとめず、測定対象とpopulationを明示します。
 
