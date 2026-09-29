@@ -12,11 +12,10 @@
 | --- | --- |
 | 第五世代の研究計画 | [`research-generation-5/PROGRAM_PLAN.md`](research-generation-5/PROGRAM_PLAN.md) |
 | 第五世代の現在状態 | [`research-generation-5/CURRENT_STATUS.md`](research-generation-5/CURRENT_STATUS.md) |
+| 世代横断の今後の研究候補と研究上の境界 | [`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md) |
 | 第四世代の研究計画 | [`research-generation-4/PROGRAM_PLAN.md`](research-generation-4/PROGRAM_PLAN.md) |
 | 第四世代の現在状態 | [`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md) |
 | 第四世代の最終統合 | [`research-generation-4/FINAL_SYNTHESIS.md`](research-generation-4/FINAL_SYNTHESIS.md) |
-| G4-10の正式結果 | [`fresh-depth11-exact-reachability-topology/FINAL_REPORT.md`](fresh-depth11-exact-reachability-topology/FINAL_REPORT.md) |
-| G4-10 / RG4 main統合記録 | [`research-generation-4/checkpoints/2026-09-28-g4-10-main-integration.md`](research-generation-4/checkpoints/2026-09-28-g4-10-main-integration.md) |
 | G4-01の正式結果 | [`local-game-tree-geometry-transfer-compatibility-instrument/README.md`](local-game-tree-geometry-transfer-compatibility-instrument/README.md) |
 | G4-02の正式状態 | [`structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md`](structural-forcing-corridor-tree-raw-transfer/CURRENT_STATUS.md) |
 | G4-03の正式結果 | [`local-width-search-ranking-transfer/README.md`](local-width-search-ranking-transfer/README.md) |
@@ -28,9 +27,10 @@
 | G4-08の正式結果 | [`rule-semantic-geometry-transition/CURRENT_STATUS.md`](rule-semantic-geometry-transition/CURRENT_STATUS.md) |
 | G4-08 main統合記録 | [`research-generation-4/checkpoints/2026-09-27-g4-08-main-integration.md`](research-generation-4/checkpoints/2026-09-27-g4-08-main-integration.md) |
 | G4-09の正式結果 | [`geometry-conditioned-search-reliability-exact-agreement/CURRENT_STATUS.md`](geometry-conditioned-search-reliability-exact-agreement/CURRENT_STATUS.md) |
+| G4-10の正式結果 | [`fresh-depth11-exact-reachability-topology/FINAL_REPORT.md`](fresh-depth11-exact-reachability-topology/FINAL_REPORT.md) |
+| G4-10 / RG4 main統合記録 | [`research-generation-4/checkpoints/2026-09-28-g4-10-main-integration.md`](research-generation-4/checkpoints/2026-09-28-g4-10-main-integration.md) |
 | 第三世代の全体像 | [`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md) |
 | 第二世代の全体像 | [`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md) |
-| 今後の研究課題 | [`FUTURE_RESEARCH_AGENDA.md`](FUTURE_RESEARCH_AGENDA.md) |
 | 公開AIの改善記録 | [`AI_ENGINEERING_INDEX.md`](AI_ENGINEERING_INDEX.md) |
 | 文書の言語・表記方針 | [`DOCUMENTATION_LANGUAGE_POLICY.md`](DOCUMENTATION_LANGUAGE_POLICY.md) |
 
