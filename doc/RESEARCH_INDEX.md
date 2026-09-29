@@ -1,8 +1,8 @@
 # Bao研究成果索引
 
-更新日: 2026-09-28  
-対象: Research Generation 1〜4  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了・main統合済み。G4-10はCLOSED / NON-ESTIMABLE**
+更新日: 2026-09-29  
+対象: Research Generation 1〜5  
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了・main統合済み。Research Generation 5は計画作成済み・個別Study未認可**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`または`FINAL_REPORT.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
@@ -10,6 +10,8 @@
 
 | 目的 | 文書 |
 | --- | --- |
+| 第五世代の研究計画 | [`research-generation-5/PROGRAM_PLAN.md`](research-generation-5/PROGRAM_PLAN.md) |
+| 第五世代の現在状態 | [`research-generation-5/CURRENT_STATUS.md`](research-generation-5/CURRENT_STATUS.md) |
 | 第四世代の研究計画 | [`research-generation-4/PROGRAM_PLAN.md`](research-generation-4/PROGRAM_PLAN.md) |
 | 第四世代の現在状態 | [`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md) |
 | 第四世代の最終統合 | [`research-generation-4/FINAL_SYNTHESIS.md`](research-generation-4/FINAL_SYNTHESIS.md) |
@@ -32,7 +34,11 @@
 | 公開AIの改善記録 | [`AI_ENGINEERING_INDEX.md`](AI_ENGINEERING_INDEX.md) |
 | 文書の言語・表記方針 | [`DOCUMENTATION_LANGUAGE_POLICY.md`](DOCUMENTATION_LANGUAGE_POLICY.md) |
 
-研究世代と公開AIの世代は別の概念です。Research Generation 2〜4は純粋研究であり、公開AIの改修は独立したengineering trackで管理しています。現在の公開AI系統は`AI-GEN4`です。研究結果が、そのままAI変更や公開承認を意味することはありません。
+研究世代と公開AIの世代は別の概念です。Research Generation 2〜5は純粋研究であり、公開AIの改修は独立したengineering trackで管理しています。現在の公開AI系統は`AI-GEN4`です。研究結果が、そのままAI変更や公開承認を意味することはありません。
+
+## Research Generation 5 — 探索順位と厳密価値損失
+
+第五世代は[計画](research-generation-5/PROGRAM_PLAN.md)を作成した段階で、個別Studyの科学実行は未承認です。新規の完全解析可能な局面を対象に、順位変動、選択手の変更、厳密最適集合からの逸脱、価値損失の関係を別々に調べる構想です。seed、閾値、正式Study ID、resource ceiling、正式結果は未固定です。第四世代の固定8領域や未完成depth-11層を新しい正式証拠に転用しません。[現在の状態](research-generation-5/CURRENT_STATUS.md)と[再開位置](research-generation-5/RESUME_HERE.md)を確認してください。公開AIへの変更は別のAI Engineering判断を必要とします。
 
 ## Research Generation 4 — 局所幾何の意味・移送可能性・exact帰結
 
