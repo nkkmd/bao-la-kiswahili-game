@@ -1,6 +1,6 @@
 # Bao今後の研究アジェンダ
 
-Version: 5.14.0
+Version: 5.15.0
 
 更新日: 2026-09-29  
 Research Generation 2: **Closed (2026-08-31)**（完了）  
@@ -8,7 +8,7 @@ Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了
 Research Generation 4: **core G4-01〜G4-10 scientific agenda complete / G4-10 CLOSED NON-ESTIMABLE / main integrated**  
 Research Generation 5: **探索順位の変動と厳密価値損失の研究計画作成済み／個別Study未認可**
 
-この文書は、完了した研究を短く振り返りながら、次に研究する価値のある問いを整理するためのものです。候補として記載しただけでは、Study開始、seedアクセス、計算実行、公開AI変更は承認されません。
+この文書は、今後の研究課題と、判断の前提となる完了済み研究を整理するものです。まず第1〜3節で現在地・優先課題・新規Studyの条件を確認し、第4〜7節で第一世代から第四世代までの記録を順に参照してください。候補として記載しただけでは、Study開始、seedアクセス、計算実行、公開AI変更は承認されません。
 
 ## 1. 現在地
 
@@ -42,7 +42,238 @@ G4-10 main integration = COMPLETE / FAST-FORWARD
 
 研究成果の索引は[`RESEARCH_INDEX.md`](RESEARCH_INDEX.md)、第二・第三世代の統合結果はそれぞれ[`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md)と[`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md)、第四世代の最新状態は[`research-generation-4/CURRENT_STATUS.md`](research-generation-4/CURRENT_STATUS.md)を参照してください。
 
-## Research Generation 4 — 完了したProgram
+## 2. 今後の優先課題
+
+第五世代の中心課題は計画済みです。続く項目には今後の候補と研究境界も含みます。計画や優先順位は個別Studyの実行認可ではありません。G4-09とG4-10はそれぞれの終了条件で閉じ、第四世代core agendaのmain統合まで完了しました。新しい個別Studyを開始する場合は、新規証拠へアクセスする前に独立した認可レビューを行います。
+
+### 2.1 第五世代の中心課題 — 順位変動と厳密価値損失
+
+[第五世代研究計画](research-generation-5/PROGRAM_PLAN.md)を作成しました。探索条件による手の順位変動が、完全解析できる新規局面における選択手の厳密価値損失と結び付くかを調べます。順位変動、着手変更、厳密最適集合からの逸脱、同価値の手の入替えを分離し、局面段階・合法手幅・解析領域による成立範囲を検証します。
+
+これはG4-03の順位変動の結果を悪手の証明へ読み替えるものではありません。G4-05・G4-09の固定8領域、G4-09の未読namespace、G4-10の未完成depth-11を新しい正式証拠へ転用しません。[現在の状態](research-generation-5/CURRENT_STATUS.md)は計画作成済み・個別Study未認可であり、正式Study IDやseed・閾値・資源上限は未固定です。科学実行と公開AIの変更は本計画では承認しません。
+
+### 2.2 G4-09・G4-10終了後の次研究境界
+
+G4-09 `GCSREA-STUDY1` は`CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE`として研究実行を閉じました。Module Aのsupport gateを結果後に緩和せず、general Stage 2 namespaceは未読のまま封印します。Module Bのfixed-8 exact censusもrerun・domain追加を行いません。
+
+G4-10も`CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP`で終了しました。depth 11の部分出力をformalな結果へ昇格させず、同Studyで上限増加・再実行・代替runnerによる救済・depth 12拡張を行いません。今後の新たな研究はG4-09またはG4-10のrepairとして開始せず、新しいStudy identity、fresh evidence境界、独立authorization reviewを必要とします。
+
+### 2.3 一般化と反例の境界
+
+G3-12は`TECHNICAL-INVALID`で閉じ、G4-02もscientific decisionなしで終了しました。一方、G4-03ではfresh transfer domainにおけるpositive generalizationが多数確認され、G4-04ではprospectively frozen P1/P2 domainsで8/8 formal testsが`GENERALIZATION-CONFIRMED`となりました。
+
+今後一般化境界を追加検証する場合も、closed Studyのrepair/reopenやsame-evidence rescueではなく、新しいprospective Study identityを用います。G4-04の8/8をRF1/RF2 subgroupや任意source policy、whole-Bao universal lawへ拡張しません。
+
+### 2.4 深い完全解析の資源境界
+
+G3-11はstandard initial RAW rootのdepth 10を一度だけ完全列挙しました。続くG4-10は独立の認可を受けてdepth 11に一度アクセスしましたが、事前固定の累積200万RAW状態上限で停止し、complete depth-11 layerは成立しませんでした。G4-10の正式判断は`NON-ESTIMABLE`です。
+
+同Studyの上限を増やした救済・再実行やdepth 12への拡張は行いません。別の科学的問いを扱うなら、新しいStudyの対象、必要資源、停止条件、partial resultの扱い、独立検証を結果を見る前に固定します。depth 10のsame-evidence rerunや、depth 0〜10からの事後的whole-game extrapolationも行いません。
+
+### 2.5 状態表現と長期の局面遷移
+
+G2-10と`PSRRE-STUDY1`からG2-11へ渡せるeligible frozen strategic representationは得られませんでした。第三世代で成立したresource-bounded local geometry representationもstrategic regimeそのものではありません。
+
+representation-free descriptor、別のprospective representation family、または限定したlongitudinal questionを新規Studyとして設計できます。
+
+### 2.6 RAW identityを保つ正準化の検証
+
+validated transform setは現在も空です。visual symmetryや便宜的なstate compressionをformal validationなしにscientific identityへ導入しません。
+
+terminal stateを含むfull identity fields、move equivariance、winner / pending semantics、independent reconstructionを事前固定した新規Studyとして扱います。
+
+### 2.7 人間・熟練者による判断研究
+
+過去のhuman trackはqualified participantへの現実的アクセスを確保できずdeferしました。`N=0`は人間に関するnegative evidenceではありません。
+
+実施する場合は参加資格、recruitment、minimum N、説明・同意、匿名化、分析計画を回答収集前に固定します。machine geometryやsearch instabilityをhuman difficultyの代用にしません。
+
+### 2.8 評価・探索・実戦性の再検証
+
+評価値、empirical outcome、search reliability、practical comebackはそれぞれ異なるendpointです。将来の研究でも単一の「強さ」へまとめず、測定対象とpopulationを明示します。
+
+G4-03のsearch-ranking result、G4-04のtrajectory-transfer result、G4-05のexact microdomain result、G4-06のgeometry / exact-consequence bridge result、G4-07のmultiscale memory / reversal result、G4-08のrule-semantic transition `NON-ESTIMABLE` closure、G4-09の固定8領域のexact census、G4-10の資源上限による終了は、いずれも公開AIの棋力改善を直接示すものではありません。AI改善案への接続と検証条件は[公開AIの改善候補](ai-engineering/AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md)を参照してください。
+
+## 3. 新しいStudyに共通する必須条件
+
+結果を見る前に少なくとも次を固定します。
+
+1. Study ID、科学的問い、対象population
+2. RAW identityを含むデータ同一性
+3. development / formal / holdoutの分離
+4. seed block、使用回数、アクセス条件
+5. endpoint、threshold、multiple-testing rule
+6. estimability・resource・verification gate
+7. technical failureとscientific resultの区別
+8. stopping ruleとno-rescue rule
+9. productionと独立実装の役割
+10. 人間・因果・game-theoretic claimの禁止境界
+
+`INCONCLUSIVE`、`NON-ESTIMABLE`、`NOT-CONFIRMED`、`NOT-GENERALIZED`、`TECHNICAL-INVALID`、`NOT-AUTHORIZED-NOT-EXECUTED`は互いに置き換えません。
+
+## 4. Research Generation 1から残る研究課題
+
+第一世代では、局面類型、戦術、評価、限定終盤、状態空間を記述する語彙と検証手順を構築しました。各結果の詳細は[`RESEARCH_INDEX.md`](RESEARCH_INDEX.md)を参照してください。
+
+### 4.1 局面の相転移点
+
+`capture-branch-expansion`は限定されたmachine scopeで確認されています。別の探索条件、phase、root familyへ広げる場合は新しいprospective replicationが必要です。
+
+### 4.2 局面類型と棋風
+
+Mtajiではbounded two-type morphologyが確認されましたが、普遍的なBao局面分類や人間の棋風分類は確立していません。別representationを用いる場合は新規Studyとして扱います。
+
+### 4.3 局面複雑度・探索不安定性・trajectory dynamics
+
+局面複雑度、local width、search instability、continuous geometry trajectoryは別constructです。限定domainでformalな関係やdirectionが確認された例がありますが、それらを単一の普遍的difficulty指標とは扱いません。
+
+G4-03はroot legal widthとranking-preorder changeのassociationがfresh domainsへ広く移ることを示しました。G4-04はG3-10由来C1/C2/C3/C5 directionがfresh P1/P2 domainsへ8/8で移送されることを確認しました。G4-06では固定8 exact microdomain内でbounded geometryとexact consequenceを接続しました。G4-07では固定P1/P2 trajectoriesの最短lagで全6 geometry axisが`REVERSAL-CONFIRMED`となりました。G4-08はrule-semantic eventとgeometry directionについてformal conclusionを形成できず、24/24 `NON-ESTIMABLE`で閉じました。ただし、いずれも固定domain外へ無条件に一般化しません。
+
+### 4.4 手筋・悪手・錯覚
+
+machine-reproducible motifやerror patternは、traditional tesuji、人間の錯覚、教育上の重要性を自動的には意味しません。人間向けの主張には独立したhuman evidenceが必要です。
+
+### 4.5 形勢評価と勝率校正
+
+既存のcalibration Studyは`INCONCLUSIVE`です。engine evaluationをvalidated Bao win probabilityとして表示または研究上のground truthとして使ってはいけません。
+
+### 4.6 限定終盤と必勝圏
+
+frozen 8-state domainではexact solutionが成立し、G4-05ではfresh reachable late-game rootsから8 complete formal microdomainsを構築して独立exact agreementを確認しました。それでも全Mtaji、全終盤、Bao全体へ一般化できません。
+
+G4-05のformal decisionは`EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN`です。G4-06はその固定8 domainを使ってbounded geometryとのformal bridge mappingを完了しましたが、これもwhole-Bao solution、DRAW分布、arbitrary root optimality、普遍的なgeometry lawへ拡張しません。
+
+### 4.7 逆転可能性と勝負手 — Study 1完了
+
+Practical Comeback / Error-Inducing Move Study 1 (`PCEM-STUDY1`) complete / Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`（CI互換の固定表現）
+
+`PCEM-STUDY1`は、frozen imperfect-opponent policy下でpractical comebackを測定しました。55 candidate auditsのうちpromotion gateを通過した候補は0件でした。
+
+PCEM-STUDY1はStage 1 `EXPLORATORY-ONLY` / promoted candidate 0で閉じており、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。
+
+これは勝負手の不存在、人間に対する錯誤誘発の否定、game-theoreticな最適性を意味しません。再検討する場合は、new study ID、fresh preregistration、fresh evidenceを用いる。
+
+### 4.8 重要局面と勝敗分岐
+
+高いempirical continuation divergenceを持つrootは観測されましたが、frozen grammarからpromotionされたcandidate classは0件でした。別grammarを試す場合は結果後の救済にせず、独立Studyとして固定します。
+
+### 4.9 状態空間とゲーム木
+
+standard initial RAW rootでは、depth 8・9・10までのbounded exact resultsが世代をまたいで蓄積されました。Study 1の正式判断は`SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`で、depth 0〜8のreachable RAW statesは24,848、tree node occurrencesは30,941です。これらはwhole-Bao sizeではなく、depthごとに限定されたexact resultです。
+
+## 5. 第二世代研究アジェンダ
+
+### 5.1 位置づけ
+
+第二世代は純粋な研究プログラムとして完結させる。core `G2-01..G2-12`は2026-08-31に閉じ、すべてのformal dispositionを`main`へ統合しました。
+
+以下の`G2-xx`はAgenda上の順序ラベルであり、正式Study IDではないものを含みます。正式IDと最終結果は各Studyのcanonical recordを優先します。
+
+G2-04はG2-03の成功を前提としない。G2-03でvalidated transformを得られなくても、G2-04はRAW identityを用いる独立研究として実行できる設計でした。
+
+### 5.2 Wave A — 測定とexact基盤
+
+#### G2-01 — Position Evaluation / Empirical Outcome Calibration Replication Study 1 — 最終状態
+
+`PEOCR-STUDY1`は`INCONCLUSIVE`。strict identity firewall後のestimability gateが未達で、validated win-probability mappingは得られませんでした。
+
+#### G2-02 — Search Reliability / Decision Robustness Study 1 — 最終状態
+
+`SRDR-STUDY1`は`INCONCLUSIVE`。formal population gate未達のためprimary criterionを評価していません。
+
+#### G2-03 — State Transformation Semantics / Canonicalization Validation Study 1 — 最終状態
+
+`STSCV-STUDY1`は`INCONCLUSIVE`、candidate outcomesは`NON-ESTIMABLE`。validated transform setは`[]`です。
+
+#### G2-04 — Restricted Endgame Exact Oracle Expansion Study 1 — 最終状態
+
+`REEOE-STUDY1`は`INCONCLUSIVE`。fresh selected rootsで必要なcomplete closure数を満たさず、Stage 2は未承認です。
+
+#### G2-05 — Deep RAW State-Space Enumeration Study 1 — 最終状態
+
+**状態:** **完了 / `DRSSE-STUDY1` / formal decision `EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`**
+
+standard initial RAW rootからdepth 0〜9を完全列挙し、cumulative RAW states 102857を得ました。本Studyは**bounded exact enumerationだけ**を扱い、full-game growth estimationを同一Study内で結果後に追加しない。
+
+### 5.3 Wave B — 戦略表現
+
+#### G2-06 — Rich Critical-Position Representation Study 1 — 最終状態
+
+`RCPR-STUDY1`は`STAGE1-TECHNICAL-INVALID`。exact representation equality gateのfailure後にsame-block rerunを行っていません。
+
+#### G2-07 — Practical Comeback / Reply-Pressure Representation Study 1 — 最終状態
+
+`PCRPR-STUDY1`は`STAGE1-TECHNICAL-INVALID`。mandatory independent full artifactが成立せず、Stage 2は未承認です。
+
+#### G2-08 — Machine Decision-Failure Taxonomy Study 1 — 最終状態
+
+`MDFT-STUDY1`は`NON-ESTIMABLE`。global readiness gate未達のためtaxonomyをformal promotionしていません。
+
+#### G2-09 — Tactical Motif Generalization / Counterexample Study 1 — 最終状態
+
+`TMGC-STUDY1`は`TECHNICAL-INVALID`。scientific seed消費前にtechnical tooling gateで停止し、formal generalization evidenceはありません。
+
+### 5.4 Wave C — 統合と理論
+
+#### G2-10 — Unified Multiaxial Strategic State Representation Study 1 — 最終状態
+
+`UMSSR-STUDY1`はeligible frozen representationを生成せず、`selectedRepresentation = null`。Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`です。
+
+#### G2-11 — Long-Horizon Strategic Transition Structure Study 1 — 最終状態
+
+G2-10と独立前提Study `PSRRE-STUDY1`から必要なrepresentationが得られなかったため、正式Study IDを付与せず、scientific disposition `NON-ESTIMABLE`、execution `NOT-AUTHORIZED-NOT-EXECUTED`として閉じました。long-horizon transitionが存在しないという結果ではありません。
+
+#### G2-12 — State-Space / Game-Tree Growth Estimation Study 1 — 最終状態
+
+`SSGTGE-STUDY1`は`TECHNICAL-INVALID`。canonical `selectedEstimator = null`で、fresh depth 10/11は生成・読取とも行っていません。
+
+### 5.5 人間研究 — core machine programから独立
+
+#### G2-H01 — Human / Expert Strategic Judgment Study 1 — 最終状態
+
+qualified participantへのアクセスを確保できず、`DEFERRED / INDEPENDENT / NON-BLOCKING`です。`N=0`をnegative human evidenceとして扱いません。
+
+### 5.6 第二世代の最終境界
+
+第二世代ではRAW identity、fresh evidence、independent verification、fail-closed、no-rescueを維持しました。Practical Comeback / Error-Inducing Move Study 1 (`PCEM-STUDY1`)も完了した。
+
+第二世代の正本は[`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md)です。
+
+## 6. 第三世代研究アジェンダ
+
+第三世代 `G3-01..G3-12`は2026-09-04に完了し、`main`へ統合済みです。RAW-only bounded local game-tree geometryを中心に、測定器、branch / reply structure、tree / graph divergence、corridor / funnel、search instability、continuous representation、longitudinal dynamics、protected depth-10 exact holdout、generalization境界を検討しました。
+
+### 6.1 世代全体の最終状態
+
+| 区分 | 最終状態 |
+| --- | --- |
+| G3-04 | C1・C6が`CONFIRMED` |
+| G3-07 | 3件`CONFIRMED`、4件`NOT-CONFIRMED`、1件`NON-ESTIMABLE` |
+| G3-10 | C1・C2・C3・C5が`CONFIRMED`、C4が`NOT-CONFIRMED` |
+| G3-11 | depth-10 exact、H1〜H4 `DEEPER-CONFIRMED` |
+| G3-01・02・03・05・06・08・09・12 | `TECHNICAL-INVALID` |
+| G3-H01 | `DEFERRED / INDEPENDENT / NON-BLOCKING` |
+
+### 6.2 何が分かり、何が未確定か
+
+限定されたpopulationとrelative depth 5の範囲では、local corridor / tree-graph structure、local widthとsearch-output changeの関連、continuous geometry trajectoryの一部、depth 10でのexact continuationが確認されました。
+
+一方、これらはwhole-Bao law、causal mechanism、game-theoretic value、人間の難しさ、普遍的なgeneralizationを示しません。G3-12がtechnical-invalidで閉じたため、formalなgeneralization / counterexample decisionもありません。
+
+### 6.3 第三世代終了時点の保護状態と現在の扱い
+
+次の記録は**第三世代が終了した時点**の状態です。depth 11は後にG4-10で別途認可され、一回だけ実行されました。現在も未アクセスという意味ではありません。
+
+```text
+G3-11 depth 10 = OPENED / CONSUMED EXACTLY ONCE
+same-evidence rerun = NOT AUTHORIZED
+depth 11 = NOT AUTHORIZED / NOT ACCESSED
+G3-12 Stage 2 = NOT AUTHORIZED / NOT EXECUTED / seeds UNREAD
+```
+
+後続研究は第三世代のrepairではなく、新しいprospective Studyまたは新しいResearch Generationとして計画します。G4-10の現在の終了状態は[第四世代の最終統合](research-generation-4/FINAL_SYNTHESIS.md)を参照してください。詳細は[`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md)を参照してください。
+
+## 7. 第四世代研究 — 完了したProgram
 
 第四世代は、第三世代で測定可能になった局所ゲーム木幾何について、**意味、移送可能性、exact帰結**を検証するProgramです。計画の正本[`research-generation-4/PROGRAM_PLAN.md`](research-generation-4/PROGRAM_PLAN.md)はprospective freezeとして保持し、事後結果に合わせて書き換えません。
 
@@ -59,14 +290,6 @@ G4-10 main integration = COMPLETE / FAST-FORWARD
 | C | `G4-09` | search reliability / exact agreement | `CLOSED / MODULE-A NOT ELIGIBLE / MODULE-B FIXED8 EXACT-CENSUS COMPLETE / MAIN INTEGRATED` |
 | D | `G4-10` | protected fresh depth-11 exact reachability topology | `CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP / MAIN INTEGRATED` |
 | 独立 | `G4-P01`、`G4-H01` | canonicalization再基礎化とhuman / expert研究 | `NOT AUTHORIZED / DEFERRED` |
-
-### G4-10の終了判断
-
-`FDERT-STUDY1`はone-shot protected depth-11 exact Studyとして実行されましたが、depth 11構築中に事前固定した`2,000,000 cumulative distinct RAW states` ceilingへ到達しました。complete depth-11 layerは成立せず、formal decisionは`NON-ESTIMABLE`、T1〜T4もすべて`NON-ESTIMABLE`です。
-
-Fresh complete 0..10 prefixはG3-11 canonical exact prefixと一致し、integrityはPASSしました。partial depth-11 evidenceはformal result、estimate、lower bound、growth trendへ昇格しません。同Study/versionのresource増加、rerun、alternate runner rescue、depth 12 extensionは認可されません。
-
-第四世代core agendaはG4-01〜G4-10のformal closureをもってscientifically completeです。今後の新しい研究候補は、このclosureをrepairする形ではなく、新しいStudy identityとprospective authorizationを必要とします。
 
 ### G4-01
 
@@ -236,139 +459,33 @@ G4-08は`CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / NO DIRECTION
 
 詳細は[`rule-semantic-geometry-transition/CURRENT_STATUS.md`](rule-semantic-geometry-transition/CURRENT_STATUS.md)、[`rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json)、[`research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md`](research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md)、[`research-generation-4/checkpoints/2026-09-27-g4-08-main-integration.md`](research-generation-4/checkpoints/2026-09-27-g4-08-main-integration.md)を参照してください。
 
-## 2. 今後の優先課題
+### G4-09
 
-第五世代の中心課題は計画済みです。続く項目には今後の候補と研究境界も含みます。計画や優先順位は個別Studyの実行認可ではありません。G4-09とG4-10はそれぞれの終了条件で閉じ、第四世代core agendaのmain統合まで完了しました。新しい個別Studyを開始する場合は、新規証拠へアクセスする前に独立した認可レビューを行います。
+G4-09 `GCSREA-STUDY1`は、一般局面の探索信頼性（Module A）とG4-05固定8領域の厳密解との照合（Module B）を分けて検証しました。Module Aは3つのsearch contrastすべてで定義可能なrootが109件となり、事前固定の最低120件に届かず、正式なholdout評価の対象になりませんでした。Module Bでは36/36の非自明なdomain×configuration cellで厳密な照合を完了しましたが、固定8領域の結果をBao全体の探索正確性へ一般化しません。
 
-### 2.1 第五世代の中心課題 — 順位変動と厳密価値損失
+詳細は[第四世代の最終統合](research-generation-4/FINAL_SYNTHESIS.md)と[現在の状態](geometry-conditioned-search-reliability-exact-agreement/CURRENT_STATUS.md)を参照してください。
 
-[第五世代研究計画](research-generation-5/PROGRAM_PLAN.md)を作成しました。探索条件による手の順位変動が、完全解析できる新規局面における選択手の厳密価値損失と結び付くかを調べます。順位変動、着手変更、厳密最適集合からの逸脱、同価値の手の入替えを分離し、局面段階・合法手幅・解析領域による成立範囲を検証します。
+### G4-10
 
-これはG4-03の順位変動の結果を悪手の証明へ読み替えるものではありません。G4-05・G4-09の固定8領域、G4-09の未読namespace、G4-10の未完成depth-11を新しい正式証拠へ転用しません。[現在の状態](research-generation-5/CURRENT_STATUS.md)は計画作成済み・個別Study未認可であり、正式Study IDやseed・閾値・資源上限は未固定です。科学実行と公開AIの変更は本計画では承認しません。
+`FDERT-STUDY1`はone-shot protected depth-11 exact Studyとして実行されましたが、depth 11構築中に事前固定した`2,000,000 cumulative distinct RAW states` ceilingへ到達しました。complete depth-11 layerは成立せず、formal decisionは`NON-ESTIMABLE`、T1〜T4もすべて`NON-ESTIMABLE`です。
 
-### 2.2 G4-09・G4-10終了後の次研究境界
+Fresh complete 0..10 prefixはG3-11 canonical exact prefixと一致し、integrityはPASSしました。partial depth-11 evidenceはformal result、estimate、lower bound、growth trendへ昇格しません。同Study/versionのresource増加、rerun、alternate runner rescue、depth 12 extensionは認可されません。
 
-G4-09 `GCSREA-STUDY1` は`CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE`として研究実行を閉じました。Module Aのsupport gateを結果後に緩和せず、general Stage 2 namespaceは未読のまま封印します。Module Bのfixed-8 exact censusもrerun・domain追加を行いません。
+第四世代core agendaはG4-01〜G4-10のformal closureをもってscientifically completeです。今後の新しい研究候補は、このclosureをrepairする形ではなく、新しいStudy identityとprospective authorizationを必要とします。
 
-G4-10も`CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP`で終了しました。depth 11の部分出力をformalな結果へ昇格させず、同Studyで上限増加・再実行・代替runnerによる救済・depth 12拡張を行いません。今後の新たな研究はG4-09またはG4-10のrepairとして開始せず、新しいStudy identity、fresh evidence境界、独立authorization reviewを必要とします。
+## 8. 研究の進展と次の計画
 
-### 2.3 一般化と反例の境界
-
-G3-12は`TECHNICAL-INVALID`で閉じ、G4-02もscientific decisionなしで終了しました。一方、G4-03ではfresh transfer domainにおけるpositive generalizationが多数確認され、G4-04ではprospectively frozen P1/P2 domainsで8/8 formal testsが`GENERALIZATION-CONFIRMED`となりました。
-
-今後一般化境界を追加検証する場合も、closed Studyのrepair/reopenやsame-evidence rescueではなく、新しいprospective Study identityを用います。G4-04の8/8をRF1/RF2 subgroupや任意source policy、whole-Bao universal lawへ拡張しません。
-
-### 2.4 深い完全解析の資源境界
-
-G3-11はstandard initial RAW rootのdepth 10を一度だけ完全列挙しました。続くG4-10は独立の認可を受けてdepth 11に一度アクセスしましたが、事前固定の累積200万RAW状態上限で停止し、complete depth-11 layerは成立しませんでした。G4-10の正式判断は`NON-ESTIMABLE`です。
-
-同Studyの上限を増やした救済・再実行やdepth 12への拡張は行いません。別の科学的問いを扱うなら、新しいStudyの対象、必要資源、停止条件、partial resultの扱い、独立検証を結果を見る前に固定します。depth 10のsame-evidence rerunや、depth 0〜10からの事後的whole-game extrapolationも行いません。
-
-### 2.5 状態表現と長期の局面遷移
-
-G2-10と`PSRRE-STUDY1`からG2-11へ渡せるeligible frozen strategic representationは得られませんでした。第三世代で成立したresource-bounded local geometry representationもstrategic regimeそのものではありません。
-
-representation-free descriptor、別のprospective representation family、または限定したlongitudinal questionを新規Studyとして設計できます。
-
-### 2.6 RAW identityを保つ正準化の検証
-
-validated transform setは現在も空です。visual symmetryや便宜的なstate compressionをformal validationなしにscientific identityへ導入しません。
-
-terminal stateを含むfull identity fields、move equivariance、winner / pending semantics、independent reconstructionを事前固定した新規Studyとして扱います。
-
-### 2.7 人間・熟練者による判断研究
-
-過去のhuman trackはqualified participantへの現実的アクセスを確保できずdeferしました。`N=0`は人間に関するnegative evidenceではありません。
-
-実施する場合は参加資格、recruitment、minimum N、説明・同意、匿名化、分析計画を回答収集前に固定します。machine geometryやsearch instabilityをhuman difficultyの代用にしません。
-
-### 2.8 評価・探索・実戦性の再検証
-
-評価値、empirical outcome、search reliability、practical comebackはそれぞれ異なるendpointです。将来の研究でも単一の「強さ」へまとめず、測定対象とpopulationを明示します。
-
-G4-03のsearch-ranking result、G4-04のtrajectory-transfer result、G4-05のexact microdomain result、G4-06のgeometry / exact-consequence bridge result、G4-07のmultiscale memory / reversal result、G4-08のrule-semantic transition `NON-ESTIMABLE` closure、G4-09の固定8領域のexact census、G4-10の資源上限による終了は、いずれも公開AIの棋力改善を直接示すものではありません。AI改善案への接続と検証条件は[公開AIの改善候補](ai-engineering/AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md)を参照してください。
-
-## 3. 新しいStudyに共通する必須条件
-
-結果を見る前に少なくとも次を固定します。
-
-1. Study ID、科学的問い、対象population
-2. RAW identityを含むデータ同一性
-3. development / formal / holdoutの分離
-4. seed block、使用回数、アクセス条件
-5. endpoint、threshold、multiple-testing rule
-6. estimability・resource・verification gate
-7. technical failureとscientific resultの区別
-8. stopping ruleとno-rescue rule
-9. productionと独立実装の役割
-10. 人間・因果・game-theoretic claimの禁止境界
-
-`INCONCLUSIVE`、`NON-ESTIMABLE`、`NOT-CONFIRMED`、`NOT-GENERALIZED`、`TECHNICAL-INVALID`、`NOT-AUTHORIZED-NOT-EXECUTED`は互いに置き換えません。
-
-## 4. Research Generation 1から残る研究課題
-
-第一世代では、局面類型、戦術、評価、限定終盤、状態空間を記述する語彙と検証手順を構築しました。各結果の詳細は[`RESEARCH_INDEX.md`](RESEARCH_INDEX.md)を参照してください。
-
-### 4.1 局面の相転移点
-
-`capture-branch-expansion`は限定されたmachine scopeで確認されています。別の探索条件、phase、root familyへ広げる場合は新しいprospective replicationが必要です。
-
-### 4.2 局面類型と棋風
-
-Mtajiではbounded two-type morphologyが確認されましたが、普遍的なBao局面分類や人間の棋風分類は確立していません。別representationを用いる場合は新規Studyとして扱います。
-
-### 4.3 局面複雑度・探索不安定性・trajectory dynamics
-
-局面複雑度、local width、search instability、continuous geometry trajectoryは別constructです。限定domainでformalな関係やdirectionが確認された例がありますが、それらを単一の普遍的difficulty指標とは扱いません。
-
-G4-03はroot legal widthとranking-preorder changeのassociationがfresh domainsへ広く移ることを示しました。G4-04はG3-10由来C1/C2/C3/C5 directionがfresh P1/P2 domainsへ8/8で移送されることを確認しました。G4-06では固定8 exact microdomain内でbounded geometryとexact consequenceを接続しました。G4-07では固定P1/P2 trajectoriesの最短lagで全6 geometry axisが`REVERSAL-CONFIRMED`となりました。G4-08はrule-semantic eventとgeometry directionについてformal conclusionを形成できず、24/24 `NON-ESTIMABLE`で閉じました。ただし、いずれも固定domain外へ無条件に一般化しません。
-
-### 4.4 手筋・悪手・錯覚
-
-machine-reproducible motifやerror patternは、traditional tesuji、人間の錯覚、教育上の重要性を自動的には意味しません。人間向けの主張には独立したhuman evidenceが必要です。
-
-### 4.5 形勢評価と勝率校正
-
-既存のcalibration Studyは`INCONCLUSIVE`です。engine evaluationをvalidated Bao win probabilityとして表示または研究上のground truthとして使ってはいけません。
-
-### 4.6 限定終盤と必勝圏
-
-frozen 8-state domainではexact solutionが成立し、G4-05ではfresh reachable late-game rootsから8 complete formal microdomainsを構築して独立exact agreementを確認しました。それでも全Mtaji、全終盤、Bao全体へ一般化できません。
-
-G4-05のformal decisionは`EXACT-ORACLE-FOUNDATION-ESTABLISHED-WITHIN-FROZEN-MICRODOMAIN`です。G4-06はその固定8 domainを使ってbounded geometryとのformal bridge mappingを完了しましたが、これもwhole-Bao solution、DRAW分布、arbitrary root optimality、普遍的なgeometry lawへ拡張しません。
-
-### 4.7 逆転可能性と勝負手 — Study 1完了
-
-Practical Comeback / Error-Inducing Move Study 1 (`PCEM-STUDY1`) complete / Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`（CI互換の固定表現）
-
-`PCEM-STUDY1`は、frozen imperfect-opponent policy下でpractical comebackを測定しました。55 candidate auditsのうちpromotion gateを通過した候補は0件でした。
-
-PCEM-STUDY1はStage 1 `EXPLORATORY-ONLY` / promoted candidate 0で閉じており、Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`である。
-
-これは勝負手の不存在、人間に対する錯誤誘発の否定、game-theoreticな最適性を意味しません。再検討する場合は、new study ID、fresh preregistration、fresh evidenceを用いる。
-
-### 4.8 重要局面と勝敗分岐
-
-高いempirical continuation divergenceを持つrootは観測されましたが、frozen grammarからpromotionされたcandidate classは0件でした。別grammarを試す場合は結果後の救済にせず、独立Studyとして固定します。
-
-### 4.9 状態空間とゲーム木
-
-standard initial RAW rootでは、depth 8・9・10までのbounded exact resultsが世代をまたいで蓄積されました。Study 1の正式判断は`SSGTC-EXACT-WITHIN-FROZEN-DEPTH-8-DOMAIN`で、depth 0〜8のreachable RAW statesは24,848、tree node occurrencesは30,941です。これらはwhole-Bao sizeではなく、depthごとに限定されたexact resultです。
-
-## 5. 推奨する研究プログラム
-
-次の順序は、将来programを設計する際の一案です。
+世代をまたぐ研究の進展と、現在計画中の課題を順に示します。個別Studyの実行認可や公開AIへの採用判断ではありません。
 
 1. **[完了] Baoを記述する語彙とRAW identityの構築**
 2. **[完了] 限定domainにおけるexact analysisと独立検証**
-3. **[完了] Local game-tree geometryのbounded measurement**
-4. **[完了] Research Generation 4 — core G4-01〜G4-10は各終了判断を保持してmain統合済み。G4-10は`NON-ESTIMABLE`で閉じた**
-5. **[完了] 逆転可能性と勝負手 — Study 1（Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`）**
+3. **[完了] 逆転可能性と勝負手 — Study 1（Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`）**
+4. **[完了] 第三世代のlocal game-tree geometryのbounded measurement**
+5. **[完了] 第四世代のcore G4-01〜G4-10 — 各終了判断を保持してmain統合済み。G4-10は`NON-ESTIMABLE`で閉じた**
 6. **[独立・未承認] G4-H01によるqualified human / expert evidenceの収集**
-7. **[完了] G4-10のfresh depth-11 exact研究 — 資源上限で`NON-ESTIMABLE`。同Studyでの救済・再実行は行わない**
-8. **[計画作成済み・個別Study未認可] [第五世代研究](research-generation-5/README.md) — 順位変動と厳密価値損失の関係を新規の完全解析可能な局面で検証する**
+7. **[計画作成済み・個別Study未認可] [第五世代研究](research-generation-5/README.md) — 順位変動と厳密価値損失の関係を新規の完全解析可能な局面で検証する**
 
-## 6. 研究と公開AI改善の分離
+## 9. 研究と公開AI改善の分離
 
 研究の目的は、Baoについて再現可能に言えることと、まだ言えないことを明確にすることです。公開AIの目的は、品質・安全性・計算コスト・後方互換性を満たす変更を選ぶことです。
 
@@ -379,11 +496,11 @@ standard initial RAW rootでは、depth 8・9・10までのbounded exact results
 - engineering benchmarkの改善をscientific confirmationへ読み替えない。
 - 公開AIの履歴は[`AI_ENGINEERING_INDEX.md`](AI_ENGINEERING_INDEX.md)で管理する。
 
-## 7. 完了の定義
+## 10. 完了の定義
 
 研究programの完了は、positive resultの数では決めません。各問いに対して、formal result、`NOT-CONFIRMED`、`INCONCLUSIVE`、`NON-ESTIMABLE`、`TECHNICAL-INVALID`、dependency-gated closureのいずれかを、根拠と境界を保ったまま記録できたときに完了とします。
 
-## 8. 新しい世代を始める前の確認
+## 11. 新しい世代を始める前の確認
 
 - 既存世代のclosed Studyをrepairやreopenとして扱っていないか
 - fresh evidenceと既使用evidenceを分離できているか
@@ -392,114 +509,3 @@ standard initial RAW rootでは、depth 8・9・10までのbounded exact results
 - current-facing文書とmachine-readable artifactが一致しているか
 - [`JAPANESE_DOCUMENTATION_QUALITY_GATE.md`](JAPANESE_DOCUMENTATION_QUALITY_GATE.md)を満たすか
 
-## 9. 第二世代研究アジェンダ
-
-### 9.1 位置づけ
-
-第二世代は純粋な研究プログラムとして完結させる。core `G2-01..G2-12`は2026-08-31に閉じ、すべてのformal dispositionを`main`へ統合しました。
-
-以下の`G2-xx`はAgenda上の順序ラベルであり、正式Study IDではないものを含みます。正式IDと最終結果は各Studyのcanonical recordを優先します。
-
-G2-04はG2-03の成功を前提としない。G2-03でvalidated transformを得られなくても、G2-04はRAW identityを用いる独立研究として実行できる設計でした。
-
-### 9.2 Wave A — 測定とexact基盤
-
-#### G2-01 — Position Evaluation / Empirical Outcome Calibration Replication Study 1 — 最終状態
-
-`PEOCR-STUDY1`は`INCONCLUSIVE`。strict identity firewall後のestimability gateが未達で、validated win-probability mappingは得られませんでした。
-
-#### G2-02 — Search Reliability / Decision Robustness Study 1 — 最終状態
-
-`SRDR-STUDY1`は`INCONCLUSIVE`。formal population gate未達のためprimary criterionを評価していません。
-
-#### G2-03 — State Transformation Semantics / Canonicalization Validation Study 1 — 最終状態
-
-`STSCV-STUDY1`は`INCONCLUSIVE`、candidate outcomesは`NON-ESTIMABLE`。validated transform setは`[]`です。
-
-#### G2-04 — Restricted Endgame Exact Oracle Expansion Study 1 — 最終状態
-
-`REEOE-STUDY1`は`INCONCLUSIVE`。fresh selected rootsで必要なcomplete closure数を満たさず、Stage 2は未承認です。
-
-#### G2-05 — Deep RAW State-Space Enumeration Study 1 — 最終状態
-
-**状態:** **完了 / `DRSSE-STUDY1` / formal decision `EXACT-WITHIN-FROZEN-DEPTH-9-DOMAIN`**
-
-standard initial RAW rootからdepth 0〜9を完全列挙し、cumulative RAW states 102857を得ました。本Studyは**bounded exact enumerationだけ**を扱い、full-game growth estimationを同一Study内で結果後に追加しない。
-
-### 9.3 Wave B — 戦略表現
-
-#### G2-06 — Rich Critical-Position Representation Study 1 — 最終状態
-
-`RCPR-STUDY1`は`STAGE1-TECHNICAL-INVALID`。exact representation equality gateのfailure後にsame-block rerunを行っていません。
-
-#### G2-07 — Practical Comeback / Reply-Pressure Representation Study 1 — 最終状態
-
-`PCRPR-STUDY1`は`STAGE1-TECHNICAL-INVALID`。mandatory independent full artifactが成立せず、Stage 2は未承認です。
-
-#### G2-08 — Machine Decision-Failure Taxonomy Study 1 — 最終状態
-
-`MDFT-STUDY1`は`NON-ESTIMABLE`。global readiness gate未達のためtaxonomyをformal promotionしていません。
-
-#### G2-09 — Tactical Motif Generalization / Counterexample Study 1 — 最終状態
-
-`TMGC-STUDY1`は`TECHNICAL-INVALID`。scientific seed消費前にtechnical tooling gateで停止し、formal generalization evidenceはありません。
-
-### 9.4 Wave C — 統合と理論
-
-#### G2-10 — Unified Multiaxial Strategic State Representation Study 1 — 最終状態
-
-`UMSSR-STUDY1`はeligible frozen representationを生成せず、`selectedRepresentation = null`。Stage 2は`NOT-AUTHORIZED-NOT-EXECUTED`です。
-
-#### G2-11 — Long-Horizon Strategic Transition Structure Study 1 — 最終状態
-
-G2-10と独立前提Study `PSRRE-STUDY1`から必要なrepresentationが得られなかったため、正式Study IDを付与せず、scientific disposition `NON-ESTIMABLE`、execution `NOT-AUTHORIZED-NOT-EXECUTED`として閉じました。long-horizon transitionが存在しないという結果ではありません。
-
-#### G2-12 — State-Space / Game-Tree Growth Estimation Study 1 — 最終状態
-
-`SSGTGE-STUDY1`は`TECHNICAL-INVALID`。canonical `selectedEstimator = null`で、fresh depth 10/11は生成・読取とも行っていません。
-
-### 9.5 人間研究 — core machine programから独立
-
-#### G2-H01 — Human / Expert Strategic Judgment Study 1 — 最終状態
-
-qualified participantへのアクセスを確保できず、`DEFERRED / INDEPENDENT / NON-BLOCKING`です。`N=0`をnegative human evidenceとして扱いません。
-
-### 9.6 第二世代の最終境界
-
-第二世代ではRAW identity、fresh evidence、independent verification、fail-closed、no-rescueを維持しました。Practical Comeback / Error-Inducing Move Study 1 (`PCEM-STUDY1`)も完了した。
-
-第二世代の正本は[`research-generation-2/FINAL_SYNTHESIS.md`](research-generation-2/FINAL_SYNTHESIS.md)です。
-
-## 10. 第三世代研究アジェンダ
-
-第三世代 `G3-01..G3-12`は2026-09-04に完了し、`main`へ統合済みです。RAW-only bounded local game-tree geometryを中心に、測定器、branch / reply structure、tree / graph divergence、corridor / funnel、search instability、continuous representation、longitudinal dynamics、protected depth-10 exact holdout、generalization境界を検討しました。
-
-### 10.1 世代全体の最終状態
-
-| 区分 | 最終状態 |
-| --- | --- |
-| G3-04 | C1・C6が`CONFIRMED` |
-| G3-07 | 3件`CONFIRMED`、4件`NOT-CONFIRMED`、1件`NON-ESTIMABLE` |
-| G3-10 | C1・C2・C3・C5が`CONFIRMED`、C4が`NOT-CONFIRMED` |
-| G3-11 | depth-10 exact、H1〜H4 `DEEPER-CONFIRMED` |
-| G3-01・02・03・05・06・08・09・12 | `TECHNICAL-INVALID` |
-| G3-H01 | `DEFERRED / INDEPENDENT / NON-BLOCKING` |
-
-### 10.2 何が分かり、何が未確定か
-
-限定されたpopulationとrelative depth 5の範囲では、local corridor / tree-graph structure、local widthとsearch-output changeの関連、continuous geometry trajectoryの一部、depth 10でのexact continuationが確認されました。
-
-一方、これらはwhole-Bao law、causal mechanism、game-theoretic value、人間の難しさ、普遍的なgeneralizationを示しません。G3-12がtechnical-invalidで閉じたため、formalなgeneralization / counterexample decisionもありません。
-
-### 10.3 第三世代終了時点の保護状態と現在の扱い
-
-次の記録は**第三世代が終了した時点**の状態です。depth 11は後にG4-10で別途認可され、一回だけ実行されました。現在も未アクセスという意味ではありません。
-
-```text
-G3-11 depth 10 = OPENED / CONSUMED EXACTLY ONCE
-same-evidence rerun = NOT AUTHORIZED
-depth 11 = NOT AUTHORIZED / NOT ACCESSED
-G3-12 Stage 2 = NOT AUTHORIZED / NOT EXECUTED / seeds UNREAD
-```
-
-後続研究は第三世代のrepairではなく、新しいprospective Studyまたは新しいResearch Generationとして計画します。G4-10の現在の終了状態は[第四世代の最終統合](research-generation-4/FINAL_SYNTHESIS.md)を参照してください。詳細は[`research-generation-3/FINAL_SYNTHESIS.md`](research-generation-3/FINAL_SYNTHESIS.md)を参照してください。
