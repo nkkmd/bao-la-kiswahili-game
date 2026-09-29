@@ -223,7 +223,7 @@ G4-08は`CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / NO DIRECTION
 
 詳しくは、[`rule-semantic-geometry-transition/CURRENT_STATUS.md`](rule-semantic-geometry-transition/CURRENT_STATUS.md)、[`rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json`](rule-semantic-geometry-transition/results/stage-2/STAGE_2_CANONICAL_RECORD.json)、[`research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md`](research-program-decisions/2026-09-27-g4-08-rule-semantic-geometry-transition-study1-closure.md)、[`research-generation-4/checkpoints/2026-09-27-g4-08-main-integration.md`](research-generation-4/checkpoints/2026-09-27-g4-08-main-integration.md)を参照してください。
 
-### G4-10 — protected depth-11 exact topology
+### G4-10 — 保護された深さ11の到達可能性構造
 
 G4-10 `FDERT-STUDY1` はstandard initial RAW rootからcomplete exact depth 11を構築するone-shot protected Studyとして実行しました。
 
