@@ -264,13 +264,13 @@ G3-11はstandard initial RAW rootのdepth 10を一度だけ完全列挙しまし
 
 同Studyの上限を増やした救済・再実行やdepth 12への拡張は行いません。別の科学的問いを扱うなら、新しいStudyの対象、必要資源、停止条件、partial resultの扱い、独立検証を結果を見る前に固定します。depth 10のsame-evidence rerunや、depth 0〜10からの事後的whole-game extrapolationも行いません。
 
-### 2.5 state representationとlong-horizon transition
+### 2.5 状態表現と長期の局面遷移
 
 G2-10と`PSRRE-STUDY1`からG2-11へ渡せるeligible frozen strategic representationは得られませんでした。第三世代で成立したresource-bounded local geometry representationもstrategic regimeそのものではありません。
 
 representation-free descriptor、別のprospective representation family、または限定したlongitudinal questionを新規Studyとして設計できます。
 
-### 2.6 RAW identityを保ったcanonicalization検証
+### 2.6 RAW identityを保つ正準化の検証
 
 validated transform setは現在も空です。visual symmetryや便宜的なstate compressionをformal validationなしにscientific identityへ導入しません。
 
