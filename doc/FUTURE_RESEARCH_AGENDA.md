@@ -1,11 +1,12 @@
 # Bao今後の研究アジェンダ
 
-Version: 5.13.1
+Version: 5.14.0
 
-更新日: 2026-09-28  
+更新日: 2026-09-29  
 Research Generation 2: **Closed (2026-08-31)**（完了）  
 Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了・統合済み）  
-Research Generation 4: **core G4-01〜G4-10 scientific agenda complete / G4-10 CLOSED NON-ESTIMABLE / main integrated**
+Research Generation 4: **core G4-01〜G4-10 scientific agenda complete / G4-10 CLOSED NON-ESTIMABLE / main integrated**  
+Research Generation 5: **探索順位の変動と厳密価値損失の研究計画作成済み／個別Study未認可**
 
 この文書は、完了した研究を短く振り返りながら、次に研究する価値のある問いを整理するためのものです。候補として記載しただけでは、Study開始、seedアクセス、計算実行、公開AI変更は承認されません。
 
@@ -33,6 +34,7 @@ G4-08 = CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRAT
 G4-09 = CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE / MAIN INTEGRATED
 G4-10 = CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP / MAIN INTEGRATED
 RG4 core G4-01..G4-10 scientific agenda = COMPLETE
+Research Generation 5 = PLAN CREATED / INDIVIDUAL STUDIES NOT AUTHORIZED / SCIENTIFIC RESULTS NONE
 G4-10 same-evidence rerun = NOT AUTHORIZED
 G4-10 depth 12 = NOT AUTHORIZED
 G4-10 main integration = COMPLETE / FAST-FORWARD
@@ -238,6 +240,12 @@ G4-08は`CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / NO DIRECTION
 
 以下は科学的価値の高い候補です。優先順位はauthorizationではありません。G4-09とG4-10はそれぞれの終了条件で閉じ、第四世代core agendaのmain統合まで完了しました。次のscientific agendaを開始する場合は、fresh evidence access前に独立authorization reviewを行います。
 
+### 2.0 第五世代の中心課題 — 順位変動と厳密価値損失
+
+[第五世代研究計画](research-generation-5/PROGRAM_PLAN.md)を作成しました。探索条件による手の順位変動が、完全解析できる新規局面における選択手の厳密価値損失と結び付くかを調べます。順位変動、着手変更、厳密最適集合からの逸脱、同価値の手の入替えを分離し、局面段階・合法手幅・解析領域による成立範囲を検証します。
+
+これはG4-03の順位変動の結果を悪手の証明へ読み替えるものではありません。G4-05・G4-09の固定8領域、G4-09の未読namespace、G4-10の未完成depth-11を新しい正式証拠へ転用しません。[現在の状態](research-generation-5/CURRENT_STATUS.md)は計画作成済み・個別Study未認可であり、正式Study IDやseed・閾値・資源上限は未固定です。科学実行と公開AIの変更は本計画では承認しません。
+
 ### 2.1 G4-09・G4-10終了後の次研究境界
 
 G4-09 `GCSREA-STUDY1` は`CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE`として研究実行を閉じました。Module Aのsupport gateを結果後に緩和せず、general Stage 2 namespaceは未読のまま封印します。Module Bのfixed-8 exact censusもrerun・domain追加を行いません。
@@ -358,6 +366,7 @@ standard initial RAW rootでは、depth 8・9・10までのbounded exact results
 5. **[完了] 逆転可能性と勝負手 — Study 1（Stage 1 `EXPLORATORY-ONLY` / promoted candidates 0 / Stage 2 `NOT-AUTHORIZED-NOT-EXECUTED`）**
 6. **[独立・未承認] G4-H01によるqualified human / expert evidenceの収集**
 7. **[完了] G4-10のfresh depth-11 exact研究 — 資源上限で`NON-ESTIMABLE`。同Studyでの救済・再実行は行わない**
+8. **[計画作成済み・個別Study未認可] [第五世代研究](research-generation-5/README.md) — 順位変動と厳密価値損失の関係を新規の完全解析可能な局面で検証する**
 
 ## 6. 研究と公開AI改善の分離
 
