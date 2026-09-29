@@ -65,6 +65,7 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦が
 | 公開AIの現在状態、採用根拠、改善履歴 | [AI開発の中央索引](doc/AI_ENGINEERING_INDEX.md) |
 | AI-GEN4以降の改善案 | [今後の改善候補](doc/ai-engineering/AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md) |
 | 研究世代ごとの結果と現在状態 | [研究成果の中央索引](doc/RESEARCH_INDEX.md) |
+| 第五世代の研究計画と現在状態 | [第五世代研究](doc/research-generation-5/README.md) |
 | 今後の研究課題 | [研究アジェンダ](doc/FUTURE_RESEARCH_AGENDA.md) |
 
 科学研究と公開AIの開発・改善は別の記録として管理しています。研究上の結果が、そのまま公開AIへの採用や変更を意味するものではありません。
