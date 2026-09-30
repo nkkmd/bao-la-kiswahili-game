@@ -8,6 +8,8 @@ const Locale = window.BaoLocale;
 const t = (english, japanese) => Locale?.t ? Locale.t(english, japanese) : english;
 const canvas = document.querySelector("#game");
 const ctx = canvas.getContext("2d");
+const BOARD_WIDTH = 640;
+const BOARD_HEIGHT = 330;
 const statusNode = document.querySelector("#status");
 const helpNode = document.querySelector("#visible-help");
 const soundButton = document.querySelector("#sound");
@@ -33,7 +35,6 @@ const markAIMoveButton = document.querySelector("#mark-ai-move");
 const copyMarkedButton = document.querySelector("#copy-marked");
 const clearMarkedButton = document.querySelector("#clear-marked");
 const diagnosticStatus = document.querySelector("#diagnostic-status");
-ctx.imageSmoothingEnabled = false;
 const directionPanel = document.querySelector("#move-choices");
 let renderedChoices = null;
 const turnNumber = document.querySelector("#turn-number");
@@ -693,12 +694,27 @@ function pitName(p) { return `${p.player === 0 ? (p.row === 0 ? "A" : "B") : (p.
 function rect(x, y, w, h, color) { ctx.fillStyle = color; ctx.fillRect(Math.round(x), Math.round(y), Math.round(w), Math.round(h)); }
 function label(value, x, y, size = 12, align = "left", color = C.ink) { ctx.fillStyle = color; ctx.font = `bold ${size}px "Courier New", "MS Gothic", monospace`; ctx.textAlign = align; ctx.textBaseline = "middle"; ctx.fillText(value, x, y); }
 function cueScale() {
-  const cssScale = (canvas.clientWidth || canvas.width) / canvas.width;
+  const cssScale = (canvas.clientWidth || BOARD_WIDTH) / BOARD_WIDTH;
   return Math.min(2.2, Math.max(1, 1 / Math.max(cssScale, .45)));
 }
 
+function resizeCanvas() {
+  const bounds = canvas.getBoundingClientRect();
+  if (!bounds.width || !bounds.height) return;
+  const pixelRatio = window.devicePixelRatio || 1;
+  const width = Math.max(1, Math.round(bounds.width * pixelRatio));
+  const height = Math.max(1, Math.round(bounds.height * pixelRatio));
+  if (canvas.width === width && canvas.height === height) return;
+  canvas.width = width;
+  canvas.height = height;
+  // 表示サイズと操作座標は従来の640×330を維持し、内部の描画解像度だけを変える。
+  ctx.setTransform(width / BOARD_WIDTH, 0, 0, height / BOARD_HEIGHT, 0, 0);
+  ctx.imageSmoothingEnabled = true;
+}
+
 function draw(now) {
-  rect(0, 0, 640, 330, C.sky);
+  resizeCanvas();
+  rect(0, 0, BOARD_WIDTH, BOARD_HEIGHT, C.sky);
   drawHeader();
   ctx.save(); ctx.translate(0, -66);
   drawBoard();
@@ -829,7 +845,7 @@ function drawWinner() {
 }
 
 function animationDelay(eventCount, event) {
-  const cssWidth = canvas.clientWidth || canvas.width;
+  const cssWidth = canvas.clientWidth || BOARD_WIDTH;
   const mobileScale = cssWidth < 380 ? 1.8 : cssWidth < 520 ? 1.6 : 1;
   const motionScale = REDUCED ? 1.25 : 1;
   const scale = mobileScale * motionScale;
@@ -892,8 +908,8 @@ function loop(now) {
 canvas.addEventListener("pointerdown", (event) => {
   event.preventDefault(); canvas.focus();
   const bounds = canvas.getBoundingClientRect();
-  const x = (event.clientX - bounds.left) * canvas.width / bounds.width;
-  const y = (event.clientY - bounds.top) * canvas.height / bounds.height + 66;
+  const x = (event.clientX - bounds.left) * BOARD_WIDTH / bounds.width;
+  const y = (event.clientY - bounds.top) * BOARD_HEIGHT / bounds.height + 66;
   const box = choiceBoxes.find((item) => x >= item.x && x <= item.x + item.w && y >= item.y && y <= item.y + item.h);
   if (box) { playMove(box.move); return; }
   const position = positionFromPoint(x, y); if (position) choosePit(position);

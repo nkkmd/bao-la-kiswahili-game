@@ -34,7 +34,7 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, { "Content-Type": mime, "Cache-Control": "no-store" }); res.end(body);
 });
 async function check(name, run) { await run(); report.checks.push(name); console.log(name); }
-async function cacheReady(page, version = "v52") {
+async function cacheReady(page, version = "v53") {
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.waitForFunction(() => !!navigator.serviceWorker.controller);
   await page.waitForFunction(async v => (await caches.keys()).includes("bao-la-kiswahili-" + v), version);
@@ -127,6 +127,71 @@ let browser;
       await guide.close();
       await page.screenshot({ path: path.join(out, "game-rules-link.png"), fullPage: true });
     });
+    await check("盤面の高精細描画・画面幅変更・タップ位置・表示サイズの維持", async () => {
+      const layouts = new Map();
+      for (const deviceScaleFactor of [1, 2, 3]) {
+        const display = await browser.newContext({ locale: "ja-JP", deviceScaleFactor,
+          viewport: { width: 412, height: 915 }, serviceWorkers: "block" });
+        await display.route("https://www.googletagmanager.com/**", route => route.fulfill({ body: "" }));
+        const board = await display.newPage();
+        board.on("pageerror", e => errors.push(String(e)));
+        try {
+          await board.goto(origin + "/?lang=ja");
+          await board.selectOption("#game-mode", "local");
+          await board.click("#start-game");
+          for (const width of [320, 412, 1280]) {
+            await board.click("#new-game");
+            await board.click("#start-game");
+            await board.setViewportSize({ width, height: 915 });
+            await board.waitForFunction(() => {
+              const c = document.querySelector("#game"), r = c.getBoundingClientRect();
+              return r.width > 0 && c.width === Math.round(r.width * devicePixelRatio)
+                && c.height === Math.round(r.height * devicePixelRatio);
+            });
+            await fits(board);
+            const result = await board.evaluate(() => {
+              const c = document.querySelector("#game"), r = c.getBoundingClientRect();
+              const matrix = c.getContext("2d").getTransform();
+              return {
+                width: r.width, height: r.height, pixelWidth: c.width, pixelHeight: c.height,
+                scaleX: matrix.a, scaleY: matrix.d, imageRendering: getComputedStyle(c).imageRendering,
+                smoothing: c.getContext("2d").imageSmoothingEnabled, cueScale: cueScale(),
+                expectedCueScale: Math.min(2.2, Math.max(1, 1 / Math.max(c.clientWidth / 640, .45))),
+                layout: [".titlebar", ".screen-frame", ".game-info", "#game", "#visible-help", "footer"].map(s => {
+                  const n = document.querySelector(s), box = n.getBoundingClientRect();
+                  return [s, box.width, box.height, n.textContent];
+                }),
+              };
+            });
+            assert.equal(result.imageRendering, "auto");
+            assert.equal(result.smoothing, true);
+            assert.ok(Math.abs(result.scaleX - result.pixelWidth / 640) < 1e-6);
+            assert.ok(Math.abs(result.scaleY - result.pixelHeight / 330) < 1e-6);
+            assert.equal(result.cueScale, result.expectedCueScale);
+            assert.ok(Math.abs(result.height - result.width * 330 / 640) < .02);
+            if (layouts.has(width)) assert.deepEqual(result.layout, layouts.get(width));
+            else layouts.set(width, result.layout);
+            // 同じ論理座標の穴を、各解像度と画面幅で実際にクリックする。
+            const target = await board.evaluate(() => {
+              const move = moves[0], r = canvas.getBoundingClientRect();
+              return { player: state.player, row: move.row, index: move.index,
+                x: PIT_X[screenIndex(state.player, move.index)] * r.width / 640,
+                y: (ROW_Y[rowFor(state.player, move.row)] - 66) * r.height / 330 };
+            });
+            await board.locator("#game").click({ position: { x: target.x, y: target.y } });
+            assert.deepEqual(await board.evaluate(() => selected),
+              { player: target.player, row: target.row, index: target.index });
+            await board.waitForFunction(() => document.querySelector("#move-choices button"));
+          }
+          await board.locator("#move-choices button").first().click();
+          await board.waitForFunction(() => state.turn === 2 && !animation);
+          assert.equal(await board.evaluate(() => state.player), 1);
+          if (deviceScaleFactor === 3) await board.screenshot({ path: path.join(out, "game-ja-high-dpi.png"), fullPage: true });
+        } finally {
+          await display.close();
+        }
+      }
+    });
     await check("JavaScript無効時も英語本文と図版を読める", async () => {
       const noJS = await browser.newContext({ javaScriptEnabled: false });
       const staticPage = await noJS.newPage();
@@ -147,7 +212,7 @@ let browser;
         await (await navigator.serviceWorker.getRegistration()).update();
         await changed;
       });
-      await cacheReady(p, "v52");
+      await cacheReady(p, "v53");
       await p.waitForFunction(async () => !(await caches.keys()).includes("bao-la-kiswahili-v39"));
       originUnavailable = true;
       await p.goto(origin + "/rules?lang=ja"); await allImages(p);

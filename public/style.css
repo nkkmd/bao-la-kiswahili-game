@@ -30,7 +30,7 @@ button, summary, select {
 }
 button:hover, button:focus-visible, summary:hover, summary:focus-visible, select:hover, select:focus-visible { background: #34544a; outline: 2px solid #d3e4a5; outline-offset: 1px; }
 .screen-frame { position: relative; border: clamp(5px, 1vw, 10px) solid #304846; padding: 4px; background: #09100f; box-shadow: 0 0 0 2px #080d0d, 0 12px 35px #0009; }
-canvas { display: block; width: 100%; height: auto; aspect-ratio: 640 / 430; background: #a8c98b; image-rendering: pixelated; touch-action: none; cursor: pointer; }
+canvas { display: block; width: 100%; height: auto; aspect-ratio: 640 / 430; background: #a8c98b; image-rendering: auto; touch-action: none; cursor: pointer; }
 .start-screen { position: absolute; z-index: 2; inset: 4px; display: grid; place-items: center; padding: 14px; background: #071011e8; }
 .start-screen[hidden] { display: none; }
 .start-panel { width: min(100%, 360px); max-width: 100%; min-width: 0; box-sizing: border-box; padding: clamp(16px, 4vw, 28px); border: 3px solid #e2c36b; background: #172c2b; box-shadow: 8px 8px 0 #071011; }

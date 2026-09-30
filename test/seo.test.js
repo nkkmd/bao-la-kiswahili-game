@@ -32,7 +32,7 @@ for (const htmlPath of publicHtmlPaths) {
 }
 
 assert.match(readme,
-  /公式公開サイトは \[https:\/\/bao-la-kiswahili\.cultivationdata\.net\/\]/,
+  /公式公開サイト: \[bao-la-kiswahili\.cultivationdata\.net\]\(https:\/\/bao-la-kiswahili\.cultivationdata\.net\/\)/,
   "README identifies the official public game site");
 assert.match(html,
   /<span data-ja="公式公開サイト: ">Official site: <\/span>/,
