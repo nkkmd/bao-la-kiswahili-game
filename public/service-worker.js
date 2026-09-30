@@ -1,6 +1,6 @@
 "use strict";
-// Refresh marker: Google Tag Manager migration (2026-09-20).
-const CACHE = "bao-la-kiswahili-v52";
+// Refresh marker: 盤面の高精細描画への更新 (2026-10-01)。
+const CACHE = "bao-la-kiswahili-v53";
 const FILES = ["./", "./index.html", "./style.css", "./locale.js", "./engine.js", "./ai-weights.js", "./ai.js", "./logic-evaluator.js", "./ai-candidate.js", "./ai-release.js", "./ai-release-worker.js", "./ai-config.js", "./ai-worker.js", "./diagnostics.js", "./review-suggestion.js", "./diagnostic-download.js", "./main.js", "./game-record.js", "./game-record-replay.js", "./game-record-contribution-config.js", "./game-record-contribution.js", "./manifest.webmanifest", "./icon.svg", "./privacy"];
 FILES.push("./rules", "./rules.css", "./rules.js",
   ...["board-overview", "initial-setup", "sowing-before", "sowing-relay", "sowing-stop",
