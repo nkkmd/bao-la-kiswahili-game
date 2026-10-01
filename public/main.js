@@ -57,7 +57,7 @@ const C = {
   alert: "#ff9b8f",
 };
 const PIT_X = Array.from({ length: 8 }, (_, i) => 76 + i * 70);
-const ROW_Y = [106, 174, 256, 324];
+const ROW_Y = [110, 174, 256, 320];
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
 let state = E.initialState();
 let displayState = E.clone(state);
@@ -733,9 +733,10 @@ function drawHeader() {
 }
 
 function drawBoard() {
-  rect(26, 76, 588, 278, C.mid);
-  rect(32, 82, 576, 266, C.gold);
-  rect(38, 88, 564, 254, C.board);
+  // 上下の余白を対称に広げ、最も太い穴の輪郭も外周枠の内側に収める。
+  rect(26, 68, 588, 294, C.mid);
+  rect(32, 74, 576, 282, C.gold);
+  rect(38, 80, 564, 270, C.board);
   rect(38, 211, 564, 8, C.ink);
 
 
@@ -775,10 +776,12 @@ function drawPit(player, row, index) {
   }
   label(String(count), x, y - 1, count > 99 ? Math.min(24, 19 * cueScale()) : Math.min(31, 23 * cueScale()), "center", isSelected ? C.ink : C.pale);
   const nameOffset = player === 0 ? -1 : 1;
+  // 外側の穴だけを寄せても、座標ラベルは従来の位置に保つ。
+  const nameDistance = row === E.FRONT ? 26 : 22;
   label(
     pitName({ player, row, index }),
     x + nameOffset * 21,
-    y + nameOffset * 26,
+    y + nameOffset * nameDistance,
     Math.min(16, 11 * cueScale()),
     "center",
     C.boardLabel,
