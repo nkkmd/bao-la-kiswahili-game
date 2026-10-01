@@ -34,7 +34,7 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, { "Content-Type": mime, "Cache-Control": "no-store" }); res.end(body);
 });
 async function check(name, run) { await run(); report.checks.push(name); console.log(name); }
-async function cacheReady(page, version = "v54") {
+async function cacheReady(page, version = "v55") {
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.waitForFunction(() => !!navigator.serviceWorker.controller);
   await page.waitForFunction(async v => (await caches.keys()).includes("bao-la-kiswahili-" + v), version);
@@ -156,7 +156,7 @@ let browser;
               const pixels = c.getContext("2d").getImageData(0, 0, c.width, c.height).data;
               let borderClear = true;
               for (const y of [77, 353]) for (let x = 40; x <= 600; x += 1) {
-                const offset = (Math.floor((y - 66) * c.height / 330) * c.width
+                const offset = (Math.floor((y - BOARD_OFFSET_Y) * c.height / 330) * c.width
                   + Math.floor(x * c.width / 640)) * 4;
                 if ([226, 195, 107, 255].some((value, channel) => Math.abs(pixels[offset + channel] - value) > 1)) {
                   borderClear = false;
@@ -189,7 +189,7 @@ let browser;
               const move = moves[0], r = canvas.getBoundingClientRect();
               return { player: state.player, row: move.row, index: move.index,
                 x: PIT_X[screenIndex(state.player, move.index)] * r.width / 640,
-                y: (ROW_Y[rowFor(state.player, move.row)] - 66) * r.height / 330 };
+                y: (ROW_Y[rowFor(state.player, move.row)] - BOARD_OFFSET_Y) * r.height / 330 };
             });
             await board.locator("#game").click({ position: { x: target.x, y: target.y } });
             assert.deepEqual(await board.evaluate(() => selected),
@@ -225,7 +225,7 @@ let browser;
         await (await navigator.serviceWorker.getRegistration()).update();
         await changed;
       });
-      await cacheReady(p, "v54");
+      await cacheReady(p, "v55");
       await p.waitForFunction(async () => !(await caches.keys()).includes("bao-la-kiswahili-v39"));
       originUnavailable = true;
       await p.goto(origin + "/rules?lang=ja"); await allImages(p);

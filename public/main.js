@@ -10,6 +10,8 @@ const canvas = document.querySelector("#game");
 const ctx = canvas.getContext("2d");
 const BOARD_WIDTH = 640;
 const BOARD_HEIGHT = 330;
+// 盤面と下部の用語を一緒に下げ、Canvas内の上下の余白を整える。
+const BOARD_OFFSET_Y = 60;
 const statusNode = document.querySelector("#status");
 const helpNode = document.querySelector("#visible-help");
 const soundButton = document.querySelector("#sound");
@@ -716,7 +718,7 @@ function draw(now) {
   resizeCanvas();
   rect(0, 0, BOARD_WIDTH, BOARD_HEIGHT, C.sky);
   drawHeader();
-  ctx.save(); ctx.translate(0, -66);
+  ctx.save(); ctx.translate(0, -BOARD_OFFSET_Y);
   drawBoard();
   if (animation?.current) drawAnimationCue(now);
   if (state.winner !== null && !animation) drawWinner();
@@ -912,7 +914,7 @@ canvas.addEventListener("pointerdown", (event) => {
   event.preventDefault(); canvas.focus();
   const bounds = canvas.getBoundingClientRect();
   const x = (event.clientX - bounds.left) * BOARD_WIDTH / bounds.width;
-  const y = (event.clientY - bounds.top) * BOARD_HEIGHT / bounds.height + 66;
+  const y = (event.clientY - bounds.top) * BOARD_HEIGHT / bounds.height + BOARD_OFFSET_Y;
   const box = choiceBoxes.find((item) => x >= item.x && x <= item.x + item.w && y >= item.y && y <= item.y + item.h);
   if (box) { playMove(box.move); return; }
   const position = positionFromPoint(x, y); if (position) choosePit(position);
