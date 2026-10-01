@@ -34,7 +34,7 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, { "Content-Type": mime, "Cache-Control": "no-store" }); res.end(body);
 });
 async function check(name, run) { await run(); report.checks.push(name); console.log(name); }
-async function cacheReady(page, version = "v53") {
+async function cacheReady(page, version = "v54") {
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.waitForFunction(() => !!navigator.serviceWorker.controller);
   await page.waitForFunction(async v => (await caches.keys()).includes("bao-la-kiswahili-" + v), version);
@@ -152,10 +152,21 @@ let browser;
             const result = await board.evaluate(() => {
               const c = document.querySelector("#game"), r = c.getBoundingClientRect();
               const matrix = c.getContext("2d").getTransform();
+              // 黄色い外周枠の上下が、穴の描画に覆われず連続して見えることを確認する。
+              const pixels = c.getContext("2d").getImageData(0, 0, c.width, c.height).data;
+              let borderClear = true;
+              for (const y of [77, 353]) for (let x = 40; x <= 600; x += 1) {
+                const offset = (Math.floor((y - 66) * c.height / 330) * c.width
+                  + Math.floor(x * c.width / 640)) * 4;
+                if ([226, 195, 107, 255].some((value, channel) => Math.abs(pixels[offset + channel] - value) > 1)) {
+                  borderClear = false;
+                }
+              }
               return {
                 width: r.width, height: r.height, pixelWidth: c.width, pixelHeight: c.height,
                 scaleX: matrix.a, scaleY: matrix.d, imageRendering: getComputedStyle(c).imageRendering,
                 smoothing: c.getContext("2d").imageSmoothingEnabled, cueScale: cueScale(),
+                borderClear,
                 expectedCueScale: Math.min(2.2, Math.max(1, 1 / Math.max(c.clientWidth / 640, .45))),
                 layout: [".titlebar", ".screen-frame", ".game-info", "#game", "#visible-help", "footer"].map(s => {
                   const n = document.querySelector(s), box = n.getBoundingClientRect();
@@ -165,12 +176,14 @@ let browser;
             });
             assert.equal(result.imageRendering, "auto");
             assert.equal(result.smoothing, true);
+            assert.equal(result.borderClear, true, "上下の黄色い枠が穴で途切れない");
             assert.ok(Math.abs(result.scaleX - result.pixelWidth / 640) < 1e-6);
             assert.ok(Math.abs(result.scaleY - result.pixelHeight / 330) < 1e-6);
             assert.equal(result.cueScale, result.expectedCueScale);
             assert.ok(Math.abs(result.height - result.width * 330 / 640) < .02);
             if (layouts.has(width)) assert.deepEqual(result.layout, layouts.get(width));
             else layouts.set(width, result.layout);
+            if (deviceScaleFactor === 3) await board.locator("#game").screenshot({ path: path.join(out, `board-${width}-high-dpi.png`) });
             // 同じ論理座標の穴を、各解像度と画面幅で実際にクリックする。
             const target = await board.evaluate(() => {
               const move = moves[0], r = canvas.getBoundingClientRect();
@@ -212,7 +225,7 @@ let browser;
         await (await navigator.serviceWorker.getRegistration()).update();
         await changed;
       });
-      await cacheReady(p, "v53");
+      await cacheReady(p, "v54");
       await p.waitForFunction(async () => !(await caches.keys()).includes("bao-la-kiswahili-v39"));
       originUnavailable = true;
       await p.goto(origin + "/rules?lang=ja"); await allImages(p);
