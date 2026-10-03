@@ -36,6 +36,10 @@
 
 研究世代と公開AIの世代は別の概念です。Research Generation 2〜5は純粋研究であり、公開AIの改修は独立したengineering trackで管理しています。現在の公開AI系統は`AI-GEN4`です。研究結果が、そのままAI変更や公開承認を意味することはありません。
 
+## 独立した先攻・後攻差追加研究
+
+[AI-GEN4追加研究](first-player-gen4/README.md)は2026-10-03に実行を認可され、事前条件と実行ツールを固定し、GitHub Actionsで実行中です。科学的結論はまだ生成していません。第五世代の個別Studyや公開AIの改修とは分離し、過去の先後差研究の結果を保持します。
+
 ## Research Generation 5 — 探索順位と厳密価値損失
 
 第五世代は[計画](research-generation-5/PROGRAM_PLAN.md)を作成した段階で、個別Studyの科学実行は未承認です。新規の完全解析可能な局面を対象に、順位変動、選択手の変更、厳密最適集合からの逸脱、価値損失の関係を別々に調べる構想です。seed、閾値、正式Study ID、resource ceiling、正式結果は未固定です。第四世代の固定8領域や未完成depth-11層を新しい正式証拠に転用しません。[現在の状態](research-generation-5/CURRENT_STATUS.md)と[再開位置](research-generation-5/RESUME_HERE.md)を確認してください。公開AIへの変更は別のAI Engineering判断を必要とします。
