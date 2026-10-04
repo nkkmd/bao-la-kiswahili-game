@@ -71,3 +71,11 @@ PY
 その後、凍結したソースで、前節の集計・Python検算コマンドの入力先を`/tmp/fpa-gen4-evidence`として3領域を検算できます。Node再生には全棋譜を使用するため時間がかかります。出力JSONの科学的フィールドを記録済みJSONと比較し、再検算結果を元証拠へ置換しません。Node集計の`provenance`は再検算時のHEAD、Node版、run IDなどを記録するため、元runの記録との全byte一致は要求しません。研究ID、manifest hash、領域件数、群別集計、区間、判断、対応比較が一致することを確認し、実行出典の違いは別途記録します。公開expertの時間制限付き探索そのものを再実行すると棋譜が変わる可能性があるため、再集計の再現と対局生成の完全一致を区別します。
 
 本試験の正式状態は`VERIFIED-COMPLETE-DOMAIN`、別言語の再集計状態は`INDEPENDENT-RECOUNT-PASS`です。ルールと区間計算の完全な独立実装検証はしていません。新しい標本・条件の科学実行は本研究の再開として扱わず、独立研究として事前条件を固定します。
+
+## 記述的補足の再集計方法
+
+`trajectory-descriptive.json`は元ZIP内の`games/*.json`から、`phase = formal`かつ`condition = G4E2000`の記録をIDごとに一度だけ読み、方策別に集計しています。各2,048局であることを確認します。
+
+Mtaji到達は`turns[].phase`または最終`state.phase`、継続開始時のNYUMBA所有とreserveは`startState.houseOwned`と`startState.reserve`で確認します。延べ捕獲数は継続部分の`turns[].captured`の合計、捕獲が起きた手数はその値が正の手の件数を、それぞれ局数で割ります。序盤8手の捕獲は含めません。
+
+初手別の件数・先攻勝数は`openingMoves[0]`の穴番号・方向で分類し、`outcome.score`を集計します。探索平均は`stats.forced = false`の手だけを母数にして`completedDepth`と`elapsedMs`を平均します。元の正式集計にある探索平均と一致することを確認し、丸め前の浮動小数点加算順の差は保存された元数値と別に扱います。この記述的補足は新しい正式判断や区間を生成しません。

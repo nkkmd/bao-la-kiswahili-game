@@ -1,0 +1,85 @@
+{
+  "study": "FPA-GEN4-STUDY1-20261003-v1",
+  "analysis": "DESCRIPTIVE-POSTHOC",
+  "sourceArtifactId": 11299644872,
+  "sourceArtifactSHA256": "fa31ed8f35f445be46dcdaae53468fced91c44233b541e53845ef57a223e55d2",
+  "condition": "G4E2000",
+  "openingPlies": 8,
+  "includesOpeningCaptures": false,
+  "inferentialUse": false,
+  "groups": {
+    "top3": {
+      "games": 2048,
+      "openingSlots": 1024,
+      "mtajiReachedGames": 1986,
+      "startingBothHouseOwnedGames": 802,
+      "anyHouseLostFromStandardGames": 2048,
+      "startingReservePairs": {
+        "18,18": 2032,
+        "18,19": 8,
+        "19,18": 8
+      },
+      "meanContinuationCapturedSeeds": 184.4091796875,
+      "meanContinuationCaptureMoves": 45.01611328125,
+      "forcedMoves": 12896,
+      "continuationMoves": 105603,
+      "searchedMoves": 92707,
+      "meanCompletedDepth": 9.991532462489348,
+      "meanSearchMs": 1560.4712408852513,
+      "firstOpeningMoves": {
+        "5-left": {
+          "games": 744,
+          "firstWins": 424
+        },
+        "5-right": {
+          "games": 620,
+          "firstWins": 338
+        },
+        "6-left": {
+          "games": 684,
+          "firstWins": 403
+        }
+      }
+    },
+    "uniform": {
+      "games": 2048,
+      "openingSlots": 1024,
+      "mtajiReachedGames": 2008,
+      "startingBothHouseOwnedGames": 936,
+      "anyHouseLostFromStandardGames": 2046,
+      "startingReservePairs": {
+        "18,18": 2040,
+        "19,20": 1,
+        "20,19": 1,
+        "19,19": 2,
+        "19,18": 2,
+        "18,19": 2
+      },
+      "meanContinuationCapturedSeeds": 183.3427734375,
+      "meanContinuationCaptureMoves": 45.88525390625,
+      "forcedMoves": 13836,
+      "continuationMoves": 108029,
+      "searchedMoves": 94193,
+      "meanCompletedDepth": 10.102449226587963,
+      "meanSearchMs": 1544.8781663471382,
+      "firstOpeningMoves": {
+        "5-left": {
+          "games": 462,
+          "firstWins": 275
+        },
+        "5-right": {
+          "games": 506,
+          "firstWins": 253
+        },
+        "6-left": {
+          "games": 542,
+          "firstWins": 263
+        },
+        "6-right": {
+          "games": 538,
+          "firstWins": 298
+        }
+      }
+    }
+  }
+}
