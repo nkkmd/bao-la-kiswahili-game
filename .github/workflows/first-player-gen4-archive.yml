@@ -1,0 +1,57 @@
+name: AI-GEN4先後差研究の完了証拠保存
+on:
+  pull_request:
+    types: [synchronize]
+    branches: [main]
+    paths: [.github/workflows/first-player-gen4-archive.yml]
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: first-player-gen4-archive
+  cancel-in-progress: false
+jobs:
+  archive:
+    if: github.event.pull_request.number == 178 && github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'research/first-player-ai-gen4-20261003'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: 完了済みartifactの出典とhashを照合して分割保存
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api repos/nkkmd/bao-la-kiswahili-game/actions/runs/37121863392 > "$RUNNER_TEMP/source-run.json"
+          gh api repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11299644872/zip > "$RUNNER_TEMP/verified.zip"
+          python3 - <<'PY'
+          import hashlib, json, os, pathlib
+          root = pathlib.Path('artifacts/first-player-gen4')
+          index = json.loads((root / 'ARCHIVE_INDEX.json').read_text())
+          run = json.loads((pathlib.Path(os.environ['RUNNER_TEMP']) / 'source-run.json').read_text())
+          assert run['conclusion'] == 'success' and run['run_attempt'] == 1
+          assert run['head_sha'] == index['sourceCommit']
+          data = (pathlib.Path(os.environ['RUNNER_TEMP']) / 'verified.zip').read_bytes()
+          assert len(data) == index['artifactBytes']
+          assert hashlib.sha256(data).hexdigest() == index['artifactSHA256']
+          offset = 0
+          for part in index['parts']:
+              chunk = data[offset:offset + part['bytes']]
+              assert hashlib.sha256(chunk).hexdigest() == part['sha256']
+              target = root / part['path']
+              target.parent.mkdir(parents=True, exist_ok=True)
+              if target.exists():
+                  assert target.read_bytes() == chunk
+              else:
+                  target.write_bytes(chunk)
+              offset += len(chunk)
+          assert offset == len(data)
+          print('ARCHIVE-BYTE-EXACT-PASS', len(data), len(index['parts']))
+          PY
+          git add artifacts/first-player-gen4/archive/
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m '研究: 先後差追加試験の検証済み全証拠をhash付きで保存'
+          git push origin HEAD:refs/heads/research/first-player-ai-gen4-20261003

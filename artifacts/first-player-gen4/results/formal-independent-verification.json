@@ -1,0 +1,8 @@
+{
+  "phase": "formal",
+  "games": 16384,
+  "groups": 8,
+  "status": "INDEPENDENT-RECOUNT-PASS",
+  "rulesIndependent": false,
+  "uncertaintyIndependent": false
+}
