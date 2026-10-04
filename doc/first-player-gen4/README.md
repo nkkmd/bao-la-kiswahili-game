@@ -2,13 +2,17 @@
 
 研究ID: `FPA-GEN4-STUDY1-20261003-v1`  
 作成日: 2026-10-03  
-現在の状態: **GitHub Actions実行中。科学的結論は未生成。**
+現在の状態: **全17,768局と最終検証が完了。main統合は未実施。**
 
 Bao la Kiswahiliの標準初期配置を出発点に、AI-GEN4同士の対局で先攻・後攻の勝率差を調べます。過去研究では同一棋譜の反復、序盤分布や探索強度への依存が確認されました。本研究は独立した新規標本でその課題を追試します。
 
-[研究計画](PROTOCOL.md)、[現在の状態](CURRENT_STATUS.md)、[再現・再開手順](REPRODUCIBILITY_INDEX.md)、[研究ログ](RESEARCH_LOG.md)、[認可根拠](AUTHORIZATION.md)の順に確認してください。既存の結果は[先攻・後攻差研究](../FIRST_PLAYER_ADVANTAGE_RESEARCH.md)に保持します。
+[研究概要](OVERVIEW.md)、[最終報告](FINAL_REPORT.md)、[研究計画](PROTOCOL.md)、[現在の状態](CURRENT_STATUS.md)、[再現・再開手順](REPRODUCIBILITY_INDEX.md)、[研究ログ](RESEARCH_LOG.md)、[認可根拠](AUTHORIZATION.md)の順に確認してください。既存の結果は[先攻・後攻差研究](../FIRST_PLAYER_ADVANTAGE_RESEARCH.md)に保持します。
 
 この追加研究は第五世代の個別Studyではありません。研究世代の計画・認可状態を変更せず、公開AIの改修・採用判断とも分離します。
+
+**AI-GEN4の公開expert同士では、静的評価の上位3手から序盤を作る条件で先攻有利が示されました。一方、全合法手から均等に序盤を作る条件では方向を確定できませんでした。Bao一般の先攻・後攻差は未確定です。**
+
+公開expertの先攻勝率は`uniform`で53.17%、`top3`で56.88%です。主要97.5%区間はそれぞれ49.21〜57.11%、52.31〜61.51%でした。詳細は最終報告を参照してください。
 
 ## 調べられることと限界
 

@@ -4,7 +4,9 @@
 
 [事前計画](PROTOCOL.md)、[現在状態](CURRENT_STATUS.md)、[認可根拠](AUTHORIZATION.md)を確認します。機械定義は`tools/research/first-player-gen4/protocol.json`、固定source hashは同ディレクトリの`source-manifest.json`です。
 
-## 技術テストと実行
+## 実行時のコマンド記録
+
+研究は完了しており、以下は実行時の記録です。完了後は新たな対局を生成せず、後節の保存証拠の復元・再集計を使います。
 
 次のコマンドはリポジトリ直下で実行します。最初に凍結済みsource hashが一致することを確認します。
 
@@ -40,6 +42,32 @@ node tools/research/first-player-gen4/aggregate.cjs report artifacts/first-playe
 
 `pilot`と`sensitivity`もそれぞれ同じ集計・検算を行います。欠損、部分対局、改変、開局再生成不一致があれば正式集計を拒否します。Nodeによる全棋譜再生と、Pythonによる独立再集計を区別して記録します。
 
-## 最終保存
+## 完了証拠の復元
 
-科学実行終了後、artifactを取得し、報告・検証JSON・hash付きの圧縮棋譜を`artifacts/first-player-gen4/`へ保存します。完了報告、現在状態、研究ログ、中央索引を一致させ、日本語品質ゲートを確認して研究を閉じます。
+科学run `37121863392` / attempt 1と、検証済みartifact `11299644872`が確定証拠です。[保存索引](../../artifacts/first-player-gen4/ARCHIVE_INDEX.json)にZIPと分割ファイル、集計JSONのhashを保持します。保存専用run `37194651908`は成功し、全証拠を研究ブランチへ保存しました。元の科学workflowとsource manifestは変更していません。
+
+リポジトリの研究ブランチから、以下を実行します。作業用ディレクトリへ復元し、保存JSONを上書きしません。
+
+```sh
+python3 - <<'PY'
+import hashlib, json, pathlib, zipfile
+root = pathlib.Path('artifacts/first-player-gen4')
+index = json.loads((root / 'ARCHIVE_INDEX.json').read_text())
+chunks = []
+for item in index['parts']:
+    data = (root / item['path']).read_bytes()
+    assert len(data) == item['bytes']
+    assert hashlib.sha256(data).hexdigest() == item['sha256']
+    chunks.append(data)
+data = b''.join(chunks)
+assert len(data) == index['artifactBytes']
+assert hashlib.sha256(data).hexdigest() == index['artifactSHA256']
+pathlib.Path('/tmp/fpa-gen4-verified.zip').write_bytes(data)
+with zipfile.ZipFile('/tmp/fpa-gen4-verified.zip') as archive:
+    archive.extractall('/tmp/fpa-gen4-evidence')
+PY
+```
+
+その後、凍結したソースで、前節の集計・Python検算コマンドの入力先を`/tmp/fpa-gen4-evidence`として3領域を検算できます。Node再生には全棋譜を使用するため時間がかかります。出力JSONを記録済みJSONと比較し、再検算結果を元証拠へ置換しません。公開expertの時間制限付き探索そのものを再実行すると棋譜が変わる可能性があるため、再集計の再現と対局生成の完全一致を区別します。
+
+本試験の正式状態は`VERIFIED-COMPLETE-DOMAIN`、別言語の再集計状態は`INDEPENDENT-RECOUNT-PASS`です。ルールと区間計算の完全な独立実装検証はしていません。新しい標本・条件の科学実行は本研究の再開として扱わず、独立研究として事前条件を固定します。
