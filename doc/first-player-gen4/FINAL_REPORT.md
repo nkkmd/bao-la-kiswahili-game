@@ -4,7 +4,7 @@
 
 完了日: 2026-10-04
 
-状態: **予定した全17,768局と最終検証が正常完了。研究ブランチへ結果を保存。main統合は未実施。**
+状態: **予定した全17,768局と最終検証が正常完了。研究ブランチへ結果を保存。main統合済み（PR #178）。**
 
 ## 1. 結論
 
@@ -105,6 +105,6 @@ Pythonの別実装による勝敗・件数・手数・局面多様性・未決�
 
 科学ソースcommitは`542439d33b80275550f07a8ed04295e51fd545e1`、manifest hashは`a7372d7cae4162c7c7b384ce218e0f20ffa31baeab5191106853bb8cd32d9ebe`です。[run 37121863392](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37121863392)はattempt 1で、2026-10-04 09:59:57 UTC（日本時間18:59:57）に成功終了しました。再実行で結果を置換していません。
 
-[機械集計と圧縮全証拠](../../artifacts/first-player-gen4/README.md)、[再現手順](REPRODUCIBILITY_INDEX.md)、[現在状態](CURRENT_STATUS.md)、[研究ログ](RESEARCH_LOG.md)、[文書監査](DOCUMENT_AUDIT.md)に詳細を保存します。[PR #178](https://github.com/nkkmd/bao-la-kiswahili-game/pull/178)の研究ブランチに記録し、main統合は別の作業状態として管理します。公開AIと既存研究の結果は変更しません。
+[機械集計と圧縮全証拠](../../artifacts/first-player-gen4/README.md)、[再現手順](REPRODUCIBILITY_INDEX.md)、[現在状態](CURRENT_STATUS.md)、[研究ログ](RESEARCH_LOG.md)、[文書監査](DOCUMENT_AUDIT.md)に詳細を保存しました。[PR #178](https://github.com/nkkmd/bao-la-kiswahili-game/pull/178)を通じてmainへ統合済みです。統合commitと最終監査は[統合記録](MAIN_INTEGRATION.md)に保持します。公開AIと既存研究の結果は変更しません。
 
 本研究の予定対局は完了です。追加の自己対局をこの標本へ継ぎ足しません。次に一般性を検討するなら、異なる序盤評価器・探索方式・時間配分を結果生成前に固定し、新規seedの独立研究として追試するのが適切です。理論的先後差には、標準初期局面の深い探索や限定領域の厳密解など、別の証拠が必要です。

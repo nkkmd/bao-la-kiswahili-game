@@ -2,9 +2,9 @@
 
 研究ID: `FPA-GEN4-STUDY1-20261003-v1`  
 作成日: 2026-10-03  
-現在の状態: **全17,768局と最終検証が完了。main統合は未実施。**
+現在の状態: **全17,768局と最終検証が完了。main統合済み（PR #178）。**
 
-Bao la Kiswahiliの標準初期配置を出発点に、AI-GEN4同士の対局で先攻・後攻の勝率差を調べます。過去研究では同一棋譜の反復、序盤分布や探索強度への依存が確認されました。本研究は独立した新規標本でその課題を追試します。
+Bao la Kiswahiliの標準初期配置を出発点に、AI-GEN4同士の対局で先攻・後攻の勝率差を調べました。過去研究では同一棋譜の反復、序盤分布や探索強度への依存が確認されました。本研究は独立した新規標本でその課題を追試しました。
 
 [研究概要](OVERVIEW.md)、[最終報告](FINAL_REPORT.md)、[研究計画](PROTOCOL.md)、[現在の状態](CURRENT_STATUS.md)、[再現・再開手順](REPRODUCIBILITY_INDEX.md)、[研究ログ](RESEARCH_LOG.md)、[認可根拠](AUTHORIZATION.md)の順に確認してください。既存の結果は[先攻・後攻差研究](../FIRST_PLAYER_ADVANTAGE_RESEARCH.md)に保持します。
 

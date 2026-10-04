@@ -46,7 +46,7 @@ node tools/research/first-player-gen4/aggregate.cjs report artifacts/first-playe
 
 科学run `37121863392` / attempt 1と、検証済みartifact `11299644872`が確定証拠です。[保存索引](../../artifacts/first-player-gen4/ARCHIVE_INDEX.json)にZIPと分割ファイル、集計JSONのhashを保持します。保存専用run `37194651908`は成功し、全証拠を研究ブランチへ保存しました。元の科学workflowとsource manifestは変更していません。
 
-リポジトリの研究ブランチから、以下を実行します。作業用ディレクトリへ復元し、保存JSONを上書きしません。
+統合済みのmainまたは保存済みの研究ブランチから、以下を実行します。作業用ディレクトリへ復元し、保存JSONを上書きしません。
 
 ```sh
 python3 - <<'PY'
@@ -79,3 +79,7 @@ PY
 Mtaji到達は`turns[].phase`または最終`state.phase`、継続開始時のNYUMBA所有とreserveは`startState.houseOwned`と`startState.reserve`で確認します。延べ捕獲数は継続部分の`turns[].captured`の合計、捕獲が起きた手数はその値が正の手の件数を、それぞれ局数で割ります。序盤8手の捕獲は含めません。
 
 初手別の件数・先攻勝数は`openingMoves[0]`の穴番号・方向で分類し、`outcome.score`を集計します。探索平均は`stats.forced = false`の手だけを母数にして`completedDepth`と`elapsedMs`を平均します。元の正式集計にある探索平均と一致することを確認し、丸め前の浮動小数点加算順の差は保存された元数値と別に扱います。この記述的補足は新しい正式判断や区間を生成しません。
+
+## 統合後の参照先
+
+研究記録と全証拠はmainに統合済みです。[統合記録](MAIN_INTEGRATION.md)に科学ソースcommit、研究HEAD、merge commit、検証結果を区別して保持します。文書の統合・状態更新によって、元runの`provenance`を書き換えません。

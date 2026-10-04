@@ -4,4 +4,4 @@
 
 同じseedで対局を再生成して、保存済みの科学的証拠を置換しません。検算するときは保存証拠を別の作業ディレクトリへ展開し、凍結した集計器・検算器を使います。時間制限expertの探索を再実行した場合の棋譜一致は保証されません。
 
-研究ブランチは`research/first-player-ai-gen4-20261003`、PRは[#178](https://github.com/nkkmd/bao-la-kiswahili-game/pull/178)です。main統合は未実施であり、完了研究の保存状態と統合状態を混同しません。別条件・追加標本の試験は新規研究として扱います。
+研究ブランチは`research/first-player-ai-gen4-20261003`、PRは[#178](https://github.com/nkkmd/bao-la-kiswahili-game/pull/178)です。PR #178はmerge済みで、mainへ統合済みです。[統合記録](MAIN_INTEGRATION.md)でcommitと最終監査を確認できます。別条件・追加標本の試験は新規研究として扱います。
