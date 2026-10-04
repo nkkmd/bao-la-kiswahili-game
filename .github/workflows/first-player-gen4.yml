@@ -1,0 +1,166 @@
+name: AI-GEN4 先攻後攻差追加研究
+on:
+  pull_request:
+    types: [opened]
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: first-player-gen4-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: false
+jobs:
+  pilot:
+    if: github.head_ref == 'research/first-player-ai-gen4-20261003' || (github.event_name == 'workflow_dispatch' && github.ref_name == 'research/first-player-ai-gen4-20261003')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: 保存点と座席交換の検証
+        run: node --test test/first-player-gen4.test.cjs
+      - uses: actions/download-artifact@v4
+        if: github.run_attempt != 1
+        with:
+          pattern: fpa-gen4-pilot-*
+          path: artifacts/first-player-gen4/run/
+          merge-multiple: true
+      - name: 標準初期局面の診断
+        run: node tools/research/first-player-gen4/run.cjs diagnostic artifacts/first-player-gen4/run
+      - name: 正式標本と分離した予備試験
+        run: node tools/research/first-player-gen4/run.cjs pilot artifacts/first-player-gen4/run
+      - name: 予備試験の再生・別言語検算
+        run: |
+          node tools/research/first-player-gen4/aggregate.cjs aggregate artifacts/first-player-gen4/run pilot
+          python3 tools/research/first-player-gen4/verify.py artifacts/first-player-gen4/run pilot
+          node tools/research/first-player-gen4/aggregate.cjs report artifacts/first-player-gen4/run
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fpa-gen4-pilot-${{ github.run_attempt }}
+          path: artifacts/first-player-gen4/run/
+          retention-days: 90
+          if-no-files-found: error
+  formal-fixed:
+    needs: pilot
+    runs-on: ubuntu-24.04
+    timeout-minutes: 235
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/download-artifact@v4
+        if: github.run_attempt != 1
+        with:
+          pattern: fpa-gen4-formal-fixed-${{ matrix.shard }}-*
+          path: artifacts/first-player-gen4/run/
+          merge-multiple: true
+      - name: 深度4・深度6・従来評価の未完了対局
+        run: node tools/research/first-player-gen4/run.cjs formal artifacts/first-player-gen4/run ${{ matrix.shard }} fixed
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fpa-gen4-formal-fixed-${{ matrix.shard }}-${{ github.run_attempt }}
+          path: artifacts/first-player-gen4/run/
+          retention-days: 90
+          if-no-files-found: error
+  formal-expert:
+    needs: pilot
+    runs-on: ubuntu-24.04
+    timeout-minutes: 235
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        policy: [uniform, top3]
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/download-artifact@v4
+        if: github.run_attempt != 1
+        with:
+          pattern: fpa-gen4-formal-expert-${{ matrix.policy }}-${{ matrix.shard }}-*
+          path: artifacts/first-player-gen4/run/
+          merge-multiple: true
+      - name: 公開expert相当の未完了対局
+        run: node tools/research/first-player-gen4/run.cjs formal artifacts/first-player-gen4/run ${{ matrix.shard }} expert-${{ matrix.policy }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fpa-gen4-formal-expert-${{ matrix.policy }}-${{ matrix.shard }}-${{ github.run_attempt }}
+          path: artifacts/first-player-gen4/run/
+          retention-days: 90
+          if-no-files-found: error
+  sensitivity:
+    needs: pilot
+    runs-on: ubuntu-24.04
+    timeout-minutes: 235
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/download-artifact@v4
+        if: github.run_attempt != 1
+        with:
+          pattern: fpa-gen4-sensitivity-*
+          path: artifacts/first-player-gen4/run/
+          merge-multiple: true
+      - name: 序盤4手・12手の感度分析
+        run: node tools/research/first-player-gen4/run.cjs sensitivity artifacts/first-player-gen4/run
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fpa-gen4-sensitivity-${{ github.run_attempt }}
+          path: artifacts/first-player-gen4/run/
+          retention-days: 90
+          if-no-files-found: error
+  verify:
+    needs: [pilot, formal-fixed, formal-expert, sensitivity]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: fpa-gen4-*
+          path: artifacts/first-player-gen4/evidence/
+      - name: 全棋譜の通常遷移による再生・領域完全性・集計
+        run: |
+          for phase in pilot formal sensitivity; do
+            node tools/research/first-player-gen4/aggregate.cjs aggregate artifacts/first-player-gen4/evidence "$phase"
+            python3 tools/research/first-player-gen4/verify.py artifacts/first-player-gen4/evidence "$phase"
+          done
+          node tools/research/first-player-gen4/aggregate.cjs report artifacts/first-player-gen4/evidence
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fpa-gen4-verified-${{ github.run_attempt }}
+          path: artifacts/first-player-gen4/evidence/
+          retention-days: 90
+          if-no-files-found: error

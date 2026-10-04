@@ -1,0 +1,88 @@
+{
+  "study": "FPA-GEN4-STUDY1-20261003-v1",
+  "sourceCommit": "542439d33b80275550f07a8ed04295e51fd545e1",
+  "runId": 37121863392,
+  "attempt": 1,
+  "completedAt": "2026-10-04T09:59:57Z",
+  "artifactId": 11299644872,
+  "artifactName": "fpa-gen4-verified-1",
+  "artifactBytes": 119019846,
+  "artifactSHA256": "fa31ed8f35f445be46dcdaae53468fced91c44233b541e53845ef57a223e55d2",
+  "games": 17768,
+  "parts": [
+    {
+      "path": "archive/verified.zip.part01",
+      "bytes": 16777216,
+      "sha256": "d86d4a67722e1ae9dbe4a44c199d928c19fb155deb162b5cc00c090c2faa7c7b"
+    },
+    {
+      "path": "archive/verified.zip.part02",
+      "bytes": 16777216,
+      "sha256": "af908ac8b996b9dc1dd59ccf4e7429b1cb968c40e51935e8bbb0681970a6e6a2"
+    },
+    {
+      "path": "archive/verified.zip.part03",
+      "bytes": 16777216,
+      "sha256": "91bcd3a30e126432b499c66d0efc4aac64f7d0b6377a3ba3760f5ca1339affcb"
+    },
+    {
+      "path": "archive/verified.zip.part04",
+      "bytes": 16777216,
+      "sha256": "2c3a300617992cbf5bacfbbd074ddc064906062dbf555399cd687c23964c92de"
+    },
+    {
+      "path": "archive/verified.zip.part05",
+      "bytes": 16777216,
+      "sha256": "8ca33658a73ce2b992d6b5fad90cc365e9775b5149aa8b2d1c498f3bc07ecd2a"
+    },
+    {
+      "path": "archive/verified.zip.part06",
+      "bytes": 16777216,
+      "sha256": "b3c6964c6cfa40537a239ee467f48605efb6bff782ecf30e3b88de5411ff9636"
+    },
+    {
+      "path": "archive/verified.zip.part07",
+      "bytes": 16777216,
+      "sha256": "7fe18292e66d8b68fddcee4c8582251089d1410fed12c02e41ad00527d9cfd7a"
+    },
+    {
+      "path": "archive/verified.zip.part08",
+      "bytes": 1579334,
+      "sha256": "227d252477671a0c32e681354c4cd449f7312d34f91117888a1c100cd9ec6853"
+    }
+  ],
+  "results": [
+    {
+      "path": "results/REPORT.md",
+      "sha256": "176adead4bdffde2d7f7d7cb7c07fba865846e61ce1278171ad79a4b9569d002"
+    },
+    {
+      "path": "results/diagnostic.json",
+      "sha256": "2f87360d64f30740daed26c5bbc5eea14646ce07e0e505b4f66039a051a0e4cd"
+    },
+    {
+      "path": "results/formal-independent-verification.json",
+      "sha256": "954bad856d11868b17c1b7e41771534fa0058254a1dca47d27d2eeb8b2813440"
+    },
+    {
+      "path": "results/formal-summary.json",
+      "sha256": "7d635cbdb0732a45a1b5c21a748088da15ee96e66e150da271d60c8f1363a9ba"
+    },
+    {
+      "path": "results/pilot-independent-verification.json",
+      "sha256": "64616ef28ed2fa71a5a453d85767c7f80dc1b4810a4b438e5073584eeeaf5d46"
+    },
+    {
+      "path": "results/pilot-summary.json",
+      "sha256": "1f2d29ccbd017cf75b77b808b0d3299c43ad2c1f9cea2ba8465ece54c6522770"
+    },
+    {
+      "path": "results/sensitivity-independent-verification.json",
+      "sha256": "6c3b3bf4ee0c705f2f43714026afc7f7fdf1b492fab3989a044fdb7b2f94dd2e"
+    },
+    {
+      "path": "results/sensitivity-summary.json",
+      "sha256": "0fbdb688a31438fc731beb7c80210569b0e890a56b0609032bb5786edff876bf"
+    }
+  ]
+}
