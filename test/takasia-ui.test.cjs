@@ -117,6 +117,7 @@ test("日英説明・図版・既存anchor・新キャッシュの参照が整�
   }
   assert.doesNotMatch(guide, /Takasia is not applied|takasiaは不適用|特殊な制約takasiaは、このブラウザゲームでは適用しません/);
   const sw = fs.readFileSync("public/service-worker.js", "utf8");
+  assert.match(fs.readFileSync("public/style.css", "utf8"), /\.takasia-status\[hidden\]\s*\{\s*display:\s*none/);
   for (const name of ["takasia-target", "takasia-stop"]) {
     assert.ok(sw.includes(name));
     assert.match(guide, new RegExp(name + '\\.svg'));

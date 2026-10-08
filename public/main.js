@@ -166,7 +166,7 @@ function updateReplayControls() {
     : t(" — v0.2.0 rules (with takasia)", " — v0.2.0ルール（takasiaあり）");
 }
 
-function showReplayHelp() {
+function showReplayHelp(commentary = null) {
   if (!replaySession) return;
   const index = replaySession.index;
   const total = replaySession.record.moves.length;
@@ -176,10 +176,9 @@ function showReplayHelp() {
     return;
   }
   const entry = replaySession.record.moves[index - 1];
-  latestRuleCommentary = moveRuleCommentary(entry.move);
-  // 「戻る」でも同じ版のイベントから最後の説明を復元する。
-  const transition = replaySession.engine.applyMove(replaySession.states[index - 1], entry.move);
-  latestRuleCommentary = summarizeRuleCommentary(entry.move, transition.events);
+  // 進む場合は生成済みの説明を再利用。「戻る」は同じ版の1手のイベントから復元する。
+  latestRuleCommentary = commentary || summarizeRuleCommentary(entry.move,
+    replaySession.engine.applyMove(replaySession.states[index - 1], entry.move).events);
   if (index === total && state.winner !== null) {
     const winner = state.winner === 0 ? "SOUTH" : "NORTH";
     showTurnHelp(t(`Replay ${index} / ${total} — ${winner} wins`, `棋譜 ${index} / ${total} — ${winner}の勝ち`));
@@ -722,7 +721,7 @@ function afterMove() {
     }
     moves = [];
     updateReplayControls();
-    showReplayHelp();
+    showReplayHelp(latestRuleCommentary);
     return;
   }
   if (state.winner !== null) {
