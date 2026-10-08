@@ -1,6 +1,6 @@
 # Bao公開AI改善の索引
 
-更新日: 2026-10-08
+更新日: 2026-10-09（日本時間）
 現在の公開AI系統: **`AI-GEN4`**
 現在の正式release: **`AI-GEN4-RELEASE-001`**
 完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`、`PBAI-P7`、`PBAI-P8`、`PBAI-P9`、`PBAI-P10`、`PBAI-P11`、`PBAI-P12`、`PBAI-P14`、`PBAI-P15`**
@@ -19,7 +19,7 @@
 
 ## takasiaのルール対応（実装中）
 
-ルール元のv0.2.0でtakasiaが採用されたため、[対応工程と仕様・検証結果](ai-engineering/takasia-update/README.md)を用意した。工程1〜5が作業ブランチで完了し、エンジン仕様照合25件、回帰144件はPASSである。工程4のAI予算72条件の記録も保持する。AI対応改訂はAI-GEN4-TAKASIA-001。新棋譜・診断version 2と旧version 1を区別し、保存・再生・受信を同期した。[工程6の表示・日英説明](ai-engineering/takasia-update/UI_IMPLEMENTATION.md)も実装し、表示9件を加えた回帰153件はPASSである。3ブラウザー各13項目と文書監査も通過し、[工程7の既存CI整合・総合検証](ai-engineering/takasia-update/INTEGRATION_VALIDATION.md)へ着手した。公開AIは引き続きAI-GEN4 / AI-GEN4-RELEASE-001。総合検証は進行中で、main統合・配信は未実施。過去の固定証拠は保持する。
+ルール元のv0.2.0でtakasiaが採用されたため、[対応工程と仕様・検証結果](ai-engineering/takasia-update/README.md)を用意した。工程1〜5が作業ブランチで完了し、エンジン仕様照合25件、回帰144件はPASSである。工程4のAI予算72条件の記録も保持する。AI対応改訂はAI-GEN4-TAKASIA-001。新棋譜・診断version 2と旧version 1を区別し、保存・再生・受信を同期した。[工程6の表示・日英説明](ai-engineering/takasia-update/UI_IMPLEMENTATION.md)も実装し、表示9件を加えた回帰153件はPASSである。3ブラウザー各13項目と文書監査も通過し、[工程7の既存CI整合・ソフトウェア総合検証](ai-engineering/takasia-update/INTEGRATION_VALIDATION.md)も通過した。公開AIは引き続きAI-GEN4 / AI-GEN4-RELEASE-001。工程7の実機・Cloudflare・実サイト確認は残り、main統合・配信は未実施。過去の固定証拠は保持する。
 
 ## 今後の改善案（検討中）
 

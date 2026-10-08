@@ -88,3 +88,5 @@ history/service-worker-v55.js は作業開始時mainのService Workerを保持�
 [工程7の総合検証](../../doc/ai-engineering/takasia-update/INTEGRATION_VALIDATION.md)に検証経路と配信前の残件を説明する。check-current-assets.cjs は工程6で固定した16資産を旧releaseとは別に照合する。run-historical-ci.cjs は固定版の一時worktreeで旧assertを保持し、gen3・c015・p4・p5・lgttciの5系統を検査する。P4の実行資産はhashを確認した保存済みバンドルから復元する。test/takasia-ci-boundary.test.cjs はエンジン・固定記録・過去採用manifestの改変を拒否する負例を検査する。
 
 履歴検査の出力はartifacts/local/takasia-historyのprofile別ディレクトリへ逐次保存する。コマンド・ID・SHA・path・profile名は再現用の識別子として保持する。科学的な時間計測や正式対局試験を再実行せず、旧研究を新ルールへ移送したとの判断もしない。
+
+工程7の全72条件・3ブラウザー各13項目・公開AI各10項目・全CIの参照と完了状態は[integration-validation-20261009.json](integration-validation-20261009.json)へ保存した。実機・本番環境の未確認状態も同じ記録に明示する。

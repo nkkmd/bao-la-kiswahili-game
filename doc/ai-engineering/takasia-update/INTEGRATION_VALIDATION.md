@@ -4,7 +4,7 @@
 
 ## 現在の状態と結論
 
-工程7の既存CI整合を実装した。ローカルでは仕様照合25件、回帰167件、別計算、新旧棋譜と図解12点がPASSである。旧版の5系統の検証も通過した。GitHub Actionsでの全体検証と実ブラウザー検査は確認中であり、工程7全体の完了とは扱わない。main統合、実機確認、Cloudflare配備、本番配信は未実施である。
+工程7の既存CI整合を実装した。ローカルでは仕様照合25件、回帰167件、別計算、新旧棋譜と図解12点がPASSである。旧版の5系統の検証も通過した。検証対象コミット `82475d12679b716fe30662febb36e996b1ca642d` のGitHub ActionsではPRの14ワークフローと専用push検証がすべて成功した。ソフトウェア総合検証はこの範囲でPASSとするが、配信前の残件を含む工程7全体の完了とは扱わない。main統合、実機確認、Cloudflare配備、本番配信は未実施である。
 
 ## 旧固定版と現行版の検証
 
@@ -24,6 +24,16 @@ P4では作業開始時mainの設定にも、当時の基準との違いがあ�
 
 従来の日英図解ブラウザー検査は図版12点・節11件・キャッシュv57へ同期した。旧v39からの更新確認を維持し、専用CIでのv55からv57の更新検査も保持する。PBAI-C015の実ブラウザー検査は現行公開画面のWorker・代替実行・通信遮断・切戻しをそのまま検査する。
 
+## Actionsの最終結果
+
+- [takasia専用PR検証](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37845322142): 全5ジョブ成功。固定AI予算72条件と3ブラウザー各13項目がPASS。
+- [公開AIの本番組込み検証](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37845322241): Chromium／Firefox／WebKitの各10項目がPASS。旧PBAI-C015の完全一致検査も保持して通過。
+- [従来の日英図解検証](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37845322200): 3ブラウザーの全ジョブ成功。12図、11節、旧v39からv57への更新、通信遮断中の表示、画面幅・高精細描画・タップを確認。
+- [AI-GEN3](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37845322264)、[P4](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37845322160)、[LGTTCI](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37845322205)、[棋譜](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37845322227)も成功。P5の旧証拠監査はAI-GEN3内で成功。
+- その他の既存技術検査7ワークフローと専用push検証も成功。新しい科学的結果の生成・旧研究の新ルールへの移送を主張しない。
+
+全72行・環境・ソースhash、ブラウザーの項目別結果・版、旧版の検証コマンドと終了コード、全15実行の参照・完了状態を[工程7の機械可読記録](../../../tools/takasia/integration-validation-20261009.json)へ保存した。工程1〜6の固定記録は保持した。最新の文書・結果保存コミットは、検証対象ソースからゲーム資産・受信側・検証コードを変更しない。
+
 ## 実行方法と結果の保存
 
 Node.js、Python 3と履歴を含むgit checkoutが必要である。ブラウザー検査はGitHub Actionsを第一候補とする。ローカル環境ではブラウザー実行ファイルを取得できなかったため、実ブラウザーPASSとは扱わない。
@@ -42,7 +52,7 @@ node tools/takasia/run-historical-ci.cjs lgttci
 
 ## 配信前に残す確認
 
-1. PR全体のCIと、従来の公開AI・日英図解・棋譜のブラウザー検査が通過すること。
+1. ソフトウェア総合検証は上記コミットで通過済み。続けて実機と本番環境の確認を行うこと。
 2. Android実機で通常対局・公開AI・takasia表示・新旧棋譜・通信遮断中の動作を確認すること。
 3. Cloudflare受信側のv1／v2対応を先に配備し、管理した棋譜送信で受理・R2保存・結果・CPU・終了処理を確認すること。
 4. 新クライアントを配信し、実サイトのv55からv57への更新と旧キャッシュ削除を確認すること。
