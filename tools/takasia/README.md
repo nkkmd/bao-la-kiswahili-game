@@ -27,9 +27,9 @@ python3 tools/takasia/verify.py
 node tools/takasia/check-engine.cjs
 ```
 
-最初の2件は準備データと限定計算を検証する。3件目は実際のエンジン対応を検証し、準備時点では全25条件がFAILになる。例外を捕まえてPASSへ変換せず、未対応を明示する。
+最初の2件は準備データと限定計算を検証する。3件目は実際のエンジン対応を検証する。準備時点では全25条件がFAILだったが、工程3の実装後は全件PASSである。例外を捕まえてPASSへ変換せず、未対応を明示する。
 
-`takasia-preparation.yml`は独立検証をCIで再現する。候補エンジンの検査を緑に見せるためのskipや条件付き成功は加えない。工程3で実装後、3件目も対応用CIの必須条件に追加する。
+`takasia-preparation.yml`は独立検証、候補エンジン検査、追加のエンジン回帰、既存の基本・phase移行試験をCIで再現する。skipや条件付き成功は加えない。工程3の結果は[実装記録](../../doc/ai-engineering/takasia-update/ENGINE_IMPLEMENTATION.md)と`engine-validation-20261008.json`を参照する。追加回帰は`test/takasia-engine.test.cjs`である。
 
 ## 計算範囲と限界
 

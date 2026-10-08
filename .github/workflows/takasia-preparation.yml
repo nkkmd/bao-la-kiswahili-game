@@ -1,4 +1,4 @@
-name: Takasia preparation verification
+name: Takasia engine verification
 
 on:
   workflow_dispatch:
@@ -6,6 +6,8 @@ on:
     paths:
       - 'tools/takasia/**'
       - 'test/takasia-contract.test.cjs'
+      - 'test/takasia-engine.test.cjs'
+      - 'public/engine.js'
       - 'doc/ai-engineering/takasia-update/**'
       - '.github/workflows/takasia-preparation.yml'
   push:
@@ -14,6 +16,8 @@ on:
     paths:
       - 'tools/takasia/**'
       - 'test/takasia-contract.test.cjs'
+      - 'test/takasia-engine.test.cjs'
+      - 'public/engine.js'
       - '.github/workflows/takasia-preparation.yml'
 
 permissions:
@@ -32,3 +36,7 @@ jobs:
         run: node --test test/takasia-contract.test.cjs
       - name: Verify independent Python calculation
         run: python3 tools/takasia/verify.py
+      - name: Verify engine implementation and existing transitions
+        run: |
+          node tools/takasia/check-engine.cjs
+          node --test test/takasia-engine.test.cjs test/engine.test.js test/namua-mtaji-transition-engine.test.js

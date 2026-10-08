@@ -17,9 +17,9 @@
 
 **PBAI-P15は2026-09-28に終了**し、正式判断は`HOLD / KEEP-AI-GEN4`。F1のWorker再利用のbaseline supportで64 seedを処理したが、固定plyの局面が7 seedで欠け、各難易度171 paired positionsで必要192件に未達。Candidate IDは発行せず、候補コードや公開設定を変更していない。[最終報告](ai-engineering/public-ai-improvement-program-15/PROGRAM_FINAL_REPORT.md)と[結果](../artifacts/pbai-p15/WORKER_SUPPORT_RESULT.md)を参照する。
 
-## takasiaのルール対応（準備中）
+## takasiaのルール対応（実装中）
 
-ルール元のv0.2.0でtakasiaが採用されたため、[対応工程と仕様・検証結果](ai-engineering/takasia-update/README.md)を用意した。工程1・2の準備が完了し、次はルールエンジンの実装である。独立した限定計算はPASS、現在の公開エンジンは新仕様の検査でFAILであり、対応完了を意味しない。公開AIは引き続きAI-GEN4 / AI-GEN4-RELEASE-001、公開コード・採用判断・過去の固定証拠は未変更である。
+ルール元のv0.2.0でtakasiaが採用されたため、[対応工程と仕様・検証結果](ai-engineering/takasia-update/README.md)を用意した。工程1〜3が作業ブランチで完了し、エンジン仕様照合25件と追加回帰はPASSである。次はAI-GEN4の局面識別・探索経路の対応である。公開AIは引き続きAI-GEN4 / AI-GEN4-RELEASE-001。棋譜・表示の同期、総合検証、main統合・配信は未実施で、過去の固定証拠は保持する。
 
 ## 今後の改善案（検討中）
 
