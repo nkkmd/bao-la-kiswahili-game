@@ -174,6 +174,8 @@ let browser;
         await (await navigator.serviceWorker.getRegistration()).update(); await changed;
       });
       await cacheReady(page, "v57");
+      // CacheStorageの削除結果がページ側へ反映されるまで待ち、実際の不在を検査する。
+      await page.waitForFunction(async () => !(await caches.keys()).includes("bao-la-kiswahili-v55"));
       assert.equal(await page.evaluate(async () => (await caches.keys()).includes("bao-la-kiswahili-v55")), false);
       offline = true;
       for (const lang of ["ja", "en"]) {
