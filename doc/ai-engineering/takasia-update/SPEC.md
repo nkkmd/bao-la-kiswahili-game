@@ -51,7 +51,7 @@ state.takasia = { player: 1, index: 3 };
 
 `player`は制約を受ける側、`index`はその本人から見た前列0〜7である。対象は常に前列なので行は保持しない。成立元手番の番号を別に保存せず、着手適用が消費・再設定を行う。初期局面では必ずnullとする。旧局面データの欠落項目は旧ルールの識別と合わせて扱い、旧棋譜にtakasiaを自動適用しない。
 
-検証用に`detectTakasia(state, attacker, previousMove)`を公開エンジンのAPIへ追加する。盤面・所有・手の種類から対象またはnullを返す純粋関数とし、入力を変更しない。`previousMove.phase`と`type`を確認し、`state.player`に依存して攻撃側を取り違えない。未実装のこのAPIと新状態を前提にした[候補検査](../../../tools/takasia/check-engine.cjs)は、現在のエンジンでFAILになる。
+検証用に`detectTakasia(state, attacker, previousMove)`を公開エンジンのAPIへ追加する。盤面・所有・手の種類から対象またはnullを返す純粋関数とし、入力を変更しない。`previousMove.phase`と`type`を確認し、`state.player`に依存して攻撃側を取り違えない。このAPIと新状態を前提にした[候補検査](../../../tools/takasia/check-engine.cjs)は、準備時点では旧エンジンでFAILし、工程3以降は作業ブランチの対応エンジンで25条件PASSとなった。
 
 通常着手と`applyMoveForSearch`は、新状態、所有、終局を含めて同じ結果を返す。新たな成立・停止・失効の表示イベントを設計する場合も、ルールの判定はエンジンだけで行う。
 

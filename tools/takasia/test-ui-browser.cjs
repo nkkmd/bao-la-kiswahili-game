@@ -117,6 +117,10 @@ let browser;
           return true;
         }), true);
         await page.setViewportSize({ width: 412, height: 915 });
+        page.once("dialog", dialog => dialog.accept());
+        await page.click("#new-game");
+        await page.waitForFunction(() => document.querySelector("#takasia-status").hidden && !started);
+        assert.equal(await page.locator("#takasia-status").isVisible(), false);
       });
       await check(language + "：通常・FASTの成立と対象での停止・失効・終了理由", async () => {
         for (const fastMode of [false, true]) {

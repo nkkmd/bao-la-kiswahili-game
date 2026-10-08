@@ -2,7 +2,7 @@
 
 更新日: 2026-10-08
 
-確認基準: takasia作業ブランチの工程1〜5。main統合・配信は未実施で、表示・総合検証は後続工程。
+確認基準: takasia作業ブランチの工程1〜6。表示の限定検証を実施し、main統合・配信と総合検証は後続工程。
 
 本書はブラウザーゲームと、その周辺の任意提供機能の構成・責務を説明する。初期草案にあった`src/core/`・`src/ai/`への分割、ES Modules、IndexedDBによる対局の自動保存は採用していない。一方、終局した1局を利用者が明示的にJSONファイルへ保存する棋譜機能、保存済み棋譜を厳格に検証して1手ずつ振り返る再生機能、完成したコンピュータ対戦を1局ごとの明示同意後にAI改善用へ提供する任意送信機能は実装している。作業ブランチは新規v2・旧v1をルール版で区別する。配信済み環境は引き続きR-002・v1であり、過去の採用・配備・実機記録を今回の配信完了へ読み替えない。
 
@@ -38,7 +38,7 @@ HTML・CSSと通常のJavaScriptスクリプトを読み込み、盤面はCanvas
 | `public/diagnostics.js` | 診断snapshotの許可項目、復元、端末内の記録 |
 | `public/review-suggestion.js`・`diagnostic-download.js` | 診断の保存推奨とJSONファイル保存 |
 | `public/rules.html`・`rules.css`・`rules.js` | 日本語・英語の図解ルール説明 |
-| `public/assets/rules/` | 10点のSVG図版と出典・ライセンス記録 |
+| `public/assets/rules/` | 12点のSVG図版と出典・ライセンス記録 |
 | `public/service-worker.js`・`manifest.webmanifest`・`icon.svg` | オフライン用キャッシュとPWA情報 |
 | `public/privacy.html`・`robots.txt`・`sitemap.xml` | プライバシー説明と検索エンジン向け情報 |
 | `cloudflare/game-record-ingest/` | 任意棋譜提供のCloudflare Worker、Wrangler設定、Turnstile検証、replay、dedupe、rate limit、R2保存 |
@@ -94,6 +94,8 @@ HTML・CSSと通常のJavaScriptスクリプトを読み込み、盤面はCanvas
 
 対局中ルールガイドは、通常の画面着手で既に生成される`events`を読み、捕獲、takata、連続種まき、nyumba、namuaからmtajiへの移行、終局など意味のある状態変化だけをボード下へ日本語・英語で表示する。1個ごとの種まきは従来のCanvas演出に任せ、説明のための探索・合法手再計算・評価処理は追加しない。表示した規則から`rules`ページの対応節へ直接移動できる。直前の重要な説明とリンクは手の終了後も次の着手選択まで残し、通常の手番案内と併記する。
 
+takasiaはエンジンの成立・停止・失効イベントから説明し、対象穴に点線とT印を付ける。穴番号と1手だけの制約はCanvas外のstatus領域にも表示する。通常・FASTの終了後も停止理由を残す。新旧棋譜の版を表示し、進む場合は生成済みの説明を再利用する。戻る場合だけ、その棋譜版のエンジンで直前の1手のイベントを再構成する。表示側で成立条件を独自に判定しない。詳細は[工程6の結果](ai-engineering/takasia-update/UI_IMPLEMENTATION.md)を参照する。
+
 棋譜記録はこの通常着手経路の確定手だけを`public/game-record.js`が受け取り、canonicalな小さい着手情報としてメモリへ追加する。表示用`events`全体やAI探索局面を保持せず、Worker要求にも棋譜を追加しないため、探索ループとは分離する。
 
 ## 6. 保存、棋譜、診断、任意提供
@@ -116,7 +118,7 @@ AI診断と棋譜は別形式・別目的である。診断には局面・選択
 
 ## 7. オフライン・配信・ルール説明
 
-Service Workerのインストール時に、ゲーム画面・依存スクリプト・新旧エンジン・ルール版選択・棋譜モジュール・任意提供client・スタイル・PWA情報・プライバシー説明・図解ルールと図版をまとめてキャッシュする。キャッシュが正常に完了した後は通常対局、ローカル棋譜保存、診断などの静的機能を通信なしで利用できる。Turnstileと任意提供APIはオンライン通信を必要とする。キャッシュ名の正本は`public/service-worker.js`の`CACHE`定数で、作業ブランチは`bao-la-kiswahili-v56`を準備した。配信済みv55からの実ブラウザー更新は未確認である。
+Service Workerのインストール時に、ゲーム画面・依存スクリプト・新旧エンジン・ルール版選択・棋譜モジュール・任意提供client・スタイル・PWA情報・プライバシー説明・図解ルールと図版をまとめてキャッシュする。キャッシュが正常に完了した後は通常対局、ローカル棋譜保存、診断などの静的機能を通信なしで利用できる。Turnstileと任意提供APIはオンライン通信を必要とする。キャッシュ名の正本は`public/service-worker.js`の`CACHE`定数で、作業ブランチは`bao-la-kiswahili-v57`を準備した。配信済みv55からの実ブラウザー更新は未確認である。
 
 Cloudflare Pagesでは`./rules`・`./privacy`のclean URLを使う。既知のHTMLページだけURLの別名・言語クエリーを共通キャッシュへ対応させる。図解ルールは日本語・英語の切替、言語指定URLの共有、図版の拡大に対応する。対局中ルールガイドのリンクは現在の表示言語を引き継ぎ、対応する節を直接開ける。
 
@@ -126,7 +128,7 @@ Cloudflare Pagesでは`./rules`・`./privacy`のclean URLを使う。既知のHT
 
 現在の公開AI経路の回帰は[公開AI組込みCI](../.github/workflows/pbai-c015-integration.yml)で管理する。AI-GEN3の固定資産検証、候補適用条件、既知局面、Worker・直接実行、候補取得失敗などを確認する。公開AIの棋力は各プログラムの固定条件による証拠で判断し、画面の動作確認と区別する。
 
-takasiaの専用CIではエンジン仕様25件、回帰143件、固定したAI予算72条件を検証する。棋譜CIはv1／v2検証jobを追加し、従来の厳格なrelease検査も保持した。固定AI資産との完全一致を求める既存CIは未合格で、PR全体が合格したとは扱わない。総合検証で旧資産の確認と現行改訂の確認を同期する。
+takasiaの専用CIではエンジン仕様25件、回帰153件、固定したAI予算72条件を検証する。棋譜CIはv1／v2検証jobを追加し、従来の厳格なrelease検査も保持した。固定AI資産との完全一致を求める既存CIは未合格で、PR全体が合格したとは扱わない。総合検証で旧資産の確認と現行改訂の確認を同期する。
 
 図解ルールの日英表示・拡大・対局導線・オフライン更新は[図解ルールCI](../.github/workflows/illustrated-rules.yml)で確認する。`tools/build-rules-figures.js --check`はSVG図版と生成条件の再生成一致も検証する。
 

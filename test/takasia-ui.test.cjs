@@ -3,6 +3,7 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const vm = require("node:vm");
+const crypto = require("node:crypto");
 const F = require("../tools/takasia/fixtures.json");
 const records = require("../tools/takasia/record-fixtures.json");
 
@@ -105,9 +106,15 @@ test("対象に着地しない応手でも失効を説明し、リセットで�
   p.run("resetGame(); drawHeader();");
   assert.equal(p.nodes.get("#takasia-status").hidden, true);
   assert.equal(p.nodes.get("#takasia-status").textContent, "");
+  setPosition(p, F.e30.post);
+  p.run("started = false; drawHeader();");
+  assert.equal(p.nodes.get("#takasia-status").hidden, true, "対局設定へ戻ったときに旧対象を表示しない");
 });
 
 test("日英説明・図版・既存anchor・新キャッシュの参照が整合する", () => {
+  const oldWorker = fs.readFileSync("tools/takasia/history/service-worker-v55.js");
+  assert.equal(crypto.createHash("sha1").update(Buffer.from("blob " + oldWorker.length + "\0"))
+    .update(oldWorker).digest("hex"), "2a1ed20df513aaf0899414bdb68e4d5efb7420e2", "開始時mainのv55資産をそのまま保持");
   const guide = fs.readFileSync("public/rules.html", "utf8");
   const ids = [...guide.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
   assert.equal(ids.length, new Set(ids).size);

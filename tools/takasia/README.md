@@ -74,3 +74,11 @@ node --test test/takasia-record.test.mjs
 E30は[Bao la Kiswahili 日本語完全ガイドの固定版](https://github.com/nkkmd/bao-la-kiswahili-ja/blob/aad9fda3ffb12c2ca785509951c71ce8a42bef5a/guide/examples/README.md#e30-takasia対象穴でrelay-sowingを止める)に基づく。同ガイドはK.I.B.A. R-009 §4.5を出典としている。変更内容は本人視点indexへの座標変換、JSON化、独立計算による最終盤面の追加、境界条件の構成例の追加である。
 
 `fixtures.json`の再構成データと本説明は[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)として扱い、ガイドへの帰属を保持する。外部資料の本文・PDFを収録しない。新規検証コードは本ゲームのMIT Licenseに従う。
+
+## 工程6の表示・図解検査
+
+node --test test/takasia-ui.test.cjs は日英のmain全体と実エンジンをDOM・Canvasのmockで検査する。node tools/build-rules-figures.js --check は既存10図とE30の新2図を再生成照合する。test-ui-browser.cjs は専用Actionsで3ブラウザーの表示・入力・棋譜・オフライン更新を検査し、途中結果と画像をartifactへ保存する。実機確認とは区別する。
+
+history/service-worker-v55.js は作業開始時mainのService Workerを保持し、配信済みv55から準備版v57への更新を検査するためだけに使う。通常配信には含めない。工程5で準備したv56は未配信である。
+
+結果・範囲・残件は[工程6の記録](../../doc/ai-engineering/takasia-update/UI_IMPLEMENTATION.md)、ソースとActions参照は ui-validation-20261008.json を参照する。

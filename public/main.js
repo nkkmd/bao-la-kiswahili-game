@@ -786,7 +786,7 @@ function drawHeader() {
   northHand.textContent = displayState.reserve[1];
   southHand.textContent = displayState.reserve[0];
   const target = displayState.takasia;
-  const active = target && isTakasiaTarget(displayState, { ...target, row: E.FRONT });
+  const active = started && target && isTakasiaTarget(displayState, { ...target, row: E.FRONT });
   const message = active ? t(
     `T = TAKASIA: ${pitName({ ...target, row: E.FRONT })} — no start; last KETE stops here. This turn only.`,
     `T = TAKASIA：${pitName({ ...target, row: E.FRONT })} — 開始不可・最後のKETEで停止。この1手だけ。`) : "";
