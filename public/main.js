@@ -638,7 +638,8 @@ function startAI() {
 }
 
 function playMove(move) {
-  const result = E.applyMove(state, move);
+  const engine = isReplayMode() && replaySession ? replaySession.engine : E;
+  const result = engine.applyMove(state, move);
   selected = null; choices = []; choiceBoxes = [];
   latestRuleCommentary = null;
   if (fast) {
@@ -1013,7 +1014,10 @@ updateSetupFields();
 soundButton.addEventListener("click", () => { sound = !sound; save("bao_sound", sound ? "on" : "off"); soundButton.textContent = `SOUND ${sound ? "ON" : "OFF"}`; soundButton.setAttribute("aria-pressed", String(sound)); if (sound) tone(); });
 speedButton.addEventListener("click", () => { fast = !fast; speedButton.textContent = `FAST ${fast ? "ON" : "OFF"}`; speedButton.setAttribute("aria-pressed", String(fast)); });
 copyPositionButton.addEventListener("click", () => {
-  const snapshot = Diagnostics.createSnapshot(state, { mode: gameModeSelect.value });
+  const snapshot = Diagnostics.createSnapshot(state, {
+    mode: gameModeSelect.value,
+    ...(isReplayMode() && replaySession ? { version: replaySession.record.version, rules: replaySession.record.rules } : {}),
+  });
   copyDiagnostic(snapshot, t("Copied current position.", "現在局面をコピーしました"));
 });
 markAIMoveButton.addEventListener("click", () => {

@@ -2,7 +2,8 @@
 
 (function exposeBaoGameRecord(root) {
   const FORMAT = "bao-game-record";
-  const VERSION = 1;
+  const VERSION = 2;
+  const Rules = root.BaoRuleVersions || (typeof module !== "undefined" && module.exports ? require("./rule-versions.js") : null);
   const MOVE_FIELDS = [
     "type", "phase", "row", "index", "direction", "side", "houseChoice", "houseTwo",
   ];
@@ -11,21 +12,8 @@
     return JSON.parse(JSON.stringify(value));
   }
 
-  function positionFromState(state) {
-    if (!state || !Array.isArray(state.pits) || !Array.isArray(state.reserve)) {
-      throw new Error("Invalid Bao state");
-    }
-    return clone({
-      pits: state.pits,
-      reserve: state.reserve,
-      houseOwned: state.houseOwned,
-      player: state.player,
-      phase: state.phase,
-      winner: state.winner,
-      reason: state.reason || "",
-      turn: state.turn,
-      pending: state.pending || [0, 0],
-    });
+  function positionFromState(state, revision = Rules.CURRENT_REVISION) {
+    return Rules.canonicalPosition(state, revision);
   }
 
   function moveFromValue(move) {
@@ -39,22 +27,21 @@
   }
 
   function assertRecordHeader(record) {
-    if (!record || record.format !== FORMAT || record.version !== VERSION || !Array.isArray(record.moves)) {
+    if (!record || record.format !== FORMAT || ![1, VERSION].includes(record.version) || !Array.isArray(record.moves)) {
       throw new Error("Unsupported Bao game record format");
     }
+    return Rules.revisionFor(record.version, record.rules);
   }
 
-  function createRecord(initialState, metadata = {}) {
+  function createRecord(initialState, metadata = {}, version = VERSION) {
+    const rules = version === 1 ? Rules.LEGACY_RULES : Rules.CURRENT_RULES;
+    const revision = Rules.revisionFor(version, rules);
     return {
       format: FORMAT,
-      version: VERSION,
-      rules: {
-        guide: "bao-la-kiswahili-ja",
-        guideVersion: "v0.1.0-draft",
-        baseline: "R-002",
-      },
+      version,
+      rules: clone(rules),
       settings: clone(metadata),
-      initialPosition: positionFromState(initialState),
+      initialPosition: positionFromState(initialState, revision),
       moves: [],
       result: null,
       finalPosition: null,
@@ -81,8 +68,8 @@
   }
 
   function finalize(record, finalState) {
-    assertRecordHeader(record);
-    const finalPosition = positionFromState(finalState);
+    const revision = assertRecordHeader(record);
+    const finalPosition = positionFromState(finalState, revision);
     if (finalPosition.winner !== 0 && finalPosition.winner !== 1) {
       throw new Error("Bao game is not complete");
     }
@@ -97,8 +84,11 @@
   }
 
   function validateRecord(record, requireComplete = true) {
-    assertRecordHeader(record);
-    positionFromState(record.initialPosition);
+    const revision = assertRecordHeader(record);
+    if (record.settings?.ai?.ruleRevision !== undefined && record.settings.ai.ruleRevision !== revision) {
+      throw new Error("Bao game record AI rules mismatch");
+    }
+    Rules.validatePosition(record.initialPosition, revision);
     for (let i = 0; i < record.moves.length; i += 1) {
       const entry = record.moves[i];
       if (!entry || entry.ply !== i + 1 || !entry.move) throw new Error("Invalid Bao move record");
@@ -107,15 +97,23 @@
     if (requireComplete && (!record.result || !record.finalPosition)) {
       throw new Error("Bao game record is incomplete");
     }
-    if (record.finalPosition) positionFromState(record.finalPosition);
+    if (record.finalPosition) Rules.validatePosition(record.finalPosition, revision);
     return true;
   }
 
   function replay(record, engine) {
     validateRecord(record, false);
-    if (!engine || typeof engine.applyMove !== "function") throw new Error("Bao engine is required");
-    let replayState = positionFromState(record.initialPosition);
-    for (const entry of record.moves) replayState = engine.applyMove(replayState, entry.move).state;
+    engine = Rules.engineFor(record.version, record.rules, engine);
+    const revision = Rules.revisionFor(record.version, record.rules);
+    let replayState = positionFromState(record.initialPosition, revision);
+    const moveKey = (move) => MOVE_FIELDS.map((field) => Object.hasOwn(move, field) ? JSON.stringify(move[field]) : "<absent>").join("|");
+    for (const entry of record.moves) {
+      if (entry.turn !== replayState.turn || entry.player !== replayState.player
+        || entry.phase !== replayState.phase || entry.side !== (replayState.player === 0 ? "south" : "north")
+        || replayState.winner !== null) throw new Error("Bao game record move metadata mismatch");
+      if (!engine.moveVariants(replayState).some((move) => moveKey(move) === moveKey(entry.move))) throw new Error("Non-canonical or illegal move in record");
+      replayState = engine.applyMove(replayState, entry.move).state;
+    }
     return replayState;
   }
 
@@ -196,6 +194,8 @@
       };
       if (identity.adoptionId) metadata.ai.adoptionId = identity.adoptionId;
       if (identity.evaluator) metadata.ai.evaluator = identity.evaluator;
+      if (ReleaseConfig?.RULE_REVISION) metadata.ai.ruleRevision = ReleaseConfig.RULE_REVISION;
+      if (ReleaseConfig?.AI_REVISION) metadata.ai.aiRevision = ReleaseConfig.AI_REVISION;
     }
     return metadata;
   }
@@ -307,3 +307,4 @@
   ensureUi();
   api.activeRecord = () => currentRecord ? clone(currentRecord) : null;
 }(typeof window !== "undefined" ? window : globalThis));
+

@@ -1,12 +1,11 @@
 import "../../../public/engine.js";
+import "../../../public/engine-r002.js";
+import "../../../public/rule-versions.js";
+
+const RuleVersions = globalThis.BaoRuleVersions;
 
 const FORMAT = "bao-game-record";
-const VERSION = 1;
-const RULES = Object.freeze({
-  guide: "bao-la-kiswahili-ja",
-  guideVersion: "v0.1.0-draft",
-  baseline: "R-002",
-});
+const VERSION = 2;
 const DEFAULT_MAX_REQUEST_BYTES = 64 * 1024;
 const DEFAULT_MAX_RECORD_BYTES = 48 * 1024;
 const DEFAULT_MAX_PLIES = 384;
@@ -61,8 +60,9 @@ function assertInteger(value, min, max) {
   assert(Number.isInteger(value) && value >= min && value <= max, "Invalid integer");
 }
 
-function validatePosition(position, { completed = false } = {}) {
-  assertAllowedKeys(position, POSITION_KEYS);
+function validatePosition(position, { completed = false, revision = RuleVersions.LEGACY_REVISION } = {}) {
+  assertAllowedKeys(position, revision === RuleVersions.CURRENT_REVISION ? [...POSITION_KEYS, "takasia"] : POSITION_KEYS);
+  try { RuleVersions.validatePosition(position, revision); } catch (error) { throw new ValidationError(error.message); }
   assert(Array.isArray(position.pits) && position.pits.length === 2, "Invalid pits");
   let total = 0;
   for (const player of position.pits) {
@@ -123,24 +123,27 @@ function validateMove(move) {
   }
 }
 
-function validateSettings(settings) {
+function validateSettings(settings, revision) {
   assertAllowedKeys(settings, ["mode", "humanSide", "ai"], ["mode", "humanSide", "ai"]);
   assert(settings.mode === "computer", "Only computer games are accepted");
   assert(settings.humanSide === "south" || settings.humanSide === "north", "Invalid human side");
   assertAllowedKeys(settings.ai,
-    ["difficulty", "generation", "releaseId", "adoptionId", "evaluator"],
+    revision === RuleVersions.CURRENT_REVISION
+      ? ["difficulty", "generation", "releaseId", "adoptionId", "evaluator", "ruleRevision", "aiRevision"]
+      : ["difficulty", "generation", "releaseId", "adoptionId", "evaluator"],
     ["difficulty", "generation", "releaseId"]);
   assert(DIFFICULTIES.has(settings.ai.difficulty), "Invalid difficulty");
   assertToken(settings.ai.generation, 48);
   assertToken(settings.ai.releaseId, 96);
   if (Object.hasOwn(settings.ai, "adoptionId")) assertToken(settings.ai.adoptionId, 96);
   if (Object.hasOwn(settings.ai, "evaluator")) assertToken(settings.ai.evaluator, 96);
+  if (Object.hasOwn(settings.ai, "ruleRevision")) assert(settings.ai.ruleRevision === revision, "AI rules mismatch");
+  if (Object.hasOwn(settings.ai, "aiRevision")) assertToken(settings.ai.aiRevision, 96);
 }
 
-function validateRules(rules) {
+function validateRules(rules, version) {
   assertAllowedKeys(rules, ["guide", "guideVersion", "baseline"]);
-  assert(rules.guide === RULES.guide && rules.guideVersion === RULES.guideVersion
-    && rules.baseline === RULES.baseline, "Unsupported rules baseline");
+  try { return RuleVersions.revisionFor(version, rules); } catch { throw new ValidationError("Unsupported rules baseline"); }
 }
 
 function validateResult(result, finalPosition, moveCount) {
@@ -155,10 +158,10 @@ function validateResult(result, finalPosition, moveCount) {
 
 export function validateRecord(record, maxPlies = DEFAULT_MAX_PLIES) {
   assertAllowedKeys(record, TOP_LEVEL_KEYS);
-  assert(record.format === FORMAT && record.version === VERSION, "Unsupported record format");
-  validateRules(record.rules);
-  validateSettings(record.settings);
-  validatePosition(record.initialPosition);
+  assert(record.format === FORMAT && [1, VERSION].includes(record.version), "Unsupported record format");
+  const revision = validateRules(record.rules, record.version);
+  validateSettings(record.settings, revision);
+  validatePosition(record.initialPosition, { revision });
   assert(record.initialPosition.winner === null, "Initial position is already complete");
   assert(Array.isArray(record.moves), "Invalid moves");
   assert(record.moves.length >= 1 && record.moves.length <= maxPlies, "Unsupported game length");
@@ -173,23 +176,13 @@ export function validateRecord(record, maxPlies = DEFAULT_MAX_PLIES) {
     validateMove(entry.move);
     if (entry.move.type !== "pass") assert(entry.move.phase === entry.phase, "Move phase mismatch");
   }
-  validatePosition(record.finalPosition, { completed: true });
+  validatePosition(record.finalPosition, { completed: true, revision });
   validateResult(record.result, record.finalPosition, record.moves.length);
   return true;
 }
 
-function canonicalPosition(state) {
-  return {
-    pits: state.pits,
-    reserve: state.reserve,
-    houseOwned: state.houseOwned,
-    player: state.player,
-    phase: state.phase,
-    winner: state.winner,
-    reason: state.reason || "",
-    turn: state.turn,
-    pending: state.pending || [0, 0],
-  };
+function canonicalPosition(state, revision) {
+  return RuleVersions.canonicalPosition(state, revision);
 }
 
 function exactMoveKey(move) {
@@ -208,13 +201,16 @@ function stableStringify(value) {
 }
 
 export function replayAndVerify(record) {
-  const engine = globalThis.BaoEngine;
+  validateRecord(record);
+  const revision = RuleVersions.revisionFor(record.version, record.rules);
+  let engine;
+  try { engine = RuleVersions.engineFor(record.version, record.rules); } catch (error) { throw new ValidationError(error.message); }
   assert(engine && typeof engine.applyMoveForSearch === "function"
     && typeof engine.moveVariantsForSearch === "function" && typeof engine.initialState === "function",
   "Bao engine unavailable");
 
-  const expectedInitial = canonicalPosition(engine.initialState());
-  assert(JSON.stringify(canonicalPosition(record.initialPosition)) === JSON.stringify(expectedInitial),
+  const expectedInitial = canonicalPosition(engine.initialState(), revision);
+  assert(stableStringify(canonicalPosition(record.initialPosition, revision)) === stableStringify(expectedInitial),
     "Non-standard initial position");
 
   let state = structuredClone(record.initialPosition);
@@ -233,7 +229,7 @@ export function replayAndVerify(record) {
       throw new ValidationError("Illegal move in record");
     }
   }
-  assert(JSON.stringify(canonicalPosition(state)) === JSON.stringify(record.finalPosition), "Final position mismatch");
+  assert(stableStringify(canonicalPosition(state, revision)) === stableStringify(record.finalPosition), "Final position mismatch");
   return true;
 }
 
@@ -420,7 +416,8 @@ export async function handleRequest(request, env) {
     replayAndVerify(envelope.record);
 
     const hash = await sha256Hex(recordText);
-    const key = `${RECORD_PREFIX}${hash}.json`;
+    const prefix = envelope.record.version === 1 ? RECORD_PREFIX : "records/v2/";
+    const key = `${prefix}${hash}.json`;
     const existing = await env.GAME_RECORDS.head(key);
     if (existing) return jsonResponse(200, { ok: true, duplicate: true, id: hash.slice(0, 16) }, origin);
 
@@ -439,7 +436,10 @@ export async function handleRequest(request, env) {
       httpMetadata: { contentType: "application/json; charset=utf-8" },
       customMetadata: {
         format: FORMAT,
-        version: String(VERSION),
+        version: String(envelope.record.version),
+        ruleRevision: envelope.record.rules.baseline,
+        guideVersion: envelope.record.rules.guideVersion,
+        ...(envelope.record.settings.ai.aiRevision ? { aiRevision: envelope.record.settings.ai.aiRevision } : {}),
         aiGeneration: envelope.record.settings.ai.generation,
         difficulty: envelope.record.settings.ai.difficulty,
         winnerSide: envelope.record.result.winnerSide,
@@ -463,3 +463,4 @@ export default {
     return handleRequest(request, env);
   },
 };
+

@@ -1,0 +1,2598 @@
+{
+  "scope": "deterministically generated standard-initial games; regression evidence, not playing-strength evidence",
+  "generator": "LCG 1664525/1013904223; random canonical moves; prefer takasia-stop when active; first qualifying seed in 1..1000",
+  "sources": {
+    "legacyCommit": "8c87ed44c9b08f75456766f0a9bd9f76d06209d4",
+    "legacyEngineBlob": "1527bb3665228b7a5bd9f03153567aedbaaa22d7",
+    "engineSha256": "7147697b8befd0c4c483e12aaf11f88432ce77a0cc189787d98ec184c24085f1",
+    "legacyWrapperSha256": "e2e3658a43ac7848d7f3d687d3ae3d5451ce8f7c3f36ee661ce345f38cb6960e"
+  },
+  "current": {
+    "seed": 46,
+    "activated": 1,
+    "stopped": 1,
+    "record": {
+      "format": "bao-game-record",
+      "version": 2,
+      "rules": {
+        "guide": "bao-la-kiswahili-ja",
+        "guideVersion": "v0.2.0",
+        "baseline": "BAO-RULES-V0.2.0-TAKASIA-001"
+      },
+      "settings": {
+        "mode": "computer",
+        "humanSide": "south",
+        "ai": {
+          "difficulty": "normal",
+          "generation": "AI-GEN4",
+          "releaseId": "AI-GEN4-RELEASE-001",
+          "ruleRevision": "BAO-RULES-V0.2.0-TAKASIA-001",
+          "aiRevision": "AI-GEN4-TAKASIA-001"
+        }
+      },
+      "initialPosition": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              2,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              2,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          22,
+          22
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 0,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 1,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "moves": [
+        {
+          "ply": 1,
+          "turn": 1,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 2,
+          "turn": 2,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 3,
+          "turn": 3,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 4,
+          "turn": 4,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 5,
+          "turn": 5,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 7,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 6,
+          "turn": 6,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 7,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 7,
+          "turn": 7,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 8,
+          "turn": 8,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 4,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 9,
+          "turn": 9,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 10,
+          "turn": 10,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 11,
+          "turn": 11,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 7,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 12,
+          "turn": 12,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 13,
+          "turn": 13,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 4,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 14,
+          "turn": 14,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 15,
+          "turn": 15,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 7,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 16,
+          "turn": 16,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 7,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 17,
+          "turn": 17,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 4,
+            "direction": "right",
+            "houseTwo": true
+          }
+        },
+        {
+          "ply": 18,
+          "turn": 18,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 19,
+          "turn": 19,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 20,
+          "turn": 20,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 4,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 21,
+          "turn": 21,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 22,
+          "turn": 22,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 0,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 23,
+          "turn": 23,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 24,
+          "turn": 24,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 25,
+          "turn": 25,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 4,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 26,
+          "turn": 26,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 1,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 27,
+          "turn": 27,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 28,
+          "turn": 28,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 3,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 29,
+          "turn": 29,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 30,
+          "turn": 30,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 31,
+          "turn": 31,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 3,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 32,
+          "turn": 32,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 2,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 33,
+          "turn": 33,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 4,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 34,
+          "turn": 34,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 1,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 35,
+          "turn": 35,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 1,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 36,
+          "turn": 36,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 3,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 37,
+          "turn": 37,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 2,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 38,
+          "turn": 38,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 7,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 39,
+          "turn": 39,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 3,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 40,
+          "turn": 40,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 2,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 41,
+          "turn": 41,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 42,
+          "turn": 42,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 43,
+          "turn": 43,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 4,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 44,
+          "turn": 44,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 4,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 45,
+          "turn": 45,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 5,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 46,
+          "turn": 46,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 5,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 47,
+          "turn": 47,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 7,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 48,
+          "turn": 48,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 0,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 49,
+          "turn": 49,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 6,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 50,
+          "turn": 50,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 7,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 51,
+          "turn": 51,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 7,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 52,
+          "turn": 52,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 7,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 53,
+          "turn": 53,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 4,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 54,
+          "turn": 54,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 6,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 55,
+          "turn": 55,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 6,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 56,
+          "turn": 56,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 3,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 57,
+          "turn": 57,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 1,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 58,
+          "turn": 58,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 0,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 59,
+          "turn": 59,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 2,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 60,
+          "turn": 60,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 0,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 61,
+          "turn": 61,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 3,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 62,
+          "turn": 62,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 4,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 63,
+          "turn": 63,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 3,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 64,
+          "turn": 64,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 5,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 65,
+          "turn": 65,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 1,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 66,
+          "turn": 66,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 1,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 67,
+          "turn": 67,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 6,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 68,
+          "turn": 68,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 7,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 69,
+          "turn": 69,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 0,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 70,
+          "turn": 70,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 4,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 71,
+          "turn": 71,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 7,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 72,
+          "turn": 72,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 6,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 73,
+          "turn": 73,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 1,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 74,
+          "turn": 74,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 6,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 75,
+          "turn": 75,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 0,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 76,
+          "turn": 76,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 5,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 77,
+          "turn": 77,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 2,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 78,
+          "turn": 78,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 1,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 79,
+          "turn": 79,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 3,
+            "direction": "left"
+          }
+        }
+      ],
+      "result": {
+        "winner": 0,
+        "winnerSide": "south",
+        "reason": "front-empty",
+        "plies": 79
+      },
+      "finalPosition": {
+        "pits": [
+          [
+            [
+              2,
+              8,
+              2,
+              0,
+              2,
+              4,
+              1,
+              6
+            ],
+            [
+              2,
+              1,
+              11,
+              1,
+              5,
+              2,
+              9,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              0,
+              2,
+              1,
+              1,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 0,
+        "phase": "mtaji",
+        "winner": 0,
+        "reason": "front-empty",
+        "turn": 79,
+        "pending": [
+          1,
+          0
+        ],
+        "takasia": null
+      }
+    }
+  },
+  "legacy": {
+    "seed": 36,
+    "activated": 0,
+    "stopped": 0,
+    "record": {
+      "format": "bao-game-record",
+      "version": 1,
+      "rules": {
+        "guide": "bao-la-kiswahili-ja",
+        "guideVersion": "v0.1.0-draft",
+        "baseline": "R-002"
+      },
+      "settings": {
+        "mode": "computer",
+        "humanSide": "south",
+        "ai": {
+          "difficulty": "normal",
+          "generation": "AI-GEN4",
+          "releaseId": "AI-GEN4-RELEASE-001"
+        }
+      },
+      "initialPosition": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              2,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              0,
+              6,
+              2,
+              2,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          22,
+          22
+        ],
+        "houseOwned": [
+          true,
+          true
+        ],
+        "player": 0,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 1,
+        "pending": [
+          0,
+          0
+        ]
+      },
+      "moves": [
+        {
+          "ply": 1,
+          "turn": 1,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 2,
+          "turn": 2,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 3,
+          "turn": 3,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 4,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 4,
+          "turn": 4,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 5,
+          "turn": 5,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 4,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 6,
+          "turn": 6,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 2,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 7,
+          "turn": 7,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 8,
+          "turn": 8,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 0,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 9,
+          "turn": 9,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 10,
+          "turn": 10,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 3,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 11,
+          "turn": 11,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 0,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 12,
+          "turn": 12,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 4,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 13,
+          "turn": 13,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 14,
+          "turn": 14,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 2,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 15,
+          "turn": 15,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 1,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 16,
+          "turn": 16,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 2,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 17,
+          "turn": 17,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 1,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 18,
+          "turn": 18,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 7,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 19,
+          "turn": 19,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 1,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 20,
+          "turn": 20,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 3,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 21,
+          "turn": 21,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 3,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 22,
+          "turn": 22,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 23,
+          "turn": 23,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 4,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 24,
+          "turn": 24,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 25,
+          "turn": 25,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 2,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 26,
+          "turn": 26,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 1,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 27,
+          "turn": 27,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 3,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 28,
+          "turn": 28,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 1,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 29,
+          "turn": 29,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 4,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 30,
+          "turn": 30,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 4,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 31,
+          "turn": 31,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 4,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 32,
+          "turn": 32,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 7,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 33,
+          "turn": 33,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 4,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 34,
+          "turn": 34,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "takata",
+            "phase": "namua",
+            "row": 0,
+            "index": 2,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 35,
+          "turn": 35,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 0,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 36,
+          "turn": 36,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 37,
+          "turn": 37,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 2,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 38,
+          "turn": 38,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 7,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 39,
+          "turn": 39,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 3,
+            "direction": "right",
+            "side": "left"
+          }
+        },
+        {
+          "ply": 40,
+          "turn": 40,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 41,
+          "turn": 41,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 42,
+          "turn": 42,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 6,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 43,
+          "turn": 43,
+          "player": 0,
+          "side": "south",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 44,
+          "turn": 44,
+          "player": 1,
+          "side": "north",
+          "phase": "namua",
+          "move": {
+            "type": "capture",
+            "phase": "namua",
+            "row": 0,
+            "index": 5,
+            "direction": "left",
+            "side": "right"
+          }
+        },
+        {
+          "ply": 45,
+          "turn": 45,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 4,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 46,
+          "turn": 46,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 3,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 47,
+          "turn": 47,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 3,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 48,
+          "turn": 48,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 3,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 49,
+          "turn": 49,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 1,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 50,
+          "turn": 50,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 2,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 51,
+          "turn": 51,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 0,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 52,
+          "turn": 52,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 4,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 53,
+          "turn": 53,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 0,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 54,
+          "turn": 54,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 2,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 55,
+          "turn": 55,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 7,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 56,
+          "turn": 56,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 1,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 57,
+          "turn": 57,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 0,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 58,
+          "turn": 58,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 6,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 59,
+          "turn": 59,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 5,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 60,
+          "turn": 60,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 0,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 61,
+          "turn": 61,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 4,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 62,
+          "turn": 62,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 7,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 63,
+          "turn": 63,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 1,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 64,
+          "turn": 64,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 5,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 65,
+          "turn": 65,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 0,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 66,
+          "turn": 66,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 6,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 67,
+          "turn": 67,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 3,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 68,
+          "turn": 68,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 1,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 69,
+          "turn": 69,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 7,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 70,
+          "turn": 70,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 4,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 71,
+          "turn": 71,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 6,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 72,
+          "turn": 72,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 0,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 73,
+          "turn": 73,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 5,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 74,
+          "turn": 74,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 6,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 75,
+          "turn": 75,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 3,
+            "direction": "left"
+          }
+        },
+        {
+          "ply": 76,
+          "turn": 76,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 5,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 77,
+          "turn": 77,
+          "player": 0,
+          "side": "south",
+          "phase": "mtaji",
+          "move": {
+            "type": "takata",
+            "phase": "mtaji",
+            "row": 1,
+            "index": 2,
+            "direction": "right"
+          }
+        },
+        {
+          "ply": 78,
+          "turn": 78,
+          "player": 1,
+          "side": "north",
+          "phase": "mtaji",
+          "move": {
+            "type": "capture",
+            "phase": "mtaji",
+            "row": 0,
+            "index": 1,
+            "direction": "right"
+          }
+        }
+      ],
+      "result": {
+        "winner": 1,
+        "winnerSide": "north",
+        "reason": "no-move",
+        "plies": 78
+      },
+      "finalPosition": {
+        "pits": [
+          [
+            [
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              1,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              2,
+              1,
+              5,
+              4,
+              0,
+              2,
+              5
+            ],
+            [
+              4,
+              6,
+              0,
+              8,
+              8,
+              2,
+              4,
+              6
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 0,
+        "phase": "mtaji",
+        "winner": 1,
+        "reason": "no-move",
+        "turn": 79,
+        "pending": [
+          0,
+          0
+        ]
+      }
+    }
+  }
+}

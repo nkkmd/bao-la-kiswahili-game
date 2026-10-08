@@ -60,6 +60,7 @@ function browserContext() {
   };
   context.window = context;
   vm.createContext(context);
+  vm.runInContext(fs.readFileSync("public/rule-versions.js", "utf8"), context);
   vm.runInContext(`
     let state;
     let started = false;
@@ -130,3 +131,4 @@ test("save action appears only after the game has a winner", () => {
   assert.equal(panel.hidden, false);
   assert.equal(panel.style.display, "flex");
 });
+

@@ -32,7 +32,7 @@ const snapshot = Diagnostics.createSnapshot(state, {
 });
 
 assert.equal(snapshot.format, "bao-ai-diagnostic");
-assert.equal(snapshot.version, 1);
+assert.equal(snapshot.version, 2);
 assert.deepEqual(Diagnostics.stateFromSnapshot(snapshot), state,
   "diagnostic positions restore an engine-compatible state");
 assert.equal(snapshot.ai.move.privateNote, undefined, "move serialization uses an allowlist");
@@ -60,3 +60,4 @@ assert.throws(() => Diagnostics.stateFromSnapshot({ version: 999 }), /Unsupporte
 assert.throws(() => Diagnostics.createSnapshot({}), /Invalid Bao state/);
 
 console.log("Bao diagnostics tests passed");
+

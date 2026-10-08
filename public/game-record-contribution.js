@@ -1,6 +1,7 @@
 "use strict";
 
 (function exposeBaoGameRecordContribution(root) {
+  const Rules = root.BaoRuleVersions || (typeof module !== "undefined" && module.exports ? require("./rule-versions.js") : null);
   const ACTION = "game_record_contribution";
   const CONSENT_VERSION = 1;
   const DEFAULT_MAX_RECORD_BYTES = 48 * 1024;
@@ -30,17 +31,7 @@
 
   function stablePosition(value) {
     if (!value) return null;
-    return {
-      pits: value.pits,
-      reserve: value.reserve,
-      houseOwned: value.houseOwned,
-      player: value.player,
-      phase: value.phase,
-      winner: value.winner,
-      reason: value.reason || "",
-      turn: value.turn,
-      pending: value.pending || [0, 0],
-    };
+    return Rules.canonicalPosition(value, Object.hasOwn(value, "takasia") ? Rules.CURRENT_REVISION : Rules.LEGACY_REVISION);
   }
 
   function verifyLocally(record) {
@@ -338,3 +329,4 @@
 
   installUi();
 }(typeof window !== "undefined" ? window : globalThis));
+

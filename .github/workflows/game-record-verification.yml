@@ -4,6 +4,13 @@ on:
   pull_request:
     paths:
       - 'public/game-record.js'
+      - 'public/rule-versions.js'
+      - 'public/engine-r002.js'
+      - 'public/engine.js'
+      - 'public/diagnostics.js'
+      - 'test/takasia-record.test.mjs'
+      - 'tools/takasia/record-fixtures.json'
+      - 'tools/takasia/check-record-fixtures.cjs'
       - 'public/game-record-replay.js'
       - 'public/game-record-contribution-config.js'
       - 'public/game-record-contribution.js'
@@ -30,6 +37,19 @@ permissions:
   contents: read
 
 jobs:
+  takasia-record-verification:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify saved standard-initial regression fixtures
+        run: node tools/takasia/check-record-fixtures.cjs --check
+      - name: Verify versioned records, diagnostics and receiver
+        run: |
+          node --test test/takasia-record.test.mjs test/game-record.test.js test/game-record-replay.test.js test/game-record-browser-hook.test.js test/game-record-ui.test.js test/game-record-contribution-worker.test.mjs test/game-record-contribution-fetch-metadata.test.mjs test/game-record-contribution-config.test.js test/diagnostics.test.js test/diagnostic-to-fixture.test.js test/diagnostic-download.test.js test/diagnostics-ui.test.js test/locale.test.js
   verify:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
@@ -62,3 +82,4 @@ jobs:
           path: public/
           if-no-files-found: error
           retention-days: 7
+

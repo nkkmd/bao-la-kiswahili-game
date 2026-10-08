@@ -7,7 +7,8 @@ import {
   validateRecord,
 } from "../cloudflare/game-record-ingest/src/index.mjs";
 
-const E = globalThis.BaoEngine;
+// この既存集団はR-002/v1の受信契約を引き続き検証する。
+const E = globalThis.BaoLegacyEngine;
 
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
@@ -269,3 +270,4 @@ test("daily quota refuses a second distinct record after the configured cap", as
     assert.equal((await second.json()).error, "daily_collection_limit");
   });
 });
+

@@ -1,7 +1,8 @@
 "use strict";
-// Refresh marker: 盤面と下部用語の上下余白調整 (2026-10-01)。
-const CACHE = "bao-la-kiswahili-v55";
+// Refresh marker: takasia棋譜v2とR-002再生資産の追加 (2026-10-08)。配信前の作業ブランチ。
+const CACHE = "bao-la-kiswahili-v56";
 const FILES = ["./", "./index.html", "./style.css", "./locale.js", "./engine.js", "./ai-weights.js", "./ai.js", "./logic-evaluator.js", "./ai-candidate.js", "./ai-release.js", "./ai-release-worker.js", "./ai-config.js", "./ai-worker.js", "./diagnostics.js", "./review-suggestion.js", "./diagnostic-download.js", "./main.js", "./game-record.js", "./game-record-replay.js", "./game-record-contribution-config.js", "./game-record-contribution.js", "./manifest.webmanifest", "./icon.svg", "./privacy"];
+FILES.push("./engine-r002.js", "./rule-versions.js");
 FILES.push("./rules", "./rules.css", "./rules.js",
   ...["board-overview", "initial-setup", "sowing-before", "sowing-relay", "sowing-stop",
     "capture-before", "capture-taken", "capture-after", "nyumba-two", "front-empty"]

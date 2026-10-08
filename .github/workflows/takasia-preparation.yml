@@ -1,4 +1,4 @@
-name: Takasia engine and AI verification
+name: Takasia engine, AI and record verification
 
 on:
   workflow_dispatch:
@@ -10,6 +10,12 @@ on:
       - 'public/engine.js'
       - 'public/ai*.js'
       - 'public/main.js'
+      - 'public/game-record*.js'
+      - 'public/diagnostics.js'
+      - 'public/rule-versions.js'
+      - 'public/engine-r002.js'
+      - 'cloudflare/game-record-ingest/**'
+      - 'test/takasia-record.test.mjs'
       - 'test/takasia-ai*.cjs'
       - 'doc/ai-engineering/takasia-update/**'
       - '.github/workflows/takasia-preparation.yml'
@@ -23,6 +29,12 @@ on:
       - 'public/engine.js'
       - 'public/ai*.js'
       - 'public/main.js'
+      - 'public/game-record*.js'
+      - 'public/diagnostics.js'
+      - 'public/rule-versions.js'
+      - 'public/engine-r002.js'
+      - 'cloudflare/game-record-ingest/**'
+      - 'test/takasia-record.test.mjs'
       - 'test/takasia-ai*.cjs'
       - '.github/workflows/takasia-preparation.yml'
 
@@ -48,6 +60,11 @@ jobs:
           node --test test/takasia-engine.test.cjs test/engine.test.js test/namua-mtaji-transition-engine.test.js
       - name: Verify AI keys, routes, rollback and actual Worker
         run: node --test test/takasia-ai.test.cjs test/takasia-ai-worker.test.cjs test/ai.test.js test/search.test.js test/ai-config.test.js test/ai-worker.test.js test/worker-integration.test.js
+      - name: Verify deterministic record fixtures without overwriting them
+        run: node tools/takasia/check-record-fixtures.cjs --check
+      - name: Verify old and new records, diagnostics, receiver and adjacent UI
+        run: |
+          node --test test/takasia-record.test.mjs test/game-record.test.js test/game-record-replay.test.js test/game-record-browser-hook.test.js test/game-record-ui.test.js test/game-record-contribution-worker.test.mjs test/game-record-contribution-fetch-metadata.test.mjs test/game-record-contribution-config.test.js test/diagnostics.test.js test/diagnostic-to-fixture.test.js test/diagnostic-download.test.js test/diagnostics-ui.test.js test/locale.test.js
 
   ai-budget-verification:
     needs: fixture-verification
