@@ -1,0 +1,34 @@
+name: Takasia preparation verification
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'tools/takasia/**'
+      - 'test/takasia-contract.test.cjs'
+      - 'doc/ai-engineering/takasia-update/**'
+      - '.github/workflows/takasia-preparation.yml'
+  push:
+    branches:
+      - 'feat/takasia-preparation-20261008'
+    paths:
+      - 'tools/takasia/**'
+      - 'test/takasia-contract.test.cjs'
+      - '.github/workflows/takasia-preparation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  fixture-verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify fixture contract in JavaScript and Python
+        run: node --test test/takasia-contract.test.cjs
+      - name: Verify independent Python calculation
+        run: python3 tools/takasia/verify.py

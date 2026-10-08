@@ -1,0 +1,1688 @@
+{
+  "source": {
+    "repository": "nkkmd/bao-la-kiswahili-ja",
+    "tag": "v0.2.0",
+    "commit": "aad9fda3ffb12c2ca785509951c71ce8a42bef5a",
+    "example": "E30",
+    "license": "CC-BY-SA-4.0",
+    "attribution": "Bao la Kiswahili 日本語完全ガイド; K.I.B.A. R-009 §4.5 as cited by the guide",
+    "coordinateConvention": "Each player: front index 0..7 in own viewpoint; facing indices sum to 7"
+  },
+  "detectionCases": [
+    {
+      "id": "E30",
+      "provenance": "E30",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              2,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              2,
+              0,
+              2,
+              6,
+              4
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              1,
+              2,
+              10,
+              0,
+              0,
+              10
+            ],
+            [
+              2,
+              2,
+              8,
+              4,
+              1,
+              2,
+              1,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "attacker": 0,
+      "previousMove": {
+        "phase": "mtaji",
+        "type": "takata"
+      },
+      "expected": {
+        "player": 1,
+        "index": 3
+      }
+    },
+    {
+      "id": "seat-swap",
+      "provenance": "constructed-unit-case; reachability-unverified",
+      "state": {
+        "pits": [
+          [
+            [
+              1,
+              0,
+              1,
+              2,
+              10,
+              0,
+              0,
+              10
+            ],
+            [
+              2,
+              2,
+              8,
+              4,
+              1,
+              2,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              2,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              2,
+              0,
+              2,
+              6,
+              4
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 0,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "attacker": 1,
+      "previousMove": {
+        "phase": "mtaji",
+        "type": "takata"
+      },
+      "expected": {
+        "player": 0,
+        "index": 3
+      }
+    },
+    {
+      "id": "singleton-exempt",
+      "provenance": "constructed-unit-case; reachability-unverified",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              2,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              2,
+              0,
+              2,
+              6,
+              4
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              1,
+              1,
+              10,
+              0,
+              0,
+              10
+            ],
+            [
+              2,
+              2,
+              9,
+              4,
+              1,
+              2,
+              1,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "attacker": 0,
+      "previousMove": {
+        "phase": "mtaji",
+        "type": "takata"
+      },
+      "expected": null
+    },
+    {
+      "id": "only-occupied-front-exempt",
+      "provenance": "constructed-unit-case; reachability-unverified",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              2,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              2,
+              0,
+              2,
+              6,
+              4
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              0,
+              2,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              2,
+              8,
+              4,
+              1,
+              2,
+              1,
+              22
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "attacker": 0,
+      "previousMove": {
+        "phase": "mtaji",
+        "type": "takata"
+      },
+      "expected": null
+    },
+    {
+      "id": "only-multi-front-exempt",
+      "provenance": "constructed-unit-case; reachability-unverified",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              2,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              2,
+              0,
+              2,
+              6,
+              4
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              1,
+              2,
+              1,
+              0,
+              0,
+              1
+            ],
+            [
+              2,
+              2,
+              8,
+              4,
+              1,
+              2,
+              1,
+              18
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "attacker": 0,
+      "previousMove": {
+        "phase": "mtaji",
+        "type": "takata"
+      },
+      "expected": null
+    },
+    {
+      "id": "zero-targets",
+      "provenance": "constructed-unit-case; reachability-unverified",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              2,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              2,
+              0,
+              2,
+              6,
+              5
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              1,
+              2,
+              10,
+              0,
+              0,
+              10
+            ],
+            [
+              2,
+              2,
+              8,
+              4,
+              1,
+              2,
+              1,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "attacker": 0,
+      "previousMove": {
+        "phase": "mtaji",
+        "type": "takata"
+      },
+      "expected": null
+    },
+    {
+      "id": "two-targets",
+      "provenance": "constructed-unit-case; reachability-unverified",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              1,
+              0,
+              1,
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              2,
+              0,
+              2,
+              6,
+              4
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              1,
+              2,
+              10,
+              0,
+              0,
+              10
+            ],
+            [
+              2,
+              2,
+              8,
+              4,
+              1,
+              2,
+              1,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "attacker": 0,
+      "previousMove": {
+        "phase": "mtaji",
+        "type": "takata"
+      },
+      "expected": null
+    },
+    {
+      "id": "multiple-captures-same-target",
+      "provenance": "constructed-unit-case; reachability-unverified",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              2,
+              0,
+              0,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              2,
+              0,
+              2,
+              5,
+              4
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              1,
+              2,
+              10,
+              0,
+              0,
+              10
+            ],
+            [
+              2,
+              2,
+              8,
+              4,
+              1,
+              2,
+              1,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "attacker": 0,
+      "previousMove": {
+        "phase": "mtaji",
+        "type": "takata"
+      },
+      "expected": {
+        "player": 1,
+        "index": 3
+      }
+    },
+    {
+      "id": "defender-can-capture",
+      "provenance": "constructed-unit-case; reachability-unverified",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              1,
+              0,
+              0,
+              1,
+              1,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              2,
+              2,
+              0,
+              2,
+              6,
+              4
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              1,
+              2,
+              10,
+              0,
+              0,
+              10
+            ],
+            [
+              2,
+              2,
+              8,
+              4,
+              1,
+              2,
+              1,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "attacker": 0,
+      "previousMove": {
+        "phase": "mtaji",
+        "type": "takata"
+      },
+      "expected": null
+    },
+    {
+      "id": "unowned-house-position",
+      "provenance": "constructed-unit-case; reachability-unverified",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              2,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              2,
+              0,
+              2,
+              5,
+              5
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              1,
+              2,
+              10,
+              0,
+              0,
+              10
+            ],
+            [
+              2,
+              2,
+              8,
+              4,
+              1,
+              2,
+              1,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "attacker": 0,
+      "previousMove": {
+        "phase": "mtaji",
+        "type": "takata"
+      },
+      "expected": {
+        "player": 1,
+        "index": 4
+      }
+    },
+    {
+      "id": "owned-house-exempt",
+      "provenance": "constructed-unit-case; reachability-unverified",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              2,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              2,
+              0,
+              2,
+              5,
+              5
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              1,
+              2,
+              10,
+              0,
+              0,
+              10
+            ],
+            [
+              2,
+              2,
+              8,
+              4,
+              1,
+              2,
+              1,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          true
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "attacker": 0,
+      "previousMove": {
+        "phase": "mtaji",
+        "type": "takata"
+      },
+      "expected": null
+    },
+    {
+      "id": "prior-capture",
+      "provenance": "constructed-unit-case; reachability-unverified",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              2,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              2,
+              0,
+              2,
+              6,
+              4
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              1,
+              2,
+              10,
+              0,
+              0,
+              10
+            ],
+            [
+              2,
+              2,
+              8,
+              4,
+              1,
+              2,
+              1,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "attacker": 0,
+      "previousMove": {
+        "phase": "mtaji",
+        "type": "capture"
+      },
+      "expected": null
+    },
+    {
+      "id": "namua-to-mtaji-no-activation",
+      "provenance": "constructed-unit-case; reachability-unverified",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              2,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              2,
+              0,
+              2,
+              6,
+              4
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              1,
+              2,
+              10,
+              0,
+              0,
+              10
+            ],
+            [
+              2,
+              2,
+              8,
+              4,
+              1,
+              2,
+              1,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "attacker": 0,
+      "previousMove": {
+        "phase": "namua",
+        "type": "takata"
+      },
+      "expected": null
+    },
+    {
+      "id": "namua-no-activation",
+      "provenance": "constructed-unit-case; reachability-unverified",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              2,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              2,
+              0,
+              2,
+              6,
+              4
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              1,
+              2,
+              10,
+              0,
+              0,
+              10
+            ],
+            [
+              2,
+              2,
+              6,
+              4,
+              1,
+              2,
+              1,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          1,
+          1
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "namua",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "attacker": 0,
+      "previousMove": {
+        "phase": "namua",
+        "type": "takata"
+      },
+      "expected": null
+    },
+    {
+      "id": "terminal-no-activation",
+      "provenance": "constructed-unit-case; reachability-unverified",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              2,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              2,
+              0,
+              2,
+              6,
+              4
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              1,
+              2,
+              10,
+              0,
+              0,
+              10
+            ],
+            [
+              2,
+              2,
+              8,
+              4,
+              1,
+              2,
+              1,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": 0,
+        "reason": "fixture-terminal",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "attacker": 0,
+      "previousMove": {
+        "phase": "mtaji",
+        "type": "takata"
+      },
+      "expected": null
+    },
+    {
+      "id": "owned-house-five-exempt",
+      "provenance": "constructed-unit-case; reachability-unverified",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              2,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              2,
+              0,
+              2,
+              5,
+              5
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              1,
+              2,
+              5,
+              0,
+              0,
+              10
+            ],
+            [
+              2,
+              2,
+              13,
+              4,
+              1,
+              2,
+              1,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          true
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "attacker": 0,
+      "previousMove": {
+        "phase": "mtaji",
+        "type": "takata"
+      },
+      "expected": null
+    },
+    {
+      "id": "unowned-house-five-normal",
+      "provenance": "constructed-unit-case; reachability-unverified",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              2,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              2,
+              0,
+              2,
+              5,
+              5
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              1,
+              2,
+              5,
+              0,
+              0,
+              10
+            ],
+            [
+              2,
+              2,
+              13,
+              4,
+              1,
+              2,
+              1,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "attacker": 0,
+      "previousMove": {
+        "phase": "mtaji",
+        "type": "takata"
+      },
+      "expected": {
+        "player": 1,
+        "index": 4
+      }
+    }
+  ],
+  "e30": {
+    "predecessor": {
+      "pits": [
+        [
+          [
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            2,
+            0,
+            2,
+            6,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            0,
+            1,
+            2,
+            10,
+            0,
+            0,
+            10
+          ],
+          [
+            2,
+            2,
+            8,
+            4,
+            1,
+            2,
+            1,
+            0
+          ]
+        ]
+      ],
+      "reserve": [
+        0,
+        0
+      ],
+      "houseOwned": [
+        false,
+        false
+      ],
+      "player": 0,
+      "phase": "mtaji",
+      "winner": null,
+      "reason": "",
+      "turn": 1,
+      "pending": [
+        0,
+        0
+      ],
+      "takasia": null
+    },
+    "move": {
+      "row": 0,
+      "index": 6,
+      "direction": "left",
+      "type": "takata",
+      "phase": "mtaji"
+    },
+    "post": {
+      "pits": [
+        [
+          [
+            0,
+            2,
+            0,
+            0,
+            1,
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            2,
+            0,
+            2,
+            6,
+            4
+          ]
+        ],
+        [
+          [
+            1,
+            0,
+            1,
+            2,
+            10,
+            0,
+            0,
+            10
+          ],
+          [
+            2,
+            2,
+            8,
+            4,
+            1,
+            2,
+            1,
+            0
+          ]
+        ]
+      ],
+      "reserve": [
+        0,
+        0
+      ],
+      "houseOwned": [
+        false,
+        false
+      ],
+      "player": 1,
+      "phase": "mtaji",
+      "winner": null,
+      "reason": "",
+      "turn": 2,
+      "pending": [
+        0,
+        0
+      ],
+      "takasia": {
+        "player": 1,
+        "index": 3
+      }
+    },
+    "responses": [
+      {
+        "start": 7,
+        "step": 1,
+        "sowings": 1,
+        "end": 1,
+        "targetCount": 2,
+        "reason": "empty",
+        "pits": [
+          [
+            2,
+            1,
+            1,
+            2,
+            10,
+            0,
+            0,
+            0
+          ],
+          [
+            3,
+            3,
+            9,
+            5,
+            2,
+            3,
+            2,
+            1
+          ]
+        ]
+      },
+      {
+        "start": 7,
+        "step": -1,
+        "sowings": 5,
+        "end": 3,
+        "targetCount": 5,
+        "reason": "takasia",
+        "pits": [
+          [
+            3,
+            2,
+            3,
+            5,
+            1,
+            3,
+            0,
+            2
+          ],
+          [
+            4,
+            4,
+            1,
+            6,
+            3,
+            4,
+            3,
+            0
+          ]
+        ]
+      },
+      {
+        "start": 4,
+        "step": 1,
+        "sowings": 2,
+        "end": 1,
+        "targetCount": 2,
+        "reason": "empty",
+        "pits": [
+          [
+            2,
+            1,
+            1,
+            2,
+            0,
+            1,
+            1,
+            11
+          ],
+          [
+            3,
+            0,
+            9,
+            5,
+            2,
+            3,
+            2,
+            1
+          ]
+        ]
+      },
+      {
+        "start": 4,
+        "step": -1,
+        "sowings": 10,
+        "end": 2,
+        "targetCount": 6,
+        "reason": "empty",
+        "pits": [
+          [
+            4,
+            3,
+            1,
+            6,
+            1,
+            0,
+            1,
+            2
+          ],
+          [
+            5,
+            0,
+            11,
+            1,
+            4,
+            2,
+            0,
+            3
+          ]
+        ]
+      }
+    ]
+  },
+  "sowingCases": [
+    {
+      "id": "owned-house-start-stops-at-target",
+      "provenance": "constructed-unit-case; reachability-unverified",
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              2,
+              0,
+              0,
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              2,
+              2,
+              0,
+              2,
+              6,
+              4
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              1,
+              2,
+              10,
+              0,
+              1,
+              10
+            ],
+            [
+              2,
+              2,
+              8,
+              4,
+              1,
+              2,
+              1,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          true
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 2,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": {
+          "player": 1,
+          "index": 3
+        }
+      },
+      "start": 4,
+      "step": -1,
+      "expectedPits": [
+        [
+          2,
+          2,
+          3,
+          5,
+          2,
+          2,
+          0,
+          1
+        ],
+        [
+          4,
+          4,
+          10,
+          0,
+          3,
+          1,
+          3,
+          2
+        ]
+      ],
+      "sowings": 5,
+      "end": 3,
+      "reason": "takasia"
+    }
+  ]
+}

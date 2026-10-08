@@ -1,6 +1,6 @@
 # Bao公開AI改善の索引
 
-更新日: 2026-09-28
+更新日: 2026-10-08
 現在の公開AI系統: **`AI-GEN4`**
 現在の正式release: **`AI-GEN4-RELEASE-001`**
 完了済みProgram: **`PBAI-P1`、`PBAI-P2`、`PBAI-P3`、`PBAI-P4`、`PBAI-P5`、`PBAI-P6`、`PBAI-P7`、`PBAI-P8`、`PBAI-P9`、`PBAI-P10`、`PBAI-P11`、`PBAI-P12`、`PBAI-P14`、`PBAI-P15`**
@@ -16,6 +16,10 @@
 **PBAI-P14は2026-09-28に終了**し、正式判断は`COMPLETE / NO-MATERIAL-WALL-CLOCK-IMPROVEMENT / KEEP-AI-GEN4`。baseline supportとcandidate developmentはPASSしたが、fresh uninstrumented paired testの点推定2.9795%が事前固定3.0% gateをわずかに下回った。再試験・強度比較・release holdout・候補コードのmain統合は行わず、公開AI・release・lineageは変更なし。[最終報告](ai-engineering/public-ai-improvement-program-14/PROGRAM_FINAL_REPORT.md)と[performance evidence](../artifacts/pbai-p14/C017_PERFORMANCE_002_RESULT.md)を参照する。
 
 **PBAI-P15は2026-09-28に終了**し、正式判断は`HOLD / KEEP-AI-GEN4`。F1のWorker再利用のbaseline supportで64 seedを処理したが、固定plyの局面が7 seedで欠け、各難易度171 paired positionsで必要192件に未達。Candidate IDは発行せず、候補コードや公開設定を変更していない。[最終報告](ai-engineering/public-ai-improvement-program-15/PROGRAM_FINAL_REPORT.md)と[結果](../artifacts/pbai-p15/WORKER_SUPPORT_RESULT.md)を参照する。
+
+## takasiaのルール対応（準備中）
+
+ルール元のv0.2.0でtakasiaが採用されたため、[対応工程と仕様・検証結果](ai-engineering/takasia-update/README.md)を用意した。工程1・2の準備が完了し、次はルールエンジンの実装である。独立した限定計算はPASS、現在の公開エンジンは新仕様の検査でFAILであり、対応完了を意味しない。公開AIは引き続きAI-GEN4 / AI-GEN4-RELEASE-001、公開コード・採用判断・過去の固定証拠は未変更である。
 
 ## 今後の改善案（検討中）
 

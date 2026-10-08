@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-08",
+  "gameBaseCommit": "8c87ed44c9b08f75456766f0a9bd9f76d06209d4",
+  "guideCommit": "aad9fda3ffb12c2ca785509951c71ce8a42bef5a",
+  "stage": "PREPARATION-1-2-COMPLETE",
+  "engineImplemented": false,
+  "aiUpdated": false,
+  "mainIntegrated": false,
+  "nodeVersion": "v24.19.0",
+  "pythonVersion": "Python 3.12.14",
+  "contractTests": {
+    "status": "PASS",
+    "tests": 30,
+    "skipped": 0,
+    "todo": 0
+  },
+  "independentPython": {
+    "status": "PASS",
+    "detectionCases": 17,
+    "e30Responses": 4,
+    "additionalSowingCases": 1
+  },
+  "upstreamE30Verifier": "PASS",
+  "existingEngineTests": "PASS",
+  "engineContract": {
+    "status": "FAIL",
+    "checks": 25,
+    "passed": 0,
+    "failed": 25,
+    "expectedAtPreparationStage": true
+  },
+  "sha256": {
+    "tools/takasia/fixtures.json": "f3096da061690038f128cbbf822e04f64b2d2575d36d8715661b0bd6dd08c3bd",
+    "tools/takasia/oracle.cjs": "1c2bdf325710dd1452708cdf883ee60346f4c82efcf0aff487aec2bc916de2de",
+    "tools/takasia/verify.py": "54b29ec524c7dc7cda3fe24fa08355d76f4be1da14436be07207cb15ba68e32a",
+    "tools/takasia/check-engine.cjs": "f89c4f060822728acebe4f4fc5f06524582bf4a15152a1b18f00902a3c9d86e5",
+    "test/takasia-contract.test.cjs": "7542aae97fb930b21e0a2526f4336d1310a1c48ebd572b3fadda1f9ce8c038a0",
+    "public/engine.js": "2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3"
+  },
+  "documentationAudit": {
+    "files": 7,
+    "brokenRelativeLinks": 0,
+    "englishExplanationHeadings": 0,
+    "canonicalHeadingExceptions": [
+      "Bao la Kiswahili",
+      "5.1 `takasia`"
+    ],
+    "scope": "changed sections and new documents"
+  }
+}
