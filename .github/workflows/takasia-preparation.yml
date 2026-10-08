@@ -17,6 +17,7 @@ on:
       - 'public/service-worker.js'
       - 'tools/build-rules-figures.js'
       - 'test/takasia-ui.test.cjs'
+      - 'test/takasia-ci-boundary.test.cjs'
       - 'test/locale.test.js'
       - 'public/game-record*.js'
       - 'public/diagnostics.js'
@@ -44,6 +45,7 @@ on:
       - 'public/service-worker.js'
       - 'tools/build-rules-figures.js'
       - 'test/takasia-ui.test.cjs'
+      - 'test/takasia-ci-boundary.test.cjs'
       - 'test/locale.test.js'
       - 'public/game-record*.js'
       - 'public/diagnostics.js'
@@ -63,9 +65,15 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - name: 工程6の固定配信候補と現行資産を照合
+        run: |
+          node tools/takasia/check-current-assets.cjs
+          node --test test/takasia-ci-boundary.test.cjs
       - name: Verify fixture contract in JavaScript and Python
         run: node --test test/takasia-contract.test.cjs
       - name: Verify independent Python calculation
@@ -92,6 +100,8 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
@@ -115,6 +125,8 @@ jobs:
         engine: [chromium, firefox, webkit]
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '24'

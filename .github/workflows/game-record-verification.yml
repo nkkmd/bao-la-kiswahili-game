@@ -30,6 +30,8 @@ on:
       - 'test/game-record-contribution-config.test.js'
       - 'test/game-record-contribution-worker.test.mjs'
       - 'test/game-record-contribution-fetch-metadata.test.mjs'
+      - 'test/ai-generation-release.test.js'
+      - 'tools/takasia/check-current-assets.cjs'
       - '.github/workflows/game-record-verification.yml'
   workflow_dispatch:
 
@@ -42,6 +44,8 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
@@ -55,6 +59,8 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '24.19.0'

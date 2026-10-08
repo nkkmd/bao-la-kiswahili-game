@@ -9,6 +9,7 @@ on:
       - 'tools/engineering/lib/pbai-p4*'
       - 'doc/ai-engineering/public-ai-improvement-program-4/**'
       - 'artifacts/pbai-p4/**'
+      - 'tools/takasia/run-historical-ci.cjs'
       - '.github/workflows/pbai-p4-verification.yml'
   workflow_dispatch:
 permissions:
@@ -36,13 +37,11 @@ jobs:
           node test/diagnostics-ui.test.js
           node test/namua-mtaji-transition-engine.test.js
           node test/pbai-p4-transitions.test.js
-      - name: Audit archived observations without repeating timed measurements
-        run: python3 tools/engineering/audit-pbai-p4-artifacts.py
-      - name: Independently reconstruct known source and game records
-        run: |
-          for stage in development validation holdout; do
-            if test -f "artifacts/pbai-p4/$stage/gate.json"; then
-              node tools/engineering/verify-pbai-p4-stage-independent.js "$stage" --check
-              python3 tools/engineering/verify-pbai-p4-metrics-independent.py "$stage" --check
-            fi
-          done
+      - name: 旧固定版でアーカイブ・独立再生を検証し、時間計測は繰り返さない
+        run: node tools/takasia/run-historical-ci.cjs p4
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: takasia-history-p4
+          path: artifacts/local/takasia-history/p4/
+          if-no-files-found: error

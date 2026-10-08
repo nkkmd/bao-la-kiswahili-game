@@ -82,3 +82,9 @@ node --test test/takasia-ui.test.cjs は日英のmain全体と実エンジンを
 history/service-worker-v55.js は作業開始時mainのService Workerを保持し、配信済みv55から準備版v57への更新を検査するためだけに使う。通常配信には含めない。工程5で準備したv56は未配信である。
 
 結果・範囲・残件は[工程6の記録](../../doc/ai-engineering/takasia-update/UI_IMPLEMENTATION.md)、ソース・3ブラウザー各13項目・72条件・Actions参照は[機械可読記録](ui-validation-20261008.json)を参照する。
+
+## 工程7の履歴・改訂の検査
+
+[工程7の総合検証](../../doc/ai-engineering/takasia-update/INTEGRATION_VALIDATION.md)に検証経路と配信前の残件を説明する。check-current-assets.cjs は工程6で固定した16資産を旧releaseとは別に照合する。run-historical-ci.cjs は固定版の一時worktreeで旧assertを保持し、gen3・c015・p4・p5・lgttciの5系統を検査する。P4の実行資産はhashを確認した保存済みバンドルから復元する。test/takasia-ci-boundary.test.cjs はエンジン・固定記録・過去採用manifestの改変を拒否する負例を検査する。
+
+履歴検査の出力はartifacts/local/takasia-historyのprofile別ディレクトリへ逐次保存する。コマンド・ID・SHA・path・profile名は再現用の識別子として保持する。科学的な時間計測や正式対局試験を再実行せず、旧研究を新ルールへ移送したとの判断もしない。

@@ -20,7 +20,7 @@ const releaseAdapter = fs.readFileSync("public/ai-release.js", "utf8");
 const serviceWorker = fs.readFileSync("public/service-worker.js", "utf8");
 const sha256 = (path) => crypto.createHash("sha256").update(fs.readFileSync(path)).digest("hex");
 
-// AI-GEN4 inherits the immutable AI-GEN3 base assets through the release adapter.
+// 世代・採用判断は保持し、改訂前の資産と現行takasia資産を別々に照合する。
 assert.equal(Config.GENERATION, "AI-GEN3");
 assert.equal(Config.RELEASE_ID, "AI-GEN3-RELEASE-001");
 assert.equal(baseManifest.releaseId, Config.RELEASE_ID);
@@ -44,10 +44,18 @@ const immutableAIAssets = [
   "public/ai-config.js",
   "public/ai-worker.js",
 ];
-for (const path of immutableAIAssets) {
-  assert.equal(sha256(path), baseManifest.promotionDisclosureAssets[path],
-    path + " matches the inherited AI-GEN3 base manifest");
+const historicalAssets = {
+  "public/engine.js": "tools/engineering/browser/pbai-p9/engine.js",
+  "public/ai.js": "tools/engineering/browser/pbai-p9/baseline-ai.js",
+  "public/ai-weights.js": "public/ai-weights.js",
+  "public/ai-config.js": "public/ai-config.js",
+  "public/ai-worker.js": "tools/takasia/history/ai-worker.js",
+};
+for (const asset of immutableAIAssets) {
+  assert.equal(sha256(historicalAssets[asset]), baseManifest.promotionDisclosureAssets[asset],
+    asset + " matches the historical AI-GEN3 base manifest");
 }
+assert.equal(require("../tools/takasia/check-current-assets.cjs").verify().passed, true);
 
 // The current public release is AI-GEN4 and must remain tied to PBAI-C015-v1.
 assert.equal(currentManifest.releaseId, "AI-GEN4-RELEASE-001");
@@ -77,6 +85,8 @@ vm.runInContext(releaseAdapter, releaseContext, { filename: "public/ai-release.j
 
 assert.equal(releaseContext.BaoReleaseConfig.GENERATION, currentManifest.generationLineageAfter);
 assert.equal(releaseContext.BaoReleaseConfig.RELEASE_ID, currentManifest.releaseId);
+assert.equal(releaseContext.BaoReleaseConfig.RULE_REVISION, "BAO-RULES-V0.2.0-TAKASIA-001");
+assert.equal(releaseContext.BaoReleaseConfig.AI_REVISION, "AI-GEN4-TAKASIA-001");
 assert.equal(releaseContext.BaoReleaseConfig.searchOptions("hard").pbaiC015LogicGate, true);
 assert.equal(releaseContext.BaoReleaseConfig.searchOptions("expert").pbaiC015LogicGate, true);
 assert.equal(releaseContext.BaoReleaseConfig.searchOptions("easy").pbaiC015LogicGate, undefined);
@@ -104,6 +114,6 @@ assert.match(html, /data-ja="ビングワ">Bingwa<\/option>/);
 assert.match(html, /expert: \["Bingwa", "ビングワ"\]/);
 assert.match(html, /BaoReleaseConfig\.displayIdentity/);
 assert.match(main, /AIConfig\.displayIdentity/);
-assert.match(serviceWorker, /bao-la-kiswahili-v55/);
+assert.match(serviceWorker, /bao-la-kiswahili-v57/);
 
 console.log("AI-GEN4 release lineage tests passed");
