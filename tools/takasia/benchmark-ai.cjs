@@ -61,4 +61,5 @@ try {
   }
 } catch (error) { errors.push(error.stack); }
 const result = summary(); console.log(`${result.status}: ${result.completed}/72`);
+console.log("TAKASIA_AI_SUMMARY=" + JSON.stringify(result));
 if (result.status === "FAIL") process.exitCode = 1;

@@ -820,6 +820,7 @@
   }
 
   function analyzeMove(state, level = "normal", random = Math.random, options = {}) {
+    if (typeof E.detectTakasia !== "function") throw Error("Takasia engine is unavailable");
     if (!lightweight && options.pbaiC011LightweightTransitions === true
       && (level === "hard" || level === "expert")
       && (!options.evaluationProfile || options.evaluationProfile === "bao")

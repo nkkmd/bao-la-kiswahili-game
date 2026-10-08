@@ -152,3 +152,10 @@ test("旧AI-GEN3 manifestの5資産を固定した履歴から厳格に照合す
     crypto.createHash("sha256").update(fs.readFileSync(require.resolve("../" + file))).digest("hex"),
     manifest.promotionDisclosureAssets[name], name);
 });
+
+test("直接実行でも新AIと旧エンジンの混在を拒否する", () => {
+  const { ctx } = H.load(); delete ctx.BaoEngine.detectTakasia;
+  for (const level of ["easy", "normal", "hard", "expert"]) assert.throws(() =>
+    ctx.BaoReleaseAI.analyzeMove(F.e30.post, level, H.rng(1008), {
+      ...ctx.BaoReleaseConfig.searchOptions(level), maxDepth: 1, timeLimitMs: Infinity }), /Takasia engine is unavailable/);
+});
