@@ -2,6 +2,8 @@
 
 現在の公開AIは[AI-GEN4](ai-engineering/ai-gen4-release/README.md)です。hard・expertの診断では`evaluationCandidate`と`evaluationFallback`から、論理ゲート型評価器の使用とAI-GEN3基準への復帰を区別できます。下記の`profile: bao`だけでは評価器を識別できないため、使用構成を確認してから局面を比較してください。公開世代の採用状況と、本書の個別局面の`unreviewed`状態は別に管理します。
 
+takasiaの作業ブランチでは通常対局の診断をversion 2とし、`rules`と`position.takasia`、探索統計の`ruleRevision`・`aiRevision`を保持します。version 1はR-002の記録として読み、旧棋譜閲覧中の局面保存もversion 1を維持します。変換ツールは新旧のルール改訂をfixtureへ付けます。比較・探索には対応版のエンジンを選び、ルール版を変更して同じ局面と扱わないでください。main統合・配信は未実施です。[工程5の実装と限界](ai-engineering/takasia-update/RECORD_IMPLEMENTATION.md)を参照してください。
+
 Version: 0.3.1  
 更新日: 2026-09-15
 
@@ -144,13 +146,18 @@ bao-ai-review-YYYYMMDD-HHMMSS.json
 
 単一局面ファイルと記録配列ファイルは、どちらも`diagnostic-to-fixture.js`で読み込める。この変換ツールの対象は`bao-ai-diagnostic`であり、`bao-game-record`の棋譜を診断JSONとして直接入力しない。
 
-記録配列は概ね次の構造を持つ。
+新規のversion 2記録配列は概ね次の構造を持ちます。配信済みversion 1にはrulesとtakasiaがなく、旧R-002として復元します。
 
 ```json
 [
   {
     "format": "bao-ai-diagnostic",
-    "version": 1,
+    "version": 2,
+    "rules": {
+      "guide": "bao-la-kiswahili-ja",
+      "guideVersion": "v0.2.0",
+      "baseline": "BAO-RULES-V0.2.0-TAKASIA-001"
+    },
     "position": {},
     "ai": {
       "level": "hard",
@@ -174,7 +181,7 @@ bao-ai-review-YYYYMMDD-HHMMSS.json
 - ルールエンジン上で局面を復元できる。
 - 観測されたAI手を再現できる。
 - 合法手一覧を取得できる。
-- phase、reserve、nyumba状態が保存されている。
+- phase、reserve、nyumba状態、新版ではtakasiaとルール改訂が保存されている。
 
 再現できない記録は正式な候補にせず、診断形式または復元処理の問題として分離する。
 
@@ -335,3 +342,4 @@ timeout、着手安定性を比較してください。
 Bao上の期待手は自動で決めず、機械的な暫定分類とレビュー状態を付けてください。
 根拠未確認の局面は正式な戦術回帰へ追加しないでください。
 ```
+

@@ -1,7 +1,9 @@
-# Game Record Contribution Worker
+# 棋譜提供の受信Worker
 
 Bao la Kiswahili の終局棋譜を、利用者の明示同意後に受け付ける Cloudflare Worker です。
 公開ゲーム本体とは独立させ、R2 bucket は private のまま Worker binding からのみ書き込みます。
+
+2026-10-08の作業ブランチは棋譜v1・v2をルール版で振り分けます。本番のv2受信・移行は未実施です。[工程5の実装と検証](../../doc/ai-engineering/takasia-update/RECORD_IMPLEMENTATION.md)を参照してください。
 
 ## 安全上の境界
 
@@ -12,9 +14,9 @@ Bao la Kiswahili の終局棋譜を、利用者の明示同意後に受け付け
 - Fetch Metadata gate は許可Originからの状態変更POSTに追加適用する。未許可Originは内側のexact Origin allow-listで `origin_not_allowed` として拒否する。
 - `cdn-ts.pages.dev` はテストサイトが本番Workerと別siteになるため、`FETCH_METADATA_CROSS_SITE_ORIGINS` に完全一致で明示した場合だけ `cross-site` を許可する。任意のcross-site Originは許可しない。
 - Turnstile token を server-side で検証し、action と hostname も照合する。
-- `bao-game-record` version 1、ルール baseline、computer 対戦、許可 field、型、石総数、最大手数を検証する。
+- `bao-game-record` version 1／2とルール baselineの組合せ、computer 対戦、許可 field、型、石総数、最大手数を検証する。v1へのtakasia注入、v2でのtakasia欠落、未知の版・項目を拒否する。
 - 公開ゲームの標準初期局面と完全一致する棋譜だけを受け付ける。
-- `houseChoice` を含む canonical move variant を各 ply で照合してから、公開 engine の `applyMoveForSearch` で全着手を replay し、最終局面と結果を照合する。
+- `houseChoice` を含む canonical move variant を各 ply で照合してから、ルール版で選択した engine の `applyMoveForSearch` で全着手を replay し、takasiaを含む最終局面と結果を照合する。v1は固定した`engine-r002.js`、v2は`engine.js`を使う。
 - 氏名、自由記述、永続 user ID、端末 fingerprint、AI探索統計などの任意 field は受け付けない。
 - `CF-Connecting-IP` は短時間の per-client rate-limit key と Turnstile Siteverify の `remoteip` にだけ使用し、R2 record object や metadata へ保存しない。
 - Turnstile token、同意 marker も R2 record object へ保存しない。
@@ -27,19 +29,10 @@ Fetch Metadata は、ブラウザが request context を `Sec-Fetch-Site` / `Sec
 
 ただし、独自HTTP clientは同様のheader値を送信できるため、Fetch Metadataだけを認証として扱わない。防御は次の多層構成とする。
 
-```text
-exact Origin allow-list
-        ↓
-Fetch Metadata isolation for allowed Origins
-        ↓
-Turnstile server-side verification
-        ↓
-schema / standard initial position / canonical move / replay
-        ↓
-rate limits / R2 daily hard quota
-        ↓
-private R2
-```
+1. 許可Originの完全一致とFetch Metadataを確認する。
+2. Turnstileを受信側で検証する。
+3. 形式・標準初期局面・canonical手・全手再生を照合する。
+4. rate limitとR2の日次上限を通し、private R2へ保存する。
 
 本番 `bao-la-kiswahili.cultivationdata.net` から `bao-data.cultivationdata.net` への送信は同一scheme・同一registrable domain配下なので通常 `same-site` になる。テスト用 `cdn-ts.pages.dev` は別siteのため、完全一致した管理下Originだけを `FETCH_METADATA_CROSS_SITE_ORIGINS` へ例外登録する。
 
@@ -89,17 +82,19 @@ Workers Rate Limiting API は Cloudflare location 単位かつ permissive / even
 
 `TURNSTILE_SECRET_KEY`、Cloudflare API token、その他の認証情報は GitHub に commit しない。
 
-## R2 objects
+## R2保存オブジェクト
 
 検証済み棋譜:
 
 ```text
 records/v1/<sha256>.json
+records/v2/<sha256>.json
 ```
 
-body は検証済みの `bao-game-record` v1 そのものだけで、Turnstile token・IP・同意UIの一時情報は含めない。R2 custom metadata は次に限定する。
+body は検証済みの棋譜そのものだけで、Turnstile token・IP・同意UIの一時情報は含めない。既存v1保存先は保持し、v2でも同じ日次quotaを使う。R2 custom metadata は次に限定する。
 
 - format / version
+- ruleRevision / guideVersion、利用可能な場合のaiRevision
 - AI generation
 - difficulty
 - winner side
@@ -117,3 +112,4 @@ control/daily/YYYY-MM-DD.json
 ## 運用上の位置付け
 
 提供棋譜は Origin・Fetch Metadata・Turnstile・schema・標準初期局面・canonical move・engine replay を通すが、「実在する人が自然にプレイしたこと」までは証明しない。したがって `anonymous/unverified contribution` として扱い、自動学習へ直接投入しない。弱点候補抽出、実戦局面 corpus、回帰検証候補などに利用し、正式な AI 世代昇格は従来どおり管理された試験で判断する。
+
