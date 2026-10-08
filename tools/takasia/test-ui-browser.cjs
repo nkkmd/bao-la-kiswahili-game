@@ -43,6 +43,13 @@ async function cacheReady(page, version) {
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.waitForFunction(async v => !!navigator.serviceWorker.controller
     && (await caches.keys()).includes("bao-la-kiswahili-" + v), version);
+  // controllerchangeはactivate完了より先に通知される場合がある。
+  // activateのwaitUntil（旧キャッシュ削除を含む）が終わるまで確認を進めない。
+  await page.waitForFunction(async () => {
+    const registration = await navigator.serviceWorker.getRegistration();
+    return registration?.active?.state === "activated"
+      && navigator.serviceWorker.controller === registration.active;
+  });
 }
 let browser;
 (async () => {
@@ -177,5 +184,5 @@ let browser;
     assert.deepEqual(report.errors, []);
     report.passed = true;
   } catch (error) { report.failure = String(error.stack || error); throw error; }
-  finally { save(); await browser?.close(); server.close(); }
+  finally { save(); console.log("TAKASIA_UI_RESULT " + JSON.stringify(report)); await browser?.close(); server.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });
