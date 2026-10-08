@@ -33,11 +33,26 @@ namua捕獲では、空にしていない相手nyumbaの所有を維持する。
 | `node --test test/takasia-contract.test.cjs test/takasia-engine.test.cjs test/engine.test.js test/namua-mtaji-transition-engine.test.js` | 47件PASS、skip・todo 0 | 独立計算30件、追加エンジン15件、既存スクリプト2件 |
 | `python3 tools/takasia/verify.py` | PASS | 独立した限定計算、17判定・E30全4応手・追加蒔き1件 |
 
-Node.js `v24.19.0`、Python `3.12.14`で実行した。既存基本試験には50対局のランダムな石数保存確認を含む。CIの結果はPRのChecksで確認する。既存の公開資産hash照合や棋譜互換性を緩める変更は行っていない。
+Node.js `v24.19.0`、Python `3.12.14`で実行した。既存基本試験には50対局のランダムな石数保存確認を含む。takasia専用CIはpush・PRとも成功した（下記）。PR全体のCIは未合格であり、後続対応が必要である。既存の公開資産hash照合や棋譜互換性を緩める変更は行っていない。
 
 追加回帰の旧対象から新対象への置換は、E30直前盤面へ旧マーカーを構成して入れた処理順序の試験である。通常の成立した制約下では元の捕獲対象は残るため、自然に連続成立する実戦局面を確認したとの主張はしない。relay上限の境界は独立VMで定数だけを4・3へ縮め、E30で停止優先と上限終局を試験した。本番の512回を変更する試験ではない。
 
 旧入力で`takasia`がない場合にnullへ正規化することは、旧棋譜を旧ルールで再生できる保証ではない。工程5でルール版を分ける必要がある。
+
+## GitHub Actionsの確認と統合前の残件
+
+実装コミットは`e576ef0d0e3eee8352c42e7ecac812d675abdb7c`。takasia専用CIは[push実行](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37772230017)と[PR実行](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37772235066)が成功した。
+
+既存CIの次の失敗をログから確認した。専用CIのPASSをPR全体の合格へ読み替えず、Draftを維持する。
+
+| 実行 | 失敗した条件 | 後続工程での扱い |
+| --- | --- | --- |
+| [LGTTCI](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37772235077) | 旧engine blob `1527bb3665228b7a5bd9f03153567aedbaaa22d7`の固定照合 | 旧版の固定検証を保持し、新版の検証経路を分ける |
+| [PBAI-P4](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37772235075) | 過去の結果の`sourceHashes`と現在のengineが異なる | 過去のhash・結果を書き換えず、当時の資産で検証する経路を保持 |
+| [AI-GEN3](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37772235062)と[図解ルール](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37772235064) | 継承したAI-GEN3 manifestのengine SHA-256照合 | 工程4以降で公開改訂識別と検証経路を同期。図解10点の再生成照合自体は成功し、ブラウザー試験前に停止 |
+| [PBAI-C015](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37772235070) | 上記manifest照合に加え、既知9局面の公開Worker・直接実行・切戻しと凍結参照の一致 | 工程4で新状態の局面キー・探索経路を同期して再検証。hardの開始namua局面で着手と探索統計が異なるため、hashだけの失敗とは扱わない |
+
+新engineのblobは`1d60ab1e2393cc9f12105748d8346c6c67608d1c`、SHA-256は`7147697b8befd0c4c483e12aaf11f88432ce77a0cc189787d98ec184c24085f1`である。AI-GEN3の旧SHA-256 `2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3`は変更しない。これらの不一致を解消するためのskipやassert削除は加えていない。
 
 ## 文書監査と再開位置
 
