@@ -5,9 +5,7 @@ if (typeof importScripts === "function") importScripts("./engine.js", "./ai-weig
 function runSearch(message, engine = globalThis.BaoEngine, ai = globalThis.BaoAI) {
   if (!message || message.type !== "search") throw new Error("Invalid worker request");
   if (!engine || !ai) throw new Error("Bao AI dependencies are unavailable");
-  if (message.ruleRevision && message.ruleRevision !== ai.RULE_REVISION) throw new Error("AI rule revision mismatch");
   const positionKey = ai.stateKey(message.state);
-  if (message.positionKey && message.positionKey !== positionKey) throw new Error("AI position key mismatch");
   const analysis = ai.analyzeMove(
     message.state,
     message.level,
@@ -19,7 +17,6 @@ function runSearch(message, engine = globalThis.BaoEngine, ai = globalThis.BaoAI
     type: "result",
     id: message.id,
     positionKey,
-    ruleRevision: ai.RULE_REVISION,
     move: analysis.move,
     stats: analysis.stats,
   };

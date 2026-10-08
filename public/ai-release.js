@@ -9,22 +9,31 @@
   const config = root.BaoAIConfig;
   const GENERATION = "AI-GEN4";
   const RELEASE_ID = "AI-GEN4-RELEASE-001";
+  const RULE_REVISION = "BAO-RULES-V0.2.0-TAKASIA-001";
+  const AI_REVISION = "AI-GEN4-TAKASIA-001";
   function searchOptions(level, capabilities = {}, state = null) {
     return { ...config.searchOptions(level, capabilities, state),
       ...(enabledFor(level) ? { pbaiC015LogicGate: true } : {}),
     };
   }
   function analyzeMove(state, level, random = Math.random, options = {}) {
+    if (baseline.RULE_REVISION !== RULE_REVISION) throw Error("AI rule revision mismatch");
     const requested = options.pbaiC015LogicGate === true && (level === "hard" || level === "expert")
       && (!options.evaluationProfile || options.evaluationProfile === "bao")
       && (!options.searchProfile || options.searchProfile === "phase2")
       && !options.evaluationWeights && !options.evaluationAdjustments;
-    if (!requested) return baseline.analyzeMove(state, level, random, options);
+    if (!requested) return withRevision(baseline.analyzeMove(state, level, random, options));
     const available = typeof root.BaoLogicGate?.evaluate === "function"
-      && typeof root.BaoCandidateAI?.analyzeMove === "function";
+      && typeof root.BaoCandidateAI?.analyzeMove === "function"
+      && root.BaoCandidateAI.RULE_REVISION === RULE_REVISION;
     const result = (available ? root.BaoCandidateAI : baseline).analyzeMove(state, level, random, options);
     result.stats.evaluationCandidate = available ? "PBAI-C015-v1" : "AI-GEN3-baseline";
     result.stats.evaluationFallback = !available;
+    return withRevision(result);
+  }
+  function withRevision(result) {
+    result.stats.ruleRevision = RULE_REVISION;
+    result.stats.aiRevision = AI_REVISION;
     return result;
   }
   function displayIdentity(level, stats = null) {
@@ -41,7 +50,7 @@
     }
     return { label: config.GENERATION, labelJa: config.GENERATION, releaseId: config.RELEASE_ID };
   }
-  root.BaoReleaseConfig = { ...config, GENERATION, RELEASE_ID, searchOptions, displayIdentity };
+  root.BaoReleaseConfig = { ...config, GENERATION, RELEASE_ID, RULE_REVISION, AI_REVISION, searchOptions, displayIdentity };
   root.BaoReleaseAI = { ...baseline, analyzeMove,
     chooseMove: (state, level, random, options) => analyzeMove(state, level, random, options).move,
   };

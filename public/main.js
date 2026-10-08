@@ -556,11 +556,12 @@ function acceptAIMove(request, result) {
     setAIThinking(false);
     return;
   }
-  if (AI.stateKey(state) !== request.positionKey || result.positionKey !== request.positionKey) {
+  if (AI.stateKey(state) !== request.positionKey) {
     setAIThinking(false);
     helpNode.textContent = t("Discarded a stale COM search result", "古いCOMの思考結果を破棄しました");
     return;
   }
+  if (result.positionKey !== request.positionKey || result.ruleRevision !== request.ruleRevision) { runAIFallback(request); return; }
   setAIThinking(false);
   if (!result.move) return;
   try {
@@ -593,6 +594,7 @@ function runAIFallback(request) {
       );
       acceptAIMove(request, {
         positionKey: request.positionKey,
+        ruleRevision: request.ruleRevision,
         move: analysis.move,
         stats: analysis.stats,
       });
@@ -611,6 +613,7 @@ function startAI() {
     level: difficultySelect.value,
     options: AIConfig.searchOptions(difficultySelect.value, navigator, state),
     positionKey: AI.stateKey(state),
+    ruleRevision: AIConfig.RULE_REVISION,
   };
   setAIThinking(true);
   if (typeof Worker === "undefined") { runAIFallback(request); return; }
