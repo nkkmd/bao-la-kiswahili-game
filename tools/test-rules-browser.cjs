@@ -34,7 +34,7 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, { "Content-Type": mime, "Cache-Control": "no-store" }); res.end(body);
 });
 async function check(name, run) { await run(); report.checks.push(name); console.log(name); }
-async function cacheReady(page, version = "v55") {
+async function cacheReady(page, version = "v57") {
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.waitForFunction(() => !!navigator.serviceWorker.controller);
   await page.waitForFunction(async v => (await caches.keys()).includes("bao-la-kiswahili-" + v), version);
@@ -46,7 +46,7 @@ async function cacheReady(page, version = "v55") {
 async function allImages(page) {
   await page.locator("figure img").evaluateAll(images => images.forEach(img => { img.loading = "eager"; }));
   await page.waitForFunction(() => [...document.querySelectorAll("figure img")].every(img => img.complete && img.naturalWidth > 0));
-  assert.equal(await page.locator("figure img").count(), 10);
+  assert.equal(await page.locator("figure img").count(), 12);
 }
 async function fits(page) {
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), "横にはみ出さない");
@@ -209,7 +209,7 @@ let browser;
       const noJS = await browser.newContext({ javaScriptEnabled: false });
       const staticPage = await noJS.newPage();
       await staticPage.goto(origin + "/rules");
-      assert.equal(await staticPage.locator(".rules-section").count(), 10);
+      assert.equal(await staticPage.locator(".rules-section").count(), 11);
       assert.equal(await staticPage.locator("#goal-title").textContent(), "What are you trying to do?");
       await noJS.close();
     });
@@ -225,7 +225,7 @@ let browser;
         await (await navigator.serviceWorker.getRegistration()).update();
         await changed;
       });
-      await cacheReady(p, "v55");
+      await cacheReady(p, "v57");
       await p.waitForFunction(async () => !(await caches.keys()).includes("bao-la-kiswahili-v39"));
       originUnavailable = true;
       await p.goto(origin + "/rules?lang=ja"); await allImages(p);

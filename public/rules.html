@@ -49,7 +49,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <span data-ja="namua → mtaji">Namua → Mtaji</span>
 </li>
 </ul>
-<p class="rules-baseline" data-ja="採用基準：v0.1.0-draft / R-002。このゲームの実装に沿った図解です。">Rules used here: v0.1.0-draft / R-002. An illustrated guide to this implementation.</p>
+<p class="rules-baseline" data-ja="採用基準：v0.2.0・takasia対応。このゲームの実装に沿った図解です。">Rules used here: v0.2.0 with takasia. An illustrated guide to this implementation.</p>
 </header>
 <nav class="rules-toc" id="contents" aria-labelledby="contents-title">
 <h2 id="contents-title" data-ja="知りたいところから読む">Find what you need</h2>
@@ -77,6 +77,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </li>
 <li>
 <a href="#nyumba" data-ja="nyumba：家の特別な扱い">Nyumba: the house</a>
+</li>
+<li>
+<a href="#takasia" data-ja="takasia：次の1手だけの制約">Takasia: a one-turn restriction</a>
 </li>
 <li>
 <a href="#controls" data-ja="ゲーム画面の操作と表示">Use the game screen</a>
@@ -296,7 +299,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 </details>
 <aside class="rule-note">
-<p data-ja="参照ガイドに記載されている特殊な制約takasiaは、このブラウザゲームでは適用しません。詳しくは後述の「このゲームの採用範囲」を参照してください。">Takasia, a special constraint described in the reference guide, is not applied in this browser game. See “Rules used here” below.</p>
+<p data-ja="mtajiのtakataの後には、次の1手だけ対象穴の開始と連続種まきを制限するtakasiaが成立する場合があります。後述の「takasia」を参照してください。">A mtaji takata can establish takasia: a restriction on starting and relay sowing at one pit for the next turn only. See “Takasia” below.</p>
 </aside>
 <a class="back-to-top" href="#contents" data-ja="目次へ戻る ↑">Back to contents ↑</a>
 </section>
@@ -325,14 +328,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <details>
 <summary data-ja="所有状態・6個未満・mtajiとの関係">Ownership, fewer than 6 pieces, and mtaji</summary>
 <div class="rule-detail">
+<p data-ja="このゲームは前列に所有中の家だけが残ると、個数によらず2個蒔きを選びます。参照ガイドで確定した開始前6個以上の例と、開始前5個の未解決境界を区別しています。">When the owned house is the only occupied front-row pit, this implementation offers the two-piece start regardless of its count. The guide confirms the example starting with at least 6; the boundary starting with 5 remains unresolved.</p>
 <p data-ja="2個蒔きでは家を空にしません。6個未満になると、6個以上を条件とする停止規則は働かなくなります。採用基準では、所有状態が残り、namua中に再び6個以上になれば、その規則が再び適用されます。">The two-piece start does not empty the house. When it drops below 6, the stopping rules that require 6 or more do not apply. Under the adopted baseline, if ownership remains and it later reaches 6 again in namua, those rules can apply again.</p>
-<p data-ja="家の石をすべて捕獲された場合や、NYUMBA USEを選んだ場合は、特別な状態を失います。mtajiでは、namuaの2個蒔きや家で止まる選択は使いません。段階をまたぐ家の状態には資料差があるため、本ページはこのゲームの採用基準に沿って説明しています。">Losing all house pieces to a capture, or choosing NYUMBA USE, removes its special status. In mtaji, the namua two-piece start and optional house stop are not available. Details of house status across phases differ between sources; this page follows the game’s adopted baseline.</p>
+<p data-ja="家の石をすべて捕獲された場合や、NYUMBA USEを選んだ場合は、所有状態を失います。mtajiでは最初の捕獲で両側の所有状態を失います。所有中の家はtakasiaの対象外ですが、所有を失った家の位置は通常穴として対象になり得ます。namuaの2個蒔きや家で止まる選択はmtajiでは使いません。">Losing all house pieces to a capture, or choosing NYUMBA USE, removes ownership. The first mtaji capture removes ownership on both sides. An owned house is exempt from takasia; an unowned house position can be restricted as an ordinary pit. The namua two-piece start and optional house stop do not apply in mtaji.</p>
+</div>
+</details>
+<a class="back-to-top" href="#contents" data-ja="目次へ戻る ↑">Back to contents ↑</a>
+</section>
+<section class="rules-section" id="takasia" aria-labelledby="takasia-title">
+<span class="section-number">09</span>
+<h2 id="takasia-title" data-ja="takasia：次の1手だけの制約">Takasia: a one-turn restriction</h2>
+<p data-ja="takasia（タカシア）は、mtajiで相手の次の1手だけ、前列の1穴を制限する規則です。石を奪ったり、その穴への種まき自体を禁止したりする規則ではありません。">Takasia restricts one front-row pit for the opponent’s next mtaji turn only. It does not remove pieces or prevent pieces being sown into that pit.</p>
+<h3 data-ja="いつ成立する？">When does it apply?</h3>
+<ol>
+<li data-ja="mtajiのtakataが終わった、まだ終局していない盤面で判定します。">Check the position after a completed mtaji takata, while the game is still ongoing.</li>
+<li data-ja="次の手番側に、最初の種まきで捕獲できる手がありません。">The next player has no move that captures on its first sowing run.</li>
+<li data-ja="直前に指した側が同じ盤面でもう一度指すと仮定すると、最初の種まきで捕獲できる相手前列の穴が、ちょうど1穴だけです。候補手が何通りあっても、捕獲対象の穴が1つならこの条件を満たします。">If the player who just moved could move again in that same position, their first-sowing captures would target exactly one opponent front-row pit. Several possible moves may all target that same pit.</li>
+<li data-ja="その穴が下記の例外に当たらなければ、次の1手のtakasia対象になります。相手が応手を指した後の盤面で成立を予測する規則ではありません。">If that pit is not exempt below, it becomes the target for the next turn. Establishment is checked now, not by predicting the position after the opponent’s response.</li>
+</ol>
+<h3 data-ja="T印の穴で何が変わる？">What changes at the pit marked T?</h3>
+<ul>
+<li data-ja="この1手は、対象穴からtakataを開始できません。別の合法な穴から始めます。">You cannot start this takata from the target. Choose another legal starting pit.</li>
+<li data-ja="途中で通過するだけなら、対象穴へ1個を置いてそのまま続けます。">When passing through the target, drop one piece there and keep going.</li>
+<li data-ja="最後の1個が対象穴へ入ったら、何個になっても取り上げず、その手を終了します。nyumbaから開始した手も同じです。">If the last piece lands in the target, leave all pieces there and end the move, regardless of the resulting count. This also applies when starting from a nyumba.</li>
+<li data-ja="対象の1手が終わると失効します。その手で相手への新しいtakasiaが成立した場合は、新しい対象へ切り替わります。">The restriction expires when that turn ends. If this move establishes a new takasia against the opponent, a new target replaces it.</li>
+</ul>
+<figure>
+<img src="./assets/rules/takasia-target.svg" width="660" height="410" loading="lazy" decoding="async" alt="E30: North a4 has 2 and is marked T. North may start from a8 or a5, but not a4. Both house positions are unowned." data-ja-alt="E30：Northのa4は2個でT印。a8・a5から開始できますがa4からは開始できません。両側の家は所有なしです。">
+<figcaption><span data-ja="① 出典付き局面E30。SouthのA7から左へ蒔くtakataの後、Northのa4が対象になります。a5は所有を失った通常穴です。初期配置からの到達可能性は示していません。">① Sourced position E30. After South’s leftward takata from A7, North’s a4 is restricted. a5 is an unowned ordinary pit. This is not evidence of reachability from the initial setup.</span></figcaption>
+<a class="figure-zoom" href="./assets/rules/takasia-target.svg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge takasia target position" data-ja-aria-label="takasia対象局面の図を拡大"><span data-ja="図を拡大 ↗">Enlarge diagram ↗</span></a>
+</figure>
+<figure>
+<img src="./assets/rules/takasia-stop.svg" width="660" height="410" loading="lazy" decoding="async" alt="E30 response: sow left from North a8. The last piece of the fifth sowing run lands in a4, making 5. Leave all 5 there and stop." data-ja-alt="E30の応手：Northのa8から左へ。5回目の種まきの最後の1個がa4に入り5個になります。全5個を残して停止します。">
+<figcaption><span data-ja="② Northがa8からLEFTで応じた例。5回目の種まきがa4で終わり、5個になっても連続種まきをしません。図は停止直後・失効前です。この後、a4の制約が消え、Southの手番になります。">② North replies LEFT from a8. The fifth sowing run ends at a4 with 5 pieces, so no relay follows. The diagram shows the stop before expiry; the restriction then clears and South takes the turn.</span></figcaption>
+<a class="figure-zoom" href="./assets/rules/takasia-stop.svg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge takasia stop position" data-ja-aria-label="takasia停止局面の図を拡大"><span data-ja="図を拡大 ↗">Enlarge diagram ↗</span></a>
+</figure>
+<details>
+<summary data-ja="対象にならない穴と段階の境界">Exempt pits and phase boundaries</summary>
+<div class="rule-detail">
+<p data-ja="対象候補が1個だけの穴、相手前列で唯一石のある穴、相手前列で唯一2個以上ある穴、所有中のnyumbaならtakasiaは成立しません。所有を失ったnyumbaの位置は通常の前列穴として扱います。">Takasia does not apply if the candidate holds only 1 piece, is the defender’s only occupied front-row pit, is their only front-row pit with at least 2 pieces, or is an owned nyumba. An unowned house position is treated as an ordinary front-row pit.</p>
+<p data-ja="namuaのtakataがmtajiへ移行しただけのとき、mtajiの捕獲手の後、終局後には新たに成立しません。">It is not newly established merely by a namua takata entering mtaji, after a mtaji capturing move, or after the game ends.</p>
 </div>
 </details>
 <a class="back-to-top" href="#contents" data-ja="目次へ戻る ↑">Back to contents ↑</a>
 </section>
 <section class="rules-section" id="controls" aria-labelledby="controls-title">
-<span class="section-number">09</span>
+<span class="section-number">10</span>
 <h2 id="controls-title" data-ja="ゲーム画面の操作と表示">Use the game screen</h2>
 <ol>
 <li data-ja="コンピュータ対戦または同じ端末での2人対戦を選びます。コンピュータ対戦では強さと先手（South）・後手（North）を選び、START GAMEを押します。">Choose computer or local two-player mode. Against the computer, choose a difficulty and whether you play first (South) or second (North), then press START GAME.</li>
@@ -344,6 +385,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <dd data-ja="本人の前列を左／右へ進む周回方向です。後列での進行方向は逆になり、Northでは画面上の左右も逆になります。">The sowing circuit, from the player’s own viewpoint: LEFT goes left along the front row, RIGHT goes right. The back-row travel direction is reversed. North is also reversed on screen.</dd>
 <dt data-ja="LEFT CAPTURE / RIGHT CAPTURE">LEFT CAPTURE / RIGHT CAPTURE</dt>
 <dd data-ja="namuaでは捕獲した石を入れる左／右の入口を示します。mtajiでは選んだ穴から最初に蒔く方向を示し、その後の捕獲の入口は捕獲規則で決まります。">In namua, these select the left / right entry for captured pieces. In mtaji, the direction describes the initial sowing from your chosen pit; the later capture entry follows the capture rules.</dd>
+<dt data-ja="T / TAKASIA">T / TAKASIA</dt>
+<dd data-ja="点線とT印はtakasiaの対象穴です。盤の下に穴番号と、この1手だけの制約を表示します。旧棋譜ではtakasiaを適用せず、そのルール版を再生欄に表示します。">A dotted ring and T mark identify the takasia target. Below the board, its pit name and one-turn restriction are shown. Older records replay without takasia, with their rule version displayed in the replay panel.</dd>
 <dt data-ja="NYUMBA STOP / NYUMBA USE">NYUMBA STOP / NYUMBA USE</dt>
 <dd data-ja="着手候補に付く場合、STOPは条件を満たす家で停止し、USEは家の全内容を使って続行する選択です。アニメーションが始まる前に着手と一緒に選びます。">When offered with a move, STOP chooses to stop at an eligible house; USE chooses to empty it and continue. You select this with the move before its animation.</dd>
 </dl>
@@ -353,18 +396,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a class="back-to-top" href="#contents" data-ja="目次へ戻る ↑">Back to contents ↑</a>
 </section>
 <section class="rules-section" id="rules-used" aria-labelledby="rules-used-title">
-<span class="section-number">10</span>
+<span class="section-number">11</span>
 <h2 id="rules-used-title" data-ja="このゲームの採用範囲と出典">Rules used here and sources</h2>
-<p data-ja="このブラウザゲームで採用しているルールの図解です。日本語ガイドの公開ドラフトv0.1.0-draft、基準R-002の、下記の固定参照版に基づきます。すべての地域・大会に共通する公式ルールブックという位置づけではありません。">This is an illustrated explanation of the rules used by this browser game. It follows the Japanese guide’s public draft v0.1.0-draft, baseline R-002, at the fixed reference below. It is not a claim to be an official rulebook for every region or tournament.</p>
+<p data-ja="このブラウザゲームで採用しているルールの図解です。日本語ガイドv0.2.0の、下記の固定参照版に基づき、takasiaを適用します。旧棋譜version 1の再生には当時のR-002を使用します。すべての地域・大会に共通する公式ルールブックという位置づけではありません。">This is an illustrated explanation of the rules used by this browser game. It follows the Japanese guide v0.2.0 at the fixed reference below, including takasia. Version 1 game records replay under their original R-002 rules. It is not a claim to be an official rulebook for every region or tournament.</p>
 <ul>
-<li data-ja="takasiaは不適用です。この実装の検証に使える、完全な出典のある局面がまだ確認できていません。">Takasia is not applied: a fully sourced validation position has not yet been confirmed for this implementation.</li>
+<li data-ja="takasiaはv0.2.0で採用された条件と例外に従います。nyumbaから開始した蒔きにも対象穴での停止を適用します。">Takasia follows the conditions and exemptions adopted in v0.2.0. Landing the last piece in the target also stops a move started from a nyumba.</li>
 <li data-ja="連続種まきなどの継続処理には512回の安全上限があります。まだ継続する状態で上限に達した場合、この実装は手番側の敗北として終了します。ブラウザの動作を守る制約であり、一般の対人競技ルールとして加えるものではありません。">The game limits continuing relay processing to 512 iterations. If a move reaches that limit while still continuing, the implementation ends the game as a loss for the moving player. This protects browser operation; it is not a general human-play rule.</li>
 <li data-ja="参照ガイドはドラフトで、競技者・研究者による外部レビューは未実施です。一部の細則には資料差があります。他の場で遊ぶときは、大会や対局者間で明示された規則に従ってください。">The reference remains a draft. It has not yet received external player / researcher review, and some details differ between sources. Follow the rules explicitly chosen by your tournament or playing group when playing elsewhere.</li>
 </ul>
 <p>
-<a href="https://github.com/nkkmd/bao-la-kiswahili-ja/tree/1179267b1f19b27a2138791253f2cb9cbfe98c14" target="_blank" rel="noopener noreferrer" data-ja="固定参照：Bao la Kiswahili 日本語完全ガイド">Fixed reference: Bao la Kiswahili Japanese Complete Guide</a>
+<a href="https://github.com/nkkmd/bao-la-kiswahili-ja/tree/aad9fda3ffb12c2ca785509951c71ce8a42bef5a" target="_blank" rel="noopener noreferrer" data-ja="固定参照：Bao la Kiswahili 日本語完全ガイド">Fixed reference: Bao la Kiswahili Japanese Complete Guide</a>
 <br>
-<code>1179267b1f19b27a2138791253f2cb9cbfe98c14</code>
+<code>aad9fda3ffb12c2ca785509951c71ce8a42bef5a</code>
 </p>
 <p>
 <a href="https://github.com/nkkmd/bao-la-kiswahili-game/blob/main/doc/RULES_BASELINE.md" target="_blank" rel="noopener noreferrer" data-ja="ゲームの採用ルール基準と既知の差異">Game rule baseline and known differences</a>
@@ -376,7 +419,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener noreferrer">Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0)</a>
 </p>
 <p class="rules-baseline">
-<span data-ja="説明ページ更新日：2026年9月12日。採用ルール基準の変更はありません。">Guide updated: September 12, 2026. Rule baseline unchanged.</span>
+<span data-ja="説明ページ更新日：2026年10月8日。takasia対応版の説明です。">Guide updated: October 8, 2026. This guide describes the takasia revision.</span>
 </p>
 <a class="back-to-top" href="#contents" data-ja="目次へ戻る ↑">Back to contents ↑</a>
 </section>

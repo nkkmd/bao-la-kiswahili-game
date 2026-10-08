@@ -203,3 +203,5 @@ footer { margin-top: 22px; font-size: 12px; line-height: 1.9; color: #9ab3a5; }
   .replay-controls button { min-width: 0; width: 100%; }
   .replay-move-detail { grid-column: 1 / -1; text-align: center; }
 }
+.controls.takasia-status { color: #ff9b8f; overflow-wrap: anywhere; }
+.takasia-status[hidden] { display: none; }

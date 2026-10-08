@@ -38,7 +38,7 @@ test("game record and contribution client remain available offline", () => {
   assert.ok(cachedFiles.includes("./game-record-replay.js"));
   assert.ok(cachedFiles.includes("./game-record-contribution-config.js"));
   assert.ok(cachedFiles.includes("./game-record-contribution.js"));
-  assert.match(serviceWorker, /bao-la-kiswahili-v55/);
+  assert.match(serviceWorker, /bao-la-kiswahili-v57/);
 });
 
 test("save action is created only for a completed game", () => {
@@ -63,7 +63,7 @@ test("contribution is explicit, computer-only, locally verified, and never backg
   assert.match(contributionSource, /Agree and send/);
   assert.match(contributionSource, /同意して送信/);
   assert.match(contributionSource, /GameRecord\.validateRecord\(record, true\)/);
-  assert.match(contributionSource, /GameRecord\.replay\(record, Engine\)/);
+  assert.match(contributionSource, /Replay\.buildSession\(record, Engine\)/);
   assert.match(contributionSource, /turnstileToken/);
   assert.match(contributionSource, /purpose: "ai-improvement"/);
   assert.doesNotMatch(contributionSource, /localStorage|sessionStorage|sendBeacon|setInterval/);
@@ -107,3 +107,4 @@ test("replay file input cannot widen the mobile setup panel", () => {
   assert.match(style, /\.replay-file-field input \{[^}]*max-width:\s*100%[^}]*min-width:\s*0[^}]*box-sizing:\s*border-box[^}]*overflow:\s*hidden/s);
   assert.match(style, /\.replay-load-status \{[^}]*max-width:\s*100%[^}]*min-width:\s*0[^}]*overflow-wrap:\s*anywhere[^}]*word-break:\s*break-word/s);
 });
+

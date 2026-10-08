@@ -4,6 +4,7 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const E = require("../public/engine.js");
+const LegacyEngine = require("../public/engine-r002.js");
 const GameRecord = require("../public/game-record.js");
 
 function stable(value) {
@@ -53,7 +54,7 @@ test("completed records contain result and final position", () => {
 });
 
 test("record schema carries rule compatibility metadata", () => {
-  const record = GameRecord.createRecord(E.initialState(), { mode: "local" });
+  const record = GameRecord.createRecord(LegacyEngine.initialState(), { mode: "local" }, 1);
   assert.equal(record.format, "bao-game-record");
   assert.equal(record.version, 1);
   assert.equal(record.rules.guide, "bao-la-kiswahili-ja");
@@ -73,3 +74,4 @@ test("game record filename is stable and JSON-specific", () => {
   const date = new Date(2026, 8, 15, 16, 8, 9);
   assert.equal(GameRecord.filename(date), "bao-game-record-20260915-160809.json");
 });
+

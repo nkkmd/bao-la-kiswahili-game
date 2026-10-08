@@ -1,8 +1,9 @@
 "use strict";
 
 (function exposeBaoDiagnostics(root) {
+  const Rules = root.BaoRuleVersions || (typeof module !== "undefined" && module.exports ? require("./rule-versions.js") : null);
   const STORAGE_KEY = "bao_ai_feedback_v1";
-  const FORMAT_VERSION = 1;
+  const FORMAT_VERSION = 2;
   const MOVE_FIELDS = [
     "type", "phase", "row", "index", "direction", "side", "houseChoice", "houseTwo",
   ];
@@ -10,9 +11,9 @@
     "elapsedMs", "nodes", "quiescenceNodes", "cutoffs", "cacheHits", "cacheStores",
     "completedDepth", "timedOut", "evaluationRequests", "evaluations",
     "evaluationCacheHits", "evaluationCachePeak", "evaluationCacheEvictions",
-    "evaluationCandidate", "evaluationFallback",
+    "evaluationCandidate", "evaluationFallback", "ruleRevision", "aiRevision",
   ];
-  const NUMERIC_STAT_FIELDS = STAT_FIELDS.filter((field) => !["timedOut", "evaluationCandidate", "evaluationFallback"].includes(field));
+  const NUMERIC_STAT_FIELDS = STAT_FIELDS.filter((field) => !["timedOut", "evaluationCandidate", "evaluationFallback", "ruleRevision", "aiRevision"].includes(field));
 
   function clone(value) {
     return JSON.parse(JSON.stringify(value));
@@ -22,21 +23,8 @@
     return Number.isFinite(value) ? value : null;
   }
 
-  function positionFromState(state) {
-    if (!state || !Array.isArray(state.pits) || !Array.isArray(state.reserve)) {
-      throw new Error("Invalid Bao state");
-    }
-    return clone({
-      pits: state.pits,
-      reserve: state.reserve,
-      houseOwned: state.houseOwned,
-      player: state.player,
-      phase: state.phase,
-      winner: state.winner,
-      reason: state.reason || "",
-      turn: state.turn,
-      pending: state.pending || [0, 0],
-    });
+  function positionFromState(state, revision = Rules.CURRENT_REVISION) {
+    return Rules.canonicalPosition(state, revision);
   }
 
   function selectedFields(source, fields, numericFields = []) {
@@ -51,10 +39,14 @@
   }
 
   function createSnapshot(state, context = {}) {
+    const version = context.version ?? FORMAT_VERSION;
+    const rules = context.rules ?? (version === 1 ? Rules.LEGACY_RULES : Rules.CURRENT_RULES);
+    const revision = Rules.revisionFor(version, rules);
     const snapshot = {
       format: "bao-ai-diagnostic",
-      version: FORMAT_VERSION,
-      position: positionFromState(state),
+      version,
+      ...(version === 2 ? { rules: clone(rules) } : {}),
+      position: positionFromState(state, revision),
     };
     if (context.mode === "computer" || context.mode === "local") snapshot.mode = context.mode;
     if (context.ai) {
@@ -66,14 +58,28 @@
       };
     }
     if (context.reason === "unexpected-ai-move") snapshot.reason = context.reason;
+    stateFromSnapshot(snapshot);
     return snapshot;
   }
 
   function stateFromSnapshot(snapshot) {
-    if (snapshot?.format !== "bao-ai-diagnostic" || snapshot.version !== FORMAT_VERSION) {
+    if (snapshot?.format !== "bao-ai-diagnostic" || ![1, FORMAT_VERSION].includes(snapshot.version)) {
       throw new Error("Unsupported Bao diagnostic format");
     }
-    return positionFromState(snapshot.position);
+    const rules = rulesFromSnapshot(snapshot);
+    Rules.validatePosition(snapshot.position, rules.baseline);
+    if (snapshot.ai?.stats?.ruleRevision !== undefined && snapshot.ai.stats.ruleRevision !== rules.baseline) {
+      throw new Error("Bao diagnostic AI rules mismatch");
+    }
+    return positionFromState(snapshot.position, rules.baseline);
+  }
+
+  function rulesFromSnapshot(snapshot) {
+    if (snapshot?.format !== "bao-ai-diagnostic" || ![1, FORMAT_VERSION].includes(snapshot.version)) throw new Error("Unsupported Bao diagnostic format");
+    if (snapshot.version === 1 && Object.hasOwn(snapshot, "rules")) throw new Error("Legacy Bao diagnostic cannot contain rules");
+    const rules = snapshot.version === 1 ? Rules.LEGACY_RULES : snapshot.rules;
+    Rules.revisionFor(snapshot.version, rules);
+    return clone(rules);
   }
 
   function readMarked(storage) {
@@ -107,6 +113,7 @@
     FORMAT_VERSION,
     createSnapshot,
     stateFromSnapshot,
+    rulesFromSnapshot,
     readMarked,
     markSnapshot,
     clearMarked,

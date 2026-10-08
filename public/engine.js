@@ -30,6 +30,7 @@
       reason: "",
       turn: 1,
       pending: [0, 0],
+      takasia: null,
     };
   }
 
@@ -92,14 +93,59 @@
     return state.pits[player][FRONT][index] > 0 && opposite(state, player, index) > 0;
   }
 
-  function wouldCapture(state, player, row, index, direction) {
+  function initialCaptureTarget(state, player, row, index, direction) {
     const seeds = state.pits[player][row][index];
-    if (seeds < 2 || seeds > 15) return false;
+    if (seeds < 2 || seeds > 15) return null;
     let cursor = pit(player, row, index);
     for (let i = 0; i < seeds; i += 1) cursor = nextPit(player, cursor, direction);
     return cursor.row === FRONT
       && state.pits[player][FRONT][cursor.index] > 0
-      && opposite(state, player, cursor.index) > 0;
+      && opposite(state, player, cursor.index) > 0 ? 7 - cursor.index : null;
+  }
+
+  function wouldCapture(state, player, row, index, direction) {
+    return initialCaptureTarget(state, player, row, index, direction) !== null;
+  }
+
+  // 初回の蒔きだけを調べる。合法手の展開や遷移を呼び戻さない。
+  function captureTargets(state, player) {
+    const targets = new Set();
+    for (let row = 0; row < 2; row += 1) {
+      for (let index = 0; index < 8; index += 1) {
+        for (const direction of ["left", "right"]) {
+          const target = initialCaptureTarget(state, player, row, index, direction);
+          if (target !== null) targets.add(target);
+        }
+      }
+    }
+    return targets;
+  }
+
+  function detectTakasia(state, attacker, previousMove) {
+    if (state.winner !== null || state.phase !== "mtaji"
+      || previousMove?.phase !== "mtaji" || previousMove.type !== "takata") return null;
+    const defender = 1 - attacker;
+    if (captureTargets(state, defender).size) return null;
+    const targets = captureTargets(state, attacker);
+    if (targets.size !== 1) return null;
+    const index = targets.values().next().value;
+    const front = state.pits[defender][FRONT];
+    if (front[index] <= 1 || front.filter(value => value > 0).length === 1
+      || front.filter(value => value >= 2).length === 1
+      || (index === HOUSE && state.houseOwned[defender])) return null;
+    return { player: defender, index };
+  }
+
+  function activeTakasia(state, player) {
+    const target = state.takasia;
+    return state.phase === "mtaji" && target?.player === player
+      && Number.isInteger(target.index) && target.index >= 0 && target.index < 8 ? target : null;
+  }
+
+  function clearTakasia(state, events) {
+    const target = state.takasia;
+    state.takasia = null;
+    if (target) snapshotEvent(events, state, "takasia", { action: "expire", target });
   }
 
   function legalMoves(state) {
@@ -171,8 +217,10 @@
       state, player, move.row, move.index, move.direction,
     ));
     if (captures.length) return captures.map((move) => ({ ...move, type: "capture", phase: "mtaji" }));
-    const hasFront = candidates.some((move) => move.row === FRONT);
-    return candidates.filter((move) => !hasFront || move.row === FRONT)
+    const target = activeTakasia(state, player);
+    const takata = candidates.filter(move => !(target && move.row === FRONT && move.index === target.index));
+    const hasFront = takata.some((move) => move.row === FRONT);
+    return takata.filter((move) => !hasFront || move.row === FRONT)
       .map((move) => ({ ...move, type: "takata", phase: "mtaji" }))
       .filter((move) => !emptiesOwnFront(state, move));
   }
@@ -204,19 +252,22 @@
 
   function applyMove(source, move, recording) {
     const state = clone(source);
+    state.takasia ??= null;
     const events = [];
     if (recording?.snapshots === false) compactEventLists.add(events);
     if (!legalMoves(source).some((candidate) => sameMove(candidate, move))) {
       throw new Error("Illegal move");
     }
     const player = state.player;
+    const previousMove = { type: move.type, phase: source.phase };
     if (move.type === "pass") {
-      finishTurn(state, events);
+      finishTurn(state, events, previousMove);
       return { state, events };
     }
     let cursor = pit(player, move.row, move.index);
     let direction = move.direction;
     let captureTurn = move.type === "capture";
+    const target = captureTurn ? null : activeTakasia(state, player);
     let wasEmpty = false;
 
     if (state.phase === "namua") {
@@ -250,11 +301,18 @@
     }
 
     let relays = 0;
+    let takasiaStop = false;
     while (relays < MAX_RELAY && !wasEmpty) {
+      if (target && cursor.row === FRONT && cursor.index === target.index) {
+        takasiaStop = true;
+        snapshotEvent(events, state, "takasia", { action: "stop", target });
+        break;
+      }
       relays += 1;
       if (!frontOccupied(state, 1 - player)) {
         state.winner = player;
         state.reason = "front-empty";
+        clearTakasia(state, events);
         snapshotEvent(events, state, "win");
         return { state, events };
       }
@@ -262,7 +320,6 @@
       const canCapture = captureTurn && cursor.row === FRONT && opposite(state, player, cursor.index) > 0;
       if (canCapture) {
         const taken = takeOpposite(state, player, cursor.index, events);
-        if (state.phase === "mtaji") state.houseOwned[player] = false;
         if (finishOnEmptyFront(state, player, taken, events)) return { state, events };
         const side = forcedCaptureSide(cursor.index, direction);
         direction = directionForSide(side);
@@ -287,13 +344,19 @@
       wasEmpty = result.wasEmpty;
     }
 
-    if (relays >= MAX_RELAY && !wasEmpty) {
+    // 最後の許容蒔きが対象穴へ着地しても、続行上限より停止を優先する。
+    if (!wasEmpty && target && cursor.row === FRONT && cursor.index === target.index && !takasiaStop) {
+      takasiaStop = true;
+      snapshotEvent(events, state, "takasia", { action: "stop", target });
+    }
+    if (relays >= MAX_RELAY && !wasEmpty && !takasiaStop) {
       state.winner = 1 - player;
       state.reason = "relay-limit";
+      clearTakasia(state, events);
       snapshotEvent(events, state, "limit");
       return { state, events };
     }
-    finishTurn(state, events);
+    finishTurn(state, events, previousMove);
     return { state, events };
   }
 
@@ -302,6 +365,7 @@
     const taken = state.pits[1 - player][FRONT][opponentIndex];
     state.pits[1 - player][FRONT][opponentIndex] = 0;
     state.houseOwned[1 - player] = state.houseOwned[1 - player] && opponentIndex !== HOUSE;
+    if (state.phase === "mtaji") state.houseOwned = [false, false];
     snapshotEvent(events, state, "capture", { player: 1 - player, index: opponentIndex, count: taken });
     return taken;
   }
@@ -318,11 +382,14 @@
     state.pending[player] += captured;
     state.winner = player;
     state.reason = "front-empty";
+    clearTakasia(state, events);
     snapshotEvent(events, state, "win");
     return true;
   }
 
-  function finishTurn(state, events) {
+  function finishTurn(state, events, move) {
+    const attacker = state.player;
+    clearTakasia(state, events);
     if (!frontOccupied(state, 1 - state.player)) {
       state.winner = state.player;
       state.reason = "front-empty";
@@ -341,13 +408,16 @@
     }
     state.player = 1 - state.player;
     state.turn += 1;
+    state.takasia = detectTakasia(state, attacker, move);
     const nextMoves = legalMoves(state);
     if (!nextMoves.length) {
       state.winner = 1 - state.player;
       state.reason = "no-move";
+      clearTakasia(state, events);
       snapshotEvent(events, state, "win");
       return;
     }
+    if (state.takasia) snapshotEvent(events, state, "takasia", { action: "activate", target: state.takasia });
     snapshotEvent(events, state, "turn");
   }
 
@@ -365,7 +435,7 @@
     return moveVariants(state, moves, SEARCH_RECORDING);
   }
 
-  const api = { applyMoveForSearch, moveVariantsForSearch, initialState, legalMoves, moveVariants, applyMove, ring, nextPit, clone, FRONT, BACK, HOUSE };
+  const api = { detectTakasia, applyMoveForSearch, moveVariantsForSearch, initialState, legalMoves, moveVariants, applyMove, ring, nextPit, clone, FRONT, BACK, HOUSE };
   root.BaoEngine = api;
   if (typeof module !== "undefined" && module.exports) module.exports = api;
 }(typeof window !== "undefined" ? window : globalThis));

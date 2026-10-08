@@ -21,7 +21,7 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦が
 
 ## ルールの基準
 
-実装の基準は、[bao-la-kiswahili-ja](https://github.com/nkkmd/bao-la-kiswahili-ja)の公開ドラフト v0.1.0-draft にあるルール基準 R-002 です。検証に使える完全な出典局面を確認できていないため、takasiaは適用していません。連続種まきには、終わらない対局を防ぐ安全上の上限があります。
+配信済みゲームの基準は、[bao-la-kiswahili-ja](https://github.com/nkkmd/bao-la-kiswahili-ja)の公開ドラフト v0.1.0-draft にあるルール基準 R-002 で、takasiaを適用していません。ルール元のv0.2.0での採用を受け、[takasia対応の更新工程](doc/ai-engineering/takasia-update/README.md)を進めています。作業ブランチではエンジン、AI-GEN4、棋譜・診断・受信の対応と限定検証を完了しました。新規棋譜はversion 2で保存し、旧version 1は固定した旧ルールで再生・検証します。対象穴・成立・停止・失効の表示、新旧棋譜の版表示、日英図解の同期も実装しました。[既存CI整合とソフトウェア総合検証](doc/ai-engineering/takasia-update/INTEGRATION_VALIDATION.md)も通過しました。Android実機・受信側・実サイトの移行確認が残っています。main統合・配信は未実施です。連続種まきには、終わらない対局を防ぐ安全上の上限があります。
 
 - [図解ルール（日本語 / English）](public/rules.html)
 - [実装ルールの基準、差異、更新手順](doc/RULES_BASELINE.md)

@@ -1,9 +1,11 @@
 # 棋譜保存・再生機能
 
-更新日: 2026-09-18  
-対象形式: `bao-game-record` version `1`
+更新日: 2026-10-08  
+対象形式: 作業ブランチの新規`bao-game-record` version `2`と、旧version `1`
 
 ## 1. 目的と現在状態
+
+takasia対応の作業ブランチでは、新規棋譜をversion 2で保存し、ルール版に対応するエンジンで再生・受信検証する。配信済みのversion 1は固定した旧R-002エンジンで扱う。main統合・新形式の配信・Cloudflare実環境での受信確認は未実施である。[工程5の結果と限界](ai-engineering/takasia-update/RECORD_IMPLEMENTATION.md)を参照する。
 
 Bao la Kiswahili の公開ゲームでは、終局した対局について、利用者が明示的に操作した場合だけ完全な着手列をJSONファイルとして保存できる。
 
@@ -33,22 +35,22 @@ bao-game-record-YYYYMMDD-HHMMSS.json
 
 任意提供が有効な配信版では、完成したコンピュータ対戦に限り「AI改善のため棋譜を送信 / Send game record for AI improvement」も別操作として表示する。送信前に目的と送信内容を確認するdialogとTurnstile検証を通し、利用者がその1局について「同意して送信」を押した場合だけ送信する。自動送信、一括同意、バックグラウンド再送は行わない。
 
-保存済み棋譜を振り返る場合は、対局設定のMODEで「棋譜再生 / Replay game record」を選び、端末上の`bao-game-record` v1 JSONを明示的に選択する。正常な棋譜だけを読み込み、初期局面から「戻る」「進む」で1 plyずつ移動できる。「進む」は通常対局と同じルールエンジンと表示イベントを使うため、捕獲・sow・relay等の既存アニメーションとルール解説を再利用する。「戻る」は着手の逆演算を行わず、読み込み時に検証済みとして生成した局面snapshotへ戻る。
+保存済み棋譜を振り返る場合は、対局設定のMODEで「棋譜再生 / Replay game record」を選び、端末上のJSONを明示的に選択する。作業ブランチはversion 1と2を受け付け、正常な棋譜だけを初期局面から「戻る」「進む」で1 plyずつ閲覧する。「進む」は読み込み検証で選択したルール版のエンジンと表示イベントを使い、捕獲・sow・relay等の既存アニメーションを再利用する。「戻る」は着手の逆演算を行わず、検証済み局面snapshotへ戻る。
 
 棋譜再生モードは一時的な閲覧モードであり、MODE選択をlocalStorageへ保存しない。読み込んだJSONを再生機能から外部送信する処理もない。
 
 ## 3. 保存する情報
 
-棋譜は`bao-game-record` version `1`として保存する。主要な構造は次のとおりである。
+新規棋譜は`bao-game-record` version `2`として保存する。主要な構造は次のとおりである。旧version 1のファイルは変更せず、対応する旧エンジンで検証する。
 
 ```json
 {
   "format": "bao-game-record",
-  "version": 1,
+  "version": 2,
   "rules": {
     "guide": "bao-la-kiswahili-ja",
-    "guideVersion": "v0.1.0-draft",
-    "baseline": "R-002"
+    "guideVersion": "v0.2.0",
+    "baseline": "BAO-RULES-V0.2.0-TAKASIA-001"
   },
   "settings": {},
   "initialPosition": {},
@@ -60,17 +62,18 @@ bao-game-record-YYYYMMDD-HHMMSS.json
 
 ### 3.1 ルール識別
 
-`rules`には、棋譜を生成した実装が基準としたルールガイド、ガイド版、実装基準を保存する。現在は次を記録する。
+`guide`は`bao-la-kiswahili-ja`とし、形式版・ガイド版・基準の組合せを完全一致で識別する。
 
-- `guide`: `bao-la-kiswahili-ja`
-- `guideVersion`: `v0.1.0-draft`
-- `baseline`: `R-002`
+| 形式版 | ガイド版 | 基準 | 再生エンジン |
+| --- | --- | --- | --- |
+| 1 | v0.1.0-draft | R-002 | `public/engine-r002.js` |
+| 2 | v0.2.0 | BAO-RULES-V0.2.0-TAKASIA-001 | `public/engine.js` |
 
-将来ルール実装が変わった場合、古い棋譜を現在のエンジンで無条件に同一視しないための識別情報である。
+識別と局面の正規化は`public/rule-versions.js`で共用する。未知の版、混在した組合せ、v2と旧エンジンの混在は拒否する。版を手作業で付け替えることは互換変換ではない。
 
 ### 3.2 対局設定
 
-`settings`には対戦モードを保存する。コンピューター対戦では、人間側、AI難易度、公開AI世代、release ID、および利用可能な場合は採用ID・評価器識別も保存する。
+`settings`には対戦モードを保存する。コンピューター対戦では、人間側、AI難易度、公開AI世代、release ID、および利用可能な場合は採用ID・評価器識別も保存する。新しい公開経路は`ruleRevision`と`aiRevision`も保存し、ルール改訂とAI-GEN4系統内の対応改訂を区別する。
 
 これらは対局条件を説明するためのメタデータであり、AI探索の内部履歴を保存するものではない。
 
@@ -87,6 +90,9 @@ bao-game-record-YYYYMMDD-HHMMSS.json
 - `reason`
 - `turn`
 - `pending`
+- version 2では`takasia: null | {player, index}`も必須。制約のない局面もnullを保存する。
+
+version 1にはtakasiaを追加しない。version 2の欠落、対象の型・範囲・手番・phase・終局との不整合、対象への任意項目注入を拒否する。初期・最終局面だけを保存し、途中のtakasiaは着手列から選択したエンジンで再構成する。
 
 初期局面と全着手から再生した結果を`finalPosition`と照合できるため、将来の読み込み・検証処理でも局面の不一致を検出しやすい構造になっている。
 
@@ -147,7 +153,7 @@ houseTwo
 
 棋譜にAI探索統計を混在させない。AIの判断理由や探索品質を調べる場合は、従来どおり[`AI_HUMAN_REVIEW_GUIDE.md`](AI_HUMAN_REVIEW_GUIDE.md)に従って診断機能を使う。
 
-任意の棋譜提供は、棋譜形式そのものを別形式へ変える機能ではない。検証済み`bao-game-record` v1を、コンピュータ対戦・1局単位の明示同意という追加条件の下でAI改善用corpusへ提供する別経路である。提供棋譜を人間の正解手や正式なAI採用判断のground truthとは扱わない。
+任意の棋譜提供は、棋譜形式そのものを別形式へ変える機能ではない。検証済みの棋譜を、コンピュータ対戦・1局単位の明示同意という追加条件の下でAI改善用corpusへ提供する別経路である。提供棋譜を人間の正解手や正式なAI採用判断のground truthとは扱わない。
 
 ## 6. プライバシーと保存期間
 
@@ -165,16 +171,15 @@ houseTwo
 
 再生開始前には次を確認する。
 
-- `format = bao-game-record`、`version = 1`
-- ルール識別が`bao-la-kiswahili-ja / v0.1.0-draft / R-002`と一致する
+- `format = bao-game-record`、versionとルール識別が3.1の組合せと一致する
 - `settings.mode`が`computer`または`local`
-- 初期局面が現在の標準初期局面と一致する
+- 初期局面が選択したルール版の標準初期局面と一致する
 - 各plyの`turn`、`player`、`side`、`phase`が、その時点で再構成した局面と一致する
-- 各canonical moveを現在のルールエンジンで合法に適用できる
+- 各canonical moveが選択したルール版の合法なvariantと完全一致し、適用できる
 - 全着手後の局面が保存済み`finalPosition`と一致する
 - `result.plies`、winner、winnerSide、reasonが再構成した終局と一致する
 
-検証中に各ply後の局面をメモリ上のsnapshot列として生成する。「戻る」はsnapshotを参照するだけで、Baoの複雑な着手を逆向きに計算しない。「進む」は保存済みcanonical moveを通常の`playMove`経路へ渡し、既存のsow/capture/relay表示イベントとルール解説を再利用する。再生中は盤面からの着手入力、AI思考、自動passを無効化する。
+検証中に各ply後の局面をメモリ上のsnapshot列として生成する。「戻る」はsnapshotを参照し、「進む」は保存済みcanonical moveを通常の`playMove`経路へ渡す。同経路は再生sessionのエンジンを使用し、旧棋譜を現行ルールへ付け替えない。再生中は盤面からの着手入力、AI思考、自動passを無効化する。
 
 読み込み時の防御的な上限は、ファイル256 KiB・1024 plyである。これはローカルviewerの資源保護境界であり、AI改善用任意提供の48 KiB・384 ply上限とは別である。
 
@@ -193,11 +198,13 @@ houseTwo
 
 専用CIは`.github/workflows/game-record-verification.yml`で管理し、上記の棋譜保存・棋譜再生・任意提供テストに加え、隣接するengine、locale、診断、AI releaseの回帰も実行する。
 
+工程5では`test/takasia-record.test.mjs`の18件を追加し、標準初期配置からの新規79手・旧78手を保存した。新棋譜はtakasiaの成立・対象での停止・失効を含み、通常／軽量遷移、viewer、診断、受信を照合する。既存48件と隣接UI2件も通過し、エンジン・AIを含む全144件がPASSした。固定AI release検証は別に未合格であり、PR全体の合格・実機検証・配信完了を意味しない。
+
 ローカル棋譜保存は2026年9月15日にPR #142で`main`へ統合済みである。任意提供機能は2026年9月16日にテストサイト・スマートフォン実機・Cloudflare Worker/R2/Turnstile・Custom Domainを使ったcontrolled submissionまで確認し、最終構成では`workers.dev`とPreview URLを無効化して`bao-data.cultivationdata.net`だけを本番Worker入口としている。棋譜再生機能は2026年9月18日にPR #152で`main`へ統合し、モバイル実機でJSON選択、長いファイル名、戻る/進む操作を確認した。統合前の棋譜・AI release・図解ルール・PBAI-C015の4系統CIはいずれも成功している。
 
 ## 8. 現在の制限
 
-現行version `1`と再生viewerでは次を行わない。
+新旧versionと再生viewerでは次を行わない。
 
 - 対局途中の棋譜ファイル保存
 - 自動保存や中断対局の復元
@@ -205,9 +212,9 @@ houseTwo
 - 自動再生・速度指定・任意plyへの直接ジャンプ
 - 人間向け棋譜記法への変換
 - 棋譜へのAI探索統計の常時埋め込み
-- 現在と異なるルールbaselineの棋譜を互換扱いして再生すること
+- 未対応ルールの棋譜を現在のルールへ読み替えて再生すること
 
-将来これらを追加する場合も、version `1`の意味を暗黙に変更せず、既存棋譜との互換性、ルール基準、ファイルサイズ上限、読み込み時の厳格なvalidationを明示して設計する。
+将来これらを追加する場合も、新旧versionの意味を暗黙に変更せず、既存棋譜との互換性、ルール基準、ファイルサイズ上限、読み込み時の厳格なvalidationを明示して設計する。
 
 ## 9. 関連文書
 
@@ -217,3 +224,4 @@ houseTwo
 - [`AI_HUMAN_REVIEW_GUIDE.md`](AI_HUMAN_REVIEW_GUIDE.md): 棋譜とは別系統のAI診断・対人レビュー手順
 - [`../public/privacy.html`](../public/privacy.html): 公開サイトのデータ取扱い
 - [`../README.md`](../README.md): 利用者・開発者向けの入口
+

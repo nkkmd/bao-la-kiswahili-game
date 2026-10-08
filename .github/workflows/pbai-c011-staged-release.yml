@@ -22,6 +22,8 @@ on:
       - 'test/seo.test.js'
       - 'doc/ai-engineering/public-ai-improvement-program-5/**'
       - 'tools/engineering/audit-pbai-p5-results.py'
+      - 'tools/takasia/check-current-assets.cjs'
+      - 'tools/takasia/run-historical-ci.cjs'
       - '.github/workflows/pbai-c011-staged-release.yml'
 permissions:
   contents: read
@@ -56,14 +58,13 @@ jobs:
           do
             node "$test_file"
           done
-      - name: Verify completed evidence against its execution commit
-        run: python3 tools/engineering/audit-pbai-p5-results.py
-      - name: Verify immutable AI-GEN3 engine and search asset hashes
-        run: |
-          cat <<'HASHES' | sha256sum -c -
-          2c5d245d731bbfd682eec7a0bbd8324c680ad6fbabd567286752d61b985d1bd3  public/engine.js
-          aa894e0f34f5545488073a0706743b6ba373a1349152da8f8fc6c18ea74d1498  public/ai.js
-          7cf615fa43c7206e90a907a958108eb5e7595f69459c97aa667a3e2fe8bc18c8  public/ai-weights.js
-          ddeed4493a07bbdad8cfbfba048e44a86fed62958bbb83afe494372e534671bc  public/ai-config.js
-          cca0996ce1d14f39d5db24de390550a0c3c583a6b08da2609d9f66532d1e5be4  public/ai-worker.js
-          HASHES
+      - name: 旧releaseのassertと資産ハッシュを固定版で検証
+        run: node tools/takasia/run-historical-ci.cjs gen3
+      - name: 完了済みP5の証拠を旧実行経路で検証
+        run: node tools/takasia/run-historical-ci.cjs p5
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: takasia-history-gen3-p5
+          path: artifacts/local/takasia-history/
+          if-no-files-found: error

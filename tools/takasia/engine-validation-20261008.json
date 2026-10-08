@@ -1,0 +1,127 @@
+{
+  "status": "PASS",
+  "checks": 25,
+  "passed": 25,
+  "failed": 0,
+  "results": [
+    {
+      "id": "initial-state",
+      "status": "PASS"
+    },
+    {
+      "id": "detection/E30",
+      "status": "PASS"
+    },
+    {
+      "id": "detection/seat-swap",
+      "status": "PASS"
+    },
+    {
+      "id": "detection/singleton-exempt",
+      "status": "PASS"
+    },
+    {
+      "id": "detection/only-occupied-front-exempt",
+      "status": "PASS"
+    },
+    {
+      "id": "detection/only-multi-front-exempt",
+      "status": "PASS"
+    },
+    {
+      "id": "detection/zero-targets",
+      "status": "PASS"
+    },
+    {
+      "id": "detection/two-targets",
+      "status": "PASS"
+    },
+    {
+      "id": "detection/multiple-captures-same-target",
+      "status": "PASS"
+    },
+    {
+      "id": "detection/defender-can-capture",
+      "status": "PASS"
+    },
+    {
+      "id": "detection/unowned-house-position",
+      "status": "PASS"
+    },
+    {
+      "id": "detection/owned-house-exempt",
+      "status": "PASS"
+    },
+    {
+      "id": "detection/prior-capture",
+      "status": "PASS"
+    },
+    {
+      "id": "detection/namua-to-mtaji-no-activation",
+      "status": "PASS"
+    },
+    {
+      "id": "detection/namua-no-activation",
+      "status": "PASS"
+    },
+    {
+      "id": "detection/terminal-no-activation",
+      "status": "PASS"
+    },
+    {
+      "id": "detection/owned-house-five-exempt",
+      "status": "PASS"
+    },
+    {
+      "id": "detection/unowned-house-five-normal",
+      "status": "PASS"
+    },
+    {
+      "id": "E30/predecessor",
+      "status": "PASS"
+    },
+    {
+      "id": "E30/legal-starts",
+      "status": "PASS"
+    },
+    {
+      "id": "E30/reply-0",
+      "status": "PASS"
+    },
+    {
+      "id": "E30/reply-1",
+      "status": "PASS"
+    },
+    {
+      "id": "E30/reply-2",
+      "status": "PASS"
+    },
+    {
+      "id": "E30/reply-3",
+      "status": "PASS"
+    },
+    {
+      "id": "owned-house-start-stops-at-target",
+      "status": "PASS"
+    }
+  ],
+  "environment": {
+    "node": "v24.19.0",
+    "python": "Python 3.12.14"
+  },
+  "engineSha256": "7147697b8befd0c4c483e12aaf11f88432ce77a0cc189787d98ec184c24085f1",
+  "regression": {
+    "tests": 47,
+    "passed": 47,
+    "failed": 0,
+    "skipped": 0,
+    "todo": 0,
+    "command": "node --test test/takasia-contract.test.cjs test/takasia-engine.test.cjs test/engine.test.js test/namua-mtaji-transition-engine.test.js"
+  },
+  "documentAudit": {
+    "documents": 8,
+    "brokenRelativeLinks": 0,
+    "nonJapaneseExplanatoryHeadings": 0,
+    "nonJapaneseExplanatorySentences": 0
+  }
+}

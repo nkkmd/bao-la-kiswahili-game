@@ -2,7 +2,7 @@
 
 Version: 1.0.0  
 Status: Active  
-更新日: 2026-09-14
+更新日: 2026-10-08
 
 ## 1. 目的
 
@@ -57,7 +57,9 @@ Status: Active
 
 ### 5.1 `takasia`
 
-検証に使える完全な出典局面がまだ確認できていないため、現在のゲームでは `takasia` を適用していない。
+配信済みゲームでは `takasia` を適用していない。ルール元の `v0.2.0`（固定コミット `aad9fda3ffb12c2ca785509951c71ce8a42bef5a`）ではtakasiaが採用され、完全局面E30が確認できるようになった。
+
+[対応工程と現在状態](ai-engineering/takasia-update/README.md)に採用仕様と検証結果を記録する。工程1〜6を作業ブランチで実装し、エンジン、AI-GEN4、棋譜・診断・受信、日英表示と図解を対応・限定検証した。新棋譜version 2は`BAO-RULES-V0.2.0-TAKASIA-001`、旧棋譜version 1は`R-002`の固定エンジンへ振り分ける。[工程7のソフトウェア総合検証・既存CI整合](ai-engineering/takasia-update/INTEGRATION_VALIDATION.md)は通過し、実機・受信側・実サイトの確認が残る。main統合・配信は未実施である。本書の配信済み基準を新版へ切り替えるのは、関連経路の同期と総合検証後とする。
 
 ### 5.2 連続種まきの安全上限
 

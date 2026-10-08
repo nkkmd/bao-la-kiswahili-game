@@ -6,6 +6,9 @@ on:
       - 'test/pbai-c015-integration.test.cjs'
       - 'test/pbai-c015-expert-production.test.cjs'
       - 'tools/engineering/test-pbai-c015-expert-production-browser.cjs'
+      - 'tools/takasia/check-current-assets.cjs'
+      - 'tools/takasia/run-historical-ci.cjs'
+      - 'tools/takasia/ai-harness.cjs'
       - '.github/workflows/pbai-c015-integration.yml'
 permissions:
   contents: read
@@ -21,11 +24,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
       - name: 既知局面と公開経路の回帰確認
         run: node --test test/pbai-c015-expert-production.test.cjs test/pbai-c015-integration.test.cjs test/ai-worker.test.js test/worker-integration.test.js test/ai-config.test.js test/ai-generation-release.test.js test/diagnostics-ui.test.js test/engine.test.js test/ai.test.js
+      - name: 旧ルールのbyte・結果・実機確認済みコピーを固定版で検証
+        run: node tools/takasia/run-historical-ci.cjs c015
       - name: ブラウザを準備
         run: |
           npm install --prefix "$RUNNER_TEMP/pbai-c015" playwright@1.62.1
@@ -36,5 +42,7 @@ jobs:
         if: always()
         with:
           name: pbai-c015-${{ matrix.engine }}
-          path: artifacts/local/pbai-c015-expert-production-browser/
+          path: |
+            artifacts/local/pbai-c015-expert-production-browser/
+            artifacts/local/takasia-history/c015/
           if-no-files-found: warn

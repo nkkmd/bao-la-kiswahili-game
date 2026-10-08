@@ -5,6 +5,8 @@ on:
       - 'public/**'
       - 'tools/build-rules-figures.js'
       - 'tools/test-rules-browser.cjs'
+      - 'test/ai-generation-release.test.js'
+      - 'tools/takasia/check-current-assets.cjs'
       - '.github/workflows/illustrated-rules.yml'
 permissions:
   contents: read

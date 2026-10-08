@@ -43,11 +43,23 @@ function examples() {
   const won = play(win, m => m.type === "capture" && m.side === "left").state;
   assert.equal(won.winner, 0);
   assert.equal(won.reason, "front-empty");
-  return { initial, sow, endFirstSow, relay: relay.state, capture, afterTake, captured: captured.state, houseTwo, won };
+  const F = require("./takasia/fixtures.json");
+  const established = E.applyMove(F.e30.predecessor, F.e30.move);
+  assert.deepEqual(established.state, F.e30.post, "E30成立局面");
+  const takasiaTarget = established.state;
+  assert.equal(takasiaTarget.pits.flat(2).reduce((a, b) => a + b, 0), 64);
+  assert.deepEqual(takasiaTarget.takasia, { player: 1, index: 3 });
+  const response = play(takasiaTarget, m => m.index === 7 && m.direction === "left");
+  const takasiaStop = response.events.find(e => e.kind === "takasia" && e.action === "stop").state;
+  assert.equal(takasiaStop.pits[1][0][3], 5, "対象へ5個を残す");
+  assert.equal(response.events.filter(e => e.kind === "lift" || e.kind === "relay").length, 5);
+  assert.equal(response.state.takasia, null, "応手終了で失効");
+  return { initial, sow, endFirstSow, relay: relay.state, capture, afterTake, captured: captured.state, houseTwo, won,
+    takasiaTarget, takasiaStop };
 }
 
 const esc = s => String(s).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll('"', "&quot;");
-function board(state, { half = false, labelsOnly = false, focus = [], arrows = [], footer = "", frontsOnly = false } = {}) {
+function board(state, { half = false, labelsOnly = false, focus = [], arrows = [], footer = "", frontsOnly = false, takasia = false } = {}) {
   const height = half ? 260 : frontsOnly ? 260 : 410;
   const points = {};
   let body = `<rect width="660" height="${height}" rx="12" fill="#f5f3e9"/>`;
@@ -68,6 +80,11 @@ function board(state, { half = false, labelsOnly = false, focus = [], arrows = [
       body += `${shape} fill="${fill}" stroke="${stroke}" stroke-width="${on ? 3.5 : 2}"/>`;
       body += txt(x, y + 7, labelsOnly ? name : state.pits[player][row][index], labelsOnly ? 20 : 24);
       if (!labelsOnly) body += txt(x, y + 40, name, 14);
+      if (takasia && row === 0 && state.takasia?.player === player && state.takasia.index === index) {
+        body += `<circle cx="${x}" cy="${y}" r="29" fill="none" stroke="#a54824" stroke-width="2" stroke-dasharray="4 3"/>`;
+        body += `<rect x="${x + 12}" y="${y - 27}" width="17" height="17" fill="#a54824"/>`;
+        body += txt(x + 20.5, y - 14, "T", 14, "#fffefa");
+      }
     }
   }
   if (!half) body += txt(330, 23, "NORTH", 17);
@@ -91,11 +108,11 @@ function board(state, { half = false, labelsOnly = false, focus = [], arrows = [
   if (footer) body += txt(330, height - 9, footer, 17);
   return { body, height };
 }
-function wrap({ body, height }, title, desc) {
+function wrap({ body, height }, title, desc, reference = "1179267b1f19b27a2138791253f2cb9cbfe98c14") {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="660" height="${height}" viewBox="0 0 660 ${height}" role="img" aria-labelledby="title desc">
   <title id="title">${esc(title)}</title>
   <desc id="desc">${esc(desc)}</desc>
-  <metadata>Adapted from the rule explanations of bao-la-kiswahili-ja contributors, reference 1179267b1f19b27a2138791253f2cb9cbfe98c14. New diagram design and engine-checked examples by bao-la-kiswahili-game contributors, 2026. CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0/</metadata>
+  <metadata>Adapted from the rule explanations of bao-la-kiswahili-ja contributors, reference ${reference}. New diagram design and engine-checked examples by bao-la-kiswahili-game contributors, 2026. CC BY-SA 4.0. https://creativecommons.org/licenses/by-sa/4.0/</metadata>
   <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#a54824"/></marker></defs>
   <g font-family="system-ui, sans-serif">${body}</g>
 </svg>
@@ -115,7 +132,14 @@ function figures() {
     ["nyumba-two", e.houseTwo, { half: true, focus: ["A5"], footer: "A5: 6 + 1 − 2 = 5", arrows: [["A5", "A6"], ["A6", "A7"]] }, "Nyumba: two seeds / nyumbaの2個蒔き", "Starting with only an owned nyumba of 6 in the front row: add 1, sow 2, leave 5. / 前列に所有中のnyumba6個だけがある状態から、1個加え2個蒔き5個残る。"],
     ["front-empty", e.won, { frontsOnly: true, focus: ["a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8"] }, "Win: empty front row / 勝利・前列が空", "North's entire front row is empty; South wins immediately. / Northの前列がすべて空となりSouthが直ちに勝つ。"],
   ];
-  return Object.fromEntries(items.map(([name, state, options, title, desc]) => [`${name}.svg`, wrap(board(state, options), title, desc)]));
+  const reference = "aad9fda3ffb12c2ca785509951c71ce8a42bef5a";
+  items.push(
+    ["takasia-target", e.takasiaTarget, { takasia: true, focus: ["a4"], footer: "E30 · a4: T · a8 / a5: START" },
+      "Takasia target / takasia対象", "E30: a4 holds 2 and is restricted for North's next turn. Both houses are unowned. / E30：a4は2個でNorthの次の1手の対象。両側の家は所有なし。", reference],
+    ["takasia-stop", e.takasiaStop, { takasia: true, focus: ["a4"], footer: "E30 · a8 LEFT → a4: 5 · STOP" },
+      "Takasia stop / takasiaで停止", "North starts LEFT from a8. The fifth sowing ends at a4 with 5; no relay. Shown before expiry. / Northはa8からLEFT。5回目の種まきがa4の5個で停止。失効前を表示。", reference],
+  );
+  return Object.fromEntries(items.map(([name, state, options, title, desc, reference]) => [`${name}.svg`, wrap(board(state, options), title, desc, reference)]));
 }
 if (require.main === module) {
   const out = path.resolve(__dirname, "../public/assets/rules");
@@ -124,6 +148,6 @@ if (require.main === module) {
     if (process.argv.includes("--check")) assert.equal(fs.readFileSync(path.join(out, name), "utf8"), svg, `${name}の再生成一致`);
     else fs.writeFileSync(path.join(out, name), svg);
   }
-  console.log("図解10点: 合法手・石数・遷移の確認と" + (process.argv.includes("--check") ? "再生成照合" : "SVG生成") + "に成功");
+  console.log("図解12点: 合法手・石数・遷移の確認と" + (process.argv.includes("--check") ? "再生成照合" : "SVG生成") + "に成功");
 }
 module.exports = { figures, examples };

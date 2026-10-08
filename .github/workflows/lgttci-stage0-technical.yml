@@ -16,6 +16,7 @@ on:
       - "tools/experiments/lib/silgm-independent.js"
       - "tools/experiments/lib/search-reliability-decision-robustness.js"
       - "doc/local-game-tree-geometry-transfer-compatibility-instrument/**"
+      - "tools/takasia/run-historical-ci.cjs"
       - ".github/workflows/lgttci-stage0-technical.yml"
   workflow_dispatch:
 
@@ -29,6 +30,8 @@ jobs:
     steps:
       - name: Checkout frozen branch state
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -42,13 +45,13 @@ jobs:
           node --check tools/experiments/run-lgttci-stage0-technical.js
 
       - name: Run technical-only Stage 0
-        run: node tools/experiments/run-lgttci-stage0-technical.js artifacts/lgttci-stage0/result.json
+        run: node tools/takasia/run-historical-ci.cjs lgttci
 
       - name: Upload Stage 0 result
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: lgttci-stage0-result
-          path: artifacts/lgttci-stage0/result.json
+          path: artifacts/local/takasia-history/lgttci/
           if-no-files-found: error
           retention-days: 30

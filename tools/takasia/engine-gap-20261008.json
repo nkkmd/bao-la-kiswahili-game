@@ -1,0 +1,133 @@
+{
+  "status": "FAIL",
+  "checks": 25,
+  "passed": 0,
+  "failed": 25,
+  "results": [
+    {
+      "id": "initial-state",
+      "status": "FAIL",
+      "message": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- null\n"
+    },
+    {
+      "id": "detection/E30",
+      "status": "FAIL",
+      "message": "detectTakasia API is not implemented\n+ actual - expected\n\n+ 'undefined'\n- 'function'\n"
+    },
+    {
+      "id": "detection/seat-swap",
+      "status": "FAIL",
+      "message": "detectTakasia API is not implemented\n+ actual - expected\n\n+ 'undefined'\n- 'function'\n"
+    },
+    {
+      "id": "detection/singleton-exempt",
+      "status": "FAIL",
+      "message": "detectTakasia API is not implemented\n+ actual - expected\n\n+ 'undefined'\n- 'function'\n"
+    },
+    {
+      "id": "detection/only-occupied-front-exempt",
+      "status": "FAIL",
+      "message": "detectTakasia API is not implemented\n+ actual - expected\n\n+ 'undefined'\n- 'function'\n"
+    },
+    {
+      "id": "detection/only-multi-front-exempt",
+      "status": "FAIL",
+      "message": "detectTakasia API is not implemented\n+ actual - expected\n\n+ 'undefined'\n- 'function'\n"
+    },
+    {
+      "id": "detection/zero-targets",
+      "status": "FAIL",
+      "message": "detectTakasia API is not implemented\n+ actual - expected\n\n+ 'undefined'\n- 'function'\n"
+    },
+    {
+      "id": "detection/two-targets",
+      "status": "FAIL",
+      "message": "detectTakasia API is not implemented\n+ actual - expected\n\n+ 'undefined'\n- 'function'\n"
+    },
+    {
+      "id": "detection/multiple-captures-same-target",
+      "status": "FAIL",
+      "message": "detectTakasia API is not implemented\n+ actual - expected\n\n+ 'undefined'\n- 'function'\n"
+    },
+    {
+      "id": "detection/defender-can-capture",
+      "status": "FAIL",
+      "message": "detectTakasia API is not implemented\n+ actual - expected\n\n+ 'undefined'\n- 'function'\n"
+    },
+    {
+      "id": "detection/unowned-house-position",
+      "status": "FAIL",
+      "message": "detectTakasia API is not implemented\n+ actual - expected\n\n+ 'undefined'\n- 'function'\n"
+    },
+    {
+      "id": "detection/owned-house-exempt",
+      "status": "FAIL",
+      "message": "detectTakasia API is not implemented\n+ actual - expected\n\n+ 'undefined'\n- 'function'\n"
+    },
+    {
+      "id": "detection/prior-capture",
+      "status": "FAIL",
+      "message": "detectTakasia API is not implemented\n+ actual - expected\n\n+ 'undefined'\n- 'function'\n"
+    },
+    {
+      "id": "detection/namua-to-mtaji-no-activation",
+      "status": "FAIL",
+      "message": "detectTakasia API is not implemented\n+ actual - expected\n\n+ 'undefined'\n- 'function'\n"
+    },
+    {
+      "id": "detection/namua-no-activation",
+      "status": "FAIL",
+      "message": "detectTakasia API is not implemented\n+ actual - expected\n\n+ 'undefined'\n- 'function'\n"
+    },
+    {
+      "id": "detection/terminal-no-activation",
+      "status": "FAIL",
+      "message": "detectTakasia API is not implemented\n+ actual - expected\n\n+ 'undefined'\n- 'function'\n"
+    },
+    {
+      "id": "detection/owned-house-five-exempt",
+      "status": "FAIL",
+      "message": "detectTakasia API is not implemented\n+ actual - expected\n\n+ 'undefined'\n- 'function'\n"
+    },
+    {
+      "id": "detection/unowned-house-five-normal",
+      "status": "FAIL",
+      "message": "detectTakasia API is not implemented\n+ actual - expected\n\n+ 'undefined'\n- 'function'\n"
+    },
+    {
+      "id": "E30/predecessor",
+      "status": "FAIL",
+      "message": "Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  {\n    houseOwned: [\n      false,\n      false\n    ],\n...\n    ],\n+   takasia: null,\n-   takasia: {\n-     index: 3,\n-     player: 1\n-   },\n    turn: 2,\n    winner: null\n  }\n"
+    },
+    {
+      "id": "E30/legal-starts",
+      "status": "FAIL",
+      "message": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n+   '{\"row\":0,\"index\":3,\"direction\":\"left\",\"type\":\"takata\",\"phase\":\"mtaji\"}',\n+   '{\"row\":0,\"index\":3,\"direction\":\"right\",\"type\":\"takata\",\"phase\":\"mtaji\"}',\n    '{\"row\":0,\"index\":4,\"direction\":\"left\",\"type\":\"takata\",\"phase\":\"mtaji\"}',\n    '{\"row\":0,\"index\":4,\"direction\":\"right\",\"type\":\"takata\",\"phase\":\"mtaji\"}',\n    '{\"row\":0,\"index\":7,\"direction\":\"left\",\"type\":\"takata\",\"phase\":\"mtaji\"}',\n    '{\"row\":0,\"index\":7,\"direction\":\"right\",\"type\":\"takata\",\"phase\":\"mtaji\"}'\n  ]\n"
+    },
+    {
+      "id": "E30/reply-0",
+      "status": "FAIL",
+      "message": "Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  {\n    houseOwned: [\n      false,\n      false\n    ],\n...\n    ],\n+   takasia: {\n+     index: 3,\n+     player: 1\n+   },\n-   takasia: null,\n    turn: 3,\n    winner: null\n  }\n"
+    },
+    {
+      "id": "E30/reply-1",
+      "status": "FAIL",
+      "message": "Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  {\n    houseOwned: [\n      false,\n      false\n    ],\n...\n        [\n-         3,\n-         2,\n-         3,\n          5,\n          1,\n+         6,\n+         2,\n-         3,\n          0,\n+         1,\n          2,\n+         4\n        ],\n        [\n+         6,\n-         4,\n-         4,\n          1,\n-         6,\n-         3,\n-         4,\n-         3,\n          0,\n+         8,\n+         5,\n+         0,\n+         1,\n+         2\n        ]\n      ]\n    ],\n    player: 0,\n    reason: '',\n...\n    ],\n+   takasia: {\n+     index: 3,\n+     player: 1\n+   },\n-   takasia: null,\n    turn: 3,\n    winner: null\n  }\n"
+    },
+    {
+      "id": "E30/reply-2",
+      "status": "FAIL",
+      "message": "Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  {\n    houseOwned: [\n      false,\n      false\n    ],\n...\n    ],\n+   takasia: {\n+     index: 3,\n+     player: 1\n+   },\n-   takasia: null,\n    turn: 3,\n    winner: null\n  }\n"
+    },
+    {
+      "id": "E30/reply-3",
+      "status": "FAIL",
+      "message": "Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  {\n    houseOwned: [\n      false,\n      false\n    ],\n...\n    ],\n+   takasia: {\n+     index: 3,\n+     player: 1\n+   },\n-   takasia: null,\n    turn: 3,\n    winner: null\n  }\n"
+    },
+    {
+      "id": "owned-house-start-stops-at-target",
+      "status": "FAIL",
+      "message": "Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  {\n    houseOwned: [\n      false,\n      false\n    ],\n...\n          2,\n+         0,\n+         1,\n          2,\n+         7,\n+         1,\n+         1,\n          3,\n-         5,\n-         2,\n-         2,\n-         0,\n-         1\n        ],\n        [\n+         1,\n+         0,\n          4,\n-         4,\n-         10,\n-         0,\n          3,\n+         9,\n-         1,\n-         3,\n          2,\n+         0,\n+         8\n        ]\n      ]\n    ],\n    player: 0,\n    reason: '',\n...\n    ],\n+   takasia: {\n+     index: 3,\n+     player: 1\n+   },\n-   takasia: null,\n    turn: 3,\n    winner: null\n  }\n"
+    }
+  ]
+}

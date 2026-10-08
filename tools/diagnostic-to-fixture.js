@@ -44,12 +44,15 @@ function indentJson(value, spaces) {
 
 function fixtureTemplate(snapshot, index = 0) {
   const position = Diagnostics.stateFromSnapshot(snapshot);
+  const rules = Diagnostics.rulesFromSnapshot(snapshot);
   const observedMove = snapshot.ai?.move ? JSON.stringify(snapshot.ai.move) : "null";
   const observedDepth = snapshot.ai?.stats?.completedDepth;
   const depth = Number.isInteger(observedDepth) && observedDepth > 0 ? observedDepth : 4;
   return [
     "{",
     '  category: "human-review",',
+    `  ruleRevision: ${JSON.stringify(rules.baseline)},`,
+    `  // Replay with the engine for ${rules.guideVersion} / ${rules.baseline}.`,
     `  name: "TODO: explain reviewed diagnostic ${index + 1}",`,
     `  depth: ${depth},`,
     `  position: state(${indentJson(position, 2)}),`,
@@ -83,3 +86,4 @@ if (require.main === module) {
 }
 
 module.exports = { parseArgs, loadSnapshots, fixtureTemplate, convertSnapshots };
+

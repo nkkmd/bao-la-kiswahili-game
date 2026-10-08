@@ -8,6 +8,7 @@
   function createAI(E, lightweight = false) {
   let searchAI = null;
   const WIN = 1_000_000;
+  const RULE_REVISION = "BAO-RULES-V0.2.0-TAKASIA-001";
   const EVALUATION_WEIGHTS = WeightConfig.DEFAULT_WEIGHTS;
 
   function emptyStats(level) {
@@ -350,6 +351,8 @@
       state.reserve.join(","),
       state.houseOwned.map(Number).join(","),
       state.winner === null ? "-" : state.winner,
+      state.takasia ? `${state.takasia.player}:${state.takasia.index}` : "-",
+      RULE_REVISION,
     ].join("|");
   }
 
@@ -817,6 +820,7 @@
   }
 
   function analyzeMove(state, level = "normal", random = Math.random, options = {}) {
+    if (typeof E.detectTakasia !== "function") throw Error("Takasia engine is unavailable");
     if (!lightweight && options.pbaiC011LightweightTransitions === true
       && (level === "hard" || level === "expert")
       && (!options.evaluationProfile || options.evaluationProfile === "bao")
@@ -976,6 +980,7 @@
     playerMetrics,
     legacyEvaluate,
     stateKey,
+    RULE_REVISION,
     moveKey,
     EVALUATION_WEIGHTS,
   };

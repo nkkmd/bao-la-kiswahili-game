@@ -1,9 +1,13 @@
 # 任意棋譜提供 — 本番運用記録
 
-更新日: 2026-09-16
+更新日: 2026-10-08
 
 本書は、AI改善用の任意棋譜提供機能について、実装設計とは分離して本番運用上の主要イベントを記録する。
 設計・検証境界の正本は[`GAME_RECORD_CONTRIBUTION.md`](GAME_RECORD_CONTRIBUTION.md)を参照する。
+
+## 2026-10-08 — takasia対応の移行準備
+
+作業ブランチではversion 1・2の受信検証を実装したが、本作業のコードは本番Workerへ未配備である。移行時は受信側を先に確認し、既存v1のcontrolled submission、v2の受理・重複、保存先`records/v2/`、ルール改訂metadata、共通日次quota、CPUと90日lifecycleを検証してから新クライアントを配信する。[工程5の結果と配信前の残件](ai-engineering/takasia-update/RECORD_IMPLEMENTATION.md)を参照する。下記の既存配備・実機記録は当時のv1環境の証拠として保持する。
 
 ## 2026-09-16 — 本番運用開始
 
@@ -14,6 +18,7 @@
 - Worker: `bao-game-record-ingest`
 - R2 bucket: `bao-game-record-contributions`
 - 対象棋譜形式: `bao-game-record` version `1`
+
 
 ### 本番移行前に完了した事項
 
@@ -88,3 +93,4 @@ production game
 - privacy上の保存項目の変更
 - 本番障害、rate limit・quota到達、異常なresource消費
 - 収集停止または機能廃止
+
