@@ -117,6 +117,7 @@ test("新棋譜の着手・結果の改ざんをviewerと受信で検出する",
   for (const change of [r => {r.moves[3].turn++;}, r => {r.result.plies--;}, r => {r.finalPosition.turn++;}, r => {r.moves[0].move.houseChoice="stop";}]) {
     const record=clone(fixtures.current.record);change(record);
     assert.throws(() => Replay.buildSession(record,E), /mismatch|illegal/);
+    assert.throws(() => Contribution.verifyLocally(record), /mismatch|illegal/);
     assert.throws(() => replayAndVerify(record), /mismatch|match|illegal|choice/);
   }
 });
@@ -220,6 +221,7 @@ test("新AIメタデータのルール混在と自由項目を拒否する", () 
   for(const [key,value] of [["ruleRevision","R-002"],["memo","hidden"]]) {
     const record=clone(fixtures.current.record);record.settings.ai[key]=value;
     assert.throws(()=>Replay.buildSession(record,E),/mismatch|field/);
+    assert.throws(()=>Contribution.verifyLocally(record),/mismatch|field/);
     assert.throws(()=>validateRecord(record),/mismatch|field/);
   }
 });

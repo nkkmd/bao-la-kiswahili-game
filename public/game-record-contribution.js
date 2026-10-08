@@ -37,9 +37,11 @@
   function verifyLocally(record) {
     const GameRecord = root.BaoGameRecord;
     const Engine = root.BaoEngine;
-    if (!GameRecord || !Engine) throw new Error("Bao record verifier unavailable");
+    const Replay = root.BaoGameRecordReplay || (typeof module !== "undefined" && module.exports ? require("./game-record-replay.js") : null);
+    if (!GameRecord || !Engine || !Replay) throw new Error("Bao record verifier unavailable");
     GameRecord.validateRecord(record, true);
-    const replayed = GameRecord.replay(record, Engine);
+    const session = Replay.buildSession(record, Engine);
+    const replayed = session.states.at(-1);
     if (JSON.stringify(stablePosition(replayed)) !== JSON.stringify(stablePosition(record.finalPosition))) {
       throw new Error("Bao game record replay mismatch");
     }

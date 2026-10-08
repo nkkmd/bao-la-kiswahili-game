@@ -63,7 +63,7 @@ test("contribution is explicit, computer-only, locally verified, and never backg
   assert.match(contributionSource, /Agree and send/);
   assert.match(contributionSource, /同意して送信/);
   assert.match(contributionSource, /GameRecord\.validateRecord\(record, true\)/);
-  assert.match(contributionSource, /GameRecord\.replay\(record, Engine\)/);
+  assert.match(contributionSource, /Replay\.buildSession\(record, Engine\)/);
   assert.match(contributionSource, /turnstileToken/);
   assert.match(contributionSource, /purpose: "ai-improvement"/);
   assert.doesNotMatch(contributionSource, /localStorage|sessionStorage|sendBeacon|setInterval/);
