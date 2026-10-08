@@ -9,7 +9,7 @@ assert.ok(["chromium", "firefox", "webkit"].includes(engine));
 const root = path.resolve(__dirname, "../../public");
 const out = path.resolve(__dirname, "../../artifacts/local/takasia-ui", engine);
 fs.mkdirSync(out, { recursive: true });
-const report = { engine, passed: false, physicalDeviceVerified: false, checks: [], errors: [] };
+const report = { engine, passed: false, physicalDeviceVerified: false, checks: [], errors: [], workerRequests: [] };
 const save = () => fs.writeFileSync(path.join(out, "report.json"), JSON.stringify(report, null, 2) + "\n");
 let oldWorker = false, offline = false;
 const server = http.createServer((req, res) => {
@@ -20,6 +20,7 @@ const server = http.createServer((req, res) => {
   if (!file.startsWith(root + path.sep) || !fs.existsSync(file)) { res.writeHead(404); res.end(); return; }
   const body = oldWorker && name === "/service-worker.js"
     ? fs.readFileSync(path.join(__dirname, "history/service-worker-v55.js")) : fs.readFileSync(file);
+  if (name === "/service-worker.js") report.workerRequests.push({ at: new Date().toISOString(), version: oldWorker ? "v55" : "v57" });
   const mime = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".svg": "image/svg+xml" }[path.extname(file)] || "application/json";
   res.writeHead(200, { "Content-Type": mime + "; charset=utf-8", "Cache-Control": "no-store" }); res.end(body);
 });
@@ -174,9 +175,18 @@ let browser;
         await (await navigator.serviceWorker.getRegistration()).update(); await changed;
       });
       await cacheReady(page, "v57");
-      // CacheStorageの削除結果がページ側へ反映されるまで待ち、実際の不在を検査する。
-      await page.waitForFunction(async () => !(await caches.keys()).includes("bao-la-kiswahili-v55"));
-      assert.equal(await page.evaluate(async () => (await caches.keys()).includes("bao-la-kiswahili-v55")), false);
+      // 実際のページと同じ実行環境で削除完了を待ち、旧キャッシュ不在と新版の存在を検査する。
+      const deadline = Date.now() + 30000;
+      report.cacheSnapshots = [];
+      let cacheNames;
+      do {
+        cacheNames = await page.evaluate(() => caches.keys());
+        report.cacheSnapshots.push({ at: new Date().toISOString(), names: cacheNames });
+        if (!cacheNames.includes("bao-la-kiswahili-v55")) break;
+        await new Promise(resolve => setTimeout(resolve, 100));
+      } while (Date.now() < deadline);
+      assert.equal(cacheNames.includes("bao-la-kiswahili-v55"), false);
+      assert.ok(cacheNames.includes("bao-la-kiswahili-v57"));
       offline = true;
       for (const lang of ["ja", "en"]) {
         await page.goto(origin + "/rules?lang=" + lang); await images(page);
