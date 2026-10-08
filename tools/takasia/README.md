@@ -81,4 +81,4 @@ node --test test/takasia-ui.test.cjs は日英のmain全体と実エンジンを
 
 history/service-worker-v55.js は作業開始時mainのService Workerを保持し、配信済みv55から準備版v57への更新を検査するためだけに使う。通常配信には含めない。工程5で準備したv56は未配信である。
 
-結果・範囲・残件は[工程6の記録](../../doc/ai-engineering/takasia-update/UI_IMPLEMENTATION.md)、ソースとActions参照は ui-validation-20261008.json を参照する。
+結果・範囲・残件は[工程6の記録](../../doc/ai-engineering/takasia-update/UI_IMPLEMENTATION.md)、ソース・3ブラウザー各13項目・72条件・Actions参照は[機械可読記録](ui-validation-20261008.json)を参照する。
