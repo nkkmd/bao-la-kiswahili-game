@@ -1,4 +1,4 @@
-name: Takasia engine, AI and record verification
+name: Takasia engine, AI, record and UI verification
 
 on:
   workflow_dispatch:
@@ -10,6 +10,14 @@ on:
       - 'public/engine.js'
       - 'public/ai*.js'
       - 'public/main.js'
+      - 'public/index.html'
+      - 'public/style.css'
+      - 'public/rules*'
+      - 'public/assets/rules/**'
+      - 'public/service-worker.js'
+      - 'tools/build-rules-figures.js'
+      - 'test/takasia-ui.test.cjs'
+      - 'test/locale.test.js'
       - 'public/game-record*.js'
       - 'public/diagnostics.js'
       - 'public/rule-versions.js'
@@ -29,6 +37,14 @@ on:
       - 'public/engine.js'
       - 'public/ai*.js'
       - 'public/main.js'
+      - 'public/index.html'
+      - 'public/style.css'
+      - 'public/rules*'
+      - 'public/assets/rules/**'
+      - 'public/service-worker.js'
+      - 'tools/build-rules-figures.js'
+      - 'test/takasia-ui.test.cjs'
+      - 'test/locale.test.js'
       - 'public/game-record*.js'
       - 'public/diagnostics.js'
       - 'public/rule-versions.js'
@@ -62,6 +78,10 @@ jobs:
         run: node --test test/takasia-ai.test.cjs test/takasia-ai-worker.test.cjs test/ai.test.js test/search.test.js test/ai-config.test.js test/ai-worker.test.js test/worker-integration.test.js
       - name: Verify deterministic record fixtures without overwriting them
         run: node tools/takasia/check-record-fixtures.cjs --check
+      - name: Verify takasia UI and engine-checked diagrams
+        run: |
+          node tools/build-rules-figures.js --check
+          node --test test/takasia-ui.test.cjs
       - name: Verify old and new records, diagnostics, receiver and adjacent UI
         run: |
           node --test test/takasia-record.test.mjs test/game-record.test.js test/game-record-replay.test.js test/game-record-browser-hook.test.js test/game-record-ui.test.js test/game-record-contribution-worker.test.mjs test/game-record-contribution-fetch-metadata.test.mjs test/game-record-contribution-config.test.js test/diagnostics.test.js test/diagnostic-to-fixture.test.js test/diagnostic-download.test.js test/diagnostics-ui.test.js test/locale.test.js
@@ -83,4 +103,30 @@ jobs:
         with:
           name: takasia-ai-budget-results
           path: artifacts/local/takasia-ai/
+          if-no-files-found: error
+
+  ui-browser-verification:
+    needs: fixture-verification
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [chromium, firefox, webkit]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: 実ブラウザーを準備
+        run: |
+          npm install --prefix "$RUNNER_TEMP/bao-takasia-browser" playwright@1.62.1
+          node "$RUNNER_TEMP/bao-takasia-browser/node_modules/playwright/cli.js" install --with-deps ${{ matrix.engine }}
+      - name: 日英表示・takasia・新旧棋譜・キャッシュ更新を確認
+        run: NODE_PATH="$RUNNER_TEMP/bao-takasia-browser/node_modules" node tools/takasia/test-ui-browser.cjs ${{ matrix.engine }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: takasia-ui-${{ matrix.engine }}-${{ github.event_name }}
+          path: artifacts/local/takasia-ui/
           if-no-files-found: error

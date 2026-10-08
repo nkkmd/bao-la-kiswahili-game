@@ -14,6 +14,7 @@ const BOARD_HEIGHT = 330;
 const BOARD_OFFSET_Y = 60;
 const statusNode = document.querySelector("#status");
 const helpNode = document.querySelector("#visible-help");
+const takasiaStatus = document.querySelector("#takasia-status");
 const soundButton = document.querySelector("#sound");
 const speedButton = document.querySelector("#speed");
 const difficultySelect = document.querySelector("#difficulty");
@@ -160,6 +161,9 @@ function updateReplayControls() {
   replayMoveDetail.textContent = index > 0
     ? replayMoveSummary(replaySession.record.moves[index - 1])
     : t("Initial position", "初期局面");
+  replayMoveDetail.textContent += replaySession.record.version === 1
+    ? t(" — R-002 rules (without takasia)", " — 旧R-002ルール（takasiaなし）")
+    : t(" — v0.2.0 rules (with takasia)", " — v0.2.0ルール（takasiaあり）");
 }
 
 function showReplayHelp() {
@@ -173,6 +177,9 @@ function showReplayHelp() {
   }
   const entry = replaySession.record.moves[index - 1];
   latestRuleCommentary = moveRuleCommentary(entry.move);
+  // 「戻る」でも同じ版のイベントから最後の説明を復元する。
+  const transition = replaySession.engine.applyMove(replaySession.states[index - 1], entry.move);
+  latestRuleCommentary = summarizeRuleCommentary(entry.move, transition.events);
   if (index === total && state.winner !== null) {
     const winner = state.winner === 0 ? "SOUTH" : "NORTH";
     showTurnHelp(t(`Replay ${index} / ${total} — ${winner} wins`, `棋譜 ${index} / ${total} — ${winner}の勝ち`));
@@ -180,6 +187,19 @@ function showReplayHelp() {
     showTurnHelp(t(`Replay ${index} / ${total} — ${replayMoveSummary(entry)}`,
       `棋譜 ${index} / ${total} — ${replayMoveSummary(entry)}`));
   }
+}
+
+function summarizeRuleCommentary(move, events) {
+  let latest = moveRuleCommentary(move);
+  const context = {};
+  events.forEach((event, i) => {
+    const commentary = eventRuleCommentary(event, move, events[i + 1], context,
+      events[i + 1]?.kind === "turn" || events[i + 2]?.kind === "turn");
+    if (commentary?.key === "house-use") context.houseUseShown = true;
+    if (commentary?.key === "takasia-stop") context.takasiaStopped = true;
+    if (commentary) latest = commentary;
+  });
+  return latest;
 }
 
 function setReplayPosition(index) {
@@ -324,6 +344,27 @@ function moveRuleCommentary(move) {
 
 function eventRuleCommentary(event, move, nextEvent, context, endsTurn = false) {
   if (!event) return null;
+  if (event.kind === "takasia" && event.target) {
+    const pit = pitName({ ...event.target, row: E.FRONT });
+    if (event.action === "activate") return {
+      message: t(`TAKASIA — ${pit} is restricted for the next turn: do not start there; stop if the last KETE lands there.`,
+        `TAKASIA（タカシア）成立 — 次の1手は${pit}から開始できず、最後のKETEが入るとそこで停止します。`),
+      anchor: "takasia", announce: true,
+    };
+    if (event.action === "stop") return {
+      key: "takasia-stop",
+      message: t(`TAKASIA STOP — the last KETE landed in ${pit}. Leave the pieces there; relay sowing ends. The restriction expires after this turn.`,
+        `TAKASIA STOP — 最後のKETEが${pit}に入りました。石を取り上げず、連続種まきを終了します。制約はこの手の終了時に失効します。`),
+      anchor: "takasia", announce: true,
+    };
+    // 停止の直後に失効する場合も、終了理由を画面へ残す。
+    if (event.action === "expire" && !context?.takasiaStopped) return {
+      message: t(`TAKASIA — the restricted turn has ended; the restriction on ${pit} has expired.`,
+        `TAKASIA — 対象の1手が終わり、${pit}の制約が失効しました。`),
+      anchor: "takasia", announce: true,
+    };
+    return null;
+  }
   if (event.kind === "reserve" && event.position) return {
     message: t(
       `Added 1 KETE from hand to ${pitName(event.position)} — NAMUA.`,
@@ -526,7 +567,14 @@ function choosePit(position) {
   if (!started || animation || isAIActive() || state.winner !== null
     || !isHumanTurn() || position.player !== state.player) return;
   const found = moves.filter((move) => move.row === position.row && move.index === position.index);
-  if (!found.length) { tone(110); return; }
+  if (!found.length) {
+    if (isTakasiaTarget(state, position)) applyRuleCommentary({
+      message: t(`TAKASIA — you cannot start from ${pitName(position)} this turn. Choose another highlighted pit.`,
+        `TAKASIA — この手は${pitName(position)}から開始できません。他の光っている穴を選んでください。`),
+      anchor: "takasia", announce: true,
+    });
+    tone(110); return;
+  }
   selected = position;
   choices = expandedChoices(found);
   latestRuleCommentary = null;
@@ -643,7 +691,9 @@ function playMove(move) {
   selected = null; choices = []; choiceBoxes = [];
   latestRuleCommentary = null;
   if (fast) {
-    state = result.state; displayState = E.clone(state); afterMove(); return;
+    state = result.state; displayState = E.clone(state);
+    applyRuleCommentary(summarizeRuleCommentary(move, result.events));
+    afterMove(); return;
   }
   animation = {
     events: result.events,
@@ -736,6 +786,20 @@ function drawHeader() {
   phaseNode.textContent = displayState.phase.toUpperCase();
   northHand.textContent = displayState.reserve[1];
   southHand.textContent = displayState.reserve[0];
+  const target = displayState.takasia;
+  const active = target && isTakasiaTarget(displayState, { ...target, row: E.FRONT });
+  const message = active ? t(
+    `T = TAKASIA: ${pitName({ ...target, row: E.FRONT })} — no start; last KETE stops here. This turn only.`,
+    `T = TAKASIA：${pitName({ ...target, row: E.FRONT })} — 開始不可・最後のKETEで停止。この1手だけ。`) : "";
+  if (takasiaStatus.textContent !== message) takasiaStatus.textContent = message;
+  takasiaStatus.hidden = !active;
+}
+
+function isTakasiaTarget(positionState, position) {
+  const target = positionState.takasia;
+  return Boolean(target && positionState.phase === "mtaji" && positionState.winner === null
+    && target.player === positionState.player && position.row === E.FRONT
+    && target.player === position.player && target.index === position.index);
 }
 
 function drawBoard() {
@@ -767,6 +831,13 @@ function drawPit(player, row, index) {
   ctx.lineWidth = isActive ? 5 : isSelected ? 5 : isLegal ? 4 : 2;
   ctx.strokeStyle = isCaptureActive ? C.alert : isActive ? C.active : isSelected ? C.pale : isLegal ? C.gold : C.soft;
   ctx.stroke();
+  if (isTakasiaTarget(displayState, { player, row, index })) {
+    // 穴の内側に印を置き、外周枠・座標・石数へ重ねない。色だけに頼らない。
+    ctx.beginPath(); ctx.arc(x, y, 22, 0, Math.PI * 2);
+    ctx.setLineDash([3, 3]); ctx.lineWidth = 2; ctx.strokeStyle = C.alert; ctx.stroke(); ctx.setLineDash([]);
+    rect(x + 9, y - 21, 13, 13, C.alert);
+    label("T", x + 15.5, y - 14.5, 11, "center", C.night);
+  }
   if (isActive) {
     const scale = cueScale();
     ctx.beginPath();
@@ -866,6 +937,12 @@ function animationDelay(eventCount, event) {
 
 function buildAnimationCue(event, now, duration) {
   const cue = { kind: event.kind, duration, startedAt: now, position: null, flight: null, label: "" };
+  if (event.kind === "takasia" && event.target) {
+    cue.position = { ...event.target, row: E.FRONT };
+    cue.label = `TAKASIA ${event.action.toUpperCase()} ${pitName(cue.position)}`;
+    animation.lastPosition = null;
+    return cue;
+  }
   if (event.kind === "capture") {
     const position = { player: event.player, row: E.FRONT, index: event.index };
     cue.position = position;
@@ -905,6 +982,7 @@ function loop(now) {
       animation.current = buildAnimationCue(event, now, duration);
       const commentary = eventRuleCommentary(event, animation.move, nextEvent, animation, endsTurn);
       if (commentary?.key === "house-use") animation.houseUseShown = true;
+      if (commentary?.key === "takasia-stop") animation.takasiaStopped = true;
       applyRuleCommentary(commentary);
       animation.index += 1;
       animation.nextAt = now + duration;
