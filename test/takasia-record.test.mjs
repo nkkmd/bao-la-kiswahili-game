@@ -17,6 +17,8 @@ const Converter = require("../tools/diagnostic-to-fixture.js");
 const fixtures = JSON.parse(fs.readFileSync("tools/takasia/record-fixtures.json", "utf8"));
 const e30 = JSON.parse(fs.readFileSync("tools/takasia/fixtures.json", "utf8")).e30;
 const clone = (value) => structuredClone(value);
+const reverseKeys = (value) => Array.isArray(value) ? value.map(reverseKeys)
+  : value && typeof value === "object" ? Object.fromEntries(Object.entries(value).reverse().map(([key,entry])=>[key,reverseKeys(entry)])) : value;
 const blobSha = (source) => crypto.createHash("sha1").update(`blob ${Buffer.byteLength(source)}\0${source}`).digest("hex");
 
 test("旧再生エンジンは固定mainから公開名だけを変えた内容である", () => {
@@ -57,6 +59,16 @@ test("標準初期局面からtakasia成立・対象で停止・失効を実際�
   assert.ok(result.events.some((event) => event.kind === "takasia" && event.action === "stop"));
   assert.equal(result.state.takasia, null);
   assert.deepEqual(result.state, session.states[active + 1]);
+});
+
+test("JSONの項目順が異なっても新旧棋譜の値を正しく検証する", () => {
+  for(const name of ["current","legacy"]) {
+    const record=reverseKeys(fixtures[name].record);
+    assert.equal(validateRecord(record),true);
+    assert.equal(replayAndVerify(record),true);
+    assert.equal(Contribution.verifyLocally(record),true);
+    assert.deepEqual(Replay.buildSession(record,E).states.at(-1),record.finalPosition);
+  }
 });
 
 test("旧棋譜を新版へ付け替えても同じ棋譜とは認めない", () => {
@@ -191,7 +203,7 @@ test("v2のR2保存・版メタデータ・重複判定は新状態を落とさ�
   try {
     const record=clone(fixtures.current.record);
     assert.equal((await handleRequest(request(record),env)).status,201);
-    assert.equal((await handleRequest(request(record),env)).status,200);
+    assert.equal((await handleRequest(request(reverseKeys(record)),env)).status,200);
     const entries=[...objects.entries()].filter(([key])=>key.startsWith("records/"));
     assert.equal(entries.length,1);assert.ok(entries[0][0].startsWith("records/v2/"));
     const entry=entries[0][1];assert.deepEqual(JSON.parse(entry.text),record);
