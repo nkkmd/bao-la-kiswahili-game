@@ -41,25 +41,25 @@ for (const f of H.cases()) test(`全難易度の合法性とWorker・直接・�
   }
 });
 
-test("キャッシュを使う探索と独立した深さ2の全幅minimaxのスコアが一致する", () => {
+test("キャッシュを使う探索と独立した深さ3の全幅minimaxが12局面で一致する", () => {
   const { ctx } = H.load();
-  for (const f of H.cases().slice(-3)) for (const enabled of [true, false]) {
+  for (const f of H.cases()) for (const enabled of [true, false]) {
     const s = f.state, player = s.player;
     const evaluate = enabled ? ctx.BaoLogicGate.evaluate : ctx.BaoAI.evaluate;
     function full(state, depth) {
-      if (state.winner !== null) return state.winner === player ? 1000000 - (2 - depth) : -1000000 + (2 - depth);
+      if (state.winner !== null) return state.winner === player ? 1000000 - (3 - depth) : -1000000 + (3 - depth);
       if (!depth) return evaluate(state, player);
       const scores = E.moveVariants(state).map(m => full(E.applyMove(state, m).state, depth - 1));
       return state.player === player ? Math.max(...scores) : Math.min(...scores);
     }
-    const expected = full(s, 2);
+    const expected = full(s, 3);
     for (const evaluationCache of [true, false]) {
       const result = ctx.BaoReleaseAI.analyzeMove(s, "hard", H.rng(1008), {
-        maxDepth: 2, timeLimitMs: Infinity, quiescenceDepth: 0, evaluationCache,
+        maxDepth: 3, timeLimitMs: Infinity, quiescenceDepth: 0, evaluationCache,
         pbaiC015LogicGate: enabled, pbaiC011LightweightTransitions: true,
       });
       assert.equal(result.stats.rootScore, expected);
-      assert.equal(full(E.applyMove(s, result.move).state, 1), expected);
+      assert.equal(full(E.applyMove(s, result.move).state, 2), expected);
     }
   }
 });
