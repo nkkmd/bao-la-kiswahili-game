@@ -2,7 +2,7 @@
 
 Version: 1.0.0  
 Status: Active  
-更新日: 2026-10-08
+更新日: 2026-10-09（日本時間）
 
 ## 1. 目的
 
@@ -12,12 +12,14 @@ Status: Active
 
 ## 2. 外部の参照基準
 
-本ゲームの実装上のルール基準は、次の日本語ガイドである。
+mainの通常対局・公開AIと新規棋譜v2のルール基準は、次の日本語ガイドである。本番配信はユーザーの手動作業待ちで、配信確認済みの旧版と区別する。
 
 - リポジトリ: [`nkkmd/bao-la-kiswahili-ja`](https://github.com/nkkmd/bao-la-kiswahili-ja)
-- 公開版: `v0.1.0-draft`
-- 採用基準: `R-002`
-- 固定参照コミット: [`1179267b1f19b27a2138791253f2cb9cbfe98c14`](https://github.com/nkkmd/bao-la-kiswahili-ja/tree/1179267b1f19b27a2138791253f2cb9cbfe98c14)
+- 公開版: `v0.2.0`
+- 採用基準: `BAO-RULES-V0.2.0-TAKASIA-001`
+- 固定参照コミット: [`aad9fda3ffb12c2ca785509951c71ce8a42bef5a`](https://github.com/nkkmd/bao-la-kiswahili-ja/tree/aad9fda3ffb12c2ca785509951c71ce8a42bef5a)
+
+配信確認済みの旧ゲーム、旧棋譜v1、過去のR-002研究は `v0.1.0-draft / R-002`（固定参照コミット `1179267b1f19b27a2138791253f2cb9cbfe98c14`）に対応する。旧棋譜は固定した `public/engine-r002.js` で再生・検証し、過去の成果へ新ルールを遡及適用しない。
 
 `bao-la-kiswahili-ja` は公開ドラフトであり、Bao全体に対する公式規則または大会規則そのものではない。大会、地域、対局団体などが別の規則を明示している場合は、その規則を優先する。
 
@@ -46,6 +48,7 @@ Status: Active
 - namua
 - mtaji
 - 連続種まき（relay sowing）
+- takasia
 - nyumba
 - 捕獲
 - 合法手生成
@@ -59,7 +62,7 @@ Status: Active
 
 配信済みゲームでは `takasia` を適用していない。ルール元の `v0.2.0`（固定コミット `aad9fda3ffb12c2ca785509951c71ce8a42bef5a`）ではtakasiaが採用され、完全局面E30が確認できるようになった。
 
-[対応工程と現在状態](ai-engineering/takasia-update/README.md)に採用仕様と検証結果を記録する。工程1〜6を作業ブランチで実装し、エンジン、AI-GEN4、棋譜・診断・受信、日英表示と図解を対応・限定検証した。新棋譜version 2は`BAO-RULES-V0.2.0-TAKASIA-001`、旧棋譜version 1は`R-002`の固定エンジンへ振り分ける。[工程7のソフトウェア総合検証・既存CI整合](ai-engineering/takasia-update/INTEGRATION_VALIDATION.md)は通過し、実機・受信側・実サイトの確認が残る。main統合・配信は未実施である。本書の配信済み基準を新版へ切り替えるのは、関連経路の同期と総合検証後とする。
+[対応工程と現在状態](ai-engineering/takasia-update/README.md)に採用仕様と検証結果を記録する。工程1〜6を実装し、エンジン、AI-GEN4、棋譜・診断・受信、日英表示と図解を対応・限定検証した。新棋譜version 2は`BAO-RULES-V0.2.0-TAKASIA-001`、旧棋譜version 1は`R-002`の固定エンジンへ振り分ける。[工程7のソフトウェア総合検証・既存CI整合](ai-engineering/takasia-update/INTEGRATION_VALIDATION.md)は通過し、実機・受信側・実サイトの確認が残る。2026-10-09にPR #179をmainへ統合した。本番配信はユーザーによる手動作業待ちである。本番配信の完了状態を更新するのは、ユーザーの手動配信と受信側・実サイトの確認後とする。
 
 ### 5.2 連続種まきの安全上限
 
@@ -90,7 +93,7 @@ Status: Active
 
 ## 7. 主要文書での参照方法
 
-ルールに依存する主要文書では、必要に応じて次の注記を使用する。
+新しい通常対局・公開AIの文書は `v0.2.0 / BAO-RULES-V0.2.0-TAKASIA-001` を明記する。過去のR-002研究文書は当時の基準を保持し、次の旧版向け注記を使用する。
 
 ```markdown
 > [!NOTE]

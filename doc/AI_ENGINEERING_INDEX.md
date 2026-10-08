@@ -17,9 +17,9 @@
 
 **PBAI-P15は2026-09-28に終了**し、正式判断は`HOLD / KEEP-AI-GEN4`。F1のWorker再利用のbaseline supportで64 seedを処理したが、固定plyの局面が7 seedで欠け、各難易度171 paired positionsで必要192件に未達。Candidate IDは発行せず、候補コードや公開設定を変更していない。[最終報告](ai-engineering/public-ai-improvement-program-15/PROGRAM_FINAL_REPORT.md)と[結果](../artifacts/pbai-p15/WORKER_SUPPORT_RESULT.md)を参照する。
 
-## takasiaのルール対応（実装中）
+## takasiaのルール対応（main統合済み・手動配信待ち）
 
-ルール元のv0.2.0でtakasiaが採用されたため、[対応工程と仕様・検証結果](ai-engineering/takasia-update/README.md)を用意した。工程1〜5が作業ブランチで完了し、エンジン仕様照合25件、回帰144件はPASSである。工程4のAI予算72条件の記録も保持する。AI対応改訂はAI-GEN4-TAKASIA-001。新棋譜・診断version 2と旧version 1を区別し、保存・再生・受信を同期した。[工程6の表示・日英説明](ai-engineering/takasia-update/UI_IMPLEMENTATION.md)も実装し、表示9件を加えた回帰153件はPASSである。3ブラウザー各13項目と文書監査も通過し、[工程7の既存CI整合・ソフトウェア総合検証](ai-engineering/takasia-update/INTEGRATION_VALIDATION.md)も通過した。公開AIは引き続きAI-GEN4 / AI-GEN4-RELEASE-001。工程7の実機・Cloudflare・実サイト確認は残り、main統合・配信は未実施。過去の固定証拠は保持する。
+ルール元のv0.2.0でtakasiaが採用されたため、[対応工程と仕様・検証結果](ai-engineering/takasia-update/README.md)を用意した。工程1〜5の実装を完了し、エンジン仕様照合25件、回帰144件はPASSである。工程4のAI予算72条件の記録も保持する。AI対応改訂はAI-GEN4-TAKASIA-001。新棋譜・診断version 2と旧version 1を区別し、保存・再生・受信を同期した。[工程6の表示・日英説明](ai-engineering/takasia-update/UI_IMPLEMENTATION.md)も実装し、表示9件を加えた回帰153件はPASSである。3ブラウザー各13項目と文書監査も通過し、[工程7の既存CI整合・ソフトウェア総合検証](ai-engineering/takasia-update/INTEGRATION_VALIDATION.md)も通過した。公開AIは引き続きAI-GEN4 / AI-GEN4-RELEASE-001。工程7の実機・Cloudflare・実サイト確認は残り、2026-10-09にPR #179をmainへ統合済み。本番配信はユーザーによる手動作業待ち。過去の固定証拠は保持する。
 
 ## 今後の改善案（検討中）
 
