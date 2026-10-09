@@ -1,0 +1,290 @@
+{
+  "status": "PASS",
+  "appVersion": "v0.6.0",
+  "cache": "bao-la-kiswahili-v58",
+  "ruleRevision": "BAO-RULES-V0.2.0-TAKASIA-001",
+  "aiRevision": "AI-GEN4-TAKASIA-001",
+  "sourceCommit": "56a59462019bcf774356cc3663fb150ad5e959dc",
+  "mainMergeCommit": "3d5ed36fcaa388d3817a7bf5f0deba803b33e96b",
+  "mainMergeTreeMatchesSource": true,
+  "localVerification": {
+    "tests": 14,
+    "passed": 14,
+    "failed": 0
+  },
+  "uiBrowsers": [
+    {
+      "engine": "chromium",
+      "passed": true,
+      "physicalDeviceVerified": false,
+      "checks": [
+        "ja：図解・全12画像・ページ内リンク・320/412/1280幅",
+        "ja：takasia図の拡大・代替テキスト・Escape",
+        "ja：North対象・実タップの拒否・正しい規則リンク",
+        "ja：South対象・外周枠・320幅",
+        "ja：通常・FASTの成立と対象での停止・失効・終了理由",
+        "ja：ファイルから新旧棋譜を読み、戻る・進む・版表示を確認",
+        "en：図解・全12画像・ページ内リンク・320/412/1280幅",
+        "en：takasia図の拡大・代替テキスト・Escape",
+        "en：North対象・実タップの拒否・正しい規則リンク",
+        "en：South対象・外周枠・320幅",
+        "en：通常・FASTの成立と対象での停止・失効・終了理由",
+        "en：ファイルから新旧棋譜を読み、戻る・進む・版表示を確認",
+        "v55からv58へ更新し、v0.6.0・通信遮断中の日英ルール・全画像・ゲームを表示",
+        "v57からv58へ更新し、v0.6.0・通信遮断中の日英ルール・全画像・ゲームを表示"
+      ],
+      "errors": [],
+      "workerRequests": [
+        {
+          "at": "2026-10-09T01:47:38.351Z",
+          "version": "v55"
+        },
+        {
+          "at": "2026-10-09T01:47:38.510Z",
+          "version": "v58"
+        },
+        {
+          "at": "2026-10-09T01:47:40.114Z",
+          "version": "v57"
+        },
+        {
+          "at": "2026-10-09T01:47:40.282Z",
+          "version": "v58"
+        }
+      ],
+      "browserVersion": "151.0.7922.34",
+      "cacheSnapshots": [
+        {
+          "at": "2026-10-09T01:47:40.414Z",
+          "names": [
+            "bao-la-kiswahili-v57",
+            "bao-la-kiswahili-v58"
+          ]
+        },
+        {
+          "at": "2026-10-09T01:47:40.515Z",
+          "names": [
+            "bao-la-kiswahili-v57",
+            "bao-la-kiswahili-v58"
+          ]
+        },
+        {
+          "at": "2026-10-09T01:47:40.619Z",
+          "names": [
+            "bao-la-kiswahili-v57",
+            "bao-la-kiswahili-v58"
+          ]
+        },
+        {
+          "at": "2026-10-09T01:47:40.720Z",
+          "names": [
+            "bao-la-kiswahili-v57",
+            "bao-la-kiswahili-v58"
+          ]
+        },
+        {
+          "at": "2026-10-09T01:47:40.822Z",
+          "names": [
+            "bao-la-kiswahili-v57",
+            "bao-la-kiswahili-v58"
+          ]
+        },
+        {
+          "at": "2026-10-09T01:47:40.923Z",
+          "names": [
+            "bao-la-kiswahili-v57",
+            "bao-la-kiswahili-v58"
+          ]
+        },
+        {
+          "at": "2026-10-09T01:47:41.024Z",
+          "names": [
+            "bao-la-kiswahili-v57",
+            "bao-la-kiswahili-v58"
+          ]
+        },
+        {
+          "at": "2026-10-09T01:47:41.126Z",
+          "names": [
+            "bao-la-kiswahili-v57",
+            "bao-la-kiswahili-v58"
+          ]
+        },
+        {
+          "at": "2026-10-09T01:47:41.227Z",
+          "names": [
+            "bao-la-kiswahili-v57",
+            "bao-la-kiswahili-v58"
+          ]
+        },
+        {
+          "at": "2026-10-09T01:47:41.328Z",
+          "names": [
+            "bao-la-kiswahili-v57",
+            "bao-la-kiswahili-v58"
+          ]
+        },
+        {
+          "at": "2026-10-09T01:47:41.430Z",
+          "names": [
+            "bao-la-kiswahili-v58"
+          ]
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "passed": true,
+      "physicalDeviceVerified": false,
+      "checks": [
+        "ja：図解・全12画像・ページ内リンク・320/412/1280幅",
+        "ja：takasia図の拡大・代替テキスト・Escape",
+        "ja：North対象・実タップの拒否・正しい規則リンク",
+        "ja：South対象・外周枠・320幅",
+        "ja：通常・FASTの成立と対象での停止・失効・終了理由",
+        "ja：ファイルから新旧棋譜を読み、戻る・進む・版表示を確認",
+        "en：図解・全12画像・ページ内リンク・320/412/1280幅",
+        "en：takasia図の拡大・代替テキスト・Escape",
+        "en：North対象・実タップの拒否・正しい規則リンク",
+        "en：South対象・外周枠・320幅",
+        "en：通常・FASTの成立と対象での停止・失効・終了理由",
+        "en：ファイルから新旧棋譜を読み、戻る・進む・版表示を確認",
+        "v55からv58へ更新し、v0.6.0・通信遮断中の日英ルール・全画像・ゲームを表示",
+        "v57からv58へ更新し、v0.6.0・通信遮断中の日英ルール・全画像・ゲームを表示"
+      ],
+      "errors": [],
+      "workerRequests": [
+        {
+          "at": "2026-10-09T01:48:14.074Z",
+          "version": "v55"
+        },
+        {
+          "at": "2026-10-09T01:48:14.129Z",
+          "version": "v58"
+        },
+        {
+          "at": "2026-10-09T01:48:15.161Z",
+          "version": "v58"
+        },
+        {
+          "at": "2026-10-09T01:48:15.418Z",
+          "version": "v57"
+        },
+        {
+          "at": "2026-10-09T01:48:15.504Z",
+          "version": "v58"
+        }
+      ],
+      "browserVersion": "26.5",
+      "cacheSnapshots": [
+        {
+          "at": "2026-10-09T01:48:15.537Z",
+          "names": [
+            "bao-la-kiswahili-v58"
+          ]
+        }
+      ]
+    },
+    {
+      "engine": "firefox",
+      "passed": true,
+      "physicalDeviceVerified": false,
+      "checks": [
+        "ja：図解・全12画像・ページ内リンク・320/412/1280幅",
+        "ja：takasia図の拡大・代替テキスト・Escape",
+        "ja：North対象・実タップの拒否・正しい規則リンク",
+        "ja：South対象・外周枠・320幅",
+        "ja：通常・FASTの成立と対象での停止・失効・終了理由",
+        "ja：ファイルから新旧棋譜を読み、戻る・進む・版表示を確認",
+        "en：図解・全12画像・ページ内リンク・320/412/1280幅",
+        "en：takasia図の拡大・代替テキスト・Escape",
+        "en：North対象・実タップの拒否・正しい規則リンク",
+        "en：South対象・外周枠・320幅",
+        "en：通常・FASTの成立と対象での停止・失効・終了理由",
+        "en：ファイルから新旧棋譜を読み、戻る・進む・版表示を確認",
+        "v55からv58へ更新し、v0.6.0・通信遮断中の日英ルール・全画像・ゲームを表示",
+        "v57からv58へ更新し、v0.6.0・通信遮断中の日英ルール・全画像・ゲームを表示"
+      ],
+      "errors": [],
+      "workerRequests": [
+        {
+          "at": "2026-10-09T01:47:54.144Z",
+          "version": "v55"
+        },
+        {
+          "at": "2026-10-09T01:47:55.343Z",
+          "version": "v58"
+        },
+        {
+          "at": "2026-10-09T01:47:56.930Z",
+          "version": "v57"
+        },
+        {
+          "at": "2026-10-09T01:47:58.135Z",
+          "version": "v58"
+        }
+      ],
+      "browserVersion": "153.0",
+      "cacheSnapshots": [
+        {
+          "at": "2026-10-09T01:47:58.231Z",
+          "names": [
+            "bao-la-kiswahili-v58"
+          ]
+        }
+      ]
+    }
+  ],
+  "workflows": [
+    {
+      "id": 37871346266,
+      "name": "AI-GEN4 先攻後攻差追加研究",
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37871346266"
+    },
+    {
+      "id": 37871346387,
+      "name": "AI-GEN3 release verification",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37871346387"
+    },
+    {
+      "id": 37871346347,
+      "name": "Game record verification",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37871346347"
+    },
+    {
+      "id": 37871346363,
+      "name": "図解ルールの日英・画面・オフライン確認",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37871346363"
+    },
+    {
+      "id": 37871346269,
+      "name": "Takasia engine, AI, record and UI verification",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37871346269"
+    },
+    {
+      "id": 37871346310,
+      "name": "PBAI-C015 hard・expert本番組込み確認",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/37871346310"
+    }
+  ],
+  "deployment": {
+    "versionLabelUpdatePublished": false,
+    "githubReleasePublished": false,
+    "physicalDeviceVerified": false,
+    "priorTakasiaDeploymentReported": true,
+    "priorReportCommit": "55b3616aadef8b92022008236e0e857b21353df2"
+  },
+  "scope": "Presentation and cache update only; rule, AI, model, budgets and receiver unchanged."
+}
