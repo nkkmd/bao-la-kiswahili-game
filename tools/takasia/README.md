@@ -95,6 +95,6 @@ history/service-worker-v55.js は作業開始時mainのService Workerを保持�
 
 check-current-assets.cjs は工程6の固定記録を保持し、固定コミットのHTMLとService Workerから明示した文字列置換だけでv0.6.0・キャッシュv58の期待byteを計算する。それ以外の変更は拒否する。既存の16資産照合と旧採用記録の保護を維持する。負例検査にはHTML・Service Workerの任意改変も追加した。
 
-test-ui-browser.cjs は旧v55と、表記更新前の配信済みv57の両方からv58へ移行し、旧キャッシュ削除、v0.5.0からv0.6.0への表示更新、通信遮断中のゲーム・日英ルール・全図版を確認する。旧v57は配信確認を記録したmainコミット `55b3616aadef8b92022008236e0e857b21353df2` に固定する。過去のJSONのv57検証結果はその時点の証拠として変更しない。最新の準備状態は[リリース準備記録](../../doc/ai-engineering/takasia-update/RELEASE_PREPARATION.md)を参照する。
+test-ui-browser.cjs は旧v55と、表記更新前の配信済みv57の両方からv58へ移行し、旧キャッシュ削除、v0.5.0からv0.6.0への表示更新、通信遮断中のゲーム・日英ルール・全図版を確認する。旧v57は配信確認を記録したmainコミット `55b3616aadef8b92022008236e0e857b21353df2` に固定する。過去のJSONのv57検証結果はその時点の証拠として変更しない。準備結果と公開状態は[リリース準備と公開記録](../../doc/ai-engineering/takasia-update/RELEASE_PREPARATION.md)を参照する。
 
-今回のv0.6.0準備の5ワークフロー、3ブラウザー各14項目と配信前状態は[release-validation-v0.6.0-20261009.json](release-validation-v0.6.0-20261009.json)に保存した。工程6・工程7の過去JSONは変更せず、表示更新版の再配信とGitHubリリース公開は未実施として区別する。
+今回のv0.6.0準備の5ワークフロー、3ブラウザー各14項目と配信前状態は[release-validation-v0.6.0-20261009.json](release-validation-v0.6.0-20261009.json)に保存した。このJSONの未配信・未公開は検証時点の固定記録として保持する。その後の本番更新はユーザー報告、GitHub公開とタグの一致は取得情報で確認済みであり、[公開記録](../../doc/ai-engineering/takasia-update/RELEASE_PREPARATION.md)で区別する。工程6・工程7の過去JSONも変更しない。

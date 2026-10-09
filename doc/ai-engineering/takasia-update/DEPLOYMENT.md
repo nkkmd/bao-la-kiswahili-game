@@ -12,7 +12,7 @@
 - AI改訂: `AI-GEN4-TAKASIA-001`
 - 公開AI世代・既存release: `AI-GEN4 / AI-GEN4-RELEASE-001`
 - takasia初回配信キャッシュ: `bao-la-kiswahili-v57`
-- v0.6.0表記更新版のキャッシュ: `bao-la-kiswahili-v58`（再配信前の準備状態）
+- v0.6.0配信版のキャッシュ: `bao-la-kiswahili-v58`（本番更新はユーザー報告済み）
 
 検証済み対象のActionsはPRの14ワークフローと専用push検証がすべて成功した。main統合のtreeは対象と完全一致する。その後の現在状態・本手順の更新は文書だけで、検証済みゲーム・受信側・モデル・予算を変更しない。ソフトウェア検証の結果と限界は[工程7の記録](INTEGRATION_VALIDATION.md)を参照する。配信用zipの `PACKAGE_MANIFEST.json` に収録元コミットと各ファイルのSHA-256を保存する。
 
@@ -23,7 +23,7 @@
 | `bao-takasia-public-20261009.zip` | mainの `public/` 全体。解凍直下に `index.html`。旧棋譜用エンジン、版選択、AI、ルール12図、PWA資産を含む | Cloudflare Pagesなど、現在の静的ゲーム配信先 |
 | `bao-takasia-receiver-20261009.zip` | `cloudflare/game-record-ingest/`、そこから参照する `public/engine.js`・`engine-r002.js`・`rule-versions.js`、ライセンス、本手順 | 既存の棋譜受信Workerの更新 |
 
-受信側zipは相対importを維持するため、内部の `cloudflare/` と `public/` の位置関係を変えない。ゲームzipへ受信側zipを混ぜてアップロードしない。初回配信zipではアプリ表記 `v0.5.0` を保持した。その後、v0.6.0の表記とキャッシュv58を準備する。新しいzipの構成と再配信手順は[リリース準備記録](RELEASE_PREPARATION.md)を参照する。GitHubのv0.6.0 releaseはまだ公開していない。
+受信側zipは相対importを維持するため、内部の `cloudflare/` と `public/` の位置関係を変えない。ゲームzipへ受信側zipを混ぜてアップロードしない。初回配信zipではアプリ表記 `v0.5.0` を保持した。その後、v0.6.0の表記とキャッシュv58を準備し、ユーザーが本番を更新してv0.6.0をPre-releaseとして公開した。新しいzipの構成、再配信手順と公開記録は[リリース準備と公開記録](RELEASE_PREPARATION.md)を参照する。
 
 ## 更新順序
 

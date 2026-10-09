@@ -16,9 +16,9 @@
 
 最初に[採用仕様と影響範囲](SPEC.md)を読み、続けて[工程3の実装結果](ENGINE_IMPLEMENTATION.md)、[工程4のAI実装・結果・限界](AI_IMPLEMENTATION.md)、[工程5の棋譜・診断・受信](RECORD_IMPLEMENTATION.md)、[工程6の表示・図解](UI_IMPLEMENTATION.md)、[工程7の総合検証](INTEGRATION_VALIDATION.md)、[準備時点の検証記録](VALIDATION.md)を確認する。実行方法と検証データは[検証ツールの説明](../../../tools/takasia/README.md)に記録する。
 
-## v0.6.0のリリース準備
+## v0.6.0の配信とリリース公開
 
-takasia対応版の配信完了後、ユーザー指示に基づきアプリ表記v0.6.0とキャッシュv58を準備する。PR #180をmainへ統合し、関連5ワークフローと3ブラウザー各14項目がPASSとなった。ゲーム・AI・棋譜の動作は変更しない。再配信とGitHubリリース公開は別途手動で行う。[更新対象と検証](RELEASE_PREPARATION.md)、[リリース本文案](RELEASE_V0.6.0.md)を参照する。
+takasia対応版の配信完了後、アプリ表記v0.6.0とキャッシュv58を準備し、PR #180をmainへ統合した。関連5ワークフローと3ブラウザー各14項目はPASS。2026-10-09にユーザーが本番を更新し、GitHubのv0.6.0をPre-releaseとして公開した。公開タグはzip収録元コミット `48f4fc6c36a132bdc67a1c4d3bf5df61086c114c` と一致する。[更新対象と公開記録](RELEASE_PREPARATION.md)、[公開したリリース本文](RELEASE_V0.6.0.md)を参照する。
 
 ## 更新工程
 
