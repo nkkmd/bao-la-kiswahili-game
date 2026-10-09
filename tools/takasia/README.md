@@ -90,3 +90,9 @@ history/service-worker-v55.js は作業開始時mainのService Workerを保持�
 履歴検査の出力はartifacts/local/takasia-historyのprofile別ディレクトリへ逐次保存する。コマンド・ID・SHA・path・profile名は再現用の識別子として保持する。科学的な時間計測や正式対局試験を再実行せず、旧研究を新ルールへ移送したとの判断もしない。
 
 工程7の全72条件・3ブラウザー各13項目・公開AI各10項目・全CIの参照と完了状態は[integration-validation-20261009.json](integration-validation-20261009.json)へ保存した。実機・本番環境の未確認状態も同じ記録に明示する。
+
+## v0.6.0の表記・キャッシュ更新の検証
+
+check-current-assets.cjs は工程6の固定記録を保持し、固定コミットのHTMLとService Workerから明示した文字列置換だけでv0.6.0・キャッシュv58の期待byteを計算する。それ以外の変更は拒否する。既存の16資産照合と旧採用記録の保護を維持する。負例検査にはHTML・Service Workerの任意改変も追加した。
+
+test-ui-browser.cjs は旧v55と、表記更新前の配信済みv57の両方からv58へ移行し、旧キャッシュ削除、v0.5.0からv0.6.0への表示更新、通信遮断中のゲーム・日英ルール・全図版を確認する。旧v57は配信確認を記録したmainコミット `55b3616aadef8b92022008236e0e857b21353df2` に固定する。過去のJSONのv57検証結果はその時点の証拠として変更しない。最新の準備状態は[リリース準備記録](../../doc/ai-engineering/takasia-update/RELEASE_PREPARATION.md)を参照する。

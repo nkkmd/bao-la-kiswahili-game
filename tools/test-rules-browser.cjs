@@ -34,7 +34,7 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, { "Content-Type": mime, "Cache-Control": "no-store" }); res.end(body);
 });
 async function check(name, run) { await run(); report.checks.push(name); console.log(name); }
-async function cacheReady(page, version = "v57") {
+async function cacheReady(page, version = "v58") {
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.waitForFunction(() => !!navigator.serviceWorker.controller);
   await page.waitForFunction(async v => (await caches.keys()).includes("bao-la-kiswahili-" + v), version);
@@ -225,7 +225,7 @@ let browser;
         await (await navigator.serviceWorker.getRegistration()).update();
         await changed;
       });
-      await cacheReady(p, "v57");
+      await cacheReady(p, "v58");
       await p.waitForFunction(async () => !(await caches.keys()).includes("bao-la-kiswahili-v39"));
       originUnavailable = true;
       await p.goto(origin + "/rules?lang=ja"); await allImages(p);

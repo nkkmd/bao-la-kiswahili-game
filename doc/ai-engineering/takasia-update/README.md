@@ -16,6 +16,10 @@
 
 最初に[採用仕様と影響範囲](SPEC.md)を読み、続けて[工程3の実装結果](ENGINE_IMPLEMENTATION.md)、[工程4のAI実装・結果・限界](AI_IMPLEMENTATION.md)、[工程5の棋譜・診断・受信](RECORD_IMPLEMENTATION.md)、[工程6の表示・図解](UI_IMPLEMENTATION.md)、[工程7の総合検証](INTEGRATION_VALIDATION.md)、[準備時点の検証記録](VALIDATION.md)を確認する。実行方法と検証データは[検証ツールの説明](../../../tools/takasia/README.md)に記録する。
 
+## v0.6.0のリリース準備
+
+takasia対応版の配信完了後、ユーザー指示に基づきアプリ表記v0.6.0とキャッシュv58を準備する。ゲーム・AI・棋譜の動作は変更しない。再配信とGitHubリリース公開は別途手動で行う。[更新対象と検証](RELEASE_PREPARATION.md)、[リリース本文案](RELEASE_V0.6.0.md)を参照する。
+
 ## 更新工程
 
 | 工程 | 状態 | 作業と完了条件 |

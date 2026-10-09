@@ -1,6 +1,6 @@
 "use strict";
-// Refresh marker: takasiaの表示・日英説明・E30図解を追加 (2026-10-08)。配信前の作業ブランチ。
-const CACHE = "bao-la-kiswahili-v57";
+// Refresh marker: v0.6.0の表記へ更新 (2026-10-09)。takasia対応版のリリース準備。
+const CACHE = "bao-la-kiswahili-v58";
 const FILES = ["./", "./index.html", "./style.css", "./locale.js", "./engine.js", "./ai-weights.js", "./ai.js", "./logic-evaluator.js", "./ai-candidate.js", "./ai-release.js", "./ai-release-worker.js", "./ai-config.js", "./ai-worker.js", "./diagnostics.js", "./review-suggestion.js", "./diagnostic-download.js", "./main.js", "./game-record.js", "./game-record-replay.js", "./game-record-contribution-config.js", "./game-record-contribution.js", "./manifest.webmanifest", "./icon.svg", "./privacy"];
 FILES.push("./engine-r002.js", "./rule-versions.js");
 FILES.push("./rules", "./rules.css", "./rules.js",
