@@ -11,16 +11,22 @@ const out = path.resolve(__dirname, "../../artifacts/local/takasia-ui", engine);
 fs.mkdirSync(out, { recursive: true });
 const report = { engine, passed: false, physicalDeviceVerified: false, checks: [], errors: [], workerRequests: [] };
 const save = () => fs.writeFileSync(path.join(out, "report.json"), JSON.stringify(report, null, 2) + "\n");
-let oldWorker = false, offline = false;
+// v55は旧配信、v57は今回のリリース表記更新前の配信を再現する。
+const fixedPublic = file => require("node:child_process").execFileSync("git", ["show",
+  "55b3616aadef8b92022008236e0e857b21353df2:public/" + file]);
+const oldWorkers = { v55: fs.readFileSync(path.join(__dirname, "history/service-worker-v55.js")),
+  v57: fixedPublic("service-worker.js") };
+const oldIndex = fixedPublic("index.html");
+let oldWorker = null, offline = false;
 const server = http.createServer((req, res) => {
   if (offline) { req.socket.destroy(); return; }
   const url = new URL(req.url, "http://localhost");
   const name = { "/": "/index.html", "/rules": "/rules.html", "/privacy": "/privacy.html" }[url.pathname] || url.pathname;
   const file = path.resolve(root, "." + name);
   if (!file.startsWith(root + path.sep) || !fs.existsSync(file)) { res.writeHead(404); res.end(); return; }
-  const body = oldWorker && name === "/service-worker.js"
-    ? fs.readFileSync(path.join(__dirname, "history/service-worker-v55.js")) : fs.readFileSync(file);
-  if (name === "/service-worker.js") report.workerRequests.push({ at: new Date().toISOString(), version: oldWorker ? "v55" : "v57" });
+  const body = oldWorker && name === "/service-worker.js" ? oldWorkers[oldWorker]
+    : oldWorker && name === "/index.html" ? oldIndex : fs.readFileSync(file);
+  if (name === "/service-worker.js") report.workerRequests.push({ at: new Date().toISOString(), version: oldWorker || "v58" });
   const mime = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".svg": "image/svg+xml" }[path.extname(file)] || "application/json";
   res.writeHead(200, { "Content-Type": mime + "; charset=utf-8", "Cache-Control": "no-store" }); res.end(body);
 });
@@ -164,17 +170,18 @@ let browser;
       });
       await context.close();
     }
-    await check("v55からv57へ更新し、通信遮断中に日英ルール・全画像・ゲームを表示", async () => {
+    for (const oldVersion of ["v55", "v57"]) await check(oldVersion + "からv58へ更新し、v0.6.0・通信遮断中の日英ルール・全画像・ゲームを表示", async () => {
       const context = await browser.newContext();
       await context.route("https://www.googletagmanager.com/**", r => r.fulfill({ body: "" }));
       const page = await context.newPage(); page.on("pageerror", e => report.errors.push(String(e)));
-      oldWorker = true; await page.goto(origin + "/"); await cacheReady(page, "v55");
-      oldWorker = false;
+      oldWorker = oldVersion; await page.goto(origin + "/"); await cacheReady(page, oldVersion);
+      assert.equal(await page.locator(".app-version").textContent(), "v0.5.0");
+      oldWorker = null;
       await page.evaluate(async () => {
         const changed = new Promise(resolve => navigator.serviceWorker.addEventListener("controllerchange", resolve, { once: true }));
         await (await navigator.serviceWorker.getRegistration()).update(); await changed;
       });
-      await cacheReady(page, "v57");
+      await cacheReady(page, "v58");
       // 実際のページと同じ実行環境で削除完了を待ち、旧キャッシュ不在と新版の存在を検査する。
       const deadline = Date.now() + 30000;
       report.cacheSnapshots = [];
@@ -182,18 +189,20 @@ let browser;
       do {
         cacheNames = await page.evaluate(() => caches.keys());
         report.cacheSnapshots.push({ at: new Date().toISOString(), names: cacheNames });
-        if (!cacheNames.includes("bao-la-kiswahili-v55")) break;
+        if (!cacheNames.includes("bao-la-kiswahili-" + oldVersion)) break;
         await new Promise(resolve => setTimeout(resolve, 100));
       } while (Date.now() < deadline);
-      assert.equal(cacheNames.includes("bao-la-kiswahili-v55"), false);
-      assert.ok(cacheNames.includes("bao-la-kiswahili-v57"));
+      assert.equal(cacheNames.includes("bao-la-kiswahili-" + oldVersion), false);
+      assert.ok(cacheNames.includes("bao-la-kiswahili-v58"));
       offline = true;
       for (const lang of ["ja", "en"]) {
         await page.goto(origin + "/rules?lang=" + lang); await images(page);
         assert.equal(await page.locator("html").getAttribute("lang"), lang);
         assert.match(await page.locator("#takasia-title").textContent(), /[Tt]akasia/);
       }
-      await page.goto(origin + "/?lang=ja"); await board(page, F.e30.post);
+      await page.goto(origin + "/?lang=ja");
+      assert.equal(await page.locator(".app-version").textContent(), "v0.6.0");
+      await board(page, F.e30.post);
       assert.match(await page.locator("#takasia-status").textContent(), /a4/);
       await context.close(); offline = false;
     });
