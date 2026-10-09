@@ -12,14 +12,14 @@ Status: Active
 
 ## 2. 外部の参照基準
 
-mainの通常対局・公開AIと新規棋譜v2のルール基準は、次の日本語ガイドである。本番配信はユーザーの手動作業待ちで、配信確認済みの旧版と区別する。
+mainと配信済みゲームの通常対局・公開AI、新規棋譜v2のルール基準は、次の日本語ガイドである。2026-10-09の手動配信後、ユーザーから本番動作の3項目が正常との報告を受けた。確認範囲は[配信作業ログ](ai-engineering/takasia-update/DEPLOYMENT_LOG.md)を参照する。
 
 - リポジトリ: [`nkkmd/bao-la-kiswahili-ja`](https://github.com/nkkmd/bao-la-kiswahili-ja)
 - 公開版: `v0.2.0`
 - 採用基準: `BAO-RULES-V0.2.0-TAKASIA-001`
 - 固定参照コミット: [`aad9fda3ffb12c2ca785509951c71ce8a42bef5a`](https://github.com/nkkmd/bao-la-kiswahili-ja/tree/aad9fda3ffb12c2ca785509951c71ce8a42bef5a)
 
-配信確認済みの旧ゲーム、旧棋譜v1、過去のR-002研究は `v0.1.0-draft / R-002`（固定参照コミット `1179267b1f19b27a2138791253f2cb9cbfe98c14`）に対応する。旧棋譜は固定した `public/engine-r002.js` で再生・検証し、過去の成果へ新ルールを遡及適用しない。
+更新前に配信していた旧ゲーム、旧棋譜v1、過去のR-002研究は `v0.1.0-draft / R-002`（固定参照コミット `1179267b1f19b27a2138791253f2cb9cbfe98c14`）に対応する。旧棋譜は固定した `public/engine-r002.js` で再生・検証し、過去の成果へ新ルールを遡及適用しない。
 
 `bao-la-kiswahili-ja` は公開ドラフトであり、Bao全体に対する公式規則または大会規則そのものではない。大会、地域、対局団体などが別の規則を明示している場合は、その規則を優先する。
 
@@ -60,9 +60,9 @@ mainの通常対局・公開AIと新規棋譜v2のルール基準は、次の日
 
 ### 5.1 `takasia`
 
-配信済みゲームでは `takasia` を適用していない。ルール元の `v0.2.0`（固定コミット `aad9fda3ffb12c2ca785509951c71ce8a42bef5a`）ではtakasiaが採用され、完全局面E30が確認できるようになった。
+配信済みゲームでは `takasia` を適用する。旧棋譜v1はtakasiaを含まないR-002として扱う。ルール元の `v0.2.0`（固定コミット `aad9fda3ffb12c2ca785509951c71ce8a42bef5a`）ではtakasiaが採用され、完全局面E30が確認できるようになった。
 
-[対応工程と現在状態](ai-engineering/takasia-update/README.md)に採用仕様と検証結果を記録する。工程1〜6を実装し、エンジン、AI-GEN4、棋譜・診断・受信、日英表示と図解を対応・限定検証した。新棋譜version 2は`BAO-RULES-V0.2.0-TAKASIA-001`、旧棋譜version 1は`R-002`の固定エンジンへ振り分ける。[工程7のソフトウェア総合検証・既存CI整合](ai-engineering/takasia-update/INTEGRATION_VALIDATION.md)は通過した。受信側の新旧棋譜受理・保存はユーザー確認済みで、実機・本番ゲーム・実サイトの確認が残る。2026-10-09にPR #179をmainへ統合した。本番配信はユーザーによる手動作業待ちである。本番配信の完了状態を更新するのは、ユーザーの手動配信と受信側・実サイトの確認後とする。
+[対応工程と現在状態](ai-engineering/takasia-update/README.md)に採用仕様と検証結果を記録する。工程1〜6でエンジン、AI-GEN4、棋譜・診断・受信、日英表示と図解を対応・限定検証し、[工程7のソフトウェア総合検証・既存CI整合](ai-engineering/takasia-update/INTEGRATION_VALIDATION.md)も通過した。新棋譜version 2は `BAO-RULES-V0.2.0-TAKASIA-001`、旧棋譜version 1は `R-002` の固定エンジンへ振り分ける。2026-10-09にPR #179をmainへ統合し、受信側の更新後にユーザーが本番ゲームを手動配信した。本番の更新・対局・AI、新v2の保存・送信・保存、旧v1の再生はユーザー確認済みで、今回の配信は完了として記録する。確認端末やキャッシュ内部を含む報告範囲外は確認済みへ広げない。
 
 ### 5.2 連続種まきの安全上限
 

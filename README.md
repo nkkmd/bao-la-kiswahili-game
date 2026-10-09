@@ -21,7 +21,7 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦が
 
 ## ルールの基準
 
-配信済みゲームの基準は、[bao-la-kiswahili-ja](https://github.com/nkkmd/bao-la-kiswahili-ja)の公開ドラフト v0.1.0-draft にあるルール基準 R-002 で、takasiaを適用していません。ルール元のv0.2.0での採用を受け、[takasia対応の更新工程](doc/ai-engineering/takasia-update/README.md)を進めています。mainではエンジン、AI-GEN4、棋譜・診断・受信の対応と限定検証を完了しました。新規棋譜はversion 2で保存し、旧version 1は固定した旧ルールで再生・検証します。対象穴・成立・停止・失効の表示、新旧棋譜の版表示、日英図解の同期も実装しました。[既存CI整合とソフトウェア総合検証](doc/ai-engineering/takasia-update/INTEGRATION_VALIDATION.md)も通過しました。受信Workerの更新と新旧棋譜の送信・R2保存はユーザー確認済みです。Android実機・本番ゲーム・実サイトの移行確認が残っています。2026-10-09にPR #179をmainへ統合しました。本番配信はユーザーによる手動作業待ちです。連続種まきには、終わらない対局を防ぐ安全上の上限があります。
+配信済みゲームは、[bao-la-kiswahili-ja](https://github.com/nkkmd/bao-la-kiswahili-ja)のv0.2.0を基準とし、takasiaに対応しています。ルール改訂は `BAO-RULES-V0.2.0-TAKASIA-001`、AI改訂は `AI-GEN4-TAKASIA-001` です。[takasia対応の更新工程](doc/ai-engineering/takasia-update/README.md)でエンジン、公開AI、棋譜・診断・受信、日英表示を同期し、[ソフトウェア総合検証](doc/ai-engineering/takasia-update/INTEGRATION_VALIDATION.md)を通過しました。2026-10-09にmain統合とユーザーによる手動配信を完了し、通常ブラウザーでの更新・対局・AI、新v2棋譜の保存と本番送信・保存、旧v1棋譜の読み込み・再生が正常との報告を受けました。確認範囲は[配信作業ログ](doc/ai-engineering/takasia-update/DEPLOYMENT_LOG.md)に記録しています。旧棋譜は固定したR-002エンジンで扱い、過去の研究結果へ新ルールを遡及適用しません。連続種まきには、終わらない対局を防ぐ安全上の上限があります。
 
 - [takasia対応版の手動配信手順](doc/ai-engineering/takasia-update/DEPLOYMENT.md)
 - [図解ルール（日本語 / English）](public/rules.html)
