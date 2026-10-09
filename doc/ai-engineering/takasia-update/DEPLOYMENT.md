@@ -4,7 +4,7 @@
 
 ## 現在の状態
 
-ユーザーの指示に基づき、PR #179をmainへ統合した。本番配信はユーザーが手動で行う。Cloudflare本番のv2受信、Android実機、実サイトのキャッシュ移行は未確認であり、配信完了とは記録しない。
+ユーザーの指示に基づき、PR #179をmainへ統合した。本番配信はユーザーが手動で行う。受信Workerの更新と新旧棋譜の送信・R2保存は、ユーザーの実行ログと正常動作の報告を確認済みである。詳細は[配信作業ログ](DEPLOYMENT_LOG.md)に保持する。Android実機、本番ゲーム配信、実サイトのキャッシュ移行は未確認であり、配信全体の完了とは記録しない。
 
 - main統合コミット: `56e6a1931541b0bbb3019b25f12406dbee0c07d8`
 - 検証済みPR対象: `208402d397ce00b4980760eb11a2e7848abd2eb0`
@@ -46,13 +46,21 @@ npx wrangler deploy
 
 収録された `wrangler.jsonc` は、従来どおり `COLLECTION_ENABLED=false` が既定である。この設定で配備すると棋譜収集は停止する。管理した送信試験と公開収集を行う段階では、既存の運用に沿って有効状態を明示的に設定する。ゲーム自体の対局・保存・再生は収集停止中も利用できる。
 
+今回の手動作業では、設定ファイルを変更せず、次の明示指定で収集を有効化した。今後、有効状態で再配備する際も同じ指定を用いる。
+
+```bash
+npx wrangler@4.149.0 deploy --var COLLECTION_ENABLED:true
+```
+
+通常の `deploy` だけではファイルの既定値 `false` に戻る。CLIの `--var` がファイル内の同名変数より優先する仕様は[Cloudflare公式説明](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy)に基づく。
+
 `TURNSTILE_SECRET_KEY` は既存のWorker secretを保持し、zipやGitへ書き込まない。R2 binding `GAME_RECORDS`、private bucket `bao-game-record-contributions`、Custom Domain `bao-data.cultivationdata.net`、Origin・Fetch Metadata・hostnameの既存設定も保持する。既存の `records/v1/` は移動・削除しない。詳しい仕様は[受信Workerの説明](../../../cloudflare/game-record-ingest/README.md)を参照する。
 
 ## 不具合時の戻し方
 
 新ゲームの配信後に受信側の不具合が発生した場合は、まず収集を停止する。クライアントを旧配備へ戻す場合はホスティング側の旧配備を利用し、旧キャッシュ更新も確認する。v2クライアントを公開したまま受信側だけを旧v1専用版へ戻さない。v1／v2対応の受信側は旧v1クライアントも受け付ける。
 
-今回のzip準備は本番配備・管理した送信の成功・実機検証を含まない。過去の研究結果・正式採用判断・旧棋譜を新ルールの結果へ読み替えない。
+zip準備時点では本番配備・管理した送信・実機検証を含めなかった。その後の受信Worker配備と新旧送信・保存は配信作業ログに追加し、過去の検証記録と区別する。実機・本番ゲーム配信は未確認である。過去の研究結果・正式採用判断・旧棋譜を新ルールの結果へ読み替えない。
 
 ## 引き渡し時の文書確認
 

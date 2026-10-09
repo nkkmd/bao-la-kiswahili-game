@@ -3,7 +3,7 @@
 Bao la Kiswahili の終局棋譜を、利用者の明示同意後に受け付ける Cloudflare Worker です。
 公開ゲーム本体とは独立させ、R2 bucket は private のまま Worker binding からのみ書き込みます。
 
-2026-10-09にmainへ統合した受信側は棋譜v1・v2をルール版で振り分けます。本番のv2受信・移行はユーザーによる手動配備待ちです。[配信手順](../../doc/ai-engineering/takasia-update/DEPLOYMENT.md)に従い、受信側を新クライアントより先に更新してください。[工程5の実装と検証](../../doc/ai-engineering/takasia-update/RECORD_IMPLEMENTATION.md)を参照してください。
+2026-10-09にmainへ統合した受信側は棋譜v1・v2をルール版で振り分けます。本番Workerはユーザーが手動更新し、新旧棋譜の送信・R2保存が正常との報告を受けました。確認範囲と残件は[配信作業ログ](../../doc/ai-engineering/takasia-update/DEPLOYMENT_LOG.md)に記録します。[配信手順](../../doc/ai-engineering/takasia-update/DEPLOYMENT.md)に従い、受信側を新クライアントより先に更新してください。[工程5の実装と検証](../../doc/ai-engineering/takasia-update/RECORD_IMPLEMENTATION.md)を参照してください。
 
 ## 安全上の境界
 
