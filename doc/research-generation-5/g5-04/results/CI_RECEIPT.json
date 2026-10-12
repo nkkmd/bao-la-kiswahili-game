@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "studyId": "MTCS-STUDY1",
+  "stageId": "MTCS-S1-SUPPLY-2026-10-12-v1",
+  "frozenSourceCommit": "2201b082f9ea46833b6effbcb62be5898b9b450d",
+  "preflightPushRunId": 38263539747,
+  "triggerCommit": "4d5607e65e0d1f3425521e9ca582794a41e16132",
+  "leaseCommit": "72cfca4dd5c238ac36db29ffb074fdcb2e908639",
+  "mirrorCommit": "6a103cf4f55ec9e7ec84cf31f6d878fae3fb3ef4",
+  "run": {
+    "id": 38263687093,
+    "attempt": 1,
+    "jobId": 114860361460,
+    "conclusion": "success",
+    "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38263687093"
+  },
+  "artifact": {
+    "id": 11753857208,
+    "name": "g5-04-supply-38263687093-1",
+    "size_in_bytes": 3095904,
+    "url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11753857208",
+    "archive_download_url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11753857208/zip",
+    "expired": false,
+    "created_at": "2026-10-12T14:33:26Z",
+    "expires_at": "2027-01-10T14:32:39Z",
+    "updated_at": "2026-10-12T14:33:26Z",
+    "digest": "sha256:e88ed6ed9c61af81e19b19ac1892bbfab9e0347877a31eb37cfe11f23187fcbc",
+    "workflow_run": {
+      "id": 38263687093,
+      "repository_id": 1295030808,
+      "head_repository_id": 1295030808,
+      "head_branch": "research/g5-04-terminal-span-supply",
+      "head_sha": "4d5607e65e0d1f3425521e9ca582794a41e16132"
+    }
+  },
+  "steps": [
+    {
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 1
+    },
+    {
+      "name": "Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 2
+    },
+    {
+      "name": "Run actions/setup-node@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 3
+    },
+    {
+      "name": "Verify fixture-only preflight and frozen binding",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 4
+    },
+    {
+      "name": "Acquire durable lease before fresh access",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 5
+    },
+    {
+      "name": "Consume source block exactly once",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 6
+    },
+    {
+      "name": "Independently replay and verify stored supply evidence",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 7
+    },
+    {
+      "name": "Preserve artifacts even after partial execution",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 8
+    },
+    {
+      "name": "Save evidence to research branch",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 9
+    },
+    {
+      "name": "Post Run actions/setup-node@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 17
+    },
+    {
+      "name": "Post Run actions/checkout@v4",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 18
+    },
+    {
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success",
+      "number": 19
+    }
+  ]
+}

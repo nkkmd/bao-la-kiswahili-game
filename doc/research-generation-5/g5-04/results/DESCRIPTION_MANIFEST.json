@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "kind": "POSTEXECUTION-DESCRIPTION-BINDING",
+  "files": {
+    "tools/research/g5-04/describe-values.cjs": "3e433e7aa20d4c74d3adf3a4629a604b8577d9d034c35ea041d00b084f0cacad",
+    "doc/research-generation-5/g5-04/results/VALUE_DESCRIPTION.json": "4e3dd03ae717a843931eac360d15ef42e2893f36ccb282f1810a4c2cf56cb9a3",
+    "doc/research-generation-5/g5-04/results/EVIDENCE.json.gz": "5d7fd9566e6b2792748e3d91ef4156b1c0f33fa6b3c612a61f3153d514152112"
+  }
+}

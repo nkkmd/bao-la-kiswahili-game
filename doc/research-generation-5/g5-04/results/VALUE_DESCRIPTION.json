@@ -1,0 +1,264 @@
+{
+  "studyId": "MTCS-STUDY1",
+  "stageId": "MTCS-S1-SUPPLY-2026-10-12-v1",
+  "kind": "POSTEXECUTION-SAVED-SOLUTION-DESCRIPTION",
+  "evidenceGzipSha256": "5d7fd9566e6b2792748e3d91ef4156b1c0f33fa6b3c612a61f3153d514152112",
+  "uncompressedBytes": 14762107,
+  "rows": [
+    {
+      "candidate": 1,
+      "complete": true,
+      "sourceIndex": 6,
+      "seed": 50412007,
+      "ply": 59,
+      "width": 2,
+      "states": 33,
+      "edges": 32,
+      "rootStatus": "LOSS",
+      "rootDtf": 4,
+      "choices": [
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":3,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+          "absoluteWinner": 0,
+          "rootRelativeValue": -1,
+          "dtfAfterMove": 3
+        },
+        {
+          "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":3,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+          "absoluteWinner": 0,
+          "rootRelativeValue": -1,
+          "dtfAfterMove": 3
+        }
+      ],
+      "heterogeneousWinLoss": false,
+      "heterogeneousDtf": false
+    },
+    {
+      "candidate": 2,
+      "complete": true,
+      "sourceIndex": 9,
+      "seed": 50412010,
+      "ply": 47,
+      "width": 4,
+      "states": 18,
+      "edges": 17,
+      "rootStatus": "LOSS",
+      "rootDtf": 2,
+      "choices": [
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":2,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"takata\"}",
+          "absoluteWinner": 0,
+          "rootRelativeValue": -1,
+          "dtfAfterMove": 1
+        },
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"takata\"}",
+          "absoluteWinner": 0,
+          "rootRelativeValue": -1,
+          "dtfAfterMove": 1
+        },
+        {
+          "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":2,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"takata\"}",
+          "absoluteWinner": 0,
+          "rootRelativeValue": -1,
+          "dtfAfterMove": 1
+        },
+        {
+          "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"takata\"}",
+          "absoluteWinner": 0,
+          "rootRelativeValue": -1,
+          "dtfAfterMove": 1
+        }
+      ],
+      "heterogeneousWinLoss": false,
+      "heterogeneousDtf": false
+    },
+    {
+      "candidate": 3,
+      "complete": true,
+      "sourceIndex": 16,
+      "seed": 50412017,
+      "ply": 57,
+      "width": 2,
+      "states": 25,
+      "edges": 24,
+      "rootStatus": "LOSS",
+      "rootDtf": 2,
+      "choices": [
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":3,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+          "absoluteWinner": 0,
+          "rootRelativeValue": -1,
+          "dtfAfterMove": 1
+        },
+        {
+          "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":3,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+          "absoluteWinner": 0,
+          "rootRelativeValue": -1,
+          "dtfAfterMove": 1
+        }
+      ],
+      "heterogeneousWinLoss": false,
+      "heterogeneousDtf": false
+    },
+    {
+      "candidate": 4,
+      "complete": true,
+      "sourceIndex": 23,
+      "seed": 50412024,
+      "ply": 72,
+      "width": 2,
+      "states": 11,
+      "edges": 10,
+      "rootStatus": "LOSS",
+      "rootDtf": 2,
+      "choices": [
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":4,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"takata\"}",
+          "absoluteWinner": 1,
+          "rootRelativeValue": -1,
+          "dtfAfterMove": 1
+        },
+        {
+          "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":4,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"takata\"}",
+          "absoluteWinner": 1,
+          "rootRelativeValue": -1,
+          "dtfAfterMove": 1
+        }
+      ],
+      "heterogeneousWinLoss": false,
+      "heterogeneousDtf": false
+    },
+    {
+      "candidate": 5,
+      "complete": true,
+      "sourceIndex": 41,
+      "seed": 50412042,
+      "ply": 92,
+      "width": 4,
+      "states": 11,
+      "edges": 10,
+      "rootStatus": "WIN",
+      "rootDtf": 1,
+      "choices": [
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":1,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"capture\"}",
+          "absoluteWinner": 0,
+          "rootRelativeValue": 1,
+          "dtfAfterMove": 0
+        },
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":3,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"capture\"}",
+          "absoluteWinner": 0,
+          "rootRelativeValue": 1,
+          "dtfAfterMove": 0
+        },
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":6,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"capture\"}",
+          "absoluteWinner": 0,
+          "rootRelativeValue": 1,
+          "dtfAfterMove": 0
+        },
+        {
+          "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":1,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"capture\"}",
+          "absoluteWinner": 0,
+          "rootRelativeValue": 1,
+          "dtfAfterMove": 2
+        }
+      ],
+      "heterogeneousWinLoss": false,
+      "heterogeneousDtf": true
+    },
+    {
+      "candidate": 6,
+      "complete": true,
+      "sourceIndex": 83,
+      "seed": 50412084,
+      "ply": 61,
+      "width": 2,
+      "states": 23,
+      "edges": 22,
+      "rootStatus": "WIN",
+      "rootDtf": 3,
+      "choices": [
+        {
+          "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":1,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"capture\"}",
+          "absoluteWinner": 1,
+          "rootRelativeValue": 1,
+          "dtfAfterMove": 2
+        },
+        {
+          "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":3,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"capture\"}",
+          "absoluteWinner": 1,
+          "rootRelativeValue": 1,
+          "dtfAfterMove": 2
+        }
+      ],
+      "heterogeneousWinLoss": false,
+      "heterogeneousDtf": false
+    },
+    {
+      "candidate": 7,
+      "complete": true,
+      "sourceIndex": 98,
+      "seed": 50412099,
+      "ply": 56,
+      "width": 2,
+      "states": 35,
+      "edges": 35,
+      "rootStatus": "LOSS",
+      "rootDtf": 4,
+      "choices": [
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":3,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"takata\"}",
+          "absoluteWinner": 1,
+          "rootRelativeValue": -1,
+          "dtfAfterMove": 1
+        },
+        {
+          "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":3,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"takata\"}",
+          "absoluteWinner": 1,
+          "rootRelativeValue": -1,
+          "dtfAfterMove": 3
+        }
+      ],
+      "heterogeneousWinLoss": false,
+      "heterogeneousDtf": true
+    },
+    {
+      "candidate": 8,
+      "complete": true,
+      "sourceIndex": 117,
+      "seed": 50412118,
+      "ply": 46,
+      "width": 2,
+      "states": 13,
+      "edges": 12,
+      "rootStatus": "WIN",
+      "rootDtf": 1,
+      "choices": [
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":1,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"capture\"}",
+          "absoluteWinner": 0,
+          "rootRelativeValue": 1,
+          "dtfAfterMove": 0
+        },
+        {
+          "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":0,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"capture\"}",
+          "absoluteWinner": 0,
+          "rootRelativeValue": 1,
+          "dtfAfterMove": 2
+        }
+      ],
+      "heterogeneousWinLoss": false,
+      "heterogeneousDtf": true
+    }
+  ],
+  "rootsWithWinLossVariation": 0,
+  "rootsWithDtfVariation": 3,
+  "freshSourcesGenerated": 0,
+  "freshTransitionsGenerated": 0,
+  "candidatesReselected": 0,
+  "searchComparisonsPerformed": 0,
+  "formalInference": false
+}

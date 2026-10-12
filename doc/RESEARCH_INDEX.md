@@ -2,7 +2,7 @@
 
 更新日: 2026-09-29  
 対象: Research Generation 1〜5  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了・main統合済み。Research Generation 5はG5-03供給診断完了・完全閉包8件・root内価値差なし・正式関係検証未実施**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了・main統合済み。Research Generation 5はG5-04完全閉包8件・同価値内DTF差3件・root内勝敗価値差なし・正式関係検証未実施**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`または`FINAL_REPORT.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
@@ -391,3 +391,7 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 ## 2026-10-12追記 — G5-04の三〜四手供給層
 
 [G5-04](research-generation-5/g5-04/README.md)では新規128 sourceから、全分岐4手以内自然終局・2手以内では未閉包の層を事前選定する。全手幅8以下を対象に最大4681状態を保証し、価値差を選定や補充に使わない。旧3 Studyの結果・区画消費を保持し、正式関係検証は未実施である。
+
+## 2026-10-12追記 — G5-04の完了と同価値内DTF差
+
+[G5-04最終報告](research-generation-5/g5-04/REPORT.md)では新規128 sourceから9適格rootを得て、固定8候補を完全解析した。169状態162辺・全解が独立一致。3 rootに同価値内DTF差があるが、勝敗価値差rootは0件だった。区画を消費済みで終了し、DTF差を主要な価値損失の変動例へ読み替えない。[再開位置](research-generation-5/g5-04/RESUME_HERE.md)は正式検証の対象・最低条件と供給戦略の再評価を示す。正式関係検証・main統合・公開AI変更は未実施。

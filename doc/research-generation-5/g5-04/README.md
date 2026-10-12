@@ -2,15 +2,16 @@
 
 ## 現在の状態
 
-独立開発Study `MTCS-STUDY1` の契約を準備する。新規128 sourceから、全合法分岐が4手以内に自然終局し、2手以内では閉じないmtaji rootを事前選定する。全合法手幅8以下なら最大4681状態・4680辺を保証できる。最初の最大8候補を解析前固定し、全閉包と独立解を確認する。
+独立開発Study `MTCS-STUDY1` の限定実行・検算・保存を完了した。新規128 sourceから9適格rootを得て、固定8候補すべての完全閉包・全解を取得した。合計169状態162辺で独立一致。3 rootで同価値内DTF差があり、勝敗価値差があるrootは0件だった。区画を消費済みで閉じる。
 
-完成後に手の勝敗価値・DTFの差を保存解から記述するが、その値を選定・補充条件にしない。価値差がない場合も結果を保持する。正式関係検証・main統合・公開AI変更は未実施。旧3 Studyの結果・消費状態は保持する。
+保存解から全20 root手の勝敗価値・DTFを記述したが、値を選定・補充条件にしていない。同価値内の手数差を勝敗価値損失へ読み替えない。正式関係検証・main統合・公開AI変更は未実施。旧3 Studyの結果・消費状態は保持する。
 
 ## 読む順序
 
-1. [契約](CONTRACT.md) — 対象層、構造保証、選定・重複・資源・終了。
-2. [実行前レビュー](PREEXECUTION_REVIEW.md) — 継続指示に基づく限定認可。
-3. [SPEC](SPEC.json)、[ソースmanifest](SOURCE_MANIFEST.json)、[認可](AUTHORIZATION.json) — 機械正本。
-4. [実行ツール](../../../tools/research/g5-04/README.md) — 技術確認と再検算。
+1. [最終報告](REPORT.md)、[再現性](REPRODUCIBILITY.md)、[再開位置](RESUME_HERE.md) — 結果・証拠・終了境界。
+2. [契約](CONTRACT.md) — 対象層、構造保証、選定・重複・資源・終了。
+3. [実行前レビュー](PREEXECUTION_REVIEW.md) — 継続指示に基づく限定認可。
+4. [SPEC](SPEC.json)、[ソースmanifest](SOURCE_MANIFEST.json)、[認可](AUTHORIZATION.json) — 機械正本。
+5. [実行ツール](../../../tools/research/g5-04/README.md) — 技術確認と再検算。
 
 ID、JSON field、hash、パス、判断token、コマンドは機械正本として原表記を保持し、意味は日本語で説明する。
