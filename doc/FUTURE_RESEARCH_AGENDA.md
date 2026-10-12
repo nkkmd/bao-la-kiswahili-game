@@ -509,3 +509,7 @@ Fresh complete 0..10 prefixはG3-11 canonical exact prefixと一致し、integri
 - current-facing文書とmachine-readable artifactが一致しているか
 - [`JAPANESE_DOCUMENTATION_QUALITY_GATE.md`](JAPANESE_DOCUMENTATION_QUALITY_GATE.md)を満たすか
 
+
+## 2026-10-12追記 — 独立した供給診断G5-02
+
+[G5-02](research-generation-5/g5-02/README.md) の契約を準備し、新しい32 sourceから幅2〜4のrootと最大8候補の完全閉包を調べる。旧区画を再開せず、供給成功も正式関係検証への認可も事前に仮定しない。旧G5-01の0候補と消費状態、公開AIの境界を保持する。

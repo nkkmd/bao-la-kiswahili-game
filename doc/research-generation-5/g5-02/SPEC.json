@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "studyId": "RECSF-STUDY1",
+  "stageId": "RECSF-S1-SUPPLY-2026-10-12-v1",
+  "sourcePolicy": "RECSF-UNIFORM-CANONICAL-XORSHIFT32-v1",
+  "ruleRevision": "BAO-RULES-V0.2.0-TAKASIA-001",
+  "seedBlock": {
+    "start": 50212001,
+    "end": 50212032,
+    "count": 32
+  },
+  "maxCandidates": 8,
+  "selection": {
+    "minPly": 48,
+    "maxPly": 512,
+    "minWidth": 2,
+    "maxWidth": 4,
+    "maxOccupied": 32,
+    "maxSmallFront": 8,
+    "maxMicrostates": 8192
+  },
+  "closure": {
+    "maxStates": 5000,
+    "maxEdges": 50000,
+    "maxDomainMs": 60000,
+    "maxMicrostates": 8192
+  },
+  "maxTotalMs": 900000,
+  "maxRssBytes": 1073741824,
+  "maxEvidenceBytes": 209715200,
+  "formalInference": false,
+  "publicAiModification": false,
+  "resumeAuthorized": false,
+  "overlapPolicy": "EXCLUDE-PRIOR-READ-ROOT-AND-CLOSURE / GROUP-WITHIN-STUDY-DOMAINS"
+}

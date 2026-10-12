@@ -1,0 +1,61 @@
+name: G5-02 Supply Once
+
+on:
+  push:
+    branches: [research/g5-02-exact-supply]
+    paths:
+      - 'doc/research-generation-5/g5-02/executions/TRIGGER.json'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: g5-02-supply-consume-once-v1
+  cancel-in-progress: false
+
+jobs:
+  supply-once:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify fixture-only preflight and frozen binding
+        run: node --test test/g5-02-supply.test.cjs
+      - name: Acquire durable lease before fresh access
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node tools/research/g5-02/lease.cjs artifacts/local/g5-02-supply/LEASE.json
+      - name: Consume source block exactly once
+        run: node tools/research/g5-02/run.cjs artifacts/local/g5-02-supply artifacts/local/g5-02-supply/LEASE.json
+      - name: Independently replay and verify stored supply evidence
+        run: node tools/research/g5-02/verify.cjs artifacts/local/g5-02-supply
+      - name: Preserve artifacts even after partial execution
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g5-02-supply-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/local/g5-02-supply/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Save evidence to research branch
+        if: always()
+        run: |
+          set -euo pipefail
+          source_dir='artifacts/local/g5-02-supply'
+          if [ ! -f "${source_dir}/RESULT.json" ]; then exit 0; fi
+          git fetch origin research/g5-02-exact-supply
+          git checkout -B research/g5-02-exact-supply FETCH_HEAD
+          destination='doc/research-generation-5/g5-02/results'
+          if [ -e "${destination}/RESULT.json" ]; then echo 'existing evidence; refusing overwrite' >&2; exit 1; fi
+          mkdir -p "${destination}"
+          cp "${source_dir}"/* "${destination}/"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "${destination}"
+          git commit -m 'research(g5-02): preserve consume-once supply evidence'
+          git push origin HEAD:research/g5-02-exact-supply

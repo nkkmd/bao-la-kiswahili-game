@@ -372,3 +372,6 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 3. machine-readableな結果と、人間向けのOverview・Final Report・Current Statusを分離して保存します。
 4. [`JAPANESE_DOCUMENTATION_QUALITY_GATE.md`](JAPANESE_DOCUMENTATION_QUALITY_GATE.md)に従って、見出し・本文・判断理由・限界を日本語で監査します。
 5. 中央索引には詳細な時系列を複製せず、最終状態と正本への導線だけを追記します。
+## 第五世代G5-02の供給診断
+
+[G5-02](research-generation-5/g5-02/README.md) / `RECSF-STUDY1` は新しい未使用32 sourceから、固定資源内で完全閉包が供給されるかを調べる独立Studyである。G5-01の候補0件を保持し、旧2094読取状態を除外して最大8候補を事前固定する。正式な順位変動・損失の関係検証は未実施である。
