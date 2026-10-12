@@ -1,0 +1,33 @@
+name: G5-03 Supply Preflight
+
+on:
+  push:
+    branches: [research/g5-03-bounded-terminal-supply]
+    paths:
+      - 'tools/research/g5-03/**'
+      - 'test/g5-03-supply.test.cjs'
+      - 'doc/research-generation-5/g5-03/SPEC.json'
+      - 'doc/research-generation-5/g5-03/SOURCE_MANIFEST.json'
+      - 'doc/research-generation-5/g5-03/AUTHORIZATION.json'
+      - '.github/workflows/g5-03-supply*.yml'
+  pull_request:
+    paths:
+      - 'tools/research/g5-03/**'
+      - 'test/g5-03-supply.test.cjs'
+      - 'doc/research-generation-5/**'
+      - '.github/workflows/g5-03-supply*.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  technical-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Fixture-only supply preflight
+        run: node --test test/g5-03-supply.test.cjs

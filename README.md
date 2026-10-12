@@ -69,9 +69,9 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦が
 | AI-GEN4以降の改善案 | [今後の改善候補](doc/ai-engineering/AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md) |
 | 研究世代ごとの結果と現在状態 | [研究成果の中央索引](doc/RESEARCH_INDEX.md) |
 | 世代横断の今後の研究候補と、完了研究から引き継ぐ境界 | [研究アジェンダ](doc/FUTURE_RESEARCH_AGENDA.md) |
-| 現在の中心課題である第五世代の計画と技術準備の状態 | [第五世代研究](doc/research-generation-5/README.md) |
+| 現在の中心課題である第五世代の計画と供給診断の状態 | [第五世代研究](doc/research-generation-5/README.md) |
 
-第五世代は2026-10-12に[G5-01の技術準備](doc/research-generation-5/g5-01/README.md)へ着手しました。既知fixtureによる[Stage 0技術検証](doc/research-generation-5/g5-01/STAGE_0_REPORT.md)がローカル・Actionsで合格しました。続く[独立ルール遷移の技術検証](doc/research-generation-5/g5-01/transition/REPORT.md)も固定40局面・411辺で合格し、[Stage 1の開発診断](doc/research-generation-5/g5-01/development/REPORT.md)では32 sourceを一度だけ実行・独立再生しましたが、固定条件で候補は0件でした。本区画を消費済みで閉じ、正式な順位変動・損失検証は未実施のまま、解析領域を供給する新しい独立Studyの設計を次に検討します。科学研究と公開AIの開発・改善は別の記録として管理しています。研究上の結果が、そのまま公開AIへの採用や変更を意味するものではありません。
+第五世代は[G5-01](doc/research-generation-5/g5-01/README.md)の測定・独立遷移基盤を検証し、開発32 sourceを候補0件で閉じました。続く[G5-02](doc/research-generation-5/g5-02/REPORT.md)では新規32 sourceの固定8候補が全て状態上限で未完となり、完全閉包供給は0件でした。次は[G5-03](doc/research-generation-5/g5-03/README.md)で、全合法分岐が2手以内に自然終局する特殊層の供給を確認します。正式な順位変動・価値損失の関係検証は未実施です。科学研究と公開AIの開発・改善は別に管理し、研究結果をそのまま公開AIへの採用や変更へ昇格しません。
 
 先攻・後攻差については、独立した[AI-GEN4追加研究](doc/first-player-gen4/FINAL_REPORT.md)の全17,768局と検証が完了し、mainへ統合済みです。公開expertの静的評価上位3手序盤では先攻有利、全合法手からの一様序盤では未確定でした。Bao一般の先後差は未確定とし、第五世代の個別Studyとは別に管理します。
 

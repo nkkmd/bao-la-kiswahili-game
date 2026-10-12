@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BTCS-STUDY1",
+  "stageId": "BTCS-S1-SUPPLY-2026-10-12-v1",
+  "decision": "AUTHORIZED-SUPPLY-ONCE",
+  "dateJST": "2026-10-12",
+  "basis": "User continuation after the closed G5-02 supply block; independent two-ply terminal-closure supply fixed in CONTRACT.md and PREEXECUTION_REVIEW.md.",
+  "specSha256": "f0c4535a099e36c5cccc09afec2af16a5e48f27a5f72734346a649d2c01f6e54",
+  "manifestSha256": "23efdd84b81afa2d48f326ead69f70801ffc15ae50d164102661c1ecf3cc3331",
+  "seedBlock": {
+    "start": 50312001,
+    "end": 50312064,
+    "count": 64
+  },
+  "formalInference": false,
+  "publicAiModification": false,
+  "sameBlockRerunAuthorized": false
+}
