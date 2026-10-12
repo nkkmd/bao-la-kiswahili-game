@@ -1,0 +1,358 @@
+{
+  "studyId": "MRCS-STUDY1",
+  "stageId": "MRCS-S1-SUPPLY-2026-10-13-v1",
+  "kind": "POSTEXECUTION-SAVED-SUPPLY-DESCRIPTION",
+  "originalMirrorCommit": "5cfe0f00629f65995a2d6be5889cebbe68bb8940",
+  "evidenceGzipSha256": "be9ec19e16527d462d9e6581d6be3f985732d76780888ee41244b790bf07c0e6",
+  "evidenceGzipBytes": 9966053,
+  "evidenceJsonBytes": 44046133,
+  "stateJournalBytes": 14748261,
+  "combinedRawBytes": 58794394,
+  "priorReadIdentityCount": 58532,
+  "currentReadIdentityCount": 43660,
+  "unionReadIdentityCount": 101691,
+  "readOverlap": 501,
+  "eligibleSourceRepresentatives": 35,
+  "selectedCandidates": 8,
+  "unanalysedRepresentatives": 27,
+  "states": 39141,
+  "edges": 39354,
+  "rows": [
+    {
+      "candidate": 1,
+      "sourceIndex": 1,
+      "seed": 50513002,
+      "ply": 56,
+      "sourceNaturalEndPly": 59,
+      "remainingSourcePlies": 3,
+      "width": 3,
+      "occupied": 21,
+      "frontTotals": [
+        34,
+        4
+      ],
+      "replyModes": [
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "takata",
+          "replyWidth": 8
+        },
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":6,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "takata",
+          "replyWidth": 8
+        },
+        {
+          "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":3,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "capture",
+          "replyWidth": 3
+        }
+      ],
+      "status": "STATE-LIMIT",
+      "complete": false,
+      "states": 5000,
+      "edges": 5040,
+      "exactRootValuesKnown": false,
+      "winLossContrast": null,
+      "guardWitness": null
+    },
+    {
+      "candidate": 2,
+      "sourceIndex": 4,
+      "seed": 50513005,
+      "ply": 69,
+      "sourceNaturalEndPly": 82,
+      "remainingSourcePlies": 13,
+      "width": 2,
+      "occupied": 22,
+      "frontTotals": [
+        4,
+        27
+      ],
+      "replyModes": [
+        {
+          "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":2,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "takata",
+          "replyWidth": 4
+        },
+        {
+          "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":6,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "capture",
+          "replyWidth": 1
+        }
+      ],
+      "status": "STATE-LIMIT",
+      "complete": false,
+      "states": 5000,
+      "edges": 5008,
+      "exactRootValuesKnown": false,
+      "winLossContrast": null,
+      "guardWitness": null
+    },
+    {
+      "candidate": 3,
+      "sourceIndex": 5,
+      "seed": 50513006,
+      "ply": 62,
+      "sourceNaturalEndPly": 73,
+      "remainingSourcePlies": 11,
+      "width": 4,
+      "occupied": 25,
+      "frontTotals": [
+        22,
+        14
+      ],
+      "replyModes": [
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":3,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "capture",
+          "replyWidth": 3
+        },
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "takata",
+          "replyWidth": 2
+        },
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":6,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "capture",
+          "replyWidth": 2
+        },
+        {
+          "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":3,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "capture",
+          "replyWidth": 2
+        }
+      ],
+      "status": "STATE-LIMIT",
+      "complete": false,
+      "states": 5000,
+      "edges": 5003,
+      "exactRootValuesKnown": false,
+      "winLossContrast": null,
+      "guardWitness": null
+    },
+    {
+      "candidate": 4,
+      "sourceIndex": 6,
+      "seed": 50513007,
+      "ply": 56,
+      "sourceNaturalEndPly": 72,
+      "remainingSourcePlies": 16,
+      "width": 4,
+      "occupied": 27,
+      "frontTotals": [
+        21,
+        7
+      ],
+      "replyModes": [
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":2,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "capture",
+          "replyWidth": 2
+        },
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":3,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "capture",
+          "replyWidth": 3
+        },
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":6,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "capture",
+          "replyWidth": 2
+        },
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":6,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "takata",
+          "replyWidth": 8
+        }
+      ],
+      "status": "STATE-LIMIT",
+      "complete": false,
+      "states": 5000,
+      "edges": 5018,
+      "exactRootValuesKnown": false,
+      "winLossContrast": null,
+      "guardWitness": null
+    },
+    {
+      "candidate": 5,
+      "sourceIndex": 13,
+      "seed": 50513014,
+      "ply": 53,
+      "sourceNaturalEndPly": 62,
+      "remainingSourcePlies": 9,
+      "width": 4,
+      "occupied": 21,
+      "frontTotals": [
+        4,
+        32
+      ],
+      "replyModes": [
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":4,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "takata",
+          "replyWidth": 6
+        },
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "capture",
+          "replyWidth": 1
+        },
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":6,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "capture",
+          "replyWidth": 1
+        },
+        {
+          "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":4,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "capture",
+          "replyWidth": 1
+        }
+      ],
+      "status": "STATE-LIMIT",
+      "complete": false,
+      "states": 5000,
+      "edges": 5087,
+      "exactRootValuesKnown": false,
+      "winLossContrast": null,
+      "guardWitness": null
+    },
+    {
+      "candidate": 6,
+      "sourceIndex": 15,
+      "seed": 50513016,
+      "ply": 57,
+      "sourceNaturalEndPly": 64,
+      "remainingSourcePlies": 7,
+      "width": 4,
+      "occupied": 24,
+      "frontTotals": [
+        24,
+        13
+      ],
+      "replyModes": [
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "takata",
+          "replyWidth": 4
+        },
+        {
+          "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":0,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "capture",
+          "replyWidth": 1
+        },
+        {
+          "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":2,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "takata",
+          "replyWidth": 4
+        },
+        {
+          "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "takata",
+          "replyWidth": 4
+        }
+      ],
+      "status": "RUNTIME-GUARD",
+      "complete": false,
+      "states": 4200,
+      "edges": 4221,
+      "exactRootValuesKnown": false,
+      "winLossContrast": null,
+      "guardWitness": {
+        "from": "303f4116792977b6aa31b0807a32fc0ee37fe88cec8b19263571c23fa7392c4e",
+        "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":4,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+        "runtimeGuardOnly": true,
+        "guardFreeTerminationOrRecurrence": null
+      }
+    },
+    {
+      "candidate": 7,
+      "sourceIndex": 16,
+      "seed": 50513017,
+      "ply": 63,
+      "sourceNaturalEndPly": 68,
+      "remainingSourcePlies": 5,
+      "width": 3,
+      "occupied": 22,
+      "frontTotals": [
+        6,
+        25
+      ],
+      "replyModes": [
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "capture",
+          "replyWidth": 1
+        },
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":6,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "capture",
+          "replyWidth": 1
+        },
+        {
+          "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":4,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "takata",
+          "replyWidth": 8
+        }
+      ],
+      "status": "RUNTIME-GUARD",
+      "complete": false,
+      "states": 4941,
+      "edges": 4946,
+      "exactRootValuesKnown": false,
+      "winLossContrast": null,
+      "guardWitness": {
+        "from": "04273ba0e1b693a07a9cc0554f0e692ccd7f46abad387e6cd045e6b42e79205a",
+        "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":0,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+        "runtimeGuardOnly": true,
+        "guardFreeTerminationOrRecurrence": null
+      }
+    },
+    {
+      "candidate": 8,
+      "sourceIndex": 17,
+      "seed": 50513018,
+      "ply": 47,
+      "sourceNaturalEndPly": 63,
+      "remainingSourcePlies": 16,
+      "width": 3,
+      "occupied": 26,
+      "frontTotals": [
+        8,
+        15
+      ],
+      "replyModes": [
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":2,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "takata",
+          "replyWidth": 2
+        },
+        {
+          "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":7,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "takata",
+          "replyWidth": 2
+        },
+        {
+          "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":2,\"phase\":\"mtaji\",\"row\":1,\"side\":null,\"type\":\"capture\"}",
+          "replyMode": "capture",
+          "replyWidth": 3
+        }
+      ],
+      "status": "STATE-LIMIT",
+      "complete": false,
+      "states": 5000,
+      "edges": 5031,
+      "exactRootValuesKnown": false,
+      "winLossContrast": null,
+      "guardWitness": null
+    }
+  ],
+  "valueKnownRootCount": 0,
+  "winLossContrastAmongSelectedRoots": null,
+  "freshSourcesGenerated": 0,
+  "freshTransitionsGenerated": 0,
+  "candidatesReselected": 0,
+  "searchComparisonsPerformed": 0,
+  "formalInference": false
+}
