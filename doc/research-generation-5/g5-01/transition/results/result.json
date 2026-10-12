@@ -1,0 +1,147 @@
+{
+  "decision": "STAGE0-TRANSITION-TECHNICAL-PASS",
+  "core": {
+    "studyId": "RRSVL-STUDY1",
+    "stageId": "RRSVL-S0T-TRANSITION-2026-10-12-v1",
+    "binding": "4dcca9b343ca2666246d0f4506462c5b5a6918c91568de0f64266dbb18994477",
+    "evidenceClass": "TECHNICAL-FIXTURE",
+    "measurements": {
+      "fixtureRoots": 40,
+      "expandedParents": 153,
+      "states": 416,
+      "edges": 411,
+      "edgeDigest": "8692bb4e25c1d280e33b46a4dc8aef2982dbb53e64720b50da7abc7074fc9abd",
+      "coverage": [
+        "back-row",
+        "capture",
+        "front-empty",
+        "house-stop",
+        "house-two",
+        "house-use",
+        "mtaji",
+        "namua",
+        "no-move",
+        "pass",
+        "pending-capture",
+        "phase-transition",
+        "takasia-activation",
+        "takasia-input",
+        "takata"
+      ],
+      "guardHits": 0,
+      "detection": [
+        {
+          "id": "E30",
+          "result": {
+            "player": 1,
+            "index": 3
+          }
+        },
+        {
+          "id": "seat-swap",
+          "result": {
+            "player": 0,
+            "index": 3
+          }
+        },
+        {
+          "id": "singleton-exempt",
+          "result": null
+        },
+        {
+          "id": "only-occupied-front-exempt",
+          "result": null
+        },
+        {
+          "id": "only-multi-front-exempt",
+          "result": null
+        },
+        {
+          "id": "zero-targets",
+          "result": null
+        },
+        {
+          "id": "two-targets",
+          "result": null
+        },
+        {
+          "id": "multiple-captures-same-target",
+          "result": {
+            "player": 1,
+            "index": 3
+          }
+        },
+        {
+          "id": "defender-can-capture",
+          "result": null
+        },
+        {
+          "id": "unowned-house-position",
+          "result": {
+            "player": 1,
+            "index": 4
+          }
+        },
+        {
+          "id": "owned-house-exempt",
+          "result": null
+        },
+        {
+          "id": "prior-capture",
+          "result": null
+        },
+        {
+          "id": "namua-to-mtaji-no-activation",
+          "result": null
+        },
+        {
+          "id": "namua-no-activation",
+          "result": null
+        },
+        {
+          "id": "terminal-no-activation",
+          "result": null
+        },
+        {
+          "id": "owned-house-five-exempt",
+          "result": null
+        },
+        {
+          "id": "unowned-house-five-normal",
+          "result": {
+            "player": 1,
+            "index": 4
+          }
+        }
+      ],
+      "scientificEvidenceAccess": false,
+      "transitionAlgorithmsIndependent": true,
+      "scope": "KNOWN-AND-CONSTRUCTED-FIXTURES / RELATIVE-DEPTH-2 / NOT-ALL-BAO-STATES"
+    },
+    "boundaryChecks": [
+      {
+        "limit": 3,
+        "runtimeGuard": true,
+        "childSha256": "f048fcaee8cb5b422e7860876cc4ed1cf018572b8b93c3b6274ce335e64e1de8"
+      },
+      {
+        "limit": 4,
+        "runtimeGuard": false,
+        "childSha256": "28e18df06b8d963e77349c0b4ffe4dcaffbf097050d602927a959c614b0cf90a"
+      },
+      {
+        "administrativeMicrostateCap": 1,
+        "status": "ADMIN-CUTOFF",
+        "winnerAssigned": false
+      }
+    ]
+  },
+  "coreSha256": "6aebb6aa2d2a06f195800c218a53f7fb7f8ea518b153e17e3329ee6861dc91f9",
+  "execution": {
+    "sourceCommit": "ec2607dfc4a09b62d2aaa56f75740f9f551992e4",
+    "elapsedMs": 137,
+    "peakRssBytes": 58658816,
+    "node": "v24.19.0",
+    "githubRunId": null
+  }
+}

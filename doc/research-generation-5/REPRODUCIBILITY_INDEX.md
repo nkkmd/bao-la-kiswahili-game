@@ -20,3 +20,13 @@ python3 tools/research/g5-01/verify.py doc/research-generation-5/g5-01/results/s
 ```
 
 新規局面、科学的seed、正式標本、正式検定の成果物はまだ存在しない。
+
+## 独立遷移の技術検証
+
+実行前固定コミットは `ec2607dfc4a09b62d2aaa56f75740f9f551992e4`。
+
+- [技術契約](g5-01/transition/TECHNICAL_CONTRACT.md)・[機械用契約](g5-01/transition/SPEC.json)・[ソース固定](g5-01/transition/SOURCE_MANIFEST.json)・[実行範囲](g5-01/transition/AUTHORIZATION.json)。
+- [測定結果](g5-01/transition/results/result.json)・[Actions来歴](g5-01/transition/results/CI_RECEIPT.json)・[検証報告](g5-01/transition/REPORT.md)。
+- [ツールと再現コマンド](../../tools/research/g5-01/transition/README.md)。
+
+独立実装は依存モジュールをimportしない。固定fixture上の再測定は技術作業であり、未発行の開発seedを使用しない。
