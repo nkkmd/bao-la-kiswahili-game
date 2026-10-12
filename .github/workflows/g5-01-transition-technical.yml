@@ -1,0 +1,45 @@
+name: G5-01 Independent Transition Technical
+
+on:
+  push:
+    branches: [research/g5-01-measurement-readiness]
+    paths:
+      - 'tools/research/g5-01/transition/**'
+      - 'test/g5-01-transition.test.cjs'
+      - 'doc/research-generation-5/g5-01/transition/**'
+      - '.github/workflows/g5-01-transition-technical.yml'
+  pull_request:
+    paths:
+      - 'tools/research/g5-01/transition/**'
+      - 'test/g5-01-transition.test.cjs'
+      - 'doc/research-generation-5/**'
+      - '.github/workflows/g5-01-transition-technical.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: g5-01-transition-technical-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  technical:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify independent transition fixtures
+        run: node --test test/g5-01-transition.test.cjs
+      - name: Preserve technical measurement
+        run: node tools/research/g5-01/transition/run.cjs artifacts/local/g5-01-transition/result.json
+      - name: Upload transition evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g5-01-transition-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/local/g5-01-transition/
+          if-no-files-found: warn
+          retention-days: 30

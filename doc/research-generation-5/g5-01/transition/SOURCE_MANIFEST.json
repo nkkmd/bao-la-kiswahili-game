@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "baseMain": "6decdd2bb3979d96420e4da6ff4592be70c8d6c4",
+  "previousStage0Commit": "885e3c4152b6979a70a20755c8bf064b8d4dd29c",
+  "files": {
+    "tools/research/g5-01/transition/runtime-engine.cjs": "7147697b8befd0c4c483e12aaf11f88432ce77a0cc189787d98ec184c24085f1",
+    "tools/research/g5-01/transition/independent-engine.cjs": "ab1f8bdb7ca19e0e87daeb24e956d7ee7c925a316ece1c31acf1c111f9b20976",
+    "tools/research/g5-01/transition/fixtures.cjs": "6e9f6f08fc9c7fcf66235d84dfb185705246fe3f357678c845dcb1c4683a4b0d",
+    "tools/research/g5-01/transition/run.cjs": "e124861c51a14ab611b0cfd143a333fd876b0b21d3340d683104e9c659d65b67",
+    "tools/research/g5-01/measurement.cjs": "31d5ee12082ee10d54a4f400de02692f6fca982fe608bd8f9c08b057125898cd",
+    "test/g5-01-transition.test.cjs": "6d3eb9c0fcba2549438c17a14a05e554d5222025622af649995630dd9f82dae6",
+    ".github/workflows/g5-01-transition-technical.yml": "5b5ca440ac5289a909fa5be19653f47d3cb8bba1bbd91365a961c5a3a769a243",
+    "tools/takasia/fixtures.json": "f3096da061690038f128cbbf822e04f64b2d2575d36d8715661b0bd6dd08c3bd",
+    "tools/engineering/browser/pbai-p9/fixtures.json": "a483296e004a92cf92059c790baadaede14caf761c2f4880830f133e081d145f",
+    "doc/research-generation-5/g5-01/transition/SPEC.json": "1b596774302c515e82d81e6c28dc102f72a5c9b9635746ec6853225f406c6bfb",
+    "doc/research-generation-5/g5-01/transition/TECHNICAL_CONTRACT.md": "719497fcea9764031d5739a5e17b3dd1145d8eb901e39a443aa57d6034542328",
+    "public/engine.js": "7147697b8befd0c4c483e12aaf11f88432ce77a0cc189787d98ec184c24085f1"
+  }
+}
