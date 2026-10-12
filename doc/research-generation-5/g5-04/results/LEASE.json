@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "studyId": "MTCS-STUDY1",
+  "stageId": "MTCS-S1-SUPPLY-2026-10-12-v1",
+  "binding": "847717768fb603a61372252b319de9cf41cc59692abb0850639cca881cff04f9",
+  "seedBlock": {
+    "start": 50412001,
+    "end": 50412128,
+    "count": 128
+  },
+  "runId": 38263687093,
+  "runAttempt": 1,
+  "triggerCommit": "4d5607e65e0d1f3425521e9ca582794a41e16132",
+  "frozenSourceCommit": "2201b082f9ea46833b6effbcb62be5898b9b450d",
+  "acquiredBeforeFreshSeedRead": true,
+  "status": "CONSUMED-BLOCK / NO-RERUN",
+  "leaseCommit": "72cfca4dd5c238ac36db29ffb074fdcb2e908639"
+}
