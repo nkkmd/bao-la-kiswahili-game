@@ -2,7 +2,7 @@
 
 更新日: 2026-09-29  
 対象: Research Generation 1〜5  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了・main統合済み。Research Generation 5はG5-02供給診断完了・完全閉包0件・正式関係検証未実施**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了・main統合済み。Research Generation 5はG5-03供給診断完了・完全閉包8件・root内価値差なし・正式関係検証未実施**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`または`FINAL_REPORT.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
@@ -383,3 +383,7 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 ## 2026-10-12追記 — 二手以内の完全閉包供給G5-03
 
 [G5-03](research-generation-5/g5-03/README.md)を独立Studyとして準備する。新規64 sourceから全合法分岐が2手以内に自然終局するrootを選び、最大8候補の全閉包・独立解を確認する。構造成立時の最大157状態を保証する特殊層であり、一般局面や長期探索の代表ではない。旧Studyの結果・消費状態を保持し、正式関係検証は未実施である。
+
+## 2026-10-12追記 — G5-03供給完了と価値差の限界
+
+[G5-03最終報告](research-generation-5/g5-03/REPORT.md)では新規64 sourceから10適格rootを取得し、固定8候補すべてが完全閉包となった。計45状態37辺・全解が独立一致した。一方、全8 root内の全23手は同じ勝敗価値・DTFで、価値損失が変わる事例はない。供給成功と正式関係の推定可能性を分離し、区画を消費済みで終了する。[再開位置](research-generation-5/g5-03/RESUME_HERE.md)は別Studyの構造・価値差事例設計を示す。正式関係検証・main統合・公開AI変更は未実施。
