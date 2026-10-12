@@ -7,3 +7,9 @@
 `research/g5-01-measurement-readiness` に隔離し、G5-01 / `RRSVL-STUDY1` のStage 0を具体化した。現行takasiaルールのRAW識別、nyumbaの全選択肢、順位変動と勝敗価値損失、同価値内DTF、未解決再帰の分離を定めた。
 
 既知fixture・人工グラフだけを使うソースと技術契約を固定し、実行前にGitHubへ記録する。新規の科学的seed読取、正式局面生成、G4の保護証拠へのアクセス、公開資産の変更は行わない。
+
+## 2026-10-12 — Stage 0技術検証の完了
+
+ソース・契約をコミット `885e3c4152b6979a70a20755c8bf064b8d4dd29c` で固定してから実行した。既知takasia25件、4局面×2深さ、10頂点人工グラフ・9意味確認、技術テスト7件が合格した。ローカルのtakasiaエンジン・AI回帰36件も合格した。
+
+Actions run `38229687584` / attempt 1はsuccessであり、測定とPython検算のcore hashがローカルと一致した。結果と来歴を保存し、[技術検証報告](g5-01/STAGE_0_REPORT.md)と[次工程の設計事項](g5-01/NEXT_STAGE_DESIGN.md)を整備した。新規の科学的証拠はまだ使用していない。

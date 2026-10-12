@@ -2,7 +2,7 @@
 
 作成日: 2026-10-12（日本時間）  
 Study: `RRSVL-STUDY1`  
-状態: **技術契約を固定し、既知fixture限定のStage 0を準備済み。正式局面の科学実行は未開始。**
+状態: **Stage 0技術検証合格／新規証拠の科学実行は未開始。**
 
 第五世代の第1段階として、探索順位の変動、選択手の変更、勝敗価値の損失、同価値内の到達手数差を別々に保存する測定基盤を確認する。既知のBao局面と人工グラフだけを使い、これらを新しい研究結果や正式検証群へ昇格させない。
 
@@ -30,3 +30,7 @@ JavaScriptのアルファベータ探索を、別に書いた全幅minimaxと照
 2. [実行前レビュー](PREEXECUTION_REVIEW.md) — ユーザーの着手指示と許される実行範囲。
 3. [機械用契約](STAGE_0_SPEC.json)・[ソース固定](SOURCE_MANIFEST.json)・[技術認可記録](STAGE_0_AUTHORIZATION.json)。
 4. [現在の状態](../CURRENT_STATUS.md)・[再開位置](../RESUME_HERE.md)。
+
+## 技術検証の結果
+
+2026-10-12にローカルとGitHub ActionsでStage 0が合格した。[技術検証報告](STAGE_0_REPORT.md)に結果と検算範囲、[次工程の設計事項](NEXT_STAGE_DESIGN.md)に科学実行前の準備を記録する。

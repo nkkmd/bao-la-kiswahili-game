@@ -2,7 +2,7 @@
 
 更新日: 2026-09-29  
 対象: Research Generation 1〜5  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了・main統合済み。Research Generation 5はG5-01技術準備に着手・新規証拠の科学実行は未開始**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了・main統合済み。Research Generation 5はG5-01 Stage 0技術検証合格・新規証拠の科学実行は未開始**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`または`FINAL_REPORT.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
@@ -42,7 +42,7 @@
 
 ## Research Generation 5 — 探索順位と厳密価値損失
 
-第五世代は[計画](research-generation-5/PROGRAM_PLAN.md)の第1段階として、2026-10-12に[G5-01](research-generation-5/g5-01/README.md) / `RRSVL-STUDY1` の技術準備へ着手した。現行takasiaルールに合わせ、既知fixtureで順位変動、選択手の変更、厳密最適集合からの逸脱、勝敗価値損失、同価値内DTFを分けて確認する。新規証拠の科学実行は未開始で、科学的seed、標本、閾値、新規領域の資源上限は未固定である。第四世代の固定8領域や未完成depth-11層を新しい正式証拠に転用しない。[現在の状態](research-generation-5/CURRENT_STATUS.md)と[再開位置](research-generation-5/RESUME_HERE.md)を参照する。公開AIへの変更は別のAI Engineering判断を必要とする。
+第五世代は[計画](research-generation-5/PROGRAM_PLAN.md)の第1段階として、2026-10-12に[G5-01](research-generation-5/g5-01/README.md) / `RRSVL-STUDY1` の技術準備へ着手した。現行takasiaルールに合わせ、既知fixtureで順位変動、選択手の変更、厳密最適集合からの逸脱、勝敗価値損失、同価値内DTFを分ける[Stage 0技術検証](research-generation-5/g5-01/STAGE_0_REPORT.md)がローカル・Actionsで合格した。新規証拠の科学実行は未開始で、科学的seed、標本、閾値、新規領域の資源上限は未固定である。第四世代の固定8領域や未完成depth-11層を新しい正式証拠に転用しない。[現在の状態](research-generation-5/CURRENT_STATUS.md)と[再開位置](research-generation-5/RESUME_HERE.md)を参照する。公開AIへの変更は別のAI Engineering判断を必要とする。
 
 ## Research Generation 4 — 局所幾何の意味・移送可能性・exact帰結
 
