@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "RG5-PRIMARY-READINESS-REVIEW-2026-10-12-v1",
+  "status": "PROPOSAL-NOT-FORMAL-REGISTRATION",
+  "primaryOutcome": "POSITIVE-WIN-LOSS-VALUE-REGRET-OF-SHALLOW-SELECTED-MOVE",
+  "primaryExposure": "FULL-RANKING-TIE-RELATION-CHANGE",
+  "draftDepths": [
+    1,
+    4
+  ],
+  "primaryEstimand": "LOSS-RISK-DIFFERENCE: P(Y=1|Z=1)-P(Y=1|Z=0)",
+  "alpha": 0.05,
+  "errorHalfWidth": 0.2,
+  "balancedMinimumPerGroup": 93,
+  "minimumBalancedTotal": 186,
+  "precisionScope": "MODEL-CONDITIONAL; NOT POWER; NOT CURRENT-CORPUS INFERENCE",
+  "representativeRule": "one per transitive source/domain component, lowest RAW key before outcomes",
+  "independentSamplingVerified": false,
+  "freshSourceExecutionAuthorized": false,
+  "formalRegistrationAuthorized": false,
+  "dtfMayReplacePrimary": false
+}

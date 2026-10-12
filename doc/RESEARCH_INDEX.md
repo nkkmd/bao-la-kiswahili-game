@@ -2,7 +2,7 @@
 
 更新日: 2026-09-29  
 対象: Research Generation 1〜5  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了・main統合済み。Research Generation 5はG5-04完全閉包8件・同価値内DTF差3件・root内勝敗価値差なし・正式関係検証未実施**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了・main統合済み。Research Generation 5は主要関係の準備再評価完了・PRIMARY-READINESS-NOT-MET・正式比較未登録/未実行**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`または`FINAL_REPORT.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
@@ -395,3 +395,7 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 ## 2026-10-12追記 — G5-04の完了と同価値内DTF差
 
 [G5-04最終報告](research-generation-5/g5-04/REPORT.md)では新規128 sourceから9適格rootを得て、固定8候補を完全解析した。169状態162辺・全解が独立一致。3 rootに同価値内DTF差があるが、勝敗価値差rootは0件だった。区画を消費済みで終了し、DTF差を主要な価値損失の変動例へ読み替えない。[再開位置](research-generation-5/g5-04/RESUME_HERE.md)は正式検証の対象・最低条件と供給戦略の再評価を示す。正式関係検証・main統合・公開AI変更は未実施。
+
+## 準備再評価 — 主要関係の情報・推定条件
+
+[準備再評価](research-generation-5/readiness-review-20261012/REPORT.md)で4 Studyを再検算し、16完全領域・67複数手局面にも勝敗価値差がなかった。判断はPRIMARY-READINESS-NOT-METで、正式仮説の否定ではない。内部DTF差6件は既読の記述で、新たな正式標本にはしない。[設計案](research-generation-5/readiness-review-20261012/DESIGN_PROPOSAL.md)の精度・対象数はモデル条件付き提案であり、現在データへの推論・正式登録・新規実行認可ではない。[再開位置](research-generation-5/readiness-review-20261012/RESUME_HERE.md)で主要課題のsourceとsamplingを具体化する。main・公開AIは未変更。

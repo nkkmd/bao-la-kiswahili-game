@@ -71,7 +71,7 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦が
 | 世代横断の今後の研究候補と、完了研究から引き継ぐ境界 | [研究アジェンダ](doc/FUTURE_RESEARCH_AGENDA.md) |
 | 現在の中心課題である第五世代の計画と供給診断の状態 | [第五世代研究](doc/research-generation-5/README.md) |
 
-第五世代は[G5-01](doc/research-generation-5/g5-01/README.md)で測定・独立遷移基盤を検証しました。開発診断は候補0件、[G5-02](doc/research-generation-5/g5-02/REPORT.md)は8候補が状態上限で未完となりました。[G5-03](doc/research-generation-5/g5-03/REPORT.md)は8完全閉包を取得しましたが全root内の全手が同じ勝敗価値・DTFでした。続く[G5-04](doc/research-generation-5/g5-04/REPORT.md)は新規128 sourceの固定8候補を完全解析し、169状態162辺・全解が独立一致しました。3 rootで同価値内DTF差がある一方、勝敗価値差のあるrootは0件です。正式な順位変動・勝敗価値損失の関係検証は未実施とし、次に対象と推定可能性を再評価します。科学研究と公開AIの開発・改善は別に管理し、研究結果をそのまま公開AIへの採用や変更へ昇格しません。
+第五世代は測定・独立遷移・完全解析の基盤を整備し、[G5-03](doc/research-generation-5/g5-03/REPORT.md)・[G5-04](doc/research-generation-5/g5-04/REPORT.md)で計16完全領域を取得しました。同価値内の終局手数差は記述できた一方、勝敗価値差のある手は得ていません。[準備再評価](doc/research-generation-5/readiness-review-20261012/README.md)で旧4 Studyを再検算し、主要な「順位変動と勝敗価値損失」の準備条件は未成立と判断しました。正式比較は未登録・未実行で、次は対象sourceとsampling条件を具体化します。[第五世代入口](doc/research-generation-5/README.md)に全工程の結果と境界を示します。科学研究と公開AIの開発・改善は別に管理し、研究結果をそのまま公開AIへの採用や変更へ昇格しません。
 
 先攻・後攻差については、独立した[AI-GEN4追加研究](doc/first-player-gen4/FINAL_REPORT.md)の全17,768局と検証が完了し、mainへ統合済みです。公開expertの静的評価上位3手序盤では先攻有利、全合法手からの一様序盤では未確定でした。Bao一般の先後差は未確定とし、第五世代の個別Studyとは別に管理します。
 
