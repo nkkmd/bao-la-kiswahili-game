@@ -91,3 +91,9 @@
 次は個別Studyの着手前レビューである。第1段階の技術作業も、対象と実行範囲を定めてから開始する。正式証拠へのアクセス、計算実行、研究用workflowの起動は本計画の登録だけでは許可されない。
 
 現在状態は[CURRENT_STATUS.md](CURRENT_STATUS.md)、次の作業位置は[RESUME_HERE.md](RESUME_HERE.md)、第四世代の確定結果は[最終統合](../research-generation-4/FINAL_SYNTHESIS.md)を参照する。人間向け文書は[日本語文書品質ゲート](../JAPANESE_DOCUMENTATION_QUALITY_GATE.md)に従う。
+
+## 2026-10-13 — 応手種別による新しい供給設計
+
+[供給設計](source-design-20261013/README.md)で、root手によって相手の捕獲手とtakataの応手集合に分かれる非終局構造層を具体化した。全軌跡の最後の構造適格rootを閉包前に固定する案で、着手の擬似乱数方策を保持する。旧部分グラフ内に284構造適格nodeがあったが、全て未完領域にあり、勝敗価値差・完全閉包供給・費用は未確認である。
+
+状態はSOURCE-DESIGN-SPECIFIED-NOT-EXECUTED。構造判定の7fixtureと保存監査の再生が合格した。新規source・遷移・候補再選定・正式推論は0件。[設計](source-design-20261013/DESIGN.md)で64 source・8候補・資源・有限開発コーパスの記述対象を具体化し、[再開位置](source-design-20261013/RESUME_HERE.md)に実装・新規契約・未使用区画・一度限り実行の条件を残した。主要関係はPRIMARY-READINESS-NOT-MET、正式比較は未登録・未実行のままで、main・公開AIは未変更である。

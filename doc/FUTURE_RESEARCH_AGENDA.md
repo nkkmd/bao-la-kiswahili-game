@@ -6,7 +6,7 @@ Version: 5.18.0
 Research Generation 2: **Closed (2026-08-31)**（完了）  
 Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了・統合済み）  
 Research Generation 4: **core G4-01〜G4-10 scientific agenda complete / G4-10 CLOSED NON-ESTIMABLE / main integrated**  
-Research Generation 5: **主要関係の準備再評価完了／PRIMARY-READINESS-NOT-MET／正式比較未登録・未実行**
+Research Generation 5: **新しい供給設計を具体化・新規実行前／PRIMARY-READINESS-NOT-MET／正式比較未登録・未実行**
 
 この文書は、今後の研究課題と、判断の前提となる完了済み研究を整理するものです。まず第1〜3節で現在地・優先課題・新規Studyの条件を確認し、第4〜7節で第一世代から第四世代までの記録を順に参照してください。候補として記載しただけでは、Study開始、seedアクセス、計算実行、公開AI変更は承認されません。
 
@@ -537,3 +537,9 @@ Fresh complete 0..10 prefixはG3-11 canonical exact prefixと一致し、integri
 ## 準備再評価 — 主要関係の情報・推定条件
 
 [準備再評価](research-generation-5/readiness-review-20261012/REPORT.md)で4 Studyを再検算し、16完全領域・67複数手局面にも勝敗価値差がなかった。判断はPRIMARY-READINESS-NOT-METで、正式仮説の否定ではない。内部DTF差6件は既読の記述で、新たな正式標本にはしない。[設計案](research-generation-5/readiness-review-20261012/DESIGN_PROPOSAL.md)の精度・対象数はモデル条件付き提案であり、現在データへの推論・正式登録・新規実行認可ではない。[再開位置](research-generation-5/readiness-review-20261012/RESUME_HERE.md)で主要課題のsourceとsamplingを具体化する。main・公開AIは未変更。
+
+## 2026-10-13 — 応手種別による新しい供給設計
+
+[供給設計](research-generation-5/source-design-20261013/README.md)で、root手によって相手の捕獲手とtakataの応手集合に分かれる非終局構造層を具体化した。全軌跡の最後の構造適格rootを閉包前に固定する案で、着手の擬似乱数方策を保持する。旧部分グラフ内に284構造適格nodeがあったが、全て未完領域にあり、勝敗価値差・完全閉包供給・費用は未確認である。
+
+状態はSOURCE-DESIGN-SPECIFIED-NOT-EXECUTED。構造判定の7fixtureと保存監査の再生が合格した。新規source・遷移・候補再選定・正式推論は0件。[設計](research-generation-5/source-design-20261013/DESIGN.md)で64 source・8候補・資源・有限開発コーパスの記述対象を具体化し、[再開位置](research-generation-5/source-design-20261013/RESUME_HERE.md)に実装・新規契約・未使用区画・一度限り実行の条件を残した。主要関係はPRIMARY-READINESS-NOT-MET、正式比較は未登録・未実行のままで、main・公開AIは未変更である。

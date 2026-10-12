@@ -1,0 +1,369 @@
+{
+  "designId": "RG5-REPLY-MODE-SOURCE-DESIGN-2026-10-13-v1",
+  "kind": "SAVED-GRAPH-STRUCTURAL-DESIGN-AUDIT",
+  "inputManifestSha256": "6ef5d5cafe91147c1900a96445f9c81572c8c7726919fe15240bb032bf890144",
+  "studies": [
+    {
+      "location": "g5-02",
+      "evidenceGzipSha256": "82b408350441f9bbf405c3f0bf8ca72fac972affaff840ae3f215453f012e6df",
+      "domains": [
+        {
+          "domain": 1,
+          "savedNodes": 1697,
+          "complete": false,
+          "counts": {
+            "HOMOGENEOUS-REPLY-EXCLUDED": 104,
+            "ROOT-EXCLUDED": 899,
+            "MIXED-REPLY-ELIGIBLE": 49,
+            "TERMINAL-CHILD-EXCLUDED": 79,
+            "REPLY-WIDTH-EXCLUDED": 9,
+            "UNKNOWN": 557
+          },
+          "originalRoot": {
+            "status": "HOMOGENEOUS-REPLY-EXCLUDED"
+          }
+        },
+        {
+          "domain": 2,
+          "savedNodes": 1340,
+          "complete": false,
+          "counts": {
+            "HOMOGENEOUS-REPLY-EXCLUDED": 74,
+            "ROOT-EXCLUDED": 664,
+            "MIXED-REPLY-ELIGIBLE": 29,
+            "REPLY-WIDTH-EXCLUDED": 14,
+            "TERMINAL-CHILD-EXCLUDED": 48,
+            "UNKNOWN": 511
+          },
+          "originalRoot": {
+            "status": "HOMOGENEOUS-REPLY-EXCLUDED"
+          }
+        },
+        {
+          "domain": 3,
+          "savedNodes": 1406,
+          "complete": false,
+          "counts": {
+            "HOMOGENEOUS-REPLY-EXCLUDED": 140,
+            "MIXED-REPLY-ELIGIBLE": 37,
+            "ROOT-EXCLUDED": 683,
+            "TERMINAL-CHILD-EXCLUDED": 52,
+            "REPLY-WIDTH-EXCLUDED": 11,
+            "UNKNOWN": 483
+          },
+          "originalRoot": {
+            "status": "HOMOGENEOUS-REPLY-EXCLUDED"
+          }
+        },
+        {
+          "domain": 4,
+          "savedNodes": 1463,
+          "complete": false,
+          "counts": {
+            "HOMOGENEOUS-REPLY-EXCLUDED": 248,
+            "REPLY-WIDTH-EXCLUDED": 40,
+            "ROOT-EXCLUDED": 652,
+            "MIXED-REPLY-ELIGIBLE": 20,
+            "TERMINAL-CHILD-EXCLUDED": 311,
+            "UNKNOWN": 192
+          },
+          "originalRoot": {
+            "status": "HOMOGENEOUS-REPLY-EXCLUDED"
+          }
+        },
+        {
+          "domain": 5,
+          "savedNodes": 1543,
+          "complete": false,
+          "counts": {
+            "HOMOGENEOUS-REPLY-EXCLUDED": 165,
+            "ROOT-EXCLUDED": 765,
+            "MIXED-REPLY-ELIGIBLE": 54,
+            "REPLY-WIDTH-EXCLUDED": 15,
+            "TERMINAL-CHILD-EXCLUDED": 70,
+            "UNKNOWN": 474
+          },
+          "originalRoot": {
+            "status": "HOMOGENEOUS-REPLY-EXCLUDED"
+          }
+        },
+        {
+          "domain": 6,
+          "savedNodes": 1477,
+          "complete": false,
+          "counts": {
+            "HOMOGENEOUS-REPLY-EXCLUDED": 211,
+            "MIXED-REPLY-ELIGIBLE": 41,
+            "ROOT-EXCLUDED": 642,
+            "REPLY-WIDTH-EXCLUDED": 16,
+            "TERMINAL-CHILD-EXCLUDED": 40,
+            "UNKNOWN": 527
+          },
+          "originalRoot": {
+            "status": "HOMOGENEOUS-REPLY-EXCLUDED"
+          }
+        },
+        {
+          "domain": 7,
+          "savedNodes": 1778,
+          "complete": false,
+          "counts": {
+            "HOMOGENEOUS-REPLY-EXCLUDED": 135,
+            "ROOT-EXCLUDED": 665,
+            "TERMINAL-CHILD-EXCLUDED": 124,
+            "MIXED-REPLY-ELIGIBLE": 25,
+            "REPLY-WIDTH-EXCLUDED": 8,
+            "UNKNOWN": 821
+          },
+          "originalRoot": {
+            "status": "HOMOGENEOUS-REPLY-EXCLUDED"
+          }
+        },
+        {
+          "domain": 8,
+          "savedNodes": 1709,
+          "complete": false,
+          "counts": {
+            "HOMOGENEOUS-REPLY-EXCLUDED": 343,
+            "ROOT-EXCLUDED": 747,
+            "MIXED-REPLY-ELIGIBLE": 29,
+            "TERMINAL-CHILD-EXCLUDED": 364,
+            "REPLY-WIDTH-EXCLUDED": 59,
+            "UNKNOWN": 167
+          },
+          "originalRoot": {
+            "status": "HOMOGENEOUS-REPLY-EXCLUDED"
+          }
+        }
+      ]
+    },
+    {
+      "location": "g5-03",
+      "evidenceGzipSha256": "87f4b057014f7ab7127ec7e4a17d2b00c9bdff128f090d64f6a1a0f383e16704",
+      "domains": [
+        {
+          "domain": 1,
+          "savedNodes": 4,
+          "complete": true,
+          "counts": {
+            "TERMINAL-CHILD-EXCLUDED": 1,
+            "ROOT-EXCLUDED": 3
+          },
+          "originalRoot": {
+            "status": "TERMINAL-CHILD-EXCLUDED"
+          }
+        },
+        {
+          "domain": 2,
+          "savedNodes": 10,
+          "complete": true,
+          "counts": {
+            "HOMOGENEOUS-REPLY-EXCLUDED": 1,
+            "ROOT-EXCLUDED": 8,
+            "TERMINAL-CHILD-EXCLUDED": 1
+          },
+          "originalRoot": {
+            "status": "HOMOGENEOUS-REPLY-EXCLUDED"
+          }
+        },
+        {
+          "domain": 3,
+          "savedNodes": 4,
+          "complete": true,
+          "counts": {
+            "TERMINAL-CHILD-EXCLUDED": 1,
+            "ROOT-EXCLUDED": 3
+          },
+          "originalRoot": {
+            "status": "TERMINAL-CHILD-EXCLUDED"
+          }
+        },
+        {
+          "domain": 4,
+          "savedNodes": 3,
+          "complete": true,
+          "counts": {
+            "TERMINAL-CHILD-EXCLUDED": 1,
+            "ROOT-EXCLUDED": 2
+          },
+          "originalRoot": {
+            "status": "TERMINAL-CHILD-EXCLUDED"
+          }
+        },
+        {
+          "domain": 5,
+          "savedNodes": 12,
+          "complete": true,
+          "counts": {
+            "HOMOGENEOUS-REPLY-EXCLUDED": 1,
+            "ROOT-EXCLUDED": 10,
+            "TERMINAL-CHILD-EXCLUDED": 1
+          },
+          "originalRoot": {
+            "status": "HOMOGENEOUS-REPLY-EXCLUDED"
+          }
+        },
+        {
+          "domain": 6,
+          "savedNodes": 3,
+          "complete": true,
+          "counts": {
+            "TERMINAL-CHILD-EXCLUDED": 1,
+            "ROOT-EXCLUDED": 2
+          },
+          "originalRoot": {
+            "status": "TERMINAL-CHILD-EXCLUDED"
+          }
+        },
+        {
+          "domain": 7,
+          "savedNodes": 3,
+          "complete": true,
+          "counts": {
+            "TERMINAL-CHILD-EXCLUDED": 1,
+            "ROOT-EXCLUDED": 2
+          },
+          "originalRoot": {
+            "status": "TERMINAL-CHILD-EXCLUDED"
+          }
+        },
+        {
+          "domain": 8,
+          "savedNodes": 6,
+          "complete": true,
+          "counts": {
+            "ROOT-EXCLUDED": 6
+          },
+          "originalRoot": {
+            "status": "ROOT-EXCLUDED"
+          }
+        }
+      ]
+    },
+    {
+      "location": "g5-04",
+      "evidenceGzipSha256": "5d7fd9566e6b2792748e3d91ef4156b1c0f33fa6b3c612a61f3153d514152112",
+      "domains": [
+        {
+          "domain": 1,
+          "savedNodes": 33,
+          "complete": true,
+          "counts": {
+            "HOMOGENEOUS-REPLY-EXCLUDED": 7,
+            "ROOT-EXCLUDED": 24,
+            "TERMINAL-CHILD-EXCLUDED": 2
+          },
+          "originalRoot": {
+            "status": "HOMOGENEOUS-REPLY-EXCLUDED"
+          }
+        },
+        {
+          "domain": 2,
+          "savedNodes": 18,
+          "complete": true,
+          "counts": {
+            "HOMOGENEOUS-REPLY-EXCLUDED": 2,
+            "ROOT-EXCLUDED": 15,
+            "TERMINAL-CHILD-EXCLUDED": 1
+          },
+          "originalRoot": {
+            "status": "HOMOGENEOUS-REPLY-EXCLUDED"
+          }
+        },
+        {
+          "domain": 3,
+          "savedNodes": 25,
+          "complete": true,
+          "counts": {
+            "HOMOGENEOUS-REPLY-EXCLUDED": 3,
+            "ROOT-EXCLUDED": 17,
+            "TERMINAL-CHILD-EXCLUDED": 5
+          },
+          "originalRoot": {
+            "status": "HOMOGENEOUS-REPLY-EXCLUDED"
+          }
+        },
+        {
+          "domain": 4,
+          "savedNodes": 11,
+          "complete": true,
+          "counts": {
+            "HOMOGENEOUS-REPLY-EXCLUDED": 2,
+            "TERMINAL-CHILD-EXCLUDED": 2,
+            "ROOT-EXCLUDED": 7
+          },
+          "originalRoot": {
+            "status": "HOMOGENEOUS-REPLY-EXCLUDED"
+          }
+        },
+        {
+          "domain": 5,
+          "savedNodes": 11,
+          "complete": true,
+          "counts": {
+            "TERMINAL-CHILD-EXCLUDED": 3,
+            "ROOT-EXCLUDED": 7,
+            "HOMOGENEOUS-REPLY-EXCLUDED": 1
+          },
+          "originalRoot": {
+            "status": "TERMINAL-CHILD-EXCLUDED"
+          }
+        },
+        {
+          "domain": 6,
+          "savedNodes": 23,
+          "complete": true,
+          "counts": {
+            "HOMOGENEOUS-REPLY-EXCLUDED": 3,
+            "ROOT-EXCLUDED": 19,
+            "TERMINAL-CHILD-EXCLUDED": 1
+          },
+          "originalRoot": {
+            "status": "HOMOGENEOUS-REPLY-EXCLUDED"
+          }
+        },
+        {
+          "domain": 7,
+          "savedNodes": 35,
+          "complete": true,
+          "counts": {
+            "HOMOGENEOUS-REPLY-EXCLUDED": 6,
+            "TERMINAL-CHILD-EXCLUDED": 9,
+            "ROOT-EXCLUDED": 20
+          },
+          "originalRoot": {
+            "status": "HOMOGENEOUS-REPLY-EXCLUDED"
+          }
+        },
+        {
+          "domain": 8,
+          "savedNodes": 13,
+          "complete": true,
+          "counts": {
+            "TERMINAL-CHILD-EXCLUDED": 2,
+            "ROOT-EXCLUDED": 10,
+            "HOMOGENEOUS-REPLY-EXCLUDED": 1
+          },
+          "originalRoot": {
+            "status": "TERMINAL-CHILD-EXCLUDED"
+          }
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "HOMOGENEOUS-REPLY-EXCLUDED": 1447,
+    "ROOT-EXCLUDED": 5872,
+    "MIXED-REPLY-ELIGIBLE": 284,
+    "TERMINAL-CHILD-EXCLUDED": 1120,
+    "REPLY-WIDTH-EXCLUDED": 172,
+    "UNKNOWN": 3732
+  },
+  "freshScientificSeedsGenerated": 0,
+  "freshTransitionsGenerated": 0,
+  "candidatesReselected": 0,
+  "exactValuesRead": false,
+  "rankingOutputsRead": false,
+  "formalInference": false,
+  "executionAuthorized": false
+}

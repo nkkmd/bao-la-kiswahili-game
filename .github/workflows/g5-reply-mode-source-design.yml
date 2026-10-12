@@ -1,0 +1,32 @@
+name: RG5 Reply Mode Source Design
+on:
+  push:
+    branches: [research/g5-reply-mode-source-design]
+    paths:
+      - 'tools/research/g5-source-design/**'
+      - 'test/g5-source-design.test.cjs'
+      - 'doc/research-generation-5/source-design-20261013/**'
+      - '.github/workflows/g5-reply-mode-source-design.yml'
+  pull_request:
+    paths:
+      - 'tools/research/g5-source-design/**'
+      - 'test/g5-source-design.test.cjs'
+      - 'doc/research-generation-5/**'
+      - '.github/workflows/g5-reply-mode-source-design.yml'
+permissions:
+  contents: read
+jobs:
+  saved-structure-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Test outcome blind structural selection
+        run: node --test test/g5-source-design.test.cjs
+      - name: Check saved structural audit
+        run: node tools/research/g5-source-design/audit.cjs --check
+      - name: Recheck prior evidence and readiness review
+        run: node tools/research/g5-readiness/review.cjs --check

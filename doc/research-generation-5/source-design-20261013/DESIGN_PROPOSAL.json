@@ -1,0 +1,11 @@
+{
+  "designId": "RG5-REPLY-MODE-SOURCE-DESIGN-2026-10-13-v1",
+  "status": "PROPOSAL-NOT-EXECUTION-REGISTRATION",
+  "ruleRevision": "BAO-RULES-V0.2.0-TAKASIA-001",
+  "source": {"initialState":"STANDARD-64-SEEDS", "movePolicy":"SORTED-LEGAL-XORSHIFT32-REJECTION", "sourceCount":64, "maxPly":512, "stopAtFirstEligible":false},
+  "selection": {"minWidth":2,"maxWidth":4,"maxReplyWidth":8,"requireAllChildrenNonterminal":true,"requireReplyModes":["capture","takata"],"rootPolicy":"LATEST-STRUCTURALLY-ELIGIBLE-IN-FULL-TRACE", "maxCandidates":8,"selectionBeforeClosure":true,"valueBasedReplacement":false},
+  "firewall": {"priorRawIdentities":58532,"addTechnicalReads":true,"rootAndScreenExcludePrior":true,"closureExcludePrior":true,"selectedOverlapDisposition":"NO-CANDIDATE-NO-EARLIER-FALLBACK"},
+  "resourceProposal": {"maxStatesPerDomain":5000,"maxEdgesPerDomain":64000,"maxDomainMs":60000,"maxTotalMs":300000,"maxMicrostatesPerMove":8192,"maxRssBytes":1073741824,"maxEvidenceJsonBytes":134217728},
+  "sampling": {"analysisTarget":"FIXED-FINITE-DEVELOPMENT-CORPUS", "iidAssumed":false,"confidenceIntervalAuthorized":false,"precision93PerGroupApplicable":false},
+  "seedBlock":null,"scienceStudyId":null,"frozenSourceCommit":null,"executionAuthorized":false,"formalRelationRegistered":false,"formalRelationExecuted":false,"dtfMayReplacePrimary":false
+}
