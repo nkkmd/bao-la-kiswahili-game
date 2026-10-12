@@ -1,0 +1,13 @@
+{
+  "files": {
+    ".github/workflows/g5-science-method-review.yml": "a289b03c164d4210bb829c1c87c41ae09cdee2817f644569136b3399988b244e",
+    "doc/research-generation-5/method-review-20261013/CODEC_MANIFEST.json": "cf85435310afee08ced9f3c5b78e69b4a5d274bf2c06b727c7f44880ba76a0ad",
+    "doc/research-generation-5/method-review-20261013/METHOD_DECISION.json": "fd6f0ee9ef289b4ca60b01306eadedeb4eb55ccc1af0e17850a4d29edd2c9075",
+    "doc/research-generation-5/method-review-20261013/SOURCE_MANIFEST.json": "c2c2c585adb7b1e2fde692fb6821f1816b18ec1b287d588a8365374c5408addd",
+    "doc/research-generation-5/method-review-20261013/results/CODEC_RESULT.json": "4d53c127f71b4844e47685642ba95ee7a0a2f2e83029c8865b2cc879659f7e6f",
+    "doc/research-generation-5/method-review-20261013/results/EXECUTION.json": "98441a995191f1a9aaa4c463f0074be5a5c65300da50b3158befa9b09ccc4515",
+    "doc/research-generation-5/method-review-20261013/results/RESULT.json": "f6ea55b8c47f37e03a5df1bf1615fcd97a2cc2244dfe4005154aeb134e0b1c6c",
+    "doc/research-generation-5/method-review-20261013/results/TECHNICAL_EVIDENCE.json.gz": "e4c9a78110fc1d2ba7406ae5776d3dc6475cdc581942afd1b51ec6c27c132759",
+    "doc/research-generation-5/method-review-20261013/results/TECHNICAL_RAW.bin": "d6c8434653f1be12c4ef5a99924a5d4ead35f9f95bc26bffa4fc5f07d9f0f237"
+  }
+}

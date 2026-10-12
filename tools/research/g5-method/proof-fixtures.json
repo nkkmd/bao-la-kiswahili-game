@@ -1,0 +1,16 @@
+{
+ "evidenceClass":"ABSTRACT-TECHNICAL-NOT-BAO-ORACLE",
+ "graph":[
+  {"id":"r","player":0,"winner":null,"expanded":true,"moves":[{"key":"bad","to":"a"},{"key":"good","to":"b"}]},
+  {"id":"a","player":1,"winner":null,"expanded":true,"moves":[{"key":"win","to":"w1"},{"key":"unused","to":"unknown"}]},
+  {"id":"b","player":1,"winner":null,"expanded":true,"moves":[{"key":"left","to":"w0a"},{"key":"right","to":"w0b"}]},
+  {"id":"w1","player":0,"winner":1,"expanded":true,"terminalKind":"NATURAL-RULE-END","moves":[]},
+  {"id":"w0a","player":0,"winner":0,"expanded":true,"terminalKind":"NATURAL-RULE-END","moves":[]},
+  {"id":"w0b","player":0,"winner":0,"expanded":true,"terminalKind":"NATURAL-RULE-END","moves":[]},
+  {"id":"unknown","player":0,"winner":null,"expanded":false,"moves":[]}
+ ],
+ "choices":[
+  {"moveKey":"bad","proof":{"root":"a","winner":1,"nodes":[{"id":"a","rank":1,"edges":[{"key":"win","to":"w1"}]},{"id":"w1","rank":0,"edges":[]}]}},
+  {"moveKey":"good","proof":{"root":"b","winner":0,"nodes":[{"id":"b","rank":1,"edges":[{"key":"left","to":"w0a"},{"key":"right","to":"w0b"}]},{"id":"w0a","rank":0,"edges":[]},{"id":"w0b","rank":0,"edges":[]}]}}
+ ]
+}

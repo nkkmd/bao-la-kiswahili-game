@@ -1,0 +1,74 @@
+{
+  "rows": [
+    {
+      "id": "CONSTRUCTED-LARGE-SOW-63",
+      "evidenceClass": "TECHNICAL-CONSTRUCTED-NOT-REACHABILITY-EVIDENCE",
+      "state": {
+        "pits": [
+          [
+            [
+              63,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 0,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 1,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      }
+    }
+  ]
+}

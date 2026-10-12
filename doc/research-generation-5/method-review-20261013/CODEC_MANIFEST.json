@@ -1,0 +1,15 @@
+{
+  "technicalId": "RSMR-S0C-CODEC-2026-10-13-v1",
+  "files": {
+    "tools/research/g5-method/raw-codec.cjs": "89aa6c1ba1b743f39ef35cf7a4e68738bb717608e0d04f87dba3a5db8e4e2287",
+    "tools/research/g5-method/independent-raw-codec.cjs": "f83ec42619fc0b5b3ed7bdd10cd88ead911df6c39e331867bf03bc96b371e7e6",
+    "tools/research/g5-method/codec-run.cjs": "9692d4b874b3653663f597982f3fe9189781cb455522e41892ef5f1214ded6f6",
+    "test/g5-method-codec.test.cjs": "92ef0dbd768d19fa6eff77c3b0f23e991a47299aded7f7528cc58ecabc0b51de",
+    "doc/research-generation-5/method-review-20261013/RAW_CODEC_CONTRACT.md": "61738fa1d0a36b54ff31eee903fe6fd68b41cfafb609d9d75a21309a96d8fa11",
+    "doc/research-generation-5/method-review-20261013/SOURCE_MANIFEST.json": "c2c2c585adb7b1e2fde692fb6821f1816b18ec1b287d588a8365374c5408addd",
+    "doc/research-generation-5/method-review-20261013/results/TECHNICAL_EVIDENCE.json.gz": "e4c9a78110fc1d2ba7406ae5776d3dc6475cdc581942afd1b51ec6c27c132759",
+    "doc/research-generation-5/method-review-20261013/results/RESULT.json": "f6ea55b8c47f37e03a5df1bf1615fcd97a2cc2244dfe4005154aeb134e0b1c6c",
+    "tools/research/g5-01/measurement.cjs": "31d5ee12082ee10d54a4f400de02692f6fca982fe608bd8f9c08b057125898cd",
+    "public/engine.js": "7147697b8befd0c4c483e12aaf11f88432ce77a0cc189787d98ec184c24085f1"
+  }
+}

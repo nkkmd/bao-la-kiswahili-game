@@ -1,0 +1,28 @@
+{
+  "priorResearchHead": "2cc89256fe9552b815caf204bff33f45a43dd6d5",
+  "files": {
+    "doc/research-generation-5/g5-01/development/results/EVIDENCE.json.gz": "7c950ba4439075e4c96b24e3f72b01542615576352e47262054a7646c0a655c5",
+    "doc/research-generation-5/g5-02/results/EVIDENCE.json.gz": "82b408350441f9bbf405c3f0bf8ca72fac972affaff840ae3f215453f012e6df",
+    "doc/research-generation-5/g5-03/results/EVIDENCE.json.gz": "87f4b057014f7ab7127ec7e4a17d2b00c9bdff128f090d64f6a1a0f383e16704",
+    "doc/research-generation-5/g5-04/results/EVIDENCE.json.gz": "5d7fd9566e6b2792748e3d91ef4156b1c0f33fa6b3c612a61f3153d514152112",
+    "doc/research-generation-5/g5-05/results/EVIDENCE.json.gz": "be9ec19e16527d462d9e6581d6be3f985732d76780888ee41244b790bf07c0e6",
+    "doc/research-generation-5/method-review-20261013/CONFIG.json": "722d95b469b9eab0a5b94b2d907d5899137e588b838a0ecd0251c03719c66e59",
+    "doc/research-generation-5/method-review-20261013/TECHNICAL_CONTRACT.md": "dddd1536fd97ba22e5f4c968a7730b81ba566452eb75e3b064a0a87629515205",
+    "public/engine.js": "7147697b8befd0c4c483e12aaf11f88432ce77a0cc189787d98ec184c24085f1",
+    "test/g5-method.test.cjs": "42d0d335e7ce19726b42ab0c98eac0f49168077301e5a285377b64ad372131d4",
+    "tools/engineering/browser/pbai-p9/fixtures.json": "a483296e004a92cf92059c790baadaede14caf761c2f4880830f133e081d145f",
+    "tools/research/g5-01/measurement.cjs": "31d5ee12082ee10d54a4f400de02692f6fca982fe608bd8f9c08b057125898cd",
+    "tools/research/g5-01/transition/fixtures.cjs": "6e9f6f08fc9c7fcf66235d84dfb185705246fe3f357678c845dcb1c4683a4b0d",
+    "tools/research/g5-01/transition/independent-engine.cjs": "ab1f8bdb7ca19e0e87daeb24e956d7ee7c925a316ece1c31acf1c111f9b20976",
+    "tools/research/g5-01/transition/runtime-engine.cjs": "7147697b8befd0c4c483e12aaf11f88432ce77a0cc189787d98ec184c24085f1",
+    "tools/research/g5-method/certificates.cjs": "b0cac44fecaf0bc21938fb21b3c801b83eceffd989f7182647b6680d04e9de32",
+    "tools/research/g5-method/constructed.json": "d6e3ba1d93f716f8cc53f9547118e31001c7d0ca4144a3163df3d3689c3ac312",
+    "tools/research/g5-method/independent-certificates.cjs": "f962a278efa546fcf8d460d4c801e083857fee1b9ad07196bb2b15b842c1dc30",
+    "tools/research/g5-method/microstate-check.cjs": "98725ec3160fa0dd8a57dad8afc17c0fe2d876e6a1a757323989113479d87300",
+    "tools/research/g5-method/object-engine.cjs": "3dcf2d2be0e2752c747337fc705a1874e89edbe255f1a138f6a8ca9ecbca4ec1",
+    "tools/research/g5-method/proof-fixtures.json": "0428c65acb062645df94d506926bfb5cb6cdad68752283e595d3e983f176af57",
+    "tools/research/g5-method/ring-engine.cjs": "66ec9bf4820f63a35b9a2101369be9bea9290ef765cf378110bfff0058ded57c",
+    "tools/research/g5-method/run.cjs": "5016cf482c1f88701703c31147b4b38e61a0242844c173d587ade1d1ab5554b3",
+    "tools/takasia/fixtures.json": "f3096da061690038f128cbbf822e04f64b2d2575d36d8715661b0bd6dd08c3bd"
+  }
+}

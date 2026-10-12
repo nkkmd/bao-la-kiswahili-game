@@ -1,0 +1,12 @@
+"use strict";
+const fs=require("node:fs"),path=require("node:path"),zlib=require("node:zlib"),crypto=require("node:crypto"),assert=require("node:assert/strict"),M=require("../g5-01/measurement.cjs"),A=require("./raw-codec.cjs"),B=require("./independent-raw-codec.cjs");
+const root=path.resolve(__dirname,"../../.."),docs=path.join(root,"doc/research-generation-5/method-review-20261013"),sha=b=>crypto.createHash("sha256").update(b).digest("hex");
+function run(){const start=performance.now(),manifest=JSON.parse(fs.readFileSync(path.join(docs,"CODEC_MANIFEST.json")));for(const[p,h]of Object.entries(manifest.files))assert.equal(sha(fs.readFileSync(path.join(root,p))),h,p);
+ const e=JSON.parse(zlib.gunzipSync(fs.readFileSync(path.join(docs,"results/TECHNICAL_EVIDENCE.json.gz")))),buffers=[];let jsonBytes=0;
+ for(const row of e.boundaryStates){const p=A.encodeRaw(row.state),q=B.encodeRaw(row.state);assert.deepEqual(p,q);assert.deepEqual(A.decodeRaw(p),M.raw(row.state));assert.deepEqual(B.decodeRaw(q),M.raw(row.state));assert.equal(M.rawKey(A.decodeRaw(p)),row.id);buffers.push(p);jsonBytes+=Buffer.byteLength(M.stable(M.raw(row.state)));}
+ const packed=Buffer.concat(buffers);assert.ok(performance.now()-start<30000);assert.ok(process.resourceUsage().maxRSS*1024<=1073741824);
+ const result={technicalId:"RSMR-S0C-CODEC-2026-10-13-v1",kind:"KNOWN-TECHNICAL-BOUNDARY-RAW-CODEC-ROUNDTRIP",states:e.boundaryStates.length,bitsPerRaw:263,bytesPerRaw:33,
+  rawCanonicalJsonBytes:jsonBytes,rawPackedPayloadBytes:packed.length,payloadSha256:sha(packed),allIndependentRoundtripsEqual:true,rawIdentityChanged:false,reasonAndTurnEncoded:false,
+  inputManifestSha256:sha(fs.readFileSync(path.join(docs,"CODEC_MANIFEST.json"))),quotientOrSymmetryApplied:false,bfsIntegrated:false,resourceImprovementInScientificRunMeasured:false,newScientificSources:0,fullClosureRequirementChanged:false};return{result,packed};}
+if(require.main===module){const v=run();if(process.argv.includes("--check")){assert.deepEqual(v.result,JSON.parse(fs.readFileSync(path.join(docs,"results/CODEC_RESULT.json"))));assert.deepEqual(v.packed,fs.readFileSync(path.join(docs,"results/TECHNICAL_RAW.bin")));console.log("RAW-CODEC-TECHNICAL-ROUNDTRIP-PASS");}else if(process.argv.includes("--write")){fs.writeFileSync(path.join(docs,"results/CODEC_RESULT.json"),JSON.stringify(v.result,null,2)+"\n");fs.writeFileSync(path.join(docs,"results/TECHNICAL_RAW.bin"),v.packed);console.log(JSON.stringify(v.result));}}
+module.exports={run};

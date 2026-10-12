@@ -2,7 +2,7 @@
 
 更新日: 2026-09-29  
 対象: Research Generation 1〜5  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了・main統合済み。Research Generation 5はG5-05終了・完全閉包未供給・正式関係準備未成立・正式比較未登録/未実行**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了・main統合済み。Research Generation 5は方法技術合格・全閉包BFS統合前・正式関係準備未成立・正式比較未登録/未実行**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`または`FINAL_REPORT.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
@@ -417,3 +417,11 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 [G5-05報告](research-generation-5/g5-05/REPORT.md)で、新規64 sourceを一度だけ実行した結果を確定した。35構造適格代表の最初の8候補を固定して解析し、6領域は5000状態上限、2領域は別の合法枝のruntime guardで停止した。完全閉包0件で、8候補の勝敗価値差は未確定である。全64 source・513 screen・39354保存辺の独立検算と保存は合格した。原証拠は5cfe0f00629f65995a2d6be5889cebbe68bb8940、Actionsは38313556402 / attempt 1で保持する。
 
 5区画は全て消費済み、既読和集合は101691 RAW識別となった。構造差の供給と全解析未達を区別し、guardを自然敗北・無限反復へ変換しない。追加source・未解析27代表の補充・旧root延長・状態上限引上げ・retryをしない。次は[科学用遷移と解析方式の再評価](research-generation-5/g5-05/NEXT_RESEARCH.md)を先に行い、新しい区画を自動追加しない。正式関係は未登録・未実行、main・公開AIは未変更である。
+
+## 2026-10-13 — 科学用遷移・可逆保存の技術再評価
+
+[方法再評価](research-generation-5/method-review-20261013/README.md)で、runtime上限による勝者付与を外した研究用遷移の二実装を確認した。既知40fixtureの416状態・411遷移と全microstate列が一致し、上限1の技術例では自然停止する5手のruntime勝者と科学的未知を分離した。G5-05の実際のguard witnessを延長した結果ではない。
+
+422技術境界RAWの独立二codecは復号/旧RAW hashが一致し、符号化payloadは104660から13926 byteとなった。科学BFSの実資源改善は未測定である。[方法選択](research-generation-5/method-review-20261013/METHOD_DECISION.md)はguard-free遷移と可逆保存を全閉包BFSへ統合する技術検証を優先し、抽象戦略証明の採用は現行Programの全閉包要件との適合レビューへ留保する。新規科学sourceは0件、全閉包要件は保持する。
+
+旧101691状態と新技術RAW射影を合わせた保守的遮断集合は102329識別となる。中間状態を新候補・到達性証拠へ昇格させず、旧5区画・原記録を保持する。正式関係は未登録・未実行、main・公開AIは未変更。[再開位置](research-generation-5/method-review-20261013/RESUME_HERE.md)を参照する。

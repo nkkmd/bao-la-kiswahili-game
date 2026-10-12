@@ -1,0 +1,10 @@
+{
+ "technicalId":"RSMR-S0-TECHNICAL-2026-10-13-v1",
+ "ruleRevision":"BAO-RULES-V0.2.0-TAKASIA-001",
+ "knownFixtureDepth":2,"constructedFixtureDepth":1,"maxMicrostates":8192,
+ "diagnosticMicrostateCap":1,"diagnosticRuntimeRelayCap":1,
+ "maxTotalMs":60000,"maxRssBytes":1073741824,"maxEvidenceBytes":67108864,
+ "newScientificSourceGeneration":false,"newScientificSeedBlock":null,
+ "oldGuardWitnessExtension":false,"formalRelationRegistered":false,"fullClosureRequirementChanged":false,
+ "publicAiModification":false,"resumeAuthorized":false
+}

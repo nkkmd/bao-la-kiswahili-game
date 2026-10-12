@@ -1,0 +1,19 @@
+{
+  "technicalId": "RSMR-S0C-CODEC-2026-10-13-v1",
+  "kind": "KNOWN-TECHNICAL-BOUNDARY-RAW-CODEC-ROUNDTRIP",
+  "states": 422,
+  "bitsPerRaw": 263,
+  "bytesPerRaw": 33,
+  "rawCanonicalJsonBytes": 104660,
+  "rawPackedPayloadBytes": 13926,
+  "payloadSha256": "d6c8434653f1be12c4ef5a99924a5d4ead35f9f95bc26bffa4fc5f07d9f0f237",
+  "allIndependentRoundtripsEqual": true,
+  "rawIdentityChanged": false,
+  "reasonAndTurnEncoded": false,
+  "inputManifestSha256": "cf85435310afee08ced9f3c5b78e69b4a5d274bf2c06b727c7f44880ba76a0ad",
+  "quotientOrSymmetryApplied": false,
+  "bfsIntegrated": false,
+  "resourceImprovementInScientificRunMeasured": false,
+  "newScientificSources": 0,
+  "fullClosureRequirementChanged": false
+}
