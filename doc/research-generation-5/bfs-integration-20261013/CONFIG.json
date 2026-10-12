@@ -1,0 +1,20 @@
+{
+  "technicalId": "RCBI-S0-FIXTURE-2026-10-13-v1",
+  "ruleRevision": "BAO-RULES-V0.2.0-TAKASIA-001",
+  "fixtures": ["BAO-FORCED-WIN", "BAO-RELAY-CAP-1", "ABSTRACT-DIAMOND", "ABSTRACT-CYCLE", "ABSTRACT-MOVE-RECURRENCE", "ABSTRACT-ADMIN", "ABSTRACT-CHAIN-256", "ABSTRACT-CHAIN-1024", "ABSTRACT-STATE-LIMIT", "ABSTRACT-EDGE-LIMIT"],
+  "benchmarkFixtures": ["ABSTRACT-CHAIN-256", "ABSTRACT-CHAIN-1024"],
+  "benchmarkRepeats": 3,
+  "maxStates": 2048,
+  "maxEdges": 4096,
+  "maxMicrostates": 8192,
+  "maxDomainMs": 30000,
+  "maxTotalMs": 120000,
+  "maxRssBytes": 1073741824,
+  "maxOutputBytes": 16777216,
+  "newScientificSources": 0,
+  "scientificSeedBlock": null,
+  "oldGuardWitnessExtension": false,
+  "formalRelationRegistered": false,
+  "fullClosureRequirementChanged": false,
+  "scientificRunnerAuthorized": false
+}

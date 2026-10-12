@@ -1,0 +1,12 @@
+{
+  "technicalId": "RCBI-S0M-MEASUREMENT-2026-10-13-v1",
+  "files": {
+    "doc/research-generation-5/bfs-integration-20261013/CONFIG.json": "9e3d4d9fee353b3b314c573c634fb25a1307c1ea5f29cb5b6481fbf499938b44",
+    "doc/research-generation-5/bfs-integration-20261013/SOURCE_MANIFEST.json": "48e1e762f2a1fd9119db7bbab9d8620107408e7e07520e77140e4b3a058b1e53",
+    "doc/research-generation-5/bfs-integration-20261013/MEASUREMENT_SUPPLEMENT.md": "65e945042d00b9ddc8343dd707d3a81c4d35d46bfbc9b152dec345f825ac0ac9",
+    "doc/research-generation-5/bfs-integration-20261013/results/BENCHMARK.json": "80ce61ade5d8a55220feb9e6022778170bd82bef7382e84491cbffc1085e7a56",
+    "tools/research/g5-compact-bfs/rss-observer.cjs": "67d1f4b094a81289d81d1384a9a4c931749766aa31ecf0e3eb0051c9b947ecad",
+    "tools/research/g5-compact-bfs/measure-run.cjs": "43622cab9220e309996dfe3917a9fa68c6eef9170048ec8568c116cb12320abf",
+    "tools/research/g5-compact-bfs/benchmark.cjs": "d004a9c8a03c5fee0fc17b484da48c3729a3cc7f8875d773d6e0bfd44c0e4b64"
+  }
+}
