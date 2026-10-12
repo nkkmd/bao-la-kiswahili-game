@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "studyId": "MTCS-STUDY1",
+  "stageId": "MTCS-S1-SUPPLY-2026-10-12-v1",
+  "sourcePolicy": "MTCS-UNIFORM-CANONICAL-XORSHIFT32-v1",
+  "ruleRevision": "BAO-RULES-V0.2.0-TAKASIA-001",
+  "seedBlock": {
+    "start": 50412001,
+    "end": 50412128,
+    "count": 128
+  },
+  "maxCandidates": 8,
+  "selection": {
+    "minPly": 0,
+    "maxPly": 512,
+    "minWidth": 2,
+    "maxWidth": 8,
+    "maxOccupied": 32,
+    "maxSmallFront": 64,
+    "maxMicrostates": 8192,
+    "probeDepth": 4,
+    "probeMaxWidth": 8,
+    "excludedShortDepth": 2
+  },
+  "closure": {
+    "maxStates": 4681,
+    "maxEdges": 4680,
+    "maxDomainMs": 60000,
+    "maxMicrostates": 8192
+  },
+  "maxTotalMs": 900000,
+  "maxRssBytes": 1073741824,
+  "maxEvidenceBytes": 209715200,
+  "formalInference": false,
+  "publicAiModification": false,
+  "resumeAuthorized": false,
+  "overlapPolicy": "EXCLUDE-PRIOR-COMPLETE-BOUNDED-DOMAIN / GROUP-WITHIN-STUDY-DOMAINS"
+}

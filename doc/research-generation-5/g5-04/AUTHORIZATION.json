@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "studyId": "MTCS-STUDY1",
+  "stageId": "MTCS-S1-SUPPLY-2026-10-12-v1",
+  "decision": "AUTHORIZED-SUPPLY-ONCE",
+  "dateJST": "2026-10-12",
+  "basis": "User continuation after the closed G5-03 block; independent three-to-four-ply terminal-span supply fixed in CONTRACT.md and PREEXECUTION_REVIEW.md.",
+  "specSha256": "e023da503eb6b148db428aac4e744694fe5ae863ee52f3cfa5a4b8b7eda0d0b2",
+  "manifestSha256": "12d04e23cb9fecdd3571fcbbb5c29c1701eeba84db6edc925b30a4564a6c22ad",
+  "seedBlock": {
+    "start": 50412001,
+    "end": 50412128,
+    "count": 128
+  },
+  "formalInference": false,
+  "publicAiModification": false,
+  "sameBlockRerunAuthorized": false
+}

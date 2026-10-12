@@ -71,7 +71,7 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦が
 | 世代横断の今後の研究候補と、完了研究から引き継ぐ境界 | [研究アジェンダ](doc/FUTURE_RESEARCH_AGENDA.md) |
 | 現在の中心課題である第五世代の計画と供給診断の状態 | [第五世代研究](doc/research-generation-5/README.md) |
 
-第五世代は[G5-01](doc/research-generation-5/g5-01/README.md)の測定・独立遷移基盤を検証しました。開発診断は候補0件、[G5-02](doc/research-generation-5/g5-02/REPORT.md)は固定8候補が状態上限で未完となりました。続く[G5-03](doc/research-generation-5/g5-03/REPORT.md)では、全合法分岐が2手以内に自然終局する特殊層で8完全閉包を取得し、全解が独立一致しました。ただし全root内の全手は同じ勝敗価値・DTFで、価値損失が変わる事例はありません。正式な順位変動・価値損失の関係検証は未実施です。科学研究と公開AIの開発・改善は別に管理し、研究結果をそのまま公開AIへの採用や変更へ昇格しません。
+第五世代は[G5-01](doc/research-generation-5/g5-01/README.md)の測定・独立遷移基盤を検証しました。開発診断は候補0件、[G5-02](doc/research-generation-5/g5-02/REPORT.md)は固定8候補が状態上限で未完となりました。続く[G5-03](doc/research-generation-5/g5-03/REPORT.md)では、全合法分岐が2手以内に自然終局する特殊層で8完全閉包を取得し、全解が独立一致しました。ただし全root内の全手は同じ勝敗価値・DTFで、価値損失が変わる事例はありません。続いて[G5-04](doc/research-generation-5/g5-04/README.md)で、4手以内に自然終局し2手以内では閉じない層を事前設計します。正式な順位変動・価値損失の関係検証は未実施です。科学研究と公開AIの開発・改善は別に管理し、研究結果をそのまま公開AIへの採用や変更へ昇格しません。
 
 先攻・後攻差については、独立した[AI-GEN4追加研究](doc/first-player-gen4/FINAL_REPORT.md)の全17,768局と検証が完了し、mainへ統合済みです。公開expertの静的評価上位3手序盤では先攻有利、全合法手からの一様序盤では未確定でした。Bao一般の先後差は未確定とし、第五世代の個別Studyとは別に管理します。
 
