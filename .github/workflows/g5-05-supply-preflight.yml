@@ -1,0 +1,33 @@
+name: G5-05 Supply Preflight
+
+on:
+  push:
+    branches: [research/g5-05-mixed-reply-supply]
+    paths:
+      - 'tools/research/g5-05/**'
+      - 'test/g5-05-supply.test.cjs'
+      - 'doc/research-generation-5/g5-05/SPEC.json'
+      - 'doc/research-generation-5/g5-05/SOURCE_MANIFEST.json'
+      - 'doc/research-generation-5/g5-05/AUTHORIZATION.json'
+      - '.github/workflows/g5-05-supply*.yml'
+  pull_request:
+    paths:
+      - 'tools/research/g5-05/**'
+      - 'test/g5-05-supply.test.cjs'
+      - 'doc/research-generation-5/**'
+      - '.github/workflows/g5-05-supply*.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  technical-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Fixture-only supply preflight
+        run: node --test test/g5-05-supply.test.cjs

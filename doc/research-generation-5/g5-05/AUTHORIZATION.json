@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "studyId": "MRCS-STUDY1",
+  "stageId": "MRCS-S1-SUPPLY-2026-10-13-v1",
+  "decision": "AUTHORIZED-SUPPLY-ONCE",
+  "dateJST": "2026-10-13",
+  "basis": "2026-10-13のユーザー継続指示に基づく新規開発供給。正式関係の登録・検定・公開AI変更・main統合は含まない。",
+  "specSha256": "bae19b35a3e84cab7d3ea507d218a36bb9777f73a475532c59f687e9c5a36227",
+  "manifestSha256": "fa6c74983bef26168d23cdf13474b83481910f76ac29cf0db6977a3e09321d90",
+  "seedBlock": {
+    "start": 50513001,
+    "end": 50513064,
+    "count": 64
+  },
+  "formalInference": false,
+  "publicAiModification": false,
+  "sameBlockRerunAuthorized": false
+}
