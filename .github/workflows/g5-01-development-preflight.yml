@@ -1,0 +1,33 @@
+name: G5-01 Development Preflight
+
+on:
+  push:
+    branches: [research/g5-01-measurement-readiness]
+    paths:
+      - 'tools/research/g5-01/development/**'
+      - 'test/g5-01-development.test.cjs'
+      - 'doc/research-generation-5/g5-01/development/SPEC.json'
+      - 'doc/research-generation-5/g5-01/development/SOURCE_MANIFEST.json'
+      - 'doc/research-generation-5/g5-01/development/AUTHORIZATION.json'
+      - '.github/workflows/g5-01-development*.yml'
+  pull_request:
+    paths:
+      - 'tools/research/g5-01/development/**'
+      - 'test/g5-01-development.test.cjs'
+      - 'doc/research-generation-5/**'
+      - '.github/workflows/g5-01-development*.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  technical-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Fixture-only development preflight
+        run: node --test test/g5-01-development.test.cjs

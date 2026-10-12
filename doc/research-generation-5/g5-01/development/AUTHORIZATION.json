@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "studyId": "RRSVL-STUDY1",
+  "stageId": "RRSVL-S1-DEVELOPMENT-2026-10-12-v1",
+  "decision": "AUTHORIZED-DEVELOPMENT-ONCE",
+  "dateJST": "2026-10-12",
+  "basis": "User continuation instruction after independent transition technical pass; bounded source and exact-closure resource diagnosis fixed in CONTRACT.md and PREEXECUTION_REVIEW.md.",
+  "specSha256": "61cacc106fd8661720fdd2d8c8f765c913a8b2118cb91bc2c303fac40a5600c3",
+  "manifestSha256": "77af8acfd155495ff5291398097560ae7c054c2b94b759724640804952782772",
+  "seedBlock": {
+    "start": 50112001,
+    "end": 50112032,
+    "count": 32
+  },
+  "formalInference": false,
+  "publicAiModification": false,
+  "sameBlockRerunAuthorized": false
+}
