@@ -1,0 +1,14 @@
+{
+  "stateJournalRows": 43242,
+  "screensChecked": 513,
+  "screenTransitionsChecked": 1429,
+  "decision": "STAGE1-SUPPLY-INDEPENDENT-PASS",
+  "binding": "d5e65dd984548470c7d0dbac7913cad4cfa7f5532cf2bb7457d82818c01cbf0a",
+  "sourcesReplayed": 64,
+  "domainsChecked": 8,
+  "verifiedEdges": 39354,
+  "completeDomains": 0,
+  "freshSeedGenerationDuringVerification": 0,
+  "formalInference": false,
+  "evidenceGzipSha256": "be9ec19e16527d462d9e6581d6be3f985732d76780888ee41244b790bf07c0e6"
+}

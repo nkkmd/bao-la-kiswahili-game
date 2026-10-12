@@ -1,0 +1,18 @@
+{
+  "triggerCommit": "ad87177dc290bfc0d8c573c42b54fca5483c6b3e",
+  "sourceCommit": "ad87177dc290bfc0d8c573c42b54fca5483c6b3e",
+  "runId": "38313556402",
+  "runAttempt": "1",
+  "node": "v24.21.0",
+  "binding": "d5e65dd984548470c7d0dbac7913cad4cfa7f5532cf2bb7457d82818c01cbf0a",
+  "scientificSeedsRead": 64,
+  "sourcesSaved": 64,
+  "domainsSaved": 8,
+  "activeSource": null,
+  "activeDomain": null,
+  "rawEvidenceBytes": 44046133,
+  "stateJournalBytes": 14748261,
+  "combinedRawBytes": 58794394,
+  "complete": false,
+  "resumeAuthorized": false
+}

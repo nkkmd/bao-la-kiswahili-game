@@ -1,0 +1,582 @@
+{
+  "binding": "d5e65dd984548470c7d0dbac7913cad4cfa7f5532cf2bb7457d82818c01cbf0a",
+  "candidates": [
+    {
+      "sourceIndex": 1,
+      "state": {
+        "pits": [
+          [
+            [
+              1,
+              13,
+              6,
+              3,
+              6,
+              4,
+              1,
+              0
+            ],
+            [
+              3,
+              1,
+              2,
+              2,
+              0,
+              4,
+              3,
+              0
+            ]
+          ],
+          [
+            [
+              2,
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              2,
+              0,
+              4,
+              1,
+              2,
+              0,
+              2
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 0,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 57,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "raw": "59ed0f8860506bf0b3ea019a4c93466b727dc0cbabe0b0bc98926dca25bfaaaa",
+      "ply": 56,
+      "width": 3
+    },
+    {
+      "sourceIndex": 4,
+      "state": {
+        "pits": [
+          [
+            [
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              1
+            ],
+            [
+              0,
+              4,
+              0,
+              1,
+              6,
+              0,
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              4,
+              4,
+              6,
+              0,
+              1,
+              10,
+              1
+            ],
+            [
+              3,
+              1,
+              5,
+              0,
+              1,
+              5,
+              1,
+              5
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 70,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "raw": "7da48e3fd4e7b2d1f628b150f4ca8734664c1d4477273654185b404e32c3857a",
+      "ply": 69,
+      "width": 2
+    },
+    {
+      "sourceIndex": 5,
+      "state": {
+        "pits": [
+          [
+            [
+              1,
+              0,
+              5,
+              1,
+              1,
+              5,
+              3,
+              6
+            ],
+            [
+              0,
+              1,
+              1,
+              6,
+              2,
+              0,
+              2,
+              9
+            ]
+          ],
+          [
+            [
+              0,
+              1,
+              1,
+              1,
+              4,
+              3,
+              3,
+              1
+            ],
+            [
+              0,
+              1,
+              2,
+              1,
+              1,
+              0,
+              2,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 0,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 63,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "raw": "e156fe7e119c4b0d8fed5ebbc894a04f599f6d2e1c0dc8c753540833ee517617",
+      "ply": 62,
+      "width": 4
+    },
+    {
+      "sourceIndex": 6,
+      "state": {
+        "pits": [
+          [
+            [
+              1,
+              0,
+              2,
+              13,
+              0,
+              1,
+              3,
+              1
+            ],
+            [
+              2,
+              1,
+              7,
+              2,
+              1,
+              2,
+              4,
+              1
+            ]
+          ],
+          [
+            [
+              1,
+              1,
+              2,
+              0,
+              1,
+              1,
+              1,
+              0
+            ],
+            [
+              3,
+              0,
+              5,
+              1,
+              1,
+              3,
+              2,
+              1
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 0,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 57,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "raw": "7fcbd14be22f2fc18d1cdf18a6a420a22789cc9e3f1a221dd27248b3590dfff7",
+      "ply": 56,
+      "width": 4
+    },
+    {
+      "sourceIndex": 13,
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              1,
+              1,
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              0,
+              2,
+              0,
+              3,
+              0,
+              3
+            ]
+          ],
+          [
+            [
+              1,
+              9,
+              1,
+              8,
+              5,
+              4,
+              3,
+              1
+            ],
+            [
+              2,
+              1,
+              2,
+              0,
+              9,
+              5,
+              1,
+              0
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 54,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "raw": "daff61b9f8df74a2b7ac4545ced5f6bd5742f605c3b5bf93fbdf0d93957d8c9f",
+      "ply": 53,
+      "width": 4
+    },
+    {
+      "sourceIndex": 15,
+      "state": {
+        "pits": [
+          [
+            [
+              3,
+              7,
+              1,
+              6,
+              0,
+              6,
+              0,
+              1
+            ],
+            [
+              1,
+              0,
+              1,
+              2,
+              3,
+              0,
+              3,
+              0
+            ]
+          ],
+          [
+            [
+              2,
+              2,
+              3,
+              4,
+              1,
+              1,
+              0,
+              0
+            ],
+            [
+              1,
+              1,
+              0,
+              3,
+              2,
+              6,
+              3,
+              1
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 58,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "raw": "e7e791fb34559e40a4d5df55b0021d148d4d983fb00a56269a9c4f8cde5df798",
+      "ply": 57,
+      "width": 4
+    },
+    {
+      "sourceIndex": 16,
+      "state": {
+        "pits": [
+          [
+            [
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              1,
+              4
+            ],
+            [
+              2,
+              0,
+              3,
+              0,
+              5,
+              0,
+              5,
+              1
+            ]
+          ],
+          [
+            [
+              0,
+              2,
+              13,
+              1,
+              2,
+              4,
+              2,
+              1
+            ],
+            [
+              4,
+              2,
+              2,
+              1,
+              6,
+              1,
+              0,
+              1
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 64,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "raw": "19b7072cca1841a3d90be6bae1ca33c7a934032a6974e95939094992b0c42f2f",
+      "ply": 63,
+      "width": 3
+    },
+    {
+      "sourceIndex": 17,
+      "state": {
+        "pits": [
+          [
+            [
+              1,
+              1,
+              0,
+              1,
+              0,
+              1,
+              1,
+              3
+            ],
+            [
+              2,
+              2,
+              2,
+              1,
+              1,
+              1,
+              1,
+              2
+            ]
+          ],
+          [
+            [
+              0,
+              0,
+              8,
+              2,
+              1,
+              1,
+              3,
+              0
+            ],
+            [
+              2,
+              7,
+              7,
+              3,
+              0,
+              2,
+              6,
+              2
+            ]
+          ]
+        ],
+        "reserve": [
+          0,
+          0
+        ],
+        "houseOwned": [
+          false,
+          false
+        ],
+        "player": 1,
+        "phase": "mtaji",
+        "winner": null,
+        "reason": "",
+        "turn": 48,
+        "pending": [
+          0,
+          0
+        ],
+        "takasia": null
+      },
+      "raw": "4c4635785049f85b6649f71eb24ecf1d19ccb52f20848b3d6a9f8128a67898ab",
+      "ply": 47,
+      "width": 3
+    }
+  ],
+  "digest": "044660933ab36c6a8272c01ad3e31f33f2de011c13d806a904242f66034a24f5"
+}

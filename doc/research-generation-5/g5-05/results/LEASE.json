@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "studyId": "MRCS-STUDY1",
+  "stageId": "MRCS-S1-SUPPLY-2026-10-13-v1",
+  "binding": "d5e65dd984548470c7d0dbac7913cad4cfa7f5532cf2bb7457d82818c01cbf0a",
+  "seedBlock": {
+    "start": 50513001,
+    "end": 50513064,
+    "count": 64
+  },
+  "runId": 38313556402,
+  "runAttempt": 1,
+  "triggerCommit": "ad87177dc290bfc0d8c573c42b54fca5483c6b3e",
+  "frozenSourceCommit": "5788018db4cd596284f2118cab1e89322c27c141",
+  "acquiredBeforeFreshSeedRead": true,
+  "status": "CONSUMED-BLOCK / NO-RERUN",
+  "leaseCommit": "ee4da295807e298a5ccc381bbd9c5e9d6d2bfd56"
+}
