@@ -2,7 +2,7 @@
 
 更新日: 2026-09-29  
 対象: Research Generation 1〜5  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了・main統合済み。Research Generation 5はG5-01 Stage 1開発診断完了・候補0件・正式検証未実施**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了・main統合済み。Research Generation 5はG5-02供給診断完了・完全閉包0件・正式関係検証未実施**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`または`FINAL_REPORT.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
@@ -375,3 +375,7 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 ## 第五世代G5-02の供給診断
 
 [G5-02](research-generation-5/g5-02/README.md) / `RECSF-STUDY1` は新しい未使用32 sourceから、固定資源内で完全閉包が供給されるかを調べる独立Studyである。G5-01の候補0件を保持し、旧2094読取状態を除外して最大8候補を事前固定する。正式な順位変動・損失の関係検証は未実施である。
+
+## 2026-10-12追記 — G5-02の区画終了
+
+[G5-02最終報告](research-generation-5/g5-02/REPORT.md)では新規32 source、適格root16件、固定8候補を実行し、全8候補が状態5000上限で未完だった。完全閉包供給0件、保存40282辺の独立照合合格で、区画を消費済みとして終了した。供給診断完了を正式検証の適格領域確保へ昇格しない。[再開位置](research-generation-5/g5-02/RESUME_HERE.md)は別Studyの供給・資源設計を示す。正式関係検証と公開AI変更は未実施、main未統合である。

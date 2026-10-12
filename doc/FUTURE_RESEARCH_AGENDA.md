@@ -6,7 +6,7 @@ Version: 5.18.0
 Research Generation 2: **Closed (2026-08-31)**（完了）  
 Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了・統合済み）  
 Research Generation 4: **core G4-01〜G4-10 scientific agenda complete / G4-10 CLOSED NON-ESTIMABLE / main integrated**  
-Research Generation 5: **探索順位の変動と厳密価値損失のG5-01 Stage 1開発診断完了／候補0件／正式検証未実施**
+Research Generation 5: **G5-02の新規供給診断完了／8候補すべて状態上限／完全閉包0件／正式関係検証未実施**
 
 この文書は、今後の研究課題と、判断の前提となる完了済み研究を整理するものです。まず第1〜3節で現在地・優先課題・新規Studyの条件を確認し、第4〜7節で第一世代から第四世代までの記録を順に参照してください。候補として記載しただけでは、Study開始、seedアクセス、計算実行、公開AI変更は承認されません。
 
@@ -513,3 +513,7 @@ Fresh complete 0..10 prefixはG3-11 canonical exact prefixと一致し、integri
 ## 2026-10-12追記 — 独立した供給診断G5-02
 
 [G5-02](research-generation-5/g5-02/README.md) の契約を準備し、新しい32 sourceから幅2〜4のrootと最大8候補の完全閉包を調べる。旧区画を再開せず、供給成功も正式関係検証への認可も事前に仮定しない。旧G5-01の0候補と消費状態、公開AIの境界を保持する。
+
+## 2026-10-12追記 — G5-02の区画終了
+
+[G5-02最終報告](research-generation-5/g5-02/REPORT.md)では新規32 source、適格root16件、固定8候補を実行し、全8候補が状態5000上限で未完だった。完全閉包供給0件、保存40282辺の独立照合合格で、区画を消費済みとして終了した。供給診断完了を正式検証の適格領域確保へ昇格しない。[再開位置](research-generation-5/g5-02/RESUME_HERE.md)は別Studyの供給・資源設計を示す。正式関係検証と公開AI変更は未実施、main未統合である。
