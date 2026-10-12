@@ -1,18 +1,16 @@
 # 第五世代研究 — 再開位置
 
 更新日: 2026-10-12（日本時間）  
-安全な再開点: **Stage 1契約・実装準備済み／trigger登録前**
+安全な再開点: **Stage 1 v1終了・候補供給の新しい独立Study設計前**
 
 ## 次に進めること
 
-1. [現在の状態](CURRENT_STATUS.md)、[研究ログ](RESEARCH_LOG.md)、最新mainと研究ブランチを照合する。
-2. [G5-01の技術契約](g5-01/TECHNICAL_CONTRACT.md)、ソースmanifest、認可記録を確認する。
-3. [Stage 0報告](g5-01/STAGE_0_REPORT.md)と保存済みresult・verification・CI来歴を確認する。Stage 0は完了している。
-4. [独立遷移報告](g5-01/transition/REPORT.md)と保存済み結果・CI来歴を確認する。独立遷移の技術検証は合格済みである。
-5. [Stage 1開発契約](g5-01/development/CONTRACT.md)・ソースmanifest・認可・開発前テストを照合する。
-6. GitHub上のleaseと既存runを確認し、未実行の場合だけtriggerを登録する。leaseがある場合は同一区画を再実行しない。
-7. 正式検証の新規証拠を使う前に、source policy、RAW identity、重複遮断、seed、標本単位、閾値、資源上限、停止・復帰規則を固定する。
+1. [現在の状態](CURRENT_STATUS.md)と最新研究ブランチ・PR #181を照合する。
+2. [Stage 1報告](g5-01/development/REPORT.md)、保存済み要約・圧縮証拠・独立検算・消費lease・CI来歴を確認する。32 sourceの区画は消費済みで、再実行しない。
+3. 保存済み記録の検算や事後供給診断は許されるが、同じsourceから条件を緩めて候補を選び直さない。
+4. [新しい独立Studyの設計事項](g5-01/development/NEXT_RESEARCH.md)で、完全解析領域を供給する問いを具体化する。旧Studyの修復として再開しない。
+5. 新しいID、未使用source・区画、root層・選定順、全体と各候補の資源上限、重複遮断、独立照合、消費・保存・停止契約を新規証拠へアクセスする前に固定する。
 
-Stage 0は同じ既知fixtureの反復が許される技術確認である。正式科学実行の再実行・seed再読取・workflow起動を自動的に認可しない。G4-05固定8領域、G4-09未読namespace、G4-10の未完成層を新規の正式証拠に転用しない。
+Stage 0と独立遷移の技術合格は保持する。Stage 1の0候補は、完全解析可能な局面の不存在や、順位変動と損失の関係の不成立を示さない。正式検証は未承認・未実施である。
 
-研究の正式結論と公開AIの変更は別判断である。
+G4固定領域・保護namespace・depth-11部分層を新規正式証拠へ転用しない。研究と公開AIの変更は別判断である。

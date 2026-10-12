@@ -19,7 +19,7 @@
 python3 tools/research/g5-01/verify.py doc/research-generation-5/g5-01/results/stage-0/result.json
 ```
 
-新規局面、科学的seed、正式標本、正式検定の成果物はまだ存在しない。
+Stage 0完了時点では、新規局面、科学的seed、正式標本、正式検定の成果物は存在しなかった。
 
 ## 独立遷移の技術検証
 
@@ -29,4 +29,21 @@ python3 tools/research/g5-01/verify.py doc/research-generation-5/g5-01/results/s
 - [測定結果](g5-01/transition/results/result.json)・[Actions来歴](g5-01/transition/results/CI_RECEIPT.json)・[検証報告](g5-01/transition/REPORT.md)。
 - [ツールと再現コマンド](../../tools/research/g5-01/transition/README.md)。
 
-独立実装は依存モジュールをimportしない。固定fixture上の再測定は技術作業であり、未発行の開発seedを使用しない。
+独立実装は依存モジュールをimportしない。固定fixture上の再測定は技術作業であり、割当済みの開発区画を使用しない。
+
+## Stage 1開発診断
+
+- [固定契約](g5-01/development/CONTRACT.md)・[機械用契約](g5-01/development/SPEC.json)・[ソース固定](g5-01/development/SOURCE_MANIFEST.json)・[認可](g5-01/development/AUTHORIZATION.json)。
+- [run・lease・mirrorの来歴](g5-01/development/results/CI_RECEIPT.json)。
+- [実行要約](g5-01/development/results/RESULT.json)・[圧縮生記録](g5-01/development/results/EVIDENCE.json.gz)・[独立検算](g5-01/development/results/VERIFICATION.json)。
+- [消費journal](g5-01/development/results/SEED_READS.jsonl)・[候補固定](g5-01/development/results/CANDIDATES_FROZEN.json)。
+- [供給診断](g5-01/development/results/SUPPLY_DIAGNOSTIC.json)・[診断報告](g5-01/development/REPORT.md)。
+
+保存済み記録の検算と事後診断は、sourceを生成し直さず次で行う。実行時の32 seed区画は再使用しない。
+
+```bash
+node tools/research/g5-01/development/verify.cjs doc/research-generation-5/g5-01/development/results
+node tools/research/g5-01/development/diagnose-supply.cjs doc/research-generation-5/g5-01/development/results
+```
+
+現在はStage 1の開発source記録が存在する。新規閉包・厳密解・正式関係検定の成果物は存在しない。

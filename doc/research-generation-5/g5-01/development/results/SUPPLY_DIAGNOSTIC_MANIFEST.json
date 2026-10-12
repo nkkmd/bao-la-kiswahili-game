@@ -1,0 +1,11 @@
+{
+  "evidenceClass": "POSTEXECUTION-SUPPLY-DIAGNOSTIC-ONLY",
+  "originalEvidenceMirrorCommit": "f9d66df5998dd0be8570c2d855dcb89cd45c1bae",
+  "newSourceGeneration": 0,
+  "newCandidateSelection": 0,
+  "files": {
+    "tools/research/g5-01/development/diagnose-supply.cjs": "bb8b3a1dc60f3240d1d1ee1f539553ca7d36f583681b6876a13ba12ea6039e3f",
+    "doc/research-generation-5/g5-01/development/results/EVIDENCE.json.gz": "7c950ba4439075e4c96b24e3f72b01542615576352e47262054a7646c0a655c5",
+    "doc/research-generation-5/g5-01/development/results/SUPPLY_DIAGNOSTIC.json": "2440da356e068d1f8d20203dac755e6abd2da473e318bc44ae93a361ee5e34a9"
+  }
+}

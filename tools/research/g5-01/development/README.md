@@ -15,3 +15,5 @@ node tools/research/g5-01/development/verify.cjs doc/research-generation-5/g5-01
 ```
 
 新規実行は一度だけのtrigger commitを使用する。既存leaseやrun attempt 2以降ではseed読取前に拒否する。中断時の再実行・候補置換・区画追加による救済は行わない。
+
+区画の新規実行は完了している。保存済みsourceの供給条件を説明する事後診断は、`node tools/research/g5-01/development/diagnose-supply.cjs doc/research-generation-5/g5-01/development/results` で再現する。これは元の選定結果を変更しない。
