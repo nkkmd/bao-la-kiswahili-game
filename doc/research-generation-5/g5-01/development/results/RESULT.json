@@ -1,0 +1,34 @@
+{
+  "disposition": "STAGE1-DEVELOPMENT-COMPLETE",
+  "failure": null,
+  "studyId": "RRSVL-STUDY1",
+  "stageId": "RRSVL-S1-DEVELOPMENT-2026-10-12-v1",
+  "binding": "523a4a79a6d868cbbbe6ef34dabff7f6383db1a0b7e102d649d289fc78e066cc",
+  "seedBlock": {
+    "start": 50112001,
+    "end": 50112032,
+    "count": 32
+  },
+  "scientificSeedsRead": 32,
+  "sourceCount": 32,
+  "sourceStops": {
+    "TERMINAL-BEFORE-CANDIDATE": 32
+  },
+  "candidateCount": 0,
+  "completeDomains": 0,
+  "domainStatuses": [],
+  "domainGroups": [],
+  "evidenceGzipSha256": "7c950ba4439075e4c96b24e3f72b01542615576352e47262054a7646c0a655c5",
+  "developmentIdentityCount": 2094,
+  "formalInference": false,
+  "publicAiChanged": false,
+  "execution": {
+    "triggerCommit": "518453bba351c2494287ca722f9f987663884993",
+    "sourceCommit": "518453bba351c2494287ca722f9f987663884993",
+    "runId": "38234120711",
+    "runAttempt": "1",
+    "node": "v24.21.0",
+    "elapsedMs": 1471,
+    "peakRssBytes": 86904832
+  }
+}
