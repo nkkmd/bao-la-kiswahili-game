@@ -1,12 +1,12 @@
 # Bao今後の研究アジェンダ
 
-Version: 5.15.0
+Version: 5.16.0
 
-更新日: 2026-09-29  
+更新日: 2026-10-12（日本時間）  
 Research Generation 2: **Closed (2026-08-31)**（完了）  
 Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了・統合済み）  
 Research Generation 4: **core G4-01〜G4-10 scientific agenda complete / G4-10 CLOSED NON-ESTIMABLE / main integrated**  
-Research Generation 5: **探索順位の変動と厳密価値損失の研究計画作成済み／個別Study未認可**
+Research Generation 5: **探索順位の変動と厳密価値損失のG5-01技術準備に着手／新規証拠の科学実行は未開始**
 
 この文書は、今後の研究課題と、判断の前提となる完了済み研究を整理するものです。まず第1〜3節で現在地・優先課題・新規Studyの条件を確認し、第4〜7節で第一世代から第四世代までの記録を順に参照してください。候補として記載しただけでは、Study開始、seedアクセス、計算実行、公開AI変更は承認されません。
 
@@ -34,7 +34,7 @@ G4-08 = CLOSED / STAGE2-FORMAL-COMPLETE / 24-OF-24 NON-ESTIMABLE / MAIN INTEGRAT
 G4-09 = CLOSED / MODULE-A-NOT-ELIGIBLE-FOR-FORMAL-HOLDOUT / MODULE-B-FIXED8-EXACT-CENSUS-COMPLETE / MAIN INTEGRATED
 G4-10 = CLOSED / NON-ESTIMABLE / UNIQUE_STATE_CAP / MAIN INTEGRATED
 RG4 core G4-01..G4-10 scientific agenda = COMPLETE
-Research Generation 5 = PLAN CREATED / INDIVIDUAL STUDIES NOT AUTHORIZED / SCIENTIFIC RESULTS NONE
+Research Generation 5 = G5-01 STAGE0 TECHNICAL PREPARATION / FRESH SCIENTIFIC EXECUTION NOT STARTED / SCIENTIFIC RESULTS NONE
 G4-10 same-evidence rerun = NOT AUTHORIZED
 G4-10 depth 12 = NOT AUTHORIZED
 G4-10 main integration = COMPLETE / FAST-FORWARD
@@ -50,7 +50,7 @@ G4-10 main integration = COMPLETE / FAST-FORWARD
 
 [第五世代研究計画](research-generation-5/PROGRAM_PLAN.md)を作成しました。探索条件による手の順位変動が、完全解析できる新規局面における選択手の厳密価値損失と結び付くかを調べます。順位変動、着手変更、厳密最適集合からの逸脱、同価値の手の入替えを分離し、局面段階・合法手幅・解析領域による成立範囲を検証します。
 
-これはG4-03の順位変動の結果を悪手の証明へ読み替えるものではありません。G4-05・G4-09の固定8領域、G4-09の未読namespace、G4-10の未完成depth-11を新しい正式証拠へ転用しません。[現在の状態](research-generation-5/CURRENT_STATUS.md)は計画作成済み・個別Study未認可であり、正式Study IDやseed・閾値・資源上限は未固定です。科学実行と公開AIの変更は本計画では承認しません。
+これはG4-03の順位変動の結果を悪手の証明へ読み替えるものではありません。G4-05・G4-09の固定8領域、G4-09の未読namespace、G4-10の未完成depth-11を新しい正式証拠へ転用しません。[現在の状態](research-generation-5/CURRENT_STATUS.md)は2026-10-12に[G5-01技術準備](research-generation-5/g5-01/README.md)へ着手しました。Stage 0のID・既知fixture・資源上限を固定しましたが、新規証拠の科学実行、科学的seed・閾値・新規領域の資源上限は未確定です。公開AIの変更は別判断です。
 
 ### 2.2 G4-09・G4-10終了後の次研究境界
 
@@ -483,7 +483,7 @@ Fresh complete 0..10 prefixはG3-11 canonical exact prefixと一致し、integri
 4. **[完了] 第三世代のlocal game-tree geometryのbounded measurement**
 5. **[完了] 第四世代のcore G4-01〜G4-10 — 各終了判断を保持してmain統合済み。G4-10は`NON-ESTIMABLE`で閉じた**
 6. **[独立・未承認] G4-H01によるqualified human / expert evidenceの収集**
-7. **[計画作成済み・個別Study未認可] [第五世代研究](research-generation-5/README.md) — 順位変動と厳密価値損失の関係を新規の完全解析可能な局面で検証する**
+7. **[G5-01技術準備に着手・科学実行未開始] [第五世代研究](research-generation-5/README.md) — 順位変動と厳密価値損失の関係を新規の完全解析可能な局面で検証する**
 
 ## 9. 研究と公開AI改善の分離
 

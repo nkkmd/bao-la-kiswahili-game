@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "studyId": "RRSVL-STUDY1",
+  "stageId": "RRSVL-S0-TECHNICAL-2026-10-12-v1",
+  "dateJST": "2026-10-12",
+  "decision": "AUTHORIZED-TECHNICAL-ONLY",
+  "authorizationBasis": "User instruction on 2026-10-12 to start fifth-generation research and advance the initial process; bounded technical scope concretized in PREEXECUTION_REVIEW.md.",
+  "reviewBy": "PRIMARY-AGENT / NO-DELEGATION",
+  "specSha256": "ccef14cda1e4043b853b452f6972e4998d7bcc2efbb3c303f760664c95e1ef2e",
+  "manifestSha256": "7f160cb798e4dfae4bb8faf005a7e9a29b5d9bb47d284047ed3deca2f7492cbe",
+  "freshScientificEvidenceAccess": false,
+  "formalInference": false,
+  "publicAiModification": false,
+  "laterStageExecution": "NOT-AUTHORIZED-NOT-EXECUTED"
+}

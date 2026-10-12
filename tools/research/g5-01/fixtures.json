@@ -1,0 +1,26 @@
+{
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "graph": [
+    {"id":"R","player":0,"winner":null,"moves":[{"key":"a","to":"T0"},{"key":"b","to":"B"},{"key":"c","to":"T1"}]},
+    {"id":"B","player":1,"winner":null,"moves":[{"key":"bc","to":"C"}]},
+    {"id":"C","player":0,"winner":null,"moves":[{"key":"ct","to":"T0"}]},
+    {"id":"T0","player":1,"winner":0,"moves":[]},
+    {"id":"T1","player":0,"winner":1,"moves":[]},
+    {"id":"L","player":0,"winner":null,"moves":[{"key":"a","to":"T1"},{"key":"b","to":"D"}]},
+    {"id":"D","player":1,"winner":null,"moves":[{"key":"dt","to":"T1"}]},
+    {"id":"X","player":0,"winner":null,"moves":[{"key":"xy","to":"Y"}]},
+    {"id":"Y","player":1,"winner":null,"moves":[{"key":"yx","to":"X"}]},
+    {"id":"M","player":0,"winner":null,"moves":[{"key":"a","to":"T0"},{"key":"b","to":"X"}]}
+  ],
+  "semanticCases": [
+    {"id":"stable-loss","root":"R","a":[0,1,2],"b":[0,1,2],"expectedRankingChanged":false,"expectedSelectedChanged":false,"expectedLossA":2,"expectedLossB":2},
+    {"id":"same-value-switch","root":"R","a":[3,2,0],"b":[2,3,0],"expectedRankingChanged":true,"expectedSelectedChanged":true,"expectedLossA":0,"expectedLossB":0},
+    {"id":"lower-rank-change","root":"R","a":[3,2,0],"b":[3,0,2],"expectedRankingChanged":true,"expectedSelectedChanged":false,"expectedLossA":0,"expectedLossB":0},
+    {"id":"winner-to-loser","root":"R","a":[3,2,0],"b":[0,2,3],"expectedRankingChanged":true,"expectedSelectedChanged":true,"expectedLossA":0,"expectedLossB":2},
+    {"id":"tie-break","root":"R","a":[3,3,0],"b":[3,3,0],"expectedRankingChanged":false,"expectedSelectedChanged":false,"expectedLossA":0,"expectedLossB":0},
+    {"id":"tie-relation-change","root":"R","a":[3,3,0],"b":[3,2,0],"expectedRankingChanged":true,"expectedSelectedChanged":false,"expectedLossA":0,"expectedLossB":0},
+    {"id":"loss-delay-only","root":"L","a":[2,1],"b":[1,2],"expectedRankingChanged":true,"expectedSelectedChanged":true,"expectedLossA":0,"expectedLossB":0},
+    {"id":"recurrent","root":"X","a":[1],"b":[1],"expectedRankingChanged":false,"expectedSelectedChanged":false,"expectedLossA":null,"expectedLossB":null},
+    {"id":"winning-root-unresolved-child","root":"M","a":[2,1],"b":[1,2],"expectedRankingChanged":true,"expectedSelectedChanged":true,"expectedLossA":null,"expectedLossB":null}
+  ]
+}
