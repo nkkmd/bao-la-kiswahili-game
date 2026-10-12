@@ -2,7 +2,7 @@
 
 更新日: 2026-09-29  
 対象: Research Generation 1〜5  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了・main統合済み。Research Generation 5は全閉包BFS fixture統合合格・新規供給登録前・正式関係準備未成立・正式比較未登録/未実行**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了・main統合済み。Research Generation 5は全閉包BFS fixture統合合格・新供給Study設計案・未登録/未実行・正式関係準備未成立・正式比較未登録/未実行**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`または`FINAL_REPORT.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 

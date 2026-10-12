@@ -1,15 +1,15 @@
 # 第五世代研究 — 再開位置
 
 更新日: 2026-10-13（日本時間）  
-安全な再開点: **全閉包BFS統合のfixture技術合格・新規供給登録前**
+安全な再開点: **BEFCS-STUDY1供給設計案・未登録・未実行**
 
 ## 次に進めること
 
-1. [BFS統合報告](bfs-integration-20261013/REPORT.md)を読む。既知Baoの3状態・2辺と固定抽象例で独立走査/復元/解が一致した。
-2. [次の登録条件](bfs-integration-20261013/RESUME_HERE.md)に沿って、別Studyの新規区画・source/代表選択・全閉包・未知・総資源/保存・検算・一度限りleaseを具体化する。科学sourceを自動起動しない。
-3. 原Programの全閉包要件を保つ。有限戦略証明を代用せず、技術fixtureや開発証拠を正式holdoutへ昇格しない。
-4. 旧5区画と技術/抽象RAWを含む103355遮断識別を保持する。旧8候補・27未解析代表・2 guard witnessを延長しない。
-5. 正式関係は未登録・未実行、主指標は勝敗価値損失のままである。mainと公開AIを変更しない。
+1. [BEFCS-STUDY1提案](branch-envelope-20261013/PROPOSAL.md)と[実行前レビュー](branch-envelope-20261013/PREEXECUTION_REVIEW.md)を基準に、別source実装とsourceを読まないfixture preflightを進める。
+2. 103355件の保守的既読RAW遮断をroot・全screen応手・閉包境界へ適用し、候補/閉包からの差替えを禁止する。抽象fixtureはBao候補や到達性証拠に使わない。
+3. 10,000状態・128,000辺・180秒/領域、全体20分・1 GiB・256 MiB、16 MiB reserveとgzip分割条件をfixtureで検算する。
+4. 全合法手の完全閉包、未知と停止witnessの保持、独立source/edge再生、一度限りleaseとattempt 1の条件を別途固定する。正式登録やseed読取はこの設計案から自動的に行わない。
+5. [BFS統合報告](bfs-integration-20261013/REPORT.md)は既知Bao 3状態・2辺と抽象fixtureの技術検証として参照し、科学的な新規領域の供給証拠へ昇格させない。
 
 Stage 0と独立遷移の技術合格は保持する。Stage 1の0候補は、完全解析可能な局面の不存在や、順位変動と損失の関係の不成立を示さない。正式検証は未承認・未実施である。
 
@@ -79,3 +79,10 @@ G4固定領域・保護namespace・depth-11部分層を新規正式証拠へ転�
 1024状態の抽象例でjournal込み保存は4363460から3988337 byteとなったが、科学BFSの資源改善や新規完全領域を確認した結果ではない。初回RSSの全同値も保持し、Linux補助計測を別契約で保存した。新規科学source/seed/候補・旧witness延長は0件である。
 
 保守的遮断は103355 RAW識別となった。全閉包要件と正式関係未登録/未実行を保ち、次は[別Studyの登録条件](bfs-integration-20261013/RESUME_HERE.md)を具体化する。旧区画を救済・補充せず、技術合格から科学sourceを自動起動しない。main・公開AIは未変更である。
+
+
+## 2026-10-13 — 分岐包絡による新しい供給Studyの設計案
+
+[BEFCS-STUDY1提案](branch-envelope-20261013/README.md)は、G5-05のroot・27代表・seedを延長しない新しい有限開発案である。fresh trajectoryで最初の適格rootを選び、各root子の応手数合計を16以下に事前制限する。提案seed範囲`50613001..50613128`は空き照合のみで、未予約・未消費。10k状態/128k辺/180秒、全体20分・1 GiB・256 MiBと保存reserveを提示するが、新規Baoの完全閉包量や供給成功を保証しない。
+
+状態はPROPOSAL-NOT-REGISTRATION-NOT-EXECUTEDで、seed消費0・leaseなし・source未固定・実行未認可。次は別source実装とfixture preflight、独立候補/閉包検算、保存上限testを行い、条件が揃うまで区画を開始しない。固定有限コーパスにIID/一般局面の推論を適用せず、主要関係は未登録・未実行、DTFへ差し替えない。旧記録、main、公開AIを保持する。

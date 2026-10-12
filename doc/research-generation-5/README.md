@@ -12,7 +12,7 @@
 
 ## 現在の位置
 
-2026-10-12のユーザーの着手指示に基づき、[G5-01](g5-01/README.md) / `RRSVL-STUDY1` のStage 0技術契約を固定した。現行takasiaルールのRAW識別と、既知fixture限定の順位・価値損失測定、独立検算、中断復帰を確認し、ローカル・ActionsでStage 0技術検証が合格した。続く[独立遷移の技術検証](g5-01/transition/REPORT.md)も固定40局面・411辺で合格し、[新規局面の開発診断設計](g5-01/DEVELOPMENT_PLAN.md)を具体化した。その後、[Stage 1開発診断](g5-01/development/REPORT.md)で32 sourceを一度だけ実行し、独立再生・保存まで完了したが、固定した占有穴数条件で候補は0件だった。本区画は消費済みとして閉じ、正式な順位変動・損失検証は未承認・未実施である。次は[新しい独立Studyの設計](g5-01/development/NEXT_RESEARCH.md)で解析領域の供給を検討する。
+2026-10-13時点では、全閉包BFSの固定fixture技術検証を終え、[BEFCS-STUDY1の分岐包絡供給案](branch-envelope-20261013/README.md)をレビュー可能な提案として作成した。提案は未登録・未実行で、seed消費0、leaseなし、source未固定、実行未認可である。次工程はsource実装、既読RAW遮断を含む独立fixture検算、資源・保存上限のpreflightであり、この提案自体から科学sourceを起動しない。
 
 研究の結果が確認・非確認・推定不能のいずれでも、あらかじめ定める終了条件で研究として閉じる。公開AIの採用、勝率、応答時間は本研究の評価指標にしない。
 
@@ -89,3 +89,10 @@
 1024状態の抽象例でjournal込み保存は4363460から3988337 byteとなったが、科学BFSの資源改善や新規完全領域を確認した結果ではない。初回RSSの全同値も保持し、Linux補助計測を別契約で保存した。新規科学source/seed/候補・旧witness延長は0件である。
 
 保守的遮断は103355 RAW識別となった。全閉包要件と正式関係未登録/未実行を保ち、次は[別Studyの登録条件](bfs-integration-20261013/RESUME_HERE.md)を具体化する。旧区画を救済・補充せず、技術合格から科学sourceを自動起動しない。main・公開AIは未変更である。
+
+
+## 2026-10-13 — 分岐包絡による新しい供給Studyの設計案
+
+[BEFCS-STUDY1提案](branch-envelope-20261013/README.md)は、G5-05のroot・27代表・seedを延長しない新しい有限開発案である。fresh trajectoryで最初の適格rootを選び、各root子の応手数合計を16以下に事前制限する。提案seed範囲`50613001..50613128`は空き照合のみで、未予約・未消費。10k状態/128k辺/180秒、全体20分・1 GiB・256 MiBと保存reserveを提示するが、新規Baoの完全閉包量や供給成功を保証しない。
+
+状態はPROPOSAL-NOT-REGISTRATION-NOT-EXECUTEDで、seed消費0・leaseなし・source未固定・実行未認可。次は別source実装とfixture preflight、独立候補/閉包検算、保存上限testを行い、条件が揃うまで区画を開始しない。固定有限コーパスにIID/一般局面の推論を適用せず、主要関係は未登録・未実行、DTFへ差し替えない。旧記録、main、公開AIを保持する。
