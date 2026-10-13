@@ -7,3 +7,5 @@
 新規6検査＋既存joined4＋pipeline5の計15検査が合格した。旧実行入力・保護入力を変更せず、新規入力とlocal結果・取得CI結果は別bindingへ固定する。通信不明時の未ACK、checkpointのnull、期限後診断保存、未完mirrorを補完しない。科学seed0・leaseなし・未登録/未実行、全閉包・未知・救済禁止とmain/公開AI未変更を保持する。
 
 初回は10 Markdownを監査し、上記違反と相対リンク切れは各0件。local正常128 source/1閉包と応答抑止の停止保存が合格し、2265入力・2250保護入力を照合した。日本語品質ゲートはPASS。実Git/cgroup CIは結果取得まで未確定とする。
+
+第2版ではV2_REVISIONを追加した計11 Markdownを同じ基準で確認する。第1版の回収EACCESと入力snapshotを保持し、回収tmpの所有者だけを修正した。科学seed・予算・区画・原結果を変更していない。

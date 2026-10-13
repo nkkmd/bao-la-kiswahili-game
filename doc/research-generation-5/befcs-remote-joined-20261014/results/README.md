@@ -7,3 +7,5 @@ local正常caseは128 ACK・146 commit・全128 sourceの独立一致・1候補/
 実Git/cgroup結果は5 matrix jobのartifactから取得後に別保存する。通常の128 source完成、host OOM、応答抑止の未ACK、30秒期限prefix、最終mirror通信拒否を区別する。CI receipt・ZIP digest・member hash・raw bundle・resource/stopを確認するまで実結合の合格を主張しない。
 
 科学seed0・科学leaseなし・BEFCS-STUDY1未登録/未実行、103355遮断・全閉包・未知・救済禁止・正式関係未登録/未実行、main/公開AI未変更を維持する。
+
+第1版の期限回収EACCESはV1_DEADLINE_FAILURE、14実装入力はV1_SOURCE_SNAPSHOTへ保持した。原SOURCE_MANIFEST・PROTECTED_INPUTS・local出力は変更せず、修正後入力はSOURCE_MANIFEST_V2へ別固定する。[第2版の変更](../V2_REVISION.md)を参照する。
