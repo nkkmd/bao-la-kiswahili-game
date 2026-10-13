@@ -1,0 +1,22 @@
+{
+  "headCommit": "8d7bf5f75fa228422a748a983e821433d2c74965",
+  "sourceManifestSha256": "e1faafb6b1762f9acc8fef82ca7e089f86f92e64f225c7405da9a43266993276",
+  "runId": 38352152608,
+  "runAttempt": 1,
+  "jobId": 115146737637,
+  "jobConclusion": "failure",
+  "scenarioPipeline": "ALL-EIGHT-REAL-CGROUP-SCENARIOS-PASS",
+  "failure": "EACCES-DURING-ROOT-OWNED-TEMPORARY-CLEANUP",
+  "capacityStep": "skipped",
+  "artifactId": 11790189723,
+  "artifactZipSha256": "8cf64f19571b52174bd0ee07fb1438fd34eaf51fff94307b6eee316659381299",
+  "artifactArchiveHashVerified": true,
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false,
+  "scientificExecutionAuthorized": false,
+  "files": {
+    "doc/research-generation-5/befcs-workload-20261013/results/CI_CGROUP_V1_RESULT.json": "8f4a725a37941debd57935d0ec27cdde7e85ae113450866e1f3ffd9e1b482b69",
+    "doc/research-generation-5/befcs-workload-20261013/results/CI_CGROUP_V1_EVIDENCE.json.gz": "69e3533f3c490aca9e152cb07a37ec6aed4abecfd307ac2dceae98ae39faf791"
+  }
+}

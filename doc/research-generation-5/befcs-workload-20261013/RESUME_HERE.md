@@ -9,3 +9,7 @@
 5. 全条件成立後にだけ、全128 sourceのleaseを永続確保し、各PRNG初期化前のconsumeとattempt 1固定の別triggerで一度だけ実行する。既存byteの再検算は許容するが、科学生成の再起動はしない。
 
 BEFCS-STUDY1、BEFCS-S1-SUPPLY-2026-10-13-v1、seed案50613001..50613128は未予約・未消費。最大8候補、ply 48以後の第一適格root、103355件遮断、全合法手完全閉包、不足/0/停止時の追加・差替え・上限引上げ・retry禁止を保持する。未知をDRAW・0・敗北へ変換しない。正式関係未登録/未実行、主課題の勝敗価値損失、main・公開AI未変更を維持する。継続指示は有効であり、追加のユーザー認可を求めるために停止したものではない。
+
+## 第2版の照合対象
+
+第1版の後片付けfailureを保持し、現行は[第2版契約](TECHNICAL_CONTRACT_V2.md)、[第2版入力](SOURCE_MANIFEST_V2.json)、[第2版保護入力](PROTECTED_INPUTS_V2.json)、[第2版出力binding](OUTPUT_BINDING_V2.json)、[第2版結果](results-v2/README.md)を照合する。CLIは第2版が存在する場合にそちらを選ぶ。科学用host接続と最終科学freezeの未完条件は変わらない。

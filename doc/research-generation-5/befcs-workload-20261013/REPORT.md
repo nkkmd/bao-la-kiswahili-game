@@ -23,3 +23,7 @@ marker後にworkerが停止した場合、実際の保存済みsource読取り�
 実1 GiB cgroupで本pipelineの8ケースを再実行するCIを用意した。そのreceiptは確認後に別記録へ固定する。先行OOM smokeの合格を全workloadのcgroup合格へ読み替えない。
 
 元の584保護入力と追加運用記録の計614入力をhashで保持する。103355件の既読遮断、全合法手閉包、科学seed消費0、科学leaseなし、科学Study未登録/未実行、主課題の勝敗価値損失を維持した。正式関係は未登録/未実行で、mainと公開AIは未変更である。
+
+## 実cgroupと第2版
+
+実1 GiB全8シナリオは通過したが、root所有temporaryの削除で第1版jobが失敗した。[CI失敗記録](CI_FAILURE_CONFIRMATION_V1.md)と原記録を保持する。第2版ではhost UID/GIDをcontainerへ指定し、SOURCE_MANIFEST_V2・PROTECTED_INPUTS_V2とresults-v2へ別固定する。623保護入力に元の584入力、第1版機械原記録と取得したCI証拠を含める。後片付けと共有容量stepを含む全CIの完了を確認するまで合格を宣言しない。

@@ -13,3 +13,7 @@ node tools/research/g5-befcs-workload/run.cjs --check
 Actionsの`--ci-live`は固定技術byteの128件再生と固定抽象閉包8件を実1 GiB cgroupで反復する。論理番号は隔離された技術registryにだけ使用し、科学seedを読まない。host mirrorと独立registry検算の資源は科学workerのcgroup外にあり、別に報告する。科学trajectoryを生成する入口は最終freeze不在で拒否する。
 
 blob再利用版の独立履歴検算は主registryをimportせず、各新mirrorのcommit tree・blob SHA・file hashを照合する。一度一致したblobだけを再利用し、元の137 commitの結果とも一致した。保存mirrorから復元する際にも内容hashを確認する。
+
+## 第2版と原記録の保持
+
+CLIの現行入力はSOURCE_MANIFEST_V2・PROTECTED_INPUTS_V2、現行出力はOUTPUT_BINDING_V2とresults-v2である。第1版の6機械原記録・契約・取得CI証拠を第2版の保護入力へ含める。第1版source freezeはcommit 8d7bf5で復元できる。旧結果に現在の修正コードのhashを付け直さない。

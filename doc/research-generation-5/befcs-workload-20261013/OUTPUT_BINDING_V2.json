@@ -1,0 +1,8 @@
+{
+  "technicalId": "BEFCS-SAVED-WORKLOAD-2026-10-13-v2",
+  "files": {
+    "doc/research-generation-5/befcs-workload-20261013/results-v2/RESULT.json": "3d97f437488995400a1a1a9f77873a98706f3ad624642f9cafe3bc0372014a8d",
+    "doc/research-generation-5/befcs-workload-20261013/results-v2/TECHNICAL_EVIDENCE.json.gz": "44710b7966b33fdc5bd3b70d84601e91e4fe3c015df24fc1cdb7e263964462c7",
+    "doc/research-generation-5/befcs-workload-20261013/results/CI_FAILURE_RECEIPT_V1.json": "8b484912d8f641c758952fec6e82ae55dce36dba6bc785e612c29b5f9e4693ad"
+  }
+}

@@ -21,3 +21,7 @@
 次要求が既に存在するという追加assertionは、workerが直前のACK対象を再生中の競合窓で14/15不一致となった。直前処理中と次要求待ちを区別し、失敗後の新しい番号にACKがないことを検査する形へ修正した。mirror cadenceは次markerの発行後の数を見込んで先に判定し、source終了後も時間間隔で更新する。
 
 時間間隔のmirrorを結合した版ではregistry metadataが1 MiBを超え、Gitのstdout読取りが既定maxBufferでENOBUFS停止した。契約上の16 MiB上限より先に止まる実装境界であり、旧運用moduleを変更せず、新しいregistry/独立読取りを16 MiBの契約上限へ整合させた。書込み前のmetadata全byte上限も保持する。
+
+## 実cgroupの後片付けと第2版freeze
+
+第1版CIは全8実1 GiBシナリオを通過したが、root所有の一時directoryをhost UIDで削除できずEACCES failureとなった。artifact digestと全圧縮証拠を確認し、failure receiptを別保存した。host UID/GIDを指定する修正を第2版のmanifest・契約・結果へ別固定し、第1版の機械原記録を保持する。科学区画は未登録・未予約・未消費のままである。
