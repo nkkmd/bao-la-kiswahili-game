@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "sourceHead": "55ccd6d62258a3f4289f1ff428c90a0a4502451b",
+  "sourceTree": "811ea5630f071d68c1c7ff3f5cf49d266b0c53cb",
+  "runId": 38410462042,
+  "jobId": 115341127054,
+  "status": "IN_PROGRESS",
+  "evidenceClass": "TECHNICAL-JOINED-WORKLOAD-FIXTURE",
+  "scientificSeedsRead": 0,
+  "sourceManifestSha256": "b3796f515e1672fd0e97d09dce856698f0cc677c85576295f1ab23ec09732086",
+  "note": "初回実行の最終状態はCIから追記する。次版では反復cgroup.kill書込みのoffset 0を明示する。"
+}

@@ -1,0 +1,13 @@
+{
+  "evidenceClass": "TECHNICAL-JOINED-WORKLOAD-FIXTURE",
+  "scientificSeedsRead": 0,
+  "files": {
+    ".github/workflows/g5-befcs-joined-preflight.yml": "ac02085ddc30de95d0deed711ddcf2a41e9b8bc4c76e01c939e0d0cd37937de0",
+    "test/g5-befcs-joined.test.cjs": "862f28ae072226c8616d6391c7fe27357be5eabfd0c75306e4019964e7926126",
+    "tools/research/g5-befcs-joined/bootstrap.cjs": "801e04c1104a26f05a1400759cce0f676da90a983e85be71abaa872175310e09",
+    "tools/research/g5-befcs-joined/host.cjs": "7dbf2904652840b97ede7b965e3018977ddcc214bcb09444c1a5207c17bf4664",
+    "tools/research/g5-befcs-joined/policy.cjs": "9926c1cbfb5fa71a6d619e166df886af6f66782f5fc2899d733815b3e3a2f5b7",
+    "tools/research/g5-befcs-joined/run.cjs": "ec7e53cc97187b17fe3a09dbfc81cf3b2623d5237ab3533886f30f168bfa9298",
+    "tools/research/g5-befcs-joined/watch.cjs": "cf5e4e87e0dcd2646864924636dc3454c51918dba4ef472600dd2b707efa9036"
+  }
+}

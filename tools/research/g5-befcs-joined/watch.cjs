@@ -6,7 +6,7 @@ const began=performance.now(),remaining=header.deadlineEpochMs-Date.now(),record
 for(const n of ['work','control'])fds[n]=fs.openSync(header.root+'/'+n+'/cgroup.kill','w');
 const {atomic}=require('../g5-befcs-workload/worker.cjs');
 function save(){atomic(directory+'/WATCH.json',{records,elapsedFromServiceMs:header.totalMs-remaining+performance.now()-began,scientificSeedsRead:0});}
-function stop(names,reason){return stopBeforeSave(names,n=>fs.writeSync(fds[n],'1'),rows=>{records.push(...rows.map(x=>({...x,reason})));save();},()=>header.totalMs-remaining+performance.now()-began);}
+function stop(names,reason){return stopBeforeSave(names,n=>fs.writeSync(fds[n],'1',0,'utf8'),rows=>{records.push(...rows.map(x=>({...x,reason})));save();},()=>header.totalMs-remaining+performance.now()-began);}
 const ordinary=setTimeout(()=>stop(['work'],'ORDINARY-EARLY-STOP'),Math.max(1,remaining-header.reserveMs-header.config.stopLeadMs));
 const total=setTimeout(()=>{stop(['work','control'],'TOTAL-EARLY-STOP');clearInterval(poll);clearTimeout(ordinary);process.exit(0);},Math.max(1,remaining-header.config.stopLeadMs));
 const poll=setInterval(()=>{
