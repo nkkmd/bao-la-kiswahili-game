@@ -1,0 +1,1 @@
+{"version":1,"leases":[{"evidenceClass":"TECHNICAL-REGISTRY-FIXTURE","stageId":"GIT-proxy-before-consume-38428546919","runId":"38428546919","runAttempt":1,"binding":"cd12cf781d115a5fe35befedba95210a62e65a3489d1e2dbe46d523f21395e2d","block":{"start":1,"count":4},"status":"BLOCK-QUARANTINED-NO-RETRY","consumes":[]}],"mirrors":[]}
