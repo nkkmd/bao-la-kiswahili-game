@@ -1,11 +1,11 @@
 # 第五世代研究 — 現在の状態
 
 更新日: 2026-10-13（日本時間）  
-状態: **一度限り運用fixture合格・実cgroup確認待ち・新規Study登録前／5区画終了／正式関係は未登録・未実行**
+状態: **運用OOM cgroup合格・保存済み全workload結合・科学用host統合前／新規Study登録前／正式関係は未登録・未実行**
 
 ## 現在確定していること
 
-現在は、[分岐包絡供給の技術preflight](branch-envelope-preflight-20261013/README.md)が合格し、source選定・独立再生・全閉包・停止保存を固定fixtureで確認した。BEFCS-STUDY1の科学登録・実行はまだ行っておらず、科学seed消費0、leaseなし、科学source未固定、実行未認可である。運用moduleは固定fixtureで合格し、次は実cgroup確認と科学用全workloadへの結合・最終freezeを整える。
+現在は、[分岐包絡供給の技術preflight](branch-envelope-preflight-20261013/README.md)が合格し、source選定・独立再生・全閉包・停止保存を固定fixtureで確認した。BEFCS-STUDY1の科学登録・実行はまだ行っておらず、科学seed消費0、leaseなし、科学source未固定、実行未認可である。運用moduleと実128 MiB/1 GiB OOM確認は合格した。[保存済み全workload統合](befcs-workload-20261013/REPORT.md)のローカル検証も合格し、次は全pipelineの実cgroup確認と科学用hostへの結合・最終freezeを整える。
 
 中心課題は「探索順位の変動と、完全解析した局面における選択手の厳密価値損失との関係」である。[研究計画](PROGRAM_PLAN.md)の第1段階を[G5-01](g5-01/README.md) / `RRSVL-STUDY1` として具体化した。ユーザーの着手指示に基づく[実行前レビュー](g5-01/PREEXECUTION_REVIEW.md)で、対象、現行takasiaルール、測定、計算上限、独立検算の範囲を固定した。
 
@@ -128,3 +128,7 @@
 [運用preflight](befcs-operations-20261013/README.md)で、Gitの原子的全区画取得・読取前marker・稼働中/終了mirror・合算RSS監督を実装した。15運用テストと31先行回帰テストが合格し、1区画・128論理marker・8 mirror・137 commitを保存Git bundleから独立復元した。科学PRNGの初期化は0件で、新規Bao RAWは観測していない。実128 MiB/1 GiB cgroupはActions確認待ちである。
 
 [科学契約案](befcs-operations-20261013/CONTRACT_DRAFT.md)は未登録案で、次は科学source/独立replay・全閉包保存とcontainer/mirrorの全workload結合、最終freeze・CI receipt・別triggerを整える。584保護入力と103355件遮断を保持し、科学seed消費0・科学leaseなし・科学Study未登録/未実行、正式関係未登録/未実行、main・公開AI未変更である。技術合格を科学供給へ昇格させない。
+
+## 2026-10-13 — 運用cgroupの確認と保存済み全workloadの結合
+
+[運用cgroup確認](befcs-operations-20261013/CI_CONFIRMATION.md)をPR #192へ保存し、実128 MiB/1 GiBのOOMとprefix保持が合格した。[全workload統合](befcs-workload-20261013/README.md)で保存済み技術source 128件・固定抽象閉包8件を共有保存予算、marker、mirror、停止監督へ結合した。58ローカルテスト・8シナリオと実256 MiB容量境界が合格した。科学生成の費用・供給結果へ昇格させず、実1 GiBの全pipeline CIと科学用hostの結合・最終freeze・別triggerは[再開条件](befcs-workload-20261013/RESUME_HERE.md)に残す。科学seed消費0・科学leaseなし・科学Study未登録/未実行、103355件遮断、正式関係未登録/未実行、main・公開AI未変更である。

@@ -1,12 +1,12 @@
 # 第五世代研究 — 再開位置
 
 更新日: 2026-10-13（日本時間）  
-安全な再開点: **分岐包絡運用部品fixture検証・科学worker統合前・科学Study未登録**
+安全な再開点: **実cgroup OOM確認合格・保存済み全workload結合・科学用host統合前・科学Study未登録**
 
 ## 次に進めること
 
-1. [運用preflight報告](befcs-operations-20261013/REPORT.md)とActionsの実cgroup receiptを確認する。ローカル15運用テスト・31回帰テストと保存bundle再生は合格した。
-2. [次の再開条件](befcs-operations-20261013/RESUME_HERE.md)に沿って、科学source/独立replay・全閉包保存を運用moduleへ結合し、seedなし全workload fixtureを検査する。
+1. [全workload統合報告](befcs-workload-20261013/REPORT.md)と最新CIを確認する。先行運用preflightの実128 MiB/1 GiB OOMは[確定記録](befcs-operations-20261013/CI_CONFIRMATION.md)へ保存済みである。
+2. [次の再開条件](befcs-workload-20261013/RESUME_HERE.md)に沿って、全workloadの実cgroup receiptを確定し、専用科学入口を科学用host/registry/別triggerへ接続する。
 3. 科学用SPEC・契約・認可範囲・source manifest・CI receipt・保護入力・実行前レビューを結果前に固定し、提案seed/ID/namespaceを再照合する。未登録案を科学契約へ自動昇格しない。
 4. 全区画lease・seed読取前consume・attempt 1固定の別trigger・常時保存と最終mirrorが成立してから一度だけ実行する。技術fixtureの1〜128論理IDを科学seedへ使わない。
 5. 103355件遮断・全合法手完全閉包・未知の保持・不足時終了・追加/差替え/retry禁止を維持する。旧root/witnessを延長せず、正式関係未登録/未実行と主課題を保持する。

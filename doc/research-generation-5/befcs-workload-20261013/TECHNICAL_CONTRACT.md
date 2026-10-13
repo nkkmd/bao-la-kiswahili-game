@@ -1,0 +1,11 @@
+# BEFCS全workload統合の技術契約
+
+本検証は保存済み技術sourceの独立再生、全合法手閉包、共有保存予算、読取前marker、稼働中/終了mirror、全体時間監督を同じ工程へ結合する。科学Studyの登録・科学seed読取り・科学leaseを行わない。技術区画の1〜128は論理番号だけであり、保存済みsourceのbyteを読み出す前にmarkerを永続化する。
+
+128件は先行preflightに保存した10種類のsourceを順に反復した固定負荷である。全軌跡の生成、第一root選定、scientific PRNG初期化は行わず、独立再生だけを行う。8閉包は固定ABSTRACT-DIAMONDを繰り返す技術負荷で、sourceから選んだ科学候補ではない。全fixture RAWが既読103355件に含まれることを照合し、旧candidate・guard witnessを延長しない。
+
+全sourceと全domainは共有の256 MiB保存上限・終了16 MiB reserveを使う。別directoryやatomic snapshot temporaryへの書込みでも予算を合算し、書込み前に確認する。domain時間は独立再生・解法・保存も含める。domain開始に必要な終了reserveを含む残余予算がなければ、新しい処理を開始しない。
+
+実全容量は別processの固定byte負荷で240 MiB通常領域・16 MiB終了領域の境界を調べる。scaled fixtureでは全体時間、領域時間、source完了前の強制停止、mirror失敗と残余保存不足を確認する。停止時の科学値はnullで、保存済prefixだけを再生する。科学用全workloadの未知サイズや一般局面の費用を、この技術負荷の時間から推定しない。
+
+科学用source・独立replayの専用入口は技術生成器を使わず、最終科学freezeが存在しない間は読取り前に拒否する。科学用運用trigger・最終SPEC/契約/認可範囲・GitHub通信を含む実行前レビューは次のゲートとして残す。技術合格だけで未登録案を登録・認可へ昇格させない。

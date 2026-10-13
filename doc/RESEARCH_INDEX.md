@@ -448,3 +448,7 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 [運用preflight](research-generation-5/befcs-operations-20261013/README.md)で、Gitの原子的全区画取得・読取前marker・稼働中/終了mirror・合算RSS監督を実装した。15運用テストと31先行回帰テストが合格し、1区画・128論理marker・8 mirror・137 commitを保存Git bundleから独立復元した。科学PRNGの初期化は0件で、新規Bao RAWは観測していない。実128 MiB/1 GiB cgroupはActions確認待ちである。
 
 [科学契約案](research-generation-5/befcs-operations-20261013/CONTRACT_DRAFT.md)は未登録案で、次は科学source/独立replay・全閉包保存とcontainer/mirrorの全workload結合、最終freeze・CI receipt・別triggerを整える。584保護入力と103355件遮断を保持し、科学seed消費0・科学leaseなし・科学Study未登録/未実行、正式関係未登録/未実行、main・公開AI未変更である。技術合格を科学供給へ昇格させない。
+
+## 2026-10-13 — 分岐包絡供給の運用・保存統合
+
+[運用cgroup確認](research-generation-5/befcs-operations-20261013/CI_CONFIRMATION.md)で実128 MiB/1 GiB OOMとprefix保持を確定した。[保存済み全workload統合](research-generation-5/befcs-workload-20261013/README.md)は128件の技術source再生と8固定閉包の結合であり、科学供給Studyの登録・実行ではない。共有256 MiB容量、停止・mirror・markerを検証し、科学用hostへの結合と最終freeze・別triggerを残す。科学seed消費0、科学leaseなし、正式関係未登録/未実行、main・公開AI未変更を保持する。
