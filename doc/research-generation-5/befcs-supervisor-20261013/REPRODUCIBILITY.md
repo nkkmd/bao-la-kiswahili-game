@@ -12,3 +12,9 @@ node tools/research/g5-befcs-supervisor/run.cjs --bindings
 systemd serviceはDelegate=yes、MemoryMax=1073741824、MemorySwapMax=0、TasksMax=256、RuntimeMaxSec=25を持つ。25秒はfixtureの15秒watchdogが失敗したときの外側停止であり、期限内完了には数えない。各caseのBOUNDARY.json・RESOURCE.json・WATCH.json・RESULT.jsonと、正常／未知／停止の別記録をartifactへ保存する。
 
 機械出力のfield、canonical token、command、hashは厳密な検算用として英語表記を保持する。fixtureの準備・artifact保存は実測範囲外であり、科学用の単一全体予算が成立したという意味ではない。
+
+取得証拠は次のコマンドで再検算できる。出力directoryは未作成の一意な場所を指定し、保存済みfileだけを読む。科学sourceやfixtureの再実行は行わない。検算器はfixture実行後の出力bindingへ別固定した。
+
+```sh
+python doc/research-generation-5/befcs-supervisor-20261013/results/VERIFY_ARTIFACT.py doc/research-generation-5/befcs-supervisor-20261013/results/CI_ARTIFACT.zip /tmp/befcs-supervisor-replay-unique c7bdd1a75b200c6ee44bad15a43751200c132f92e014512d3fc86b4c01f209fd
+```

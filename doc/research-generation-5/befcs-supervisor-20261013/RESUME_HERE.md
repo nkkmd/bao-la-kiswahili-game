@@ -1,6 +1,6 @@
 # 監督区画の再開位置
 
-最初にSOURCE_MANIFEST.jsonとPROTECTED_INPUTS.jsonを照合する。CIの4 caseと23検査を確認し、結果を実行head・run・artifact・digestへ結び付ける。失敗した実行を消さず、固定入力とは別の修正履歴を残す。
+最初にSOURCE_MANIFEST.jsonとPROTECTED_INPUTS.jsonを照合する。[CI確定](CI_CONFIRMATION.md)で第2版4 case・23検査、111取得fileと出力bindingを確認する。初回保存失敗と第1版入力を残している。期限caseのcontrol停止は15151.694 msであり、15秒以内完了には数えない。watchdogの停止順序・同期保存遅延・service終了時のwatchdog保全を次の統合で補強する。
 
 この機構が合格しても、共通128 source・独立再生・閉包・復旧・圧縮保存を親1 GiB配下へ統合し、Docker daemonを使う場合はdaemonも明示的に計上する必要がある。起動準備・外側制御・終了保存も全体20分と物理容量の契約へ結合する。親OOM後の保存、実認証transport、科学経路の途中checkpoint検算も残る。
 

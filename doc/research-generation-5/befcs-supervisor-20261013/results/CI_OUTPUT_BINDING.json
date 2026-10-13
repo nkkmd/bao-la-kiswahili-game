@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "evidenceClass": "TECHNICAL-SUPERVISOR-CGROUP-FIXTURE",
+  "scientificSeedsRead": 0,
+  "executedHead": "3efa4e9565b6e46ecffcdeec6f643110202401a7",
+  "sourceManifestSha256": "2b686d88de38b17127716c86ab642e7b3924cb7766ffb9170f607c6f2de4347b",
+  "executionSourceManifestRebound": false,
+  "files": {
+    "CI_ARTIFACT.zip": "c7bdd1a75b200c6ee44bad15a43751200c132f92e014512d3fc86b4c01f209fd",
+    "CI_RESULT.json": "a3a0d0c043a9ade485fe40eae3dcf03ac9ab5120d00eb8c02658de1fab47adb6",
+    "CI_ARTIFACT_VERIFICATION.json": "5f054b431a3f01c360cdad3d859033984e9dbe6f846209f39f224dce41b62829",
+    "VERIFY_ARTIFACT.py": "294bcbdeeff6f112899e7689b285aeadf88dc7550b622696024eee01b4fde188",
+    "CI_RECEIPT.json": "4e404b6b8f022bee416045a19d505436731ce479a2dbd830a4c7f618fa189034",
+    "CI_INITIAL_FAILURE.json": "da4a10a4bc541e75bf440693b927648541ee4a1796291f4714fb16226b57560b",
+    "SOURCE_MANIFEST_V1.json": "fe6840180db334c6dd0866927dcb6cca4a982cad7a4d23f601d7265c56d3e008"
+  }
+}
