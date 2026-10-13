@@ -1,0 +1,396 @@
+{
+  "evidenceClass": "TECHNICAL-AUTHENTICATED-GIT-CI-RECEIPT",
+  "head": "2879c65dc7dba706d9834edc639fd987663efaac",
+  "tree": "c72a563bd160f12b299da4bff1557132dce0dbb8",
+  "runId": 38428546919,
+  "runAttempt": 1,
+  "jobs": [
+    {
+      "id": 115404305259,
+      "name": "local-refusal",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 38428546919,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Validate fixture refusal and prior bindings",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        }
+      ]
+    },
+    {
+      "id": 115404573219,
+      "name": "authenticated-git",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 38428546919,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Prepare exclusive 256 MiB fixture filesystem",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Exercise authenticated fixture refs within cgroup",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Preserve stopped fixed evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Close only fixture mount",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        }
+      ]
+    }
+  ],
+  "workflows": [
+    {
+      "id": 38428550256,
+      "name": "RG5 Primary Readiness Review",
+      "event": "pull_request",
+      "head": "2879c65dc7dba706d9834edc639fd987663efaac",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38428550256"
+    },
+    {
+      "id": 38428550224,
+      "name": "G5 Compact BFS Fixture Integration",
+      "event": "pull_request",
+      "head": "2879c65dc7dba706d9834edc639fd987663efaac",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38428550224"
+    },
+    {
+      "id": 38428550387,
+      "name": "G5 Science Method Technical Review",
+      "event": "pull_request",
+      "head": "2879c65dc7dba706d9834edc639fd987663efaac",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38428550387"
+    },
+    {
+      "id": 38428550200,
+      "name": "RG5 Reply Mode Source Design",
+      "event": "pull_request",
+      "head": "2879c65dc7dba706d9834edc639fd987663efaac",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38428550200"
+    },
+    {
+      "id": 38428550241,
+      "name": "G5-04 Supply Preflight",
+      "event": "pull_request",
+      "head": "2879c65dc7dba706d9834edc639fd987663efaac",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38428550241"
+    },
+    {
+      "id": 38428550225,
+      "name": "G5-02 Supply Preflight",
+      "event": "pull_request",
+      "head": "2879c65dc7dba706d9834edc639fd987663efaac",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38428550225"
+    },
+    {
+      "id": 38428550233,
+      "name": "G5-01 Independent Transition Technical",
+      "event": "pull_request",
+      "head": "2879c65dc7dba706d9834edc639fd987663efaac",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38428550233"
+    },
+    {
+      "id": 38428550301,
+      "name": "G5-05 Supply Preflight",
+      "event": "pull_request",
+      "head": "2879c65dc7dba706d9834edc639fd987663efaac",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38428550301"
+    },
+    {
+      "id": 38428550278,
+      "name": "G5-03 Supply Preflight",
+      "event": "pull_request",
+      "head": "2879c65dc7dba706d9834edc639fd987663efaac",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38428550278"
+    },
+    {
+      "id": 38428550336,
+      "name": "G5-01 Development Preflight",
+      "event": "pull_request",
+      "head": "2879c65dc7dba706d9834edc639fd987663efaac",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38428550336"
+    },
+    {
+      "id": 38428550235,
+      "name": "G5 BEFCS Authenticated Git",
+      "event": "pull_request",
+      "head": "2879c65dc7dba706d9834edc639fd987663efaac",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38428550235"
+    },
+    {
+      "id": 38428550213,
+      "name": "G5-01 Stage 0 Technical",
+      "event": "pull_request",
+      "head": "2879c65dc7dba706d9834edc639fd987663efaac",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38428550213"
+    },
+    {
+      "id": 38428546919,
+      "name": "G5 BEFCS Authenticated Git",
+      "event": "push",
+      "head": "2879c65dc7dba706d9834edc639fd987663efaac",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38428546919"
+    }
+  ],
+  "artifact": {
+    "id": 11829937107,
+    "name": "befcs-git-38428546919-1",
+    "bytes": 322683,
+    "sha256": "5113d5f54d320bcdc06ff81341b03dc50fe3f4e24c03d944711ab4dd38f83438",
+    "members": 376,
+    "expiresAt": "2027-01-11T16:12:12Z",
+    "fileHashesSha256": "c4195b8b15575f45f988ceb03df200f101ad03359970b8fbc482698ceeb32164"
+  },
+  "verification": {
+    "verified": true,
+    "sourceManifestSha256": "09661e23ec22185ab9c4cdd916176f7e4b8c0222a7447e0ecc4539a1369024b9",
+    "evidenceSha256": "fa9fc6a5c66a92d2c6653e305db1edca910f3d669fc7706cb5eef3944551a33a",
+    "cases": [
+      {
+        "mode": "complete",
+        "registryRef": "refs/heads/research/g5-git-fixture-38428546919-a1-complete",
+        "registryHead": "ef4b613cc03c4687d8b0a09d6d5c4000483aa65f",
+        "commits": 4,
+        "markers": 1,
+        "ack": 1,
+        "unacknowledged": 0,
+        "finalMirrorSaved": true,
+        "sessionStatus": "FINISHED"
+      },
+      {
+        "mode": "stale-cas",
+        "registryRef": "refs/heads/research/g5-git-fixture-38428546919-a1-stale-cas",
+        "registryHead": "3eff64df6f36718da59b931ecf24915016c55e4c",
+        "commits": 2,
+        "markers": 0,
+        "ack": 0,
+        "unacknowledged": 0,
+        "finalMirrorSaved": false,
+        "sessionStatus": "STOPPED"
+      },
+      {
+        "mode": "lost-response",
+        "registryRef": "refs/heads/research/g5-git-fixture-38428546919-a1-lost-response",
+        "registryHead": "03ce44baa62a7f1758985638a8cdc585f20945e8",
+        "commits": 3,
+        "markers": 1,
+        "ack": 0,
+        "unacknowledged": 1,
+        "finalMirrorSaved": false,
+        "sessionStatus": "STOPPED"
+      },
+      {
+        "mode": "proxy-before-consume",
+        "registryRef": "refs/heads/research/g5-git-fixture-38428546919-a1-proxy-before-consume",
+        "registryHead": "7e58b8695e2c2374865246e1d2e1a1d0bbd7563f",
+        "commits": 2,
+        "markers": 0,
+        "ack": 0,
+        "unacknowledged": 0,
+        "finalMirrorSaved": false,
+        "sessionStatus": "STOPPED"
+      },
+      {
+        "mode": "proxy-final-mirror",
+        "registryRef": "refs/heads/research/g5-git-fixture-38428546919-a1-proxy-final-mirror",
+        "registryHead": "aacd883bbb1d6d976416ba5e9b51c14d8a058117",
+        "commits": 3,
+        "markers": 1,
+        "ack": 1,
+        "unacknowledged": 0,
+        "finalMirrorSaved": false,
+        "sessionStatus": "STOPPED"
+      }
+    ],
+    "resources": {
+      "cgroup": "0::/system.slice/bao-g5-git-559964da91b2898a.service",
+      "memoryMaxBytes": 1073741824,
+      "swapMaxBytes": 0,
+      "pidsMax": 64,
+      "memoryPeakBytes": 77684736,
+      "memoryEvents": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+      "workspace": {
+        "logical": 462269,
+        "allocated": 2674688,
+        "charged": 2674688,
+        "files": 374
+      },
+      "elapsedServiceMs": 33029.062062000005,
+      "transportAndReplayInSameCgroup": true,
+      "dockerUsed": false,
+      "wholePipelineIntegrated": false,
+      "wholeStartupArtifactDeadlineProven": false
+    },
+    "scientificSeedsRead": 0,
+    "scientificLeaseCreated": false,
+    "scientificStudyRegistered": false
+  },
+  "remoteRefReads": [
+    {
+      "ref": "refs/heads/research/g5-git-fixture-38428546919-a1-complete",
+      "head": "ef4b613cc03c4687d8b0a09d6d5c4000483aa65f",
+      "connectorReadMatches": true
+    },
+    {
+      "ref": "refs/heads/research/g5-git-fixture-38428546919-a1-stale-cas",
+      "head": "3eff64df6f36718da59b931ecf24915016c55e4c",
+      "connectorReadMatches": true
+    },
+    {
+      "ref": "refs/heads/research/g5-git-fixture-38428546919-a1-lost-response",
+      "head": "03ce44baa62a7f1758985638a8cdc585f20945e8",
+      "connectorReadMatches": true
+    },
+    {
+      "ref": "refs/heads/research/g5-git-fixture-38428546919-a1-proxy-before-consume",
+      "head": "7e58b8695e2c2374865246e1d2e1a1d0bbd7563f",
+      "connectorReadMatches": true
+    },
+    {
+      "ref": "refs/heads/research/g5-git-fixture-38428546919-a1-proxy-final-mirror",
+      "head": "aacd883bbb1d6d976416ba5e9b51c14d8a058117",
+      "connectorReadMatches": true
+    }
+  ],
+  "acquisition": {
+    "initialHttpStatus": 503,
+    "retryHttpStatuses": [
+      503,
+      503
+    ],
+    "finalByteRetrievalSucceeded": true,
+    "workflowRerunPerformed": false
+  },
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false,
+  "scienceHostReleased": false
+}

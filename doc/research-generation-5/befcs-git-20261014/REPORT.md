@@ -16,6 +16,8 @@
 
 local fixtureでは全caseの生Git bundleを独立再生する。proxy拒否はlocalでは固定例外注入で、実network障害と呼ばない。認証・kernel資源・実proxy拒否のActions結果は取得後に確定する。[結果入口](results/README.md)へ原記録とhashを保持する。
 
+[CI確定](CI_CONFIRMATION.md)で実認証Gitの全5 caseとPR12＋push1の全13実行が合格した。古いSHAのpushはGit自身のstale info拒否でhead不変、commit後応答抑止では未ACK 1、実proxy拒否では後続取引の停止を確認した。全14 commitとmirror blobを別repositoryのbundleから独立復元し、全5 refのheadも別readで一致した。親peak約74 MiB、swap0、OOM kill0、service内約33秒である。
+
 ## 解釈の境界
 
 commit後の応答抑止はhost adapterへの故障注入であり、実GitHub応答がnetwork上で失われた実験ではない。実proxy拒否は通信不能時の停止を検証するが、GitHub server障害の全種類を実証しない。

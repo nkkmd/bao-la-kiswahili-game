@@ -1,0 +1,12 @@
+{
+  "evidenceClass": "TECHNICAL-AUTHENTICATED-GIT-CI-OUTPUT",
+  "head": "2879c65dc7dba706d9834edc639fd987663efaac",
+  "files": {
+    "doc/research-generation-5/befcs-git-20261014/CI_CONFIRMATION.md": "e41bf4181346745ce6a47733128a057bc0fe8872452d1a5bc5a9ec6f71cf355e",
+    "doc/research-generation-5/befcs-git-20261014/results/CI_ARTIFACT.zip": "5113d5f54d320bcdc06ff81341b03dc50fe3f4e24c03d944711ab4dd38f83438",
+    "doc/research-generation-5/befcs-git-20261014/results/CI_FILE_HASHES.json.gz": "c4195b8b15575f45f988ceb03df200f101ad03359970b8fbc482698ceeb32164",
+    "doc/research-generation-5/befcs-git-20261014/results/CI_RESULT.json": "bf0c3972980b4378d9a1b8704c6937f1e45a05a71fc2c490b1ea7758a1541b78",
+    "doc/research-generation-5/befcs-git-20261014/results/CI_TECHNICAL_EVIDENCE.json.gz": "c13465fc8dec8aaa962df2645e623e0e090302c1bca32a12611f71f85b111f6f",
+    "doc/research-generation-5/befcs-git-20261014/results/CI_RECEIPT.json": "c2ceefc3d1be316c2bc96296638e76954752381eeee12cd6e670fbc512f815df"
+  }
+}

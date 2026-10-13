@@ -6,4 +6,6 @@ RESULT.jsonとTECHNICAL_EVIDENCE.json.gzはlocal Gitの5 caseと生bundleの正�
 
 Actionsの実認証Git結果は取得後にCI receiptへ別保存する。zip digestと全member hash、5 caseのref・head・marker/ACK・mirror・資源と独立bundle検算を確認するまで、実通信の成功を主張しない。tokenとauth headerは保存しない。
 
+[CI確定](../CI_CONFIRMATION.md)で、実装headの全13ワークフローと実Git5 caseが合格した。取得ZIPのdigest・全376 member hash、14 commit・mirror blobの独立bundle復元、全5 refのhead一致を照合した。原ZIP、CI_RESULT、CI_TECHNICAL_EVIDENCE、CI_FILE_HASHES、CI_RECEIPTを別保存し、CI_OUTPUT_BINDINGへ固定する。byte取得時の503と読取再試行も保持し、workflowは再実行していない。
+
 科学seed0・科学leaseなし・BEFCS-STUDY1未登録/未実行、正式関係未登録/未実行、main/公開AI未変更を維持する。
