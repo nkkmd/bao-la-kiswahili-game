@@ -1,0 +1,17 @@
+{
+  "headCommit": "4c4c9dcaa106a983ac661c58a499a063a7b75a2e",
+  "sourceTree": "08ed122fe4e7c93310cc6a33ae4740935897a771",
+  "sourceManifestSha256": "1a83e28085e46f064aefc36ab4f0e69c1861df044cb60a6efbfd8d4366f29be4",
+  "archiveSha256": "542c9dbf6aa86f68263d5fb2981f15cc02fff907a68cccccd8d9bcc2a2fb71eb",
+  "files": {
+    "doc/research-generation-5/befcs-contained-20261013/results/CI_RESULT.json": "0113a208600d70000ec3bcbc7227b1facdee7035e92301f892d8aba46baeb856",
+    "doc/research-generation-5/befcs-contained-20261013/results/CI_TECHNICAL_EVIDENCE.json.gz": "c9f122558f0d168a3f140d73ea503057060e9bbdf426b88f8b56abb03ba86344",
+    "doc/research-generation-5/befcs-contained-20261013/results/CI_IMAGE_EVIDENCE.json.gz": "40146119a4cdd44607a0089ee404b5be86f844abbd25e8b4c83efc38c0a2fb45",
+    "doc/research-generation-5/befcs-contained-20261013/results/CI_IMAGE_MANIFEST.json": "fc89e3192251c44de5465b581d8400b267dec2b094fd3589ac5df34aabe84a83",
+    "doc/research-generation-5/befcs-contained-20261013/results/CI_RECEIPT.json": "b716021e1614216e6d55e21678c09de5d62c57deb889681ae00af92015e964df",
+    "doc/research-generation-5/befcs-contained-20261013/results/CI_PRELIMINARY_METADATA.json": "cc0cbf9f5b47bde90db224a1d0ee2d4a0f7486a524f64bdfceb616796157abc7",
+    "doc/research-generation-5/befcs-contained-20261013/results/VERIFY_IMAGE.cjs": "8e4525a6f47df4c06d5b4f30f4f4cdffa949169d8048a542a81cdc59280340b8"
+  },
+  "executionSourceManifestRebound": false,
+  "scientificSeedsRead": 0
+}

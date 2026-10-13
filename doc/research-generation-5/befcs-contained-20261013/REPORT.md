@@ -21,3 +21,11 @@
 先行実装head `aee965690045ebb27ba12b84dee23f6f0243a6ae`は変更せず保持する。外部の保存byte検算でも一時Gitコピーを専用filesystemへ置くよう補強した。observerが全体期限でSIGKILLされた場合は、親がprimary停止と専用mountの終了だけを診断処理として行い、raw imageをartifactへ残す。期限後の診断保存は期限内完了と区別し、consume・source再開・追加mirrorをしない。
 
 最終版はobserver全体期限のSIGKILLを第7 caseに加え、新規5+前工程15の計20検査を行う。primary停止後にobserverを保留し、全体期限で独立watchdogがobserver groupを停止する。親は停止済みGitとimageを診断保存するが、期限内完了とはしない。先行6 caseの証拠と入力版は先行headで保持する。
+
+## 最終版の取得後判定
+
+[CI確定](CI_CONFIRMATION.md)で最終7 case・20検査・全stepとPR側12ワークフローの成功を確認した。host自身のOOM、実ENOSPC、kernel通常期限とobserver全体SIGKILLを観測し、consumeを増やさない外部回収・診断保存が成立した。終了mirror失敗を完了へ昇格しなかった。
+
+ZIP digestと93 fileの全hash、7 Git履歴、7 imageの256 MiB容量、回収1229 evidence fileを検算した。通常と終了mirror失敗caseのimageでは128 source・候補1・抽象閉包1の保存byteが独立一致した。未完checkpointのstop nullで旧完全source検算器がエラーとなった事実を保持し、取得後の別検算器で32 stepとjournal追加9 stepだけを検証した。候補や停止理由を補わず、prefix以上を生成しない。
+
+image由来の証拠と取得後検算器はCI出力bindingへ別固定し、実行時57入力・730保護入力を変更しない。外部資源と実GitHub通信、科学用prefix扱いと最終配備の未完は保持する。
