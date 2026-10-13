@@ -11,7 +11,7 @@ async function live(){
     const began=performance.now(),work=path.join(out,mode);fs.mkdirSync(work);let container=null;
     const header={mode,sourceManifestSha256:digest,scientificSeedsRead:0,scientificLeaseCreated:false,scientificStudyRegistered:false};fs.writeFileSync(path.join(out,'BEFORE-'+mode+'.json'),JSON.stringify(header,null,2)+'\n');
     try{
-      container=cp.execFileSync('docker',['create','--user',process.getuid()+':'+process.getgid(),'--network=none','--memory=1073741824','--memory-swap=1073741824','--pids-limit=32','-v',base+':/repo:ro','-v',work+':/work','node:24.19.0-bookworm-slim','node','/repo/tools/research/g5-befcs-envelope/container.cjs',mode],{encoding:'utf8',timeout:30000}).trim();
+      container=cp.execFileSync('docker',['create','--user',process.getuid()+':'+process.getgid(),'--network=none','--memory=1073741824','--memory-swap=1073741824','--pids-limit=32','-v',base+':/repo:ro','-v',work+':/work','node:24.19.0-bookworm','node','/repo/tools/research/g5-befcs-envelope/container.cjs',mode],{encoding:'utf8',timeout:30000}).trim();
       const child=cp.spawn('docker',['start','-a',container],{stdio:'inherit'}),remaining=LIMITS.maxTotalMs-(performance.now()-began),timer=setTimeout(()=>child.kill('SIGKILL'),Math.max(1,remaining));
       let exit;try{exit=await new Promise((r,j)=>{child.once('error',j);child.once('exit',(code,signal)=>r({code,signal}));});}finally{clearTimeout(timer);}
       const inspection=JSON.parse(cp.execFileSync('docker',['inspect',container],{encoding:'utf8',timeout:30000}))[0];

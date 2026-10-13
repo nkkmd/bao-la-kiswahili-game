@@ -1,0 +1,231 @@
+{
+  "decision": "INITIAL-TECHNICAL-CI-FAILED-BEFORE-WORKER-NO-GIT-IN-SLIM-IMAGE",
+  "headCommit": "ebc83718b0f79ed8b272134eef998ba923371b46",
+  "sourceTree": "8f8ddc09a06f3bcd4337e081ee3a074632d77d63",
+  "runId": 38382224800,
+  "job": {
+    "id": 115245203142,
+    "name": "envelope",
+    "status": "completed",
+    "conclusion": "failure",
+    "run_id": 38382224800,
+    "logs_url": null,
+    "steps": [
+      {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1
+      },
+      {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2
+      },
+      {
+        "name": "Run actions/setup-node@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3
+      },
+      {
+        "name": "Test fixed envelope and unknown transport without science",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4
+      },
+      {
+        "name": "Verify all frozen inputs",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5
+      },
+      {
+        "name": "Put host worker Git mirror and detached descendants in one cgroup",
+        "status": "completed",
+        "conclusion": "failure",
+        "number": 6
+      },
+      {
+        "name": "Preserve prefix and receipts even after interruption",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 7
+      },
+      {
+        "name": "Post Run actions/setup-node@v4",
+        "status": "completed",
+        "conclusion": "skipped",
+        "number": 13
+      },
+      {
+        "name": "Post Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 14
+      },
+      {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 15
+      }
+    ]
+  },
+  "artifactId": 11803841729,
+  "archiveDigestVerified": true,
+  "archiveSha256": "89648a40ee0c86c42e1cdc07b3bdbd7ce7e573270ac3738483c959f3443e55ea",
+  "files": {
+    "BEFORE-complete.json": {
+      "mode": "complete",
+      "sourceManifestSha256": "de1a8ce378d52dfcb0653cd10144eaa43e31cbc2ddd4c951b1dc6544804f74e8",
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false
+    },
+    "INSPECT-complete.json": {
+      "exit": {
+        "code": 1,
+        "signal": null
+      },
+      "elapsedOuterMs": 7677.865475,
+      "hostConfig": {
+        "Binds": [
+          "/home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game:/repo:ro",
+          "/home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game/artifacts/local/befcs-envelope/complete:/work"
+        ],
+        "ContainerIDFile": "",
+        "LogConfig": {
+          "Type": "json-file",
+          "Config": {}
+        },
+        "NetworkMode": "none",
+        "PortBindings": {},
+        "RestartPolicy": {
+          "Name": "no",
+          "MaximumRetryCount": 0
+        },
+        "AutoRemove": false,
+        "VolumeDriver": "",
+        "VolumesFrom": null,
+        "ConsoleSize": [
+          0,
+          0
+        ],
+        "CapAdd": null,
+        "CapDrop": null,
+        "CgroupnsMode": "private",
+        "Dns": [],
+        "DnsOptions": [],
+        "DnsSearch": [],
+        "ExtraHosts": null,
+        "GroupAdd": null,
+        "IpcMode": "private",
+        "Cgroup": "",
+        "Links": null,
+        "OomScoreAdj": 0,
+        "PidMode": "",
+        "Privileged": false,
+        "PublishAllPorts": false,
+        "ReadonlyRootfs": false,
+        "SecurityOpt": null,
+        "UTSMode": "",
+        "UsernsMode": "",
+        "ShmSize": 67108864,
+        "Runtime": "runc",
+        "Isolation": "",
+        "CpuShares": 0,
+        "Memory": 1073741824,
+        "NanoCpus": 0,
+        "CgroupParent": "",
+        "BlkioWeight": 0,
+        "BlkioWeightDevice": [],
+        "BlkioDeviceReadBps": [],
+        "BlkioDeviceWriteBps": [],
+        "BlkioDeviceReadIOps": [],
+        "BlkioDeviceWriteIOps": [],
+        "CpuPeriod": 0,
+        "CpuQuota": 0,
+        "CpuRealtimePeriod": 0,
+        "CpuRealtimeRuntime": 0,
+        "CpusetCpus": "",
+        "CpusetMems": "",
+        "Devices": [],
+        "DeviceCgroupRules": null,
+        "DeviceRequests": null,
+        "MemoryReservation": 0,
+        "MemorySwap": 1073741824,
+        "MemorySwappiness": null,
+        "OomKillDisable": null,
+        "PidsLimit": 32,
+        "Ulimits": [],
+        "CpuCount": 0,
+        "CpuPercent": 0,
+        "IOMaximumIOps": 0,
+        "IOMaximumBandwidth": 0,
+        "MaskedPaths": [
+          "/proc/asound",
+          "/proc/acpi",
+          "/proc/interrupts",
+          "/proc/kcore",
+          "/proc/keys",
+          "/proc/latency_stats",
+          "/proc/timer_list",
+          "/proc/timer_stats",
+          "/proc/sched_debug",
+          "/proc/scsi",
+          "/sys/firmware",
+          "/sys/devices/virtual/powercap"
+        ],
+        "ReadonlyPaths": [
+          "/proc/bus",
+          "/proc/fs",
+          "/proc/irq",
+          "/proc/sys",
+          "/proc/sysrq-trigger"
+        ]
+      },
+      "state": {
+        "Status": "exited",
+        "Running": false,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 0,
+        "ExitCode": 1,
+        "Error": "",
+        "StartedAt": "2026-10-13T10:16:55.700337596Z",
+        "FinishedAt": "2026-10-13T10:16:56.277193312Z"
+      },
+      "image": "sha256:622f209f6c16ba5af4d9a337cae6577d096f17174b904cfc6a5b0c81a2679c24"
+    },
+    "complete/control/BEFORE.json": {
+      "evidenceClass": "TECHNICAL-ENVELOPE-FIXTURE",
+      "scientificSeedsRead": 0,
+      "limits": {
+        "maxTotalMs": 1200000,
+        "maxDomainMs": 180000,
+        "maxRssBytes": 1073741824,
+        "maxEvidenceBytes": 268435456,
+        "storageReserveBytes": 16777216,
+        "finalizationReserveMs": 180000
+      },
+      "hostCgroup": "0::/\n",
+      "initialEvents": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      }
+    }
+  },
+  "error": "spawn git ENOENT",
+  "prefixProduced": false,
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false
+}

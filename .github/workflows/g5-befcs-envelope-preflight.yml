@@ -31,7 +31,10 @@ jobs:
           node tools/research/g5-befcs-envelope/run.cjs --bindings
           node tools/research/g5-befcs-envelope/verify-remote.cjs
       - name: Put host worker Git mirror and detached descendants in one cgroup
-        run: node tools/research/g5-befcs-envelope/run.cjs --ci-live
+        run: |
+          docker pull node:24.19.0-bookworm
+          docker run --rm --network=none node:24.19.0-bookworm git --version
+          node tools/research/g5-befcs-envelope/run.cjs --ci-live
       - name: Preserve prefix and receipts even after interruption
         if: always()
         uses: actions/upload-artifact@v4

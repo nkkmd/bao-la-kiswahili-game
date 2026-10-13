@@ -19,3 +19,7 @@
 Actionsで通常完了、leaderから離脱した子processの停止、workerの実OOMの3シナリオを検査する。10行のfsync済み固定journal、終了mirror、Git blobと復元hash、cgroup内のhost/worker/離脱子の所属、kernel memory.peakとOOM event、container停止を証拠へ保存する。現時点ではCI確認待ちである。
 
 host自体のOOMと外部保存、起動を含む全体hard deadline、全科学workloadとcgroup内実remote通信、remote pack総量、全writeの容量強制は未完である。技術合格の範囲を科学用全資源レビュー完了へ読み替えない。UNKNOWNをDRAW/0/敗北へ変換せず、科学seed消費0・leaseなし・未登録/未実行、主課題・正式関係・原記録・main/公開AIを保持する。
+
+## 初回CIの未合格を保持する
+
+初回head `ebc83718b0f79ed8b272134eef998ba923371b46` のrun 38382224800は15テストと入力/receipt照合に合格したが、slim imageにGitがなく`spawn git ENOENT`でworker開始前に失敗した。artifact `11803841729`へBEFOREとcontainer inspectionを保存した。workerのprefixや完成証拠は存在しない。Gitを含むbookworm imageを事前取得し、networkなしでGitの実起動を確認してから次の技術fixtureへ進める。image準備はfixtureの実行予算外で、科学配備の時間範囲へ未検証のまま含めない。
