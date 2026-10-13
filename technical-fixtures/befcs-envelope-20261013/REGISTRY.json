@@ -14,7 +14,15 @@
       }
     },
     "status": "BLOCK-QUARANTINED-NO-RETRY",
-    "consumes": []
+    "consumes": [
+      {
+        "index": 0,
+        "logicalId": 1,
+        "binding": "d697686ca9101cf4a0d570c70ec3070ac6911d7387d575e3f758d275559eb5b3",
+        "runId": "connector-20261013-technical-v2-attempt1",
+        "beforeRead": true
+      }
+    ]
   },
   "mirrors": [
     {
