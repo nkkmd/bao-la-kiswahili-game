@@ -16,7 +16,7 @@
 
 新規試験は、PRNG/metadataの改変、hashを付け直した欠落screen、receipt差替え、snapshot改変・候補/完了への昇格、read ledgerのRAW改変・coverage欠落・未許可RAWを拒否する。未完の末尾はbyte数とhashを別記録し、保存済み完全行へつなぎ直さない。科学入口の拒否は入力getter・PRNG・遷移の前に成立する。
 
-ローカル結果と全入力bindingは[結果入口](results/README.md)へ保存する。GitHub Actionsの実行結果は、取得receiptで確認するまで未確定とする。
+ローカル結果と全入力bindingは[結果入口](results/README.md)へ保存した。[CI確定](CI_CONFIRMATION.md)でPR12＋push1の全13実行、18検査・5 case再実行・artifact保存のsuccessと取得ZIP全2メンバーのbyte一致を確認した。実行入力・旧manifestを変更せず、取得証拠を別bindingへ保存する。
 
 ## 初回開発診断の保持
 

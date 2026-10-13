@@ -1,0 +1,9 @@
+{
+  "evidenceClass": "TECHNICAL-SAVED-SOURCE-PREFIX-CI-OUTPUT",
+  "head": "b1828fb5feebe57db96cc1e469ce8315560049b5",
+  "files": {
+    "doc/research-generation-5/befcs-prefix-20261014/CI_CONFIRMATION.md": "0fff0be175dd478519c662823f00b5c13d664aa5d9089d5d5292d54c7641edfe",
+    "doc/research-generation-5/befcs-prefix-20261014/results/CI_RECEIPT.json": "aa99efc775884ec99d8a4f1abb37028196aaff0df070107944fb4f99f0af8e4a",
+    "doc/research-generation-5/befcs-prefix-20261014/results/CI_ARTIFACT.zip": "f668c0305a4d74d7eb5d56d597282e0ce5cca8683ace0a0f4bf7687d6c406520"
+  }
+}

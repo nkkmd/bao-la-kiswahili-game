@@ -8,6 +8,8 @@
 
 初回監査の対象は上記10 Markdown。英語のみの説明見出し0件、説明済み例外以外の通常の英語完全文0件、相対リンク切れ0件、意図しないcanonical変更0件である。新規13検査＋既存5検査の18検査、5停止caseの保存と再生、2207入力・2198保護入力の照合が合格した。日本語品質ゲートはPASSである。
 
+取得証拠の保存後はCI_CONFIRMATIONを加えた計11 Markdownで同じ品質ゲートを確認した。全13 CI実行のsuccess、ZIP digestと全2メンバーの固定byte一致を別receiptへ保存し、元の実行入力・出力bindingは変更していない。
+
 ## 不変性と検査
 
 旧SOURCE_MANIFESTとPROTECTED_INPUTSを変更せず、この工程の入力・出力bindingを別固定する。生成中のcheckpoint・source journal・read journal・receiptはbyte単位で保存し、検算器は入力を変更しない。失敗した開発診断と未確定CIを成功へ読み替えない。

@@ -1,0 +1,265 @@
+{
+  "evidenceClass": "TECHNICAL-SAVED-SOURCE-PREFIX-CI-RECEIPT",
+  "head": "b1828fb5feebe57db96cc1e469ce8315560049b5",
+  "tree": "650ccffffe3478a5f21e3249d8a63b85d9c5778a",
+  "runId": 38423072308,
+  "runAttempt": 1,
+  "jobId": 115385211773,
+  "workflows": [
+    {
+      "id": 38423072106,
+      "name": "G5-01 Independent Transition Technical",
+      "event": "pull_request",
+      "head": "b1828fb5feebe57db96cc1e469ce8315560049b5",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "createdAt": "2026-10-13T15:33:22Z",
+      "updatedAt": "2026-10-13T15:33:42Z",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38423072106"
+    },
+    {
+      "id": 38423072153,
+      "name": "G5-02 Supply Preflight",
+      "event": "pull_request",
+      "head": "b1828fb5feebe57db96cc1e469ce8315560049b5",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "createdAt": "2026-10-13T15:33:22Z",
+      "updatedAt": "2026-10-13T15:33:41Z",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38423072153"
+    },
+    {
+      "id": 38423072090,
+      "name": "G5-01 Development Preflight",
+      "event": "pull_request",
+      "head": "b1828fb5feebe57db96cc1e469ce8315560049b5",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "createdAt": "2026-10-13T15:33:22Z",
+      "updatedAt": "2026-10-13T15:33:49Z",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38423072090"
+    },
+    {
+      "id": 38423072072,
+      "name": "RG5 Primary Readiness Review",
+      "event": "pull_request",
+      "head": "b1828fb5feebe57db96cc1e469ce8315560049b5",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "createdAt": "2026-10-13T15:33:22Z",
+      "updatedAt": "2026-10-13T15:33:45Z",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38423072072"
+    },
+    {
+      "id": 38423072096,
+      "name": "G5 Compact BFS Fixture Integration",
+      "event": "pull_request",
+      "head": "b1828fb5feebe57db96cc1e469ce8315560049b5",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "createdAt": "2026-10-13T15:33:22Z",
+      "updatedAt": "2026-10-13T15:33:45Z",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38423072096"
+    },
+    {
+      "id": 38423072233,
+      "name": "G5-04 Supply Preflight",
+      "event": "pull_request",
+      "head": "b1828fb5feebe57db96cc1e469ce8315560049b5",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "createdAt": "2026-10-13T15:33:22Z",
+      "updatedAt": "2026-10-13T15:33:47Z",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38423072233"
+    },
+    {
+      "id": 38423072066,
+      "name": "RG5 Reply Mode Source Design",
+      "event": "pull_request",
+      "head": "b1828fb5feebe57db96cc1e469ce8315560049b5",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "createdAt": "2026-10-13T15:33:22Z",
+      "updatedAt": "2026-10-13T15:33:46Z",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38423072066"
+    },
+    {
+      "id": 38423072308,
+      "name": "G5 BEFCS Saved Source Prefix",
+      "event": "pull_request",
+      "head": "b1828fb5feebe57db96cc1e469ce8315560049b5",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "createdAt": "2026-10-13T15:33:22Z",
+      "updatedAt": "2026-10-13T15:34:24Z",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38423072308"
+    },
+    {
+      "id": 38423071817,
+      "name": "G5-01 Stage 0 Technical",
+      "event": "pull_request",
+      "head": "b1828fb5feebe57db96cc1e469ce8315560049b5",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "createdAt": "2026-10-13T15:33:21Z",
+      "updatedAt": "2026-10-13T15:33:43Z",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38423071817"
+    },
+    {
+      "id": 38423071889,
+      "name": "G5 Science Method Technical Review",
+      "event": "pull_request",
+      "head": "b1828fb5feebe57db96cc1e469ce8315560049b5",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "createdAt": "2026-10-13T15:33:21Z",
+      "updatedAt": "2026-10-13T15:33:46Z",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38423071889"
+    },
+    {
+      "id": 38423071916,
+      "name": "G5-05 Supply Preflight",
+      "event": "pull_request",
+      "head": "b1828fb5feebe57db96cc1e469ce8315560049b5",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "createdAt": "2026-10-13T15:33:21Z",
+      "updatedAt": "2026-10-13T15:33:38Z",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38423071916"
+    },
+    {
+      "id": 38423071754,
+      "name": "G5-03 Supply Preflight",
+      "event": "pull_request",
+      "head": "b1828fb5feebe57db96cc1e469ce8315560049b5",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "createdAt": "2026-10-13T15:33:21Z",
+      "updatedAt": "2026-10-13T15:33:38Z",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38423071754"
+    },
+    {
+      "id": 38423069622,
+      "name": "G5 BEFCS Saved Source Prefix",
+      "event": "push",
+      "head": "b1828fb5feebe57db96cc1e469ce8315560049b5",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "createdAt": "2026-10-13T15:33:21Z",
+      "updatedAt": "2026-10-13T15:34:45Z",
+      "url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38423069622"
+    }
+  ],
+  "jobs": [
+    {
+      "id": 115385211773,
+      "name": "saved-prefix",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 38423072308,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Check immutable inputs and saved prefix refusal",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Independently replay saved stopped fixtures",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Execute fixed abstract stop fixtures",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Preserve technical evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        }
+      ]
+    }
+  ],
+  "artifact": {
+    "id": 11827720875,
+    "name": "befcs-prefix-38423072308-1",
+    "expiresAt": "2027-01-11T15:33:22Z",
+    "archiveBytes": 69549,
+    "archiveSha256": "f668c0305a4d74d7eb5d56d597282e0ce5cca8683ace0a0f4bf7687d6c406520",
+    "files": [
+      {
+        "name": "RESULT.json",
+        "bytes": 8449,
+        "sha256": "15963647e4df78e92135808375dab6c691ce6dd09b4c15f39ccec00b2ff8a340",
+        "localBytesMatch": true
+      },
+      {
+        "name": "TECHNICAL_EVIDENCE.json.gz",
+        "bytes": 68098,
+        "sha256": "38fee723bdd3c5fc1c7b9e1a58f6979abc9b86b888f30ef9485aeee84de7e42b",
+        "localBytesMatch": true
+      }
+    ]
+  },
+  "scientificSeedsConsumed": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false,
+  "scienceHostReleased": false,
+  "formalRelationRegistered": false,
+  "publicAiChanged": false
+}
