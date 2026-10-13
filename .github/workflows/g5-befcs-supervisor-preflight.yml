@@ -1,0 +1,42 @@
+name: G5 BEFCS Supervisor Partition
+on:
+  push:
+    branches: [research/g5-befcs-supervisor-preflight]
+    paths: ['tools/research/g5-befcs-supervisor/**', 'test/g5-befcs-supervisor.test.cjs', 'doc/research-generation-5/befcs-supervisor-20261013/**', '.github/workflows/g5-befcs-supervisor-preflight.yml']
+  pull_request:
+    paths: ['tools/research/g5-befcs-supervisor/**', 'test/g5-befcs-supervisor.test.cjs', 'doc/research-generation-5/befcs-supervisor-20261013/**', '.github/workflows/g5-befcs-supervisor-preflight.yml']
+permissions:
+  contents: read
+jobs:
+  supervisor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Validate fixed partitions and immutable inputs
+        run: |
+          node --test test/g5-befcs-supervisor.test.cjs test/g5-befcs-contained.test.cjs test/g5-befcs-envelope.test.cjs test/g5-befcs-pipeline.test.cjs
+          node tools/research/g5-befcs-supervisor/run.cjs --bindings
+      - name: Prepare exclusive fixture evidence filesystem
+        run: |
+          node -e "const f=require('fs');const d='artifacts/local/befcs-supervisor';f.mkdirSync(d,{recursive:true});const fd=f.openSync('artifacts/local/SUPERVISOR.img','wx');f.ftruncateSync(fd,268435456);f.closeSync(fd);"
+          sudo mkfs.ext4 -q -F -m 0 artifacts/local/SUPERVISOR.img
+          sudo mount -o loop,nosuid,nodev,noexec artifacts/local/SUPERVISOR.img artifacts/local/befcs-supervisor
+          sudo chown "$(id -u):$(id -g)" artifacts/local/befcs-supervisor
+      - name: Exercise aggregate kernel limit and watchdog survival
+        run: node tools/research/g5-befcs-supervisor/run.cjs --ci-live
+      - name: Preserve stopped evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: befcs-supervisor-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/local/befcs-supervisor/
+          include-hidden-files: true
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Close only fixture mount
+        if: always()
+        run: sudo umount artifacts/local/befcs-supervisor || true

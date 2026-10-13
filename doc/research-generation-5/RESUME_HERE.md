@@ -3,6 +3,8 @@
 更新日: 2026-10-13（日本時間）  
 安全な再開点: **共通workload・物理容量・外部停止保存の技術検証・科学最終配備前・科学Study未登録**
 
+次の技術工程は[監督区画の検証](befcs-supervisor-20261013/README.md)である。親1 GiBとwork/control/watchの768/192/64 MiB、observer OOM後のwatchdog存続を確認する。実測はCI確定待ちで、共通128 source・Docker daemon・実通信・起動/終了全予算の統合を済ませたという意味ではない。科学seed消費0を保持する。
+
 ## 次に進めること
 
 1. [全workload統合報告](befcs-workload-20261013/REPORT.md)と[第2版CI確定](befcs-workload-20261013/CI_CONFIRMATION_V2.md)を確認する。先行運用preflightの実128 MiB/1 GiB OOMは[確定記録](befcs-operations-20261013/CI_CONFIRMATION.md)へ保存済みである。

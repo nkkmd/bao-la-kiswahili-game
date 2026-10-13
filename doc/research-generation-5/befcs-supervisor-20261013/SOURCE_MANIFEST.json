@@ -1,0 +1,13 @@
+{
+  "evidenceClass": "TECHNICAL-SUPERVISOR-CGROUP-FIXTURE",
+  "scientificSeedsRead": 0,
+  "files": {
+    ".github/workflows/g5-befcs-supervisor-preflight.yml": "865a767907c2416bc60a7621af7fc9b5925ec3ede3eeafe6710dc9110680d275",
+    "test/g5-befcs-supervisor.test.cjs": "fde91b935e82e3958899b5c6009b44cdff85622ad6140118428686ba6fbf1590",
+    "tools/research/g5-befcs-envelope/envelope.cjs": "b4ac072cb2716944e37f14349ace2e868c483c05bff38237f422075591c6165b",
+    "tools/research/g5-befcs-supervisor/policy.cjs": "48f0cf9a80fbdd0fd77011e28563039573ddff6befb74fafb218fea6e5c1a40a",
+    "tools/research/g5-befcs-supervisor/run.cjs": "c4838b6b67615bfbdac3b621633b1e060f36e3a80548c3e135b95eb9d381e66f",
+    "tools/research/g5-befcs-supervisor/task.cjs": "c9aad449914968a905569703c0f2497cb5bf5ac399e6087169c1f6e148fa683f",
+    "tools/research/g5-befcs-supervisor/watch.cjs": "9e127a0302d221812e9c2089f8162e07c09993d463bdba8e8b47e8a1433eff06"
+  }
+}
