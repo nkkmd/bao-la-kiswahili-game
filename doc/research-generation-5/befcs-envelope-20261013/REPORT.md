@@ -1,0 +1,21 @@
+# 全資源包絡と通信不明の報告
+
+## 実装とローカル検証
+
+全体1200秒・領域180秒と同じ時計で、終了保存用180秒を全体時間内に予約する。全作業領域と累積remote byte、予約中の複製を256 MiBへ保守的に課金する。通常処理を終了予約へ入れず、失敗後は通常処理へ戻さない。科学分類と上限変更は副作用前に拒否する。
+
+新規10テストと前工程5テストの計15件が合格した。これは境界時刻を仮想時計で検査した結果であり、実20分の科学workloadを完走した結果ではない。容量予約・hard link/疎ファイルの会計・科学入口拒否・応答不明でのACK拒否・終了mirror失敗・通信中の予算不足を確認した。
+
+## 実GitHubの技術専用検証
+
+[専用ref](https://github.com/nkkmd/bao-la-kiswahili-game/tree/research/g5-envelope-registry-fixture-20261013)の1〜4論理IDを隔離し、固定35 byteのprefixをmirrorした。実GitHubのmarker更新が成立した後にadapterで成功応答を失わせると、marker 1件が永続化されてもACK 0件・session STOPPEDになった。同じsessionの再試行は拒否された。
+
+[取得receipt](results/REMOTE_TRANSPORT_RECEIPT.json)は3更新の要求parent/tree/recordと再読取snapshot、成功応答注入位置を保持する。これはraw Git objectの独立復元ではなく、connector receiptと保存snapshotの整合性検証である。科学の読取やPRNGは使用しない。
+
+古いexpected SHAでの更新probeは実サービスUNKNOWNエラーになり、再読取headは`731f310b6a079175dd2f119159ab2fe941deac73`のままだった。CAS拒否理由は取得できず、CAS技術合格とはしない。通常のnetwork outageを観測したとも主張しない。最初のconnector runtimeにstructuredCloneがなく、lease書込み前に停止した開発診断も保持した。技術JSONにcloneを注入してv2の隔離leaseへ進めた。
+
+## 実cgroupで確認する範囲
+
+Actionsで通常完了、leaderから離脱した子processの停止、workerの実OOMの3シナリオを検査する。10行のfsync済み固定journal、終了mirror、Git blobと復元hash、cgroup内のhost/worker/離脱子の所属、kernel memory.peakとOOM event、container停止を証拠へ保存する。現時点ではCI確認待ちである。
+
+host自体のOOMと外部保存、起動を含む全体hard deadline、全科学workloadとcgroup内実remote通信、remote pack総量、全writeの容量強制は未完である。技術合格の範囲を科学用全資源レビュー完了へ読み替えない。UNKNOWNをDRAW/0/敗北へ変換せず、科学seed消費0・leaseなし・未登録/未実行、主課題・正式関係・原記録・main/公開AIを保持する。

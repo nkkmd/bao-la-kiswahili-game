@@ -1,12 +1,13 @@
 # 第五世代研究 — 再開位置
 
 更新日: 2026-10-13（日本時間）  
-安全な再開点: **workerとhostの技術結合検証・科学資源レビューと最終配備前・科学Study未登録**
+安全な再開点: **hostを含む資源包絡と通信不明の技術検証・科学最終配備前・科学Study未登録**
 
 ## 次に進めること
 
 1. [全workload統合報告](befcs-workload-20261013/REPORT.md)と[第2版CI確定](befcs-workload-20261013/CI_CONFIRMATION_V2.md)を確認する。先行運用preflightの実128 MiB/1 GiB OOMは[確定記録](befcs-operations-20261013/CI_CONFIRMATION.md)へ保存済みである。
 2. [workerとhostの結合](befcs-pipeline-20261013/README.md)と[次の再開条件](befcs-pipeline-20261013/RESUME_HERE.md)に沿って、技術証拠と実cgroup CIを照合する。科学用全資源会計・最終host配備・別triggerは未完であり、fixture合格を科学実行認可へ読み替えない。
+   [全資源と通信不明](befcs-envelope-20261013/README.md)で単一cgroup・全作業領域と終了予約、実GitHubの応答喪失/UNKNOWN時停止へ進めた。[再開位置](befcs-envelope-20261013/RESUME_HERE.md)の未完条件を照合する。古いexpected SHAのCAS拒否理由は未確認である。
 3. 科学用SPEC・契約・認可範囲・source manifest・CI receipt・保護入力・実行前レビューを結果前に固定し、提案seed/ID/namespaceを再照合する。未登録案を科学契約へ自動昇格しない。
 4. 全区画lease・seed読取前consume・attempt 1固定の別trigger・常時保存と最終mirrorが成立してから一度だけ実行する。技術fixtureの1〜128論理IDを科学seedへ使わない。
 5. 103355件遮断・全合法手完全閉包・未知の保持・不足時終了・追加/差替え/retry禁止を維持する。旧root/witnessを延長せず、正式関係未登録/未実行と主課題を保持する。

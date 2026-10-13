@@ -1,0 +1,206 @@
+{
+  "repository": "nkkmd/bao-la-kiswahili-game",
+  "branch": "research/g5-envelope-registry-fixture-20261013",
+  "recordPath": "technical-fixtures/befcs-envelope-20261013/REGISTRY.json",
+  "request": {
+    "evidenceClass": "TECHNICAL-ENVELOPE-REGISTRY-FIXTURE",
+    "stageId": "ENVELOPE-REMOTE-20261013-v2",
+    "runId": "connector-20261013-technical-v2-attempt1",
+    "runAttempt": 1,
+    "binding": "d697686ca9101cf4a0d570c70ec3070ac6911d7387d575e3f758d275559eb5b3",
+    "block": {
+      "start": 1,
+      "count": 4
+    }
+  },
+  "sessionSourceSha256": "d697686ca9101cf4a0d570c70ec3070ac6911d7387d575e3f758d275559eb5b3",
+  "initialHead": "7cbda82d06fb7e5f2f47098bad1c8c4f76f218fc",
+  "history": [
+    {
+      "sha": "abaf615009639348ef8b5b47b9b99b636e0a2290",
+      "parent": "7cbda82d06fb7e5f2f47098bad1c8c4f76f218fc",
+      "tree": "7f2d574239b02db73158ce66a8a6d8cfac2432f6",
+      "record": {
+        "version": 1,
+        "evidenceClass": "TECHNICAL-ENVELOPE-REGISTRY-FIXTURE",
+        "lease": {
+          "request": {
+            "evidenceClass": "TECHNICAL-ENVELOPE-REGISTRY-FIXTURE",
+            "stageId": "ENVELOPE-REMOTE-20261013-v2",
+            "runId": "connector-20261013-technical-v2-attempt1",
+            "runAttempt": 1,
+            "binding": "d697686ca9101cf4a0d570c70ec3070ac6911d7387d575e3f758d275559eb5b3",
+            "block": {
+              "start": 1,
+              "count": 4
+            }
+          },
+          "status": "BLOCK-QUARANTINED-NO-RETRY",
+          "consumes": []
+        },
+        "mirrors": []
+      },
+      "updateRefAccepted": true,
+      "responseSuppressedAtAdapter": false
+    },
+    {
+      "sha": "c774c1cd98efd495ff67dd909a424706d7765b5f",
+      "parent": "abaf615009639348ef8b5b47b9b99b636e0a2290",
+      "tree": "803d4795c5cb2a94936d4468b2094059b9b8e8dc",
+      "record": {
+        "version": 1,
+        "evidenceClass": "TECHNICAL-ENVELOPE-REGISTRY-FIXTURE",
+        "lease": {
+          "request": {
+            "evidenceClass": "TECHNICAL-ENVELOPE-REGISTRY-FIXTURE",
+            "stageId": "ENVELOPE-REMOTE-20261013-v2",
+            "runId": "connector-20261013-technical-v2-attempt1",
+            "runAttempt": 1,
+            "binding": "d697686ca9101cf4a0d570c70ec3070ac6911d7387d575e3f758d275559eb5b3",
+            "block": {
+              "start": 1,
+              "count": 4
+            }
+          },
+          "status": "BLOCK-QUARANTINED-NO-RETRY",
+          "consumes": []
+        },
+        "mirrors": [
+          {
+            "sha256": "bf4a0787bcdc1477a5487f20fcfe9e3d34420a715f6c78755b5999fc0b0e1275",
+            "bytes": 35,
+            "text": "FIXED-REMOTE-PREFIX-NO-BAO-NO-PRNG\n",
+            "sequence": 0,
+            "coverage": "FIXED-TECHNICAL-BYTES-NOT-SCIENTIFIC-COMPLETENESS",
+            "final": false
+          }
+        ]
+      },
+      "updateRefAccepted": true,
+      "responseSuppressedAtAdapter": false
+    },
+    {
+      "sha": "731f310b6a079175dd2f119159ab2fe941deac73",
+      "parent": "c774c1cd98efd495ff67dd909a424706d7765b5f",
+      "tree": "65244ca9751f982bb61e3067fa06baecddb315e1",
+      "record": {
+        "version": 1,
+        "evidenceClass": "TECHNICAL-ENVELOPE-REGISTRY-FIXTURE",
+        "lease": {
+          "request": {
+            "evidenceClass": "TECHNICAL-ENVELOPE-REGISTRY-FIXTURE",
+            "stageId": "ENVELOPE-REMOTE-20261013-v2",
+            "runId": "connector-20261013-technical-v2-attempt1",
+            "runAttempt": 1,
+            "binding": "d697686ca9101cf4a0d570c70ec3070ac6911d7387d575e3f758d275559eb5b3",
+            "block": {
+              "start": 1,
+              "count": 4
+            }
+          },
+          "status": "BLOCK-QUARANTINED-NO-RETRY",
+          "consumes": [
+            {
+              "index": 0,
+              "logicalId": 1,
+              "binding": "d697686ca9101cf4a0d570c70ec3070ac6911d7387d575e3f758d275559eb5b3",
+              "runId": "connector-20261013-technical-v2-attempt1",
+              "beforeRead": true
+            }
+          ]
+        },
+        "mirrors": [
+          {
+            "sha256": "bf4a0787bcdc1477a5487f20fcfe9e3d34420a715f6c78755b5999fc0b0e1275",
+            "bytes": 35,
+            "text": "FIXED-REMOTE-PREFIX-NO-BAO-NO-PRNG\n",
+            "sequence": 0,
+            "coverage": "FIXED-TECHNICAL-BYTES-NOT-SCIENTIFIC-COMPLETENESS",
+            "final": false
+          }
+        ]
+      },
+      "updateRefAccepted": true,
+      "responseSuppressedAtAdapter": true
+    }
+  ],
+  "observedHead": "731f310b6a079175dd2f119159ab2fe941deac73",
+  "observedRecord": {
+    "version": 1,
+    "evidenceClass": "TECHNICAL-ENVELOPE-REGISTRY-FIXTURE",
+    "lease": {
+      "request": {
+        "evidenceClass": "TECHNICAL-ENVELOPE-REGISTRY-FIXTURE",
+        "stageId": "ENVELOPE-REMOTE-20261013-v2",
+        "runId": "connector-20261013-technical-v2-attempt1",
+        "runAttempt": 1,
+        "binding": "d697686ca9101cf4a0d570c70ec3070ac6911d7387d575e3f758d275559eb5b3",
+        "block": {
+          "start": 1,
+          "count": 4
+        }
+      },
+      "status": "BLOCK-QUARANTINED-NO-RETRY",
+      "consumes": [
+        {
+          "index": 0,
+          "logicalId": 1,
+          "binding": "d697686ca9101cf4a0d570c70ec3070ac6911d7387d575e3f758d275559eb5b3",
+          "runId": "connector-20261013-technical-v2-attempt1",
+          "beforeRead": true
+        }
+      ]
+    },
+    "mirrors": [
+      {
+        "sha256": "bf4a0787bcdc1477a5487f20fcfe9e3d34420a715f6c78755b5999fc0b0e1275",
+        "bytes": 35,
+        "text": "FIXED-REMOTE-PREFIX-NO-BAO-NO-PRNG\n",
+        "sequence": 0,
+        "coverage": "FIXED-TECHNICAL-BYTES-NOT-SCIENTIFIC-COMPLETENESS",
+        "final": false
+      }
+    ]
+  },
+  "ackCount": 0,
+  "sessionMarked": 0,
+  "sessionStatus": "STOPPED",
+  "failure": "INJECTED-COMMITTED-RESPONSE-UNKNOWN",
+  "retryError": "SESSION-STOPPED-NO-RETRY",
+  "injection": "ADAPTER-SUPPRESSES-SUCCESS-RESPONSE-AFTER-ACTUAL-GITHUB-REF-UPDATE",
+  "actualNetworkOutageObserved": false,
+  "actualGithubServiceErrorObserved": true,
+  "developmentDiagnostic": {
+    "phase": "before-lease-record-write",
+    "error": "V8 runtime has no structuredClone; clone injected for plain JSON fixture records",
+    "remoteLeaseCreated": false,
+    "remoteConsumeMarkers": 0,
+    "scientificSeedsRead": 0
+  },
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false,
+  "finalMirrorSaved": false,
+  "solution": null,
+  "resumeAuthorized": false,
+  "staleCas": {
+    "verdict": "UNKNOWN-SERVICE-ERROR-HEAD-UNCHANGED-CAS-REJECTION-REASON-NOT-VERIFIED",
+    "expectedSha": "abaf615009639348ef8b5b47b9b99b636e0a2290",
+    "targetSha": "c774c1cd98efd495ff67dd909a424706d7765b5f",
+    "response": {
+      "isError": true,
+      "content": [
+        {
+          "type": "text",
+          "text": "GithubGraphQLAPIError: [{'message': 'Something went wrong while executing your query on 2026-10-13T10:11:04Z. Please include `CFF8:32AEC3:2C0E2:2E6F6:6ACE03B7` when reporting this issue.'}]"
+        }
+      ],
+      "structuredContent": {
+        "error": "GithubGraphQLAPIError: [{'message': 'Something went wrong while executing your query on 2026-10-13T10:11:04Z. Please include `CFF8:32AEC3:2C0E2:2E6F6:6ACE03B7` when reporting this issue.'}]",
+        "error_code": "UNKNOWN"
+      }
+    },
+    "observedHeadAfter": "731f310b6a079175dd2f119159ab2fe941deac73",
+    "headUnchanged": true
+  }
+}
