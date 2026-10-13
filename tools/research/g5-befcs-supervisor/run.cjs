@@ -14,6 +14,10 @@ async function service(directory,mode,unit){
  write(directory+'/BOUNDARY.json',{root,config:config(mode),enforced:sample(root),parentResidentEmpty:fs.readFileSync(root+'/cgroup.procs','utf8').trim()==='',shortFixtureTotalMs:15000,shortFixtureOrdinaryMs:5000,scientificSeedsRead:0});
  const launch=(file,args)=>{const child=cp.spawn(process.execPath,[path.join(__dirname,file),...args],{stdio:'ignore',env:{PATH:process.env.PATH,GITHUB_ACTIONS:'true',TMPDIR:directory}});return {pid:child.pid,exit:new Promise((r,j)=>{child.once('error',j);child.once('exit',(code,signal)=>r({code,signal}));})};};
  const watch=launch('watch.cjs',[root+'/watch',root,mode,directory]);
+ // observer OOMの注入はwatchdogが兄弟区画へ移ったことを確認してから開始する。
+ const readyUntil=performance.now()+1000;
+ while(!fs.existsSync(directory+'/WATCH.json')||!fs.readFileSync(root+'/watch/cgroup.procs','utf8').trim().split('\n').includes(String(watch.pid))){assert.ok(performance.now()<readyUntil,'WATCHDOG-NOT-READY');await new Promise(r=>setTimeout(r,10));}
+ write(directory+'/WATCH_READY.json',{pid:watch.pid,cgroup:root+'/watch',scientificSeedsRead:0});
  const worker=launch('task.cjs',[root+'/work','work',mode,directory]);
  const observer=launch('task.cjs',[root+'/control','observer',mode,directory]);
  let latest=sample(root);const timer=setInterval(()=>{latest=sample(root);write(directory+'/RESOURCE.json',latest);},50);

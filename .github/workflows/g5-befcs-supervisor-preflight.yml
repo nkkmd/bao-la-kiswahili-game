@@ -26,6 +26,7 @@ jobs:
           sudo mkfs.ext4 -q -F -m 0 artifacts/local/SUPERVISOR.img
           sudo mount -o loop,nosuid,nodev,noexec artifacts/local/SUPERVISOR.img artifacts/local/befcs-supervisor
           sudo chown "$(id -u):$(id -g)" artifacts/local/befcs-supervisor
+          sudo chmod a+rx artifacts/local/befcs-supervisor/lost+found
       - name: Exercise aggregate kernel limit and watchdog survival
         run: node tools/research/g5-befcs-supervisor/run.cjs --ci-live
       - name: Preserve stopped evidence
