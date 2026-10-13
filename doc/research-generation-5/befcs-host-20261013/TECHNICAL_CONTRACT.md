@@ -1,0 +1,21 @@
+# 専用host通信手順の技術契約
+
+## 検証対象
+
+科学seedを使わず、隔離したローカルGit remoteと1〜128の論理IDを用いる。PRNG、科学source生成、旧candidateやguard witnessの延長、新規Bao RAWの観測は行わない。固定prefixは管理用JSONだけで、科学的到達性や勝敗価値の証拠ではない。
+
+sessionはNEWからLEASEDへ一度だけ進む。必要mirrorの保存成功後、consumeを保存し、remote headと全lease identity・全markerを再読取してからpermitを返す。重複・順序違い・別bindingの要求を拒否する。失敗・応答不明・残余予算不足ではSTOPPEDとなり、同じsessionを再開しない。consume保存後に応答不明となった場合は、markerを残すが読取許可を返さない。
+
+終了mirrorが成功したFINISHEDは、通信sessionの終了だけを意味する。科学的解釈の完了を意味せず、全技術結果はinterpretationComplete false、solution nullとする。終了mirror失敗はSTOPPEDとして保持する。
+
+## 科学用adapterの条件
+
+hostの科学adapterは既存science-gateを確認し、最終SPEC・契約・認可・全hash・CI receipt・レビューがない間はGit接続前に拒否する。既存技術registryの科学範囲拒否は変更しない。専用adapterだけが、最終gate成立後に科学leaseを原子的に取得する設計である。
+
+専用trigger条件はworkflow_dispatch、attempt 1、既定repository、最終SPECのoperations.executionRef、registryRefとする。科学workflowは今回作成しない。実行headはleaseへ記録し、SPECへ自身のcommit SHAを埋める循環を避ける。実行codeは最終SOURCE_MANIFESTとレビューbindingで固定し、少なくともhost・session・registry・science-gate・科学source・独立source・全閉包入口を必須manifest対象とする。これは将来登録時の追加固定条件であり、現在の提案を登録へ昇格させない。
+
+## 保存と限界
+
+通常完了、必要mirror失敗、consume保存後の応答不明、終了mirror失敗の4固定シナリオを保存Git bundleから独立再生する。新規10テストは通信順序と拒否条件を検証する。既存資源上限は変更しない。新hostの時間・RSS・累積mirror容量・子process排除と科学workerの全体結合は次工程であり、今回のhost単体検証から資源保証を主張しない。
+
+先行623保護入力、全workload第2版の固定ソース・結果・CI証拠、旧原記録をbyte単位で保持する。科学区画50613001..50613128は未予約・未消費。main統合と公開AI変更は対象外である。
