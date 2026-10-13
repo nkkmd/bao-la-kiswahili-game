@@ -1,6 +1,6 @@
 # 共通workloadと物理容量の再開位置
 
-まず新規入力・保護入力を照合し、Actionsの6 caseと保存image・bundle・watchdog/inspectionを取得する。実host OOM・ENOSPC・外部kernel deadlineとconsume不変、source/候補/閉包の保存byte再生を確認して、CI receiptと出力bindingを別固定する。未合格caseがあれば先に診断・原証拠を保持する。
+まず新規入力・保護入力を照合し、Actionsの7 caseと保存image・bundle・watchdog/inspectionを取得する。実host OOM・ENOSPC・外部kernel deadline・observer全体停止とconsume不変、source/候補/閉包の保存byte再生を確認して、CI receiptと出力bindingを別固定する。期限後診断を期限内完了に読み替えない。未合格caseがあれば先に診断・原証拠を保持する。
 
 次に外部watchdog/observer・Docker制御のメモリと保存容量、実GitHub認証・CAS拒否理由・remote Git pack、科学専用hostの最終payload・単一全体予算の成立を技術fixtureで確認する。その後に最終SPEC・契約・認可・全hash・CI・レビュー・別triggerを固定する。全条件が揃うまで科学CLI拒否を維持する。
 

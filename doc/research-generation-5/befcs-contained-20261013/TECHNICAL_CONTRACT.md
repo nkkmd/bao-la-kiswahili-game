@@ -16,14 +16,14 @@
 
 mountとformatは隔離Actions runnerで、`wx`で新規作成したcase専用fileに限定する。既存disk/deviceを対象にしない。root cgroup、別case、無関係なpathを停止対象にしない。外部watchdog/observerとDocker daemonのメモリはprimary cgroupに含まれず、この工程で科学用の全資源総量が成立したという主張はしない。
 
-## 固定する6 case
+## 固定する7 case
 
-通常128 source、host自身のOOM、実ENOSPC、外部deadline、離脱子、終了mirror失敗を確認する。OOM/ENOSPC/離脱子は最初のsource checkpoint後・次のconsume前に注入する。外部回収前にはcontainer停止を確認し、以後のconsume数不変・ACKなしを検算する。停止済みprefixを全証拠へ昇格せず、解釈とsolutionは未知のまま保持する。
+通常128 source、host自身のOOM、実ENOSPC、外部deadline、observer全体期限のSIGKILL、離脱子、終了mirror失敗を確認する。OOM/ENOSPC/離脱子は最初のsource checkpoint後・次のconsume前に注入する。外部回収前にはcontainer停止を確認し、以後のconsume数不変・ACKなしを検算する。停止済みprefixを全証拠へ昇格せず、解釈とsolutionは未知のまま保持する。observer強制停止caseだけは期限内完了falseとし、親による期限後の診断保存を別表示する。
 
 通信先は同じ容量制限内のbare Gitであり、認証付き実GitHub通信ではない。終了mirror失敗caseでは外部mirrorも意図的に作らず、ローカルimageとbundleだけを保存する。その他の外部回収はmarkerを増やさず、sourceの続きを生成しない。Git履歴・保存prefix・候補・閉包は前工程の独立validatorで検算する。
 
 ## 科学実行前に残る条件
 
-外部watchdog/observer/Docker制御の資源総量と保存先、認証付き実GitHub transport・CAS拒否理由・remote packの量、科学payloadの最終配備・全入力hash/認可/CI/レビュー/専用triggerは未完である。外部全体期限後の診断保存を科学runの期限内完了へ昇格しない。6 caseのActions結果取得までは合格を主張しない。
+外部watchdog/observer/Docker制御の資源総量と保存先、認証付き実GitHub transport・CAS拒否理由・remote packの量、科学payloadの最終配備・全入力hash/認可/CI/レビュー/専用triggerは未完である。外部全体期限後の診断保存を科学runの期限内完了へ昇格しない。7 caseのActions結果取得までは合格を主張しない。
 
 BEFCS-STUDY1、BEFCS-S1-SUPPLY-2026-10-13-v1、50613001..50613128は未登録・未予約・未消費。128 source・最大8候補・ply48以後の第一適格root、103355件遮断、10k状態/128k辺/180秒、全合法手完全閉包・未知の保持、追加/差替え/旧root・witness延長/上限引上げ/retry禁止、主課題・正式関係未登録/未実行、main・公開AI未変更を保持する。

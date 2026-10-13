@@ -37,6 +37,7 @@ async function one(directory,mode){
   const exit=await exited;if(sampler){clearInterval(sampler);sampler=null;}
   const inspection=JSON.parse(command('docker',['inspect',container],{encoding:'utf8'}))[0];assert.equal(inspection.State.Running,false,'PRIMARY-MUST-STOP-BEFORE-RECOVERY');assert.equal(inspection.HostConfig.Memory,LIMITS.maxRssBytes);assert.equal(inspection.HostConfig.MemorySwap,LIMITS.maxRssBytes);assert.equal(inspection.HostConfig.PidsLimit,32);assert.equal(inspection.HostConfig.ReadonlyRootfs,true);assert.equal(inspection.HostConfig.NetworkMode,'none');
   atomic(directory+'/INSPECTION.json',{exit,state:inspection.State,hostConfig:inspection.HostConfig,image:inspection.Image,latestCgroup,stdout,stderr});
+  if(mode==='observer-timeout'){atomic(directory+'/OBSERVER_HOLD.json',{primaryStopped:true,scientificSeedsRead:0});for(;;)Atomics.wait(new Int32Array(new SharedArrayBuffer(4)),0,0,20);}
   fs.rmSync(work+'/FINAL_RESERVE',{force:true});
   const recovery=R.open(work+'/recovery',work+'/remote.git'),before=recovery.read(),beforeMarkers=before.record.leases[0]?.consumes.length??0;
   let recoveryMirror=null;
@@ -56,7 +57,9 @@ async function one(directory,mode){
   if(mode==='complete'){assert.equal(row.technicalComplete,true,JSON.stringify({worker,host}));assert.equal(worker.read,128);assert.equal(worker.closures,1);assert.equal(worker.candidates,1);}
   else{assert.equal(row.technicalComplete,false);if(mode==='host-oom'){assert.equal(inspection.State.OOMKilled,true);assert.equal(fs.existsSync(work+'/INJECTION.json'),true);assert.equal(host,null);assert.ok(ackCount>=1&&ackCount<128);}if(mode==='disk-full'){row.enospc=JSON.parse(fs.readFileSync(work+'/ENOSPC.json'));assert.equal(row.enospc.error,'ENOSPC');assert.equal(ackCount,1);}if(mode==='detached'){row.detached=JSON.parse(fs.readFileSync(work+'/DETACHED.json'));assert.equal(ackCount,1);}if(mode==='final-mirror-failure'){assert.equal(worker.workerComplete,true);assert.equal(host.finalMirrorSaved,false);assert.equal(row.finalMirrorSaved,false);}}
   // 独立replayも元の単一deadline内。再生成するのは保存済みfixtureの抽象閉包だけ。
-  P.replay(row);assert.ok(Date.now()<deadlineEpochMs,'FINAL-VERIFY-EXCEEDED-TOTAL-DEADLINE');
+  const previousTmpdir=process.env.TMPDIR;process.env.TMPDIR=work+'/tmp';
+  try{P.replay(row);}finally{if(previousTmpdir===undefined)delete process.env.TMPDIR;else process.env.TMPDIR=previousTmpdir;}
+  assert.ok(Date.now()<deadlineEpochMs,'FINAL-VERIFY-EXCEEDED-TOTAL-DEADLINE');
   atomic(directory+'/SCENARIO.json',row);atomic(directory+'/VERIFIED.json',{sourceManifestSha256:R.hash(fs.readFileSync(path.join(base,docs,'SOURCE_MANIFEST.json'))),registryReplayPassed:true,markedBeforeRecovery:beforeMarkers,markedAfterRecovery:verified.logicalReadsMarked,scientificSeedsRead:0});
   command('sudo',['umount',work]);mounted=false;
   const archive=directory+'/QUOTA.img.gz',dest=fs.openSync(archive,'wx');try{command('gzip',['-c',image],{stdio:['ignore',dest,'pipe']});fs.fsyncSync(dest);}finally{fs.closeSync(dest);}
@@ -75,7 +78,30 @@ async function one(directory,mode){
 }
 async function live(){
  bindings();assert.equal(process.env.GITHUB_ACTIONS,'true');const sourceDigest=R.hash(fs.readFileSync(path.join(base,docs,'SOURCE_MANIFEST.json'))),out=path.join(base,'artifacts/local/befcs-contained');fs.mkdirSync(out,{recursive:true});const rows=[];
- for(const mode of MODES){const directory=out+'/live-'+mode;fs.mkdirSync(directory);console.error('contained-scenario',mode);const executor=cp.spawn(process.execPath,[__filename,'--one',directory,mode],{detached:true,stdio:'inherit'});const exit=await new Promise((r,j)=>{executor.once('error',j);executor.once('exit',(code,signal)=>r({code,signal}));});assert.equal(exit.code,0,'CONTAINED-CASE-INCOMPLETE-'+mode);const row=JSON.parse(fs.readFileSync(directory+'/SCENARIO.json'));rows.push(row);fs.writeFileSync(out+'/SCENARIO-'+mode+'.json.gz',zlib.gzipSync(Buffer.from(JSON.stringify(row))));console.error('contained-scenario-saved',mode);}
+ for(const mode of MODES){
+  const directory=out+'/live-'+mode;fs.mkdirSync(directory);console.error('contained-scenario',mode);
+  const executor=cp.spawn(process.execPath,[__filename,'--one',directory,mode],{detached:true,stdio:'inherit'});
+  const exit=await new Promise((r,j)=>{executor.once('error',j);executor.once('exit',(code,signal)=>r({code,signal}));});
+  if(exit.code!==0){
+   // 全体deadlineでobserverがSIGKILLされた場合も、新規caseのimageを保存可能な状態へ閉じる。
+   const f=directory+'/CONTAINER.json';if(fs.existsSync(f)){const {id}=JSON.parse(fs.readFileSync(f));assert.match(id,/^[a-f0-9]{64}$/);try{cp.execFileSync('docker',['rm','-f',id],{stdio:'ignore',timeout:30000});}catch{}}
+   if(mode==='observer-timeout'){
+    assert.equal(exit.signal,'SIGKILL');const watch=JSON.parse(fs.readFileSync(directory+'/WATCHDOG.json'));assert.ok(watch.records.some(x=>x.phase==='TOTAL-DEADLINE'));
+    assert.equal(JSON.parse(fs.readFileSync(directory+'/OBSERVER_HOLD.json')).primaryStopped,true);const inspection=JSON.parse(fs.readFileSync(directory+'/INSPECTION.json'));assert.equal(inspection.state.Running,false);
+    // 全体期限後の診断保存であり、consumeもmirrorも再開しない。
+    const remote=directory+'/quota/remote.git',head=cp.execFileSync('git',['rev-parse',R.REF],{cwd:remote,encoding:'utf8',timeout:30000}).trim(),verified=I.verify(remote,head),bundle=directory+'/STOPPED_REGISTRY.bundle';
+    cp.execFileSync('git',['bundle','create',bundle,R.REF],{cwd:remote,timeout:30000});const control=directory+'/quota/control',ackCount=fs.readdirSync(control).filter(p=>/^ACK-\d+\.json$/.test(p)).length;
+    const unacknowledgedMarkers=verified.logicalReadsMarked-ackCount;assert.ok(unacknowledgedMarkers===0||unacknowledgedMarkers===1);
+    const row={mode,fixtureSourceCount:128,registryHead:head,registryRef:R.REF,registryBundleBase64:fs.readFileSync(bundle).toString('base64'),verified,ackCount,unacknowledgedMarkers,watchdog:watch,inspection:{state:inspection.state,image:inspection.image},observerExit:exit,technicalComplete:false,completionWithinDeadline:false,forensicPreservationAfterDeadline:true,finalMirrorSaved:false,scientificSeedsRead:0,scientificLeaseCreated:false,scientificStudyRegistered:false,solution:null,resumeAuthorized:false};
+    cp.execFileSync('sudo',['umount',directory+'/quota'],{timeout:30000});const image=directory+'/QUOTA.img',archive=directory+'/QUOTA.img.gz',fd=fs.openSync(archive,'wx');try{cp.execFileSync('gzip',['-c',image],{stdio:['ignore',fd,'pipe'],timeout:30000});fs.fsyncSync(fd);}finally{fs.closeSync(fd);}fs.unlinkSync(image);row.archiveBytes=fs.statSync(archive).size;
+    atomic(directory+'/FAILED_OBSERVER.json',{exit,expectedDeadlineStop:true,completionWithinDeadline:false,forensicCleanup:true,scientificSeedsRead:0});atomic(directory+'/SCENARIO.json',row);rows.push(row);fs.writeFileSync(out+'/SCENARIO-'+mode+'.json.gz',zlib.gzipSync(Buffer.from(JSON.stringify(row))));console.error('contained-scenario-saved',mode);continue;
+   }
+   try{cp.execFileSync('sudo',['umount',directory+'/quota'],{stdio:'ignore',timeout:30000});}catch{}
+   atomic(directory+'/FAILED_OBSERVER.json',{exit,completionWithinDeadline:false,forensicCleanup:true,scientificSeedsRead:0});
+   throw Error('CONTAINED-CASE-INCOMPLETE-'+mode);
+  }
+  const row=JSON.parse(fs.readFileSync(directory+'/SCENARIO.json'));rows.push(row);fs.writeFileSync(out+'/SCENARIO-'+mode+'.json.gz',zlib.gzipSync(Buffer.from(JSON.stringify(row))));console.error('contained-scenario-saved',mode);
+ }
  bindings();assert.equal(R.hash(fs.readFileSync(path.join(base,docs,'SOURCE_MANIFEST.json'))),sourceDigest);const bytes=Buffer.from(JSON.stringify(rows));fs.writeFileSync(out+'/TECHNICAL_EVIDENCE.json.gz',zlib.gzipSync(bytes));const result={decision:'CONTAINED-WORKLOAD-QUOTA-AND-RECOVERY-TECHNICAL-PASS-SCIENTIFIC-DEPLOYMENT-PENDING',sourceManifestSha256:sourceDigest,evidenceSha256:R.hash(bytes),scenarios:rows.map(({registryBundleBase64,...r})=>r),scientificSeedsRead:0,scientificLeaseCreated:false,scientificStudyRegistered:false,conservativeReadIdentities:103355,formalRelationRegistered:false};atomic(out+'/RESULT.json',result);console.log(JSON.stringify(result));return result;
 }
 if(require.main===module)Promise.resolve(process.argv[2]==='--bindings'?bindings():process.argv[2]==='--ci-live'?live():process.argv[2]==='--one'?one(process.argv[3],process.argv[4]):Promise.reject(Error('TECHNICAL-MODE-REQUIRED'))).catch(e=>{console.error(e);process.exitCode=1;});

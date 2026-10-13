@@ -1,5 +1,7 @@
 # 共通workloadの固定技術証拠
 
-case開始前のheader、物理quota、primary inspection、watchdogと停止済みregistryをActions artifactへ逐次保存する。回収はprimary停止後に限り、consumeを増やさず、未知・再開不可を保持する。全6 caseの合格と取得検算は確認待ちである。
+case開始前のheader、物理quota、primary inspection、watchdogと停止済みregistryをActions artifactへ逐次保存する。回収はprimary停止後に限り、consumeを増やさず、未知・再開不可を保持する。全7 caseの合格と取得検算は確認待ちである。observer全体期限後の診断は期限内完了falseとして保存する。
 
 結果取得後は固定入力を変更せず、CI receipt・圧縮bundle証拠・出力bindingを追加する。終了mirror失敗caseではローカル保存を科学的な完全証拠へ昇格しない。科学seed/lease/Study/正式関係とmain/公開AIは変更しない。
+
+[先行6 caseのmetadata](CI_PRELIMINARY_METADATA.json)はrun 38385862011の全step成功とjob logの結果を保持する。artifact metadataのdigestは取得したが、この先行ZIPは未取得・digest未照合である。外部検算tmpのquota内配置とobserver全体停止を補強した最終版の取得検算とは区別する。

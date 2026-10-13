@@ -8,3 +8,4 @@ test('科学分類・科学seed消費・source数変更・上限変更を副作�
 test('通常20分/終了180秒と短縮fixtureを区別する',()=>{assert.deepEqual(validate(config('complete')),{totalMs:1200000,reserveMs:180000});assert.deepEqual(validate(config('deadline')),{totalMs:15000,reserveMs:10000});});
 test('kernel停止対象はcase固有のcgroup v2だけに限定する',()=>{const id='a'.repeat(64);assert.equal(cgroupPath(id,'0::/system.slice/docker-'+id+'.scope\n'),'/sys/fs/cgroup/system.slice/docker-'+id+'.scope');for(const s of ['0::/','0::/system.slice/unrelated.scope','0::/../'+id,'1:memory:/docker/'+id])assert.throws(()=>cgroupPath(id,s));});
 test('同じdeadlineの通常・終了・全体境界を判定する',()=>{assert.equal(phase(1200000,180000,1019999),'ORDINARY');assert.equal(phase(1200000,180000,1020000),'FINAL');assert.equal(phase(1200000,180000,1200000),'TOTAL');});
+test('外部observerの全体停止fixtureも科学上限を変更せず別枠にする',()=>{assert.deepEqual(validate(config('observer-timeout')),{totalMs:15000,reserveMs:10000});assert.deepEqual(config('observer-timeout').limits,LIMITS);});
