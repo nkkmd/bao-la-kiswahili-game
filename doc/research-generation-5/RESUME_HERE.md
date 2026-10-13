@@ -105,3 +105,9 @@ G4固定領域・保護namespace・depth-11部分層を新規正式証拠へ転�
 [運用preflight](befcs-operations-20261013/README.md)で、Gitの原子的全区画取得・読取前marker・稼働中/終了mirror・合算RSS監督を実装した。15運用テストと31先行回帰テストが合格し、1区画・128論理marker・8 mirror・137 commitを保存Git bundleから独立復元した。科学PRNGの初期化は0件で、新規Bao RAWは観測していない。実128 MiB/1 GiB cgroupはActions確認待ちである。
 
 [科学契約案](befcs-operations-20261013/CONTRACT_DRAFT.md)は未登録案で、次は科学source/独立replay・全閉包保存とcontainer/mirrorの全workload結合、最終freeze・CI receipt・別triggerを整える。584保護入力と103355件遮断を保持し、科学seed消費0・科学leaseなし・科学Study未登録/未実行、正式関係未登録/未実行、main・公開AI未変更である。技術合格を科学供給へ昇格させない。
+
+## 2026-10-13 — 共通128 sourceと監督の結合CI完了
+
+[共通128 sourceと監督の結合](befcs-joined-20261013/README.md)のV1/V2実cgroup Actionsを完了した。各runの12 workflow checksがsuccess、4 fixtureで通常128 source処理・host OOM停止・15秒期限停止・最終mirror失敗を記録した。V2では反復`cgroup.kill`書込みのfile offsetを0へ戻す修正を含む。peakは約292–629 MiB、ACKに未ACKはなく、科学seed消費0・leaseなし・Study未登録/未実行を保持する。[receiptとartifact member hashes](befcs-joined-20261013/results/README.md)を参照する。期限caseはprefixのみで完了や完全replayとみなさない。
+
+Docker daemon統合、認証付き実Git transport/CAS、起動からartifact保全までの20分single-clock証明、科学途中checkpoint validator、最終SPEC/CONTRACT/AUTH/hash/review/別triggerは残る。全てを満たすまで科学hostを拒否し、mainと公開AIは変更しない。
