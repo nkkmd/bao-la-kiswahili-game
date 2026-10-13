@@ -1,0 +1,244 @@
+{
+  "decision": "SAVED-SOURCE-PREFIX-FIXTURE-PASS-SCIENCE-GATES-PENDING",
+  "sourceManifestSha256": "df33f84164384eab9b200c2f3501d6f80e631b82977cb6ab0269deb3aeb54e8e",
+  "evidenceSha256": "1632da6fb452c49a2254e6ddb7d2447bfcb83d5cfc8b3c95f57c12aefb27a70f",
+  "cases": [
+    {
+      "mode": "before-checkpoint",
+      "signal": "SIGKILL",
+      "exitCode": null,
+      "verification": {
+        "verified": true,
+        "scope": "SAVED-PREFIX-ONLY-NOT-FULL",
+        "savedSteps": 2,
+        "savedScreens": 0,
+        "checkpointPly": null,
+        "checkpointScreens": null,
+        "journals": {
+          "source": {
+            "bytes": 1944,
+            "prefixBytes": 1944,
+            "tailBytes": 0,
+            "sha256": "9cb4af7343c158b88b40978551b3d4b14decf53f53da95bbe9d3f98befea6b4a",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 3
+          },
+          "receipt": {
+            "bytes": 365,
+            "prefixBytes": 365,
+            "tailBytes": 0,
+            "sha256": "7eb2d7191e0843175f0b55ba9e1dcc9eddbaab9ef4c4c8917834062a38454823",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 1
+          },
+          "reads": {
+            "bytes": 979,
+            "prefixBytes": 979,
+            "tailBytes": 0,
+            "sha256": "10ffbd43806ba541e06c08f737a2dfadd7e221bb9e5a924807b4017fe91a2c52",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 3
+          }
+        },
+        "savedReadCoverageVerified": true,
+        "sourceComplete": false,
+        "fullSourceVerified": false,
+        "candidate": null,
+        "solution": null,
+        "resumeAuthorized": false,
+        "scientificSeedGenerationPerformed": false
+      }
+    },
+    {
+      "mode": "stale-checkpoint",
+      "signal": "SIGKILL",
+      "exitCode": null,
+      "verification": {
+        "verified": true,
+        "scope": "SAVED-PREFIX-ONLY-NOT-FULL",
+        "savedSteps": 10,
+        "savedScreens": 0,
+        "checkpointPly": 8,
+        "checkpointScreens": 0,
+        "journals": {
+          "source": {
+            "bytes": 8881,
+            "prefixBytes": 8881,
+            "tailBytes": 0,
+            "sha256": "1ee3fb042f375ea8949a227b29879e0e4563bfb2cce6f70db82b56d7b41cf4df",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 11
+          },
+          "receipt": {
+            "bytes": 365,
+            "prefixBytes": 365,
+            "tailBytes": 0,
+            "sha256": "7eb2d7191e0843175f0b55ba9e1dcc9eddbaab9ef4c4c8917834062a38454823",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 1
+          },
+          "reads": {
+            "bytes": 3580,
+            "prefixBytes": 3580,
+            "tailBytes": 0,
+            "sha256": "cfe6e8e9e6401eb6f10a2b3e204eca0848bdf7a62622ae311f6a26ff73fe3d7d",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 11
+          }
+        },
+        "savedReadCoverageVerified": true,
+        "sourceComplete": false,
+        "fullSourceVerified": false,
+        "candidate": null,
+        "solution": null,
+        "resumeAuthorized": false,
+        "scientificSeedGenerationPerformed": false
+      }
+    },
+    {
+      "mode": "screen-boundary",
+      "signal": "SIGKILL",
+      "exitCode": null,
+      "verification": {
+        "verified": true,
+        "scope": "SAVED-PREFIX-ONLY-NOT-FULL",
+        "savedSteps": 48,
+        "savedScreens": 1,
+        "checkpointPly": 48,
+        "checkpointScreens": 0,
+        "journals": {
+          "source": {
+            "bytes": 47813,
+            "prefixBytes": 47813,
+            "tailBytes": 0,
+            "sha256": "990262f453b6a3c20293df5090d7e7096481afd8d784c2ccdceacff989d2d399",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 50
+          },
+          "receipt": {
+            "bytes": 365,
+            "prefixBytes": 365,
+            "tailBytes": 0,
+            "sha256": "7eb2d7191e0843175f0b55ba9e1dcc9eddbaab9ef4c4c8917834062a38454823",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 1
+          },
+          "reads": {
+            "bytes": 17272,
+            "prefixBytes": 17272,
+            "tailBytes": 0,
+            "sha256": "a31a4ad2a2d0a127fcc2fe16c19071e83bd2d753c1b7916381e19574c3fd2317",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 53
+          }
+        },
+        "savedReadCoverageVerified": true,
+        "sourceComplete": false,
+        "fullSourceVerified": false,
+        "candidate": null,
+        "solution": null,
+        "resumeAuthorized": false,
+        "scientificSeedGenerationPerformed": false
+      }
+    },
+    {
+      "mode": "step-boundary",
+      "signal": "SIGKILL",
+      "exitCode": null,
+      "verification": {
+        "verified": true,
+        "scope": "SAVED-PREFIX-ONLY-NOT-FULL",
+        "savedSteps": 49,
+        "savedScreens": 1,
+        "checkpointPly": 48,
+        "checkpointScreens": 0,
+        "journals": {
+          "source": {
+            "bytes": 48685,
+            "prefixBytes": 48685,
+            "tailBytes": 0,
+            "sha256": "0cc9ff5933e4452fa40c1e4eaa27a0e300b622e693646ba339afdfe72762f60f",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 51
+          },
+          "receipt": {
+            "bytes": 365,
+            "prefixBytes": 365,
+            "tailBytes": 0,
+            "sha256": "7eb2d7191e0843175f0b55ba9e1dcc9eddbaab9ef4c4c8917834062a38454823",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 1
+          },
+          "reads": {
+            "bytes": 17272,
+            "prefixBytes": 17272,
+            "tailBytes": 0,
+            "sha256": "a31a4ad2a2d0a127fcc2fe16c19071e83bd2d753c1b7916381e19574c3fd2317",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 53
+          }
+        },
+        "savedReadCoverageVerified": true,
+        "sourceComplete": false,
+        "fullSourceVerified": false,
+        "candidate": null,
+        "solution": null,
+        "resumeAuthorized": false,
+        "scientificSeedGenerationPerformed": false
+      }
+    },
+    {
+      "mode": "resource-stop",
+      "signal": null,
+      "exitCode": 0,
+      "verification": {
+        "verified": true,
+        "scope": "SAVED-PREFIX-ONLY-NOT-FULL",
+        "savedSteps": 10,
+        "savedScreens": 0,
+        "checkpointPly": 10,
+        "checkpointScreens": 0,
+        "journals": {
+          "source": {
+            "bytes": 8881,
+            "prefixBytes": 8881,
+            "tailBytes": 0,
+            "sha256": "1ee3fb042f375ea8949a227b29879e0e4563bfb2cce6f70db82b56d7b41cf4df",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 11
+          },
+          "receipt": {
+            "bytes": 365,
+            "prefixBytes": 365,
+            "tailBytes": 0,
+            "sha256": "7eb2d7191e0843175f0b55ba9e1dcc9eddbaab9ef4c4c8917834062a38454823",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 1
+          },
+          "reads": {
+            "bytes": 3580,
+            "prefixBytes": 3580,
+            "tailBytes": 0,
+            "sha256": "cfe6e8e9e6401eb6f10a2b3e204eca0848bdf7a62622ae311f6a26ff73fe3d7d",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 11
+          }
+        },
+        "savedReadCoverageVerified": true,
+        "sourceComplete": false,
+        "fullSourceVerified": false,
+        "candidate": null,
+        "solution": null,
+        "resumeAuthorized": false,
+        "scientificSeedGenerationPerformed": false
+      }
+    }
+  ],
+  "scientificSeedsConsumed": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false,
+  "conservativeReadIdentities": 103355,
+  "formalRelationRegistered": false,
+  "publicAiChanged": false,
+  "scienceHostReleased": false
+}

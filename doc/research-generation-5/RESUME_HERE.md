@@ -1,5 +1,9 @@
 # 第五世代研究 — 再開位置
 
+## 2026-10-14 — 保存済みsource prefixの検算
+
+[途中記録検算](befcs-prefix-20261014/README.md)をPR #199の保存済みheadから開始した。古いcheckpointと後続journalを分けて照合し、nullや未保存screenを補わない検算器を新規pathへ追加する。4箇所のSIGKILLと1箇所の管理停止は既知抽象fixtureだけを使用し、科学seed消費0・科学leaseなし・BEFCS-STUDY1未登録/未実行を維持する。結果・CIの確定状況と次の安全な工程は[再開位置](befcs-prefix-20261014/RESUME_HERE.md)を参照する。科学用host配線・実remote/CAS・全起動/終了期限・最終契約は未完のままである。
+
 更新日: 2026-10-13（日本時間）  
 安全な再開点: **共通workload・物理容量・外部停止保存の技術検証・科学最終配備前・科学Study未登録**
 
