@@ -1,0 +1,14 @@
+{
+  "headCommit": "a2295907bcf1c0e1cdbd02527a7d85846e1adf5d",
+  "sourceTree": "079893ae9769bf6774a36e6b14a6a52ffd1779ec",
+  "sourceManifestSha256": "236b12c6cd198af4f92ab8cb77b228544b9c174d796427fef143de7bf58457de",
+  "archiveSha256": "35fc6df6e73f47191c1a61edd0758c55487209a0771d7df021fddabfb078c78b",
+  "files": {
+    "doc/research-generation-5/befcs-envelope-20261013/results/CI_RESULT.json": "dc7b59c254ee70bec1b7eed17a0a3bf3cf9eefbc4fca1e0d1528d653086bbb54",
+    "doc/research-generation-5/befcs-envelope-20261013/results/CI_TECHNICAL_EVIDENCE.json.gz": "ff005b35acb94ded087f0a644794ea0322dfb5f2668831c9125314c33f211291",
+    "doc/research-generation-5/befcs-envelope-20261013/results/CI_RECEIPT.json": "5fbab649b091746b83e902bef65a2b5d5f956c2f67786ed30b6d1d9aa1f2aedf",
+    "doc/research-generation-5/befcs-envelope-20261013/results/CI_INITIAL_FAILURE.json": "efb8e102593624eb9f18d825a21dba54d862dda0ff935ec12677c345d73ee05f",
+    "doc/research-generation-5/befcs-envelope-20261013/results/REMOTE_TRANSPORT_RECEIPT.json": "db07c58eb2498cfff2ac78965418477191a0855bcb10360b1750e2bd4cdbbcb2"
+  },
+  "scientificSeedsRead": 0
+}

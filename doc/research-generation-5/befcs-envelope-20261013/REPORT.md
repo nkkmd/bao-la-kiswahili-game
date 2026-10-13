@@ -23,3 +23,7 @@ host自体のOOMと外部保存、起動を含む全体hard deadline、全科学
 ## 初回CIの未合格を保持する
 
 初回head `ebc83718b0f79ed8b272134eef998ba923371b46` のrun 38382224800は15テストと入力/receipt照合に合格したが、slim imageにGitがなく`spawn git ENOENT`でworker開始前に失敗した。artifact `11803841729`へBEFOREとcontainer inspectionを保存した。workerのprefixや完成証拠は存在しない。Gitを含むbookworm imageを事前取得し、networkなしでGitの実起動を確認してから次の技術fixtureへ進める。image準備はfixtureの実行予算外で、科学配備の時間範囲へ未検証のまま含めない。
+
+## 取得後の技術判定
+
+[CI確定](CI_CONFIRMATION.md)でGitを含むimageとGit objectのartifact保存を確認した。最新版の3実cgroup case、15検査、全stepとPR側12ワークフローが合格した。80保存fileのarchive digestと全hash、3 prefix/Git blob復元が一致した。worker OOMのkernel peakは1073741824 byteで、OOM kill 1とSIGKILLの後もhostが10行prefix・mirrorを保存し、未完・再開不可を保持した。先行の未合格と科学用未完条件は変更しない。

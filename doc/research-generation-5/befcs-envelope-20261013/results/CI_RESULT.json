@@ -1,0 +1,207 @@
+{
+  "decision": "TOTAL-ENVELOPE-TECHNICAL-PASS-SCIENTIFIC-DEPLOYMENT-PENDING",
+  "sourceManifestSha256": "236b12c6cd198af4f92ab8cb77b228544b9c174d796427fef143de7bf58457de",
+  "scenarios": [
+    {
+      "mode": "complete",
+      "sourceManifestSha256": "236b12c6cd198af4f92ab8cb77b228544b9c174d796427fef143de7bf58457de",
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false,
+      "exit": {
+        "code": 0,
+        "signal": null
+      },
+      "supervisorError": null,
+      "oomKills": 0,
+      "initialEvents": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "afterEvents": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "detachedObserved": false,
+      "descendantCgroup": null,
+      "hostCgroup": "0::/\n",
+      "workerCgroup": "0::/\n",
+      "limits": {
+        "maxTotalMs": 1200000,
+        "maxDomainMs": 180000,
+        "maxRssBytes": 1073741824,
+        "maxEvidenceBytes": 268435456,
+        "storageReserveBytes": 16777216,
+        "finalizationReserveMs": 180000
+      },
+      "accounting": {
+        "rss": 26791936,
+        "chargedBytes": 1223322,
+        "remoteBytes": 2270,
+        "outstandingReservations": 0
+      },
+      "workspace": {
+        "logical": 29609,
+        "allocated": 167936,
+        "charged": 167936,
+        "files": 22
+      },
+      "elapsedInnerMs": 58.254625000000004,
+      "stopReason": null,
+      "kernelMemoryPeakBytes": 28618752,
+      "prefixSha256": "4ddfee7823071c852748a58c19e97cf3a3d48e8120e857b8bc0f8c3b5177226d",
+      "prefixBytes": 2270,
+      "prefixRecords": 10,
+      "finalLocalMirrorSaved": true,
+      "technicalComplete": true,
+      "solution": null,
+      "resumeAuthorized": false,
+      "containerStoppedBeforeOuterInspection": true,
+      "image": "sha256:e28cf840f0cdbd6e03a6756ac9d5c8285ef20f7aee64fcde14c1ea4cccef4362",
+      "elapsedOuterMs": 261.217528
+    },
+    {
+      "mode": "detached",
+      "sourceManifestSha256": "236b12c6cd198af4f92ab8cb77b228544b9c174d796427fef143de7bf58457de",
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false,
+      "exit": {
+        "code": 0,
+        "signal": null
+      },
+      "supervisorError": null,
+      "oomKills": 0,
+      "initialEvents": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "afterEvents": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "detachedObserved": true,
+      "descendantCgroup": "0::/\n",
+      "hostCgroup": "0::/\n",
+      "workerCgroup": "0::/\n",
+      "limits": {
+        "maxTotalMs": 1200000,
+        "maxDomainMs": 180000,
+        "maxRssBytes": 1073741824,
+        "maxEvidenceBytes": 268435456,
+        "storageReserveBytes": 16777216,
+        "finalizationReserveMs": 180000
+      },
+      "accounting": {
+        "rss": 23658496,
+        "chargedBytes": 1227418,
+        "remoteBytes": 2270,
+        "outstandingReservations": 0
+      },
+      "workspace": {
+        "logical": 29620,
+        "allocated": 172032,
+        "charged": 172032,
+        "files": 23
+      },
+      "elapsedInnerMs": 64.947238,
+      "stopReason": "DETACHED-DESCENDANT-TERMINATED",
+      "kernelMemoryPeakBytes": 29839360,
+      "prefixSha256": "4ddfee7823071c852748a58c19e97cf3a3d48e8120e857b8bc0f8c3b5177226d",
+      "prefixBytes": 2270,
+      "prefixRecords": 10,
+      "finalLocalMirrorSaved": true,
+      "technicalComplete": false,
+      "solution": null,
+      "resumeAuthorized": false,
+      "containerStoppedBeforeOuterInspection": true,
+      "image": "sha256:e28cf840f0cdbd6e03a6756ac9d5c8285ef20f7aee64fcde14c1ea4cccef4362",
+      "elapsedOuterMs": 259.19315300000005
+    },
+    {
+      "mode": "oom",
+      "sourceManifestSha256": "236b12c6cd198af4f92ab8cb77b228544b9c174d796427fef143de7bf58457de",
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false,
+      "exit": {
+        "code": null,
+        "signal": "SIGKILL"
+      },
+      "supervisorError": null,
+      "oomKills": 1,
+      "initialEvents": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "afterEvents": {
+        "low": 0,
+        "high": 0,
+        "max": 21,
+        "oom": 1,
+        "oom_kill": 1,
+        "oom_group_kill": 0
+      },
+      "detachedObserved": false,
+      "descendantCgroup": null,
+      "hostCgroup": "0::/\n",
+      "workerCgroup": "0::/\n",
+      "limits": {
+        "maxTotalMs": 1200000,
+        "maxDomainMs": 180000,
+        "maxRssBytes": 1073741824,
+        "maxEvidenceBytes": 268435456,
+        "storageReserveBytes": 16777216,
+        "finalizationReserveMs": 180000
+      },
+      "accounting": {
+        "rss": 1038786560,
+        "chargedBytes": 1223322,
+        "remoteBytes": 2270,
+        "outstandingReservations": 0
+      },
+      "workspace": {
+        "logical": 29609,
+        "allocated": 167936,
+        "charged": 167936,
+        "files": 22
+      },
+      "elapsedInnerMs": 469.881931,
+      "stopReason": "CGROUP-OOM",
+      "kernelMemoryPeakBytes": 1073741824,
+      "prefixSha256": "4ddfee7823071c852748a58c19e97cf3a3d48e8120e857b8bc0f8c3b5177226d",
+      "prefixBytes": 2270,
+      "prefixRecords": 10,
+      "finalLocalMirrorSaved": true,
+      "technicalComplete": false,
+      "solution": null,
+      "resumeAuthorized": false,
+      "containerStoppedBeforeOuterInspection": true,
+      "image": "sha256:e28cf840f0cdbd6e03a6756ac9d5c8285ef20f7aee64fcde14c1ea4cccef4362",
+      "elapsedOuterMs": 657.2909790000001
+    }
+  ],
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false
+}
