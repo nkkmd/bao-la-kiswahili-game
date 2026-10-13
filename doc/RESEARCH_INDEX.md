@@ -1,8 +1,9 @@
 # Bao研究成果索引
 
-更新日: 2026-09-29  
+更新日: 2026-10-13（日本時間）
+
 対象: Research Generation 1〜5  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了・main統合済み。Research Generation 5は全閉包BFS fixture統合合格・新供給Study設計案・未登録/未実行・正式関係準備未成立・正式比較未登録/未実行**
+現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了・main統合済み。Research Generation 5は分岐包絡source・保存fixture技術合格・新供給Study登録前・未登録/未実行・正式関係準備未成立・正式比較未登録/未実行**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`または`FINAL_REPORT.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
@@ -434,3 +435,10 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 1024状態の抽象例でjournal込み保存は4363460から3988337 byteとなったが、科学BFSの資源改善や新規完全領域を確認した結果ではない。初回RSSの全同値も保持し、Linux補助計測を別契約で保存した。新規科学source/seed/候補・旧witness延長は0件である。
 
 保守的遮断は103355 RAW識別となった。全閉包要件と正式関係未登録/未実行を保ち、次は[別Studyの登録条件](research-generation-5/bfs-integration-20261013/RESUME_HERE.md)を具体化する。旧区画を救済・補充せず、技術合格から科学sourceを自動起動しない。main・公開AIは未変更である。
+
+
+## 2026-10-13 — 分岐包絡供給のsource・保存fixture技術合格
+
+[技術preflight](research-generation-5/branch-envelope-preflight-20261013/README.md)で、第一適格root、全2-ply screen、独立source/edge再生、予約域付きjournal/snapshotとgzip分割を実装した。22新テストと先行BFS 9テスト、10 source/7 closure fixture、17 bundleが合格した。実容量256 MiB・16 MiB reserve、48 MiB以下・最大6片の復元を検査した。観測532 RAWは全て既読で、保守的遮断は103355識別のまま、555保護入力のbytesを保持した。
+
+科学source/seed/候補・旧root/witness延長・正式推論は0件である。BEFCS-STUDY1は未登録・未実行、leaseなし、科学source未固定、実行未認可。次は科学用SPEC/契約/認可範囲と全区画lease・読取前consume・attempt 1固定の別trigger・常時保存/mirrorを具体化する。fixture技術合格から科学sourceを起動せず、全閉包と未知の保持、不足時終了、追加/差替え/retry禁止を維持する。main・公開AIは未変更である。

@@ -1,15 +1,15 @@
 # 第五世代研究 — 再開位置
 
 更新日: 2026-10-13（日本時間）  
-安全な再開点: **BEFCS-STUDY1供給設計案・未登録・未実行**
+安全な再開点: **分岐包絡source・保存fixture技術合格・科学Study未登録**
 
 ## 次に進めること
 
-1. [BEFCS-STUDY1提案](branch-envelope-20261013/PROPOSAL.md)と[実行前レビュー](branch-envelope-20261013/PREEXECUTION_REVIEW.md)を基準に、別source実装とsourceを読まないfixture preflightを進める。
-2. 103355件の保守的既読RAW遮断をroot・全screen応手・閉包境界へ適用し、候補/閉包からの差替えを禁止する。抽象fixtureはBao候補や到達性証拠に使わない。
-3. 10,000状態・128,000辺・180秒/領域、全体20分・1 GiB・256 MiB、16 MiB reserveとgzip分割条件をfixtureで検算する。
-4. 全合法手の完全閉包、未知と停止witnessの保持、独立source/edge再生、一度限りleaseとattempt 1の条件を別途固定する。正式登録やseed読取はこの設計案から自動的に行わない。
-5. [BFS統合報告](bfs-integration-20261013/REPORT.md)は既知Bao 3状態・2辺と抽象fixtureの技術検証として参照し、科学的な新規領域の供給証拠へ昇格させない。
+1. [preflight報告](branch-envelope-preflight-20261013/REPORT.md)と[設計解釈](branch-envelope-preflight-20261013/DESIGN_REVIEW.md)を確認する。10 source/7 closure fixture、17 bundleは科学供給の証拠へ昇格させない。
+2. [次の再開条件](branch-envelope-preflight-20261013/RESUME_HERE.md)に沿って、科学用SPEC・契約・認可範囲・source manifestを結果前に固定する。提案seed/ID/namespaceを再照合する。
+3. 全区画lease・seed読取前consume・attempt 1固定の別trigger・常時artifact/repository保存・終了後mirrorを実装し、seedなしfixtureで強制終了・合算RSS/cgroup制限を検査する。
+4. 103355件の既読遮断、全合法手の完全閉包、未知の保持、候補不足時の終了、追加/差替え/retry禁止を維持する。旧8候補・27代表・2 guard witnessを延長しない。
+5. 科学区画は技術合格から自動的に始めず、最終source freeze・CI receipt・契約hash・保護入力・実行前レビューの成立後に一度だけ進める。正式関係は未登録・未実行のままである。
 
 Stage 0と独立遷移の技術合格は保持する。Stage 1の0候補は、完全解析可能な局面の不存在や、順位変動と損失の関係の不成立を示さない。正式検証は未承認・未実施である。
 
@@ -86,3 +86,10 @@ G4固定領域・保護namespace・depth-11部分層を新規正式証拠へ転�
 [BEFCS-STUDY1提案](branch-envelope-20261013/README.md)は、G5-05のroot・27代表・seedを延長しない新しい有限開発案である。fresh trajectoryで最初の適格rootを選び、各root子の応手数合計を16以下に事前制限する。提案seed範囲`50613001..50613128`は空き照合のみで、未予約・未消費。10k状態/128k辺/180秒、全体20分・1 GiB・256 MiBと保存reserveを提示するが、新規Baoの完全閉包量や供給成功を保証しない。
 
 状態はPROPOSAL-NOT-REGISTRATION-NOT-EXECUTEDで、seed消費0・leaseなし・source未固定・実行未認可。次は別source実装とfixture preflight、独立候補/閉包検算、保存上限testを行い、条件が揃うまで区画を開始しない。固定有限コーパスにIID/一般局面の推論を適用せず、主要関係は未登録・未実行、DTFへ差し替えない。旧記録、main、公開AIを保持する。
+
+
+## 2026-10-13 — 分岐包絡供給のsource・保存fixture技術合格
+
+[技術preflight](branch-envelope-preflight-20261013/README.md)で、第一適格root、全2-ply screen、独立source/edge再生、予約域付きjournal/snapshotとgzip分割を実装した。22新テストと先行BFS 9テスト、10 source/7 closure fixture、17 bundleが合格した。実容量256 MiB・16 MiB reserve、48 MiB以下・最大6片の復元を検査した。観測532 RAWは全て既読で、保守的遮断は103355識別のまま、555保護入力のbytesを保持した。
+
+科学source/seed/候補・旧root/witness延長・正式推論は0件である。BEFCS-STUDY1は未登録・未実行、leaseなし、科学source未固定、実行未認可。次は科学用SPEC/契約/認可範囲と全区画lease・読取前consume・attempt 1固定の別trigger・常時保存/mirrorを具体化する。fixture技術合格から科学sourceを起動せず、全閉包と未知の保持、不足時終了、追加/差替え/retry禁止を維持する。main・公開AIは未変更である。

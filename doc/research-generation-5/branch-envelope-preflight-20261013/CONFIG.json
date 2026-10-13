@@ -1,0 +1,13 @@
+{
+  "technicalId": "BEFCS-TECH-PREFLIGHT-2026-10-13-v1",
+  "decisionScope": "FIXTURE-ONLY-NOT-SCIENTIFIC-AUTHORIZATION",
+  "fixtureSeeds": [1, 7, 123, 4294967295, 4166445141],
+  "sourceLimits": { "minCandidatePly": 48, "maxPly": 54, "minRootWidth": 2, "maxRootWidth": 4, "minReplyWidth": 1, "maxReplyWidth": 8, "maxAggregateReplyWidth": 16, "checkpointSourcePlyInterval": 32 },
+  "closureLimits": { "maxStates": 10000, "maxEdges": 128000, "maxDomainMs": 180000, "maxRssBytes": 1073741824 },
+  "smallStorageLimits": { "maxEvidenceBytes": 8388608, "storageReserveBytes": 1048576, "maxRepositoryBundleGzipBytes": 8388608, "maxBlobChunkBytes": 32768, "maxBlobChunks": 256 },
+  "wholeTechnicalRunLimits": { "maxTotalMs": 300000, "maxRssBytes": 1073741824 },
+  "scientificSeedBlock": null,
+  "scientificSeedsConsumed": 0,
+  "scientificRunnerAuthorized": false,
+  "leaseCreated": false
+}

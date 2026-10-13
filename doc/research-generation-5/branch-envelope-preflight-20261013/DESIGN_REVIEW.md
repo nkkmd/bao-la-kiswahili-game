@@ -1,0 +1,17 @@
+# 提案を実装へ移す際の解釈確認
+
+## 固定する意味
+
+提案の`runtime/ring`という実装名は、既存runtime由来のobject実装とring実装の系統を指していた。本技術契約では両方ともguard-freeの科学用遷移を用い、runtime guardで勝者を与えるエンジンを呼ばない。全閉包要件と未知の保持を優先する。原提案ファイルはPR #190のまま保持する。
+
+提案JSONの`conservativeCombinedBaoRawIdentities: 103355`は、純粋なBao到達局面の数ではなく、旧科学・技術・抽象RAW射影を含む保守的遮断の和集合の数である。技術結果では`conservativeCombinedReadIdentities`として表記する。Baoとabstractは証拠由来を別区分で保存し、共通RAW hashによる保守的な衝突遮断を保持する。抽象fixtureの科学的な到達可能性を主張しない。
+
+## 選定と停止の区別
+
+第一代表を固定する前に、各子の応手集合だけでなく全2-ply遷移を読むため、未知になったscreen応手はRAW遮断の完全照合を終えられない。そこでsourceを失敗で閉じ、未知を構造不適格だけと扱って後のrootへ進むことはしない。第一代表の後の未知も同じsource失敗とし、候補はnullのまま保持する。
+
+既読除外は第一代表のscreen局面・microstate射影に適用する。別のsource経路や非代表screenの共有だけではsource全体を除外しない。複数source間の同じ第一rootはsource順で除外し、後のrootを探さない。候補閉包間の共有は観測成分として集約する対象であり、非共有からIIDを主張しない。
+
+## 次の科学契約へ持ち越すこと
+
+実容量fixtureの合格は保存形式と停止境界の検査であり、実Baoの供給成功や一度限り運用の保証ではない。科学用entry・lease・consume・trigger・常時保存のworkflowと最終契約は次工程で独立して固定する。今回の技術manifestは科学用source freezeではない。

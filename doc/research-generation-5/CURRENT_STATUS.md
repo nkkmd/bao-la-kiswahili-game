@@ -1,11 +1,11 @@
 # 第五世代研究 — 現在の状態
 
 更新日: 2026-10-13（日本時間）  
-状態: **全閉包BFS統合のfixture技術検証合格・新規供給登録前／5区画終了／正式関係は未登録・未実行**
+状態: **分岐包絡source・保存fixture技術合格・新規Study登録前／5区画終了／正式関係は未登録・未実行**
 
 ## 現在確定していること
 
-現在は、全閉包BFSの固定fixture技術検証を完了し、[BEFCS-STUDY1の新規供給案](branch-envelope-20261013/README.md)を提案段階で固定している。正式登録・実行はしておらず、seed消費0、leaseなし、source未固定、実行未認可である。次はsource実装と既読RAW遮断・候補選定・保存上限を含むfixture preflightを行う。
+現在は、[分岐包絡供給の技術preflight](branch-envelope-preflight-20261013/README.md)が合格し、source選定・独立再生・全閉包・停止保存を固定fixtureで確認した。BEFCS-STUDY1の科学登録・実行はまだ行っておらず、科学seed消費0、leaseなし、科学source未固定、実行未認可である。次は最終科学契約とlease/consume/別trigger/常時保存の運用を具体化する。
 
 中心課題は「探索順位の変動と、完全解析した局面における選択手の厳密価値損失との関係」である。[研究計画](PROGRAM_PLAN.md)の第1段階を[G5-01](g5-01/README.md) / `RRSVL-STUDY1` として具体化した。ユーザーの着手指示に基づく[実行前レビュー](g5-01/PREEXECUTION_REVIEW.md)で、対象、現行takasiaルール、測定、計算上限、独立検算の範囲を固定した。
 
@@ -115,3 +115,10 @@
 [BEFCS-STUDY1提案](branch-envelope-20261013/README.md)は、G5-05のroot・27代表・seedを延長しない新しい有限開発案である。fresh trajectoryで最初の適格rootを選び、各root子の応手数合計を16以下に事前制限する。提案seed範囲`50613001..50613128`は空き照合のみで、未予約・未消費。10k状態/128k辺/180秒、全体20分・1 GiB・256 MiBと保存reserveを提示するが、新規Baoの完全閉包量や供給成功を保証しない。
 
 状態はPROPOSAL-NOT-REGISTRATION-NOT-EXECUTEDで、seed消費0・leaseなし・source未固定・実行未認可。次は別source実装とfixture preflight、独立候補/閉包検算、保存上限testを行い、条件が揃うまで区画を開始しない。固定有限コーパスにIID/一般局面の推論を適用せず、主要関係は未登録・未実行、DTFへ差し替えない。旧記録、main、公開AIを保持する。
+
+
+## 2026-10-13 — 分岐包絡供給のsource・保存fixture技術合格
+
+[技術preflight](branch-envelope-preflight-20261013/README.md)で、第一適格root、全2-ply screen、独立source/edge再生、予約域付きjournal/snapshotとgzip分割を実装した。22新テストと先行BFS 9テスト、10 source/7 closure fixture、17 bundleが合格した。実容量256 MiB・16 MiB reserve、48 MiB以下・最大6片の復元を検査した。観測532 RAWは全て既読で、保守的遮断は103355識別のまま、555保護入力のbytesを保持した。
+
+科学source/seed/候補・旧root/witness延長・正式推論は0件である。BEFCS-STUDY1は未登録・未実行、leaseなし、科学source未固定、実行未認可。次は科学用SPEC/契約/認可範囲と全区画lease・読取前consume・attempt 1固定の別trigger・常時保存/mirrorを具体化する。fixture技術合格から科学sourceを起動せず、全閉包と未知の保持、不足時終了、追加/差替え/retry禁止を維持する。main・公開AIは未変更である。

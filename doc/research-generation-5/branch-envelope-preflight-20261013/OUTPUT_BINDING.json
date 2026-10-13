@@ -1,0 +1,11 @@
+{
+  "technicalId": "BEFCS-TECH-PREFLIGHT-2026-10-13-v1",
+  "files": {
+    "doc/research-generation-5/branch-envelope-preflight-20261013/SOURCE_MANIFEST.json": "4a209ad6e19e35911d174f8df37410531678c0ffe8d61eb4599d3734905e0ab1",
+    "doc/research-generation-5/branch-envelope-preflight-20261013/PROTECTED_INPUTS.json": "f12f9f8242fdee9c8f6f4a539bcb3780c3d70c374d9fdd7a086bd614bc1d8212",
+    "doc/research-generation-5/branch-envelope-preflight-20261013/results/RESULT.json": "caa9cda269d0d999e182421baf74c6ac306db2dfc613552c63cfc37e650f32c9",
+    "doc/research-generation-5/branch-envelope-preflight-20261013/results/EXECUTION.json": "1ce6c143ab734568a768518bcd623098042ad76cb5ad9f2c2243b8963f215a12",
+    "doc/research-generation-5/branch-envelope-preflight-20261013/results/TECHNICAL_EVIDENCE.json.gz": "9f97c3e9ddaba42b296851548a051efcaf5f0cd8dd3618d4bd1732491968ea15",
+    ".github/workflows/g5-branch-envelope-preflight.yml": "75e5e713829512a0f398b0f37805f0c796f85c3c79bd2e9db0a8f3bc046377ab"
+  }
+}
