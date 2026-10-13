@@ -1,0 +1,40 @@
+name: G5 BEFCS Operations Fixture Preflight
+on:
+  push:
+    branches: [research/g5-befcs-operations-preflight]
+    paths:
+      - 'tools/research/g5-befcs-operations/**'
+      - 'test/g5-befcs-operations.test.cjs'
+      - 'doc/research-generation-5/befcs-operations-20261013/**'
+      - '.github/workflows/g5-befcs-operations-preflight.yml'
+  pull_request:
+    paths:
+      - 'tools/research/g5-befcs-operations/**'
+      - 'test/g5-befcs-operations.test.cjs'
+      - 'doc/research-generation-5/befcs-operations-20261013/**'
+      - '.github/workflows/g5-befcs-operations-preflight.yml'
+permissions:
+  contents: read
+jobs:
+  operations-fixture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Test registry CAS consume ordering mirror crash and process groups
+        run: node --test test/g5-befcs-operations.test.cjs
+      - name: Independently replay frozen Git registry and mirror evidence
+        run: node tools/research/g5-befcs-operations/run.cjs --check
+      - name: Test real 128 MiB and 1 GiB Docker cgroup OOM preserving prefix
+        run: node tools/research/g5-befcs-operations/docker-smoke.cjs artifacts/local/befcs-ops/CGROUP_RESULT.json
+      - name: Preserve technical cgroup receipt even after failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: befcs-operations-fixture-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/local/befcs-ops/
+          if-no-files-found: warn
+          retention-days: 90

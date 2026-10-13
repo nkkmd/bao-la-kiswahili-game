@@ -1,0 +1,26 @@
+{
+  "technicalId": "BEFCS-OPS-PREFLIGHT-2026-10-13-v1",
+  "decision": "LOCAL-OPERATIONS-FIXTURE-PASS-CGROUP-CI-PENDING",
+  "registryReplay": {
+    "verified": true,
+    "commits": 137,
+    "leases": 1,
+    "logicalReadsMarked": 128,
+    "mirrors": 8,
+    "scientificSeedsRead": 0
+  },
+  "logicalCallbacks": 128,
+  "liveMirrorVerified": true,
+  "finalMirrorVerified": true,
+  "evidenceSha256": "a9b6564f52f0c6b0ae93c78078d9dcc75e7dbb8467801ad8604c0b642d91330b",
+  "evidenceBytes": 65866,
+  "solution": null,
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false,
+  "scientificExecutionAuthorized": false,
+  "conservativeReadIdentities": 103355,
+  "newBaoRawObserved": 0,
+  "formalRelationRegistered": false,
+  "publicAiChanged": false
+}

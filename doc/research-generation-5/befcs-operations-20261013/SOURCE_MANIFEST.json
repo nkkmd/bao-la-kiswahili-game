@@ -1,0 +1,21 @@
+{
+  "technicalId": "BEFCS-OPS-PREFLIGHT-2026-10-13-v1",
+  "protectedInputCount": 584,
+  "scientificExecutionAuthorized": false,
+  "files": {
+    ".github/workflows/g5-befcs-operations-preflight.yml": "31cd277ca3eb61d493a2409a81b93cb7ee5fceb559d267790bb298831bf72cbe",
+    "doc/research-generation-5/befcs-operations-20261013/CONFIG.json": "7e4b7acc47c9eaab104193cee3d769f878bbdd38afa0c9a0f427fd714c3b5269",
+    "doc/research-generation-5/befcs-operations-20261013/CONTRACT_DRAFT.md": "a0ddd6935f32441f6eae2322b2b4eb557b57ba85b635fd4e2416229977f08d41",
+    "doc/research-generation-5/befcs-operations-20261013/PROTECTED_INPUTS.json": "1f3d9e520b101dfb0bcba7d66cc01279374d6b3495ab7b258edaf4c051756f30",
+    "doc/research-generation-5/befcs-operations-20261013/SPEC_DRAFT.json": "633e0ae0ba090d23b08f8f720c68400ff996af90096a79fcd26e86743dad9e0c",
+    "doc/research-generation-5/befcs-operations-20261013/TECHNICAL_CONTRACT.md": "a8cb8500cd8863ca02b9774783982e70b8a7ecc598ad9af12f8c9315cc04af81",
+    "test/g5-befcs-operations.test.cjs": "b668a2a7b4b060c0ef8679636201dc74cd900a88923866bfdfadde2daf26866d",
+    "tools/research/g5-befcs-operations/capture.cjs": "5edb9558344cc2601d10d2d370c85fd700e29b9e3462c46a905f84c20321b41f",
+    "tools/research/g5-befcs-operations/docker-smoke.cjs": "2c851f97a6f90482091fd1833cc5e8e23565c7e300f75fd9f5859f2ad8668630",
+    "tools/research/g5-befcs-operations/independent-registry.cjs": "3d1f9ca3a2487ddf2ba4674255125f7a98a9a20247bf64c5a839f45371575f3e",
+    "tools/research/g5-befcs-operations/registry.cjs": "70028c203f7af49945fcffba36a99106114fb80211e8770d1fd002c17ffd07a4",
+    "tools/research/g5-befcs-operations/run.cjs": "92cd6f0856182083b909405e4b1e3da613b5e3ec0a1670e7474eddba939db4cc",
+    "tools/research/g5-befcs-operations/supervisor.cjs": "8743b474610d77388d9352849f6346de48806d06d5734e4bcf8bc01562995e15",
+    "tools/research/g5-befcs-operations/worker-fixture.cjs": "9655c1e0a3b612899d98b533d2bfa1bb08783e572f1d238e3120b7fd1eb70fa3"
+  }
+}

@@ -1,15 +1,15 @@
 # 第五世代研究 — 再開位置
 
 更新日: 2026-10-13（日本時間）  
-安全な再開点: **分岐包絡source・保存fixture技術合格・科学Study未登録**
+安全な再開点: **分岐包絡運用部品fixture検証・科学worker統合前・科学Study未登録**
 
 ## 次に進めること
 
-1. [preflight報告](branch-envelope-preflight-20261013/REPORT.md)と[設計解釈](branch-envelope-preflight-20261013/DESIGN_REVIEW.md)を確認する。10 source/7 closure fixture、17 bundleは科学供給の証拠へ昇格させない。
-2. [次の再開条件](branch-envelope-preflight-20261013/RESUME_HERE.md)に沿って、科学用SPEC・契約・認可範囲・source manifestを結果前に固定する。提案seed/ID/namespaceを再照合する。
-3. 全区画lease・seed読取前consume・attempt 1固定の別trigger・常時artifact/repository保存・終了後mirrorを実装し、seedなしfixtureで強制終了・合算RSS/cgroup制限を検査する。
-4. 103355件の既読遮断、全合法手の完全閉包、未知の保持、候補不足時の終了、追加/差替え/retry禁止を維持する。旧8候補・27代表・2 guard witnessを延長しない。
-5. 科学区画は技術合格から自動的に始めず、最終source freeze・CI receipt・契約hash・保護入力・実行前レビューの成立後に一度だけ進める。正式関係は未登録・未実行のままである。
+1. [運用preflight報告](befcs-operations-20261013/REPORT.md)とActionsの実cgroup receiptを確認する。ローカル15運用テスト・31回帰テストと保存bundle再生は合格した。
+2. [次の再開条件](befcs-operations-20261013/RESUME_HERE.md)に沿って、科学source/独立replay・全閉包保存を運用moduleへ結合し、seedなし全workload fixtureを検査する。
+3. 科学用SPEC・契約・認可範囲・source manifest・CI receipt・保護入力・実行前レビューを結果前に固定し、提案seed/ID/namespaceを再照合する。未登録案を科学契約へ自動昇格しない。
+4. 全区画lease・seed読取前consume・attempt 1固定の別trigger・常時保存と最終mirrorが成立してから一度だけ実行する。技術fixtureの1〜128論理IDを科学seedへ使わない。
+5. 103355件遮断・全合法手完全閉包・未知の保持・不足時終了・追加/差替え/retry禁止を維持する。旧root/witnessを延長せず、正式関係未登録/未実行と主課題を保持する。
 
 Stage 0と独立遷移の技術合格は保持する。Stage 1の0候補は、完全解析可能な局面の不存在や、順位変動と損失の関係の不成立を示さない。正式検証は未承認・未実施である。
 
@@ -93,3 +93,9 @@ G4固定領域・保護namespace・depth-11部分層を新規正式証拠へ転�
 [技術preflight](branch-envelope-preflight-20261013/README.md)で、第一適格root、全2-ply screen、独立source/edge再生、予約域付きjournal/snapshotとgzip分割を実装した。22新テストと先行BFS 9テスト、10 source/7 closure fixture、17 bundleが合格した。実容量256 MiB・16 MiB reserve、48 MiB以下・最大6片の復元を検査した。観測532 RAWは全て既読で、保守的遮断は103355識別のまま、555保護入力のbytesを保持した。
 
 科学source/seed/候補・旧root/witness延長・正式推論は0件である。BEFCS-STUDY1は未登録・未実行、leaseなし、科学source未固定、実行未認可。次は科学用SPEC/契約/認可範囲と全区画lease・読取前consume・attempt 1固定の別trigger・常時保存/mirrorを具体化する。fixture技術合格から科学sourceを起動せず、全閉包と未知の保持、不足時終了、追加/差替え/retry禁止を維持する。main・公開AIは未変更である。
+
+## 2026-10-13 — 一度限り運用のfixture検証
+
+[運用preflight](befcs-operations-20261013/README.md)で、Gitの原子的全区画取得・読取前marker・稼働中/終了mirror・合算RSS監督を実装した。15運用テストと31先行回帰テストが合格し、1区画・128論理marker・8 mirror・137 commitを保存Git bundleから独立復元した。科学PRNGの初期化は0件で、新規Bao RAWは観測していない。実128 MiB/1 GiB cgroupはActions確認待ちである。
+
+[科学契約案](befcs-operations-20261013/CONTRACT_DRAFT.md)は未登録案で、次は科学source/独立replay・全閉包保存とcontainer/mirrorの全workload結合、最終freeze・CI receipt・別triggerを整える。584保護入力と103355件遮断を保持し、科学seed消費0・科学leaseなし・科学Study未登録/未実行、正式関係未登録/未実行、main・公開AI未変更である。技術合格を科学供給へ昇格させない。
