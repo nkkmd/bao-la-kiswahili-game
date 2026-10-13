@@ -1,0 +1,560 @@
+{
+  "verified": true,
+  "rows": [
+    {
+      "id": "11853716667",
+      "mode": "complete",
+      "resultVerified": true,
+      "originalScenarioAvailable": true,
+      "originalDecisionUnchanged": true,
+      "remoteHeadMatches": true,
+      "registryHead": "5e4589d5fd0f5ed03f5d030e1ca0b34888f8eaa6",
+      "registryRef": "refs/heads/research/g5-remote-joined-38473413073-a1-complete",
+      "registry": {
+        "verified": true,
+        "commits": 193,
+        "leases": 1,
+        "logicalReadsMarked": 128,
+        "mirrors": 64,
+        "scientificSeedsRead": 0
+      },
+      "ackCount": 128,
+      "unacknowledgedMarkers": 0,
+      "technicalComplete": true,
+      "finalMirrorSaved": true,
+      "remoteMirrorProof": {
+        "fullSources": 128,
+        "partialSources": 0,
+        "completeClosures": 1,
+        "partialProofs": [],
+        "sourceGenerationPerformed": false
+      },
+      "localSourceProof": {
+        "fullSources": 128,
+        "partialSources": 0,
+        "completeClosures": 1,
+        "partialProofs": [],
+        "sourceGenerationPerformed": false
+      },
+      "scientificSeedsRead": 0,
+      "artifactId": 11853716667
+    },
+    {
+      "id": "11853148638",
+      "mode": "proxy-final-mirror",
+      "resultVerified": true,
+      "originalScenarioAvailable": true,
+      "originalDecisionUnchanged": true,
+      "remoteHeadMatches": true,
+      "registryHead": "e76dd25f4650ee73c78848eb93992c59c67e7d08",
+      "registryRef": "refs/heads/research/g5-remote-joined-38473413073-a1-proxy-final-mirror",
+      "registry": {
+        "verified": true,
+        "commits": 203,
+        "leases": 1,
+        "logicalReadsMarked": 128,
+        "mirrors": 74,
+        "scientificSeedsRead": 0
+      },
+      "ackCount": 128,
+      "unacknowledgedMarkers": 0,
+      "technicalComplete": false,
+      "finalMirrorSaved": false,
+      "remoteMirrorProof": {
+        "fullSources": 127,
+        "partialSources": 1,
+        "completeClosures": 0,
+        "partialProofs": [
+          {
+            "dir": "source-127",
+            "verified": true,
+            "scope": "SAVED-PREFIX-ONLY-NOT-FULL",
+            "savedSteps": 9,
+            "savedScreens": 0,
+            "checkpointPly": null,
+            "checkpointScreens": null,
+            "journals": {
+              "source": {
+                "bytes": 8011,
+                "prefixBytes": 8011,
+                "tailBytes": 0,
+                "sha256": "a59d5d76b96ede5045631887ec0aaeb1ba70d5896bec1b52c406aedb2fa0995e",
+                "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "rows": 10
+              },
+              "receipt": {
+                "bytes": 391,
+                "prefixBytes": 391,
+                "tailBytes": 0,
+                "sha256": "8a43eed46deddac65b98f6065368ad2a99cc0e4e87b46a317a8cd6857e7fc0db",
+                "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "rows": 1
+              },
+              "reads": {
+                "bytes": 4124,
+                "prefixBytes": 4124,
+                "tailBytes": 0,
+                "sha256": "8e3574d688317500e81d492c4559ebb64a492753cdba8c1dceb6e7a4c04450fd",
+                "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "rows": 11
+              }
+            },
+            "savedReadCoverageVerified": true,
+            "sourceComplete": false,
+            "fullSourceVerified": false,
+            "candidate": null,
+            "solution": null,
+            "resumeAuthorized": false,
+            "scientificSeedGenerationPerformed": false
+          }
+        ],
+        "sourceGenerationPerformed": false
+      },
+      "localSourceProof": {
+        "fullSources": 128,
+        "partialSources": 0,
+        "completeClosures": 1,
+        "partialProofs": [],
+        "sourceGenerationPerformed": false
+      },
+      "scientificSeedsRead": 0,
+      "artifactId": 11853148638
+    },
+    {
+      "id": "11852707959",
+      "mode": "deadline",
+      "resultVerified": false,
+      "originalScenarioAvailable": false,
+      "originalDecisionUnchanged": true,
+      "remoteHeadMatches": true,
+      "registryHead": "61b22c2433b15183c7f3d2554fca4a775004dce0",
+      "registryRef": "refs/heads/research/g5-remote-joined-38473413073-a1-deadline",
+      "registry": {
+        "verified": true,
+        "commits": 8,
+        "leases": 1,
+        "logicalReadsMarked": 4,
+        "mirrors": 3,
+        "scientificSeedsRead": 0
+      },
+      "ackCount": 4,
+      "unacknowledgedMarkers": 0,
+      "technicalComplete": false,
+      "finalMirrorSaved": true,
+      "remoteMirrorProof": {
+        "fullSources": 3,
+        "partialSources": 1,
+        "completeClosures": 0,
+        "partialProofs": [
+          {
+            "dir": "source-003",
+            "verified": true,
+            "scope": "SAVED-PREFIX-ONLY-NOT-FULL",
+            "savedSteps": 45,
+            "savedScreens": 0,
+            "checkpointPly": 32,
+            "checkpointScreens": 0,
+            "journals": {
+              "source": {
+                "bytes": 39369,
+                "prefixBytes": 39369,
+                "tailBytes": 0,
+                "sha256": "076e61025599f8b3c34a18839e0671c66fb5eb02715b58a13b369a02d6bb0d43",
+                "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "rows": 46
+              },
+              "receipt": {
+                "bytes": 387,
+                "prefixBytes": 387,
+                "tailBytes": 0,
+                "sha256": "aef3facd49a9e82ea999a1d45de01cd556ca2baf2309f6ef184c2a065e3f4868",
+                "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "rows": 1
+              },
+              "reads": {
+                "bytes": 17732,
+                "prefixBytes": 17732,
+                "tailBytes": 0,
+                "sha256": "74b12f8c70b47c3a993da22a588a388d8b679327fa7d5d7391e0b6873111bab8",
+                "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "rows": 47
+              }
+            },
+            "savedReadCoverageVerified": true,
+            "sourceComplete": false,
+            "fullSourceVerified": false,
+            "candidate": null,
+            "solution": null,
+            "resumeAuthorized": false,
+            "scientificSeedGenerationPerformed": false
+          }
+        ],
+        "sourceGenerationPerformed": false
+      },
+      "localSourceProof": {
+        "fullSources": 3,
+        "partialSources": 1,
+        "completeClosures": 0,
+        "partialProofs": [
+          {
+            "dir": "source-003",
+            "verified": true,
+            "scope": "SAVED-PREFIX-ONLY-NOT-FULL",
+            "savedSteps": 45,
+            "savedScreens": 0,
+            "checkpointPly": 32,
+            "checkpointScreens": 0,
+            "journals": {
+              "source": {
+                "bytes": 39369,
+                "prefixBytes": 39369,
+                "tailBytes": 0,
+                "sha256": "076e61025599f8b3c34a18839e0671c66fb5eb02715b58a13b369a02d6bb0d43",
+                "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "rows": 46
+              },
+              "receipt": {
+                "bytes": 387,
+                "prefixBytes": 387,
+                "tailBytes": 0,
+                "sha256": "aef3facd49a9e82ea999a1d45de01cd556ca2baf2309f6ef184c2a065e3f4868",
+                "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "rows": 1
+              },
+              "reads": {
+                "bytes": 17732,
+                "prefixBytes": 17732,
+                "tailBytes": 0,
+                "sha256": "74b12f8c70b47c3a993da22a588a388d8b679327fa7d5d7391e0b6873111bab8",
+                "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "rows": 47
+              }
+            },
+            "savedReadCoverageVerified": true,
+            "sourceComplete": false,
+            "fullSourceVerified": false,
+            "candidate": null,
+            "solution": null,
+            "resumeAuthorized": false,
+            "scientificSeedGenerationPerformed": false
+          }
+        ],
+        "sourceGenerationPerformed": false
+      },
+      "scientificSeedsRead": 0,
+      "artifactId": 11852707959
+    },
+    {
+      "id": "11852472353",
+      "mode": "host-oom",
+      "resultVerified": true,
+      "originalScenarioAvailable": true,
+      "originalDecisionUnchanged": true,
+      "remoteHeadMatches": true,
+      "registryHead": "15c3be0a9562a32696ad8af5da2a8d9de5d88333",
+      "registryRef": "refs/heads/research/g5-remote-joined-38473413073-a1-host-oom",
+      "registry": {
+        "verified": true,
+        "commits": 3,
+        "leases": 1,
+        "logicalReadsMarked": 1,
+        "mirrors": 1,
+        "scientificSeedsRead": 0
+      },
+      "ackCount": 1,
+      "unacknowledgedMarkers": 0,
+      "technicalComplete": false,
+      "finalMirrorSaved": false,
+      "remoteMirrorProof": {
+        "fullSources": 0,
+        "partialSources": 0,
+        "completeClosures": 0,
+        "partialProofs": [],
+        "sourceGenerationPerformed": false
+      },
+      "localSourceProof": {
+        "fullSources": 1,
+        "partialSources": 0,
+        "completeClosures": 0,
+        "partialProofs": [],
+        "sourceGenerationPerformed": false
+      },
+      "scientificSeedsRead": 0,
+      "artifactId": 11852472353
+    },
+    {
+      "id": "11852327460",
+      "mode": "lost-response",
+      "resultVerified": true,
+      "originalScenarioAvailable": true,
+      "originalDecisionUnchanged": true,
+      "remoteHeadMatches": true,
+      "registryHead": "728605759e858c852a5bac950660aa1fcb26280b",
+      "registryRef": "refs/heads/research/g5-remote-joined-38473413073-a1-lost-response",
+      "registry": {
+        "verified": true,
+        "commits": 2,
+        "leases": 1,
+        "logicalReadsMarked": 1,
+        "mirrors": 0,
+        "scientificSeedsRead": 0
+      },
+      "ackCount": 0,
+      "unacknowledgedMarkers": 1,
+      "technicalComplete": false,
+      "finalMirrorSaved": false,
+      "remoteMirrorProof": {
+        "fullSources": 0,
+        "partialSources": 0,
+        "completeClosures": 0,
+        "partialProofs": [],
+        "sourceGenerationPerformed": false
+      },
+      "localSourceProof": {
+        "fullSources": 0,
+        "partialSources": 0,
+        "completeClosures": 0,
+        "partialProofs": [],
+        "sourceGenerationPerformed": false
+      },
+      "scientificSeedsRead": 0,
+      "artifactId": 11852327460
+    },
+    {
+      "id": "complete-v2",
+      "mode": "complete",
+      "resultVerified": false,
+      "originalScenarioAvailable": true,
+      "originalDecisionUnchanged": true,
+      "remoteHeadMatches": true,
+      "registryHead": "ef43324c2a753fc8230f1bbb114b6c98cb149922",
+      "registryRef": "refs/heads/research/g5-remote-joined-38474301794-a1-complete",
+      "registry": {
+        "verified": true,
+        "commits": 39,
+        "leases": 1,
+        "logicalReadsMarked": 22,
+        "mirrors": 16,
+        "scientificSeedsRead": 0
+      },
+      "ackCount": 22,
+      "unacknowledgedMarkers": 0,
+      "technicalComplete": false,
+      "finalMirrorSaved": false,
+      "remoteMirrorProof": {
+        "fullSources": 21,
+        "partialSources": 0,
+        "completeClosures": 0,
+        "partialProofs": [],
+        "sourceGenerationPerformed": false
+      },
+      "localSourceProof": {
+        "fullSources": 22,
+        "partialSources": 0,
+        "completeClosures": 0,
+        "partialProofs": [],
+        "sourceGenerationPerformed": false
+      },
+      "scientificSeedsRead": 0,
+      "artifactId": 11854461369
+    },
+    {
+      "id": "11854985340",
+      "mode": "proxy-final-mirror",
+      "resultVerified": false,
+      "originalScenarioAvailable": true,
+      "originalDecisionUnchanged": true,
+      "remoteHeadMatches": true,
+      "registryHead": "522a10fc9731ffb677bbfe5a3e4bcc36a61fb791",
+      "registryRef": "refs/heads/research/g5-remote-joined-38474301794-a1-proxy-final-mirror",
+      "registry": {
+        "verified": true,
+        "commits": 66,
+        "leases": 1,
+        "logicalReadsMarked": 44,
+        "mirrors": 21,
+        "scientificSeedsRead": 0
+      },
+      "ackCount": 44,
+      "unacknowledgedMarkers": 0,
+      "technicalComplete": false,
+      "finalMirrorSaved": false,
+      "remoteMirrorProof": {
+        "fullSources": 41,
+        "partialSources": 1,
+        "completeClosures": 0,
+        "partialProofs": [
+          {
+            "dir": "source-041",
+            "verified": true,
+            "scope": "SAVED-PREFIX-ONLY-NOT-FULL",
+            "savedSteps": 7,
+            "savedScreens": 0,
+            "checkpointPly": null,
+            "checkpointScreens": null,
+            "journals": {
+              "source": {
+                "bytes": 6277,
+                "prefixBytes": 6277,
+                "tailBytes": 0,
+                "sha256": "cccc139f314d5373d063f511e01b60e6a2fc1b02cbaa56f029c10399bdfe8805",
+                "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "rows": 8
+              },
+              "receipt": {
+                "bytes": 389,
+                "prefixBytes": 389,
+                "tailBytes": 0,
+                "sha256": "f1a9247d3bc276caaba37b4d5770ff5453d4de462d9e0ae7d0d262eb33c9186e",
+                "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "rows": 1
+              },
+              "reads": {
+                "bytes": 2996,
+                "prefixBytes": 2996,
+                "tailBytes": 0,
+                "sha256": "5cad77b55bf3881a663805cd02d939f1579959aab6ec85c6345e2dc95341aca9",
+                "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "rows": 8
+              }
+            },
+            "savedReadCoverageVerified": true,
+            "sourceComplete": false,
+            "fullSourceVerified": false,
+            "candidate": null,
+            "solution": null,
+            "resumeAuthorized": false,
+            "scientificSeedGenerationPerformed": false
+          }
+        ],
+        "sourceGenerationPerformed": false
+      },
+      "localSourceProof": {
+        "fullSources": 44,
+        "partialSources": 0,
+        "completeClosures": 0,
+        "partialProofs": [],
+        "sourceGenerationPerformed": false
+      },
+      "scientificSeedsRead": 0,
+      "artifactId": 11854985340
+    },
+    {
+      "id": "11853741139",
+      "mode": "deadline",
+      "resultVerified": true,
+      "originalScenarioAvailable": true,
+      "originalDecisionUnchanged": true,
+      "remoteHeadMatches": true,
+      "registryHead": "9e6f05b1b9606b8fd9e168afcd700aa135fcf2be",
+      "registryRef": "refs/heads/research/g5-remote-joined-38474301794-a1-deadline",
+      "registry": {
+        "verified": true,
+        "commits": 5,
+        "leases": 1,
+        "logicalReadsMarked": 2,
+        "mirrors": 2,
+        "scientificSeedsRead": 0
+      },
+      "ackCount": 1,
+      "unacknowledgedMarkers": 1,
+      "technicalComplete": false,
+      "finalMirrorSaved": true,
+      "remoteMirrorProof": {
+        "fullSources": 1,
+        "partialSources": 0,
+        "completeClosures": 0,
+        "partialProofs": [],
+        "sourceGenerationPerformed": false
+      },
+      "localSourceProof": {
+        "fullSources": 1,
+        "partialSources": 0,
+        "completeClosures": 0,
+        "partialProofs": [],
+        "sourceGenerationPerformed": false
+      },
+      "scientificSeedsRead": 0,
+      "artifactId": 11853741139
+    },
+    {
+      "id": "11853262654",
+      "mode": "lost-response",
+      "resultVerified": true,
+      "originalScenarioAvailable": true,
+      "originalDecisionUnchanged": true,
+      "remoteHeadMatches": true,
+      "registryHead": "d2c8c01132919920d08ebf8c6259c891c6810830",
+      "registryRef": "refs/heads/research/g5-remote-joined-38474301794-a1-lost-response",
+      "registry": {
+        "verified": true,
+        "commits": 2,
+        "leases": 1,
+        "logicalReadsMarked": 1,
+        "mirrors": 0,
+        "scientificSeedsRead": 0
+      },
+      "ackCount": 0,
+      "unacknowledgedMarkers": 1,
+      "technicalComplete": false,
+      "finalMirrorSaved": false,
+      "remoteMirrorProof": {
+        "fullSources": 0,
+        "partialSources": 0,
+        "completeClosures": 0,
+        "partialProofs": [],
+        "sourceGenerationPerformed": false
+      },
+      "localSourceProof": {
+        "fullSources": 0,
+        "partialSources": 0,
+        "completeClosures": 0,
+        "partialProofs": [],
+        "sourceGenerationPerformed": false
+      },
+      "scientificSeedsRead": 0,
+      "artifactId": 11853262654
+    },
+    {
+      "id": "11852619342",
+      "mode": "host-oom",
+      "resultVerified": true,
+      "originalScenarioAvailable": true,
+      "originalDecisionUnchanged": true,
+      "remoteHeadMatches": true,
+      "registryHead": "4755b62f5bb5da3ab85a8214358cec1cdd1af189",
+      "registryRef": "refs/heads/research/g5-remote-joined-38474301794-a1-host-oom",
+      "registry": {
+        "verified": true,
+        "commits": 3,
+        "leases": 1,
+        "logicalReadsMarked": 1,
+        "mirrors": 1,
+        "scientificSeedsRead": 0
+      },
+      "ackCount": 1,
+      "unacknowledgedMarkers": 0,
+      "technicalComplete": false,
+      "finalMirrorSaved": false,
+      "remoteMirrorProof": {
+        "fullSources": 0,
+        "partialSources": 0,
+        "completeClosures": 0,
+        "partialProofs": [],
+        "sourceGenerationPerformed": false
+      },
+      "localSourceProof": {
+        "fullSources": 1,
+        "partialSources": 0,
+        "completeClosures": 0,
+        "partialProofs": [],
+        "sourceGenerationPerformed": false
+      },
+      "scientificSeedsRead": 0,
+      "artifactId": 11852619342
+    }
+  ],
+  "scientificSeedsRead": 0,
+  "newSourceGeneration": false,
+  "scientificExecutionAuthorized": false
+}

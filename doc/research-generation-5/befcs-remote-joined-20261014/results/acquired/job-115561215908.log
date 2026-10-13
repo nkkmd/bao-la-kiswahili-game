@@ -1,0 +1,219 @@
+﻿2026-10-13T21:57:07.3702018Z Current runner version: '2.337.0'
+2026-10-13T21:57:07.3722315Z ##[group]Runner Image Provisioner
+2026-10-13T21:57:07.3723172Z Hosted Compute Agent
+2026-10-13T21:57:07.3723753Z Version: 20261002.596
+2026-10-13T21:57:07.3724265Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+2026-10-13T21:57:07.3724867Z Build Date: 2026-10-02T22:28:27Z
+2026-10-13T21:57:07.3725518Z Worker ID: {5f2fd3a6-6244-4960-ab6a-03dc8f4e758d}
+2026-10-13T21:57:07.3726092Z Region: westus3
+2026-10-13T21:57:07.3726582Z Cloud: Azure
+2026-10-13T21:57:07.3727076Z ##[endgroup]
+2026-10-13T21:57:07.3728259Z ##[group]Operating System
+2026-10-13T21:57:07.3728855Z Ubuntu
+2026-10-13T21:57:07.3729282Z 24.04.5
+2026-10-13T21:57:07.3729750Z LTS
+2026-10-13T21:57:07.3730188Z ##[endgroup]
+2026-10-13T21:57:07.3730665Z ##[group]Runner Image
+2026-10-13T21:57:07.3731495Z Image: ubuntu-24.04
+2026-10-13T21:57:07.3731966Z Version: 20261004.327.1
+2026-10-13T21:57:07.3733232Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-13T21:57:07.3734486Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+2026-10-13T21:57:07.3735342Z ##[endgroup]
+2026-10-13T21:57:07.3736260Z ##[group]GITHUB_TOKEN Permissions
+2026-10-13T21:57:07.3738009Z Contents: write
+2026-10-13T21:57:07.3738598Z Metadata: read
+2026-10-13T21:57:07.3739135Z ##[endgroup]
+2026-10-13T21:57:07.3740818Z Secret source: Actions
+2026-10-13T21:57:07.3741540Z Cache mode: write
+2026-10-13T21:57:07.3742208Z Prepare workflow directory
+2026-10-13T21:57:07.3995570Z Prepare all required actions
+2026-10-13T21:57:07.4049061Z Getting action download info
+2026-10-13T21:57:07.6907127Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-13T21:57:08.6848994Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-10-13T21:57:08.9997924Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-13T21:57:09.5519891Z Complete job name: remote-joined (complete)
+2026-10-13T21:57:09.6086510Z ##[group]Run actions/checkout@v4
+2026-10-13T21:57:09.6086982Z with:
+2026-10-13T21:57:09.6087210Z   persist-credentials: false
+2026-10-13T21:57:09.6087486Z   repository: nkkmd/bao-la-kiswahili-game
+2026-10-13T21:57:09.6089507Z   token: ***
+2026-10-13T21:57:09.6089732Z   ssh-strict: true
+2026-10-13T21:57:09.6089958Z   ssh-user: git
+2026-10-13T21:57:09.6090168Z   clean: true
+2026-10-13T21:57:09.6090384Z   sparse-checkout-cone-mode: true
+2026-10-13T21:57:09.6090635Z   fetch-depth: 1
+2026-10-13T21:57:09.6090855Z   fetch-tags: false
+2026-10-13T21:57:09.6091078Z   show-progress: true
+2026-10-13T21:57:09.6091303Z   lfs: false
+2026-10-13T21:57:09.6091504Z   submodules: false
+2026-10-13T21:57:09.6091721Z   set-safe-directory: true
+2026-10-13T21:57:09.6091970Z   allow-unsafe-pr-checkout: false
+2026-10-13T21:57:09.6092345Z ##[endgroup]
+2026-10-13T21:57:09.6893419Z Syncing repository: nkkmd/bao-la-kiswahili-game
+2026-10-13T21:57:09.6894632Z ##[group]Getting Git version info
+2026-10-13T21:57:09.6895102Z Working directory is '/home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game'
+2026-10-13T21:57:09.6895669Z [command]/usr/bin/git version
+2026-10-13T21:57:10.1804767Z git version 2.55.0
+2026-10-13T21:57:10.1820822Z ##[endgroup]
+2026-10-13T21:57:10.1834390Z Temporarily overriding HOME='/home/runner/work/_temp/d2935cb5-fbab-41d7-84ce-1904d930309c' before making global git config changes
+2026-10-13T21:57:10.1835459Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-13T21:57:10.1839582Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game
+2026-10-13T21:57:10.2733390Z Deleting the contents of '/home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game'
+2026-10-13T21:57:10.2737098Z ##[group]Initializing the repository
+2026-10-13T21:57:10.2740977Z [command]/usr/bin/git init /home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game
+2026-10-13T21:57:10.6587369Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-13T21:57:10.6588009Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-13T21:57:10.6588430Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-13T21:57:10.6588789Z hint: call:
+2026-10-13T21:57:10.6589026Z hint:
+2026-10-13T21:57:10.6589388Z hint: 	git config --global init.defaultBranch <name>
+2026-10-13T21:57:10.6589772Z hint:
+2026-10-13T21:57:10.6590129Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-13T21:57:10.6590787Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-13T21:57:10.6591249Z hint:
+2026-10-13T21:57:10.6591515Z hint: 	git branch -m <name>
+2026-10-13T21:57:10.6591833Z hint:
+2026-10-13T21:57:10.6592325Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-13T21:57:10.6593773Z Initialized empty Git repository in /home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game/.git/
+2026-10-13T21:57:10.6600075Z [command]/usr/bin/git remote add origin https://github.com/nkkmd/bao-la-kiswahili-game
+2026-10-13T21:57:10.6821533Z ##[endgroup]
+2026-10-13T21:57:10.6822127Z ##[group]Disabling automatic garbage collection
+2026-10-13T21:57:10.6825839Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-13T21:57:10.6855129Z ##[endgroup]
+2026-10-13T21:57:10.6855604Z ##[group]Setting up auth
+2026-10-13T21:57:10.6860645Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-13T21:57:10.6888205Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-13T21:57:11.2602352Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-13T21:57:11.2634847Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-13T21:57:11.2825979Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-13T21:57:11.2858853Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-13T21:57:11.3046555Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-13T21:57:11.3083517Z ##[endgroup]
+2026-10-13T21:57:11.3084104Z ##[group]Fetching the repository
+2026-10-13T21:57:11.3092351Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +67984fa90b305cb8092f80d8b74392b94a659fcb:refs/remotes/origin/research/g5-befcs-remote-joined-preflight
+2026-10-13T21:57:18.6244667Z From https://github.com/nkkmd/bao-la-kiswahili-game
+2026-10-13T21:57:18.6245330Z  * [new ref]         67984fa90b305cb8092f80d8b74392b94a659fcb -> origin/research/g5-befcs-remote-joined-preflight
+2026-10-13T21:57:18.6248570Z ##[endgroup]
+2026-10-13T21:57:18.6248899Z ##[group]Determining the checkout info
+2026-10-13T21:57:18.6250732Z ##[endgroup]
+2026-10-13T21:57:18.6256660Z [command]/usr/bin/git sparse-checkout disable
+2026-10-13T21:57:18.6433860Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-13T21:57:18.6444636Z ##[group]Checking out the ref
+2026-10-13T21:57:18.6445583Z [command]/usr/bin/git checkout --progress --force -B research/g5-befcs-remote-joined-preflight refs/remotes/origin/research/g5-befcs-remote-joined-preflight
+2026-10-13T21:57:19.6603742Z Switched to a new branch 'research/g5-befcs-remote-joined-preflight'
+2026-10-13T21:57:19.6606246Z branch 'research/g5-befcs-remote-joined-preflight' set up to track 'origin/research/g5-befcs-remote-joined-preflight'.
+2026-10-13T21:57:19.6653227Z ##[endgroup]
+2026-10-13T21:57:19.6691258Z [command]/usr/bin/git log -1 --format=%H
+2026-10-13T21:57:19.6714017Z 67984fa90b305cb8092f80d8b74392b94a659fcb
+2026-10-13T21:57:19.6723790Z ##[group]Removing auth
+2026-10-13T21:57:19.6724506Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-13T21:57:19.6752777Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-13T21:57:19.6950766Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-13T21:57:19.6975902Z http.https://github.com/.extraheader
+2026-10-13T21:57:19.6980660Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-13T21:57:19.7009842Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-13T21:57:19.7206043Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-13T21:57:19.7231737Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-13T21:57:19.7424659Z ##[endgroup]
+2026-10-13T21:57:19.7690789Z ##[group]Run actions/setup-node@v4
+2026-10-13T21:57:19.7691059Z with:
+2026-10-13T21:57:19.7691230Z   node-version: 24.19.0
+2026-10-13T21:57:19.7691432Z   always-auth: false
+2026-10-13T21:57:19.7691614Z   check-latest: false
+2026-10-13T21:57:19.7693766Z   token: ***
+2026-10-13T21:57:19.7693942Z ##[endgroup]
+2026-10-13T21:57:19.8863259Z Attempting to download 24.19.0...
+2026-10-13T21:57:19.8944804Z (node:2182) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-13T21:57:19.8945560Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-13T21:57:20.8825572Z Acquiring 24.19.0 - x64 from https://github.com/actions/node-versions/releases/download/24.19.0-30872449280/node-24.19.0-linux-x64.tar.gz
+2026-10-13T21:57:21.4590338Z Extracting ...
+2026-10-13T21:57:21.4684010Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/38d7a96c-665e-4920-9961-c8d63abe421b -f /home/runner/work/_temp/06948daa-7bb8-4e4b-a757-91cc1fe5b15d
+2026-10-13T21:57:22.5054453Z Adding to the cache ...
+2026-10-13T21:57:24.4409394Z ##[group]Environment details
+2026-10-13T21:57:24.8521106Z node: v24.19.0
+2026-10-13T21:57:24.8521419Z npm: 11.17.0
+2026-10-13T21:57:24.8521641Z yarn: 1.22.22
+2026-10-13T21:57:24.8522161Z ##[endgroup]
+2026-10-13T21:57:24.8669016Z ##[group]Run node -e "const f=require('fs');f.mkdirSync('artifacts/local/befcs-remote-joined',{recursive:true});const fd=f.openSync('artifacts/local/REMOTE_JOINED.img','wx');f.ftruncateSync(fd,268435456);f.closeSync(fd);"
+2026-10-13T21:57:24.8670208Z [36;1mnode -e "const f=require('fs');f.mkdirSync('artifacts/local/befcs-remote-joined',{recursive:true});const fd=f.openSync('artifacts/local/REMOTE_JOINED.img','wx');f.ftruncateSync(fd,268435456);f.closeSync(fd);"[0m
+2026-10-13T21:57:24.8670973Z [36;1msudo mkfs.ext4 -q -F -m 0 artifacts/local/REMOTE_JOINED.img[0m
+2026-10-13T21:57:24.8671467Z [36;1msudo mount -o loop,nosuid,nodev,noexec artifacts/local/REMOTE_JOINED.img artifacts/local/befcs-remote-joined[0m
+2026-10-13T21:57:24.8671935Z [36;1msudo chown "$(id -u):$(id -g)" artifacts/local/befcs-remote-joined[0m
+2026-10-13T21:57:24.8672294Z [36;1msudo chmod a+rx artifacts/local/befcs-remote-joined/lost+found[0m
+2026-10-13T21:57:24.9566378Z shell: /usr/bin/bash -e {0}
+2026-10-13T21:57:24.9566724Z ##[endgroup]
+2026-10-13T21:57:25.1476242Z ##[group]Run node tools/research/g5-befcs-remote-joined/run.cjs --ci-live complete
+2026-10-13T21:57:25.1476724Z [36;1mnode tools/research/g5-befcs-remote-joined/run.cjs --ci-live complete[0m
+2026-10-13T21:57:25.1533826Z shell: /usr/bin/bash -e {0}
+2026-10-13T21:57:25.1534202Z env:
+2026-10-13T21:57:25.1536194Z   BEFCS_GIT_TOKEN: ***
+2026-10-13T21:57:25.1536388Z ##[endgroup]
+2026-10-13T22:17:24.4518335Z node:assert:152
+2026-10-13T22:17:24.4518679Z   throw new AssertionError(obj);
+2026-10-13T22:17:24.4518906Z   ^
+2026-10-13T22:17:24.4519014Z 
+2026-10-13T22:17:24.4519265Z AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+2026-10-13T22:17:24.4519513Z 
+2026-10-13T22:17:24.4519584Z 255 !== 0
+2026-10-13T22:17:24.4519682Z 
+2026-10-13T22:17:24.4520066Z     at live (/home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game/tools/research/g5-befcs-remote-joined/run.cjs:46:14)
+2026-10-13T22:17:24.4520970Z     at Object.<anonymous> (/home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game/tools/research/g5-befcs-remote-joined/run.cjs:51:120)
+2026-10-13T22:17:24.4521568Z     at Module._compile (node:internal/modules/cjs/loader:1872:14)
+2026-10-13T22:17:24.4521917Z     at Object..js (node:internal/modules/cjs/loader:2003:10)
+2026-10-13T22:17:24.4522260Z     at Module.load (node:internal/modules/cjs/loader:1594:32)
+2026-10-13T22:17:24.4522581Z     at Module._load (node:internal/modules/cjs/loader:1396:12)
+2026-10-13T22:17:24.4523157Z     at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+2026-10-13T22:17:24.4523634Z     at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+2026-10-13T22:17:24.4524020Z     at node:internal/main/run_main_module:33:47 {
+2026-10-13T22:17:24.4524273Z   generatedMessage: true,
+2026-10-13T22:17:24.4524489Z   code: 'ERR_ASSERTION',
+2026-10-13T22:17:24.4524678Z   actual: 255,
+2026-10-13T22:17:24.4524841Z   expected: 0,
+2026-10-13T22:17:24.4525012Z   operator: 'strictEqual',
+2026-10-13T22:17:24.4525202Z   diff: 'simple'
+2026-10-13T22:17:24.4525367Z }
+2026-10-13T22:17:24.4525452Z 
+2026-10-13T22:17:24.4525527Z Node.js v24.19.0
+2026-10-13T22:17:24.4576431Z ##[error]Process completed with exit code 1.
+2026-10-13T22:17:24.4660288Z ##[group]Run actions/upload-artifact@v4
+2026-10-13T22:17:24.4660521Z with:
+2026-10-13T22:17:24.4660721Z   name: befcs-remote-joined-complete-38474301794-1
+2026-10-13T22:17:24.4660997Z   path: artifacts/local/befcs-remote-joined/
+2026-10-13T22:17:24.4661231Z   include-hidden-files: true
+2026-10-13T22:17:24.4661427Z   retention-days: 90
+2026-10-13T22:17:24.4661598Z   if-no-files-found: warn
+2026-10-13T22:17:24.4661781Z   compression-level: 6
+2026-10-13T22:17:24.4661954Z   overwrite: false
+2026-10-13T22:17:24.4662113Z ##[endgroup]
+2026-10-13T22:17:24.5963865Z (node:5100) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-13T22:17:24.5964689Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-13T22:17:24.6861712Z With the provided path, there will be 409 files uploaded
+2026-10-13T22:17:24.6866607Z Artifact name is valid!
+2026-10-13T22:17:24.6867068Z Root directory input is valid!
+2026-10-13T22:17:25.0299815Z Beginning upload of artifact content to blob storage
+2026-10-13T22:17:25.2847697Z (node:5100) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-13T22:17:25.8853429Z Uploaded bytes 1028260
+2026-10-13T22:17:25.9506705Z Finished uploading artifact content to blob storage!
+2026-10-13T22:17:25.9507312Z SHA256 digest of uploaded artifact zip is b02ef15c29c457d9448cd25ec88efcfa3e73778734bb8692a0932488104cb2b7
+2026-10-13T22:17:25.9508412Z Finalizing artifact upload
+2026-10-13T22:17:26.2126164Z Artifact befcs-remote-joined-complete-38474301794-1.zip successfully finalized. Artifact ID 11854461369
+2026-10-13T22:17:26.2131405Z Artifact befcs-remote-joined-complete-38474301794-1 has been successfully uploaded! Final size is 1028260 bytes. Artifact ID is 11854461369
+2026-10-13T22:17:26.2133314Z Artifact download URL: https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38474301794/artifacts/11854461369
+2026-10-13T22:17:26.2264409Z ##[group]Run sudo umount artifacts/local/befcs-remote-joined || true
+2026-10-13T22:17:26.2264802Z [36;1msudo umount artifacts/local/befcs-remote-joined || true[0m
+2026-10-13T22:17:26.2321033Z shell: /usr/bin/bash -e {0}
+2026-10-13T22:17:26.2321250Z ##[endgroup]
+2026-10-13T22:17:26.4097609Z Post job cleanup.
+2026-10-13T22:17:26.4806475Z [command]/usr/bin/git version
+2026-10-13T22:17:26.4843875Z git version 2.55.0
+2026-10-13T22:17:26.4876063Z Temporarily overriding HOME='/home/runner/work/_temp/4c609be3-9f45-4bef-9fe4-1b76d4d9336a' before making global git config changes
+2026-10-13T22:17:26.4877181Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-13T22:17:26.4880715Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game
+2026-10-13T22:17:26.4911684Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-13T22:17:26.4940136Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-13T22:17:26.5155913Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-13T22:17:26.5184303Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-13T22:17:26.5429152Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-13T22:17:26.5463302Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-13T22:17:26.5803637Z Cleaning up orphan processes
+2026-10-13T22:17:26.6082431Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

@@ -1,0 +1,11 @@
+# 第3版の品質と検証の監査
+
+対象は新規V3_REVISION・V3_RESUME_HERE・CI_ACQUIRED_CONFIRMATION・本監査の4 Markdownである。旧11 Markdownと中央文書は保護入力としてbyteを保持する。token・field・path・command・hash・元のGit errorは例外として保持し、日本語本文で意味を説明する。
+
+第3版では停止の結合、最初の通信失敗理由の保持、未完成workerの終了mirror拒否、判定失敗時のwork先行停止・timer解除・watch終了、終了通知失敗と自分のwatchの終了待ち超過、cleanup障害と元の失敗の分離を追加検査する。旧15検査も実施する。実Git/cgroupの合格は修正版CIと取得後検算まで主張しない。
+
+SOURCE_MANIFEST_V3は第3版入力、PROTECTED_INPUTSは旧2250保護入力である。旧manifest・local結果・第1版/第2版の原ZIP・元のCI判定は付け直さない。科学seed0・leaseなし・未登録/未実行、103355遮断・全閉包・未知・救済禁止・正式関係未登録/未実行・main/公開AI未変更を保持する。
+
+最終確認で検査件数、原証拠検算と入力/出力binding、日本語見出し・通常文、相対リンク、diff whitespace、canonical/数値/hash/認可状態の不変性を確定する。
+
+ローカルの21検査が全件合格した。全10原artifactのZIP digest・全member hash・全bundleと最後のremote mirror・local保存sourceの独立再生が一致した。旧2250保護入力と第2版17変更可能入力snapshotが元のhashと一致し、成功RESULTの入力digestは実行headの旧manifestと一致した。新規4 Markdownの英語だけの説明見出し・通常説明文・相対リンク切れ・意図しないcanonical変更・diff whitespace違反は0件。原ZIP内部のGit template・元のerror・機械field・path・command・hashは原記録/機械情報の例外として保持する。日本語品質ゲートはPASS。実cgroup修正版は実CIと取得後検算が終わるまで未確定である。
