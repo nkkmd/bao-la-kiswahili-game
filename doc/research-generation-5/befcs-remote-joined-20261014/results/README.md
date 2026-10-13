@@ -1,0 +1,9 @@
+# 保存済み技術結果
+
+LOCAL_RESULTとLOCAL_EVIDENCEはlocal bare Gitの共通128 source・write guard結合の正本で、実認証やkernel資源の合格ではない。入力・旧保護入力とlocal出力hashを別照合する。
+
+local正常caseは128 ACK・146 commit・全128 sourceの独立一致・1候補/1閉包・最終mirrorが成立した。応答抑止caseは2 commit・marker1/ACK0で固定停止し、回復mirrorを拒否した。2265入力・2250保護入力のhashとOUTPUT_BINDINGを照合する。
+
+実Git/cgroup結果は5 matrix jobのartifactから取得後に別保存する。通常の128 source完成、host OOM、応答抑止の未ACK、30秒期限prefix、最終mirror通信拒否を区別する。CI receipt・ZIP digest・member hash・raw bundle・resource/stopを確認するまで実結合の合格を主張しない。
+
+科学seed0・科学leaseなし・BEFCS-STUDY1未登録/未実行、103355遮断・全閉包・未知・救済禁止・正式関係未登録/未実行、main/公開AI未変更を維持する。

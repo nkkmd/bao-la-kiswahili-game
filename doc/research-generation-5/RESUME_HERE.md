@@ -1,5 +1,9 @@
 # 第五世代研究 — 再開位置
 
+## 2026-10-14 — 共通128 sourceと実Gitの結合
+
+[実Git結合fixture](befcs-remote-joined-20261014/README.md)をPR #201の保存済みheadから開始した。親1 GiBのwork/control/watchへ共通worker・実transport・監督・独立再生を結合し、通信不明後の回復書込みもguardで拒否する。科学seed0・科学leaseなし・未登録/未実行を保持する。5 caseの取得結果と次の未完条件は[再開位置](befcs-remote-joined-20261014/RESUME_HERE.md)を参照する。
+
 ## 2026-10-14 — 実Git通信の技術検証
 
 [認証付きGit fixture](befcs-git-20261014/README.md)をPR #200の保存済みheadから開始した。専用技術refで競合拒否・応答抑止・proxy拒否と生objectの独立bundle復元を確認する。科学seed0・科学leaseなし・Study未登録/未実行を維持し、共通128 sourceと全起動/終了資源の結合は[次の再開位置](befcs-git-20261014/RESUME_HERE.md)に残す。
@@ -9,7 +13,7 @@
 [途中記録検算](befcs-prefix-20261014/README.md)をPR #199の保存済みheadから開始した。古いcheckpointと後続journalを分けて照合し、nullや未保存screenを補わない検算器を新規pathへ追加する。4箇所のSIGKILLと1箇所の管理停止は既知抽象fixtureだけを使用し、科学seed消費0・科学leaseなし・BEFCS-STUDY1未登録/未実行を維持する。結果・CIの確定状況と次の安全な工程は[再開位置](befcs-prefix-20261014/RESUME_HERE.md)を参照する。科学用host配線・実remote/CAS・全起動/終了期限・最終契約は未完のままである。
 
 更新日: 2026-10-14（日本時間）
-安全な再開点: **保存済みsource prefixと実認証GitのCI確定・共通128 sourceと全起動/終了の結合前・科学Study未登録**
+安全な再開点: **実Gitと共通128 sourceの結合技術検証中・全起動/終了の最終レビュー前・科学Study未登録**
 
 次は[共通128 sourceと監督の結合](befcs-joined-20261013/README.md)である。親1 GiBをwork512/control448/watch64 MiBへ分け、worker・host/Git・再検算・watchdogを同一serviceへ入れ、終了の1秒前に停止命令を先行する技術fixtureを固定した。実測と厳密な期限判定を[再開位置](befcs-joined-20261013/RESUME_HERE.md)で確定する。Docker daemon・実remote・科学最終配備はまだ拒否する。
 
