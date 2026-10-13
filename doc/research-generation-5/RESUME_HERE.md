@@ -3,6 +3,8 @@
 更新日: 2026-10-13（日本時間）  
 安全な再開点: **共通workload・物理容量・外部停止保存の技術検証・科学最終配備前・科学Study未登録**
 
+次は[共通128 sourceと監督の結合](befcs-joined-20261013/README.md)である。親1 GiBをwork512/control448/watch64 MiBへ分け、worker・host/Git・再検算・watchdogを同一serviceへ入れ、終了の1秒前に停止命令を先行する技術fixtureを固定した。実測と厳密な期限判定を[再開位置](befcs-joined-20261013/RESUME_HERE.md)で確定する。Docker daemon・実remote・科学最終配備はまだ拒否する。
+
 次の技術工程は[監督区画の検証](befcs-supervisor-20261013/README.md)である。[CI確定](befcs-supervisor-20261013/CI_CONFIRMATION.md)で、親1 GiBとwork/control/watchの768/192/64 MiB、observer OOM後のwatchdog存続、4 case・23検査・111取得fileを確認した。期限caseのcontrol停止は約152 ms遅延しており、厳密な全体期限の保証は未完である。共通128 source・Docker daemon・実通信・起動/終了全予算の統合を済ませたという意味ではない。科学seed消費0を保持する。
 
 ## 次に進めること

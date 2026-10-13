@@ -1,0 +1,7 @@
+# 統合fixtureの品質監査
+
+監査対象は本研究のREADME・REPORT・REPRODUCIBILITY・RESUME_HERE・AUDIT・results/READMEと中央再開位置の追記である。通常説明は日本語とし、cgroup・worker・Gitの用語を正確に保持する。
+
+完了前に、英語だけの人間向け見出しと通常説明文、相対リンク切れを0件とし、scientificSeedsRead、proposal limits、source count、registry identities、input hashesが不変であることを確認する。固有のmachine field・command・hash・exact outputは日本語で役割を説明した上で原形を保つ。
+
+新規4 policy試験に加え、contained/pipelineまでの回帰と実cgroup Actionsを動かす。Actions原結果、artifact SHA、image/quota、registry prefixは実行入力manifestと別bindingで固定する。期限caseが期限内完了へ読み替わっていないことも監査する。
