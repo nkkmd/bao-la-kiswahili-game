@@ -7,3 +7,7 @@
 次は[再開条件](RESUME_HERE.md)に従う。技術合格から科学実行を自動起動しない。
 
 現行の固定入力と結果は[第2版契約](TECHNICAL_CONTRACT_V2.md)、[第2版入力](SOURCE_MANIFEST_V2.json)、[第2版結果](results-v2/README.md)を参照する。第1版は[失敗確認](CI_FAILURE_CONFIRMATION_V1.md)とともに保持する。
+
+## 第2版CIの確認完了
+
+[確定記録](CI_CONFIRMATION_V2.md)のpush/PR両CIで、実1 GiB全8シナリオ、共有256 MiB容量、後片付け、artifact保存まで合格した。科学用host/registry/別triggerと最終科学事前固定は次工程に残す。科学seed消費0・科学leaseなし・未登録/未実行を保持する。

@@ -13,3 +13,7 @@ BEFCS-STUDY1、BEFCS-S1-SUPPLY-2026-10-13-v1、seed案50613001..50613128は未�
 ## 第2版の照合対象
 
 第1版の後片付けfailureを保持し、現行は[第2版契約](TECHNICAL_CONTRACT_V2.md)、[第2版入力](SOURCE_MANIFEST_V2.json)、[第2版保護入力](PROTECTED_INPUTS_V2.json)、[第2版出力binding](OUTPUT_BINDING_V2.json)、[第2版結果](results-v2/README.md)を照合する。CLIは第2版が存在する場合にそちらを選ぶ。科学用host接続と最終科学freezeの未完条件は変わらない。
+
+## 第2版CIの確認完了
+
+[確定記録](CI_CONFIRMATION_V2.md)のpush/PR両CIで、実1 GiB全8シナリオ、共有256 MiB容量、後片付け、artifact保存まで合格した。科学用host/registry/別triggerと最終科学事前固定は次工程に残す。科学seed消費0・科学leaseなし・未登録/未実行を保持する。

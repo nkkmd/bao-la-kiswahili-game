@@ -118,3 +118,7 @@ Actions38237119716 / attempt 1で新規32 sourceを生成し、16適格rootの�
 ## 2026-10-13 — 運用cgroupの確認と保存済み全workloadの結合
 
 [運用cgroup確認](befcs-operations-20261013/CI_CONFIRMATION.md)をPR #192へ保存し、実128 MiB/1 GiBのOOMとprefix保持が合格した。[全workload統合](befcs-workload-20261013/README.md)で保存済み技術source 128件・固定抽象閉包8件を共有保存予算、marker、mirror、停止監督へ結合した。58ローカルテスト・8シナリオと実256 MiB容量境界が合格した。科学生成の費用・供給結果へ昇格させず、実1 GiBの全pipeline CIと科学用hostの結合・最終freeze・別triggerは[再開条件](befcs-workload-20261013/RESUME_HERE.md)に残す。科学seed消費0・科学leaseなし・科学Study未登録/未実行、103355件遮断、正式関係未登録/未実行、main・公開AI未変更である。
+
+## 第2版の全workload実cgroup確認完了
+
+[CI確定](befcs-workload-20261013/CI_CONFIRMATION_V2.md)でpush/PRの全stepと同一headの15 runが成功した。旧failureを保持し、実1 GiBの8固定シナリオ、256 MiB共有容量、UID/GID対応後の後片付けとartifact保存を確認した。現行は第2版16入力・623保護入力を固定する。次は科学用host/registry/別triggerの接続と最終科学事前固定であり、科学seed消費0・科学leaseなし・未登録/未実行、103355件遮断、正式関係未登録/未実行、main・公開AI未変更を保つ。

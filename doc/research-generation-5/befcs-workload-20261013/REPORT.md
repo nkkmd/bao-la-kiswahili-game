@@ -27,3 +27,7 @@ marker後にworkerが停止した場合、実際の保存済みsource読取り�
 ## 実cgroupと第2版
 
 実1 GiB全8シナリオは通過したが、root所有temporaryの削除で第1版jobが失敗した。[CI失敗記録](CI_FAILURE_CONFIRMATION_V1.md)と原記録を保持する。第2版ではhost UID/GIDをcontainerへ指定し、SOURCE_MANIFEST_V2・PROTECTED_INPUTS_V2とresults-v2へ別固定する。623保護入力に元の584入力、第1版機械原記録と取得したCI証拠を含める。後片付けと共有容量stepを含む全CIの完了を確認するまで合格を宣言しない。
+
+## 第2版CIの確認完了
+
+[確定記録](CI_CONFIRMATION_V2.md)のpush/PR両CIで、実1 GiB全8シナリオ、共有256 MiB容量、後片付け、artifact保存まで合格した。科学用host/registry/別triggerと最終科学事前固定は次工程に残す。科学seed消費0・科学leaseなし・未登録/未実行を保持する。

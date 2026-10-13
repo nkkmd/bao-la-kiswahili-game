@@ -9,3 +9,7 @@
 ## 第2版への更新
 
 第1版の実1 GiB全8シナリオは通過したが、後片付けのEACCESによりCI jobはfailureとなった。[失敗記録](CI_FAILURE_CONFIRMATION_V1.md)を保持し、host UID/GID対応を[第2版契約](TECHNICAL_CONTRACT_V2.md)と[第2版入力manifest](SOURCE_MANIFEST_V2.json)へ別固定した。現行結果は[第2版](results-v2/README.md)を読む。元の584入力と追加の固定記録を合わせた623保護入力を保持する。科学seed消費0・科学leaseなし・未登録/未実行を維持する。
+
+## 第2版CIの確認完了
+
+[確定記録](CI_CONFIRMATION_V2.md)のpush/PR両CIで、実1 GiB全8シナリオ、共有256 MiB容量、後片付け、artifact保存まで合格した。科学用host/registry/別triggerと最終科学事前固定は次工程に残す。科学seed消費0・科学leaseなし・未登録/未実行を保持する。

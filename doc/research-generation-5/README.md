@@ -1,7 +1,7 @@
 # 第五世代研究 — 探索順位の変動と厳密価値の損失
 
 作成日: 2026-09-29  
-状態: **運用OOM cgroup合格・保存済み全workload結合・新規Study登録前／正式関係は未登録・未実行**
+状態: **全workload実cgroup合格・科学用host統合前・新規Study登録前／正式関係は未登録・未実行**
 
 対象: Bao Research Generation 5
 
@@ -13,7 +13,7 @@
 
 ## 現在の位置
 
-2026-10-13時点では、[分岐包絡供給の技術preflight](branch-envelope-preflight-20261013/README.md)でsource選定・独立再生・全閉包・保存停止を固定fixtureで検証した。BEFCS-STUDY1は提案のまま未登録・未実行で、科学seed消費0、leaseなし、科学source未固定、実行未認可である。[運用OOM確認](befcs-operations-20261013/CI_CONFIRMATION.md)は合格し、[保存済み全workload統合](befcs-workload-20261013/README.md)のローカル検証も合格した。次は全pipelineの実cgroup確認と科学用hostへの結合、最終科学契約と一度限り運用のレビューを行う段階であり、技術合格から科学sourceを起動しない。
+2026-10-13時点では、[分岐包絡供給の技術preflight](branch-envelope-preflight-20261013/README.md)でsource選定・独立再生・全閉包・保存停止を固定fixtureで検証した。BEFCS-STUDY1は提案のまま未登録・未実行で、科学seed消費0、leaseなし、科学source未固定、実行未認可である。[運用OOM確認](befcs-operations-20261013/CI_CONFIRMATION.md)は合格し、[保存済み全workload統合](befcs-workload-20261013/README.md)のローカル検証も合格した。[全pipeline実cgroup](befcs-workload-20261013/CI_CONFIRMATION_V2.md)も合格し、次は科学用hostへの結合、最終科学契約と一度限り運用のレビューを行う段階であり、技術合格から科学sourceを起動しない。
 
 研究の結果が確認・非確認・推定不能のいずれでも、あらかじめ定める終了条件で研究として閉じる。公開AIの採用、勝率、応答時間は本研究の評価指標にしない。
 
@@ -114,3 +114,7 @@
 ## 2026-10-13 — 運用cgroupの確認と保存済み全workloadの結合
 
 [運用cgroup確認](befcs-operations-20261013/CI_CONFIRMATION.md)をPR #192へ保存し、実128 MiB/1 GiBのOOMとprefix保持が合格した。[全workload統合](befcs-workload-20261013/README.md)で保存済み技術source 128件・固定抽象閉包8件を共有保存予算、marker、mirror、停止監督へ結合した。58ローカルテスト・8シナリオと実256 MiB容量境界が合格した。科学生成の費用・供給結果へ昇格させず、実1 GiBの全pipeline CIと科学用hostの結合・最終freeze・別triggerは[再開条件](befcs-workload-20261013/RESUME_HERE.md)に残す。科学seed消費0・科学leaseなし・科学Study未登録/未実行、103355件遮断、正式関係未登録/未実行、main・公開AI未変更である。
+
+## 第2版の全workload実cgroup確認完了
+
+[CI確定](befcs-workload-20261013/CI_CONFIRMATION_V2.md)でpush/PRの全stepと同一headの15 runが成功した。旧failureを保持し、実1 GiBの8固定シナリオ、256 MiB共有容量、UID/GID対応後の後片付けとartifact保存を確認した。現行は第2版16入力・623保護入力を固定する。次は科学用host/registry/別triggerの接続と最終科学事前固定であり、科学seed消費0・科学leaseなし・未登録/未実行、103355件遮断、正式関係未登録/未実行、main・公開AI未変更を保つ。
