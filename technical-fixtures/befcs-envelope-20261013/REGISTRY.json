@@ -16,5 +16,14 @@
     "status": "BLOCK-QUARANTINED-NO-RETRY",
     "consumes": []
   },
-  "mirrors": []
+  "mirrors": [
+    {
+      "sha256": "bf4a0787bcdc1477a5487f20fcfe9e3d34420a715f6c78755b5999fc0b0e1275",
+      "bytes": 35,
+      "text": "FIXED-REMOTE-PREFIX-NO-BAO-NO-PRNG\n",
+      "sequence": 0,
+      "coverage": "FIXED-TECHNICAL-BYTES-NOT-SCIENTIFIC-COMPLETENESS",
+      "final": false
+    }
+  ]
 }
