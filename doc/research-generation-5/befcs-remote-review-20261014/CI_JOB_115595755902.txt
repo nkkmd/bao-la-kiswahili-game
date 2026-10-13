@@ -1,0 +1,197 @@
+﻿2026-10-13T23:31:55.0928820Z Current runner version: '2.337.0'
+2026-10-13T23:31:55.0948408Z ##[group]Runner Image Provisioner
+2026-10-13T23:31:55.0948976Z Hosted Compute Agent
+2026-10-13T23:31:55.0949375Z Version: 20261002.596
+2026-10-13T23:31:55.0949737Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+2026-10-13T23:31:55.0950138Z Build Date: 2026-10-02T22:28:27Z
+2026-10-13T23:31:55.0950585Z Worker ID: {4e439b1c-c85c-488b-83df-c7be4ff1ad15}
+2026-10-13T23:31:55.0950986Z Region: westus3
+2026-10-13T23:31:55.0951359Z Cloud: Azure
+2026-10-13T23:31:55.0951685Z ##[endgroup]
+2026-10-13T23:31:55.0952598Z ##[group]Operating System
+2026-10-13T23:31:55.0953002Z Ubuntu
+2026-10-13T23:31:55.0953336Z 24.04.5
+2026-10-13T23:31:55.0953658Z LTS
+2026-10-13T23:31:55.0953970Z ##[endgroup]
+2026-10-13T23:31:55.0954285Z ##[group]Runner Image
+2026-10-13T23:31:55.0954660Z Image: ubuntu-24.04
+2026-10-13T23:31:55.0954989Z Version: 20261004.327.1
+2026-10-13T23:31:55.0955785Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-13T23:31:55.0956621Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+2026-10-13T23:31:55.0957186Z ##[endgroup]
+2026-10-13T23:31:55.0957859Z ##[group]GITHUB_TOKEN Permissions
+2026-10-13T23:31:55.0959086Z Contents: read
+2026-10-13T23:31:55.0959419Z Metadata: read
+2026-10-13T23:31:55.0959839Z ##[endgroup]
+2026-10-13T23:31:55.0961205Z Secret source: Actions
+2026-10-13T23:31:55.0961731Z Cache mode: write
+2026-10-13T23:31:55.0962309Z Prepare workflow directory
+2026-10-13T23:31:55.1192773Z Prepare all required actions
+2026-10-13T23:31:55.1236872Z Getting action download info
+2026-10-13T23:31:55.4148852Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-13T23:31:55.4874285Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-10-13T23:31:55.6556171Z Complete job name: saved-evidence
+2026-10-13T23:31:55.7019099Z ##[group]Run actions/checkout@v4
+2026-10-13T23:31:55.7019536Z with:
+2026-10-13T23:31:55.7019779Z   persist-credentials: false
+2026-10-13T23:31:55.7020068Z   repository: nkkmd/bao-la-kiswahili-game
+2026-10-13T23:31:55.7022278Z   token: ***
+2026-10-13T23:31:55.7022503Z   ssh-strict: true
+2026-10-13T23:31:55.7022737Z   ssh-user: git
+2026-10-13T23:31:55.7022966Z   clean: true
+2026-10-13T23:31:55.7023205Z   sparse-checkout-cone-mode: true
+2026-10-13T23:31:55.7023482Z   fetch-depth: 1
+2026-10-13T23:31:55.7023716Z   fetch-tags: false
+2026-10-13T23:31:55.7023955Z   show-progress: true
+2026-10-13T23:31:55.7024194Z   lfs: false
+2026-10-13T23:31:55.7024416Z   submodules: false
+2026-10-13T23:31:55.7024658Z   set-safe-directory: true
+2026-10-13T23:31:55.7024930Z   allow-unsafe-pr-checkout: false
+2026-10-13T23:31:55.7025283Z ##[endgroup]
+2026-10-13T23:31:55.7690847Z Syncing repository: nkkmd/bao-la-kiswahili-game
+2026-10-13T23:31:55.7692610Z ##[group]Getting Git version info
+2026-10-13T23:31:55.7693528Z Working directory is '/home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game'
+2026-10-13T23:31:55.7694554Z [command]/usr/bin/git version
+2026-10-13T23:31:55.7748611Z git version 2.55.0
+2026-10-13T23:31:55.7762315Z ##[endgroup]
+2026-10-13T23:31:55.7773232Z Temporarily overriding HOME='/home/runner/work/_temp/628226a9-47b6-4be4-9b3f-ca9809a6a383' before making global git config changes
+2026-10-13T23:31:55.7774545Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-13T23:31:55.7777048Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game
+2026-10-13T23:31:55.7829985Z Deleting the contents of '/home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game'
+2026-10-13T23:31:55.7837744Z ##[group]Initializing the repository
+2026-10-13T23:31:55.7847906Z [command]/usr/bin/git init /home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game
+2026-10-13T23:31:55.7947064Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-13T23:31:55.7948497Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-13T23:31:55.7949848Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-13T23:31:55.7950591Z hint: call:
+2026-10-13T23:31:55.7950822Z hint:
+2026-10-13T23:31:55.7951129Z hint: 	git config --global init.defaultBranch <name>
+2026-10-13T23:31:55.7951468Z hint:
+2026-10-13T23:31:55.7951786Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-13T23:31:55.7959607Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-13T23:31:55.7960035Z hint:
+2026-10-13T23:31:55.7960276Z hint: 	git branch -m <name>
+2026-10-13T23:31:55.7960541Z hint:
+2026-10-13T23:31:55.7960884Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-13T23:31:55.7961552Z Initialized empty Git repository in /home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game/.git/
+2026-10-13T23:31:55.7963850Z [command]/usr/bin/git remote add origin https://github.com/nkkmd/bao-la-kiswahili-game
+2026-10-13T23:31:55.8012202Z ##[endgroup]
+2026-10-13T23:31:55.8016446Z ##[group]Disabling automatic garbage collection
+2026-10-13T23:31:55.8017083Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-13T23:31:55.8047136Z ##[endgroup]
+2026-10-13T23:31:55.8047824Z ##[group]Setting up auth
+2026-10-13T23:31:55.8053470Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-13T23:31:55.8089573Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-13T23:31:55.8414779Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-13T23:31:55.8446907Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-13T23:31:55.8624382Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-13T23:31:55.8654544Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-13T23:31:55.8828281Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-13T23:31:55.8863678Z ##[endgroup]
+2026-10-13T23:31:55.8864123Z ##[group]Fetching the repository
+2026-10-13T23:31:55.8871440Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +02ec22630f191cd7e2856b169fa7cf5296b27807:refs/remotes/pull/203/merge
+2026-10-13T23:32:13.7142495Z From https://github.com/nkkmd/bao-la-kiswahili-game
+2026-10-13T23:32:13.7143177Z  * [new ref]         02ec22630f191cd7e2856b169fa7cf5296b27807 -> pull/203/merge
+2026-10-13T23:32:13.7145144Z ##[endgroup]
+2026-10-13T23:32:13.7145726Z ##[group]Determining the checkout info
+2026-10-13T23:32:13.7147971Z ##[endgroup]
+2026-10-13T23:32:13.7151697Z [command]/usr/bin/git sparse-checkout disable
+2026-10-13T23:32:13.7238272Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-13T23:32:13.7270856Z ##[group]Checking out the ref
+2026-10-13T23:32:13.7272873Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/203/merge
+2026-10-13T23:32:14.6579361Z Note: switching to 'refs/remotes/pull/203/merge'.
+2026-10-13T23:32:14.6580524Z 
+2026-10-13T23:32:14.6580723Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-13T23:32:14.6581048Z changes and commit them, and you can discard any commits you make in this
+2026-10-13T23:32:14.6581361Z state without impacting any branches by switching back to a branch.
+2026-10-13T23:32:14.6581566Z 
+2026-10-13T23:32:14.6581712Z If you want to create a new branch to retain commits you create, you may
+2026-10-13T23:32:14.6582291Z do so (now or later) by using -c with the switch command. Example:
+2026-10-13T23:32:14.6582696Z 
+2026-10-13T23:32:14.6582792Z   git switch -c <new-branch-name>
+2026-10-13T23:32:14.6582902Z 
+2026-10-13T23:32:14.6582996Z Or undo this operation with:
+2026-10-13T23:32:14.6583103Z 
+2026-10-13T23:32:14.6583172Z   git switch -
+2026-10-13T23:32:14.6583297Z 
+2026-10-13T23:32:14.6634222Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-13T23:32:14.6634581Z 
+2026-10-13T23:32:14.6634900Z HEAD is now at 02ec226 Merge 6b432c1dadd64e054b296e756247ee7bff6f2762 into 67984fa90b305cb8092f80d8b74392b94a659fcb
+2026-10-13T23:32:14.6636319Z ##[endgroup]
+2026-10-13T23:32:14.6677995Z [command]/usr/bin/git log -1 --format=%H
+2026-10-13T23:32:14.6707878Z 02ec22630f191cd7e2856b169fa7cf5296b27807
+2026-10-13T23:32:14.6716629Z ##[group]Removing auth
+2026-10-13T23:32:14.6719687Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-13T23:32:14.6749956Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-13T23:32:14.6932181Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-13T23:32:14.6958487Z http.https://github.com/.extraheader
+2026-10-13T23:32:14.6964613Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-13T23:32:14.6994763Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-13T23:32:14.7183243Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-13T23:32:14.7210498Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-13T23:32:14.7389603Z ##[endgroup]
+2026-10-13T23:32:14.7580103Z ##[group]Run actions/setup-node@v4
+2026-10-13T23:32:14.7580322Z with:
+2026-10-13T23:32:14.7580471Z   node-version: 24.19.0
+2026-10-13T23:32:14.7580621Z   always-auth: false
+2026-10-13T23:32:14.7580771Z   check-latest: false
+2026-10-13T23:32:14.7582296Z   token: ***
+2026-10-13T23:32:14.7582438Z ##[endgroup]
+2026-10-13T23:32:14.8597008Z Attempting to download 24.19.0...
+2026-10-13T23:32:14.8668844Z (node:2177) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-13T23:32:14.8669574Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-13T23:32:15.9114718Z Acquiring 24.19.0 - x64 from https://github.com/actions/node-versions/releases/download/24.19.0-30872449280/node-24.19.0-linux-x64.tar.gz
+2026-10-13T23:32:16.3341292Z Extracting ...
+2026-10-13T23:32:16.3450367Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/ede6fd2d-d4f4-4670-9884-82b817dfaeab -f /home/runner/work/_temp/cd372de6-1b76-403a-b37e-10bdf0a92d34
+2026-10-13T23:32:17.2188358Z Adding to the cache ...
+2026-10-13T23:32:19.0743627Z ##[group]Environment details
+2026-10-13T23:32:19.2319020Z node: v24.19.0
+2026-10-13T23:32:19.2319282Z npm: 11.17.0
+2026-10-13T23:32:19.2319436Z yarn: 1.22.22
+2026-10-13T23:32:19.2319839Z ##[endgroup]
+2026-10-13T23:32:19.2460922Z ##[group]Run node tools/research/g5-befcs-remote-joined/run.cjs --bindings
+2026-10-13T23:32:19.2461308Z [36;1mnode tools/research/g5-befcs-remote-joined/run.cjs --bindings[0m
+2026-10-13T23:32:19.2461558Z [36;1mnode --test test/g5-befcs-remote-review.test.cjs[0m
+2026-10-13T23:32:19.2461785Z [36;1mpython3 tools/research/g5-befcs-remote-review/check.py[0m
+2026-10-13T23:32:19.2689208Z shell: /usr/bin/bash -e {0}
+2026-10-13T23:32:19.2689440Z ##[endgroup]
+2026-10-13T23:32:19.4339987Z true
+2026-10-13T23:32:20.6368856Z fatal: Not a valid commit name 0000000000000000000000000000000000000000
+2026-10-13T23:32:21.9601776Z ✔ 生bundleの祖先ではないACKへ差し替えた記録を拒否する (1161.252388ms)
+2026-10-13T23:32:21.9603195Z ✔ 原RESULTと異なるSCENARIOの技術完了への昇格を拒否する (1300.328785ms)
+2026-10-13T23:32:21.9957376Z ℹ tests 2
+2026-10-13T23:32:21.9957760Z ℹ suites 0
+2026-10-13T23:32:21.9957979Z ℹ pass 2
+2026-10-13T23:32:21.9958218Z ℹ fail 0
+2026-10-13T23:32:21.9958424Z ℹ cancelled 0
+2026-10-13T23:32:21.9958699Z ℹ skipped 0
+2026-10-13T23:32:21.9958990Z ℹ todo 0
+2026-10-13T23:32:21.9959248Z ℹ duration_ms 2537.668598
+2026-10-13T23:32:33.7650226Z 1 complete 一致 1370
+2026-10-13T23:32:46.0813585Z 1 proxy-final-mirror 一致 1601
+2026-10-13T23:32:47.3070217Z 1 deadline 一致 181
+2026-10-13T23:32:48.3935557Z 1 host-oom 一致 106
+2026-10-13T23:32:49.0317323Z 1 lost-response 一致 88
+2026-10-13T23:32:51.8649397Z 2 proxy-final-mirror 一致 349
+2026-10-13T23:32:53.7254705Z 2 complete 一致 409
+2026-10-13T23:32:54.8632856Z 2 deadline 一致 133
+2026-10-13T23:32:55.5098555Z 2 lost-response 一致 88
+2026-10-13T23:32:56.5914562Z 2 host-oom 一致 106
+2026-10-13T23:32:56.5915259Z {"archives": 10, "members": 4431, "bytes": 53692694, "scientificSeedsRead": 0, "sourceGenerationPerformed": false}
+2026-10-13T23:32:56.6049103Z Post job cleanup.
+2026-10-13T23:32:56.6832617Z (node:6719) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-13T23:32:56.6833142Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-13T23:32:56.6962865Z Post job cleanup.
+2026-10-13T23:32:56.7492801Z [command]/usr/bin/git version
+2026-10-13T23:32:56.7522482Z git version 2.55.0
+2026-10-13T23:32:56.7539816Z Temporarily overriding HOME='/home/runner/work/_temp/4dd6e2f1-0916-4459-aced-0c3b05076b98' before making global git config changes
+2026-10-13T23:32:56.7540668Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-13T23:32:56.7543124Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game
+2026-10-13T23:32:56.7571849Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-13T23:32:56.7596690Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-13T23:32:56.7788571Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-13T23:32:56.7814531Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-13T23:32:56.8003374Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-13T23:32:56.8043241Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-13T23:32:56.8344051Z Cleaning up orphan processes
+2026-10-13T23:32:56.8578535Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
