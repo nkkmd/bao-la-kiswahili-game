@@ -2,7 +2,7 @@
 
 現在は、科学seedなしのhost状態機械と読取許可順序を固定した位置である。継続指示は有効であり、追加認可を求めるために停止したものではない。
 
-1. 新hostのSOURCE_MANIFEST、PROTECTED_INPUTS、OUTPUT_BINDINGと固定4シナリオを照合し、ドラフトPRの技術CIを確認する。科学用adapterの実行認可へ昇格させない。
+1. 新hostのSOURCE_MANIFEST、PROTECTED_INPUTS、OUTPUT_BINDINGと固定4シナリオ、および[CI確定](CI_CONFIRMATION.md)とCI_OUTPUT_BINDINGを照合する。科学用adapterの実行認可へ昇格させない。
 2. 科学source・独立source・全閉包workerを専用hostへ結合する。consume receiptをworkerへ渡す前にremote再照合し、科学PRNGをcontainer内だけで初期化する。技術fixtureでは保存済みbyteと抽象fixtureを使い、科学区画を読まない。
 3. 全体1200秒、領域180秒、1 GiB・swap追加分なし、256 MiBと16 MiB reserve、累積mirror容量、強制終了、子process排除、通信不明、終了mirror不成立、残余予算不足を全体結合で確認する。host資源も別記録へ残す。
 4. 最終科学SPEC・契約・認可範囲・全入力hash・CI receipt・保護入力・実行前レビューを固定する。operations.executionRefとregistryRefを明示し、実行codeのmanifest対象漏れを監査する。提案seed/ID/namespaceを最新状態と再照合する。

@@ -4,6 +4,8 @@
 
 本directoryの人間向け7 Markdown、tools/research/g5-befcs-host/README.md、中央RESUME_HERE.mdの更新箇所を対象とする。canonical ID、field、path、hash、exact commandと状態機械のtokenは説明済み例外であり、通常説明文と見出しは日本語とした。
 
+CI確定文書1件の追加後は計10 Markdownを対象とする。追加文書でも同じ日本語品質とリンク・hash・認可境界を監査した。
+
 ## 検査結果
 
 新規11テストと既存58テスト、計69件が合格した。固定4 Git bundleの独立再生、全入力・保護入力・全出力hash、先行第2版bindingの照合が合格した。英語だけの人間向け見出し、説明済み例外を除く英語の完全な通常説明文、壊れた相対リンクは0件である。意図しないfenced code block、ID、数値、hash、認可状態の変更は0件である。原記録を翻訳・付け直しせず保持した。
