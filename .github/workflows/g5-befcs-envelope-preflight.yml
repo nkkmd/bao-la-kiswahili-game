@@ -43,3 +43,4 @@ jobs:
           path: artifacts/local/befcs-envelope/
           retention-days: 90
           if-no-files-found: warn
+          include-hidden-files: true
