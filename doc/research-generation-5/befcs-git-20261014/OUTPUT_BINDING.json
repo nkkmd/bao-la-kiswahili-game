@@ -1,0 +1,10 @@
+{
+  "evidenceClass": "TECHNICAL-AUTHENTICATED-GIT-FIXTURE",
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false,
+  "files": {
+    "doc/research-generation-5/befcs-git-20261014/results/RESULT.json": "8d043fd7a3323bfc0109935fcf044a08baf10333a28b2a76498254eb7592e09e",
+    "doc/research-generation-5/befcs-git-20261014/results/TECHNICAL_EVIDENCE.json.gz": "57ad7e00dba1f70d85162398621100b8153f417cb79584b045351663f4a9b4ba"
+  }
+}

@@ -1,0 +1,359 @@
+{
+  "decision": "LOCAL-GIT-FIXTURE-PASS-REMOTE-NOT-TESTED",
+  "sourceManifestSha256": "09661e23ec22185ab9c4cdd916176f7e4b8c0222a7447e0ecc4539a1369024b9",
+  "evidenceSha256": "49b0888f851285cb332d32cc48caf600810a3d3c2e4b8b17b23ff47edc75376a",
+  "cases": [
+    {
+      "evidenceClass": "TECHNICAL-AUTHENTICATED-GIT-FIXTURE",
+      "mode": "complete",
+      "runId": "1",
+      "request": {
+        "evidenceClass": "TECHNICAL-REGISTRY-FIXTURE",
+        "stageId": "GIT-complete-1",
+        "runId": "1",
+        "runAttempt": 1,
+        "binding": "8f855af3df97216f995d8377a6a2b1552a4343beebbdf31ac425053347b51d8c",
+        "block": {
+          "start": 1,
+          "count": 4
+        }
+      },
+      "registryRef": "refs/heads/research/g5-git-fixture-1-a1-complete",
+      "registryHead": "9b2d19bda49eadf61d49d85eb3c0595ae1527e88",
+      "verified": {
+        "verified": true,
+        "commits": 4,
+        "leases": 1,
+        "logicalReadsMarked": 1,
+        "mirrors": 2,
+        "scientificSeedsRead": 0
+      },
+      "lease": {
+        "evidenceClass": "TECHNICAL-REGISTRY-FIXTURE",
+        "stageId": "GIT-complete-1",
+        "runId": "1",
+        "runAttempt": 1,
+        "binding": "8f855af3df97216f995d8377a6a2b1552a4343beebbdf31ac425053347b51d8c",
+        "block": {
+          "start": 1,
+          "count": 4
+        },
+        "status": "BLOCK-QUARANTINED-NO-RETRY",
+        "consumes": [
+          {
+            "index": 0,
+            "logicalId": 1,
+            "binding": "8f855af3df97216f995d8377a6a2b1552a4343beebbdf31ac425053347b51d8c",
+            "runId": "1",
+            "beforeRead": true
+          }
+        ]
+      },
+      "mirrorCount": 2,
+      "ackCount": 1,
+      "unacknowledgedMarkers": 0,
+      "sessionStatus": "FINISHED",
+      "sessionMarked": 1,
+      "finalMirrorSaved": true,
+      "staleCas": null,
+      "headUnchangedAfterStale": null,
+      "failure": null,
+      "retryRefused": true,
+      "authenticatedGitUsed": false,
+      "proxyFailureIsActualGitFailure": false,
+      "responseLossInjectedAfterActualCommit": false,
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false,
+      "scienceHostReleased": false,
+      "solution": null,
+      "resumeAuthorized": false
+    },
+    {
+      "evidenceClass": "TECHNICAL-AUTHENTICATED-GIT-FIXTURE",
+      "mode": "stale-cas",
+      "runId": "1",
+      "request": {
+        "evidenceClass": "TECHNICAL-REGISTRY-FIXTURE",
+        "stageId": "GIT-stale-cas-1",
+        "runId": "1",
+        "runAttempt": 1,
+        "binding": "a69a436e060339c5b07e9971511e2e23331f77eebbb915d83adf92146576ab0d",
+        "block": {
+          "start": 1,
+          "count": 4
+        }
+      },
+      "registryRef": "refs/heads/research/g5-git-fixture-1-a1-stale-cas",
+      "registryHead": "9029c6118b32c7a3e804924572f4324ea80df52e",
+      "verified": {
+        "verified": true,
+        "commits": 2,
+        "leases": 1,
+        "logicalReadsMarked": 0,
+        "mirrors": 1,
+        "scientificSeedsRead": 0
+      },
+      "lease": {
+        "evidenceClass": "TECHNICAL-REGISTRY-FIXTURE",
+        "stageId": "GIT-stale-cas-1",
+        "runId": "1",
+        "runAttempt": 1,
+        "binding": "a69a436e060339c5b07e9971511e2e23331f77eebbb915d83adf92146576ab0d",
+        "block": {
+          "start": 1,
+          "count": 4
+        },
+        "status": "BLOCK-QUARANTINED-NO-RETRY",
+        "consumes": []
+      },
+      "mirrorCount": 1,
+      "ackCount": 0,
+      "unacknowledgedMarkers": 0,
+      "sessionStatus": "STOPPED",
+      "sessionMarked": 0,
+      "finalMirrorSaved": false,
+      "staleCas": {
+        "ok": false,
+        "error": {
+          "message": "Command failed: git push --porcelain --force-with-lease=refs/heads/research/g5-git-fixture-1-a1-stale-cas:1a99eb13c14f20c8c358d6de228d3455ec5d3abd /tmp/befcs-git-R0pZ9x/stale-cas.git 1a99eb13c14f20c8c358d6de228d3455ec5d3abd:refs/heads/research/g5-git-fixture-1-a1-stale-cas\nerror: failed to push some refs to '/tmp/befcs-git-R0pZ9x/stale-cas.git'\n",
+          "status": 1,
+          "signal": null,
+          "stdout": "To /tmp/befcs-git-R0pZ9x/stale-cas.git\n!\t1a99eb13c14f20c8c358d6de228d3455ec5d3abd:refs/heads/research/g5-git-fixture-1-a1-stale-cas\t[rejected] (stale info)\nDone\n",
+          "stderr": "error: failed to push some refs to '/tmp/befcs-git-R0pZ9x/stale-cas.git'\n"
+        }
+      },
+      "headUnchangedAfterStale": true,
+      "failure": {
+        "message": "Command failed: git push --porcelain --force-with-lease=refs/heads/research/g5-git-fixture-1-a1-stale-cas:1a99eb13c14f20c8c358d6de228d3455ec5d3abd /tmp/befcs-git-R0pZ9x/stale-cas.git 1a99eb13c14f20c8c358d6de228d3455ec5d3abd:refs/heads/research/g5-git-fixture-1-a1-stale-cas\nerror: failed to push some refs to '/tmp/befcs-git-R0pZ9x/stale-cas.git'\n",
+        "status": 1,
+        "signal": null,
+        "stdout": "To /tmp/befcs-git-R0pZ9x/stale-cas.git\n!\t1a99eb13c14f20c8c358d6de228d3455ec5d3abd:refs/heads/research/g5-git-fixture-1-a1-stale-cas\t[rejected] (stale info)\nDone\n",
+        "stderr": "error: failed to push some refs to '/tmp/befcs-git-R0pZ9x/stale-cas.git'\n"
+      },
+      "retryRefused": true,
+      "authenticatedGitUsed": false,
+      "proxyFailureIsActualGitFailure": false,
+      "responseLossInjectedAfterActualCommit": false,
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false,
+      "scienceHostReleased": false,
+      "solution": null,
+      "resumeAuthorized": false
+    },
+    {
+      "evidenceClass": "TECHNICAL-AUTHENTICATED-GIT-FIXTURE",
+      "mode": "lost-response",
+      "runId": "1",
+      "request": {
+        "evidenceClass": "TECHNICAL-REGISTRY-FIXTURE",
+        "stageId": "GIT-lost-response-1",
+        "runId": "1",
+        "runAttempt": 1,
+        "binding": "1a82a6c2a5eae01a9d594b3c4463b24b7e402b0aa48c909293aece2f4ad51d57",
+        "block": {
+          "start": 1,
+          "count": 4
+        }
+      },
+      "registryRef": "refs/heads/research/g5-git-fixture-1-a1-lost-response",
+      "registryHead": "fbe17aafad5920a142203faedec24f8b24e9bdeb",
+      "verified": {
+        "verified": true,
+        "commits": 3,
+        "leases": 1,
+        "logicalReadsMarked": 1,
+        "mirrors": 1,
+        "scientificSeedsRead": 0
+      },
+      "lease": {
+        "evidenceClass": "TECHNICAL-REGISTRY-FIXTURE",
+        "stageId": "GIT-lost-response-1",
+        "runId": "1",
+        "runAttempt": 1,
+        "binding": "1a82a6c2a5eae01a9d594b3c4463b24b7e402b0aa48c909293aece2f4ad51d57",
+        "block": {
+          "start": 1,
+          "count": 4
+        },
+        "status": "BLOCK-QUARANTINED-NO-RETRY",
+        "consumes": [
+          {
+            "index": 0,
+            "logicalId": 1,
+            "binding": "1a82a6c2a5eae01a9d594b3c4463b24b7e402b0aa48c909293aece2f4ad51d57",
+            "runId": "1",
+            "beforeRead": true
+          }
+        ]
+      },
+      "mirrorCount": 1,
+      "ackCount": 0,
+      "unacknowledgedMarkers": 1,
+      "sessionStatus": "STOPPED",
+      "sessionMarked": 0,
+      "finalMirrorSaved": false,
+      "staleCas": null,
+      "headUnchangedAfterStale": null,
+      "failure": {
+        "message": "INJECTED-POST-COMMIT-RESPONSE-LOSS",
+        "status": null,
+        "signal": null,
+        "stdout": "",
+        "stderr": ""
+      },
+      "retryRefused": true,
+      "authenticatedGitUsed": false,
+      "proxyFailureIsActualGitFailure": false,
+      "responseLossInjectedAfterActualCommit": true,
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false,
+      "scienceHostReleased": false,
+      "solution": null,
+      "resumeAuthorized": false
+    },
+    {
+      "evidenceClass": "TECHNICAL-AUTHENTICATED-GIT-FIXTURE",
+      "mode": "proxy-before-consume",
+      "runId": "1",
+      "request": {
+        "evidenceClass": "TECHNICAL-REGISTRY-FIXTURE",
+        "stageId": "GIT-proxy-before-consume-1",
+        "runId": "1",
+        "runAttempt": 1,
+        "binding": "cd12cf781d115a5fe35befedba95210a62e65a3489d1e2dbe46d523f21395e2d",
+        "block": {
+          "start": 1,
+          "count": 4
+        }
+      },
+      "registryRef": "refs/heads/research/g5-git-fixture-1-a1-proxy-before-consume",
+      "registryHead": "35ce7225956a5e5c5b9075376dd86f4a5764bf41",
+      "verified": {
+        "verified": true,
+        "commits": 2,
+        "leases": 1,
+        "logicalReadsMarked": 0,
+        "mirrors": 1,
+        "scientificSeedsRead": 0
+      },
+      "lease": {
+        "evidenceClass": "TECHNICAL-REGISTRY-FIXTURE",
+        "stageId": "GIT-proxy-before-consume-1",
+        "runId": "1",
+        "runAttempt": 1,
+        "binding": "cd12cf781d115a5fe35befedba95210a62e65a3489d1e2dbe46d523f21395e2d",
+        "block": {
+          "start": 1,
+          "count": 4
+        },
+        "status": "BLOCK-QUARANTINED-NO-RETRY",
+        "consumes": []
+      },
+      "mirrorCount": 1,
+      "ackCount": 0,
+      "unacknowledgedMarkers": 0,
+      "sessionStatus": "STOPPED",
+      "sessionMarked": 0,
+      "finalMirrorSaved": false,
+      "staleCas": null,
+      "headUnchangedAfterStale": null,
+      "failure": {
+        "message": "INJECTED-LOCAL-NETWORK-UNAVAILABLE",
+        "status": null,
+        "signal": null,
+        "stdout": "",
+        "stderr": ""
+      },
+      "retryRefused": true,
+      "authenticatedGitUsed": false,
+      "proxyFailureIsActualGitFailure": false,
+      "responseLossInjectedAfterActualCommit": false,
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false,
+      "scienceHostReleased": false,
+      "solution": null,
+      "resumeAuthorized": false
+    },
+    {
+      "evidenceClass": "TECHNICAL-AUTHENTICATED-GIT-FIXTURE",
+      "mode": "proxy-final-mirror",
+      "runId": "1",
+      "request": {
+        "evidenceClass": "TECHNICAL-REGISTRY-FIXTURE",
+        "stageId": "GIT-proxy-final-mirror-1",
+        "runId": "1",
+        "runAttempt": 1,
+        "binding": "30053866f6310e2c5b2123d75343b4a80f5e7d3bc175956c84562bcaaa5846de",
+        "block": {
+          "start": 1,
+          "count": 4
+        }
+      },
+      "registryRef": "refs/heads/research/g5-git-fixture-1-a1-proxy-final-mirror",
+      "registryHead": "794deab25ac0d9c7fe4d4f3b655f4145b200a1e3",
+      "verified": {
+        "verified": true,
+        "commits": 3,
+        "leases": 1,
+        "logicalReadsMarked": 1,
+        "mirrors": 1,
+        "scientificSeedsRead": 0
+      },
+      "lease": {
+        "evidenceClass": "TECHNICAL-REGISTRY-FIXTURE",
+        "stageId": "GIT-proxy-final-mirror-1",
+        "runId": "1",
+        "runAttempt": 1,
+        "binding": "30053866f6310e2c5b2123d75343b4a80f5e7d3bc175956c84562bcaaa5846de",
+        "block": {
+          "start": 1,
+          "count": 4
+        },
+        "status": "BLOCK-QUARANTINED-NO-RETRY",
+        "consumes": [
+          {
+            "index": 0,
+            "logicalId": 1,
+            "binding": "30053866f6310e2c5b2123d75343b4a80f5e7d3bc175956c84562bcaaa5846de",
+            "runId": "1",
+            "beforeRead": true
+          }
+        ]
+      },
+      "mirrorCount": 1,
+      "ackCount": 1,
+      "unacknowledgedMarkers": 0,
+      "sessionStatus": "STOPPED",
+      "sessionMarked": 1,
+      "finalMirrorSaved": false,
+      "staleCas": null,
+      "headUnchangedAfterStale": null,
+      "failure": {
+        "message": "INJECTED-LOCAL-NETWORK-UNAVAILABLE",
+        "status": null,
+        "signal": null,
+        "stdout": "",
+        "stderr": ""
+      },
+      "retryRefused": true,
+      "authenticatedGitUsed": false,
+      "proxyFailureIsActualGitFailure": false,
+      "responseLossInjectedAfterActualCommit": false,
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false,
+      "scienceHostReleased": false,
+      "solution": null,
+      "resumeAuthorized": false
+    }
+  ],
+  "resources": null,
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false,
+  "scienceHostReleased": false
+}
