@@ -25,3 +25,7 @@ hostは全区画leaseからACKまでの順序、稼働中/終了mirror、worker 
 科学用の全体資源会計、制御ファイル・Git object・mirror処理の追加資源、予算内終了mirror、実GitHub通信の失敗fixture、科学専用hostの最終配備と固定SPEC/契約/認可/レビュー、科学専用triggerは未完である。技術fixtureの成功を科学sourceの費用保証や科学実行認可へ昇格させない。実cgroup CIは別receiptで確認する。
 
 科学seed消費0・科学leaseなし・科学Study未登録/未実行、主課題と正式関係未登録/未実行、103355件遮断、全閉包、未知の保持、救済禁止、main・公開AI未変更を維持する。
+
+## 実cgroupの確認完了
+
+[CI確定](CI_CONFIRMATION.md)で全9シナリオ・全stepとPR側12ワークフローの成功を確認した。artifact archive digestと全出力hash、全9保存Git bundle・source・候補・閉包の独立再生が一致した。負荷を分けたローカル回帰は新規5件と既存69件、計74件がすべて合格した。先行の未合格を保持し、科学用の未完条件へ自動昇格しない。

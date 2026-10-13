@@ -1,6 +1,6 @@
 # workerとhost結合の再開位置
 
-新pipelineの入力・保護入力・出力hash、9固定シナリオのGit証拠と独立source/候補/閉包再生を照合し、実cgroup CIを確認する。科学用driverの配線と、未完の科学専用host配備・全資源レビューを分ける。
+新pipelineの入力・保護入力と[CI確定](CI_CONFIRMATION.md)・CI出力bindingを照合する。実cgroup全9シナリオと保存source/候補/閉包の独立再生は合格した。科学用driverの配線と、未完の科学専用host配備・全資源レビューを分ける。
 
 次は科学用全資源会計と停止時保存のレビューを具体化する。worker/containerだけでなくhost、制御ファイル、Git object、累積mirror、保存後検算の時間とメモリを含め、事前に固定した範囲へ収める。実GitHub通信不明、終了mirror不成立、子process排除、残余予算不足も、科学区画を読まずに確認する。
 

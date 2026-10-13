@@ -1,0 +1,11 @@
+{
+  "headCommit": "6f6b468ee591f21497413060d86fa88050206092",
+  "artifactArchiveSha256": "57de4333495c3ce08ad3a168570d677cac861340cbfa26b9ab8a52111c100ffb",
+  "archiveDigestVerified": true,
+  "files": {
+    "doc/research-generation-5/befcs-pipeline-20261013/results/CI_RESULT.json": "e47254c1d42744846b6a080d6261d8e22e0138d38fba2bed1d9002846a9c995d",
+    "doc/research-generation-5/befcs-pipeline-20261013/results/CI_TECHNICAL_EVIDENCE.json.gz": "208071047e404075f22af8777253edd9f907a0c594526eb621fd59ec0b7262a5",
+    "doc/research-generation-5/befcs-pipeline-20261013/results/DEVELOPMENT_DIAGNOSTIC.json": "1945b9fc3ec93e47e077f504261466e8d881756fe21de8953c873a4939032c08",
+    "doc/research-generation-5/befcs-pipeline-20261013/results/CI_RECEIPT.json": "dfc98b65ade659e72e916dcee34fda7b8bb3c0bfd11d2708a64bfd8c61853304"
+  }
+}
