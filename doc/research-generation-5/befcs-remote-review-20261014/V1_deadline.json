@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "verifiedSavedEvidence": true,
+  "fixturePassed": false,
+  "mode": "deadline",
+  "runId": "38473413073",
+  "registryHead": "61b22c2433b15183c7f3d2554fca4a775004dce0",
+  "registryRef": "refs/heads/research/g5-remote-joined-38473413073-a1-deadline",
+  "registryBlobSha": "ad3a8e86c21471be3cd6a019b5a78a84a3a65ab5",
+  "registry": {
+    "verified": true,
+    "commits": 8,
+    "leases": 1,
+    "logicalReadsMarked": 4,
+    "mirrors": 3,
+    "scientificSeedsRead": 0
+  },
+  "ackCount": 4,
+  "unacknowledgedMarkers": 0,
+  "remoteProof": {
+    "fullSources": 3,
+    "partialSources": 1,
+    "completeClosures": 0,
+    "partialProofs": [
+      {
+        "dir": "source-003",
+        "verified": true,
+        "scope": "SAVED-PREFIX-ONLY-NOT-FULL",
+        "savedSteps": 45,
+        "savedScreens": 0,
+        "checkpointPly": 32,
+        "checkpointScreens": 0,
+        "journals": {
+          "source": {
+            "bytes": 39369,
+            "prefixBytes": 39369,
+            "tailBytes": 0,
+            "sha256": "076e61025599f8b3c34a18839e0671c66fb5eb02715b58a13b369a02d6bb0d43",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 46
+          },
+          "receipt": {
+            "bytes": 387,
+            "prefixBytes": 387,
+            "tailBytes": 0,
+            "sha256": "aef3facd49a9e82ea999a1d45de01cd556ca2baf2309f6ef184c2a065e3f4868",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 1
+          },
+          "reads": {
+            "bytes": 17732,
+            "prefixBytes": 17732,
+            "tailBytes": 0,
+            "sha256": "74b12f8c70b47c3a993da22a588a388d8b679327fa7d5d7391e0b6873111bab8",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 47
+          }
+        },
+        "savedReadCoverageVerified": true,
+        "sourceComplete": false,
+        "fullSourceVerified": false,
+        "candidate": null,
+        "solution": null,
+        "resumeAuthorized": false,
+        "scientificSeedGenerationPerformed": false
+      }
+    ],
+    "sourceGenerationPerformed": false
+  },
+  "localProof": {
+    "fullSources": 3,
+    "partialSources": 1,
+    "completeClosures": 0,
+    "partialProofs": [
+      {
+        "dir": "source-003",
+        "verified": true,
+        "scope": "SAVED-PREFIX-ONLY-NOT-FULL",
+        "savedSteps": 45,
+        "savedScreens": 0,
+        "checkpointPly": 32,
+        "checkpointScreens": 0,
+        "journals": {
+          "source": {
+            "bytes": 39369,
+            "prefixBytes": 39369,
+            "tailBytes": 0,
+            "sha256": "076e61025599f8b3c34a18839e0671c66fb5eb02715b58a13b369a02d6bb0d43",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 46
+          },
+          "receipt": {
+            "bytes": 387,
+            "prefixBytes": 387,
+            "tailBytes": 0,
+            "sha256": "aef3facd49a9e82ea999a1d45de01cd556ca2baf2309f6ef184c2a065e3f4868",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 1
+          },
+          "reads": {
+            "bytes": 17732,
+            "prefixBytes": 17732,
+            "tailBytes": 0,
+            "sha256": "74b12f8c70b47c3a993da22a588a388d8b679327fa7d5d7391e0b6873111bab8",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 47
+          }
+        },
+        "savedReadCoverageVerified": true,
+        "sourceComplete": false,
+        "fullSourceVerified": false,
+        "candidate": null,
+        "solution": null,
+        "resumeAuthorized": false,
+        "scientificSeedGenerationPerformed": false
+      }
+    ],
+    "sourceGenerationPerformed": false
+  },
+  "parentPeak": 307499008,
+  "resultPresent": false,
+  "serviceError": null,
+  "guard": {
+    "locked": false,
+    "reason": null,
+    "consumesAcknowledged": 4,
+    "mirrorsSucceeded": 3
+  },
+  "finalMirrorSaved": true,
+  "technicalComplete": false,
+  "completedRecordPresent": false,
+  "completionClaimAuthorized": false,
+  "stops": {
+    "records": [
+      {
+        "target": "work",
+        "atMs": 19012.6254,
+        "reason": "ORDINARY-EARLY-STOP"
+      },
+      {
+        "target": "work",
+        "atMs": 29012.89406,
+        "reason": "TOTAL-EARLY-STOP"
+      },
+      {
+        "target": "control",
+        "atMs": 29012.929342,
+        "reason": "TOTAL-EARLY-STOP"
+      }
+    ],
+    "elapsedFromServiceMs": 29012.939888,
+    "scientificSeedsRead": 0
+  },
+  "sourceGenerationPerformed": false,
+  "scientificSeedsRead": 0,
+  "resumeAuthorized": false,
+  "solution": null
+}

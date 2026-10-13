@@ -1,0 +1,25 @@
+name: G5 BEFCS Saved Remote Review
+on:
+  push:
+    branches: [research/g5-befcs-remote-evidence]
+    paths: ['tools/research/g5-befcs-remote-review/**', 'test/g5-befcs-remote-review.test.cjs', 'doc/research-generation-5/befcs-remote-review-20261014/**', '.github/workflows/g5-befcs-remote-review.yml']
+  pull_request:
+    paths: ['tools/research/g5-befcs-remote-review/**', 'test/g5-befcs-remote-review.test.cjs', 'doc/research-generation-5/befcs-remote-review-20261014/**', '.github/workflows/g5-befcs-remote-review.yml']
+permissions:
+  contents: read
+jobs:
+  saved-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Verify archived evidence without remote writes
+        run: |
+          node tools/research/g5-befcs-remote-joined/run.cjs --bindings
+          node --test test/g5-befcs-remote-review.test.cjs
+          python3 tools/research/g5-befcs-remote-review/check.py

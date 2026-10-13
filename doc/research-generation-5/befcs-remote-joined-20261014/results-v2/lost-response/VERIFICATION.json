@@ -1,0 +1,21 @@
+{
+  "verified": true,
+  "mode": "lost-response",
+  "registryRef": "refs/heads/research/g5-remote-joined-38474301794-a1-lost-response",
+  "registryHead": "d2c8c01132919920d08ebf8c6259c891c6810830",
+  "ackCount": 0,
+  "markers": 1,
+  "unacknowledgedMarkers": 1,
+  "technicalComplete": false,
+  "finalMirrorSaved": false,
+  "remoteMirrorProof": {
+    "fullSources": 0,
+    "partialSources": 0,
+    "completeClosures": 0,
+    "partialProofs": [],
+    "sourceGenerationPerformed": false
+  },
+  "parentPeak": 306704384,
+  "forensicPreservationAfterDeadline": false,
+  "scientificSeedsRead": 0
+}

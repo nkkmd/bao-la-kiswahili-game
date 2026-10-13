@@ -1,0 +1,90 @@
+[
+  {
+    "status": "rejected",
+    "reason": {}
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "version": 1,
+      "mode": "deadline",
+      "ref": "research/g5-remote-joined-38473413073-a1-deadline",
+      "blobSha": "ad3a8e86c21471be3cd6a019b5a78a84a3a65ab5",
+      "markers": 4
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "version": 1,
+      "mode": "lost-response",
+      "ref": "research/g5-remote-joined-38473413073-a1-lost-response",
+      "blobSha": "044007253894cb0f527a029c889acd2e5d8d2788",
+      "markers": 1
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "version": 1,
+      "mode": "host-oom",
+      "ref": "research/g5-remote-joined-38473413073-a1-host-oom",
+      "blobSha": "1491848ce1cbb1b4a9d331397a273b1068d0d3ce",
+      "markers": 1
+    }
+  },
+  {
+    "status": "rejected",
+    "reason": {}
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "version": 2,
+      "mode": "deadline",
+      "ref": "research/g5-remote-joined-38474301794-a1-deadline",
+      "blobSha": "b6fc38abf76127c5954378b14c43e525e54b8134",
+      "markers": 2
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "version": 2,
+      "mode": "lost-response",
+      "ref": "research/g5-remote-joined-38474301794-a1-lost-response",
+      "blobSha": "ae920fd5a2a24e69000ffeab121843fa3da631b8",
+      "markers": 1
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "version": 2,
+      "mode": "host-oom",
+      "ref": "research/g5-remote-joined-38474301794-a1-host-oom",
+      "blobSha": "455af0fd23e26aab0fe27922668c65d92a0c690a",
+      "markers": 1
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "version": 2,
+      "mode": "complete",
+      "ref": "research/g5-remote-joined-38474301794-a1-complete",
+      "blobSha": "6a7efcfc5c03950cfd47d8edca3702cfa914ba0d",
+      "markers": 22
+    }
+  },
+  {
+    "status": "fulfilled",
+    "value": {
+      "version": 2,
+      "mode": "proxy-final-mirror",
+      "ref": "research/g5-remote-joined-38474301794-a1-proxy-final-mirror",
+      "blobSha": "aba1cd42c3bd0d84033a55aa21661db02505cef1",
+      "markers": 44
+    }
+  }
+]

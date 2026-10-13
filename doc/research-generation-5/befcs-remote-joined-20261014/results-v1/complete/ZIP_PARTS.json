@@ -1,0 +1,22 @@
+{
+  "format": "CONCATENATE-IN-ORDER-RAW-ZIP",
+  "bytes": 21951327,
+  "sha256": "49edbf658d4e54fbeae1ca231bd2ac4beb29d98c4dd789a3515f0e9270485345",
+  "parts": [
+    {
+      "path": "CI_ARTIFACT.zip.part-000",
+      "bytes": 8388608,
+      "sha256": "a50b587895f6e540830294d3763f9823e81773c68cf1d05bd1e4be5fc8bd2f34"
+    },
+    {
+      "path": "CI_ARTIFACT.zip.part-001",
+      "bytes": 8388608,
+      "sha256": "e79413ad30560e424fd649b8c74efe9ee437981f7aeb60499d8c08e771255abc"
+    },
+    {
+      "path": "CI_ARTIFACT.zip.part-002",
+      "bytes": 5174111,
+      "sha256": "0fc690722383f778500d47b77aed06c1322dd2f274aa33c242112ee0aa183869"
+    }
+  ]
+}

@@ -123,3 +123,9 @@ G4固定領域・保護namespace・depth-11部分層を新規正式証拠へ転�
 [共通128 sourceと監督の結合](befcs-joined-20261013/README.md)のV1/V2実cgroup Actionsを完了した。各runの12 workflow checksがsuccess、4 fixtureで通常128 source処理・host OOM停止・15秒期限停止・最終mirror失敗を記録した。V2では反復`cgroup.kill`書込みのfile offsetを0へ戻す修正を含む。peakは約292–629 MiB、ACKに未ACKはなく、科学seed消費0・leaseなし・Study未登録/未実行を保持する。[receiptとartifact member hashes](befcs-joined-20261013/results/README.md)を参照する。期限caseはprefixのみで完了や完全replayとみなさない。
 
 Docker daemon統合、認証付き実Git transport/CAS、起動からartifact保全までの20分single-clock証明、科学途中checkpoint validator、最終SPEC/CONTRACT/AUTH/hash/review/別triggerは残る。全てを満たすまで科学hostを拒否し、mainと公開AIは変更しない。
+
+## 2026-10-14 — 実Git結合の取得証拠を確定
+
+[取得後検算](befcs-remote-review-20261014/README.md)で、PR #202の第1版・第2版の全10 artifact・4431 memberを回収した。第1版通常は128 source・1抽象閉包・最終mirrorまで完了し、第1版期限は回収EACCESを保持した。第2版は期限後回収を含む3 case合格、通常と最終mirror拒否の2 caseは途中のGit commit_refsエラーで未完である。保存証拠の独立一致を、修正版全体の技術合格へ読み替えない。
+
+次は[再開文書](befcs-remote-review-20261014/RESUME_HERE.md)の失敗時終了処理・全起動保存予算・科学API配線・最終固定を進める。旧取引を再試行せず、科学seed消費0・leaseなし・Study未登録/未実行・103355遮断・救済禁止・main/公開AI未変更を保持する。
