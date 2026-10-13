@@ -1,0 +1,227 @@
+{
+  "decision": "OPERATIONS-FIXTURE-CGROUP-CI-PASS",
+  "headCommit": "dc47116c4d81d773c327efd902b4f3a2d83c6f3c",
+  "sourceTree": "e20d02406e568979cf1120104620205e70b45bd1",
+  "workflowSha256": "31cd277ca3eb61d493a2409a81b93cb7ee5fceb559d267790bb298831bf72cbe",
+  "sourceManifestSha256": "6c74c1c21e741ceab46b9173f7d5db882f861e82fe2d9d31bf6f94ff043553c7",
+  "runs": [
+    {
+      "id": 38347787205,
+      "event": "push",
+      "runAttempt": 1,
+      "headCommit": "dc47116c4d81d773c327efd902b4f3a2d83c6f3c",
+      "job": {
+        "id": 115133088541,
+        "name": "operations-fixture",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 38347787205,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Test registry CAS consume ordering mirror crash and process groups",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Independently replay frozen Git registry and mirror evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Test real 128 MiB and 1 GiB Docker cgroup OOM preserving prefix",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Preserve technical cgroup receipt even after failure",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Post Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          }
+        ]
+      },
+      "cgroup": {
+        "evidenceClass": "TECHNICAL-CGROUP-FIXTURE",
+        "nodeVersion": "24.19.0",
+        "results": [
+          {
+            "capBytes": 134217728,
+            "swapDisabled": true,
+            "oomKilled": true,
+            "exitCode": 137,
+            "durablePrefixVerified": true,
+            "solution": null,
+            "imageId": "sha256:622f209f6c16ba5af4d9a337cae6577d096f17174b904cfc6a5b0c81a2679c24"
+          },
+          {
+            "capBytes": 1073741824,
+            "swapDisabled": true,
+            "oomKilled": true,
+            "exitCode": 137,
+            "durablePrefixVerified": true,
+            "solution": null,
+            "imageId": "sha256:622f209f6c16ba5af4d9a337cae6577d096f17174b904cfc6a5b0c81a2679c24"
+          }
+        ],
+        "scientificSeedsRead": 0,
+        "scientificExecutionAuthorized": false
+      }
+    },
+    {
+      "id": 38347819157,
+      "event": "pull_request",
+      "runAttempt": 1,
+      "headCommit": "dc47116c4d81d773c327efd902b4f3a2d83c6f3c",
+      "job": {
+        "id": 115133188884,
+        "name": "operations-fixture",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 38347819157,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Test registry CAS consume ordering mirror crash and process groups",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Independently replay frozen Git registry and mirror evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Test real 128 MiB and 1 GiB Docker cgroup OOM preserving prefix",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Preserve technical cgroup receipt even after failure",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Post Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          }
+        ]
+      },
+      "cgroup": {
+        "evidenceClass": "TECHNICAL-CGROUP-FIXTURE",
+        "nodeVersion": "24.19.0",
+        "results": [
+          {
+            "capBytes": 134217728,
+            "swapDisabled": true,
+            "oomKilled": true,
+            "exitCode": 137,
+            "durablePrefixVerified": true,
+            "solution": null,
+            "imageId": "sha256:622f209f6c16ba5af4d9a337cae6577d096f17174b904cfc6a5b0c81a2679c24"
+          },
+          {
+            "capBytes": 1073741824,
+            "swapDisabled": true,
+            "oomKilled": true,
+            "exitCode": 137,
+            "durablePrefixVerified": true,
+            "solution": null,
+            "imageId": "sha256:622f209f6c16ba5af4d9a337cae6577d096f17174b904cfc6a5b0c81a2679c24"
+          }
+        ],
+        "scientificSeedsRead": 0,
+        "scientificExecutionAuthorized": false
+      }
+    }
+  ],
+  "artifact": {
+    "id": 11789523310,
+    "runId": 38347819157,
+    "name": "befcs-operations-fixture-38347819157-1",
+    "sha256": "07c5b3143ed08284d699f4596c4daf88da7f32cd61ca888dfae5212e963aa092",
+    "bytes": 455,
+    "receiptSource": "decoded-job-log-json-and-artifact-api-metadata"
+  },
+  "scientificSeedsRead": 0,
+  "scientificStudyRegistered": false,
+  "scientificLeaseCreated": false,
+  "scientificExecutionAuthorized": false,
+  "formalRelationRegistered": false,
+  "publicAiChanged": false
+}
