@@ -1,0 +1,27 @@
+# workerとhostの結合技術契約
+
+## 対象と手順
+
+固定128論理sourceをseed 1の既知抽象状態機械で生成し、primary/referenceの全遷移を照合する。独立source再生、独立RAW codec、第一適格rootと重複除外を経て最大8候補を固定し、そのrootの全合法手閉包を二経路で照合する。同じrootが重複するfixtureのため、通常ケースの候補数は1となる。科学的な供給件数とは扱わない。
+
+通常ケースは全128件を使う。domain後半と終了mirrorの停止専用fixtureは16件で条件へ到達させ、各結果にfixtureSourceCountを保存する。leaseは全ケース128論理IDを隔離し、未読分を補充しない。科学source数は128の提案のまま変更しない。
+
+全区画lease、必要mirror、読取前consume、remote再照合、ACK、worker初期化の順を維持する。稼働中のcheckpoint mirrorと読取前mirrorを同じsessionで管理する。通常は8 sourceごと、処理中は5秒間隔を目安にmirrorする。同期Git処理中はこの間隔を超える場合があり、厳密な5秒の保存保証とは主張しない。
+
+source/read journal・snapshot・候補固定・閉包は共有256 MiB、終了reserve16 MiBの保存wrapperを使う。技術workerの上限も科学提案と同じ1200秒・180秒へ合わせる。初期の短いfixture枠180秒・1秒の未合格試行は別記録へ保持し、科学提案の上限は変更しない。worker終了後の最終mirrorと検算の費用はhost elapsedへ別記録する。fixtureの合格を科学全体の上限成立へ読み替えない。
+
+## 判定と停止
+
+通常、必要mirror失敗、prefix保存後の強制終了、source前容量不足、domain前容量不足、領域時間、domain前時間不足、全体時間、終了mirror失敗の9固定シナリオを検査する。各停止は想定したreason・marker・ACK・保存状態を検査し、別の不具合による停止を合格へ読み替えない。
+
+workerCompleteだけではtechnicalCompleteにしない。正常worker終了と終了mirror成功とsessionの終了が揃った技術ケースだけをtechnicalCompleteとする。科学的interpretationCompleteは全技術結果でfalse、solution null、resumeAuthorized falseを保持する。失敗後に新しいconsumeやACKを発行せず、停止後の保存mirrorだけを許す。
+
+consume保存後にhost時間が尽きると、保存markerがACKより1件先行する場合がある。unacknowledgedMarkersを明記し、対応するACKがないことを検査する。保存markerを巻き戻さず、未ACKを実読取りや完了へ昇格させない。
+
+Docker検証は実1 GiB、swap追加分なし、networkなし、pids 32、host UID/GIDで行い、終了mirror前にcontainerを停止する。local経路はworker group RSSとhost RSSを合算し、hostのpeak RSSも別記録する。Docker clientのRSSをcontainer worker RSSへ読み替えず、container memory設定とstateを別記録する。科学用の全資源会計、制御ファイル・Git object・mirror処理の追加資源、予算内終了mirror、実GitHub通信失敗、科学専用hostの最終配備は次のレビューに残す。
+
+## 再現と不変条件
+
+保存Git bundleを生成器の再起動なしで独立復元する。全mirror blobとjournal prefixに加え、最後の保存sourceを独立再生し、候補固定と保存閉包の全辺・完全領域を独立照合する。途中prefixは完全sourceへ昇格しない。
+
+科学用entryは最終gate・全source manifest・資源/選定設定が一致しなければ拒否する。科学source・seed・leaseをこの技術CLIで作らない。全旧原記録を保持し、103355件遮断・全合法手完全閉包・未知・主要課題と正式関係未登録/未実行・main/公開AI未変更を維持する。

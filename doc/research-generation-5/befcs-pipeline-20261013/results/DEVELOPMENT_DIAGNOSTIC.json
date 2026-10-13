@@ -1,0 +1,26 @@
+{
+  "evidenceClass": "TECHNICAL-DEVELOPMENT-DIAGNOSTIC-NOT-SCIENTIFIC-EVIDENCE",
+  "fullPipelinePassed": false,
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false,
+  "observations": [
+    {"case": "mirror-sequence-conflict", "ackCount": 6, "status": "MIRROR-FAILURE", "fixed": true},
+    {"case": "initial-180-second-fixture", "ackCount": 97, "status": "GLOBAL-TIME-LIMIT", "finalMirrorSaved": true},
+    {"case": "unsorted-independent-closure", "read": 128, "candidates": 1, "closures": 0, "status": "INDEPENDENT-CLOSURE-MISMATCH", "fixed": true},
+    {"case": "consume-before-host-time-stop", "markers": 117, "ackCount": 116, "status": "GLOBAL-TIME-LIMIT", "fixed": true},
+    {"case": "initial-1-second-domain", "read": 128, "candidates": 1, "closures": 0, "status": "DOMAIN-TIME-LIMIT", "finalMirrorSaved": true}
+  ],
+  "regression": {
+    "parallel": {"tests": 73, "pass": 72, "fail": 1},
+    "fileSequentialUnderPipelineLoad": {"tests": 73, "pass": 72, "fail": 1},
+    "failure": "400-ms-ignore-term-worker-exited-SIGTERM-instead-of-SIGKILL",
+    "interpretation": "CONSISTENT-WITH-WORKER-STARTUP-NOT-READY-UNDER-LOAD",
+    "isolatedFailureCase": {"tests": 1, "pass": 1, "fail": 0},
+    "legacyBytesModified": false
+  },
+  "currentFixtureLimits": {"maxTotalMs": 1200000, "maxDomainMs": 180000},
+  "scientificProposalLimitsChanged": false,
+  "localFailedTrialBundlesPreserved": false,
+  "archiveVerificationClaimedForFailedLocalTrials": false
+}
