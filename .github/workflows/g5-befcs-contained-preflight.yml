@@ -1,0 +1,45 @@
+name: G5 BEFCS Contained Workload
+on:
+  push:
+    branches: [research/g5-befcs-contained-preflight]
+    paths:
+      - 'tools/research/g5-befcs-contained/**'
+      - 'test/g5-befcs-contained.test.cjs'
+      - 'doc/research-generation-5/befcs-contained-20261013/**'
+      - '.github/workflows/g5-befcs-contained-preflight.yml'
+  pull_request:
+    paths:
+      - 'tools/research/g5-befcs-contained/**'
+      - 'test/g5-befcs-contained.test.cjs'
+      - 'doc/research-generation-5/befcs-contained-20261013/**'
+      - '.github/workflows/g5-befcs-contained-preflight.yml'
+permissions:
+  contents: read
+jobs:
+  contained:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Refuse science and validate specific cgroup boundaries
+        run: node --test test/g5-befcs-contained.test.cjs test/g5-befcs-envelope.test.cjs test/g5-befcs-pipeline.test.cjs
+      - name: Verify frozen inputs
+        run: node tools/research/g5-befcs-contained/run.cjs --bindings
+      - name: Prepare fixed tool image before case timing
+        run: |
+          docker pull node:24.19.0-bookworm
+          docker run --rm --network=none node:24.19.0-bookworm git --version
+      - name: Run common workload in real cgroup and physical quota
+        run: node tools/research/g5-befcs-contained/run.cjs --ci-live
+      - name: Keep stopped registry prefixes and quota archives
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: befcs-contained-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/local/befcs-contained/
+          retention-days: 90
+          include-hidden-files: true
+          if-no-files-found: warn

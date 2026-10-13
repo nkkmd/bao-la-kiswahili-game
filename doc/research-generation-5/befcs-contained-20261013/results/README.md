@@ -1,0 +1,5 @@
+# 共通workloadの固定技術証拠
+
+case開始前のheader、物理quota、primary inspection、watchdogと停止済みregistryをActions artifactへ逐次保存する。回収はprimary停止後に限り、consumeを増やさず、未知・再開不可を保持する。全6 caseの合格と取得検算は確認待ちである。
+
+結果取得後は固定入力を変更せず、CI receipt・圧縮bundle証拠・出力bindingを追加する。終了mirror失敗caseではローカル保存を科学的な完全証拠へ昇格しない。科学seed/lease/Study/正式関係とmain/公開AIは変更しない。
