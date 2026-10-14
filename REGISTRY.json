@@ -1,0 +1,1 @@
+{"version":1,"leases":[{"evidenceClass":"TECHNICAL-REGISTRY-FIXTURE","stageId":"REMOTE-JOINED-deadline-38497935805","runId":"38497935805","runAttempt":1,"binding":"596cec77d15ce77ecb75e6d960bd8a6ac19dea6ffcf51fe8d092efbf39a4ee4e","block":{"start":1,"count":128},"status":"BLOCK-QUARANTINED-NO-RETRY","consumes":[]}],"mirrors":[]}
