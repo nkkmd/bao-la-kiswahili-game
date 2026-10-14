@@ -1,0 +1,23 @@
+{
+  "technicalId": "BEFCS-TECH-PREFLIGHT-2026-10-13-v1",
+  "protectedInputCount": 555,
+  "nodeVersion": "24.19.0",
+  "scientificRunnerAuthorized": false,
+  "files": {
+    ".github/workflows/g5-branch-envelope-preflight.yml": "75e5e713829512a0f398b0f37805f0c796f85c3c79bd2e9db0a8f3bc046377ab",
+    "doc/research-generation-5/branch-envelope-preflight-20261013/CONFIG.json": "b524c8423ec3269cba80f1f14bfadcd60f39f5edb459627e9448f15757205fe9",
+    "doc/research-generation-5/branch-envelope-preflight-20261013/DESIGN_REVIEW.md": "a464aad0f5ba912354db3b6fa005efe53ac0e97ae7564690112d065fca45bf85",
+    "doc/research-generation-5/branch-envelope-preflight-20261013/PROTECTED_INPUTS.json": "f12f9f8242fdee9c8f6f4a539bcb3780c3d70c374d9fdd7a086bd614bc1d8212",
+    "doc/research-generation-5/branch-envelope-preflight-20261013/TECHNICAL_CONTRACT.md": "b949136639f35bf0c1ff66cd6a63ac5eb4e59b6d1e90bed245f9a70b78240491",
+    "test/g5-branch-envelope.test.cjs": "57b03b4cbc1440388b3128d1ba3c808fac18d597646d21d46e2ca3dc28163042",
+    "tools/research/g5-branch-envelope/budget.cjs": "dddb500a5aaff44059a22264d26ebc89129719c7e589f977cb839b02f4bc94ed",
+    "tools/research/g5-branch-envelope/capacity-smoke.cjs": "571ce9ce2da4d6760c686ecedf3a9b0bf9f2f5ec146c69314fa265cab52b19a3",
+    "tools/research/g5-branch-envelope/closure.cjs": "54bf9de153cc3b26dd655c828bea9fac2b66a0e7dd3672dfb5ef35aeabd7c0d2",
+    "tools/research/g5-branch-envelope/fixtures.cjs": "5265ab27b1ff7e1d336db242b9d7ec17f01cc91759ec3ae395471329755752c4",
+    "tools/research/g5-branch-envelope/independent-closure.cjs": "a430fcaa6464ffc6b4ca29d78c83cc207042621a57029d7ce81cddd1e1a7568e",
+    "tools/research/g5-branch-envelope/independent-source.cjs": "60f54af678e29d8e39be7972b6adc439e80789b5d64395e106391b82fd95bf9a",
+    "tools/research/g5-branch-envelope/run.cjs": "88527a6a6be232240afda9d5261062ce7d290160abfada7f8f05857dc4a7e67a",
+    "tools/research/g5-branch-envelope/source.cjs": "76277d622fe244a5d65f5e0e863f97c22cd41f2b3be68a3a12c46a388ba6d550",
+    "tools/research/g5-branch-envelope/storage.cjs": "e41af860e6f81fa97f9d91544eb697987723d270d07f90715c483a883817c1f2"
+  }
+}

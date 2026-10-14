@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "verifiedSavedEvidence": true,
+  "fixturePassed": true,
+  "mode": "complete",
+  "runId": "38473413073",
+  "registryHead": "5e4589d5fd0f5ed03f5d030e1ca0b34888f8eaa6",
+  "registryRef": "refs/heads/research/g5-remote-joined-38473413073-a1-complete",
+  "registryBlobSha": "c46f2abdf96c33ef94180bd97aa28d7d63ad4018",
+  "registry": {
+    "verified": true,
+    "commits": 193,
+    "leases": 1,
+    "logicalReadsMarked": 128,
+    "mirrors": 64,
+    "scientificSeedsRead": 0
+  },
+  "ackCount": 128,
+  "unacknowledgedMarkers": 0,
+  "remoteProof": {
+    "fullSources": 128,
+    "partialSources": 0,
+    "completeClosures": 1,
+    "partialProofs": [],
+    "sourceGenerationPerformed": false
+  },
+  "localProof": {
+    "fullSources": 128,
+    "partialSources": 0,
+    "completeClosures": 1,
+    "partialProofs": [],
+    "sourceGenerationPerformed": false
+  },
+  "parentPeak": 573726720,
+  "resultPresent": true,
+  "serviceError": null,
+  "guard": {
+    "locked": false,
+    "reason": null,
+    "consumesAcknowledged": 128,
+    "mirrorsSucceeded": 64
+  },
+  "finalMirrorSaved": true,
+  "technicalComplete": true,
+  "completedRecordPresent": true,
+  "completionClaimAuthorized": true,
+  "stops": {
+    "records": [],
+    "elapsedFromServiceMs": 571618.01466,
+    "scientificSeedsRead": 0
+  },
+  "sourceGenerationPerformed": false,
+  "scientificSeedsRead": 0,
+  "resumeAuthorized": false,
+  "solution": null
+}

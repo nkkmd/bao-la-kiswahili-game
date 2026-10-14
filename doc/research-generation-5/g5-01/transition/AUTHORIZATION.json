@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "studyId": "RRSVL-STUDY1",
+  "stageId": "RRSVL-S0T-TRANSITION-2026-10-12-v1",
+  "decision": "AUTHORIZED-TECHNICAL-ONLY",
+  "basis": "User instruction on 2026-10-12 to advance the next stage; bounded fixture-only transition verification concretized in TECHNICAL_CONTRACT.md.",
+  "specSha256": "1b596774302c515e82d81e6c28dc102f72a5c9b9635746ec6853225f406c6bfb",
+  "manifestSha256": "0282c7288f38b5aeec16df3db0aa19a0fdec6ccf0e2bc657daa99bc9469c2a07",
+  "scientificEvidenceAccess": false,
+  "newSeedAccess": false,
+  "publicAiModification": false,
+  "developmentExecution": "NOT-AUTHORIZED-NOT-EXECUTED"
+}

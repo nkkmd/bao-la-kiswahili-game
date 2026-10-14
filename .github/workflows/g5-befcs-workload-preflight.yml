@@ -1,0 +1,51 @@
+name: G5 BEFCS Saved Workload Integration
+on:
+  push:
+    branches: [research/g5-befcs-workload-preflight]
+    paths:
+      - 'tools/research/g5-befcs-workload/**'
+      - 'test/g5-befcs-workload.test.cjs'
+      - 'doc/research-generation-5/befcs-workload-20261013/**'
+      - '.github/workflows/g5-befcs-workload-preflight.yml'
+  pull_request:
+    paths:
+      - 'tools/research/g5-befcs-workload/**'
+      - 'test/g5-befcs-workload.test.cjs'
+      - 'doc/research-generation-5/befcs-workload-20261013/**'
+      - '.github/workflows/g5-befcs-workload-preflight.yml'
+permissions:
+  contents: read
+jobs:
+  saved-workload:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        # 凍結済みfixtureの入力を当時のコミットで検算する。現在のtreeはcheckpoint CIで検査する。
+        with:
+          ref: 91f58642a1b23358fa8bc68a922bb0fcd05b4d51
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Verify source protected input and output bindings
+        run: node tools/research/g5-befcs-workload/binding.cjs
+      - name: Test shared budget snapshot races and scientific entry refusal
+        run: node --test test/g5-befcs-workload.test.cjs
+      - name: Independently replay saved 128 source and 8 closure workload with stops
+        run: node tools/research/g5-befcs-workload/run.cjs --check
+      - name: Run complete seed-free pipeline and forced stops in real 1 GiB cgroups
+        run: node tools/research/g5-befcs-workload/run.cjs --ci-live
+      - name: Check actual 256 MiB shared capacity in a 1 GiB cgroup
+        run: |
+          docker run --rm --network=none --memory=1073741824 --memory-swap=1073741824 --pids-limit=32 -v "$PWD:/repo:ro" node:24.19.0-bookworm-slim node /repo/tools/research/g5-befcs-workload/capacity.cjs | tee artifacts-capacity.json
+      - name: Preserve technical capacity receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: befcs-workload-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            artifacts-capacity.json
+            artifacts/local/befcs-workload/
+          if-no-files-found: warn
+          retention-days: 90

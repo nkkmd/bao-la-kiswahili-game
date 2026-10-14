@@ -1,0 +1,307 @@
+{
+  "inputHead": "6b432c1dadd64e054b296e756247ee7bff6f2762",
+  "inputTree": "0cedcfca9be497ae2c69de9cc031c013fd8b8e7e",
+  "sourceUrl": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/runs?head_sha=6b432c1dadd64e054b296e756247ee7bff6f2762&per_page=100",
+  "runs": [
+    {
+      "id": 38484804694,
+      "name": "G5-01 Independent Transition Technical",
+      "head_sha": "6b432c1dadd64e054b296e756247ee7bff6f2762",
+      "head_branch": "research/g5-befcs-remote-evidence",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38484804694",
+      "created_at": "2026-10-13T23:31:51Z",
+      "updated_at": "2026-10-13T23:32:21Z"
+    },
+    {
+      "id": 38484804749,
+      "name": "G5-04 Supply Preflight",
+      "head_sha": "6b432c1dadd64e054b296e756247ee7bff6f2762",
+      "head_branch": "research/g5-befcs-remote-evidence",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38484804749",
+      "created_at": "2026-10-13T23:31:51Z",
+      "updated_at": "2026-10-13T23:32:16Z"
+    },
+    {
+      "id": 38484804701,
+      "name": "G5-02 Supply Preflight",
+      "head_sha": "6b432c1dadd64e054b296e756247ee7bff6f2762",
+      "head_branch": "research/g5-befcs-remote-evidence",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38484804701",
+      "created_at": "2026-10-13T23:31:51Z",
+      "updated_at": "2026-10-13T23:32:19Z"
+    },
+    {
+      "id": 38484804734,
+      "name": "RG5 Reply Mode Source Design",
+      "head_sha": "6b432c1dadd64e054b296e756247ee7bff6f2762",
+      "head_branch": "research/g5-befcs-remote-evidence",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38484804734",
+      "created_at": "2026-10-13T23:31:51Z",
+      "updated_at": "2026-10-13T23:32:22Z"
+    },
+    {
+      "id": 38484804748,
+      "name": "G5-03 Supply Preflight",
+      "head_sha": "6b432c1dadd64e054b296e756247ee7bff6f2762",
+      "head_branch": "research/g5-befcs-remote-evidence",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38484804748",
+      "created_at": "2026-10-13T23:31:51Z",
+      "updated_at": "2026-10-13T23:32:22Z"
+    },
+    {
+      "id": 38484804680,
+      "name": "G5-01 Stage 0 Technical",
+      "head_sha": "6b432c1dadd64e054b296e756247ee7bff6f2762",
+      "head_branch": "research/g5-befcs-remote-evidence",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38484804680",
+      "created_at": "2026-10-13T23:31:51Z",
+      "updated_at": "2026-10-13T23:32:22Z"
+    },
+    {
+      "id": 38484804752,
+      "name": "G5-01 Development Preflight",
+      "head_sha": "6b432c1dadd64e054b296e756247ee7bff6f2762",
+      "head_branch": "research/g5-befcs-remote-evidence",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38484804752",
+      "created_at": "2026-10-13T23:31:51Z",
+      "updated_at": "2026-10-13T23:32:27Z"
+    },
+    {
+      "id": 38484804796,
+      "name": "G5 Science Method Technical Review",
+      "head_sha": "6b432c1dadd64e054b296e756247ee7bff6f2762",
+      "head_branch": "research/g5-befcs-remote-evidence",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38484804796",
+      "created_at": "2026-10-13T23:31:51Z",
+      "updated_at": "2026-10-13T23:32:28Z"
+    },
+    {
+      "id": 38484804763,
+      "name": "G5 BEFCS Remote Joined 128",
+      "head_sha": "6b432c1dadd64e054b296e756247ee7bff6f2762",
+      "head_branch": "research/g5-befcs-remote-evidence",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38484804763",
+      "created_at": "2026-10-13T23:31:51Z",
+      "updated_at": "2026-10-13T23:32:23Z"
+    },
+    {
+      "id": 38484804820,
+      "name": "G5 Compact BFS Fixture Integration",
+      "head_sha": "6b432c1dadd64e054b296e756247ee7bff6f2762",
+      "head_branch": "research/g5-befcs-remote-evidence",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38484804820",
+      "created_at": "2026-10-13T23:31:51Z",
+      "updated_at": "2026-10-13T23:32:23Z"
+    },
+    {
+      "id": 38484804787,
+      "name": "RG5 Primary Readiness Review",
+      "head_sha": "6b432c1dadd64e054b296e756247ee7bff6f2762",
+      "head_branch": "research/g5-befcs-remote-evidence",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38484804787",
+      "created_at": "2026-10-13T23:31:51Z",
+      "updated_at": "2026-10-13T23:32:23Z"
+    },
+    {
+      "id": 38484804739,
+      "name": "G5-05 Supply Preflight",
+      "head_sha": "6b432c1dadd64e054b296e756247ee7bff6f2762",
+      "head_branch": "research/g5-befcs-remote-evidence",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38484804739",
+      "created_at": "2026-10-13T23:31:51Z",
+      "updated_at": "2026-10-13T23:32:24Z"
+    },
+    {
+      "id": 38484804731,
+      "name": "G5 BEFCS Saved Remote Review",
+      "head_sha": "6b432c1dadd64e054b296e756247ee7bff6f2762",
+      "head_branch": "research/g5-befcs-remote-evidence",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38484804731",
+      "created_at": "2026-10-13T23:31:51Z",
+      "updated_at": "2026-10-13T23:32:59Z"
+    },
+    {
+      "id": 38484775356,
+      "name": "G5 BEFCS Saved Remote Review",
+      "head_sha": "6b432c1dadd64e054b296e756247ee7bff6f2762",
+      "head_branch": "research/g5-befcs-remote-evidence",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "run_attempt": 1,
+      "html_url": "https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38484775356",
+      "created_at": "2026-10-13T23:31:33Z",
+      "updated_at": "2026-10-13T23:33:01Z"
+    }
+  ],
+  "jobs": [
+    {
+      "jobs": [
+        {
+          "id": 115595755902,
+          "name": "saved-evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "run_id": 38484804731,
+          "logs_url": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2
+            },
+            {
+              "name": "Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3
+            },
+            {
+              "name": "Verify archived evidence without remote writes",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4
+            },
+            {
+              "name": "Post Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 7
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "jobs": [
+        {
+          "id": 115595659590,
+          "name": "saved-evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "run_id": 38484775356,
+          "logs_url": null,
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1
+            },
+            {
+              "name": "Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2
+            },
+            {
+              "name": "Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3
+            },
+            {
+              "name": "Verify archived evidence without remote writes",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4
+            },
+            {
+              "name": "Post Run actions/setup-node@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 7
+            },
+            {
+              "name": "Post Run actions/checkout@v4",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false,
+  "originalFixtureRunsReexecuted": false
+}

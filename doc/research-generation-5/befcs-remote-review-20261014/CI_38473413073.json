@@ -1,0 +1,508 @@
+{
+  "runId": 38473413073,
+  "artifacts": {
+    "artifacts": [
+      {
+        "id": 11853716667,
+        "name": "befcs-remote-joined-complete-38473413073-1",
+        "size_in_bytes": 21951327,
+        "url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11853716667",
+        "archive_download_url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11853716667/zip",
+        "expired": false,
+        "created_at": "2026-10-13T21:59:31Z",
+        "expires_at": "2027-01-11T21:49:11Z",
+        "updated_at": "2026-10-13T21:59:31Z",
+        "digest": "sha256:49edbf658d4e54fbeae1ca231bd2ac4beb29d98c4dd789a3515f0e9270485345",
+        "workflow_run": {
+          "id": 38473413073,
+          "repository_id": 1295030808,
+          "head_repository_id": 1295030808,
+          "head_branch": "research/g5-befcs-remote-joined-preflight",
+          "head_sha": "430c902b822d0a86aa3a3cfb3452dc837c3c3f4b"
+        }
+      },
+      {
+        "id": 11853148638,
+        "name": "befcs-remote-joined-proxy-final-mirror-38473413073-1",
+        "size_in_bytes": 28314464,
+        "url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11853148638",
+        "archive_download_url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11853148638/zip",
+        "expired": false,
+        "created_at": "2026-10-13T22:03:27Z",
+        "expires_at": "2027-01-11T21:49:11Z",
+        "updated_at": "2026-10-13T22:03:27Z",
+        "digest": "sha256:782b2451cca78af95c811d82c0fd493299b752f5ecf6ab97b33e825ac4f60cdb",
+        "workflow_run": {
+          "id": 38473413073,
+          "repository_id": 1295030808,
+          "head_repository_id": 1295030808,
+          "head_branch": "research/g5-befcs-remote-joined-preflight",
+          "head_sha": "430c902b822d0a86aa3a3cfb3452dc837c3c3f4b"
+        }
+      },
+      {
+        "id": 11852707959,
+        "name": "befcs-remote-joined-deadline-38473413073-1",
+        "size_in_bytes": 261814,
+        "url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11852707959",
+        "archive_download_url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11852707959/zip",
+        "expired": false,
+        "created_at": "2026-10-13T21:50:26Z",
+        "expires_at": "2027-01-11T21:49:11Z",
+        "updated_at": "2026-10-13T21:50:26Z",
+        "digest": "sha256:115c7ba2ed17dcbb8cb3852152e811b290b0c1a17699c8dda19648daa6a1323c",
+        "workflow_run": {
+          "id": 38473413073,
+          "repository_id": 1295030808,
+          "head_repository_id": 1295030808,
+          "head_branch": "research/g5-befcs-remote-joined-preflight",
+          "head_sha": "430c902b822d0a86aa3a3cfb3452dc837c3c3f4b"
+        }
+      },
+      {
+        "id": 11852472353,
+        "name": "befcs-remote-joined-host-oom-38473413073-1",
+        "size_in_bytes": 88357,
+        "url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11852472353",
+        "archive_download_url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11852472353/zip",
+        "expired": false,
+        "created_at": "2026-10-13T21:50:10Z",
+        "expires_at": "2027-01-11T21:49:11Z",
+        "updated_at": "2026-10-13T21:50:10Z",
+        "digest": "sha256:10787c2e95675a9e5ff15f0f70f7307f70e64e6fe647a6494fe4dd5d91dbfdc1",
+        "workflow_run": {
+          "id": 38473413073,
+          "repository_id": 1295030808,
+          "head_repository_id": 1295030808,
+          "head_branch": "research/g5-befcs-remote-joined-preflight",
+          "head_sha": "430c902b822d0a86aa3a3cfb3452dc837c3c3f4b"
+        }
+      },
+      {
+        "id": 11852327460,
+        "name": "befcs-remote-joined-lost-response-38473413073-1",
+        "size_in_bytes": 61772,
+        "url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11852327460",
+        "archive_download_url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11852327460/zip",
+        "expired": false,
+        "created_at": "2026-10-13T21:50:05Z",
+        "expires_at": "2027-01-11T21:49:11Z",
+        "updated_at": "2026-10-13T21:50:05Z",
+        "digest": "sha256:6edaf1806f6f61f43e2e2331e2f3c6de61d07197b81308bb32cef4e44aa3f28f",
+        "workflow_run": {
+          "id": 38473413073,
+          "repository_id": 1295030808,
+          "head_repository_id": 1295030808,
+          "head_branch": "research/g5-befcs-remote-joined-preflight",
+          "head_sha": "430c902b822d0a86aa3a3cfb3452dc837c3c3f4b"
+        }
+      }
+    ]
+  },
+  "jobs": {
+    "jobs": [
+      {
+        "id": 115557999663,
+        "name": "refusal",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 38473413073,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Check locked writes partial replay and original bindings",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Post Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          }
+        ]
+      },
+      {
+        "id": 115558190370,
+        "name": "remote-joined (lost-response)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 38473413073,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Prepare exclusive fixture filesystem",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Execute common 128 source with real transport and watchdog",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Preserve stopped evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Close only fixture mount",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Post Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          }
+        ]
+      },
+      {
+        "id": 115558190380,
+        "name": "remote-joined (proxy-final-mirror)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 38473413073,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Prepare exclusive fixture filesystem",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Execute common 128 source with real transport and watchdog",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Preserve stopped evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Close only fixture mount",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Post Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          }
+        ]
+      },
+      {
+        "id": 115558190429,
+        "name": "remote-joined (host-oom)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 38473413073,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Prepare exclusive fixture filesystem",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Execute common 128 source with real transport and watchdog",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Preserve stopped evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Close only fixture mount",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Post Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          }
+        ]
+      },
+      {
+        "id": 115558190502,
+        "name": "remote-joined (complete)",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 38473413073,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Prepare exclusive fixture filesystem",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Execute common 128 source with real transport and watchdog",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Preserve stopped evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Close only fixture mount",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Post Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          }
+        ]
+      },
+      {
+        "id": 115558190533,
+        "name": "remote-joined (deadline)",
+        "status": "completed",
+        "conclusion": "failure",
+        "run_id": 38473413073,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Prepare exclusive fixture filesystem",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Execute common 128 source with real transport and watchdog",
+            "status": "completed",
+            "conclusion": "failure",
+            "number": 5
+          },
+          {
+            "name": "Preserve stopped evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Close only fixture mount",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Post Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "skipped",
+            "number": 13
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          }
+        ]
+      }
+    ]
+  }
+}

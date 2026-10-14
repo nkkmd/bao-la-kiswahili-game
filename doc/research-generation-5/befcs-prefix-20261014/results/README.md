@@ -1,0 +1,7 @@
+# 保存済み技術結果
+
+RESULT.jsonに5停止caseの検算結果、TECHNICAL_EVIDENCE.json.gzに原snapshotと各journalのbyte列を保存する。evidence hash、入力manifest hash、OUTPUT_BINDINGを別照合する。caseのSIGKILLはfsync済み保存後に子自身が発行する技術障害で、自然終局や科学実行失敗ではない。
+
+ローカルの新規13検査と既存pipeline5検査、計18検査が合格した。5 caseの保存・独立再生、2207入力と2198保護入力のhash照合、先行joined bindingの照合も合格した。出力はOUTPUT_BINDINGへ別固定した。[CI確定](../CI_CONFIRMATION.md)で実装headのPR12＋push1、計13実行のsuccessと取得artifact全2メンバーのbyte一致を確認した。原ZIPはCI_ARTIFACT.zip、run/job/expiry/digestと全メンバーhashはCI_RECEIPT.jsonに保存し、CI_OUTPUT_BINDINGへ別固定する。
+
+科学seed消費0・科学leaseなし・BEFCS-STUDY1未登録/未実行を保持する。保存された未完状態のcandidate・solutionはnull、resumeAuthorizedはfalseである。

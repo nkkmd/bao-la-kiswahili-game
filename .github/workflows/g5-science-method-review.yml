@@ -1,0 +1,40 @@
+name: G5 Science Method Technical Review
+on:
+  push:
+    branches: [research/g5-science-method-review]
+    paths:
+      - 'tools/research/g5-method/**'
+      - 'test/g5-method*.test.cjs'
+      - 'doc/research-generation-5/method-review-20261013/**'
+      - '.github/workflows/g5-science-method-review.yml'
+  pull_request:
+    paths:
+      - 'tools/research/g5-method/**'
+      - 'test/g5-method*.test.cjs'
+      - 'doc/research-generation-5/**'
+      - '.github/workflows/g5-science-method-review.yml'
+permissions:
+  contents: read
+jobs:
+  fixture-method-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Test independent transitions certificates and lossless codec
+        run: node --test test/g5-method.test.cjs test/g5-method-codec.test.cjs
+      - name: Replay fixed technical fixtures without scientific source generation
+        run: node tools/research/g5-method/run.cjs --check
+      - name: Replay lossless RAW roundtrips
+        run: node tools/research/g5-method/codec-run.cjs --check
+      - name: Verify bound outputs and workflow
+        run: |
+          python - <<'PY'
+          import json,pathlib,hashlib
+          p=pathlib.Path('doc/research-generation-5/method-review-20261013/OUTPUT_BINDING.json')
+          for name,expected in json.loads(p.read_text())['files'].items():
+              assert hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest()==expected,name
+          PY

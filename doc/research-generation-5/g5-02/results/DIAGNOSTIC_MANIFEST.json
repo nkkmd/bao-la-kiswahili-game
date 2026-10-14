@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "kind": "POSTEXECUTION-DIAGNOSTIC-BINDING",
+  "files": {
+    "tools/research/g5-02/diagnose-saved.cjs": "538db367d5b8cdc5c4cc9043176f23f8d77b69bd47c6ce3f9f3e9dad46299e62",
+    "doc/research-generation-5/g5-02/results/SAVED_GRAPH_DIAGNOSTIC.json": "101f4a32f3ab8074b9d3a2e54290f1a251dee000401f226d48bfb604bdb9b58e",
+    "doc/research-generation-5/g5-02/results/EVIDENCE.json.gz": "82b408350441f9bbf405c3f0bf8ca72fac972affaff840ae3f215453f012e6df"
+  }
+}

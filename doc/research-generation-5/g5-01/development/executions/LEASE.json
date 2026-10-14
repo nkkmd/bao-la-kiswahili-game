@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "studyId": "RRSVL-STUDY1",
+  "stageId": "RRSVL-S1-DEVELOPMENT-2026-10-12-v1",
+  "binding": "523a4a79a6d868cbbbe6ef34dabff7f6383db1a0b7e102d649d289fc78e066cc",
+  "seedBlock": {
+    "start": 50112001,
+    "end": 50112032,
+    "count": 32
+  },
+  "runId": 38234120711,
+  "runAttempt": 1,
+  "triggerCommit": "518453bba351c2494287ca722f9f987663884993",
+  "frozenSourceCommit": "cb5d9168bf9b0f5ee5722ec82194c64328b39a87",
+  "acquiredBeforeFreshSeedRead": true,
+  "status": "CONSUMED-BLOCK / NO-RERUN"
+}

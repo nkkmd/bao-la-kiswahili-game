@@ -1,0 +1,33 @@
+# 保存済み全workload統合の報告
+
+## 確認した範囲
+
+保存済み10種類のsourceを順番に反復し、128件を論理番号1〜128のmarker保存後に独立再生した。軌跡を生成するPRNGは初期化しない。再生に用いる旧技術seedと保存byteだけを使用し、科学seed 50613001..50613128は読まない。
+
+全合法手を保持する固定ABSTRACT-DIAMONDを8回解析し、独立辺検査・二つの閉包構築・二つの解法・保存prefix・snapshotの一致を確認した。これらは科学sourceから選んだ8候補ではなく、旧科学candidateでもない。128件/8件は保存と運用の負荷である。
+
+sourceとdomainは同じ保存予算を使う。256 MiBのうち通常領域240 MiBと終了reserve16 MiBの境界を別processで確認し、全directoryとatomic temporaryの共存byteを合算した。最終結果JSON自身も全保存量へ加算する。共有保存量とhost/worker RSSを別々に記録する。
+
+## 停止と保存
+
+通常完了、prefix保存後のSIGKILL、mirror失敗、source開始前の容量不足、domain開始前の容量不足、全体時間、領域時間、domain開始前の時間不足の8ケースを検証した。原子的lease・読取前markerはisolated Git remoteへ保存し、稼働中/終了mirrorと全履歴をGit bundleから独立再生した。
+
+marker後にworkerが停止した場合、実際の保存済みsource読取りよりmarkerが多い場合がある。これはmarkerの取消しや番号の再利用をせず、未知のまま消費/quarantineを保持する動作である。停止はDRAW・0・敗北へ変換しない。完全prefixと末尾断片をbyteで保存し、coverageのsolutionはnullである。
+
+稼働中snapshotのrenameにより消えたtemporaryは、取得できなかったpathとしてcoverageへ明記する。通常fileの消失は失敗とする。終了mirrorが完成しても、科学的解釈の完成とは扱わない。
+
+## 達成していないこと
+
+科学用専用source・独立source・全閉包入口は追加したが、最終科学freezeがない状態で拒否する。科学用hostへの接続、科学registryの認可binding、別trigger、実行前レビューは未完である。保存済み技術byteの128件再生は新規科学trajectoryの生成費用や供給成功の証拠ではない。
+
+実1 GiB cgroupで本pipelineの8ケースを再実行するCIを用意した。そのreceiptは確認後に別記録へ固定する。先行OOM smokeの合格を全workloadのcgroup合格へ読み替えない。
+
+元の584保護入力と追加運用記録の計614入力をhashで保持する。103355件の既読遮断、全合法手閉包、科学seed消費0、科学leaseなし、科学Study未登録/未実行、主課題の勝敗価値損失を維持した。正式関係は未登録/未実行で、mainと公開AIは未変更である。
+
+## 実cgroupと第2版
+
+実1 GiB全8シナリオは通過したが、root所有temporaryの削除で第1版jobが失敗した。[CI失敗記録](CI_FAILURE_CONFIRMATION_V1.md)と原記録を保持する。第2版ではhost UID/GIDをcontainerへ指定し、SOURCE_MANIFEST_V2・PROTECTED_INPUTS_V2とresults-v2へ別固定する。623保護入力に元の584入力、第1版機械原記録と取得したCI証拠を含める。後片付けと共有容量stepを含む全CIの完了を確認するまで合格を宣言しない。
+
+## 第2版CIの確認完了
+
+[確定記録](CI_CONFIRMATION_V2.md)のpush/PR両CIで、実1 GiB全8シナリオ、共有256 MiB容量、後片付け、artifact保存まで合格した。科学用host/registry/別triggerと最終科学事前固定は次工程に残す。科学seed消費0・科学leaseなし・未登録/未実行を保持する。

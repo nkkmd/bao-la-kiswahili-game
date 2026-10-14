@@ -1,0 +1,21 @@
+{
+  "verified": true,
+  "mode": "deadline",
+  "registryRef": "refs/heads/research/g5-remote-joined-38474301794-a1-deadline",
+  "registryHead": "9e6f05b1b9606b8fd9e168afcd700aa135fcf2be",
+  "ackCount": 1,
+  "markers": 2,
+  "unacknowledgedMarkers": 1,
+  "technicalComplete": false,
+  "finalMirrorSaved": true,
+  "remoteMirrorProof": {
+    "fullSources": 1,
+    "partialSources": 0,
+    "completeClosures": 0,
+    "partialProofs": [],
+    "sourceGenerationPerformed": false
+  },
+  "parentPeak": 307748864,
+  "forensicPreservationAfterDeadline": true,
+  "scientificSeedsRead": 0
+}

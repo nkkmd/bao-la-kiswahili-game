@@ -1,0 +1,27 @@
+{
+  "evidenceClass": "TECHNICAL-SAVED-REMOTE-CI-RECEIPT",
+  "inputHead": "6b432c1dadd64e054b296e756247ee7bff6f2762",
+  "scientificSeedsRead": 0,
+  "files": {
+    "doc/research-generation-5/befcs-remote-review-20261014/CI_RECEIPT.json": {
+      "bytes": 10529,
+      "sha256": "a242e023b88557ed34e9e5080e6b934b9afda327928224bd475be88335f3d7e9"
+    },
+    "doc/research-generation-5/befcs-remote-review-20261014/CI_CONFIRMATION.md": {
+      "bytes": 1534,
+      "sha256": "d6cde5ace3e035ee398b25cf1269e680d536446f7ca24a1c3c3b9ef427563196"
+    },
+    "doc/research-generation-5/befcs-remote-review-20261014/CI_JOB_115595659590.txt": {
+      "bytes": 16889,
+      "sha256": "32b4578fe4a26beca7ca06d6b23a7379568e38706f224196f1e0409861123d84"
+    },
+    "doc/research-generation-5/befcs-remote-review-20261014/CI_JOB_115595755902.txt": {
+      "bytes": 15769,
+      "sha256": "21e683371d2505768c77cc095e69e6b5d228fd51ba0413a3797b0711a82415d4"
+    },
+    "doc/research-generation-5/befcs-remote-review-20261014/BINDINGS.json": {
+      "bytes": 298328,
+      "sha256": "5a840c38f1ee9fa8b055ae6f43396236b58e7a1942a9630797ad223bb66ae497"
+    }
+  }
+}

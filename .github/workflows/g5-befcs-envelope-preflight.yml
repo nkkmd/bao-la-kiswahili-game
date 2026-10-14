@@ -1,0 +1,50 @@
+name: G5 BEFCS Total Envelope
+on:
+  push:
+    branches: [research/g5-befcs-envelope-preflight]
+    paths:
+      - 'tools/research/g5-befcs-envelope/**'
+      - 'test/g5-befcs-envelope.test.cjs'
+      - 'doc/research-generation-5/befcs-envelope-20261013/**'
+      - '.github/workflows/g5-befcs-envelope-preflight.yml'
+  pull_request:
+    paths:
+      - 'tools/research/g5-befcs-envelope/**'
+      - 'test/g5-befcs-envelope.test.cjs'
+      - 'doc/research-generation-5/befcs-envelope-20261013/**'
+      - '.github/workflows/g5-befcs-envelope-preflight.yml'
+permissions:
+  contents: read
+jobs:
+  envelope:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        # 凍結済みfixtureの入力を当時のコミットで検算する。現在のtreeはcheckpoint CIで検査する。
+        with:
+          ref: b5bef61d4fe4e80ccea6b2a94bfe2c6e88c775bd
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Test fixed envelope and unknown transport without science
+        run: node --test test/g5-befcs-envelope.test.cjs test/g5-befcs-pipeline.test.cjs
+      - name: Verify all frozen inputs
+        run: |
+          node tools/research/g5-befcs-envelope/run.cjs --bindings
+          node tools/research/g5-befcs-envelope/verify-remote.cjs
+      - name: Put host worker Git mirror and detached descendants in one cgroup
+        run: |
+          docker pull node:24.19.0-bookworm
+          docker run --rm --network=none node:24.19.0-bookworm git --version
+          node tools/research/g5-befcs-envelope/run.cjs --ci-live
+      - name: Preserve prefix and receipts even after interruption
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: befcs-envelope-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/local/befcs-envelope/
+          retention-days: 90
+          if-no-files-found: warn
+          include-hidden-files: true

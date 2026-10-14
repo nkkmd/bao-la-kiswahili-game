@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "studyId": "RECSF-STUDY1",
+  "stageId": "RECSF-S1-SUPPLY-2026-10-12-v1",
+  "binding": "29b81cb1466ce41a8d78d4fa68f068258bc9623f6e42ca034008cc812b38e8bb",
+  "seedBlock": {
+    "start": 50212001,
+    "end": 50212032,
+    "count": 32
+  },
+  "runId": 38237119716,
+  "runAttempt": 1,
+  "triggerCommit": "d939f1cc8204dd00e9284ec84a0fe2a6665fec6c",
+  "frozenSourceCommit": "7b585bbdbb082dca3889bf5acf212b61bc7b4085",
+  "acquiredBeforeFreshSeedRead": true,
+  "status": "CONSUMED-BLOCK / NO-RERUN",
+  "leaseCommit": "c84af2778bd5c4eec16abb0a07f15620e59aa43c"
+}

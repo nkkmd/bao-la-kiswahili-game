@@ -1,0 +1,747 @@
+{
+  "decision": "INITIAL-SIX-TECHNICAL-CASES-CI-SUCCESS-OBSERVER-SCOPE-REVIEW-REMAINED",
+  "headCommit": "aee965690045ebb27ba12b84dee23f6f0243a6ae",
+  "sourceTree": "b7fc0ff9108e631f96869282a387cd08e0411145",
+  "runId": 38385862011,
+  "job": {
+    "id": 115257368954,
+    "name": "contained",
+    "status": "completed",
+    "conclusion": "success",
+    "run_id": 38385862011,
+    "logs_url": null,
+    "steps": [
+      {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1
+      },
+      {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2
+      },
+      {
+        "name": "Run actions/setup-node@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3
+      },
+      {
+        "name": "Refuse science and validate specific cgroup boundaries",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4
+      },
+      {
+        "name": "Verify frozen inputs",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5
+      },
+      {
+        "name": "Prepare fixed tool image before case timing",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 6
+      },
+      {
+        "name": "Run common workload in real cgroup and physical quota",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 7
+      },
+      {
+        "name": "Keep stopped registry prefixes and quota archives",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 8
+      },
+      {
+        "name": "Post Run actions/setup-node@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 15
+      },
+      {
+        "name": "Post Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 16
+      },
+      {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 17
+      }
+    ]
+  },
+  "artifact": {
+    "id": 11807055232,
+    "name": "befcs-contained-38385862011-1",
+    "size_in_bytes": 27750177,
+    "url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11807055232",
+    "archive_download_url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11807055232/zip",
+    "expired": false,
+    "created_at": "2026-10-13T10:52:08Z",
+    "expires_at": "2027-01-11T10:48:21Z",
+    "updated_at": "2026-10-13T10:52:08Z",
+    "digest": "sha256:f44f555c37a796e8388d846073632489656f06daf49dadb476a0cbcbd49798f8",
+    "workflow_run": {
+      "id": 38385862011,
+      "repository_id": 1295030808,
+      "head_repository_id": 1295030808,
+      "head_branch": "research/g5-befcs-contained-preflight",
+      "head_sha": "aee965690045ebb27ba12b84dee23f6f0243a6ae"
+    }
+  },
+  "archiveDigestVerified": false,
+  "artifactDownloaded": false,
+  "decodedResultFromJobLog": {
+    "decision": "CONTAINED-WORKLOAD-QUOTA-AND-RECOVERY-TECHNICAL-PASS-SCIENTIFIC-DEPLOYMENT-PENDING",
+    "sourceManifestSha256": "59916625b2c40eccf6c46745e1eb530b25d9c1cdea73979c2d303f09112ed7ce",
+    "evidenceSha256": "aa34022f185c8cb081a895f814f2ec0d5b10076d24f655072e14e0a4b9b12c8b",
+    "scenarios": [
+      {
+        "mode": "complete",
+        "fixtureSourceCount": 128,
+        "scientificSeedsRead": 0,
+        "scientificLeaseCreated": false,
+        "scientificStudyRegistered": false,
+        "registryHead": "75c30de4d69c1871c633161de98989841cc21f10",
+        "registryRef": "refs/heads/research/g5-source-registry-v1",
+        "verified": {
+          "verified": true,
+          "commits": 151,
+          "leases": 1,
+          "logicalReadsMarked": 128,
+          "mirrors": 22,
+          "scientificSeedsRead": 0
+        },
+        "worker": {
+          "evidenceClass": "TECHNICAL-PIPELINE-FIXTURE",
+          "status": "PIPELINE-COMPLETE",
+          "failure": null,
+          "read": 128,
+          "closures": 1,
+          "candidates": 1,
+          "workerComplete": true,
+          "interpretationComplete": false,
+          "finalMirrorRequired": true,
+          "solution": null,
+          "resumeAuthorized": false,
+          "scientificSeedsRead": 0,
+          "peakWorkerRssBytes": 336732160,
+          "usedBytesBeforeFinal": 17701595
+        },
+        "host": {
+          "execution": {
+            "code": 0,
+            "signal": null,
+            "status": "WORKER-COMPLETE",
+            "peakAggregateRssBytes": 331333632,
+            "maxProcesses": 1,
+            "ticks": 2675,
+            "mirrorError": null,
+            "stdout": "",
+            "stderr": ""
+          },
+          "worker": {
+            "evidenceClass": "TECHNICAL-PIPELINE-FIXTURE",
+            "status": "PIPELINE-COMPLETE",
+            "failure": null,
+            "read": 128,
+            "closures": 1,
+            "candidates": 1,
+            "workerComplete": true,
+            "interpretationComplete": false,
+            "finalMirrorRequired": true,
+            "solution": null,
+            "resumeAuthorized": false,
+            "scientificSeedsRead": 0,
+            "peakWorkerRssBytes": 336732160,
+            "usedBytesBeforeFinal": 17701595
+          },
+          "phases": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true
+          ],
+          "ackCount": 128,
+          "hostProtocolStatus": "FINISHED",
+          "finalMirrorSaved": true,
+          "technicalComplete": true,
+          "peakHostRssBytes": 192974848,
+          "elapsedHostMs": 70760.490708,
+          "primaryCgroupPeakBytes": 452435968,
+          "sampledCgroupPeakBytes": 429699072,
+          "events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+          "filesystem": {
+            "blockBytes": 4096,
+            "blocks": 57274,
+            "availableBytes": 189038592,
+            "freeBytes": 194404352
+          },
+          "scientificSeedsRead": 0
+        },
+        "ackCount": 128,
+        "unacknowledgedMarkers": 0,
+        "recoveryMirror": "75c30de4d69c1871c633161de98989841cc21f10",
+        "finalMirrorSaved": true,
+        "technicalComplete": true,
+        "inspection": {
+          "state": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-13T10:49:00.6017344Z",
+            "FinishedAt": "2026-10-13T10:50:11.510169677Z"
+          },
+          "image": "sha256:e28cf840f0cdbd6e03a6756ac9d5c8285ef20f7aee64fcde14c1ea4cccef4362"
+        },
+        "latestCgroup": {
+          "memoryCurrent": 156946432,
+          "memoryPeak": 452435968,
+          "events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n"
+        },
+        "filesystem": {
+          "blockBytes": 4096,
+          "blocks": 57274,
+          "bytes": 234594304,
+          "availableBytes": 196681728,
+          "freeBytes": 202047488
+        },
+        "externalObserverPeakRssBytes": 285011968,
+        "solution": null,
+        "resumeAuthorized": false,
+        "watchdog": {
+          "records": [],
+          "elapsedMs": 85124.053578,
+          "scientificSeedsRead": 0
+        },
+        "elapsedTotalMs": 85172.261963,
+        "archiveBytes": 11374119
+      },
+      {
+        "mode": "host-oom",
+        "fixtureSourceCount": 128,
+        "scientificSeedsRead": 0,
+        "scientificLeaseCreated": false,
+        "scientificStudyRegistered": false,
+        "registryHead": "dd2e9b5fca7e6db877db5f2def7665c14130ce74",
+        "registryRef": "refs/heads/research/g5-source-registry-v1",
+        "verified": {
+          "verified": true,
+          "commits": 3,
+          "leases": 1,
+          "logicalReadsMarked": 1,
+          "mirrors": 1,
+          "scientificSeedsRead": 0
+        },
+        "worker": null,
+        "host": null,
+        "ackCount": 1,
+        "unacknowledgedMarkers": 0,
+        "recoveryMirror": "dd2e9b5fca7e6db877db5f2def7665c14130ce74",
+        "finalMirrorSaved": true,
+        "technicalComplete": false,
+        "inspection": {
+          "state": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": true,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 137,
+            "Error": "",
+            "StartedAt": "2026-10-13T10:50:25.888472533Z",
+            "FinishedAt": "2026-10-13T10:50:27.323921634Z"
+          },
+          "image": "sha256:e28cf840f0cdbd6e03a6756ac9d5c8285ef20f7aee64fcde14c1ea4cccef4362"
+        },
+        "latestCgroup": {
+          "memoryCurrent": 70479872,
+          "memoryPeak": 1073741824,
+          "events": "low 0\nhigh 0\nmax 25\noom 1\noom_kill 1\noom_group_kill 0\n"
+        },
+        "filesystem": {
+          "blockBytes": 4096,
+          "blocks": 57274,
+          "bytes": 234594304,
+          "availableBytes": 228212736,
+          "freeBytes": 233578496
+        },
+        "externalObserverPeakRssBytes": 69496832,
+        "solution": null,
+        "resumeAuthorized": false,
+        "watchdog": {
+          "records": [],
+          "elapsedMs": 3265.5124220000002,
+          "scientificSeedsRead": 0
+        },
+        "elapsedTotalMs": 3315.851456,
+        "archiveBytes": 449329
+      },
+      {
+        "mode": "disk-full",
+        "fixtureSourceCount": 128,
+        "scientificSeedsRead": 0,
+        "scientificLeaseCreated": false,
+        "scientificStudyRegistered": false,
+        "registryHead": "e3ab354efe7b3062c27f1790f46e2973ed9e42bf",
+        "registryRef": "refs/heads/research/g5-source-registry-v1",
+        "verified": {
+          "verified": true,
+          "commits": 4,
+          "leases": 1,
+          "logicalReadsMarked": 1,
+          "mirrors": 2,
+          "scientificSeedsRead": 0
+        },
+        "worker": null,
+        "host": {
+          "execution": {
+            "code": null,
+            "signal": "SIGTERM",
+            "status": "MIRROR-FAILURE",
+            "solution": null,
+            "peakAggregateRssBytes": 332914688,
+            "maxProcesses": 1,
+            "ticks": 54,
+            "mirrorError": "FIXTURE-PHYSICAL-ENOSPC",
+            "stdout": "",
+            "stderr": ""
+          },
+          "worker": null,
+          "phases": [
+            true
+          ],
+          "ackCount": 1,
+          "hostProtocolStatus": "STOPPED",
+          "finalMirrorSaved": true,
+          "technicalComplete": false,
+          "peakHostRssBytes": 59101184,
+          "elapsedHostMs": 1637.571404,
+          "primaryCgroupPeakBytes": 657219584,
+          "sampledCgroupPeakBytes": 655900672,
+          "events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+          "filesystem": {
+            "blockBytes": 4096,
+            "blocks": 57274,
+            "availableBytes": 16617472,
+            "freeBytes": 21983232
+          },
+          "scientificSeedsRead": 0
+        },
+        "ackCount": 1,
+        "unacknowledgedMarkers": 0,
+        "recoveryMirror": "e3ab354efe7b3062c27f1790f46e2973ed9e42bf",
+        "finalMirrorSaved": true,
+        "technicalComplete": false,
+        "inspection": {
+          "state": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-13T10:50:29.278602076Z",
+            "FinishedAt": "2026-10-13T10:50:31.051029059Z"
+          },
+          "image": "sha256:e28cf840f0cdbd6e03a6756ac9d5c8285ef20f7aee64fcde14c1ea4cccef4362"
+        },
+        "latestCgroup": {
+          "memoryCurrent": 446013440,
+          "memoryPeak": 657219584,
+          "events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n"
+        },
+        "filesystem": {
+          "blockBytes": 4096,
+          "blocks": 57274,
+          "bytes": 234594304,
+          "availableBytes": 16207872,
+          "freeBytes": 21573632
+        },
+        "externalObserverPeakRssBytes": 64159744,
+        "solution": null,
+        "resumeAuthorized": false,
+        "enospc": {
+          "written": 211812352,
+          "error": "ENOSPC",
+          "filesystem": {
+            "blockBytes": 4096,
+            "blocks": 57274,
+            "availableBytes": 16834560,
+            "freeBytes": 22200320
+          },
+          "scientificSeedsRead": 0
+        },
+        "watchdog": {
+          "records": [],
+          "elapsedMs": 3605.32673,
+          "scientificSeedsRead": 0
+        },
+        "elapsedTotalMs": 3652.447701,
+        "archiveBytes": 492301
+      },
+      {
+        "mode": "deadline",
+        "fixtureSourceCount": 128,
+        "scientificSeedsRead": 0,
+        "scientificLeaseCreated": false,
+        "scientificStudyRegistered": false,
+        "registryHead": "d213b015aea9d58901228da2a85a7b50bb323ce4",
+        "registryRef": "refs/heads/research/g5-source-registry-v1",
+        "verified": {
+          "verified": true,
+          "commits": 19,
+          "leases": 1,
+          "logicalReadsMarked": 15,
+          "mirrors": 3,
+          "scientificSeedsRead": 0
+        },
+        "worker": null,
+        "host": null,
+        "ackCount": 15,
+        "unacknowledgedMarkers": 0,
+        "recoveryMirror": "d213b015aea9d58901228da2a85a7b50bb323ce4",
+        "finalMirrorSaved": true,
+        "technicalComplete": false,
+        "inspection": {
+          "state": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 137,
+            "Error": "",
+            "StartedAt": "2026-10-13T10:50:33.004787112Z",
+            "FinishedAt": "2026-10-13T10:50:37.919345165Z"
+          },
+          "image": "sha256:e28cf840f0cdbd6e03a6756ac9d5c8285ef20f7aee64fcde14c1ea4cccef4362"
+        },
+        "latestCgroup": {
+          "memoryCurrent": 184389632,
+          "memoryPeak": 308649984,
+          "events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n"
+        },
+        "filesystem": {
+          "blockBytes": 4096,
+          "blocks": 57274,
+          "bytes": 234594304,
+          "availableBytes": 224243712,
+          "freeBytes": 229609472
+        },
+        "externalObserverPeakRssBytes": 73302016,
+        "solution": null,
+        "resumeAuthorized": false,
+        "watchdog": {
+          "records": [
+            {
+              "phase": "ORDINARY-DEADLINE",
+              "method": "KERNEL-CGROUP-KILL",
+              "error": null,
+              "atMs": 4957.8181939999995
+            }
+          ],
+          "elapsedMs": 7365.63173,
+          "scientificSeedsRead": 0
+        },
+        "elapsedTotalMs": 7410.962466,
+        "archiveBytes": 1142382
+      },
+      {
+        "mode": "detached",
+        "fixtureSourceCount": 128,
+        "scientificSeedsRead": 0,
+        "scientificLeaseCreated": false,
+        "scientificStudyRegistered": false,
+        "registryHead": "b29f32b397e96ca8933674606ed881b721186347",
+        "registryRef": "refs/heads/research/g5-source-registry-v1",
+        "verified": {
+          "verified": true,
+          "commits": 4,
+          "leases": 1,
+          "logicalReadsMarked": 1,
+          "mirrors": 2,
+          "scientificSeedsRead": 0
+        },
+        "worker": null,
+        "host": {
+          "execution": {
+            "code": null,
+            "signal": "SIGTERM",
+            "status": "MIRROR-FAILURE",
+            "solution": null,
+            "peakAggregateRssBytes": 333111296,
+            "maxProcesses": 1,
+            "ticks": 55,
+            "mirrorError": "FIXTURE-DETACHED-CHILD-STOP",
+            "stdout": "",
+            "stderr": ""
+          },
+          "worker": null,
+          "phases": [
+            true
+          ],
+          "ackCount": 1,
+          "hostProtocolStatus": "STOPPED",
+          "finalMirrorSaved": true,
+          "technicalComplete": false,
+          "peakHostRssBytes": 57978880,
+          "elapsedHostMs": 1311.4824,
+          "primaryCgroupPeakBytes": 312709120,
+          "sampledCgroupPeakBytes": 310046720,
+          "events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+          "filesystem": {
+            "blockBytes": 4096,
+            "blocks": 57274,
+            "availableBytes": 228433920,
+            "freeBytes": 233799680
+          },
+          "scientificSeedsRead": 0
+        },
+        "ackCount": 1,
+        "unacknowledgedMarkers": 0,
+        "recoveryMirror": "b29f32b397e96ca8933674606ed881b721186347",
+        "finalMirrorSaved": true,
+        "technicalComplete": false,
+        "inspection": {
+          "state": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-13T10:50:40.492489842Z",
+            "FinishedAt": "2026-10-13T10:50:41.94359382Z"
+          },
+          "image": "sha256:e28cf840f0cdbd6e03a6756ac9d5c8285ef20f7aee64fcde14c1ea4cccef4362"
+        },
+        "latestCgroup": {
+          "memoryCurrent": 34512896,
+          "memoryPeak": 312709120,
+          "events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n"
+        },
+        "filesystem": {
+          "blockBytes": 4096,
+          "blocks": 57274,
+          "bytes": 234594304,
+          "availableBytes": 228016128,
+          "freeBytes": 233381888
+        },
+        "externalObserverPeakRssBytes": 64139264,
+        "solution": null,
+        "resumeAuthorized": false,
+        "detached": {
+          "pid": 98,
+          "cgroup": "0::/\n"
+        },
+        "watchdog": {
+          "records": [],
+          "elapsedMs": 3283.9165660000003,
+          "scientificSeedsRead": 0
+        },
+        "elapsedTotalMs": 3337.856522,
+        "archiveBytes": 490362
+      },
+      {
+        "mode": "final-mirror-failure",
+        "fixtureSourceCount": 128,
+        "scientificSeedsRead": 0,
+        "scientificLeaseCreated": false,
+        "scientificStudyRegistered": false,
+        "registryHead": "4fb98f90ba237674d99639e86d7dc8985398b86a",
+        "registryRef": "refs/heads/research/g5-source-registry-v1",
+        "verified": {
+          "verified": true,
+          "commits": 149,
+          "leases": 1,
+          "logicalReadsMarked": 128,
+          "mirrors": 20,
+          "scientificSeedsRead": 0
+        },
+        "worker": {
+          "evidenceClass": "TECHNICAL-PIPELINE-FIXTURE",
+          "status": "PIPELINE-COMPLETE",
+          "failure": null,
+          "read": 128,
+          "closures": 1,
+          "candidates": 1,
+          "workerComplete": true,
+          "interpretationComplete": false,
+          "finalMirrorRequired": true,
+          "solution": null,
+          "resumeAuthorized": false,
+          "scientificSeedsRead": 0,
+          "peakWorkerRssBytes": 332763136,
+          "usedBytesBeforeFinal": 17703131
+        },
+        "host": {
+          "execution": {
+            "code": 0,
+            "signal": null,
+            "status": "MIRROR-FAILURE",
+            "solution": null,
+            "peakAggregateRssBytes": 332853248,
+            "maxProcesses": 1,
+            "ticks": 2633,
+            "mirrorError": "INJECTED-FINAL-MIRROR-FAILURE",
+            "stdout": "",
+            "stderr": ""
+          },
+          "worker": {
+            "evidenceClass": "TECHNICAL-PIPELINE-FIXTURE",
+            "status": "PIPELINE-COMPLETE",
+            "failure": null,
+            "read": 128,
+            "closures": 1,
+            "candidates": 1,
+            "workerComplete": true,
+            "interpretationComplete": false,
+            "finalMirrorRequired": true,
+            "solution": null,
+            "resumeAuthorized": false,
+            "scientificSeedsRead": 0,
+            "peakWorkerRssBytes": 332763136,
+            "usedBytesBeforeFinal": 17703131
+          },
+          "phases": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "ackCount": 128,
+          "hostProtocolStatus": "STOPPED",
+          "finalMirrorSaved": false,
+          "technicalComplete": false,
+          "peakHostRssBytes": 208658432,
+          "elapsedHostMs": 69423.17909,
+          "primaryCgroupPeakBytes": 451108864,
+          "sampledCgroupPeakBytes": 440438784,
+          "events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n",
+          "filesystem": {
+            "blockBytes": 4096,
+            "blocks": 57274,
+            "availableBytes": 172744704,
+            "freeBytes": 178110464
+          },
+          "scientificSeedsRead": 0
+        },
+        "ackCount": 128,
+        "unacknowledgedMarkers": 0,
+        "recoveryMirror": null,
+        "finalMirrorSaved": false,
+        "technicalComplete": false,
+        "inspection": {
+          "state": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-13T10:50:43.903680206Z",
+            "FinishedAt": "2026-10-13T10:51:53.569446308Z"
+          },
+          "image": "sha256:e28cf840f0cdbd6e03a6756ac9d5c8285ef20f7aee64fcde14c1ea4cccef4362"
+        },
+        "latestCgroup": {
+          "memoryCurrent": 176009216,
+          "memoryPeak": 451108864,
+          "events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\n"
+        },
+        "filesystem": {
+          "blockBytes": 4096,
+          "blocks": 57274,
+          "bytes": 234594304,
+          "availableBytes": 188428288,
+          "freeBytes": 193794048
+        },
+        "externalObserverPeakRssBytes": 204509184,
+        "solution": null,
+        "resumeAuthorized": false,
+        "watchdog": {
+          "records": [],
+          "elapsedMs": 82469.563084,
+          "scientificSeedsRead": 0
+        },
+        "elapsedTotalMs": 82515.559458,
+        "archiveBytes": 13348932
+      }
+    ],
+    "scientificSeedsRead": 0,
+    "scientificLeaseCreated": false,
+    "scientificStudyRegistered": false,
+    "conservativeReadIdentities": 103355,
+    "formalRelationRegistered": false
+  },
+  "changesBeforeFinalValidation": [
+    "MOVE-EXTERNAL-REPLAY-TMP-INTO-PHYSICAL-QUOTA",
+    "SAFE-FORENSIC-UNMOUNT-AFTER-OBSERVER-SIGKILL",
+    "ADD-SEVENTH-OBSERVER-TOTAL-DEADLINE-CASE"
+  ],
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false
+}

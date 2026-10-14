@@ -1,0 +1,31 @@
+# workerとhostの結合報告
+
+## 実装した範囲
+
+primary/reference source生成、独立source再生、独立RAW codec、候補固定、全閉包保存を共通workerへ接続した。科学用driverは既存の専用科学source・独立source・閉包入口を呼ぶ構成で、最終科学freeze不在時は状態・PRNG・出力作成前に拒否する。
+
+hostは全区画leaseからACKまでの順序、稼働中/終了mirror、worker groupの停止を結合する。worker正常終了後の最終mirror失敗も全体未完として保持する。固定9シナリオの実結果・件数・資源とGit証拠はActions artifactへ保存する。各シナリオ終了時に圧縮証拠を保存し、途中失敗時もCI用bare registryを残す。全シナリオ合格は未確認である。
+
+## 開発中に見つかった問題
+
+稼働中mirrorをsession外で追加すると、次の読取前mirrorの番号と競合したため、同じsessionで番号を管理するcheckpoint入口を追加した。先行hostの固定ソースは変更せず、新moduleへ分離した。
+
+1秒ごとのmirrorでは、ローカル通常fixtureが97 ACKの時点で180秒の上限へ達した。保存停止が働いたことと、通常完了しなかったことを分けて記録する。source生成・選定・科学予算を変更せず、8 sourceごと/処理中5秒のmirror方針を技術契約へ固定した。これは科学Studyのretryではなく、未公開実装の技術修正である。
+
+独立source fixtureは合法手を逆順に返すため、そのまま閉包adapterへ渡すと列挙番号が一致しなかった。閉包adapterの境界で契約上のmoveKey順へ並べ、sourceで固定したrootから全合法手閉包までの回帰検査を追加した。assertion等を管理停止として扱わず、workerを非zeroで終了し診断を保存するようにした。
+
+負荷を並行してかけた試行では、consumeが117件保存され、ACKは116件の時点で全体停止した。保存markerとACKの一致を無条件に要求する検査を改め、未ACKの1 markerを保持し、そのACKが存在しないことを検査するようにした。通常128件と、domain後半/終了mirrorの停止専用16件を区別して固定した。科学区画や科学source数、科学予算は変更していない。
+
+既存73テストの並列実行とfile単位直列実行では、400 msのworker起動を前提とするSIGKILL検査だけがSIGTERMとなり、72件が合格した。該当検査単独は合格した。新fixtureの強制終了はprefix保存後に起動完了を確認して停止を作動させる。旧テスト・旧記録のbyteを変更せず、負荷中の失敗を削除・successへ付け直さない。
+
+初期fixtureの領域1秒では、128 source完了後も閉包保存の時間不足となった。この未合格を保持し、fixtureの時間枠を科学提案と同じ全体1200秒・領域180秒へ合わせて新しく固定した。科学Studyの上限引上げやretryではない。長い全体検証はGitHub Actionsを第一候補へ移し、結果を取得するまで合格を主張しない。開発中の未合格値は[診断記録](results/DEVELOPMENT_DIAGNOSTIC.json)で区別する。
+
+## 未完の条件
+
+科学用の全体資源会計、制御ファイル・Git object・mirror処理の追加資源、予算内終了mirror、実GitHub通信の失敗fixture、科学専用hostの最終配備と固定SPEC/契約/認可/レビュー、科学専用triggerは未完である。技術fixtureの成功を科学sourceの費用保証や科学実行認可へ昇格させない。実cgroup CIは別receiptで確認する。
+
+科学seed消費0・科学leaseなし・科学Study未登録/未実行、主課題と正式関係未登録/未実行、103355件遮断、全閉包、未知の保持、救済禁止、main・公開AI未変更を維持する。
+
+## 実cgroupの確認完了
+
+[CI確定](CI_CONFIRMATION.md)で全9シナリオ・全stepとPR側12ワークフローの成功を確認した。artifact archive digestと全出力hash、全9保存Git bundle・source・候補・閉包の独立再生が一致した。負荷を分けたローカル回帰は新規5件と既存69件、計74件がすべて合格した。先行の未合格を保持し、科学用の未完条件へ自動昇格しない。

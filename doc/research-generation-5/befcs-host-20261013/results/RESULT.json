@@ -1,0 +1,101 @@
+{
+  "decision": "HOST-PROTOCOL-PASS-SCIENTIFIC-WORKER-INTEGRATION-PENDING",
+  "sourceManifestSha256": "3d5d65c52ff4d401d7997019c1a6d78212317c697e16fe140c7ca9d0d34e3fbc",
+  "evidenceSha256": "18f10789732b7048421451eb457dbfec3787ffe678ecac5b6d8a61dba356c2a7",
+  "scenarios": [
+    {
+      "mode": "complete",
+      "head": "660da318e9d85cc8b2c137f818060731ee516597",
+      "ref": "refs/heads/research/g5-source-registry-v1",
+      "verified": {
+        "verified": true,
+        "commits": 138,
+        "leases": 1,
+        "logicalReadsMarked": 128,
+        "mirrors": 9,
+        "scientificSeedsRead": 0
+      },
+      "issued": 128,
+      "started": 128,
+      "status": "FINISHED",
+      "error": null,
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false,
+      "interpretationComplete": false,
+      "solution": null
+    },
+    {
+      "mode": "mirror-failure",
+      "head": "a82de8bead1c4d860b583d159b9b7dd49047fddd",
+      "ref": "refs/heads/research/g5-source-registry-v1",
+      "verified": {
+        "verified": true,
+        "commits": 1,
+        "leases": 1,
+        "logicalReadsMarked": 0,
+        "mirrors": 0,
+        "scientificSeedsRead": 0
+      },
+      "issued": 0,
+      "started": 0,
+      "status": "STOPPED",
+      "error": "MIRROR-FAILURE",
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false,
+      "interpretationComplete": false,
+      "solution": null
+    },
+    {
+      "mode": "consume-response-unknown",
+      "head": "965ff224c8c65165e2873bf9345c258d14cf241b",
+      "ref": "refs/heads/research/g5-source-registry-v1",
+      "verified": {
+        "verified": true,
+        "commits": 6,
+        "leases": 1,
+        "logicalReadsMarked": 4,
+        "mirrors": 1,
+        "scientificSeedsRead": 0
+      },
+      "issued": 3,
+      "started": 3,
+      "status": "STOPPED",
+      "error": "RESPONSE-UNKNOWN",
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false,
+      "interpretationComplete": false,
+      "solution": null
+    },
+    {
+      "mode": "final-mirror-failure",
+      "head": "89bcf96cacc4a30fe72c2954d3d094ba44876cb6",
+      "ref": "refs/heads/research/g5-source-registry-v1",
+      "verified": {
+        "verified": true,
+        "commits": 5,
+        "leases": 1,
+        "logicalReadsMarked": 3,
+        "mirrors": 1,
+        "scientificSeedsRead": 0
+      },
+      "issued": 3,
+      "started": 3,
+      "status": "STOPPED",
+      "error": "MIRROR-FAILURE",
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false,
+      "interpretationComplete": false,
+      "solution": null
+    }
+  ],
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false,
+  "conservativeReadIdentities": 103355,
+  "formalRelationRegistered": false,
+  "publicAiChanged": false
+}

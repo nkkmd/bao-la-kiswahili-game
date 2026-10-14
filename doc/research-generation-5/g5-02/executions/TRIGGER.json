@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "studyId": "RECSF-STUDY1",
+  "stageId": "RECSF-S1-SUPPLY-2026-10-12-v1",
+  "frozenSourceCommit": "7b585bbdbb082dca3889bf5acf212b61bc7b4085",
+  "binding": "29b81cb1466ce41a8d78d4fa68f068258bc9623f6e42ca034008cc812b38e8bb",
+  "preflightPushRunId": 38237026346,
+  "seedBlock": {
+    "start": 50212001,
+    "end": 50212032,
+    "count": 32
+  },
+  "sameBlockRerunAuthorized": false
+}

@@ -1,0 +1,508 @@
+{
+  "archiveSha256": "c7bdd1a75b200c6ee44bad15a43751200c132f92e014512d3fc86b4c01f209fd",
+  "fileCount": 111,
+  "files": {
+    "RESULT.json": {
+      "bytes": 9223,
+      "sha256": "a3a0d0c043a9ade485fe40eae3dcf03ac9ab5120d00eb8c02658de1fab47adb6"
+    },
+    "complete/BOUNDARY.json": {
+      "bytes": 1159,
+      "sha256": "d12089c92b6f5d2499e8e74233de6b2bc4d5da90c7b460d737ba1d10fc92a8f8"
+    },
+    "complete/EXIT.json": {
+      "bytes": 141,
+      "sha256": "f639f09b13eee23e5f90375603771f41bc961c3e979f3012af01c70a899c1932"
+    },
+    "complete/OBSERVER_DONE.json": {
+      "bytes": 26,
+      "sha256": "a8f99d5de7333ea58c4b2bd0aed0acf7d298c4a563df06cd2bdca7d90a2b7ff0"
+    },
+    "complete/OBSERVER_STARTED.json": {
+      "bytes": 37,
+      "sha256": "542e1ac9da595b83d719995548403e11953d1e1f8e2329b25dc6bf84ee53ed8b"
+    },
+    "complete/PIDS.json": {
+      "bytes": 57,
+      "sha256": "574edbcce7e6265ba7bcdd2d718a5ed64dd439aac7d64073481a4f7267968b79"
+    },
+    "complete/RESOURCE.json": {
+      "bytes": 639,
+      "sha256": "490046feabfe45f5c64d7a7e0f710993dfd8f3a61c055e458f3cedb8e158d3f1"
+    },
+    "complete/RESULT.json": {
+      "bytes": 2202,
+      "sha256": "a27c46c2fa916ce3c09bef191e6bce7df7af4eb068ab5d1eebc16ff1648ef743"
+    },
+    "complete/WATCH.json": {
+      "bytes": 62,
+      "sha256": "5a7e445c7fe7f351a1d89f3c4c32d6443f9ac8b086da7d69154fc922cc67954d"
+    },
+    "complete/WATCH_READY.json": {
+      "bytes": 125,
+      "sha256": "0c6a876ba409aca1ee73314ff7a50a7884399a453d1c8a4a1d9839e244c892d3"
+    },
+    "complete/WORK_DONE.json": {
+      "bytes": 60,
+      "sha256": "af3728e4d8d7c258ee16b19872d92845584d4de94835e63760abd728b7e8eaaf"
+    },
+    "complete/WORK_STARTED.json": {
+      "bytes": 37,
+      "sha256": "ffceeb3cc70fac06dc32eee7a1f1272053ae0c18095f43a19403367ef32a4960"
+    },
+    "complete/fixture.git/HEAD": {
+      "bytes": 23,
+      "sha256": "f6f2b945f6c411b02ba3da9c7ace88dcf71b6af65ba2e0d89aa82900042b5a10"
+    },
+    "complete/fixture.git/config": {
+      "bytes": 66,
+      "sha256": "dd548269913b6adbdfa7049170ea86850050cb762ea3b9c510a0b2986d2113e3"
+    },
+    "complete/fixture.git/description": {
+      "bytes": 73,
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    "complete/fixture.git/hooks/applypatch-msg.sample": {
+      "bytes": 478,
+      "sha256": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7"
+    },
+    "complete/fixture.git/hooks/commit-msg.sample": {
+      "bytes": 1972,
+      "sha256": "efc1401b0e99d1ff51494d154d98b46c1e99059bcd8bf9f73cecde19fd3eb23b"
+    },
+    "complete/fixture.git/hooks/fsmonitor-watchman.sample": {
+      "bytes": 4611,
+      "sha256": "9159720099ad5595b8e66645cbfd47763c1e920f46e0b50ae75e642bbec57ef0"
+    },
+    "complete/fixture.git/hooks/pre-applypatch.sample": {
+      "bytes": 424,
+      "sha256": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475"
+    },
+    "complete/fixture.git/hooks/post-update.sample": {
+      "bytes": 189,
+      "sha256": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5"
+    },
+    "complete/fixture.git/hooks/pre-commit.sample": {
+      "bytes": 1649,
+      "sha256": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b"
+    },
+    "complete/fixture.git/hooks/pre-merge-commit.sample": {
+      "bytes": 416,
+      "sha256": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53"
+    },
+    "complete/fixture.git/hooks/pre-push.sample": {
+      "bytes": 1374,
+      "sha256": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a"
+    },
+    "complete/fixture.git/hooks/pre-rebase.sample": {
+      "bytes": 4898,
+      "sha256": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3"
+    },
+    "complete/fixture.git/hooks/pre-receive.sample": {
+      "bytes": 544,
+      "sha256": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989"
+    },
+    "complete/fixture.git/hooks/push-to-checkout.sample": {
+      "bytes": 2783,
+      "sha256": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f"
+    },
+    "complete/fixture.git/hooks/prepare-commit-msg.sample": {
+      "bytes": 1492,
+      "sha256": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619"
+    },
+    "complete/fixture.git/hooks/sendemail-validate.sample": {
+      "bytes": 2308,
+      "sha256": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92"
+    },
+    "complete/fixture.git/hooks/update.sample": {
+      "bytes": 3650,
+      "sha256": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106"
+    },
+    "complete/fixture.git/info/exclude": {
+      "bytes": 240,
+      "sha256": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1"
+    },
+    "deadline/BOUNDARY.json": {
+      "bytes": 1159,
+      "sha256": "356f62a81d21a902011b727185167ab0ee6ed0b3a9071e26b9f120068da0d9b8"
+    },
+    "deadline/OBSERVER_STARTED.json": {
+      "bytes": 37,
+      "sha256": "64d808694d84edb756760ac118a4fd5f7afd1a5c001bb4a8e0686d04b194ad43"
+    },
+    "deadline/PIDS.json": {
+      "bytes": 57,
+      "sha256": "dfe0e6bb364fa895f4f23a4379bd38b3d3ba833b6de85b847faf35862a05e30e"
+    },
+    "deadline/RESOURCE.json": {
+      "bytes": 652,
+      "sha256": "e77afb7328e8cf07d1e84515061aa23ed6d41d5d0848356659a11acfabb8b089"
+    },
+    "deadline/WATCH.json": {
+      "bytes": 272,
+      "sha256": "7908a9b7607cbea5af8d3d78abbf4161a3495a0d4e669fd94221ee7073123df4"
+    },
+    "deadline/RESULT.json": {
+      "bytes": 2427,
+      "sha256": "f80fd8c0c4e33f49f0bdd4dc896426e0bd83fccfe20eab0ee60eac004e78ef6a"
+    },
+    "deadline/WATCH_READY.json": {
+      "bytes": 125,
+      "sha256": "12a2ad4ceaebeb7178d62ee0008da23eae374d701d433c5d20d8cc37c62beb97"
+    },
+    "deadline/WORK_STARTED.json": {
+      "bytes": 37,
+      "sha256": "1afb9f11f549c0cd5a81c537bc2563707bb0c0f9da88d8b78e8866314db8c081"
+    },
+    "deadline/fixture.git/HEAD": {
+      "bytes": 23,
+      "sha256": "f6f2b945f6c411b02ba3da9c7ace88dcf71b6af65ba2e0d89aa82900042b5a10"
+    },
+    "deadline/fixture.git/config": {
+      "bytes": 66,
+      "sha256": "dd548269913b6adbdfa7049170ea86850050cb762ea3b9c510a0b2986d2113e3"
+    },
+    "deadline/fixture.git/description": {
+      "bytes": 73,
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    "deadline/fixture.git/hooks/commit-msg.sample": {
+      "bytes": 1972,
+      "sha256": "efc1401b0e99d1ff51494d154d98b46c1e99059bcd8bf9f73cecde19fd3eb23b"
+    },
+    "deadline/fixture.git/hooks/applypatch-msg.sample": {
+      "bytes": 478,
+      "sha256": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7"
+    },
+    "deadline/fixture.git/hooks/fsmonitor-watchman.sample": {
+      "bytes": 4611,
+      "sha256": "9159720099ad5595b8e66645cbfd47763c1e920f46e0b50ae75e642bbec57ef0"
+    },
+    "deadline/fixture.git/hooks/post-update.sample": {
+      "bytes": 189,
+      "sha256": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5"
+    },
+    "deadline/fixture.git/hooks/pre-applypatch.sample": {
+      "bytes": 424,
+      "sha256": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475"
+    },
+    "deadline/fixture.git/hooks/pre-commit.sample": {
+      "bytes": 1649,
+      "sha256": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b"
+    },
+    "deadline/fixture.git/hooks/pre-merge-commit.sample": {
+      "bytes": 416,
+      "sha256": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53"
+    },
+    "deadline/fixture.git/hooks/pre-push.sample": {
+      "bytes": 1374,
+      "sha256": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a"
+    },
+    "deadline/fixture.git/hooks/pre-rebase.sample": {
+      "bytes": 4898,
+      "sha256": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3"
+    },
+    "deadline/fixture.git/hooks/pre-receive.sample": {
+      "bytes": 544,
+      "sha256": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989"
+    },
+    "deadline/fixture.git/hooks/prepare-commit-msg.sample": {
+      "bytes": 1492,
+      "sha256": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619"
+    },
+    "deadline/fixture.git/hooks/push-to-checkout.sample": {
+      "bytes": 2783,
+      "sha256": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f"
+    },
+    "deadline/fixture.git/hooks/sendemail-validate.sample": {
+      "bytes": 2308,
+      "sha256": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92"
+    },
+    "deadline/fixture.git/hooks/update.sample": {
+      "bytes": 3650,
+      "sha256": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106"
+    },
+    "deadline/fixture.git/info/exclude": {
+      "bytes": 240,
+      "sha256": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1"
+    },
+    "observer-oom/BOUNDARY.json": {
+      "bytes": 1163,
+      "sha256": "458b8cd156980e208e97e8513a51c7cbc70cd312dc92ae3478d931ca797cef88"
+    },
+    "observer-oom/EXIT.json": {
+      "bytes": 157,
+      "sha256": "5f397d5080bedc6168b5683fc9fae5117590d26df2a3e9a64b32ade0fdefe2b3"
+    },
+    "observer-oom/OBSERVER_STARTED.json": {
+      "bytes": 37,
+      "sha256": "f57ffdc1a82a0e3ee8903c92f9e771e20372edfbfbf1f64322b06d189e4e80b7"
+    },
+    "observer-oom/PIDS.json": {
+      "bytes": 57,
+      "sha256": "c718d67987d082016257f32eae87bb36982fec92da1003953872a752b8f56717"
+    },
+    "observer-oom/RESOURCE.json": {
+      "bytes": 642,
+      "sha256": "cad360373d9a4e4636a133be34581d0077c2c78511b4376a7dc76e1c9406db63"
+    },
+    "observer-oom/RESULT.json": {
+      "bytes": 2282,
+      "sha256": "d3da058cb53b84f033045aee8a8de3796d31d6011de8851b1163b91ec5ae44d3"
+    },
+    "observer-oom/WATCH.json": {
+      "bytes": 131,
+      "sha256": "634a1b9ad032078387763ded88112889a6e50efd4193924c9b1b314e328a9bb9"
+    },
+    "observer-oom/WATCH_READY.json": {
+      "bytes": 125,
+      "sha256": "b3b5dbf04e89231e15f14dc61c58b68894836f64570b92cc7f0100e8d430de18"
+    },
+    "observer-oom/WORK_STARTED.json": {
+      "bytes": 37,
+      "sha256": "10c3e71330e3685240d025a03758c664ebf3f2f0cfc90cf8e92239b75c8861f2"
+    },
+    "observer-oom/fixture.git/HEAD": {
+      "bytes": 23,
+      "sha256": "f6f2b945f6c411b02ba3da9c7ace88dcf71b6af65ba2e0d89aa82900042b5a10"
+    },
+    "observer-oom/fixture.git/config": {
+      "bytes": 66,
+      "sha256": "dd548269913b6adbdfa7049170ea86850050cb762ea3b9c510a0b2986d2113e3"
+    },
+    "observer-oom/fixture.git/description": {
+      "bytes": 73,
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    "observer-oom/fixture.git/hooks/applypatch-msg.sample": {
+      "bytes": 478,
+      "sha256": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7"
+    },
+    "observer-oom/fixture.git/hooks/commit-msg.sample": {
+      "bytes": 1972,
+      "sha256": "efc1401b0e99d1ff51494d154d98b46c1e99059bcd8bf9f73cecde19fd3eb23b"
+    },
+    "observer-oom/fixture.git/hooks/fsmonitor-watchman.sample": {
+      "bytes": 4611,
+      "sha256": "9159720099ad5595b8e66645cbfd47763c1e920f46e0b50ae75e642bbec57ef0"
+    },
+    "observer-oom/fixture.git/hooks/pre-applypatch.sample": {
+      "bytes": 424,
+      "sha256": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475"
+    },
+    "observer-oom/fixture.git/hooks/post-update.sample": {
+      "bytes": 189,
+      "sha256": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5"
+    },
+    "observer-oom/fixture.git/hooks/pre-commit.sample": {
+      "bytes": 1649,
+      "sha256": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b"
+    },
+    "observer-oom/fixture.git/hooks/pre-merge-commit.sample": {
+      "bytes": 416,
+      "sha256": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53"
+    },
+    "observer-oom/fixture.git/hooks/pre-push.sample": {
+      "bytes": 1374,
+      "sha256": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a"
+    },
+    "observer-oom/fixture.git/hooks/pre-rebase.sample": {
+      "bytes": 4898,
+      "sha256": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3"
+    },
+    "observer-oom/fixture.git/hooks/pre-receive.sample": {
+      "bytes": 544,
+      "sha256": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989"
+    },
+    "observer-oom/fixture.git/hooks/push-to-checkout.sample": {
+      "bytes": 2783,
+      "sha256": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f"
+    },
+    "observer-oom/fixture.git/hooks/prepare-commit-msg.sample": {
+      "bytes": 1492,
+      "sha256": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619"
+    },
+    "observer-oom/fixture.git/hooks/sendemail-validate.sample": {
+      "bytes": 2308,
+      "sha256": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92"
+    },
+    "observer-oom/fixture.git/hooks/update.sample": {
+      "bytes": 3650,
+      "sha256": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106"
+    },
+    "observer-oom/fixture.git/info/exclude": {
+      "bytes": 240,
+      "sha256": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1"
+    },
+    "worker-oom/BOUNDARY.json": {
+      "bytes": 1161,
+      "sha256": "3990da0d54669cfb737282d4c524979d7558e33c8c25b8fcf872359b7c9426b0"
+    },
+    "worker-oom/EXIT.json": {
+      "bytes": 149,
+      "sha256": "b9098723cebe7d8f98180d97c9515157c09980a12e138aa0bc0dc57b470c15da"
+    },
+    "worker-oom/OBSERVER_DONE.json": {
+      "bytes": 47,
+      "sha256": "f6691b26b26738aec592c4c09e3b46a03083ed15a6ec9441cdca75ed946ddad9"
+    },
+    "worker-oom/OBSERVER_STARTED.json": {
+      "bytes": 37,
+      "sha256": "816519d39ef0ee7e4faa618562afc170e5e93abc1652a1f4ee88916e3541c56a"
+    },
+    "worker-oom/PIDS.json": {
+      "bytes": 57,
+      "sha256": "cfb35ba67cda1b4a08a643149f9c076c3eeca4c0b125c6f91fbeeff767a940ad"
+    },
+    "worker-oom/RESOURCE.json": {
+      "bytes": 640,
+      "sha256": "43c0e8acb3ea4a70d7c0f03263505886c6be2049eb9751023a46c0edaebb8ceb"
+    },
+    "worker-oom/RESULT.json": {
+      "bytes": 2208,
+      "sha256": "73fa88395634e49588d45c52dd8e15f01b2e880731c5077f6269d5a61916fcad"
+    },
+    "worker-oom/WATCH.json": {
+      "bytes": 63,
+      "sha256": "71de36204a9095e69d8e92d4d6150d93652a1e7f1288348e860745003966a655"
+    },
+    "worker-oom/WATCH_READY.json": {
+      "bytes": 125,
+      "sha256": "f08ecde762a1d60df82d73b7c4e26be9c614ed5f70a2a611126d2626c7647d7c"
+    },
+    "worker-oom/WORK_STARTED.json": {
+      "bytes": 37,
+      "sha256": "c26c226ead323a2331cc0a5cf1414cd84d14ecdbe837acfccfa48ca8f0f5ab38"
+    },
+    "worker-oom/fixture.git/HEAD": {
+      "bytes": 23,
+      "sha256": "f6f2b945f6c411b02ba3da9c7ace88dcf71b6af65ba2e0d89aa82900042b5a10"
+    },
+    "worker-oom/fixture.git/config": {
+      "bytes": 66,
+      "sha256": "dd548269913b6adbdfa7049170ea86850050cb762ea3b9c510a0b2986d2113e3"
+    },
+    "worker-oom/fixture.git/description": {
+      "bytes": 73,
+      "sha256": "85ab6c163d43a17ea9cf7788308bca1466f1b0a8d1cc92e26e9bf63da4062aee"
+    },
+    "worker-oom/fixture.git/hooks/commit-msg.sample": {
+      "bytes": 1972,
+      "sha256": "efc1401b0e99d1ff51494d154d98b46c1e99059bcd8bf9f73cecde19fd3eb23b"
+    },
+    "worker-oom/fixture.git/hooks/applypatch-msg.sample": {
+      "bytes": 478,
+      "sha256": "0223497a0b8b033aa58a3a521b8629869386cf7ab0e2f101963d328aa62193f7"
+    },
+    "worker-oom/fixture.git/hooks/post-update.sample": {
+      "bytes": 189,
+      "sha256": "81765af2daef323061dcbc5e61fc16481cb74b3bac9ad8a174b186523586f6c5"
+    },
+    "worker-oom/fixture.git/hooks/fsmonitor-watchman.sample": {
+      "bytes": 4611,
+      "sha256": "9159720099ad5595b8e66645cbfd47763c1e920f46e0b50ae75e642bbec57ef0"
+    },
+    "worker-oom/fixture.git/hooks/pre-applypatch.sample": {
+      "bytes": 424,
+      "sha256": "e15c5b469ea3e0a695bea6f2c82bcf8e62821074939ddd85b77e0007ff165475"
+    },
+    "worker-oom/fixture.git/hooks/pre-commit.sample": {
+      "bytes": 1649,
+      "sha256": "57185b7b9f05239d7ab52db045f5b89eb31348d7b2177eab214f5eb872e1971b"
+    },
+    "worker-oom/fixture.git/hooks/pre-merge-commit.sample": {
+      "bytes": 416,
+      "sha256": "d3825a70337940ebbd0a5c072984e13245920cdf8898bd225c8d27a6dfc9cb53"
+    },
+    "worker-oom/fixture.git/hooks/pre-push.sample": {
+      "bytes": 1374,
+      "sha256": "ecce9c7e04d3f5dd9d8ada81753dd1d549a9634b26770042b58dda00217d086a"
+    },
+    "worker-oom/fixture.git/hooks/pre-rebase.sample": {
+      "bytes": 4898,
+      "sha256": "4febce867790052338076f4e66cc47efb14879d18097d1d61c8261859eaaa7b3"
+    },
+    "worker-oom/fixture.git/hooks/pre-receive.sample": {
+      "bytes": 544,
+      "sha256": "a4c3d2b9c7bb3fd8d1441c31bd4ee71a595d66b44fcf49ddb310252320169989"
+    },
+    "worker-oom/fixture.git/hooks/prepare-commit-msg.sample": {
+      "bytes": 1492,
+      "sha256": "e9ddcaa4189fddd25ed97fc8c789eca7b6ca16390b2392ae3276f0c8e1aa4619"
+    },
+    "worker-oom/fixture.git/hooks/push-to-checkout.sample": {
+      "bytes": 2783,
+      "sha256": "a53d0741798b287c6dd7afa64aee473f305e65d3f49463bb9d7408ec3b12bf5f"
+    },
+    "worker-oom/fixture.git/hooks/sendemail-validate.sample": {
+      "bytes": 2308,
+      "sha256": "44ebfc923dc5466bc009602f0ecf067b9c65459abfe8868ddc49b78e6ced7a92"
+    },
+    "worker-oom/fixture.git/hooks/update.sample": {
+      "bytes": 3650,
+      "sha256": "8d5f2fa83e103cf08b57eaa67521df9194f45cbdbcb37da52ad586097a14d106"
+    },
+    "worker-oom/fixture.git/info/exclude": {
+      "bytes": 240,
+      "sha256": "6671fe83b7a07c8932ee89164d1f2793b2318058eb8b98dc5c06ee0a5a3b0ec1"
+    }
+  },
+  "cases": [
+    {
+      "mode": "complete",
+      "parentPeakBytes": 256200704,
+      "workOomKills": 0,
+      "controlOomKills": 0,
+      "watchRecords": [],
+      "resourceSampleIsFinal": true
+    },
+    {
+      "mode": "worker-oom",
+      "parentPeakBytes": 858345472,
+      "workOomKills": 1,
+      "controlOomKills": 0,
+      "watchRecords": [],
+      "resourceSampleIsFinal": true
+    },
+    {
+      "mode": "observer-oom",
+      "parentPeakBytes": 418369536,
+      "workOomKills": 0,
+      "controlOomKills": 1,
+      "watchRecords": [
+        {
+          "target": "work",
+          "reason": "OBSERVER-OOM-NO-RESUME",
+          "atMs": 153.169242
+        }
+      ],
+      "resourceSampleIsFinal": true
+    },
+    {
+      "mode": "deadline",
+      "parentPeakBytes": 257609728,
+      "workOomKills": 0,
+      "controlOomKills": 0,
+      "watchRecords": [
+        {
+          "target": "work",
+          "reason": "ORDINARY-DEADLINE",
+          "atMs": 4999.345995
+        },
+        {
+          "target": "work",
+          "reason": "TOTAL-DEADLINE",
+          "atMs": 15000.137571000001
+        },
+        {
+          "target": "control",
+          "reason": "TOTAL-DEADLINE",
+          "atMs": 15151.693657
+        }
+      ],
+      "resourceSampleIsFinal": false
+    }
+  ],
+  "scientificSeedsRead": 0,
+  "integrationPending": true
+}

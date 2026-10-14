@@ -1,0 +1,27 @@
+# 保存済み全workload統合の研究ログ
+
+## 2026-10-13 — 引き継ぎ復元と実cgroup
+
+添付patch・37ファイル・treeのhashを一致させ、GitHub最新状態を照合した。PR #192へ整理済み版を保存し、128 MiB/1 GiB OOM・swap追加分なし・prefix保持がpush/PRの両CIで合格した。receiptは先行運用記録へ追加した。
+
+## 2026-10-13 — 共通保存と停止の統合
+
+共有保存予算、入れ子mirror、専用科学入口の未固定時拒否、保存済み128 source/8閉包のpipelineを追加した。通常snapshotとtemporaryの共存を合算し、消えたtemporaryをcoverageへ明記するテストを追加した。旧入力や科学sourceを生成していない。
+
+初回の全負荷実行はMIRROR-FAILUREで失敗したが、当時のassertionにはmirrorErrorが含まれず、直接原因を確定できない。この失敗を成功へ読み替えず、後続診断にmirrorErrorを保存し、rename競合を独立fault fixtureで検査した。
+
+二度目はprefix保存前の起動時間に強制停止が入ってSIGTERMとなった。次の版でもmarker 0のままSIGKILLとなり、要求したprefix後の停止を満たさなかった。prefix保存を観測した後に停止をarmedする方式へ直し、1 markerと保存prefixを保持してSIGKILLするケースが合格した。
+
+全履歴・全mirrorからの同じblobの反復読取りが長時間化した。各commitのtree照合を保持したまま、内容一致済みblobだけを再利用する独立検算へ変更し、先行137 commitの結果と一致させた。最終入力hashを固定した版で全8ケースを再実行し、証拠を保存する。
+
+ローカル58テストと全8ケース、通常240 MiB/終了16 MiBの実容量境界が合格した。実cgroupの全pipelineは新CIで別確認する。技術fixtureの改訂・再検証は、科学区画のretryではない。科学seed消費0・科学leaseなし・未登録/未実行を維持する。
+
+稼働中mirrorが必要なtickでは、その成功を確認してから次のconsume markerとACKを発行する順序へ固定した。mirror失敗時は次の要求にACKが存在しないことも検査し、保存失敗後に新しい読取りを開始しない。
+
+次要求が既に存在するという追加assertionは、workerが直前のACK対象を再生中の競合窓で14/15不一致となった。直前処理中と次要求待ちを区別し、失敗後の新しい番号にACKがないことを検査する形へ修正した。mirror cadenceは次markerの発行後の数を見込んで先に判定し、source終了後も時間間隔で更新する。
+
+時間間隔のmirrorを結合した版ではregistry metadataが1 MiBを超え、Gitのstdout読取りが既定maxBufferでENOBUFS停止した。契約上の16 MiB上限より先に止まる実装境界であり、旧運用moduleを変更せず、新しいregistry/独立読取りを16 MiBの契約上限へ整合させた。書込み前のmetadata全byte上限も保持する。
+
+## 実cgroupの後片付けと第2版freeze
+
+第1版CIは全8実1 GiBシナリオを通過したが、root所有の一時directoryをhost UIDで削除できずEACCES failureとなった。artifact digestと全圧縮証拠を確認し、failure receiptを別保存した。host UID/GIDを指定する修正を第2版のmanifest・契約・結果へ別固定し、第1版の機械原記録を保持する。科学区画は未登録・未予約・未消費のままである。

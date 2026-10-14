@@ -1,0 +1,13 @@
+{
+ "schemaVersion":1,"studyId":"MRCS-STUDY1","stageId":"MRCS-S1-SUPPLY-2026-10-13-v1",
+ "sourcePolicy":"MRCS-FULL-TRACE-LATEST-MIXED-REPLY-v1","ruleRevision":"BAO-RULES-V0.2.0-TAKASIA-001",
+ "seedBlock":{"start":50513001,"end":50513064,"count":64},"maxCandidates":8,
+ "selection":{"maxPly":512,"minWidth":2,"maxWidth":4,"maxReplyWidth":8,"maxMicrostates":8192},
+ "closure":{"maxStates":5000,"maxEdges":64000,"maxDomainMs":60000,"maxMicrostates":8192},
+ "maxTotalMs":300000,"maxRssBytes":1073741824,"maxEvidenceBytes":134217728,"storageReserveBytes":8388608,
+ "rawByteBudgetScope":"COMPACT-EVIDENCE-JSON-PLUS-DEDUPLICATED-STATE-JOURNAL",
+ "checkpointSourcePlyInterval":32,"checkpointClosureEdgeInterval":128,
+ "priorReadIdentityCount":58532,"overlapPolicy":"AFTER-LATEST-ROOT-FREEZE-EXCLUDE-ROOT-AND-SCREEN-CHILDREN / NO-EARLIER-FALLBACK / EXCLUDE-PRIOR-CLOSURE / GROUP-WITHIN-STUDY-DOMAINS",
+ "samplingTarget":"FIXED-FINITE-DEVELOPMENT-CORPUS","iidAssumed":false,"confidenceInterval":false,"formalInference":false,
+ "publicAiModification":false,"resumeAuthorized":false,"sameBlockRerunAuthorized":false
+}

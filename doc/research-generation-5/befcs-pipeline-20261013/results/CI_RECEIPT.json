@@ -1,0 +1,187 @@
+{
+  "decision": "WORKER-HOST-PIPELINE-REAL-CGROUP-CI-PASS-SCIENTIFIC-RELEASE-PENDING",
+  "headCommit": "6f6b468ee591f21497413060d86fa88050206092",
+  "sourceTree": "3117efb5a3f8bf76c0e52369615d7ec01023fcca",
+  "runId": 38364682184,
+  "runAttempt": 1,
+  "runAttemptEvidence": "artifact-name-befcs-pipeline-38364682184-1",
+  "job": {
+    "id": 115186857259,
+    "name": "pipeline",
+    "status": "completed",
+    "conclusion": "success",
+    "run_id": 38364682184,
+    "logs_url": null,
+    "steps": [
+      {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1
+      },
+      {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2
+      },
+      {
+        "name": "Run actions/setup-node@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3
+      },
+      {
+        "name": "Refuse unfrozen science and test checkpoint ordering",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4
+      },
+      {
+        "name": "Verify fixed source and protected inputs before fixture generation",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5
+      },
+      {
+        "name": "Run seed-free host worker pipeline in real 1 GiB cgroups",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 6
+      },
+      {
+        "name": "Preserve stopped and completed technical registries",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 7
+      },
+      {
+        "name": "Post Run actions/setup-node@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 13
+      },
+      {
+        "name": "Post Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 14
+      },
+      {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 15
+      }
+    ]
+  },
+  "artifact": {
+    "id": 11796765815,
+    "name": "befcs-pipeline-38364682184-1",
+    "size_in_bytes": 5729790,
+    "url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11796765815",
+    "archive_download_url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11796765815/zip",
+    "expired": false,
+    "created_at": "2026-10-13T07:47:27Z",
+    "expires_at": "2027-01-11T07:45:13Z",
+    "updated_at": "2026-10-13T07:47:27Z",
+    "digest": "sha256:57de4333495c3ce08ad3a168570d677cac861340cbfa26b9ab8a52111c100ffb",
+    "workflow_run": {
+      "id": 38364682184,
+      "repository_id": 1295030808,
+      "head_repository_id": 1295030808,
+      "head_branch": "research/g5-befcs-pipeline-preflight",
+      "head_sha": "6f6b468ee591f21497413060d86fa88050206092"
+    }
+  },
+  "artifactArchiveSha256": "57de4333495c3ce08ad3a168570d677cac861340cbfa26b9ab8a52111c100ffb",
+  "archiveDigestVerified": true,
+  "independentSavedScenarioReplayCount": 9,
+  "allHeadPrRuns": [
+    {
+      "id": 38364682624,
+      "name": "G5 Compact BFS Fixture Integration",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38364682035,
+      "name": "G5-04 Supply Preflight",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38364682084,
+      "name": "G5-05 Supply Preflight",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38364682275,
+      "name": "RG5 Primary Readiness Review",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38364682320,
+      "name": "G5-01 Independent Transition Technical",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38364682057,
+      "name": "G5-01 Stage 0 Technical",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38364682027,
+      "name": "G5-03 Supply Preflight",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38364682112,
+      "name": "G5-02 Supply Preflight",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38364682181,
+      "name": "RG5 Reply Mode Source Design",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38364682195,
+      "name": "G5-01 Development Preflight",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38364682182,
+      "name": "G5 Science Method Technical Review",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38364682184,
+      "name": "G5 BEFCS Worker Host Pipeline",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "localRegressionAfterSeparatingPipelineLoad": {
+    "tests": 74,
+    "pass": 74,
+    "fail": 0,
+    "legacyTestBytesModified": false,
+    "previousFailureRecordsRetained": true
+  },
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false,
+  "scientificExecutionAuthorized": false,
+  "formalRelationRegistered": false,
+  "publicAiChanged": false
+}

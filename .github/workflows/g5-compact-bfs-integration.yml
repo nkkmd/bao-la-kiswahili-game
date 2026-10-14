@@ -1,0 +1,38 @@
+name: G5 Compact BFS Fixture Integration
+on:
+  push:
+    branches: [research/g5-compact-bfs-integration]
+    paths:
+      - 'tools/research/g5-compact-bfs/**'
+      - 'test/g5-compact-bfs.test.cjs'
+      - 'doc/research-generation-5/bfs-integration-20261013/**'
+      - '.github/workflows/g5-compact-bfs-integration.yml'
+  pull_request:
+    paths:
+      - 'tools/research/g5-compact-bfs/**'
+      - 'test/g5-compact-bfs.test.cjs'
+      - 'doc/research-generation-5/**'
+      - '.github/workflows/g5-compact-bfs-integration.yml'
+permissions:
+  contents: read
+jobs:
+  fixture-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Test independent BFS stop witnesses snapshots and journals
+        run: node --test test/g5-compact-bfs.test.cjs
+      - name: Replay fixed closures and saved evidence
+        run: node tools/research/g5-compact-bfs/run.cjs --check
+      - name: Verify bound results and workflow
+        run: |
+          python - <<'PY'
+          import json,pathlib,hashlib
+          p=pathlib.Path('doc/research-generation-5/bfs-integration-20261013/OUTPUT_BINDING.json')
+          for name,expected in json.loads(p.read_text())['files'].items():
+              assert hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest()==expected,name
+          PY

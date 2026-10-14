@@ -1,0 +1,7 @@
+"use strict";
+const fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process'),{hash}=require('../g5-befcs-workload/registry.cjs');
+const base=path.resolve(__dirname,'../../..'),directory='doc/research-generation-5/befcs-contained-20261013',old='doc/research-generation-5/befcs-envelope-20261013';
+function save(n,files){fs.writeFileSync(path.join(base,directory,n),JSON.stringify({evidenceClass:'TECHNICAL-CONTAINED-WORKLOAD-FIXTURE',scientificSeedsRead:0,scientificLeaseCreated:false,scientificStudyRegistered:false,files:Object.fromEntries([...new Set(files)].sort().map(p=>[p,hash(fs.readFileSync(path.join(base,p)))]))},null,2)+'\n');}
+if(process.argv[2]!=='--inputs')throw Error('INPUT-FREEZE-REQUIRED');
+save('PROTECTED_INPUTS.json',[...Object.keys(JSON.parse(fs.readFileSync(path.join(base,old,'PROTECTED_INPUTS.json'))).files),...cp.execFileSync('git',['ls-files',old],{cwd:base,encoding:'utf8'}).trim().split('\n'),...Object.keys(JSON.parse(fs.readFileSync(path.join(base,old,'SOURCE_MANIFEST.json'))).files)]);
+save('SOURCE_MANIFEST.json',[...fs.readdirSync(__dirname).map(n=>'tools/research/g5-befcs-contained/'+n),'test/g5-befcs-contained.test.cjs','.github/workflows/g5-befcs-contained-preflight.yml',directory+'/TECHNICAL_CONTRACT.md',directory+'/PROTECTED_INPUTS.json',...Object.keys(JSON.parse(fs.readFileSync(path.join(base,old,'SOURCE_MANIFEST.json'))).files)]);

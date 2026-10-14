@@ -1,0 +1,22 @@
+{
+  "priorResearchHead": "c4ce50e645ece9eee070b775d1114de430ef6f10",
+  "files": {
+    "tools/research/g5-source-design/core.cjs": "1666ccb897343a6d39fd5f21db20892a6ee6e9ec5aca5f537b5f578c1d95ea38",
+    "tools/research/g5-source-design/audit.cjs": "6b4d4a8af6dd37df29e4b50ef0f52c89b95ffbff1cd416335e155583badbe2e0",
+    "test/g5-source-design.test.cjs": "fe6145179afd9635bdb9f587fdc809da0ac81f4697d340cadc779f492af2df5b",
+    ".github/workflows/g5-reply-mode-source-design.yml": "0288a25b1db5704ff4a0348bec77847c22f0c1eb04520aec9621f836ea57adae",
+    "doc/research-generation-5/source-design-20261013/DESIGN_PROPOSAL.json": "ff1839b8d6c7621b12c6dd3501f45d8db492492e50fd70988b809a6ebeeab416",
+    "doc/research-generation-5/g5-02/results/EVIDENCE.json.gz": "82b408350441f9bbf405c3f0bf8ca72fac972affaff840ae3f215453f012e6df",
+    "doc/research-generation-5/g5-02/results/VERIFICATION.json": "6e1b9461255ccea0d2de0c8a24ef2d1960e9fc4122d6a7e52dec7a0db359f28c",
+    "doc/research-generation-5/g5-02/results/RESULT.json": "e5f09dd4c1fd0ff6149cc812e50f5d900c07ca6f60331baf9791916bda65290e",
+    "doc/research-generation-5/g5-03/results/EVIDENCE.json.gz": "87f4b057014f7ab7127ec7e4a17d2b00c9bdff128f090d64f6a1a0f383e16704",
+    "doc/research-generation-5/g5-03/results/VERIFICATION.json": "3174b32acf9c0d3235d2c4ec353192f895c34385162166e7269af581965e92a2",
+    "doc/research-generation-5/g5-03/results/RESULT.json": "46fa068830cc1091765cacbf8a9a15ef674e9ecc0bb8632fe8d177fa71e9383c",
+    "doc/research-generation-5/g5-04/results/EVIDENCE.json.gz": "5d7fd9566e6b2792748e3d91ef4156b1c0f33fa6b3c612a61f3153d514152112",
+    "doc/research-generation-5/g5-04/results/VERIFICATION.json": "ef9d3ed99463b3d96a3b460fd9eb0f6218f7c2fbe199ea352ff06c3c2096ac97",
+    "doc/research-generation-5/g5-04/results/RESULT.json": "610977974b3a8961e7a684e3529cbeaeec2552a2878355c8d4264557b97c29eb",
+    "doc/research-generation-5/readiness-review-20261012/SOURCE_MANIFEST.json": "d484eeb55c85464bdd4169650fee35c892b521a36a783ad2583ceed672dfa23a",
+    "doc/research-generation-5/readiness-review-20261012/results/RESULT.json": "e03710490d6ba799b16667b0cd9695953675a27cbaa7ca9ced5aa0080fc8973b",
+    "doc/research-generation-5/readiness-review-20261012/results/RESULT_BINDING.json": "03e0b290a1079f391b214418ce587e744f7ff09aec344f00ed11183d8717df0a"
+  }
+}

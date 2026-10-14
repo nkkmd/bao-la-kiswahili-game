@@ -1,0 +1,132 @@
+{
+  "decision": "LOCAL-REMOTE-GUARD-PIPELINE-PASS-REAL-GIT-CGROUP-PENDING",
+  "cases": [
+    {
+      "mode": "complete",
+      "fixtureSourceCount": 128,
+      "registryRef": "refs/heads/research/g5-remote-joined-1-a1-complete",
+      "registryHead": "0ab80881e0c47e1c65e0b5a13412b417fd6c3319",
+      "verified": {
+        "verified": true,
+        "commits": 146,
+        "leases": 1,
+        "logicalReadsMarked": 128,
+        "mirrors": 17,
+        "scientificSeedsRead": 0
+      },
+      "host": {
+        "execution": {
+          "code": 0,
+          "signal": null,
+          "status": "WORKER-COMPLETE",
+          "peakAggregateRssBytes": 428613632,
+          "maxProcesses": 1,
+          "ticks": 1053,
+          "mirrorError": null,
+          "stdout": "",
+          "stderr": ""
+        },
+        "worker": {
+          "evidenceClass": "TECHNICAL-PIPELINE-FIXTURE",
+          "status": "PIPELINE-COMPLETE",
+          "failure": null,
+          "read": 128,
+          "closures": 1,
+          "candidates": 1,
+          "workerComplete": true,
+          "interpretationComplete": false,
+          "finalMirrorRequired": true,
+          "solution": null,
+          "resumeAuthorized": false,
+          "scientificSeedsRead": 0,
+          "peakWorkerRssBytes": 427900928,
+          "usedBytesBeforeFinal": 17699419
+        },
+        "phases": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true
+        ],
+        "ackCount": 128,
+        "hostProtocolStatus": "FINISHED",
+        "finalMirrorSaved": true,
+        "technicalComplete": true,
+        "peakHostRssBytes": 234717184,
+        "elapsedHostMs": 33798.083899
+      },
+      "scientificSeedsRead": 0,
+      "remoteMirrorProof": {
+        "fullSources": 128,
+        "partialSources": 0,
+        "completeClosures": 1,
+        "partialProofs": [],
+        "sourceGenerationPerformed": false
+      }
+    },
+    {
+      "mode": "lost-response",
+      "fixtureSourceCount": 128,
+      "registryRef": "refs/heads/research/g5-remote-joined-1-a1-lost-response",
+      "registryHead": "2f4ea47dde34d6a75e82ee0717933c77f75bdcd8",
+      "verified": {
+        "verified": true,
+        "commits": 2,
+        "leases": 1,
+        "logicalReadsMarked": 1,
+        "mirrors": 0,
+        "scientificSeedsRead": 0
+      },
+      "host": {
+        "execution": {
+          "code": null,
+          "signal": "SIGTERM",
+          "status": "MIRROR-FAILURE",
+          "solution": null,
+          "peakAggregateRssBytes": 413913088,
+          "maxProcesses": 1,
+          "ticks": 39,
+          "mirrorError": "REMOTE-WRITES-LOCKED-NO-RETRY\n\ntrue !== false\n",
+          "stdout": "",
+          "stderr": ""
+        },
+        "worker": null,
+        "phases": [],
+        "ackCount": 0,
+        "hostProtocolStatus": "STOPPED",
+        "finalMirrorSaved": false,
+        "technicalComplete": false,
+        "peakHostRssBytes": 387010560,
+        "elapsedHostMs": 922.1251790000024
+      },
+      "scientificSeedsRead": 0,
+      "remoteMirrorProof": {
+        "fullSources": 0,
+        "partialSources": 0,
+        "completeClosures": 0,
+        "partialProofs": [],
+        "sourceGenerationPerformed": false
+      }
+    }
+  ],
+  "evidenceSha256": "095697bf18d3bd294a7f0305e08b0a666c7ade94a93dfb9c3d6fa503de718c7b",
+  "sourceManifestSha256": "d7b33e5ae911d6d3702bf7da419e80d27f05a4dc32215a654be8543e5aaa9ccf",
+  "authenticatedTransportUsed": false,
+  "kernelResourcesTested": false,
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false
+}

@@ -1,0 +1,8 @@
+{
+  "decision": "INDEPENDENT-TECHNICAL-PASS",
+  "coreSha256": "cb8d2651a40b3576cf5d98a08bd7a7bbcbef7a731af729fdf4d617dc13834ed0",
+  "searchRows": 8,
+  "semanticCases": 9,
+  "baoTransitionIndependence": false,
+  "scientificInference": false
+}

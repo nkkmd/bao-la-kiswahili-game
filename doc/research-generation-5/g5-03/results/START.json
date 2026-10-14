@@ -1,0 +1,27 @@
+{
+  "triggerCommit": "a8fe4d6135eedb55b3bf81d6dfbbbe12e36de74a",
+  "sourceCommit": "a8fe4d6135eedb55b3bf81d6dfbbbe12e36de74a",
+  "runId": "38239145152",
+  "runAttempt": "1",
+  "node": "v24.21.0",
+  "lease": {
+    "schemaVersion": 1,
+    "studyId": "BTCS-STUDY1",
+    "stageId": "BTCS-S1-SUPPLY-2026-10-12-v1",
+    "binding": "4f7b482405ed789ce543bf4f252374fd30825003f6221e6de9429ecddd298bae",
+    "seedBlock": {
+      "start": 50312001,
+      "end": 50312064,
+      "count": 64
+    },
+    "runId": 38239145152,
+    "runAttempt": 1,
+    "triggerCommit": "a8fe4d6135eedb55b3bf81d6dfbbbe12e36de74a",
+    "frozenSourceCommit": "8eb7e46b0fd5ce38d69f0c0579bf3d622fd2654a",
+    "acquiredBeforeFreshSeedRead": true,
+    "status": "CONSUMED-BLOCK / NO-RERUN",
+    "leaseCommit": "1805d213742cccb12b64c8efff91648bdb99e44e"
+  },
+  "binding": "4f7b482405ed789ce543bf4f252374fd30825003f6221e6de9429ecddd298bae",
+  "startedAt": "2026-10-12T10:53:48.213Z"
+}

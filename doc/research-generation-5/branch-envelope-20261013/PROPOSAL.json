@@ -1,0 +1,38 @@
+{
+  "status": "PROPOSAL-NOT-REGISTRATION-NOT-EXECUTED",
+  "proposedStudyId": "BEFCS-STUDY1",
+  "proposedStageId": "BEFCS-S1-SUPPLY-2026-10-13-v1",
+  "ruleRevision": "BAO-RULES-V0.2.0-TAKASIA-001",
+  "proposedSeedBlock": { "start": 50613001, "end": 50613128, "count": 128, "reserved": false, "consumed": false },
+  "sourceMovePolicy": "canonical-moveKey-order/xorshift32/rejection-sampling-v1",
+  "trajectory": { "maxPly": 512, "minCandidatePly": 48, "terminal": "natural-or-censored" },
+  "selection": {
+    "rootPhase": "mtaji",
+    "rootWinner": null,
+    "bothReserveZero": true,
+    "minRootWidth": 2,
+    "maxRootWidth": 4,
+    "minReplyWidth": 1,
+    "maxReplyWidth": 8,
+    "maxAggregateReplyWidth": 16,
+    "allChildrenNonterminal": true,
+    "requiredReplyModes": ["capture-only", "takata-only"],
+    "representative": "FIRST-ELIGIBLE-PER-TRAJECTORY",
+    "candidateCount": 8,
+    "replacementAllowed": false,
+    "usesWinnerValueOrDTF": false
+  },
+  "readFirewall": {
+    "conservativeCombinedBaoRawIdentities": 103355,
+    "checkRoot": true,
+    "checkRootChildren": true,
+    "checkScreenReplies": true,
+    "checkEveryClosureRaw": true,
+    "pathOverlapAloneExcludesTrajectory": false,
+    "fallbackAfterFirewallHit": false,
+    "abstractFixtureAsBaoEvidence": false
+  },
+  "closure": { "maxStates": 10000, "maxEdges": 128000, "maxDomainMs": 180000, "maxMicrostatesPerMove": 8192, "completeOnlySolver": true },
+  "resources": { "maxTotalMs": 1200000, "maxRssBytes": 1073741824, "maxEvidenceBytes": 268435456, "storageReserveBytes": 16777216, "maxRepositoryBundleGzipBytes": 268435456, "maxBlobChunkBytes": 50331648, "maxBlobChunks": 6, "checkpointSourcePlyInterval": 32, "checkpointClosureEdgeInterval": 128 },
+  "scope": { "fixedFiniteDevelopmentCorpus": true, "iidAssumed": false, "formalRelationRegistered": false, "formalInference": false, "publicAiModification": false, "oldG505CandidateExtension": false, "freshScientificSeedsConsumed": 0, "executionAuthorized": false, "leaseCreated": false }
+}

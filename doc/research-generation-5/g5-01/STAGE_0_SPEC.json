@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "agendaId": "G5-01",
+  "studyId": "RRSVL-STUDY1",
+  "stageId": "RRSVL-S0-TECHNICAL-2026-10-12-v1",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "ruleRevision": "BAO-RULES-V0.2.0-TAKASIA-001",
+  "rawFields": [
+    "pits",
+    "reserve",
+    "houseOwned",
+    "player",
+    "phase",
+    "winner",
+    "pending",
+    "takasia"
+  ],
+  "fixtures": [
+    "INITIAL",
+    "E30",
+    "E30-SEAT-SWAP",
+    "KNOWN-HOUSE-CHOICE"
+  ],
+  "depths": [
+    1,
+    2
+  ],
+  "evaluator": "public/logic-evaluator.js / BaoLogicGate.evaluate",
+  "searchType": "RESEARCH-FULL-ROOT-RANKING / NO-QUIESCENCE / NO-WALLCLOCK",
+  "maxNodesPerSearch": 50000,
+  "maxSyntheticGraphNodes": 10,
+  "maxElapsedMs": 120000,
+  "maxRssBytes": 536870912,
+  "maxResultBytes": 2097152,
+  "freshScientificEvidenceAccess": false,
+  "formalInference": false,
+  "publicAiModification": false,
+  "scientificSeeds": null,
+  "formalPopulation": null,
+  "formalThresholds": null,
+  "stage1Execution": "NOT-AUTHORIZED-NOT-EXECUTED"
+}

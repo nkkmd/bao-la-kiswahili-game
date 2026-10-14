@@ -1,0 +1,322 @@
+{
+  "decision": "SAVED-WORKLOAD-INTEGRATION-PASS-SCIENCE-GATES-PENDING",
+  "sourceManifestSha256": "fdc56f3a2c0731c4c018645f5146b26e32670fd742a373b61b3236477b687d33",
+  "scenarios": [
+    {
+      "mode": "complete",
+      "registry": {
+        "verified": true,
+        "commits": 149,
+        "leases": 1,
+        "logicalReadsMarked": 128,
+        "mirrors": 20,
+        "scientificSeedsRead": 0
+      },
+      "worker": {
+        "evidenceClass": "TECHNICAL-SAVED-WORKLOAD",
+        "status": "WORKLOAD-COMPLETE",
+        "read": 128,
+        "closures": 8,
+        "interpretationComplete": true,
+        "scientificSeedsRead": 0,
+        "scientificLeaseCreated": false,
+        "scientificStudyRegistered": false,
+        "solution": null,
+        "usedBytes": 10195484,
+        "peakBytes": 10195484,
+        "peakWorkerRssBytes": 352010240,
+        "resumeAuthorized": false
+      },
+      "executionStatus": "WORKER-COMPLETE",
+      "phases": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "controlBytes": 20993,
+      "peakHostRssBytes": 369737728
+    },
+    {
+      "mode": "kill-after-prefix",
+      "registry": {
+        "verified": true,
+        "commits": 4,
+        "leases": 1,
+        "logicalReadsMarked": 1,
+        "mirrors": 2,
+        "scientificSeedsRead": 0
+      },
+      "worker": null,
+      "executionStatus": "GLOBAL-TIME-LIMIT",
+      "phases": [
+        false,
+        true
+      ],
+      "controlBytes": 250,
+      "peakHostRssBytes": 369737728
+    },
+    {
+      "mode": "mirror-failure",
+      "registry": {
+        "verified": true,
+        "commits": 11,
+        "leases": 1,
+        "logicalReadsMarked": 8,
+        "mirrors": 2,
+        "scientificSeedsRead": 0
+      },
+      "worker": null,
+      "executionStatus": "MIRROR-FAILURE",
+      "phases": [
+        false,
+        true
+      ],
+      "controlBytes": 1377,
+      "peakHostRssBytes": 369737728
+    },
+    {
+      "mode": "insufficient-source-budget",
+      "registry": {
+        "verified": true,
+        "commits": 3,
+        "leases": 1,
+        "logicalReadsMarked": 0,
+        "mirrors": 2,
+        "scientificSeedsRead": 0
+      },
+      "worker": {
+        "evidenceClass": "TECHNICAL-SAVED-WORKLOAD",
+        "status": "GLOBAL-EVIDENCE-RESERVE-LIMIT",
+        "read": 0,
+        "closures": 0,
+        "interpretationComplete": false,
+        "scientificSeedsRead": 0,
+        "scientificLeaseCreated": false,
+        "scientificStudyRegistered": false,
+        "solution": null,
+        "usedBytes": 333,
+        "peakBytes": 1024,
+        "peakWorkerRssBytes": 350699520,
+        "resumeAuthorized": false
+      },
+      "executionStatus": "WORKER-COMPLETE",
+      "phases": [
+        false,
+        true
+      ],
+      "controlBytes": 0,
+      "peakHostRssBytes": 369737728
+    },
+    {
+      "mode": "insufficient-domain-budget",
+      "registry": {
+        "verified": true,
+        "commits": 149,
+        "leases": 1,
+        "logicalReadsMarked": 128,
+        "mirrors": 20,
+        "scientificSeedsRead": 0
+      },
+      "worker": {
+        "evidenceClass": "TECHNICAL-SAVED-WORKLOAD",
+        "status": "GLOBAL-EVIDENCE-RESERVE-LIMIT",
+        "read": 128,
+        "closures": 0,
+        "interpretationComplete": false,
+        "scientificSeedsRead": 0,
+        "scientificLeaseCreated": false,
+        "scientificStudyRegistered": false,
+        "solution": null,
+        "usedBytes": 10077993,
+        "peakBytes": 10077993,
+        "peakWorkerRssBytes": 351162368,
+        "resumeAuthorized": false
+      },
+      "executionStatus": "WORKER-COMPLETE",
+      "phases": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "controlBytes": 20993,
+      "peakHostRssBytes": 369737728
+    },
+    {
+      "mode": "global-time",
+      "registry": {
+        "verified": true,
+        "commits": 19,
+        "leases": 1,
+        "logicalReadsMarked": 15,
+        "mirrors": 3,
+        "scientificSeedsRead": 0
+      },
+      "worker": {
+        "evidenceClass": "TECHNICAL-SAVED-WORKLOAD",
+        "status": "GLOBAL-TIME-LIMIT",
+        "read": 15,
+        "closures": 0,
+        "interpretationComplete": false,
+        "scientificSeedsRead": 0,
+        "scientificLeaseCreated": false,
+        "scientificStudyRegistered": false,
+        "solution": null,
+        "usedBytes": 1078139,
+        "peakBytes": 1078139,
+        "peakWorkerRssBytes": 334655488,
+        "resumeAuthorized": false
+      },
+      "executionStatus": "WORKER-COMPLETE",
+      "phases": [
+        false,
+        false,
+        true
+      ],
+      "controlBytes": 2516,
+      "peakHostRssBytes": 369737728
+    },
+    {
+      "mode": "domain-time",
+      "registry": {
+        "verified": true,
+        "commits": 149,
+        "leases": 1,
+        "logicalReadsMarked": 128,
+        "mirrors": 20,
+        "scientificSeedsRead": 0
+      },
+      "worker": {
+        "evidenceClass": "TECHNICAL-SAVED-WORKLOAD",
+        "status": "DOMAIN-TIME-LIMIT",
+        "read": 128,
+        "closures": 0,
+        "interpretationComplete": false,
+        "scientificSeedsRead": 0,
+        "scientificLeaseCreated": false,
+        "scientificStudyRegistered": false,
+        "solution": null,
+        "usedBytes": 10081794,
+        "peakBytes": 10081794,
+        "peakWorkerRssBytes": 350482432,
+        "resumeAuthorized": false
+      },
+      "executionStatus": "WORKER-COMPLETE",
+      "phases": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "controlBytes": 20993,
+      "peakHostRssBytes": 369737728
+    },
+    {
+      "mode": "insufficient-domain-time",
+      "registry": {
+        "verified": true,
+        "commits": 149,
+        "leases": 1,
+        "logicalReadsMarked": 128,
+        "mirrors": 20,
+        "scientificSeedsRead": 0
+      },
+      "worker": {
+        "evidenceClass": "TECHNICAL-SAVED-WORKLOAD",
+        "status": "INSUFFICIENT-DOMAIN-TIME-BUDGET",
+        "read": 128,
+        "closures": 0,
+        "interpretationComplete": false,
+        "scientificSeedsRead": 0,
+        "scientificLeaseCreated": false,
+        "scientificStudyRegistered": false,
+        "solution": null,
+        "usedBytes": 10077995,
+        "peakBytes": 10077995,
+        "peakWorkerRssBytes": 339427328,
+        "resumeAuthorized": false
+      },
+      "executionStatus": "WORKER-COMPLETE",
+      "phases": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "controlBytes": 20993,
+      "peakHostRssBytes": 369737728
+    }
+  ],
+  "evidenceSha256": "7a1a8374556addc57211a5191d227a94c4bfebc7368f62c32efd9719396f656b",
+  "scientificSeedsRead": 0,
+  "scientificStudyRegistered": false,
+  "scientificLeaseCreated": false,
+  "conservativeReadIdentities": 103355,
+  "formalRelationRegistered": false,
+  "publicAiChanged": false
+}

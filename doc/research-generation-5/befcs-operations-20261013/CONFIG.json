@@ -1,0 +1,25 @@
+{
+  "technicalId": "BEFCS-OPS-PREFLIGHT-2026-10-13-v1",
+  "evidenceClass": "TECHNICAL-OPERATIONS-FIXTURE",
+  "logicalIdBlock": {
+    "start": 1,
+    "count": 128,
+    "isScientificSeedBlock": false
+  },
+  "supervisionLimits": {
+    "maxTotalMs": 900,
+    "maxRssBytes": 1073741824,
+    "pollMs": 20,
+    "mirrorEveryTicks": 4,
+    "killGraceMs": 50
+  },
+  "captureMaxBytes": 8388608,
+  "mirrorLimits": {
+    "chunkBytes": 65536,
+    "maxStoredBytes": 268435456
+  },
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false,
+  "newBaoRawObserved": 0,
+  "conservativeReadIdentities": 103355
+}

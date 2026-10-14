@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "sourceHead": "55ccd6d62258a3f4289f1ff428c90a0a4502451b",
+  "sourceTree": "811ea5630f071d68c1c7ff3f5cf49d266b0c53cb",
+  "runId": 38410462042,
+  "jobId": 115341127054,
+  "status": "COMPLETED_SUCCESS",
+  "evidenceClass": "TECHNICAL-JOINED-WORKLOAD-FIXTURE",
+  "scientificSeedsRead": 0,
+  "sourceManifestSha256": "b3796f515e1672fd0e97d09dce856698f0cc677c85576295f1ab23ec09732086",
+  "artifactId": 11821731603,
+  "artifactSha256": "74ef15c6c58175d267a81e8d83cb0487131bd962b012bacff481b3ae9486b393",
+  "receipt": "CI_RECEIPT_V1.json"
+}

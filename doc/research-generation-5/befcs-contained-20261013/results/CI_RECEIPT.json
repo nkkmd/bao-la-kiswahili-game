@@ -1,0 +1,300 @@
+{
+  "decision": "CONTAINED-WORKLOAD-PHYSICAL-QUOTA-AND-EXTERNAL-STOP-CI-PASS-SCIENTIFIC-DEPLOYMENT-PENDING",
+  "headCommit": "4c4c9dcaa106a983ac661c58a499a063a7b75a2e",
+  "sourceTree": "08ed122fe4e7c93310cc6a33ae4740935897a771",
+  "runId": 38387080147,
+  "runAttempt": 1,
+  "runAttemptEvidence": "artifact-name-befcs-contained-38387080147-1",
+  "job": {
+    "id": 115261406627,
+    "name": "contained",
+    "status": "completed",
+    "conclusion": "success",
+    "run_id": 38387080147,
+    "logs_url": null,
+    "steps": [
+      {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 1
+      },
+      {
+        "name": "Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 2
+      },
+      {
+        "name": "Run actions/setup-node@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 3
+      },
+      {
+        "name": "Refuse science and validate specific cgroup boundaries",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 4
+      },
+      {
+        "name": "Verify frozen inputs",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 5
+      },
+      {
+        "name": "Prepare fixed tool image before case timing",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 6
+      },
+      {
+        "name": "Run common workload in real cgroup and physical quota",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 7
+      },
+      {
+        "name": "Keep stopped registry prefixes and quota archives",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 8
+      },
+      {
+        "name": "Post Run actions/setup-node@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 15
+      },
+      {
+        "name": "Post Run actions/checkout@v4",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 16
+      },
+      {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "number": 17
+      }
+    ]
+  },
+  "artifact": {
+    "id": 11806871986,
+    "name": "befcs-contained-38387080147-1",
+    "size_in_bytes": 27495785,
+    "url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11806871986",
+    "archive_download_url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11806871986/zip",
+    "expired": false,
+    "created_at": "2026-10-13T11:02:21Z",
+    "expires_at": "2027-01-11T10:59:08Z",
+    "updated_at": "2026-10-13T11:02:21Z",
+    "digest": "sha256:542c9dbf6aa86f68263d5fb2981f15cc02fff907a68cccccd8d9bcc2a2fb71eb",
+    "workflow_run": {
+      "id": 38387080147,
+      "repository_id": 1295030808,
+      "head_repository_id": 1295030808,
+      "head_branch": "research/g5-befcs-contained-preflight",
+      "head_sha": "4c4c9dcaa106a983ac661c58a499a063a7b75a2e"
+    }
+  },
+  "archiveSha256": "542c9dbf6aa86f68263d5fb2981f15cc02fff907a68cccccd8d9bcc2a2fb71eb",
+  "archiveDigestVerified": true,
+  "downloadedFiles": 93,
+  "independentSavedGitReplays": 7,
+  "rawImagesVerified": 7,
+  "recoveredImageEvidenceFiles": 1229,
+  "imageVerification": {
+    "verification": [
+      {
+        "mode": "complete",
+        "evidenceFiles": 519,
+        "journals": 387,
+        "journalSteps": 6784,
+        "fullSourceCheckpoints": 128,
+        "partialCheckpoints": 0,
+        "partialSourceVerification": null,
+        "completeAbstractClosures": 1,
+        "verified": true,
+        "scientificSeedsRead": 0
+      },
+      {
+        "mode": "host-oom",
+        "evidenceFiles": 5,
+        "journals": 4,
+        "journalSteps": 53,
+        "fullSourceCheckpoints": 1,
+        "partialCheckpoints": 0,
+        "partialSourceVerification": null,
+        "completeAbstractClosures": 0,
+        "verified": true,
+        "scientificSeedsRead": 0
+      },
+      {
+        "mode": "disk-full",
+        "evidenceFiles": 5,
+        "journals": 4,
+        "journalSteps": 53,
+        "fullSourceCheckpoints": 1,
+        "partialCheckpoints": 0,
+        "partialSourceVerification": null,
+        "completeAbstractClosures": 0,
+        "verified": true,
+        "scientificSeedsRead": 0
+      },
+      {
+        "mode": "deadline",
+        "evidenceFiles": 87,
+        "journals": 66,
+        "journalSteps": 1113,
+        "fullSourceCheckpoints": 21,
+        "partialCheckpoints": 0,
+        "partialSourceVerification": null,
+        "completeAbstractClosures": 0,
+        "verified": true,
+        "scientificSeedsRead": 0
+      },
+      {
+        "mode": "observer-timeout",
+        "evidenceFiles": 89,
+        "journals": 67,
+        "journalSteps": 1154,
+        "fullSourceCheckpoints": 21,
+        "partialCheckpoints": 1,
+        "partialSourceVerification": "PREFIX-ONLY-NOT-FULL",
+        "completeAbstractClosures": 0,
+        "verified": true,
+        "scientificSeedsRead": 0
+      },
+      {
+        "mode": "detached",
+        "evidenceFiles": 5,
+        "journals": 4,
+        "journalSteps": 53,
+        "fullSourceCheckpoints": 1,
+        "partialCheckpoints": 0,
+        "partialSourceVerification": null,
+        "completeAbstractClosures": 0,
+        "verified": true,
+        "scientificSeedsRead": 0
+      },
+      {
+        "mode": "final-mirror-failure",
+        "evidenceFiles": 519,
+        "journals": 387,
+        "journalSteps": 6784,
+        "fullSourceCheckpoints": 128,
+        "partialCheckpoints": 0,
+        "partialSourceVerification": null,
+        "completeAbstractClosures": 1,
+        "verified": true,
+        "scientificSeedsRead": 0
+      }
+    ],
+    "evidenceSha256": "3432f91546e08f48beb5fca9658d830cd1cfaafcf439d99aeae66ac8efd3843f",
+    "files": 1229,
+    "compressedBytes": 149817,
+    "uniqueObjects": 320
+  },
+  "partialCheckpoint": {
+    "count": 1,
+    "stop": null,
+    "candidate": null,
+    "selectionStatus": null,
+    "scope": "PREFIX-ONLY-NOT-FULL",
+    "checkpointTraceSteps": 32,
+    "additionalSavedJournalStepsVerifiedWithoutContinuation": 9,
+    "originalBytesModified": false,
+    "completeSourceVerifierErrorPreserved": "TypeError: source.stop is null at independent-source.cjs startsWith",
+    "fullSourceInterpretationAuthorized": false
+  },
+  "postRetrievalVerifierPath": "doc/research-generation-5/befcs-contained-20261013/results/VERIFY_IMAGE.cjs",
+  "postRetrievalVerifierBinding": "CI_OUTPUT_BINDING.json",
+  "executionSourceManifestRebound": false,
+  "postRetrievalTamperAndNoContinuationChecksPassed": true,
+  "tests": 20,
+  "pass": 20,
+  "fail": 0,
+  "allHeadPrRuns": [
+    {
+      "id": 38387080353,
+      "name": "G5-01 Stage 0 Technical",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38387080073,
+      "name": "G5-01 Development Preflight",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38387080269,
+      "name": "G5-05 Supply Preflight",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38387079890,
+      "name": "G5-02 Supply Preflight",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38387079850,
+      "name": "G5-04 Supply Preflight",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38387080285,
+      "name": "G5 Science Method Technical Review",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38387079767,
+      "name": "G5-01 Independent Transition Technical",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38387079887,
+      "name": "G5-03 Supply Preflight",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38387080402,
+      "name": "RG5 Reply Mode Source Design",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38387080195,
+      "name": "RG5 Primary Readiness Review",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38387079984,
+      "name": "G5 Compact BFS Fixture Integration",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 38387080147,
+      "name": "G5 BEFCS Contained Workload",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false,
+  "scientificExecutionAuthorized": false,
+  "formalRelationRegistered": false,
+  "publicAiChanged": false
+}

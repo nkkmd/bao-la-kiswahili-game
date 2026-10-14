@@ -1,0 +1,118 @@
+{
+  "version": 2,
+  "verifiedSavedEvidence": true,
+  "fixturePassed": false,
+  "mode": "proxy-final-mirror",
+  "runId": "38474301794",
+  "registryHead": "522a10fc9731ffb677bbfe5a3e4bcc36a61fb791",
+  "registryRef": "refs/heads/research/g5-remote-joined-38474301794-a1-proxy-final-mirror",
+  "registryBlobSha": "aba1cd42c3bd0d84033a55aa21661db02505cef1",
+  "registry": {
+    "verified": true,
+    "commits": 66,
+    "leases": 1,
+    "logicalReadsMarked": 44,
+    "mirrors": 21,
+    "scientificSeedsRead": 0
+  },
+  "ackCount": 44,
+  "unacknowledgedMarkers": 0,
+  "remoteProof": {
+    "fullSources": 41,
+    "partialSources": 1,
+    "completeClosures": 0,
+    "partialProofs": [
+      {
+        "dir": "source-041",
+        "verified": true,
+        "scope": "SAVED-PREFIX-ONLY-NOT-FULL",
+        "savedSteps": 7,
+        "savedScreens": 0,
+        "checkpointPly": null,
+        "checkpointScreens": null,
+        "journals": {
+          "source": {
+            "bytes": 6277,
+            "prefixBytes": 6277,
+            "tailBytes": 0,
+            "sha256": "cccc139f314d5373d063f511e01b60e6a2fc1b02cbaa56f029c10399bdfe8805",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 8
+          },
+          "receipt": {
+            "bytes": 389,
+            "prefixBytes": 389,
+            "tailBytes": 0,
+            "sha256": "f1a9247d3bc276caaba37b4d5770ff5453d4de462d9e0ae7d0d262eb33c9186e",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 1
+          },
+          "reads": {
+            "bytes": 2996,
+            "prefixBytes": 2996,
+            "tailBytes": 0,
+            "sha256": "5cad77b55bf3881a663805cd02d939f1579959aab6ec85c6345e2dc95341aca9",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 8
+          }
+        },
+        "savedReadCoverageVerified": true,
+        "sourceComplete": false,
+        "fullSourceVerified": false,
+        "candidate": null,
+        "solution": null,
+        "resumeAuthorized": false,
+        "scientificSeedGenerationPerformed": false
+      }
+    ],
+    "sourceGenerationPerformed": false
+  },
+  "localProof": {
+    "fullSources": 44,
+    "partialSources": 0,
+    "completeClosures": 0,
+    "partialProofs": [],
+    "sourceGenerationPerformed": false
+  },
+  "parentPeak": 398643200,
+  "resultPresent": false,
+  "serviceError": {
+    "message": "Expected values to be strictly equal:\n\n44 !== 128\n",
+    "scientificSeedsRead": 0
+  },
+  "guard": {
+    "locked": true,
+    "reason": "Command failed: git push --porcelain --force-with-lease=refs/heads/research/g5-remote-joined-38474301794-a1-proxy-final-mirror:522a10fc9731ffb677bbfe5a3e4bcc36a61fb791 https://github.com/nkkmd/bao-la-kiswahili-game.git 8c75996c38c4dd65f193adfccdb19f019718faca:refs/heads/research/g5-remote-joined-38474301794-a1-proxy-final-mirror\nremote: fatal error in commit_refs        \nerror: failed to push some refs to 'https://github.com/nkkmd/bao-la-kiswahili-game.git'\n",
+    "consumesAcknowledged": 44,
+    "mirrorsSucceeded": 21
+  },
+  "finalMirrorSaved": false,
+  "technicalComplete": false,
+  "completedRecordPresent": false,
+  "completionClaimAuthorized": false,
+  "stops": {
+    "records": [
+      {
+        "target": "work",
+        "atMs": 1019014.6338760001,
+        "reason": "ORDINARY-EARLY-STOP"
+      },
+      {
+        "target": "work",
+        "atMs": 1199014.376987,
+        "reason": "TOTAL-EARLY-STOP"
+      },
+      {
+        "target": "control",
+        "atMs": 1199014.444463,
+        "reason": "TOTAL-EARLY-STOP"
+      }
+    ],
+    "elapsedFromServiceMs": 1199014.45909,
+    "scientificSeedsRead": 0
+  },
+  "sourceGenerationPerformed": false,
+  "scientificSeedsRead": 0,
+  "resumeAuthorized": false,
+  "solution": null
+}

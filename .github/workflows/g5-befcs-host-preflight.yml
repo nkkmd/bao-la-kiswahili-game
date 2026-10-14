@@ -1,0 +1,44 @@
+name: G5 BEFCS Seed-free Host Protocol
+on:
+  push:
+    branches: [research/g5-befcs-host-preflight]
+    paths:
+      - 'tools/research/g5-befcs-host/**'
+      - 'test/g5-befcs-host.test.cjs'
+      - 'doc/research-generation-5/befcs-host-20261013/**'
+      - '.github/workflows/g5-befcs-host-preflight.yml'
+  pull_request:
+    paths:
+      - 'tools/research/g5-befcs-host/**'
+      - 'test/g5-befcs-host.test.cjs'
+      - 'doc/research-generation-5/befcs-host-20261013/**'
+      - '.github/workflows/g5-befcs-host-preflight.yml'
+permissions:
+  contents: read
+jobs:
+  host-protocol:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        # 凍結済みfixtureの入力を当時のコミットで検算する。現在のtreeはcheckpoint CIで検査する。
+        with:
+          ref: 966ca5e14c3be1e5243d9c0a358a71668924cd88
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Test seed-free host failure ordering and refuse unfrozen science
+        run: node --test test/g5-befcs-host.test.cjs
+      - name: Verify frozen host and protected inputs with saved Git prefixes
+        run: node tools/research/g5-befcs-host/run.cjs --check
+      - name: Verify preceding saved workload bindings
+        run: node tools/research/g5-befcs-workload/binding.cjs
+      - name: Preserve fixed seed-free protocol proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: befcs-host-${{ github.run_id }}-${{ github.run_attempt }}
+          path: doc/research-generation-5/befcs-host-20261013/results/
+          retention-days: 90
+          if-no-files-found: error

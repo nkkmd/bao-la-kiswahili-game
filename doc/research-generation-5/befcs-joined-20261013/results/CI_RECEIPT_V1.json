@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "sourceHead": "55ccd6d62258a3f4289f1ff428c90a0a4502451b",
+  "sourceTree": "811ea5630f071d68c1c7ff3f5cf49d266b0c53cb",
+  "runId": 38410462042,
+  "jobId": 115341127054,
+  "jobConclusion": "success",
+  "workflowConclusion": "success",
+  "pullRequestChecks": {
+    "uniqueWorkflows": 12,
+    "successfulRuns": 12
+  },
+  "artifact": {
+    "id": 11821731603,
+    "name": "befcs-joined-38410462042-1",
+    "bytes": 36950365,
+    "sha256": "74ef15c6c58175d267a81e8d83cb0487131bd962b012bacff481b3ae9486b393",
+    "expiresAt": "2027-01-11T14:06:00Z",
+    "zipEntryCount": 2872,
+    "uncompressedBytes": 80276403,
+    "fileHashes": "CI_FILE_HASHES_V1.json.gz"
+  },
+  "evidenceClass": "TECHNICAL-JOINED-WORKLOAD-FIXTURE",
+  "decision": "JOINED-128-SOURCE-CGROUP-TECHNICAL-PASS-SCIENTIFIC-RELEASE-PENDING",
+  "sourceManifestSha256": "b3796f515e1672fd0e97d09dce856698f0cc677c85576295f1ab23ec09732086",
+  "resultManifestSha256": "b3796f515e1672fd0e97d09dce856698f0cc677c85576295f1ab23ec09732086",
+  "technicalEvidenceSha256": "c33af7d372ca903eeeea29c09c3b2774317bad2179a9e7605ffc134c32fec46e",
+  "technicalEvidenceComputedSha256": "c33af7d372ca903eeeea29c09c3b2774317bad2179a9e7605ffc134c32fec46e",
+  "technicalEvidenceHashMatches": true,
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false,
+  "scenarios": [
+    {
+      "mode": "complete",
+      "ackCount": 128,
+      "unacknowledgedMarkers": 0,
+      "technicalComplete": true,
+      "fullSavedMirrorReplayPassed": true,
+      "finalMirrorSaved": true,
+      "elapsedHostMs": 157060.667978,
+      "parentPeakBytes": 640196608,
+      "workPeakBytes": 242950144,
+      "controlPeakBytes": 384057344,
+      "watchRecords": [],
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false,
+      "completionWithinDeadline": null,
+      "forensicPreservationAfterDeadline": null
+    },
+    {
+      "mode": "host-oom",
+      "ackCount": 1,
+      "unacknowledgedMarkers": 0,
+      "technicalComplete": false,
+      "fullSavedMirrorReplayPassed": true,
+      "finalMirrorSaved": true,
+      "elapsedHostMs": null,
+      "parentPeakBytes": 659865600,
+      "workPeakBytes": 242778112,
+      "controlPeakBytes": 469762048,
+      "watchRecords": [
+        {
+          "target": "work",
+          "atMs": 1614.296831,
+          "reason": "HOST-OOM-NO-RESUME"
+        }
+      ],
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false,
+      "completionWithinDeadline": null,
+      "forensicPreservationAfterDeadline": null
+    },
+    {
+      "mode": "deadline",
+      "ackCount": 5,
+      "unacknowledgedMarkers": 0,
+      "technicalComplete": false,
+      "fullSavedMirrorReplayPassed": false,
+      "finalMirrorSaved": false,
+      "elapsedHostMs": 3804.163946,
+      "parentPeakBytes": 305328128,
+      "workPeakBytes": 241405952,
+      "controlPeakBytes": 46878720,
+      "watchRecords": [
+        {
+          "target": "work",
+          "atMs": 4013.3919189999997,
+          "reason": "ORDINARY-EARLY-STOP"
+        },
+        {
+          "target": "work",
+          "atMs": 14012.674586000001,
+          "reason": "TOTAL-EARLY-STOP"
+        },
+        {
+          "target": "control",
+          "atMs": 14012.723138000001,
+          "reason": "TOTAL-EARLY-STOP"
+        }
+      ],
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false,
+      "completionWithinDeadline": false,
+      "forensicPreservationAfterDeadline": true
+    },
+    {
+      "mode": "final-mirror-failure",
+      "ackCount": 128,
+      "unacknowledgedMarkers": 0,
+      "technicalComplete": false,
+      "fullSavedMirrorReplayPassed": true,
+      "finalMirrorSaved": false,
+      "elapsedHostMs": 167547.804305,
+      "parentPeakBytes": 479301632,
+      "workPeakBytes": 242905088,
+      "controlPeakBytes": 229888000,
+      "watchRecords": [],
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false,
+      "completionWithinDeadline": null,
+      "forensicPreservationAfterDeadline": null
+    }
+  ],
+  "pushWorkflowRun": "success"
+}

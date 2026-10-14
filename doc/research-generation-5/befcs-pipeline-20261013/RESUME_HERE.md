@@ -1,0 +1,11 @@
+# workerとhost結合の再開位置
+
+新pipelineの入力・保護入力と[CI確定](CI_CONFIRMATION.md)・CI出力bindingを照合する。実cgroup全9シナリオと保存source/候補/閉包の独立再生は合格した。科学用driverの配線と、未完の科学専用host配備・全資源レビューを分ける。
+
+次は科学用全資源会計と停止時保存のレビューを具体化する。worker/containerだけでなくhost、制御ファイル、Git object、累積mirror、保存後検算の時間とメモリを含め、事前に固定した範囲へ収める。実GitHub通信不明、終了mirror不成立、子process排除、残余予算不足も、科学区画を読まずに確認する。
+
+領域時間はclosure.maxDomainMsを共通budgetへ明示的に渡すよう修正した。科学設定でもこの対応と全体1200秒・領域180秒を専用fixtureで確認し、技術設定の1秒検査だけで科学経路の監督成立を主張しない。科学実行CLIの拒否は、全資源レビューと科学用固定証拠が揃うまで維持する。
+
+その後に最終科学SPEC・契約・認可範囲・全入力hash・CI receipt・保護入力・レビューと専用triggerを固定する。全条件成立後にだけ、提案128 sourceのlease確保・読取前consume・attempt 1の一度限り供給へ進む。継続指示は有効で、追加認可を求めるための停止ではない。
+
+BEFCS-STUDY1、BEFCS-S1-SUPPLY-2026-10-13-v1、50613001..50613128は未登録・未予約・未消費。最大8候補、ply48以後の第一適格root、103355件遮断、全合法手完全閉包、未知の保持、追加/差替え/旧root・witness延長/上限引上げ/retry禁止、主課題と正式関係未登録/未実行、main・公開AI未変更を保持する。

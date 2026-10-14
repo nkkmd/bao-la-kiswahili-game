@@ -1,8 +1,11 @@
 # Bao研究成果索引
 
-更新日: 2026-09-29  
-対象: Research Generation 1〜5  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了・main統合済み。Research Generation 5は計画作成済み・個別Study未認可**
+> 2026-10-14の現在案内: [中間保存と残り工程](research-generation-5/checkpoint-20261014/README.md)に第3版の全証拠と未完条件を確定しました。第五世代全体は継続中で、BEFCS-STUDY1と正式な主要関係は未登録・未実行です。以下の日時付き追記は各時点の履歴であり、「main未統合」「確認待ち」は現在状態へ読み替えません。現在の再開点は[再開位置](research-generation-5/RESUME_HERE.md)を参照してください。
+
+更新日: 2026-10-14（日本時間）
+
+対象: Research Generation 1〜5
+現在の状態: **第1〜第4世代の確定結果を保持。第五世代はG5-01〜G5-05終了・BEFCS第3版技術検算済み・中間保存／BEFCSと正式関係は未登録・未実行**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`または`FINAL_REPORT.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
@@ -42,7 +45,7 @@
 
 ## Research Generation 5 — 探索順位と厳密価値損失
 
-第五世代は[計画](research-generation-5/PROGRAM_PLAN.md)を作成した段階で、個別Studyの科学実行は未承認です。新規の完全解析可能な局面を対象に、順位変動、選択手の変更、厳密最適集合からの逸脱、価値損失の関係を別々に調べる構想です。seed、閾値、正式Study ID、resource ceiling、正式結果は未固定です。第四世代の固定8領域や未完成depth-11層を新しい正式証拠に転用しません。[現在の状態](research-generation-5/CURRENT_STATUS.md)と[再開位置](research-generation-5/RESUME_HERE.md)を確認してください。公開AIへの変更は別のAI Engineering判断を必要とします。
+第五世代は[計画](research-generation-5/PROGRAM_PLAN.md)の第1段階として、2026-10-12に[G5-01](research-generation-5/g5-01/README.md) / `RRSVL-STUDY1` の技術準備へ着手した。現行takasiaルールに合わせ、既知fixtureで順位変動、選択手の変更、厳密最適集合からの逸脱、勝敗価値損失、同価値内DTFを分ける[Stage 0技術検証](research-generation-5/g5-01/STAGE_0_REPORT.md)がローカル・Actionsで合格した。続く[独立ルール遷移の技術検証](research-generation-5/g5-01/transition/REPORT.md)も固定40局面・411辺で合格し、[新規局面の開発診断設計](research-generation-5/g5-01/DEVELOPMENT_PLAN.md)を具体化した。[Stage 1開発診断](research-generation-5/g5-01/development/REPORT.md)では固定32 sourceを一度だけ実行・独立再生したが、占有穴数の固定条件で候補は0件だった。本区画を消費済みで閉じ、正式関係の検証は未承認・未実施である。次は[新しい独立Studyの設計](research-generation-5/g5-01/development/NEXT_RESEARCH.md)で解析領域の供給を検討する。第四世代の固定8領域や未完成depth-11層を新しい正式証拠に転用しない。[現在の状態](research-generation-5/CURRENT_STATUS.md)と[再開位置](research-generation-5/RESUME_HERE.md)を参照する。公開AIへの変更は別のAI Engineering判断を必要とする。
 
 ## Research Generation 4 — 局所幾何の意味・移送可能性・exact帰結
 
@@ -372,3 +375,82 @@ Stage 2 = NOT-AUTHORIZED-NOT-EXECUTED
 3. machine-readableな結果と、人間向けのOverview・Final Report・Current Statusを分離して保存します。
 4. [`JAPANESE_DOCUMENTATION_QUALITY_GATE.md`](JAPANESE_DOCUMENTATION_QUALITY_GATE.md)に従って、見出し・本文・判断理由・限界を日本語で監査します。
 5. 中央索引には詳細な時系列を複製せず、最終状態と正本への導線だけを追記します。
+## 第五世代G5-02の供給診断
+
+[G5-02](research-generation-5/g5-02/README.md) / `RECSF-STUDY1` は新しい未使用32 sourceから、固定資源内で完全閉包が供給されるかを調べる独立Studyである。G5-01の候補0件を保持し、旧2094読取状態を除外して最大8候補を事前固定する。正式な順位変動・損失の関係検証は未実施である。
+
+## 2026-10-12追記 — G5-02の区画終了
+
+[G5-02最終報告](research-generation-5/g5-02/REPORT.md)では新規32 source、適格root16件、固定8候補を実行し、全8候補が状態5000上限で未完だった。完全閉包供給0件、保存40282辺の独立照合合格で、区画を消費済みとして終了した。供給診断完了を正式検証の適格領域確保へ昇格しない。[再開位置](research-generation-5/g5-02/RESUME_HERE.md)は別Studyの供給・資源設計を示す。正式関係検証と公開AI変更は未実施、main未統合である。
+
+## 2026-10-12追記 — 二手以内の完全閉包供給G5-03
+
+[G5-03](research-generation-5/g5-03/README.md)を独立Studyとして準備する。新規64 sourceから全合法分岐が2手以内に自然終局するrootを選び、最大8候補の全閉包・独立解を確認する。構造成立時の最大157状態を保証する特殊層であり、一般局面や長期探索の代表ではない。旧Studyの結果・消費状態を保持し、正式関係検証は未実施である。
+
+## 2026-10-12追記 — G5-03供給完了と価値差の限界
+
+[G5-03最終報告](research-generation-5/g5-03/REPORT.md)では新規64 sourceから10適格rootを取得し、固定8候補すべてが完全閉包となった。計45状態37辺・全解が独立一致した。一方、全8 root内の全23手は同じ勝敗価値・DTFで、価値損失が変わる事例はない。供給成功と正式関係の推定可能性を分離し、区画を消費済みで終了する。[再開位置](research-generation-5/g5-03/RESUME_HERE.md)は別Studyの構造・価値差事例設計を示す。正式関係検証・main統合・公開AI変更は未実施。
+
+## 2026-10-12追記 — G5-04の三〜四手供給層
+
+[G5-04](research-generation-5/g5-04/README.md)では新規128 sourceから、全分岐4手以内自然終局・2手以内では未閉包の層を事前選定する。全手幅8以下を対象に最大4681状態を保証し、価値差を選定や補充に使わない。旧3 Studyの結果・区画消費を保持し、正式関係検証は未実施である。
+
+## 2026-10-12追記 — G5-04の完了と同価値内DTF差
+
+[G5-04最終報告](research-generation-5/g5-04/REPORT.md)では新規128 sourceから9適格rootを得て、固定8候補を完全解析した。169状態162辺・全解が独立一致。3 rootに同価値内DTF差があるが、勝敗価値差rootは0件だった。区画を消費済みで終了し、DTF差を主要な価値損失の変動例へ読み替えない。[再開位置](research-generation-5/g5-04/RESUME_HERE.md)は正式検証の対象・最低条件と供給戦略の再評価を示す。正式関係検証・main統合・公開AI変更は未実施。
+
+## 準備再評価 — 主要関係の情報・推定条件
+
+[準備再評価](research-generation-5/readiness-review-20261012/REPORT.md)で4 Studyを再検算し、16完全領域・67複数手局面にも勝敗価値差がなかった。判断はPRIMARY-READINESS-NOT-METで、正式仮説の否定ではない。内部DTF差6件は既読の記述で、新たな正式標本にはしない。[設計案](research-generation-5/readiness-review-20261012/DESIGN_PROPOSAL.md)の精度・対象数はモデル条件付き提案であり、現在データへの推論・正式登録・新規実行認可ではない。[再開位置](research-generation-5/readiness-review-20261012/RESUME_HERE.md)で主要課題のsourceとsamplingを具体化する。main・公開AIは未変更。
+
+## 2026-10-13 — 応手種別による新しい供給設計
+
+[供給設計](research-generation-5/source-design-20261013/README.md)で、root手によって相手の捕獲手とtakataの応手集合に分かれる非終局構造層を具体化した。全軌跡の最後の構造適格rootを閉包前に固定する案で、着手の擬似乱数方策を保持する。旧部分グラフ内に284構造適格nodeがあったが、全て未完領域にあり、勝敗価値差・完全閉包供給・費用は未確認である。
+
+状態はSOURCE-DESIGN-SPECIFIED-NOT-EXECUTED。構造判定の7fixtureと保存監査の再生が合格した。新規source・遷移・候補再選定・正式推論は0件。[設計](research-generation-5/source-design-20261013/DESIGN.md)で64 source・8候補・資源・有限開発コーパスの記述対象を具体化し、[再開位置](research-generation-5/source-design-20261013/RESUME_HERE.md)に実装・新規契約・未使用区画・一度限り実行の条件を残した。主要関係はPRIMARY-READINESS-NOT-MET、正式比較は未登録・未実行のままで、main・公開AIは未変更である。
+
+## 2026-10-13 — G5-05の応手種別供給を事前固定
+
+[G5-05](research-generation-5/g5-05/README.md) / MRCS-STUDY1は、全軌跡最後の応手種別分岐rootを新規64 sourceから最大8候補へ固定する開発供給である。[契約](research-generation-5/g5-05/CONTRACT.md)で旧58532状態遮断、全合法手閉包・独立再生、資源・読取journal・一度限り消費と不足時の終了を固定した。12技術fixtureがローカルで合格し、ソース固定・Actions技術CIの後、別triggerと永続leaseにより実行する。
+
+正式関係は未登録・未実行、対象は固定有限開発コーパスである。IIDや93ずつの精度案を適用せず、DTFを主課題へ差し替えない。原記録・main・公開AIを保持する。[再開位置](research-generation-5/g5-05/RESUME_HERE.md)を参照する。
+
+## 2026-10-13 — G5-05の終了・構造差供給と全閉包未供給
+
+[G5-05報告](research-generation-5/g5-05/REPORT.md)で、新規64 sourceを一度だけ実行した結果を確定した。35構造適格代表の最初の8候補を固定して解析し、6領域は5000状態上限、2領域は別の合法枝のruntime guardで停止した。完全閉包0件で、8候補の勝敗価値差は未確定である。全64 source・513 screen・39354保存辺の独立検算と保存は合格した。原証拠は5cfe0f00629f65995a2d6be5889cebbe68bb8940、Actionsは38313556402 / attempt 1で保持する。
+
+5区画は全て消費済み、既読和集合は101691 RAW識別となった。構造差の供給と全解析未達を区別し、guardを自然敗北・無限反復へ変換しない。追加source・未解析27代表の補充・旧root延長・状態上限引上げ・retryをしない。次は[科学用遷移と解析方式の再評価](research-generation-5/g5-05/NEXT_RESEARCH.md)を先に行い、新しい区画を自動追加しない。正式関係は未登録・未実行、main・公開AIは未変更である。
+
+## 2026-10-13 — 科学用遷移・可逆保存の技術再評価
+
+[方法再評価](research-generation-5/method-review-20261013/README.md)で、runtime上限による勝者付与を外した研究用遷移の二実装を確認した。既知40fixtureの416状態・411遷移と全microstate列が一致し、上限1の技術例では自然停止する5手のruntime勝者と科学的未知を分離した。G5-05の実際のguard witnessを延長した結果ではない。
+
+422技術境界RAWの独立二codecは復号/旧RAW hashが一致し、符号化payloadは104660から13926 byteとなった。科学BFSの実資源改善は未測定である。[方法選択](research-generation-5/method-review-20261013/METHOD_DECISION.md)はguard-free遷移と可逆保存を全閉包BFSへ統合する技術検証を優先し、抽象戦略証明の採用は現行Programの全閉包要件との適合レビューへ留保する。新規科学sourceは0件、全閉包要件は保持する。
+
+旧101691状態と新技術RAW射影を合わせた保守的遮断集合は102329識別となる。中間状態を新候補・到達性証拠へ昇格させず、旧5区画・原記録を保持する。正式関係は未登録・未実行、main・公開AIは未変更。[再開位置](research-generation-5/method-review-20261013/RESUME_HERE.md)を参照する。
+
+
+## 2026-10-13の全閉包BFS統合検証
+
+[全閉包統合](research-generation-5/bfs-integration-20261013/README.md)で、科学用遷移と可逆RAW保存を固定fixtureのBFSへ統合した。既知Baoの3状態・2辺と固定抽象例で全合法手・全辺・独立解・snapshot/journal復元が一致した。未知・停止証拠・未展開境界・各辺metadataを保持した。[報告](research-generation-5/bfs-integration-20261013/REPORT.md)に9テスト、全10 fixture、保存量と全測定を示す。
+
+1024状態の抽象例でjournal込み保存は4363460から3988337 byteとなったが、科学BFSの資源改善や新規完全領域を確認した結果ではない。初回RSSの全同値も保持し、Linux補助計測を別契約で保存した。新規科学source/seed/候補・旧witness延長は0件である。
+
+保守的遮断は103355 RAW識別となった。全閉包要件と正式関係未登録/未実行を保ち、次は[別Studyの登録条件](research-generation-5/bfs-integration-20261013/RESUME_HERE.md)を具体化する。旧区画を救済・補充せず、技術合格から科学sourceを自動起動しない。main・公開AIは未変更である。
+
+
+## 2026-10-13 — 分岐包絡供給のsource・保存fixture技術合格
+
+[技術preflight](research-generation-5/branch-envelope-preflight-20261013/README.md)で、第一適格root、全2-ply screen、独立source/edge再生、予約域付きjournal/snapshotとgzip分割を実装した。22新テストと先行BFS 9テスト、10 source/7 closure fixture、17 bundleが合格した。実容量256 MiB・16 MiB reserve、48 MiB以下・最大6片の復元を検査した。観測532 RAWは全て既読で、保守的遮断は103355識別のまま、555保護入力のbytesを保持した。
+
+科学source/seed/候補・旧root/witness延長・正式推論は0件である。BEFCS-STUDY1は未登録・未実行、leaseなし、科学source未固定、実行未認可。次は科学用SPEC/契約/認可範囲と全区画lease・読取前consume・attempt 1固定の別trigger・常時保存/mirrorを具体化する。fixture技術合格から科学sourceを起動せず、全閉包と未知の保持、不足時終了、追加/差替え/retry禁止を維持する。main・公開AIは未変更である。
+
+## 2026-10-13 — 一度限り運用のfixture検証
+
+[運用preflight](research-generation-5/befcs-operations-20261013/README.md)で、Gitの原子的全区画取得・読取前marker・稼働中/終了mirror・合算RSS監督を実装した。15運用テストと31先行回帰テストが合格し、1区画・128論理marker・8 mirror・137 commitを保存Git bundleから独立復元した。科学PRNGの初期化は0件で、新規Bao RAWは観測していない。実128 MiB/1 GiB cgroupはActions確認待ちである。
+
+[科学契約案](research-generation-5/befcs-operations-20261013/CONTRACT_DRAFT.md)は未登録案で、次は科学source/独立replay・全閉包保存とcontainer/mirrorの全workload結合、最終freeze・CI receipt・別triggerを整える。584保護入力と103355件遮断を保持し、科学seed消費0・科学leaseなし・科学Study未登録/未実行、正式関係未登録/未実行、main・公開AI未変更である。技術合格を科学供給へ昇格させない。
+
+## 2026-10-13 — 分岐包絡供給の運用・保存統合
+
+[運用cgroup確認](research-generation-5/befcs-operations-20261013/CI_CONFIRMATION.md)で実128 MiB/1 GiB OOMとprefix保持を確定した。[保存済み全workload統合](research-generation-5/befcs-workload-20261013/README.md)は128件の技術source再生と8固定閉包の結合であり、科学供給Studyの登録・実行ではない。共有256 MiB容量、停止・mirror・markerを検証し、科学用hostへの結合と最終freeze・別triggerを残す。科学seed消費0、科学leaseなし、正式関係未登録/未実行、main・公開AI未変更を保持する。

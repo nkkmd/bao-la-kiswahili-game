@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "studyId": "BTCS-STUDY1",
+  "stageId": "BTCS-S1-SUPPLY-2026-10-12-v1",
+  "frozenSourceCommit": "8eb7e46b0fd5ce38d69f0c0579bf3d622fd2654a",
+  "binding": "4f7b482405ed789ce543bf4f252374fd30825003f6221e6de9429ecddd298bae",
+  "preflightPushRunId": 38239072272,
+  "seedBlock": {
+    "start": 50312001,
+    "end": 50312064,
+    "count": 64
+  },
+  "sameBlockRerunAuthorized": false
+}

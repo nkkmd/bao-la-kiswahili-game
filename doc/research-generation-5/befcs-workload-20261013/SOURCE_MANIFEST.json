@@ -1,0 +1,24 @@
+{
+  "technicalId": "BEFCS-SAVED-WORKLOAD-2026-10-13-v1",
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false,
+  "protectedInputCount": 614,
+  "files": {
+    ".github/workflows/g5-befcs-workload-preflight.yml": "7c49be32bc639b12afd646eb67463c9aa6d91030f51007f7f3f274f6117f4afa",
+    "doc/research-generation-5/befcs-workload-20261013/PROTECTED_INPUTS.json": "e36d0241c1d4a9edaff83c6396a6c9a985c4344ecbcf5576d8e8eeb900f931e2",
+    "doc/research-generation-5/befcs-workload-20261013/TECHNICAL_CONTRACT.md": "90562e59f1fd1faa61d4460a2d87fecbacd6642def2d04502815739b0ac1df1c",
+    "test/g5-befcs-workload.test.cjs": "212c7b59e695798d0f2dc0ec539c1076edaca6bf384cea52d37d7cfb5b07b58c",
+    "tools/research/g5-befcs-workload/binding.cjs": "6fafe8ae0dcad0ed9c95981f88d81c15cae43ca10c533a8f10afc5a9447ea18d",
+    "tools/research/g5-befcs-workload/capacity.cjs": "f77c7a9beb605d5160352272501116267b3b73671ae9bdf496b9cf33e3207217",
+    "tools/research/g5-befcs-workload/capture-tree.cjs": "b242d326ea5dea8b7962336929ccbad2ce17368929b6eaf6456623aef285f641",
+    "tools/research/g5-befcs-workload/independent-registry.cjs": "ac783e20c335f4699712209317eb7ae7454fecab0c038c80ef0ecf33fd915a82",
+    "tools/research/g5-befcs-workload/independent-scientific-source.cjs": "e26ce921d69e93cf42e4e8bd03c87631a7e26f8d01e1f0c8f615bfb8fbd6f3e3",
+    "tools/research/g5-befcs-workload/registry.cjs": "b68815eff8100e2279fed37f3bc28fd653c22fafedc470a0528cd87af58896f4",
+    "tools/research/g5-befcs-workload/run.cjs": "20ed9ec9b2961ee1d2225faee57c2f9e66a031ab8c1c11c18b42a1493a41aee4",
+    "tools/research/g5-befcs-workload/science-gate.cjs": "4d3e47a19e0371a952822690175831ed3e5cb43a795883598a69e058ce4c899c",
+    "tools/research/g5-befcs-workload/scientific-closure.cjs": "22d960d6ad11359edebadad562e2c6cffce0b559ed5ee20f087a8929fb73eeb3",
+    "tools/research/g5-befcs-workload/scientific-source.cjs": "da89ce6bfd807fbc8ded2790bc0eb4149d4808cef27aadf0eea1046c4a969aaf",
+    "tools/research/g5-befcs-workload/shared-store.cjs": "30f606c7f9f67fcd6119006cba0f063b6f7ca125b90ec2aa8ddfac401969dc14",
+    "tools/research/g5-befcs-workload/worker.cjs": "eed163a0914a233d018635fc64244054ce5a9a38f7f9b9b5f848f607684d5733"
+  }
+}

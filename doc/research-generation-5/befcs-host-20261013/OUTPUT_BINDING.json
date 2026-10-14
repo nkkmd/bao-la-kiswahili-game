@@ -1,0 +1,10 @@
+{
+  "evidenceClass": "TECHNICAL-HOST-PROTOCOL",
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false,
+  "files": {
+    "doc/research-generation-5/befcs-host-20261013/results/RESULT.json": "dfe9e3b21e5d8994bd53e5c493cb94e586247841cec5e5d0a00819d8232a536d",
+    "doc/research-generation-5/befcs-host-20261013/results/TECHNICAL_EVIDENCE.json.gz": "1c652cebb3992393eb32acbfc351ca9af7ae4fdb157931a9b17f787e3d572369"
+  }
+}

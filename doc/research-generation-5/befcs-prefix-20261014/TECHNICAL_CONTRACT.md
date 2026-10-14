@@ -1,0 +1,25 @@
+# 保存済みsource prefixの技術契約
+
+固定対象は、PR #199のcommit `25b9f730160a58151228ead2209837b16fc12d90`を基底とする途中記録検算器である。既存科学契約・結果・ソースは変更しない。本工程は科学Studyの登録、科学seedの消費、科学実行の認可ではない。
+
+## 検査対象と停止位置
+
+既知の抽象`FIRST-48`、fixture seed `1`のみを使用する。全RAWは既存103355識別の遮断集合に含まれることを確認する。保存receiptは固定技術fixtureの合成receiptであり、実remote Gitの到達性や科学consumeの証拠ではない。
+
+5 caseを固定する。2手保存後・checkpoint前、10手保存後・checkpoint8手、screen48保存直後・checkpoint48手、49手保存後・checkpoint48手の4 caseではfsync済み書込後に子自身へSIGKILLを発行する。最後のcaseは10手の保存後に管理時間停止を注入し、failure snapshotを保存する。checkpoint間隔8は停止専用fixtureの値で、科学提案の間隔や全体20分・1 GiB・256 MiB・終了予約を変更しない。
+
+## 検算範囲
+
+hash chainが成立する改行完了prefixだけを再生する。末尾の未完byte数とhashを別記録へ保存し、欠落byteを補わない。保存されたstepとscreenの順序、独立PRNGの整数棄却、独立遷移、metadata、microstate hash、screen内容を照合する。checkpointのtraceとscreenが保存journalのprefixであり、最終状態と最初の適格root記録がそのcheckpointに対応することを検査する。
+
+read journalの独立RAW復号と識別hashを確認し、検算済みstep・screenに必要なRAWの保存coverageを照合する。保存された余剰readはRAW完全性のみを確認し、停止した未保存screenや遷移の完成を主張しない。read journalを提供しない呼出しではcoverage未検証を明示する。
+
+checkpointの`stop`・`selectionStatus`が`null`でもそのまま扱う。journalからcheckpointへ後続step・screen・firstEligibleを追記しない。結果は保存prefixのみの合格で、sourceComplete・fullSourceVerified・resumeAuthorizedはfalse、candidate・solutionはnullとする。自然終局・ply上限で完成したsourceは、既存の完全source検算器を使用し、本検算器へ昇格しない。
+
+## 科学入口の拒否と未完条件
+
+科学入口は既存science gateの最終freeze・consume照合、科学SPEC一致、この検算器の最終manifest bindingが成立するまで入力・PRNG・遷移処理前に拒否する。fixture入口でも提案科学seed範囲を拒否する。科学入口を本工程で実行・解放しない。
+
+実科学checkpointへのhost接続、独立APIと初期状態の最終配線、実remote ancestry/CAS/通信失敗、全資源と起動からartifact保全までのsingle-clock期限、最終SPEC/CONTRACT/AUTH/hash/CI/review/別triggerは未完である。途中closure・microstate停止witnessの全面検算をこのsource prefix合格に含めない。
+
+科学seed消費0・科学leaseなし・BEFCS-STUDY1未登録/未実行を維持する。103355件遮断、全合法手閉包、未知、不足時終了、追加・差替え・旧root延長・予算増加・retry禁止、正式関係未登録/未実行、主課題の勝敗価値損失、main・公開AI未変更を保持する。

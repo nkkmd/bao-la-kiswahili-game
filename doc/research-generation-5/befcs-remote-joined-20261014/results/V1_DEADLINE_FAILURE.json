@@ -1,0 +1,12 @@
+{
+  "head": "430c902b822d0a86aa3a3cfb3452dc837c3c3f4b",
+  "runId": 38473413073,
+  "jobId": 115558190533,
+  "conclusion": "failure",
+  "reason": "EACCES-FORENSIC-TMP-OWNED-BY-ROOT",
+  "artifactId": 11852707959,
+  "artifactSha256": "115c7ba2ed17dcbb8cb3852152e811b290b0c1a17699c8dda19648daa6a1323c",
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "workflowRerunPerformed": false
+}

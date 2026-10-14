@@ -1,0 +1,33 @@
+name: RG5 Primary Readiness Review
+
+on:
+  push:
+    branches: [research/g5-primary-readiness-review]
+    paths:
+      - 'tools/research/g5-readiness/**'
+      - 'test/g5-readiness.test.cjs'
+      - 'doc/research-generation-5/readiness-review-20261012/**'
+      - '.github/workflows/g5-primary-readiness-review.yml'
+  pull_request:
+    paths:
+      - 'tools/research/g5-readiness/**'
+      - 'test/g5-readiness.test.cjs'
+      - 'doc/research-generation-5/**'
+      - '.github/workflows/g5-primary-readiness-review.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  read-only-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Test information and conditional precision gates
+        run: node --test test/g5-readiness.test.cjs
+      - name: Replay four saved studies and review result without fresh generation
+        run: node tools/research/g5-readiness/review.cjs --check

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "studyId": "RECSF-STUDY1",
+  "stageId": "RECSF-S1-SUPPLY-2026-10-12-v1",
+  "decision": "AUTHORIZED-SUPPLY-ONCE",
+  "dateJST": "2026-10-12",
+  "basis": "User continuation after the closed G5-01 development block; distinct supply study fixed in CONTRACT.md and PREEXECUTION_REVIEW.md.",
+  "specSha256": "60a8f7e7e24ee46f0e8d6da8aef468e8f91fe6422babe5d9d375992eda290393",
+  "manifestSha256": "6cdf0541cd9727d2ac37d44fb1767e9071c8248885fe496bc8f839907b5d7390",
+  "seedBlock": {
+    "start": 50212001,
+    "end": 50212032,
+    "count": 32
+  },
+  "formalInference": false,
+  "publicAiModification": false,
+  "sameBlockRerunAuthorized": false
+}

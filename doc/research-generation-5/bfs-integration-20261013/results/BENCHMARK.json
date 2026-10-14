@@ -1,0 +1,144 @@
+{
+  "technicalId": "RCBI-S0-FIXTURE-2026-10-13-v1",
+  "node": "v24.19.0",
+  "platform": "linux",
+  "architecture": "x64",
+  "cpus": 9,
+  "cpuModel": "INTEL(R) XEON(R) PLATINUM 8573C",
+  "measureIncludes": "BFS-and-serialization-excludes-fsync-journal-solver-firewall",
+  "rows": [
+    {
+      "mode": "compact",
+      "fixture": "ABSTRACT-CHAIN-256",
+      "buildMs": 98.20346900000001,
+      "serializeMs": 3.484293999999977,
+      "elapsedMs": 101.68776299999999,
+      "peakRssBytes": 170184704,
+      "bytes": 294366,
+      "complete": true,
+      "repeat": 1
+    },
+    {
+      "mode": "reference",
+      "fixture": "ABSTRACT-CHAIN-256",
+      "buildMs": 104.40955,
+      "serializeMs": 3.392934000000025,
+      "elapsedMs": 107.80248400000002,
+      "peakRssBytes": 170184704,
+      "bytes": 387209,
+      "complete": true,
+      "repeat": 1
+    },
+    {
+      "mode": "compact",
+      "fixture": "ABSTRACT-CHAIN-256",
+      "buildMs": 142.35353299999997,
+      "serializeMs": 4.092099000000019,
+      "elapsedMs": 146.445632,
+      "peakRssBytes": 170184704,
+      "bytes": 294366,
+      "complete": true,
+      "repeat": 2
+    },
+    {
+      "mode": "reference",
+      "fixture": "ABSTRACT-CHAIN-256",
+      "buildMs": 91.73951400000001,
+      "serializeMs": 2.4373740000000055,
+      "elapsedMs": 94.17688800000002,
+      "peakRssBytes": 170184704,
+      "bytes": 387209,
+      "complete": true,
+      "repeat": 2
+    },
+    {
+      "mode": "compact",
+      "fixture": "ABSTRACT-CHAIN-256",
+      "buildMs": 101.86714799999999,
+      "serializeMs": 8.849766000000017,
+      "elapsedMs": 110.716914,
+      "peakRssBytes": 170184704,
+      "bytes": 294366,
+      "complete": true,
+      "repeat": 3
+    },
+    {
+      "mode": "reference",
+      "fixture": "ABSTRACT-CHAIN-256",
+      "buildMs": 556.669126,
+      "serializeMs": 8.76866599999994,
+      "elapsedMs": 565.437792,
+      "peakRssBytes": 170184704,
+      "bytes": 387209,
+      "complete": true,
+      "repeat": 3
+    },
+    {
+      "mode": "compact",
+      "fixture": "ABSTRACT-CHAIN-1024",
+      "buildMs": 401.337647,
+      "serializeMs": 22.211951999999997,
+      "elapsedMs": 423.549599,
+      "peakRssBytes": 170184704,
+      "bytes": 1183851,
+      "complete": true,
+      "repeat": 1
+    },
+    {
+      "mode": "reference",
+      "fixture": "ABSTRACT-CHAIN-1024",
+      "buildMs": 410.405321,
+      "serializeMs": 10.33647499999995,
+      "elapsedMs": 420.74179599999997,
+      "peakRssBytes": 170184704,
+      "bytes": 1558974,
+      "complete": true,
+      "repeat": 1
+    },
+    {
+      "mode": "compact",
+      "fixture": "ABSTRACT-CHAIN-1024",
+      "buildMs": 238.58516100000003,
+      "serializeMs": 8.87019399999997,
+      "elapsedMs": 247.455355,
+      "peakRssBytes": 170184704,
+      "bytes": 1183851,
+      "complete": true,
+      "repeat": 2
+    },
+    {
+      "mode": "reference",
+      "fixture": "ABSTRACT-CHAIN-1024",
+      "buildMs": 512.4296059999999,
+      "serializeMs": 10.91659900000002,
+      "elapsedMs": 523.346205,
+      "peakRssBytes": 170184704,
+      "bytes": 1558974,
+      "complete": true,
+      "repeat": 2
+    },
+    {
+      "mode": "compact",
+      "fixture": "ABSTRACT-CHAIN-1024",
+      "buildMs": 321.152191,
+      "serializeMs": 10.191844999999944,
+      "elapsedMs": 331.34403599999996,
+      "peakRssBytes": 170184704,
+      "bytes": 1183851,
+      "complete": true,
+      "repeat": 3
+    },
+    {
+      "mode": "reference",
+      "fixture": "ABSTRACT-CHAIN-1024",
+      "buildMs": 550.971432,
+      "serializeMs": 21.66319699999997,
+      "elapsedMs": 572.634629,
+      "peakRssBytes": 170184704,
+      "bytes": 1558974,
+      "complete": true,
+      "repeat": 3
+    }
+  ],
+  "scientificResourceImprovementEstablished": false
+}

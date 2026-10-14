@@ -1,0 +1,40 @@
+name: G5-05 Saved Supply Audit
+on:
+  push:
+    branches: [research/g5-05-mixed-reply-supply]
+    paths:
+      - 'tools/research/g5-05/describe-saved.cjs'
+      - 'doc/research-generation-5/g5-05/DESCRIPTION*.json'
+      - 'doc/research-generation-5/g5-05/results/**'
+      - '.github/workflows/g5-05-saved-audit.yml'
+  pull_request:
+    paths:
+      - 'tools/research/g5-05/**'
+      - 'doc/research-generation-5/g5-05/**'
+      - '.github/workflows/g5-05-saved-audit.yml'
+permissions:
+  contents: read
+jobs:
+  saved-supply-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Replay saved evidence without fresh generation
+        run: |
+          python - <<'PY'
+          import pathlib,tempfile,shutil,subprocess
+          original=pathlib.Path('doc/research-generation-5/g5-05/results')
+          temporary=pathlib.Path(tempfile.mkdtemp(prefix='g5-05-saved-audit-'))
+          try:
+              shutil.copytree(original,temporary,dirs_exist_ok=True)
+              subprocess.run(['node','tools/research/g5-05/verify.cjs',str(temporary)],check=True)
+              assert (temporary/'VERIFICATION.json').read_bytes()==(original/'VERIFICATION.json').read_bytes()
+          finally:
+              shutil.rmtree(temporary)
+          PY
+      - name: Check saved description and bound artifacts
+        run: node tools/research/g5-05/describe-saved.cjs --check

@@ -1,0 +1,38 @@
+name: G5 BEFCS Saved Source Prefix
+on:
+  push:
+    branches: [research/g5-befcs-prefix-preflight]
+    paths: ['tools/research/g5-befcs-prefix/**', 'test/g5-befcs-prefix.test.cjs', 'doc/research-generation-5/befcs-prefix-20261014/**', '.github/workflows/g5-befcs-prefix-preflight.yml']
+  pull_request:
+    paths: ['tools/research/g5-befcs-prefix/**', 'test/g5-befcs-prefix.test.cjs', 'doc/research-generation-5/befcs-prefix-20261014/**', '.github/workflows/g5-befcs-prefix-preflight.yml']
+permissions:
+  contents: read
+jobs:
+  saved-prefix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        # 凍結済みfixtureの入力を当時のコミットで検算する。現在のtreeはcheckpoint CIで検査する。
+        with:
+          ref: 1f0f75c4a80b12d4c016c71f14bc4b4151e89fa4
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Check immutable inputs and saved prefix refusal
+        run: |
+          node tools/research/g5-befcs-prefix/run.cjs --bindings
+          node --test test/g5-befcs-prefix.test.cjs test/g5-befcs-pipeline.test.cjs
+      - name: Independently replay saved stopped fixtures
+        run: node tools/research/g5-befcs-prefix/run.cjs --check
+      - name: Execute fixed abstract stop fixtures
+        run: node tools/research/g5-befcs-prefix/run.cjs --ci-fixture
+      - name: Preserve technical evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: befcs-prefix-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/local/befcs-prefix/
+          retention-days: 90
+          if-no-files-found: warn

@@ -1,0 +1,527 @@
+{
+  "evidenceClass": "POSTEXECUTION-SUPPLY-DIAGNOSTIC-ONLY",
+  "newSourceGeneration": 0,
+  "newCandidateSelection": 0,
+  "sourceCount": 32,
+  "plies": {
+    "min": 10,
+    "median": 54,
+    "max": 112
+  },
+  "sourcesReachingMtaji": 25,
+  "terminalNamua": 7,
+  "cumulativeGates": [
+    {
+      "gate": "ply>=48",
+      "states": 403,
+      "sources": 23
+    },
+    {
+      "gate": "+mtaji",
+      "states": 403,
+      "sources": 23
+    },
+    {
+      "gate": "+both reserve=0",
+      "states": 403,
+      "sources": 23
+    },
+    {
+      "gate": "+legal width 2..12",
+      "states": 311,
+      "sources": 23
+    },
+    {
+      "gate": "+occupied<=12",
+      "states": 0,
+      "sources": 0
+    },
+    {
+      "gate": "+min front KETE<=8",
+      "states": 0,
+      "sources": 0
+    }
+  ],
+  "rows": [
+    {
+      "seed": 50112001,
+      "plies": 70,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        22,
+        22,
+        22,
+        14,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 16
+    },
+    {
+      "seed": 50112002,
+      "plies": 61,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        13,
+        13,
+        13,
+        12,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 19
+    },
+    {
+      "seed": 50112003,
+      "plies": 44,
+      "terminalPhase": "namua",
+      "reachesMtaji": false,
+      "stages": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": null
+    },
+    {
+      "seed": 50112004,
+      "plies": 51,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        3,
+        3,
+        3,
+        2,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 20
+    },
+    {
+      "seed": 50112005,
+      "plies": 35,
+      "terminalPhase": "namua",
+      "reachesMtaji": false,
+      "stages": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": null
+    },
+    {
+      "seed": 50112006,
+      "plies": 58,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        10,
+        10,
+        10,
+        8,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 17
+    },
+    {
+      "seed": 50112007,
+      "plies": 32,
+      "terminalPhase": "namua",
+      "reachesMtaji": false,
+      "stages": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": null
+    },
+    {
+      "seed": 50112008,
+      "plies": 44,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": null
+    },
+    {
+      "seed": 50112009,
+      "plies": 78,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        30,
+        30,
+        30,
+        26,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 17
+    },
+    {
+      "seed": 50112010,
+      "plies": 69,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        21,
+        21,
+        21,
+        16,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 20
+    },
+    {
+      "seed": 50112011,
+      "plies": 53,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        5,
+        5,
+        5,
+        3,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 21
+    },
+    {
+      "seed": 50112012,
+      "plies": 53,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        5,
+        5,
+        5,
+        5,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 21
+    },
+    {
+      "seed": 50112013,
+      "plies": 49,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 25
+    },
+    {
+      "seed": 50112014,
+      "plies": 55,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        7,
+        7,
+        7,
+        7,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 21
+    },
+    {
+      "seed": 50112015,
+      "plies": 78,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        30,
+        30,
+        30,
+        21,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 19
+    },
+    {
+      "seed": 50112016,
+      "plies": 56,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        8,
+        8,
+        8,
+        5,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 21
+    },
+    {
+      "seed": 50112017,
+      "plies": 53,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        5,
+        5,
+        5,
+        5,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 20
+    },
+    {
+      "seed": 50112018,
+      "plies": 10,
+      "terminalPhase": "namua",
+      "reachesMtaji": false,
+      "stages": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": null
+    },
+    {
+      "seed": 50112019,
+      "plies": 14,
+      "terminalPhase": "namua",
+      "reachesMtaji": false,
+      "stages": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": null
+    },
+    {
+      "seed": 50112020,
+      "plies": 75,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        27,
+        27,
+        27,
+        20,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 19
+    },
+    {
+      "seed": 50112021,
+      "plies": 99,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        51,
+        51,
+        51,
+        39,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 20
+    },
+    {
+      "seed": 50112022,
+      "plies": 87,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        39,
+        39,
+        39,
+        32,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 19
+    },
+    {
+      "seed": 50112023,
+      "plies": 48,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": null
+    },
+    {
+      "seed": 50112024,
+      "plies": 32,
+      "terminalPhase": "namua",
+      "reachesMtaji": false,
+      "stages": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": null
+    },
+    {
+      "seed": 50112025,
+      "plies": 25,
+      "terminalPhase": "namua",
+      "reachesMtaji": false,
+      "stages": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": null
+    },
+    {
+      "seed": 50112026,
+      "plies": 51,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        3,
+        3,
+        3,
+        2,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 21
+    },
+    {
+      "seed": 50112027,
+      "plies": 51,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        3,
+        3,
+        3,
+        2,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 17
+    },
+    {
+      "seed": 50112028,
+      "plies": 112,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        64,
+        64,
+        64,
+        44,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 18
+    },
+    {
+      "seed": 50112029,
+      "plies": 62,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        14,
+        14,
+        14,
+        10,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 21
+    },
+    {
+      "seed": 50112030,
+      "plies": 63,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        15,
+        15,
+        15,
+        13,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 20
+    },
+    {
+      "seed": 50112031,
+      "plies": 68,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        20,
+        20,
+        20,
+        18,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 16
+    },
+    {
+      "seed": 50112032,
+      "plies": 55,
+      "terminalPhase": "mtaji",
+      "reachesMtaji": true,
+      "stages": [
+        7,
+        7,
+        7,
+        6,
+        0,
+        0
+      ],
+      "minOccupiedAfterWidth": 20
+    }
+  ]
+}

@@ -69,9 +69,9 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦が
 | AI-GEN4以降の改善案 | [今後の改善候補](doc/ai-engineering/AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md) |
 | 研究世代ごとの結果と現在状態 | [研究成果の中央索引](doc/RESEARCH_INDEX.md) |
 | 世代横断の今後の研究候補と、完了研究から引き継ぐ境界 | [研究アジェンダ](doc/FUTURE_RESEARCH_AGENDA.md) |
-| 現在の中心課題である第五世代の計画と未認可の状態 | [第五世代研究](doc/research-generation-5/README.md) |
+| 現在の中心課題である第五世代の計画と供給診断の状態 | [第五世代研究](doc/research-generation-5/README.md) |
 
-第五世代は研究アジェンダの中心課題として計画済みですが、個別Studyの科学実行は未承認です。科学研究と公開AIの開発・改善は別の記録として管理しています。研究上の結果が、そのまま公開AIへの採用や変更を意味するものではありません。
+第五世代研究は継続中です。G5-01〜G5-05の供給研究は終了し、G5-03・G5-04で計16完全領域を取得しましたが、主要課題に必要な手による勝敗価値差はまだ得ていません。現在はBEFCS-STUDY1の実行基盤を検証しており、実Git・停止処理の第3版と保存証拠の独立検算が合格しました。BEFCSは未登録・未実行で、正式な「順位変動と勝敗価値損失」の検証も未登録・未実行です。[中間保存と残り工程](doc/research-generation-5/checkpoint-20261014/README.md)、[現在状態](doc/research-generation-5/CURRENT_STATUS.md)、[再開位置](doc/research-generation-5/RESUME_HERE.md)を参照してください。研究結果と公開AIの採用・変更は別に判断します。
 
 先攻・後攻差については、独立した[AI-GEN4追加研究](doc/first-player-gen4/FINAL_REPORT.md)の全17,768局と検証が完了し、mainへ統合済みです。公開expertの静的評価上位3手序盤では先攻有利、全合法手からの一様序盤では未確定でした。Bao一般の先後差は未確定とし、第五世代の個別Studyとは別に管理します。
 

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "studyId": "RRSVL-STUDY1",
+  "evidenceClass": "TECHNICAL-FIXTURE",
+  "sourceCommit": "885e3c4152b6979a70a20755c8bf064b8d4dd29c",
+  "workflowRunId": 38229687584,
+  "runAttempt": 1,
+  "jobId": 114745826813,
+  "conclusion": "success",
+  "artifact": {
+    "id": 11738117168,
+    "name": "g5-01-technical-38229687584-1",
+    "size_in_bytes": 7787,
+    "url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11738117168",
+    "archive_download_url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11738117168/zip",
+    "expired": false,
+    "created_at": "2026-10-12T09:24:48Z",
+    "expires_at": "2026-11-11T09:24:47Z",
+    "updated_at": "2026-10-12T09:24:48Z",
+    "digest": "sha256:4575b774731cd6ab5883ecd4d40a4d4797e5866a30dfb0b43e4dadee2527cebd",
+    "workflow_run": {
+      "id": 38229687584,
+      "repository_id": 1295030808,
+      "head_repository_id": 1295030808,
+      "head_branch": "research/g5-01-measurement-readiness",
+      "head_sha": "885e3c4152b6979a70a20755c8bf064b8d4dd29c"
+    }
+  },
+  "coreSha256": "cb8d2651a40b3576cf5d98a08bd7a7bbcbef7a731af729fdf4d617dc13834ed0",
+  "coreMatchVerifiedBy": "workflow job stdout for production and independent verifier; compared with persisted local core",
+  "artifactBytesDownloaded": false,
+  "scientificInference": false
+}

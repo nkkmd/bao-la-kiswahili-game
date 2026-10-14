@@ -1,0 +1,137 @@
+{
+  "disposition": "STAGE1-SUPPLY-COMPLETE",
+  "failure": null,
+  "studyId": "MRCS-STUDY1",
+  "stageId": "MRCS-S1-SUPPLY-2026-10-13-v1",
+  "binding": "d5e65dd984548470c7d0dbac7913cad4cfa7f5532cf2bb7457d82818c01cbf0a",
+  "seedBlock": {
+    "start": 50513001,
+    "end": 50513064,
+    "count": 64
+  },
+  "scientificSeedsRead": 64,
+  "sourceCount": 64,
+  "sourceStops": {
+    "NATURAL-TERMINAL": 64
+  },
+  "selectionStops": {
+    "NO-STRUCTURAL-ROOT": 29,
+    "LATEST-ROOT-FROZEN": 35
+  },
+  "screenCount": 513,
+  "screenStops": {
+    "HOMOGENEOUS-REPLY-EXCLUDED": 334,
+    "TERMINAL-CHILD-EXCLUDED": 40,
+    "MIXED-REPLY-ELIGIBLE": 106,
+    "REPLY-WIDTH-EXCLUDED": 33
+  },
+  "candidateCount": 8,
+  "completeDomains": 0,
+  "domainStatuses": [
+    {
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5040,
+      "elapsedMs": 7947,
+      "complete": false,
+      "counts": null
+    },
+    {
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5008,
+      "elapsedMs": 9531,
+      "complete": false,
+      "counts": null
+    },
+    {
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5003,
+      "elapsedMs": 12054,
+      "complete": false,
+      "counts": null
+    },
+    {
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5018,
+      "elapsedMs": 14514,
+      "complete": false,
+      "counts": null
+    },
+    {
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5087,
+      "elapsedMs": 16891,
+      "complete": false,
+      "counts": null
+    },
+    {
+      "status": "RUNTIME-GUARD",
+      "states": 4200,
+      "edges": 4221,
+      "elapsedMs": 15212,
+      "complete": false,
+      "counts": null
+    },
+    {
+      "status": "RUNTIME-GUARD",
+      "states": 4941,
+      "edges": 4946,
+      "elapsedMs": 20371,
+      "complete": false,
+      "counts": null
+    },
+    {
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5031,
+      "elapsedMs": 22742,
+      "complete": false,
+      "counts": null
+    }
+  ],
+  "domainGroups": [
+    [
+      0
+    ],
+    [
+      1
+    ],
+    [
+      2
+    ],
+    [
+      3
+    ],
+    [
+      4
+    ],
+    [
+      5
+    ],
+    [
+      6
+    ],
+    [
+      7
+    ]
+  ],
+  "evidenceGzipSha256": "be9ec19e16527d462d9e6581d6be3f985732d76780888ee41244b790bf07c0e6",
+  "stateJournalSha256": "70ae4392c19098e23fa9f6a10b2c720d9f405bef8fd9886d5cf48b8816ef07ee",
+  "stateJournalBytes": 14748261,
+  "supplyIdentityCount": 43660,
+  "formalInference": false,
+  "publicAiChanged": false,
+  "execution": {
+    "triggerCommit": "ad87177dc290bfc0d8c573c42b54fca5483c6b3e",
+    "sourceCommit": "ad87177dc290bfc0d8c573c42b54fca5483c6b3e",
+    "runId": "38313556402",
+    "runAttempt": "1",
+    "node": "v24.21.0",
+    "elapsedMs": 158670,
+    "peakRssBytes": 596385792
+  }
+}

@@ -1,0 +1,806 @@
+[
+  {
+    "version": 1,
+    "verifiedSavedEvidence": true,
+    "fixturePassed": true,
+    "mode": "complete",
+    "runId": "38473413073",
+    "registryHead": "5e4589d5fd0f5ed03f5d030e1ca0b34888f8eaa6",
+    "registryRef": "refs/heads/research/g5-remote-joined-38473413073-a1-complete",
+    "registryBlobSha": "c46f2abdf96c33ef94180bd97aa28d7d63ad4018",
+    "registry": {
+      "verified": true,
+      "commits": 193,
+      "leases": 1,
+      "logicalReadsMarked": 128,
+      "mirrors": 64,
+      "scientificSeedsRead": 0
+    },
+    "ackCount": 128,
+    "unacknowledgedMarkers": 0,
+    "remoteProof": {
+      "fullSources": 128,
+      "partialSources": 0,
+      "completeClosures": 1,
+      "partialProofs": [],
+      "sourceGenerationPerformed": false
+    },
+    "localProof": {
+      "fullSources": 128,
+      "partialSources": 0,
+      "completeClosures": 1,
+      "partialProofs": [],
+      "sourceGenerationPerformed": false
+    },
+    "parentPeak": 573726720,
+    "resultPresent": true,
+    "serviceError": null,
+    "guard": {
+      "locked": false,
+      "reason": null,
+      "consumesAcknowledged": 128,
+      "mirrorsSucceeded": 64
+    },
+    "finalMirrorSaved": true,
+    "technicalComplete": true,
+    "completedRecordPresent": true,
+    "completionClaimAuthorized": true,
+    "stops": {
+      "records": [],
+      "elapsedFromServiceMs": 571618.01466,
+      "scientificSeedsRead": 0
+    },
+    "sourceGenerationPerformed": false,
+    "scientificSeedsRead": 0,
+    "resumeAuthorized": false,
+    "solution": null
+  },
+  {
+    "version": 1,
+    "verifiedSavedEvidence": true,
+    "fixturePassed": true,
+    "mode": "proxy-final-mirror",
+    "runId": "38473413073",
+    "registryHead": "e76dd25f4650ee73c78848eb93992c59c67e7d08",
+    "registryRef": "refs/heads/research/g5-remote-joined-38473413073-a1-proxy-final-mirror",
+    "registryBlobSha": "3759a79ce551b1d351161c5c35e2500316603d65",
+    "registry": {
+      "verified": true,
+      "commits": 203,
+      "leases": 1,
+      "logicalReadsMarked": 128,
+      "mirrors": 74,
+      "scientificSeedsRead": 0
+    },
+    "ackCount": 128,
+    "unacknowledgedMarkers": 0,
+    "remoteProof": {
+      "fullSources": 127,
+      "partialSources": 1,
+      "completeClosures": 0,
+      "partialProofs": [
+        {
+          "dir": "source-127",
+          "verified": true,
+          "scope": "SAVED-PREFIX-ONLY-NOT-FULL",
+          "savedSteps": 9,
+          "savedScreens": 0,
+          "checkpointPly": null,
+          "checkpointScreens": null,
+          "journals": {
+            "source": {
+              "bytes": 8011,
+              "prefixBytes": 8011,
+              "tailBytes": 0,
+              "sha256": "a59d5d76b96ede5045631887ec0aaeb1ba70d5896bec1b52c406aedb2fa0995e",
+              "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "rows": 10
+            },
+            "receipt": {
+              "bytes": 391,
+              "prefixBytes": 391,
+              "tailBytes": 0,
+              "sha256": "8a43eed46deddac65b98f6065368ad2a99cc0e4e87b46a317a8cd6857e7fc0db",
+              "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "rows": 1
+            },
+            "reads": {
+              "bytes": 4124,
+              "prefixBytes": 4124,
+              "tailBytes": 0,
+              "sha256": "8e3574d688317500e81d492c4559ebb64a492753cdba8c1dceb6e7a4c04450fd",
+              "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "rows": 11
+            }
+          },
+          "savedReadCoverageVerified": true,
+          "sourceComplete": false,
+          "fullSourceVerified": false,
+          "candidate": null,
+          "solution": null,
+          "resumeAuthorized": false,
+          "scientificSeedGenerationPerformed": false
+        }
+      ],
+      "sourceGenerationPerformed": false
+    },
+    "localProof": {
+      "fullSources": 128,
+      "partialSources": 0,
+      "completeClosures": 1,
+      "partialProofs": [],
+      "sourceGenerationPerformed": false
+    },
+    "parentPeak": 600485888,
+    "resultPresent": true,
+    "serviceError": null,
+    "guard": {
+      "locked": true,
+      "reason": "Command failed: git ls-remote https://github.com/nkkmd/bao-la-kiswahili-game.git refs/heads/research/g5-remote-joined-38473413073-a1-proxy-final-mirror\nfatal: unable to access 'https://github.com/nkkmd/bao-la-kiswahili-game.git/': Failed to connect to 127.0.0.1 port 1 after 0 ms: Couldn't connect to server\n",
+      "consumesAcknowledged": 128,
+      "mirrorsSucceeded": 74
+    },
+    "finalMirrorSaved": false,
+    "technicalComplete": false,
+    "completedRecordPresent": true,
+    "completionClaimAuthorized": false,
+    "stops": {
+      "records": [],
+      "elapsedFromServiceMs": 799906.901742,
+      "scientificSeedsRead": 0
+    },
+    "sourceGenerationPerformed": false,
+    "scientificSeedsRead": 0,
+    "resumeAuthorized": false,
+    "solution": null
+  },
+  {
+    "version": 1,
+    "verifiedSavedEvidence": true,
+    "fixturePassed": false,
+    "mode": "deadline",
+    "runId": "38473413073",
+    "registryHead": "61b22c2433b15183c7f3d2554fca4a775004dce0",
+    "registryRef": "refs/heads/research/g5-remote-joined-38473413073-a1-deadline",
+    "registryBlobSha": "ad3a8e86c21471be3cd6a019b5a78a84a3a65ab5",
+    "registry": {
+      "verified": true,
+      "commits": 8,
+      "leases": 1,
+      "logicalReadsMarked": 4,
+      "mirrors": 3,
+      "scientificSeedsRead": 0
+    },
+    "ackCount": 4,
+    "unacknowledgedMarkers": 0,
+    "remoteProof": {
+      "fullSources": 3,
+      "partialSources": 1,
+      "completeClosures": 0,
+      "partialProofs": [
+        {
+          "dir": "source-003",
+          "verified": true,
+          "scope": "SAVED-PREFIX-ONLY-NOT-FULL",
+          "savedSteps": 45,
+          "savedScreens": 0,
+          "checkpointPly": 32,
+          "checkpointScreens": 0,
+          "journals": {
+            "source": {
+              "bytes": 39369,
+              "prefixBytes": 39369,
+              "tailBytes": 0,
+              "sha256": "076e61025599f8b3c34a18839e0671c66fb5eb02715b58a13b369a02d6bb0d43",
+              "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "rows": 46
+            },
+            "receipt": {
+              "bytes": 387,
+              "prefixBytes": 387,
+              "tailBytes": 0,
+              "sha256": "aef3facd49a9e82ea999a1d45de01cd556ca2baf2309f6ef184c2a065e3f4868",
+              "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "rows": 1
+            },
+            "reads": {
+              "bytes": 17732,
+              "prefixBytes": 17732,
+              "tailBytes": 0,
+              "sha256": "74b12f8c70b47c3a993da22a588a388d8b679327fa7d5d7391e0b6873111bab8",
+              "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "rows": 47
+            }
+          },
+          "savedReadCoverageVerified": true,
+          "sourceComplete": false,
+          "fullSourceVerified": false,
+          "candidate": null,
+          "solution": null,
+          "resumeAuthorized": false,
+          "scientificSeedGenerationPerformed": false
+        }
+      ],
+      "sourceGenerationPerformed": false
+    },
+    "localProof": {
+      "fullSources": 3,
+      "partialSources": 1,
+      "completeClosures": 0,
+      "partialProofs": [
+        {
+          "dir": "source-003",
+          "verified": true,
+          "scope": "SAVED-PREFIX-ONLY-NOT-FULL",
+          "savedSteps": 45,
+          "savedScreens": 0,
+          "checkpointPly": 32,
+          "checkpointScreens": 0,
+          "journals": {
+            "source": {
+              "bytes": 39369,
+              "prefixBytes": 39369,
+              "tailBytes": 0,
+              "sha256": "076e61025599f8b3c34a18839e0671c66fb5eb02715b58a13b369a02d6bb0d43",
+              "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "rows": 46
+            },
+            "receipt": {
+              "bytes": 387,
+              "prefixBytes": 387,
+              "tailBytes": 0,
+              "sha256": "aef3facd49a9e82ea999a1d45de01cd556ca2baf2309f6ef184c2a065e3f4868",
+              "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "rows": 1
+            },
+            "reads": {
+              "bytes": 17732,
+              "prefixBytes": 17732,
+              "tailBytes": 0,
+              "sha256": "74b12f8c70b47c3a993da22a588a388d8b679327fa7d5d7391e0b6873111bab8",
+              "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "rows": 47
+            }
+          },
+          "savedReadCoverageVerified": true,
+          "sourceComplete": false,
+          "fullSourceVerified": false,
+          "candidate": null,
+          "solution": null,
+          "resumeAuthorized": false,
+          "scientificSeedGenerationPerformed": false
+        }
+      ],
+      "sourceGenerationPerformed": false
+    },
+    "parentPeak": 307499008,
+    "resultPresent": false,
+    "serviceError": null,
+    "guard": {
+      "locked": false,
+      "reason": null,
+      "consumesAcknowledged": 4,
+      "mirrorsSucceeded": 3
+    },
+    "finalMirrorSaved": true,
+    "technicalComplete": false,
+    "completedRecordPresent": false,
+    "completionClaimAuthorized": false,
+    "stops": {
+      "records": [
+        {
+          "target": "work",
+          "atMs": 19012.6254,
+          "reason": "ORDINARY-EARLY-STOP"
+        },
+        {
+          "target": "work",
+          "atMs": 29012.89406,
+          "reason": "TOTAL-EARLY-STOP"
+        },
+        {
+          "target": "control",
+          "atMs": 29012.929342,
+          "reason": "TOTAL-EARLY-STOP"
+        }
+      ],
+      "elapsedFromServiceMs": 29012.939888,
+      "scientificSeedsRead": 0
+    },
+    "sourceGenerationPerformed": false,
+    "scientificSeedsRead": 0,
+    "resumeAuthorized": false,
+    "solution": null
+  },
+  {
+    "version": 1,
+    "verifiedSavedEvidence": true,
+    "fixturePassed": true,
+    "mode": "host-oom",
+    "runId": "38473413073",
+    "registryHead": "15c3be0a9562a32696ad8af5da2a8d9de5d88333",
+    "registryRef": "refs/heads/research/g5-remote-joined-38473413073-a1-host-oom",
+    "registryBlobSha": "1491848ce1cbb1b4a9d331397a273b1068d0d3ce",
+    "registry": {
+      "verified": true,
+      "commits": 3,
+      "leases": 1,
+      "logicalReadsMarked": 1,
+      "mirrors": 1,
+      "scientificSeedsRead": 0
+    },
+    "ackCount": 1,
+    "unacknowledgedMarkers": 0,
+    "remoteProof": {
+      "fullSources": 0,
+      "partialSources": 0,
+      "completeClosures": 0,
+      "partialProofs": [],
+      "sourceGenerationPerformed": false
+    },
+    "localProof": {
+      "fullSources": 1,
+      "partialSources": 0,
+      "completeClosures": 0,
+      "partialProofs": [],
+      "sourceGenerationPerformed": false
+    },
+    "parentPeak": 659750912,
+    "resultPresent": true,
+    "serviceError": null,
+    "guard": null,
+    "finalMirrorSaved": false,
+    "technicalComplete": false,
+    "completedRecordPresent": true,
+    "completionClaimAuthorized": false,
+    "stops": {
+      "records": [
+        {
+          "target": "work",
+          "atMs": 10295.71542,
+          "reason": "HOST-OOM-NO-RESUME"
+        }
+      ],
+      "elapsedFromServiceMs": 12659.580668,
+      "scientificSeedsRead": 0
+    },
+    "sourceGenerationPerformed": false,
+    "scientificSeedsRead": 0,
+    "resumeAuthorized": false,
+    "solution": null
+  },
+  {
+    "version": 1,
+    "verifiedSavedEvidence": true,
+    "fixturePassed": true,
+    "mode": "lost-response",
+    "runId": "38473413073",
+    "registryHead": "728605759e858c852a5bac950660aa1fcb26280b",
+    "registryRef": "refs/heads/research/g5-remote-joined-38473413073-a1-lost-response",
+    "registryBlobSha": "044007253894cb0f527a029c889acd2e5d8d2788",
+    "registry": {
+      "verified": true,
+      "commits": 2,
+      "leases": 1,
+      "logicalReadsMarked": 1,
+      "mirrors": 0,
+      "scientificSeedsRead": 0
+    },
+    "ackCount": 0,
+    "unacknowledgedMarkers": 1,
+    "remoteProof": {
+      "fullSources": 0,
+      "partialSources": 0,
+      "completeClosures": 0,
+      "partialProofs": [],
+      "sourceGenerationPerformed": false
+    },
+    "localProof": {
+      "fullSources": 0,
+      "partialSources": 0,
+      "completeClosures": 0,
+      "partialProofs": [],
+      "sourceGenerationPerformed": false
+    },
+    "parentPeak": 307048448,
+    "resultPresent": true,
+    "serviceError": null,
+    "guard": {
+      "locked": true,
+      "reason": "INJECTED-POST-COMMIT-RESPONSE-LOSS",
+      "consumesAcknowledged": 0,
+      "mirrorsSucceeded": 0
+    },
+    "finalMirrorSaved": false,
+    "technicalComplete": false,
+    "completedRecordPresent": true,
+    "completionClaimAuthorized": false,
+    "stops": {
+      "records": [],
+      "elapsedFromServiceMs": 9520.211983,
+      "scientificSeedsRead": 0
+    },
+    "sourceGenerationPerformed": false,
+    "scientificSeedsRead": 0,
+    "resumeAuthorized": false,
+    "solution": null
+  },
+  {
+    "version": 2,
+    "verifiedSavedEvidence": true,
+    "fixturePassed": false,
+    "mode": "proxy-final-mirror",
+    "runId": "38474301794",
+    "registryHead": "522a10fc9731ffb677bbfe5a3e4bcc36a61fb791",
+    "registryRef": "refs/heads/research/g5-remote-joined-38474301794-a1-proxy-final-mirror",
+    "registryBlobSha": "aba1cd42c3bd0d84033a55aa21661db02505cef1",
+    "registry": {
+      "verified": true,
+      "commits": 66,
+      "leases": 1,
+      "logicalReadsMarked": 44,
+      "mirrors": 21,
+      "scientificSeedsRead": 0
+    },
+    "ackCount": 44,
+    "unacknowledgedMarkers": 0,
+    "remoteProof": {
+      "fullSources": 41,
+      "partialSources": 1,
+      "completeClosures": 0,
+      "partialProofs": [
+        {
+          "dir": "source-041",
+          "verified": true,
+          "scope": "SAVED-PREFIX-ONLY-NOT-FULL",
+          "savedSteps": 7,
+          "savedScreens": 0,
+          "checkpointPly": null,
+          "checkpointScreens": null,
+          "journals": {
+            "source": {
+              "bytes": 6277,
+              "prefixBytes": 6277,
+              "tailBytes": 0,
+              "sha256": "cccc139f314d5373d063f511e01b60e6a2fc1b02cbaa56f029c10399bdfe8805",
+              "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "rows": 8
+            },
+            "receipt": {
+              "bytes": 389,
+              "prefixBytes": 389,
+              "tailBytes": 0,
+              "sha256": "f1a9247d3bc276caaba37b4d5770ff5453d4de462d9e0ae7d0d262eb33c9186e",
+              "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "rows": 1
+            },
+            "reads": {
+              "bytes": 2996,
+              "prefixBytes": 2996,
+              "tailBytes": 0,
+              "sha256": "5cad77b55bf3881a663805cd02d939f1579959aab6ec85c6345e2dc95341aca9",
+              "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "rows": 8
+            }
+          },
+          "savedReadCoverageVerified": true,
+          "sourceComplete": false,
+          "fullSourceVerified": false,
+          "candidate": null,
+          "solution": null,
+          "resumeAuthorized": false,
+          "scientificSeedGenerationPerformed": false
+        }
+      ],
+      "sourceGenerationPerformed": false
+    },
+    "localProof": {
+      "fullSources": 44,
+      "partialSources": 0,
+      "completeClosures": 0,
+      "partialProofs": [],
+      "sourceGenerationPerformed": false
+    },
+    "parentPeak": 398643200,
+    "resultPresent": false,
+    "serviceError": {
+      "message": "Expected values to be strictly equal:\n\n44 !== 128\n",
+      "scientificSeedsRead": 0
+    },
+    "guard": {
+      "locked": true,
+      "reason": "Command failed: git push --porcelain --force-with-lease=refs/heads/research/g5-remote-joined-38474301794-a1-proxy-final-mirror:522a10fc9731ffb677bbfe5a3e4bcc36a61fb791 https://github.com/nkkmd/bao-la-kiswahili-game.git 8c75996c38c4dd65f193adfccdb19f019718faca:refs/heads/research/g5-remote-joined-38474301794-a1-proxy-final-mirror\nremote: fatal error in commit_refs        \nerror: failed to push some refs to 'https://github.com/nkkmd/bao-la-kiswahili-game.git'\n",
+      "consumesAcknowledged": 44,
+      "mirrorsSucceeded": 21
+    },
+    "finalMirrorSaved": false,
+    "technicalComplete": false,
+    "completedRecordPresent": false,
+    "completionClaimAuthorized": false,
+    "stops": {
+      "records": [
+        {
+          "target": "work",
+          "atMs": 1019014.6338760001,
+          "reason": "ORDINARY-EARLY-STOP"
+        },
+        {
+          "target": "work",
+          "atMs": 1199014.376987,
+          "reason": "TOTAL-EARLY-STOP"
+        },
+        {
+          "target": "control",
+          "atMs": 1199014.444463,
+          "reason": "TOTAL-EARLY-STOP"
+        }
+      ],
+      "elapsedFromServiceMs": 1199014.45909,
+      "scientificSeedsRead": 0
+    },
+    "sourceGenerationPerformed": false,
+    "scientificSeedsRead": 0,
+    "resumeAuthorized": false,
+    "solution": null
+  },
+  {
+    "version": 2,
+    "verifiedSavedEvidence": true,
+    "fixturePassed": false,
+    "mode": "complete",
+    "runId": "38474301794",
+    "registryHead": "ef43324c2a753fc8230f1bbb114b6c98cb149922",
+    "registryRef": "refs/heads/research/g5-remote-joined-38474301794-a1-complete",
+    "registryBlobSha": "6a7efcfc5c03950cfd47d8edca3702cfa914ba0d",
+    "registry": {
+      "verified": true,
+      "commits": 39,
+      "leases": 1,
+      "logicalReadsMarked": 22,
+      "mirrors": 16,
+      "scientificSeedsRead": 0
+    },
+    "ackCount": 22,
+    "unacknowledgedMarkers": 0,
+    "remoteProof": {
+      "fullSources": 21,
+      "partialSources": 0,
+      "completeClosures": 0,
+      "partialProofs": [],
+      "sourceGenerationPerformed": false
+    },
+    "localProof": {
+      "fullSources": 22,
+      "partialSources": 0,
+      "completeClosures": 0,
+      "partialProofs": [],
+      "sourceGenerationPerformed": false
+    },
+    "parentPeak": 355860480,
+    "resultPresent": false,
+    "serviceError": {
+      "message": "Expected values to be strictly equal:\n\nfalse !== true\n",
+      "scientificSeedsRead": 0
+    },
+    "guard": {
+      "locked": true,
+      "reason": "Command failed: git push --porcelain --force-with-lease=refs/heads/research/g5-remote-joined-38474301794-a1-complete:ef43324c2a753fc8230f1bbb114b6c98cb149922 https://github.com/nkkmd/bao-la-kiswahili-game.git fd8324b3cd38031c4ad748d6cd666f5dd594d025:refs/heads/research/g5-remote-joined-38474301794-a1-complete\nremote: fatal error in commit_refs        \nerror: failed to push some refs to 'https://github.com/nkkmd/bao-la-kiswahili-game.git'\n",
+      "consumesAcknowledged": 22,
+      "mirrorsSucceeded": 16
+    },
+    "finalMirrorSaved": false,
+    "technicalComplete": false,
+    "completedRecordPresent": false,
+    "completionClaimAuthorized": false,
+    "stops": {
+      "records": [
+        {
+          "target": "work",
+          "atMs": 1019012.586744,
+          "reason": "ORDINARY-EARLY-STOP"
+        },
+        {
+          "target": "work",
+          "atMs": 1199012.666637,
+          "reason": "TOTAL-EARLY-STOP"
+        },
+        {
+          "target": "control",
+          "atMs": 1199012.700528,
+          "reason": "TOTAL-EARLY-STOP"
+        }
+      ],
+      "elapsedFromServiceMs": 1199012.712326,
+      "scientificSeedsRead": 0
+    },
+    "sourceGenerationPerformed": false,
+    "scientificSeedsRead": 0,
+    "resumeAuthorized": false,
+    "solution": null
+  },
+  {
+    "version": 2,
+    "verifiedSavedEvidence": true,
+    "fixturePassed": true,
+    "mode": "deadline",
+    "runId": "38474301794",
+    "registryHead": "9e6f05b1b9606b8fd9e168afcd700aa135fcf2be",
+    "registryRef": "refs/heads/research/g5-remote-joined-38474301794-a1-deadline",
+    "registryBlobSha": "b6fc38abf76127c5954378b14c43e525e54b8134",
+    "registry": {
+      "verified": true,
+      "commits": 5,
+      "leases": 1,
+      "logicalReadsMarked": 2,
+      "mirrors": 2,
+      "scientificSeedsRead": 0
+    },
+    "ackCount": 1,
+    "unacknowledgedMarkers": 1,
+    "remoteProof": {
+      "fullSources": 1,
+      "partialSources": 0,
+      "completeClosures": 0,
+      "partialProofs": [],
+      "sourceGenerationPerformed": false
+    },
+    "localProof": {
+      "fullSources": 1,
+      "partialSources": 0,
+      "completeClosures": 0,
+      "partialProofs": [],
+      "sourceGenerationPerformed": false
+    },
+    "parentPeak": 307748864,
+    "resultPresent": true,
+    "serviceError": null,
+    "guard": {
+      "locked": false,
+      "reason": null,
+      "consumesAcknowledged": 2,
+      "mirrorsSucceeded": 2
+    },
+    "finalMirrorSaved": true,
+    "technicalComplete": false,
+    "completedRecordPresent": false,
+    "completionClaimAuthorized": false,
+    "stops": {
+      "records": [
+        {
+          "target": "work",
+          "atMs": 19016.432428,
+          "reason": "ORDINARY-EARLY-STOP"
+        },
+        {
+          "target": "work",
+          "atMs": 29017.32779,
+          "reason": "TOTAL-EARLY-STOP"
+        },
+        {
+          "target": "control",
+          "atMs": 29017.378264,
+          "reason": "TOTAL-EARLY-STOP"
+        }
+      ],
+      "elapsedFromServiceMs": 29017.39203,
+      "scientificSeedsRead": 0
+    },
+    "sourceGenerationPerformed": false,
+    "scientificSeedsRead": 0,
+    "resumeAuthorized": false,
+    "solution": null
+  },
+  {
+    "version": 2,
+    "verifiedSavedEvidence": true,
+    "fixturePassed": true,
+    "mode": "lost-response",
+    "runId": "38474301794",
+    "registryHead": "d2c8c01132919920d08ebf8c6259c891c6810830",
+    "registryRef": "refs/heads/research/g5-remote-joined-38474301794-a1-lost-response",
+    "registryBlobSha": "ae920fd5a2a24e69000ffeab121843fa3da631b8",
+    "registry": {
+      "verified": true,
+      "commits": 2,
+      "leases": 1,
+      "logicalReadsMarked": 1,
+      "mirrors": 0,
+      "scientificSeedsRead": 0
+    },
+    "ackCount": 0,
+    "unacknowledgedMarkers": 1,
+    "remoteProof": {
+      "fullSources": 0,
+      "partialSources": 0,
+      "completeClosures": 0,
+      "partialProofs": [],
+      "sourceGenerationPerformed": false
+    },
+    "localProof": {
+      "fullSources": 0,
+      "partialSources": 0,
+      "completeClosures": 0,
+      "partialProofs": [],
+      "sourceGenerationPerformed": false
+    },
+    "parentPeak": 306704384,
+    "resultPresent": true,
+    "serviceError": null,
+    "guard": {
+      "locked": true,
+      "reason": "INJECTED-POST-COMMIT-RESPONSE-LOSS",
+      "consumesAcknowledged": 0,
+      "mirrorsSucceeded": 0
+    },
+    "finalMirrorSaved": false,
+    "technicalComplete": false,
+    "completedRecordPresent": true,
+    "completionClaimAuthorized": false,
+    "stops": {
+      "records": [],
+      "elapsedFromServiceMs": 10398.896800999999,
+      "scientificSeedsRead": 0
+    },
+    "sourceGenerationPerformed": false,
+    "scientificSeedsRead": 0,
+    "resumeAuthorized": false,
+    "solution": null
+  },
+  {
+    "version": 2,
+    "verifiedSavedEvidence": true,
+    "fixturePassed": true,
+    "mode": "host-oom",
+    "runId": "38474301794",
+    "registryHead": "4755b62f5bb5da3ab85a8214358cec1cdd1af189",
+    "registryRef": "refs/heads/research/g5-remote-joined-38474301794-a1-host-oom",
+    "registryBlobSha": "455af0fd23e26aab0fe27922668c65d92a0c690a",
+    "registry": {
+      "verified": true,
+      "commits": 3,
+      "leases": 1,
+      "logicalReadsMarked": 1,
+      "mirrors": 1,
+      "scientificSeedsRead": 0
+    },
+    "ackCount": 1,
+    "unacknowledgedMarkers": 0,
+    "remoteProof": {
+      "fullSources": 0,
+      "partialSources": 0,
+      "completeClosures": 0,
+      "partialProofs": [],
+      "sourceGenerationPerformed": false
+    },
+    "localProof": {
+      "fullSources": 1,
+      "partialSources": 0,
+      "completeClosures": 0,
+      "partialProofs": [],
+      "sourceGenerationPerformed": false
+    },
+    "parentPeak": 660996096,
+    "resultPresent": true,
+    "serviceError": null,
+    "guard": null,
+    "finalMirrorSaved": false,
+    "technicalComplete": false,
+    "completedRecordPresent": true,
+    "completionClaimAuthorized": false,
+    "stops": {
+      "records": [
+        {
+          "target": "work",
+          "atMs": 12066.426472000001,
+          "reason": "HOST-OOM-NO-RESUME"
+        }
+      ],
+      "elapsedFromServiceMs": 14158.941159,
+      "scientificSeedsRead": 0
+    },
+    "sourceGenerationPerformed": false,
+    "scientificSeedsRead": 0,
+    "resumeAuthorized": false,
+    "solution": null
+  }
+]

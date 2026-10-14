@@ -1,0 +1,14 @@
+{
+  "triggerCommit": "a8fe4d6135eedb55b3bf81d6dfbbbe12e36de74a",
+  "sourceCommit": "a8fe4d6135eedb55b3bf81d6dfbbbe12e36de74a",
+  "runId": "38239145152",
+  "runAttempt": "1",
+  "node": "v24.21.0",
+  "binding": "4f7b482405ed789ce543bf4f252374fd30825003f6221e6de9429ecddd298bae",
+  "scientificSeedsRead": 64,
+  "sourcesSaved": 64,
+  "domainsSaved": 8,
+  "evidenceSha256": "fea89b62c1a64daf05628c04c1affa29da925082ef54d8238e967abd7c2ff4f4",
+  "complete": false,
+  "resumeAuthorized": false
+}

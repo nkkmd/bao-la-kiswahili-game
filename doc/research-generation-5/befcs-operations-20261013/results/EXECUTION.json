@@ -1,0 +1,13 @@
+{
+  "node": "v24.19.0",
+  "code": null,
+  "signal": "SIGKILL",
+  "status": "GLOBAL-TIME-LIMIT",
+  "solution": null,
+  "peakAggregateRssBytes": 40861696,
+  "maxProcesses": 1,
+  "ticks": 32,
+  "mirrorError": null,
+  "stdout": "",
+  "stderr": ""
+}

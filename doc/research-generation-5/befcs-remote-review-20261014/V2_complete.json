@@ -1,0 +1,75 @@
+{
+  "version": 2,
+  "verifiedSavedEvidence": true,
+  "fixturePassed": false,
+  "mode": "complete",
+  "runId": "38474301794",
+  "registryHead": "ef43324c2a753fc8230f1bbb114b6c98cb149922",
+  "registryRef": "refs/heads/research/g5-remote-joined-38474301794-a1-complete",
+  "registryBlobSha": "6a7efcfc5c03950cfd47d8edca3702cfa914ba0d",
+  "registry": {
+    "verified": true,
+    "commits": 39,
+    "leases": 1,
+    "logicalReadsMarked": 22,
+    "mirrors": 16,
+    "scientificSeedsRead": 0
+  },
+  "ackCount": 22,
+  "unacknowledgedMarkers": 0,
+  "remoteProof": {
+    "fullSources": 21,
+    "partialSources": 0,
+    "completeClosures": 0,
+    "partialProofs": [],
+    "sourceGenerationPerformed": false
+  },
+  "localProof": {
+    "fullSources": 22,
+    "partialSources": 0,
+    "completeClosures": 0,
+    "partialProofs": [],
+    "sourceGenerationPerformed": false
+  },
+  "parentPeak": 355860480,
+  "resultPresent": false,
+  "serviceError": {
+    "message": "Expected values to be strictly equal:\n\nfalse !== true\n",
+    "scientificSeedsRead": 0
+  },
+  "guard": {
+    "locked": true,
+    "reason": "Command failed: git push --porcelain --force-with-lease=refs/heads/research/g5-remote-joined-38474301794-a1-complete:ef43324c2a753fc8230f1bbb114b6c98cb149922 https://github.com/nkkmd/bao-la-kiswahili-game.git fd8324b3cd38031c4ad748d6cd666f5dd594d025:refs/heads/research/g5-remote-joined-38474301794-a1-complete\nremote: fatal error in commit_refs        \nerror: failed to push some refs to 'https://github.com/nkkmd/bao-la-kiswahili-game.git'\n",
+    "consumesAcknowledged": 22,
+    "mirrorsSucceeded": 16
+  },
+  "finalMirrorSaved": false,
+  "technicalComplete": false,
+  "completedRecordPresent": false,
+  "completionClaimAuthorized": false,
+  "stops": {
+    "records": [
+      {
+        "target": "work",
+        "atMs": 1019012.586744,
+        "reason": "ORDINARY-EARLY-STOP"
+      },
+      {
+        "target": "work",
+        "atMs": 1199012.666637,
+        "reason": "TOTAL-EARLY-STOP"
+      },
+      {
+        "target": "control",
+        "atMs": 1199012.700528,
+        "reason": "TOTAL-EARLY-STOP"
+      }
+    ],
+    "elapsedFromServiceMs": 1199012.712326,
+    "scientificSeedsRead": 0
+  },
+  "sourceGenerationPerformed": false,
+  "scientificSeedsRead": 0,
+  "resumeAuthorized": false,
+  "solution": null
+}

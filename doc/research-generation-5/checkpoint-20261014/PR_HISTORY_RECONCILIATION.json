@@ -1,0 +1,290 @@
+{
+  "sourceHead": "a5014f79b300d3e5731aa272e4c6cb0d16baa350",
+  "supersededHead": "4bf0e33e6785367495b143950027b9f989050f57",
+  "commonBase": "67984fa90b305cb8092f80d8b74392b94a659fcb",
+  "decision": "SUPERSEDED-VARIANT-HISTORY-PRESERVED-NOT-CURRENT-TREE",
+  "pullRequests": [
+    {
+      "number": 181,
+      "head": "research/g5-01-measurement-readiness",
+      "headSha": "3c20f0906ea0e43de13c3e6ba2dd9c3a116bc83e",
+      "base": "main",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 182,
+      "head": "research/g5-02-exact-supply",
+      "headSha": "fe830c2af063f2bb1d9dfa530ae0e4bb95cf0c66",
+      "base": "research/g5-01-measurement-readiness",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 183,
+      "head": "research/g5-03-bounded-terminal-supply",
+      "headSha": "de1dc9f2727d237638402e26a3e9f8c5174d62ad",
+      "base": "research/g5-02-exact-supply",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 184,
+      "head": "research/g5-04-terminal-span-supply",
+      "headSha": "0f8a6382f803994f3971412cf9af9ed682b27e09",
+      "base": "research/g5-03-bounded-terminal-supply",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 185,
+      "head": "research/g5-primary-readiness-review",
+      "headSha": "c4ce50e645ece9eee070b775d1114de430ef6f10",
+      "base": "research/g5-04-terminal-span-supply",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 186,
+      "head": "research/g5-reply-mode-source-design",
+      "headSha": "50f12cb9557a56c28cbc24173a875208cc2fdd05",
+      "base": "research/g5-primary-readiness-review",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 187,
+      "head": "research/g5-05-mixed-reply-supply",
+      "headSha": "2cc89256fe9552b815caf204bff33f45a43dd6d5",
+      "base": "research/g5-reply-mode-source-design",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 188,
+      "head": "research/g5-science-method-review",
+      "headSha": "80800aec8ba502718a889657a763c89dbf53f257",
+      "base": "research/g5-05-mixed-reply-supply",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 189,
+      "head": "research/g5-compact-bfs-integration",
+      "headSha": "e3da61dc6fae487551907e7ba141b3b6221a8edf",
+      "base": "research/g5-science-method-review",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 190,
+      "head": "research/g5-branch-envelope-supply-design",
+      "headSha": "f85cf879db9732193b92cf417e7c9f554bae42f1",
+      "base": "research/g5-compact-bfs-integration",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 191,
+      "head": "research/g5-branch-envelope-preflight",
+      "headSha": "5c9d80801d7476ec008a3c95d55440d5939fcfd2",
+      "base": "research/g5-branch-envelope-supply-design",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 192,
+      "head": "research/g5-befcs-operations-preflight",
+      "headSha": "39cceb07fce4cd7832567bb1868e585ac9d57f80",
+      "base": "research/g5-branch-envelope-preflight",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 193,
+      "head": "research/g5-befcs-workload-preflight",
+      "headSha": "91f58642a1b23358fa8bc68a922bb0fcd05b4d51",
+      "base": "research/g5-befcs-operations-preflight",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 194,
+      "head": "research/g5-befcs-host-preflight",
+      "headSha": "966ca5e14c3be1e5243d9c0a358a71668924cd88",
+      "base": "research/g5-befcs-workload-preflight",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 195,
+      "head": "research/g5-befcs-pipeline-preflight",
+      "headSha": "7cbda82d06fb7e5f2f47098bad1c8c4f76f218fc",
+      "base": "research/g5-befcs-host-preflight",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 196,
+      "head": "research/g5-befcs-envelope-preflight",
+      "headSha": "b5bef61d4fe4e80ccea6b2a94bfe2c6e88c775bd",
+      "base": "research/g5-befcs-pipeline-preflight",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 197,
+      "head": "research/g5-befcs-contained-preflight",
+      "headSha": "28fb85d96a30df52d856716f63a8080468c42820",
+      "base": "research/g5-befcs-envelope-preflight",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 198,
+      "head": "research/g5-befcs-supervisor-preflight",
+      "headSha": "05ef1ddfcbca72d73e220a414d8664487c014176",
+      "base": "research/g5-befcs-contained-preflight",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 199,
+      "head": "research/g5-befcs-joined-preflight",
+      "headSha": "25b9f730160a58151228ead2209837b16fc12d90",
+      "base": "research/g5-befcs-supervisor-preflight",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 200,
+      "head": "research/g5-befcs-prefix-preflight",
+      "headSha": "1f0f75c4a80b12d4c016c71f14bc4b4151e89fa4",
+      "base": "research/g5-befcs-joined-preflight",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 201,
+      "head": "research/g5-befcs-git-preflight",
+      "headSha": "65747ada06be99a43d62109ab78a0edd0d47ba28",
+      "base": "research/g5-befcs-prefix-preflight",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 202,
+      "head": "research/g5-befcs-remote-joined-preflight",
+      "headSha": "4bf0e33e6785367495b143950027b9f989050f57",
+      "base": "research/g5-befcs-git-preflight",
+      "includedInSourceHistory": false
+    },
+    {
+      "number": 203,
+      "head": "research/g5-befcs-remote-evidence",
+      "headSha": "750103001fc20ebba3c824b52b2c61c509d95822",
+      "base": "research/g5-befcs-remote-joined-preflight",
+      "includedInSourceHistory": true
+    },
+    {
+      "number": 204,
+      "head": "research/g5-befcs-remote-stop-v3-preflight",
+      "headSha": "a5014f79b300d3e5731aa272e4c6cb0d16baa350",
+      "base": "research/g5-befcs-remote-evidence",
+      "includedInSourceHistory": true
+    }
+  ],
+  "supersededVariantFiles": {
+    "doc/research-generation-5/befcs-remote-joined-20261014/CI_ACQUIRED_BINDING.json": {
+      "variantBlob": "9a507ae22543bfa3a22bab37cd484eac3feedbaa",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/CI_ACQUIRED_CONFIRMATION.md": {
+      "variantBlob": "46456b17595eff0df1aa36a5279e9c9705b01212",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/SOURCE_MANIFEST_V3.json": {
+      "variantBlob": "450c7b451e85059704de37bb16a375a5d87b38f4",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/V3_AUDIT.md": {
+      "variantBlob": "1eb6a40cfd109e06e07b830d458f7cbbff3a4741",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/V3_RESUME_HERE.md": {
+      "variantBlob": "c6e19d4fa1e0dde0df140050de719a11bddfe14a",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/V3_REVISION.md": {
+      "variantBlob": "86a40e9ea4dc3a6f4e52ca625d61daa215c5994f",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/ACQUIRED_REPLAY.json": {
+      "variantBlob": "a94b9cd698e02dc528c398420e833bf3e912210b",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/CI_ACQUIRED_RECEIPT.json": {
+      "variantBlob": "709126e0b107a417f1b7e9ee3c4f224fbaa2f6e5",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/V2_SOURCE_SNAPSHOT.json.gz": {
+      "variantBlob": "740389707e1263740d96ac5e37861b6fdfb0857a",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/artifact-11852327460.zip": {
+      "variantBlob": "40fb8e03110f186e18cba79017d19199fb5023c6",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/artifact-11852472353.zip": {
+      "variantBlob": "211724aa449e0b9862bba3df4c14e35159c1eb4f",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/artifact-11852619342.zip": {
+      "variantBlob": "50d95213b1cb8aa6dbbe283f84af0c5723535527",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/artifact-11852707959.zip": {
+      "variantBlob": "042a4b6415f4418303bff0ceccec5a5700779ba5",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/artifact-11853148638.zip": {
+      "variantBlob": "db777148e5fced0f5b4f04d4187997f2a4cb23cb",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/artifact-11853262654.zip": {
+      "variantBlob": "2ad76136d31a40430d8729bcf57d641310d5cde2",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/artifact-11853716667.zip": {
+      "variantBlob": "c182ef107a35d3f1fe770e951e2f541f629024d5",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/artifact-11853741139.zip": {
+      "variantBlob": "377ce0b8d01cc9193925a5c9a4536702cebff81e",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/artifact-11854461369.zip": {
+      "variantBlob": "9ef3371c221826e72c1f9d90306a3e57fe014a60",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/artifact-11854985340.zip": {
+      "variantBlob": "d94593e7cdbfb3f9e3af4d99c1c72d0703280ef8",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/job-115558190533.log": {
+      "variantBlob": "84d1346ae40fc93e1f0cdd6cbcaae23dcefcc236",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/job-115561215908.log": {
+      "variantBlob": "87ae16e32c4f0e2c256cc777c9584957b119808b",
+      "currentBlob": null
+    },
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/job-115561216008.log": {
+      "variantBlob": "8842cd60a75e655fdfc7f14ff75f14744efe3989",
+      "currentBlob": null
+    },
+    "test/g5-befcs-remote-joined.test.cjs": {
+      "variantBlob": "9c31340119201398765719ec2f1529ed41d190e7",
+      "currentBlob": "57f75c8c9775d8d13f6349f7009661e106afb246"
+    },
+    "tools/research/g5-befcs-remote-joined/guard.cjs": {
+      "variantBlob": "b4ff6878b3ad3303bac4bc20332246bb697d22cb",
+      "currentBlob": "784d37dca2f75804dbfffaac13d3190f293e3070"
+    },
+    "tools/research/g5-befcs-remote-joined/host.cjs": {
+      "variantBlob": "19e71b4715e724509ff79053ce255a17c22b0408",
+      "currentBlob": "95f9d0358c74bf4fd56ffc5c89313e5b34cfd376"
+    },
+    "tools/research/g5-befcs-remote-joined/lifecycle.cjs": {
+      "variantBlob": "e125f971ee2067c978386e1c0e559d91271c7fd7",
+      "currentBlob": null
+    },
+    "tools/research/g5-befcs-remote-joined/run.cjs": {
+      "variantBlob": "0c3f96e6be5a8ecde3a29a6154a15a9aa84bfefe",
+      "currentBlob": "59d82483c24a2848ddb173a8652bb9d29e2329b9"
+    },
+    "tools/research/g5-befcs-remote-joined/verify-history.cjs": {
+      "variantBlob": "2067b978cda759e7c9d7bb71055fc3be6155ed4d",
+      "currentBlob": null
+    }
+  }
+}

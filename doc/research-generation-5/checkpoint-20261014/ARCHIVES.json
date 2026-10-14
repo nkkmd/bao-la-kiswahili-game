@@ -1,0 +1,37 @@
+[
+  {
+    "mode": "proxy-final-mirror",
+    "artifactId": 11865140992,
+    "bytes": 21857676,
+    "sha256": "58ba0359daca971bbd61c6fdeeee43caac6e576100e7e9d0f6fb68160ca60c41",
+    "members": 1643
+  },
+  {
+    "mode": "lost-response",
+    "artifactId": 11864766607,
+    "bytes": 62032,
+    "sha256": "74876f20dc99ae4b60c7b8d03a715c9bd43418a6ced67b67bf29ceb371968d0a",
+    "members": 89
+  },
+  {
+    "mode": "host-oom",
+    "artifactId": 11864189008,
+    "bytes": 87847,
+    "sha256": "343420718e5f1e6716c86ebb58a05cbcbff4f946950d57383a3f4ad56badb9bb",
+    "members": 107
+  },
+  {
+    "mode": "complete",
+    "artifactId": 11864143755,
+    "bytes": 21015680,
+    "sha256": "7cf0d2d1b1f3a100e5500ef7d0d846a5b79cfc019037c0f65eb36a0744c897f7",
+    "members": 1312
+  },
+  {
+    "mode": "deadline",
+    "artifactId": 11864034277,
+    "bytes": 341475,
+    "sha256": "2882a649867463d01c4cb919f0c09d62c99cfc0b96a8f028539a72511b569535",
+    "members": 210
+  }
+]

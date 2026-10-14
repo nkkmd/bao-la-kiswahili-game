@@ -1,0 +1,71 @@
+{
+  "verifiedSavedEvidence": true,
+  "fixturePassed": true,
+  "mode": "deadline",
+  "runId": "38497935805",
+  "registryHead": "99babde877c0d1d503c1d0bd76e82d24b1a5835b",
+  "registryRef": "refs/heads/research/g5-remote-stop-v3-38497935805-a1-deadline",
+  "registryBlobSha": "ddcab6785262bed28d5c62979506abc3d1a231d1",
+  "registry": {
+    "verified": true,
+    "commits": 10,
+    "leases": 1,
+    "logicalReadsMarked": 6,
+    "mirrors": 3,
+    "scientificSeedsRead": 0
+  },
+  "ackCount": 6,
+  "unacknowledgedMarkers": 0,
+  "remoteProof": {
+    "fullSources": 6,
+    "partialSources": 0,
+    "completeClosures": 0,
+    "partialProofs": [],
+    "sourceGenerationPerformed": false
+  },
+  "localProof": {
+    "fullSources": 6,
+    "partialSources": 0,
+    "completeClosures": 0,
+    "partialProofs": [],
+    "sourceGenerationPerformed": false
+  },
+  "parentPeak": 306552832,
+  "resultPresent": true,
+  "serviceError": null,
+  "guard": {
+    "locked": true,
+    "reason": "REMOTE-JOINED-TIME-BOUNDARY",
+    "consumesAcknowledged": 6,
+    "mirrorsSucceeded": 3
+  },
+  "finalMirrorSaved": false,
+  "technicalComplete": false,
+  "completedRecordPresent": false,
+  "completionClaimAuthorized": false,
+  "stops": {
+    "records": [
+      {
+        "target": "work",
+        "atMs": 19017.218231,
+        "reason": "ORDINARY-EARLY-STOP"
+      },
+      {
+        "target": "work",
+        "atMs": 29015.989433,
+        "reason": "TOTAL-EARLY-STOP"
+      },
+      {
+        "target": "control",
+        "atMs": 29016.067338,
+        "reason": "TOTAL-EARLY-STOP"
+      }
+    ],
+    "elapsedFromServiceMs": 29016.080493,
+    "scientificSeedsRead": 0
+  },
+  "sourceGenerationPerformed": false,
+  "scientificSeedsRead": 0,
+  "resumeAuthorized": false,
+  "solution": null
+}

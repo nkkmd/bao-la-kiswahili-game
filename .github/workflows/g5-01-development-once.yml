@@ -1,0 +1,61 @@
+name: G5-01 Development Once
+
+on:
+  push:
+    branches: [research/g5-01-measurement-readiness]
+    paths:
+      - 'doc/research-generation-5/g5-01/development/executions/TRIGGER.json'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: g5-01-development-consume-once-v1
+  cancel-in-progress: false
+
+jobs:
+  development-once:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify fixture-only preflight and frozen binding
+        run: node --test test/g5-01-development.test.cjs
+      - name: Acquire durable lease before fresh access
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node tools/research/g5-01/development/lease.cjs artifacts/local/g5-01-development/LEASE.json
+      - name: Consume source block exactly once
+        run: node tools/research/g5-01/development/run.cjs artifacts/local/g5-01-development artifacts/local/g5-01-development/LEASE.json
+      - name: Independently replay and verify stored development evidence
+        run: node tools/research/g5-01/development/verify.cjs artifacts/local/g5-01-development
+      - name: Preserve artifacts even after partial execution
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g5-01-development-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/local/g5-01-development/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Save evidence to research branch
+        if: always()
+        run: |
+          set -euo pipefail
+          source_dir='artifacts/local/g5-01-development'
+          if [ ! -f "${source_dir}/RESULT.json" ]; then exit 0; fi
+          git fetch origin research/g5-01-measurement-readiness
+          git checkout -B research/g5-01-measurement-readiness FETCH_HEAD
+          destination='doc/research-generation-5/g5-01/development/results'
+          if [ -e "${destination}/RESULT.json" ]; then echo 'existing evidence; refusing overwrite' >&2; exit 1; fi
+          mkdir -p "${destination}"
+          cp "${source_dir}"/* "${destination}/"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "${destination}"
+          git commit -m 'research(g5-01): preserve consume-once development evidence'
+          git push origin HEAD:research/g5-01-measurement-readiness

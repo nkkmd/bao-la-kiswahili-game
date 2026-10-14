@@ -1,0 +1,11 @@
+{
+  "headCommit": "6c1698edf7b26af47d2aa15913b780da8d140165",
+  "artifactArchiveSha256": "4af24c8b2b8709c5870a73aa165bd96b21a6ed2b83fc79a6bc69c3ef17b94593",
+  "artifactArchiveVerified": true,
+  "files": {
+    "doc/research-generation-5/befcs-workload-20261013/results-v2/CI_RECEIPT.json": "37801b7371d4452d6e29c42bbebbae809474bb74336bb39493a78e13dc56eaff",
+    "doc/research-generation-5/befcs-workload-20261013/results-v2/CI_CGROUP_RESULT.json": "7f49284ba353f9fea39a2036c16153848dd652ee4b83f652cf3079068b448f08",
+    "doc/research-generation-5/befcs-workload-20261013/results-v2/CI_CGROUP_EVIDENCE.json.gz": "f60cde64533dfce101198517d8c49e7ac17b1606e447a6abe12c082daa76bb47",
+    "doc/research-generation-5/befcs-workload-20261013/results-v2/CI_CAPACITY_RESULT.json": "9c13579ee2da63b487b98c00cf89235b8d9a1b8f2a07cde3cfbefb7ec314c4fd"
+  }
+}

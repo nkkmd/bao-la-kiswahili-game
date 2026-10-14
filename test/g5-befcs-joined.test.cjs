@@ -1,0 +1,7 @@
+"use strict";
+const test=require('node:test'),assert=require('node:assert/strict');
+const {config,validate,PARTITIONS,LIMITS,stopBeforeSave,ownCgroup}=require('../tools/research/g5-befcs-joined/policy.cjs');
+test('科学入力・追加source・上限変更を開始前に拒否する',()=>{const c=config('complete');for(const x of [{...c,evidenceClass:'BEFCS-SCIENTIFIC-PIPELINE'},{...c,scientificSeedsRead:1},{...c,count:129},{...c,limits:{...LIMITS,maxTotalMs:LIMITS.maxTotalMs+1}},{...c,stopLeadMs:0}])assert.throws(()=>validate(x));});
+test('親1 GiB内の512/448/64 MiBと科学提案の20分を固定する',()=>{assert.equal(Object.values(PARTITIONS).reduce((a,b)=>a+b),1073741824);assert.deepEqual(validate(config('complete')),{totalMs:1200000,reserveMs:180000});assert.deepEqual(validate(config('deadline')),{totalMs:15000,reserveMs:10000});});
+test('遅い同期保存より先に全停止命令を発行する',()=>{const calls=[];let ms=0;const rows=stopBeforeSave(['work','control'],n=>calls.push('kill:'+n),()=>{calls.push('save');ms+=152;},()=>ms);assert.deepEqual(calls,['kill:work','kill:control','save']);assert.deepEqual(rows,[{target:'work',atMs:0},{target:'control',atMs:0}]);assert.equal(ms,152);});
+test('停止対象は自分の委譲serviceだけに限定する',()=>{const unit='bao-g5-joined-0123456789abcdef.service';assert.equal(ownCgroup(unit,'0::/system.slice/'+unit),'\/sys/fs/cgroup/system.slice/'+unit);for(const s of ['0::/','0::/system.slice/other.service','0::/../'+unit,'1:memory:/'+unit])assert.throws(()=>ownCgroup(unit,s));});

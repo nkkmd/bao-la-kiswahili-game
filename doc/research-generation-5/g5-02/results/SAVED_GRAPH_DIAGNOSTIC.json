@@ -1,0 +1,242 @@
+{
+  "studyId": "RECSF-STUDY1",
+  "stageId": "RECSF-S1-SUPPLY-2026-10-12-v1",
+  "kind": "POSTEXECUTION-SAVED-GRAPH-DESCRIPTION",
+  "evidenceGzipSha256": "82b408350441f9bbf405c3f0bf8ca72fac972affaff840ae3f215453f012e6df",
+  "compressedBytes": 7810309,
+  "uncompressedBytes": 38487729,
+  "freshSourcesGenerated": 0,
+  "freshTransitionsGenerated": 0,
+  "candidatesReselected": 0,
+  "formalInference": false,
+  "depthMeaning": "Shortest distance within saved partial edges; not a completely expanded or solved horizon.",
+  "rows": [
+    {
+      "candidate": 1,
+      "sourceIndex": 4,
+      "seed": 50212005,
+      "rootPly": 48,
+      "rootWidth": 2,
+      "occupied": 23,
+      "frontTotals": [
+        2,
+        28
+      ],
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5005,
+      "fullyExpandedNodes": 1697,
+      "savedMaxShortestDepth": 7,
+      "savedDepthCounts": {
+        "0": 1,
+        "1": 2,
+        "2": 4,
+        "3": 19,
+        "4": 106,
+        "5": 371,
+        "6": 1288,
+        "7": 3209
+      },
+      "elapsedMs": 511
+    },
+    {
+      "candidate": 2,
+      "sourceIndex": 9,
+      "seed": 50212010,
+      "rootPly": 62,
+      "rootWidth": 2,
+      "occupied": 23,
+      "frontTotals": [
+        7,
+        27
+      ],
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5012,
+      "fullyExpandedNodes": 1340,
+      "savedMaxShortestDepth": 7,
+      "savedDepthCounts": {
+        "0": 1,
+        "1": 2,
+        "2": 12,
+        "3": 61,
+        "4": 202,
+        "5": 908,
+        "6": 3362,
+        "7": 452
+      },
+      "elapsedMs": 451
+    },
+    {
+      "candidate": 3,
+      "sourceIndex": 10,
+      "seed": 50212011,
+      "rootPly": 51,
+      "rootWidth": 2,
+      "occupied": 22,
+      "frontTotals": [
+        26,
+        6
+      ],
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5012,
+      "fullyExpandedNodes": 1406,
+      "savedMaxShortestDepth": 8,
+      "savedDepthCounts": {
+        "0": 1,
+        "1": 2,
+        "2": 7,
+        "3": 23,
+        "4": 60,
+        "5": 208,
+        "6": 769,
+        "7": 2796,
+        "8": 1134
+      },
+      "elapsedMs": 419
+    },
+    {
+      "candidate": 4,
+      "sourceIndex": 12,
+      "seed": 50212013,
+      "rootPly": 48,
+      "rootWidth": 3,
+      "occupied": 22,
+      "frontTotals": [
+        38,
+        4
+      ],
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5027,
+      "fullyExpandedNodes": 1463,
+      "savedMaxShortestDepth": 7,
+      "savedDepthCounts": {
+        "0": 1,
+        "1": 3,
+        "2": 12,
+        "3": 37,
+        "4": 113,
+        "5": 389,
+        "6": 935,
+        "7": 3510
+      },
+      "elapsedMs": 415
+    },
+    {
+      "candidate": 5,
+      "sourceIndex": 15,
+      "seed": 50212016,
+      "rootPly": 54,
+      "rootWidth": 2,
+      "occupied": 24,
+      "frontTotals": [
+        6,
+        26
+      ],
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5023,
+      "fullyExpandedNodes": 1543,
+      "savedMaxShortestDepth": 9,
+      "savedDepthCounts": {
+        "0": 1,
+        "1": 2,
+        "2": 2,
+        "3": 9,
+        "4": 30,
+        "5": 93,
+        "6": 257,
+        "7": 855,
+        "8": 2802,
+        "9": 949
+      },
+      "elapsedMs": 403
+    },
+    {
+      "candidate": 6,
+      "sourceIndex": 16,
+      "seed": 50212017,
+      "rootPly": 49,
+      "rootWidth": 4,
+      "occupied": 22,
+      "frontTotals": [
+        24,
+        7
+      ],
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5001,
+      "fullyExpandedNodes": 1477,
+      "savedMaxShortestDepth": 7,
+      "savedDepthCounts": {
+        "0": 1,
+        "1": 4,
+        "2": 15,
+        "3": 44,
+        "4": 151,
+        "5": 529,
+        "6": 1641,
+        "7": 2615
+      },
+      "elapsedMs": 416
+    },
+    {
+      "candidate": 7,
+      "sourceIndex": 17,
+      "seed": 50212018,
+      "rootPly": 59,
+      "rootWidth": 2,
+      "occupied": 22,
+      "frontTotals": [
+        27,
+        3
+      ],
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5179,
+      "fullyExpandedNodes": 1778,
+      "savedMaxShortestDepth": 7,
+      "savedDepthCounts": {
+        "0": 1,
+        "1": 2,
+        "2": 6,
+        "3": 26,
+        "4": 114,
+        "5": 388,
+        "6": 1428,
+        "7": 3035
+      },
+      "elapsedMs": 428
+    },
+    {
+      "candidate": 8,
+      "sourceIndex": 19,
+      "seed": 50212020,
+      "rootPly": 51,
+      "rootWidth": 3,
+      "occupied": 21,
+      "frontTotals": [
+        3,
+        35
+      ],
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5023,
+      "fullyExpandedNodes": 1709,
+      "savedMaxShortestDepth": 7,
+      "savedDepthCounts": {
+        "0": 1,
+        "1": 3,
+        "2": 18,
+        "3": 62,
+        "4": 151,
+        "5": 544,
+        "6": 944,
+        "7": 3277
+      },
+      "elapsedMs": 409
+    }
+  ]
+}

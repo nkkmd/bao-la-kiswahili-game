@@ -1,0 +1,194 @@
+{
+  "technicalId": "BEFCS-TECH-PREFLIGHT-2026-10-13-v1",
+  "decision": "BRANCH-ENVELOPE-FIXTURE-PREFLIGHT-PASS-NOT-SCIENTIFIC-AUTHORIZATION",
+  "sourceManifestSha256": "4a209ad6e19e35911d174f8df37410531678c0ffe8d61eb4599d3734905e0ab1",
+  "protectedInputCount": 555,
+  "sourceFixtureCount": 10,
+  "sourceFixtures": [
+    {
+      "id": "FIRST-48",
+      "stop": "NATURAL-TERMINAL",
+      "traceLength": 53,
+      "firstEligiblePly": 48,
+      "selectedPly": 48
+    },
+    {
+      "id": "AGGREGATE-17",
+      "stop": "NATURAL-TERMINAL",
+      "traceLength": 53,
+      "firstEligiblePly": 50,
+      "selectedPly": 50
+    },
+    {
+      "id": "AGGREGATE-16",
+      "stop": "NATURAL-TERMINAL",
+      "traceLength": 53,
+      "firstEligiblePly": 48,
+      "selectedPly": 48
+    },
+    {
+      "id": "FIRST-CHILD-READ",
+      "stop": "NATURAL-TERMINAL",
+      "traceLength": 53,
+      "firstEligiblePly": 48,
+      "selectedPly": null
+    },
+    {
+      "id": "SHARED-PATH-ALLOWED",
+      "stop": "NATURAL-TERMINAL",
+      "traceLength": 53,
+      "firstEligiblePly": 48,
+      "selectedPly": 48
+    },
+    {
+      "id": "REPLY-UNKNOWN",
+      "stop": "SCREEN-REPLY-MOVE-RECURRENT",
+      "traceLength": 48,
+      "firstEligiblePly": null,
+      "selectedPly": null
+    },
+    {
+      "id": "LATER-UNKNOWN",
+      "stop": "SCREEN-REPLY-MOVE-RECURRENT",
+      "traceLength": 50,
+      "firstEligiblePly": 48,
+      "selectedPly": null
+    },
+    {
+      "id": "PLY-48",
+      "stop": "PLY-LIMIT",
+      "traceLength": 48,
+      "firstEligiblePly": 48,
+      "selectedPly": 48
+    },
+    {
+      "id": "PLY-512",
+      "stop": "PLY-LIMIT",
+      "traceLength": 512,
+      "firstEligiblePly": 48,
+      "selectedPly": 48
+    },
+    {
+      "id": "REJECTION-DRAW",
+      "stop": "NATURAL-TERMINAL",
+      "traceLength": 53,
+      "firstEligiblePly": 48,
+      "selectedPly": 48
+    }
+  ],
+  "closureFixtures": [
+    {
+      "id": "BAO-COMPLETE",
+      "status": "COMPLETE",
+      "graphComplete": true,
+      "interpretationComplete": true,
+      "states": 3,
+      "edges": 2,
+      "solutionCounts": {
+        "nodes": 3,
+        "terminal": 2,
+        "win": 1,
+        "loss": 0,
+        "recurrent": 0
+      }
+    },
+    {
+      "id": "BAO-READ-STOP",
+      "status": "READ-FIREWALL-HIT",
+      "graphComplete": false,
+      "interpretationComplete": false,
+      "states": 1,
+      "edges": 0,
+      "solutionCounts": null
+    },
+    {
+      "id": "BAO-MICRO-STOP",
+      "status": "ADMIN-CUTOFF",
+      "graphComplete": false,
+      "interpretationComplete": false,
+      "states": 1,
+      "edges": 1,
+      "solutionCounts": null
+    },
+    {
+      "id": "ABSTRACT-CYCLE",
+      "status": "COMPLETE",
+      "graphComplete": true,
+      "interpretationComplete": true,
+      "states": 2,
+      "edges": 2,
+      "solutionCounts": {
+        "nodes": 2,
+        "terminal": 0,
+        "win": 0,
+        "loss": 0,
+        "recurrent": 2
+      }
+    },
+    {
+      "id": "STATE-STOP",
+      "status": "STATE-LIMIT",
+      "graphComplete": false,
+      "interpretationComplete": false,
+      "states": 2,
+      "edges": 2,
+      "solutionCounts": null
+    },
+    {
+      "id": "EDGE-STOP",
+      "status": "EDGE-LIMIT",
+      "graphComplete": false,
+      "interpretationComplete": false,
+      "states": 2,
+      "edges": 1,
+      "solutionCounts": null
+    },
+    {
+      "id": "STORAGE-STOP",
+      "status": "EVIDENCE-RESERVE-LIMIT",
+      "graphComplete": false,
+      "interpretationComplete": false,
+      "states": 5,
+      "edges": 5,
+      "solutionCounts": null
+    }
+  ],
+  "archivesVerified": 17,
+  "observedTechnicalIdentities": 532,
+  "novelConservativeIdentities": 0,
+  "conservativeCombinedReadIdentities": 103355,
+  "nominalCapacity": [
+    {
+      "mode": "boundary",
+      "normalBytes": 251658240,
+      "reserveBytes": 16777216,
+      "totalBytes": 268435456,
+      "byteBoundaryVerified": true
+    },
+    {
+      "mode": "shards",
+      "expandedBytes": 251658375,
+      "gzipBytes": 251735198,
+      "shardBytes": [
+        50331648,
+        50331648,
+        50331648,
+        50331648,
+        50331648,
+        76958
+      ],
+      "streamRoundtripVerified": true
+    }
+  ],
+  "evidenceBytes": 1309046,
+  "evidenceSha256": "df1bf39be0a38dda7dfae6cae5f6f39d2ec9c4a5f391f8804b6f7ae35356ab6d",
+  "newScientificSources": 0,
+  "newScientificSeeds": 0,
+  "newScientificCandidates": 0,
+  "scientificRunnerAuthorized": false,
+  "leaseCreated": false,
+  "fullClosureRequirementChanged": false,
+  "formalRelationRegistered": false,
+  "formalRelationExecuted": false,
+  "publicAiChanged": false
+}

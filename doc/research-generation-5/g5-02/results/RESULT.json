@@ -1,0 +1,125 @@
+{
+  "disposition": "STAGE1-SUPPLY-COMPLETE",
+  "failure": null,
+  "studyId": "RECSF-STUDY1",
+  "stageId": "RECSF-S1-SUPPLY-2026-10-12-v1",
+  "binding": "29b81cb1466ce41a8d78d4fa68f068258bc9623f6e42ca034008cc812b38e8bb",
+  "seedBlock": {
+    "start": 50212001,
+    "end": 50212032,
+    "count": 32
+  },
+  "scientificSeedsRead": 32,
+  "sourceCount": 32,
+  "sourceStops": {
+    "TERMINAL-BEFORE-CANDIDATE": 16,
+    "FIRST-ELIGIBLE-ROOT": 16
+  },
+  "candidateCount": 8,
+  "completeDomains": 0,
+  "domainStatuses": [
+    {
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5005,
+      "elapsedMs": 511,
+      "complete": false,
+      "counts": null
+    },
+    {
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5012,
+      "elapsedMs": 451,
+      "complete": false,
+      "counts": null
+    },
+    {
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5012,
+      "elapsedMs": 419,
+      "complete": false,
+      "counts": null
+    },
+    {
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5027,
+      "elapsedMs": 415,
+      "complete": false,
+      "counts": null
+    },
+    {
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5023,
+      "elapsedMs": 403,
+      "complete": false,
+      "counts": null
+    },
+    {
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5001,
+      "elapsedMs": 416,
+      "complete": false,
+      "counts": null
+    },
+    {
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5179,
+      "elapsedMs": 428,
+      "complete": false,
+      "counts": null
+    },
+    {
+      "status": "STATE-LIMIT",
+      "states": 5000,
+      "edges": 5023,
+      "elapsedMs": 409,
+      "complete": false,
+      "counts": null
+    }
+  ],
+  "domainGroups": [
+    [
+      0
+    ],
+    [
+      1
+    ],
+    [
+      2
+    ],
+    [
+      3
+    ],
+    [
+      4
+    ],
+    [
+      5
+    ],
+    [
+      6
+    ],
+    [
+      7
+    ]
+  ],
+  "evidenceGzipSha256": "82b408350441f9bbf405c3f0bf8ca72fac972affaff840ae3f215453f012e6df",
+  "supplyIdentityCount": 41731,
+  "formalInference": false,
+  "publicAiChanged": false,
+  "execution": {
+    "triggerCommit": "d939f1cc8204dd00e9284ec84a0fe2a6665fec6c",
+    "sourceCommit": "d939f1cc8204dd00e9284ec84a0fe2a6665fec6c",
+    "runId": "38237119716",
+    "runAttempt": "1",
+    "node": "v24.21.0",
+    "elapsedMs": 7487,
+    "peakRssBytes": 467869696
+  }
+}

@@ -1,0 +1,666 @@
+{
+  "decision": "WORKER-HOST-PIPELINE-FIXTURE-PASS-SCIENTIFIC-RELEASE-PENDING",
+  "sourceManifestSha256": "a0a37ee4bb0aa133055a47a1f9d1e4b4d4919623f12b3e26747f58bdfc8ba385",
+  "evidenceSha256": "373261e42a1380a15502cb56aed4f1e1c60ae203d6b7ed52fd1a53366c6a5796",
+  "scenarios": [
+    {
+      "mode": "complete",
+      "fixtureSourceCount": 128,
+      "execution": {
+        "code": 0,
+        "signal": null,
+        "status": "WORKER-COMPLETE",
+        "peakAggregateRssBytes": 30773248,
+        "maxProcesses": 1,
+        "ticks": 1768,
+        "mirrorError": null,
+        "stdout": "",
+        "stderr": "",
+        "container": {
+          "memoryBytes": 1073741824,
+          "memorySwapBytes": 1073741824,
+          "image": "sha256:622f209f6c16ba5af4d9a337cae6577d096f17174b904cfc6a5b0c81a2679c24",
+          "state": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-13T07:45:45.956712264Z",
+            "FinishedAt": "2026-10-13T07:46:35.202466484Z"
+          },
+          "pidsLimit": 32
+        }
+      },
+      "worker": {
+        "evidenceClass": "TECHNICAL-PIPELINE-FIXTURE",
+        "status": "PIPELINE-COMPLETE",
+        "failure": null,
+        "read": 128,
+        "closures": 1,
+        "candidates": 1,
+        "workerComplete": true,
+        "interpretationComplete": false,
+        "finalMirrorRequired": true,
+        "solution": null,
+        "resumeAuthorized": false,
+        "scientificSeedsRead": 0,
+        "peakWorkerRssBytes": 331841536,
+        "usedBytesBeforeFinal": 17701467
+      },
+      "phases": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "ackCount": 128,
+      "hostProtocolStatus": "FINISHED",
+      "finalMirrorSaved": true,
+      "technicalComplete": true,
+      "peakHostRssBytes": 190910464,
+      "elapsedHostMs": 61072.995682,
+      "unacknowledgedMarkers": 0,
+      "verified": {
+        "verified": true,
+        "commits": 147,
+        "leases": 1,
+        "logicalReadsMarked": 128,
+        "mirrors": 18,
+        "scientificSeedsRead": 0
+      },
+      "registryHead": "7a724d1c981ed711e45afac294180eb0607b19d4",
+      "registryRef": "refs/heads/research/g5-source-registry-v1",
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false
+    },
+    {
+      "mode": "mirror-failure",
+      "fixtureSourceCount": 128,
+      "execution": {
+        "code": 1,
+        "signal": null,
+        "status": "MIRROR-FAILURE",
+        "solution": null,
+        "peakAggregateRssBytes": 30732288,
+        "maxProcesses": 1,
+        "ticks": 148,
+        "mirrorError": "INJECTED-MIRROR-FAILURE",
+        "stdout": "",
+        "stderr": "context canceled\n",
+        "container": {
+          "memoryBytes": 1073741824,
+          "memorySwapBytes": 1073741824,
+          "image": "sha256:622f209f6c16ba5af4d9a337cae6577d096f17174b904cfc6a5b0c81a2679c24",
+          "state": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 137,
+            "Error": "",
+            "StartedAt": "2026-10-13T07:46:45.633149182Z",
+            "FinishedAt": "2026-10-13T07:46:49.853743636Z"
+          },
+          "pidsLimit": 32
+        }
+      },
+      "worker": null,
+      "phases": [
+        false,
+        true
+      ],
+      "ackCount": 14,
+      "hostProtocolStatus": "STOPPED",
+      "finalMirrorSaved": true,
+      "technicalComplete": false,
+      "peakHostRssBytes": 324186112,
+      "elapsedHostMs": 4688.239192000008,
+      "unacknowledgedMarkers": 0,
+      "verified": {
+        "verified": true,
+        "commits": 17,
+        "leases": 1,
+        "logicalReadsMarked": 14,
+        "mirrors": 2,
+        "scientificSeedsRead": 0
+      },
+      "registryHead": "d5a0626bbea8be5166a0a302908814442398730f",
+      "registryRef": "refs/heads/research/g5-source-registry-v1",
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false
+    },
+    {
+      "mode": "kill-after-prefix",
+      "fixtureSourceCount": 128,
+      "execution": {
+        "code": 1,
+        "signal": null,
+        "status": "GLOBAL-TIME-LIMIT",
+        "solution": null,
+        "peakAggregateRssBytes": 30674944,
+        "maxProcesses": 1,
+        "ticks": 66,
+        "mirrorError": null,
+        "stdout": "",
+        "stderr": "context canceled\n",
+        "container": {
+          "memoryBytes": 1073741824,
+          "memorySwapBytes": 1073741824,
+          "image": "sha256:622f209f6c16ba5af4d9a337cae6577d096f17174b904cfc6a5b0c81a2679c24",
+          "state": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 137,
+            "Error": "",
+            "StartedAt": "2026-10-13T07:46:51.21939476Z",
+            "FinishedAt": "2026-10-13T07:46:52.669755536Z"
+          },
+          "pidsLimit": 32
+        }
+      },
+      "worker": null,
+      "phases": [
+        true
+      ],
+      "ackCount": 1,
+      "hostProtocolStatus": "FINISHED",
+      "finalMirrorSaved": true,
+      "technicalComplete": false,
+      "peakHostRssBytes": 324337664,
+      "elapsedHostMs": 1833.613434999992,
+      "unacknowledgedMarkers": 0,
+      "verified": {
+        "verified": true,
+        "commits": 3,
+        "leases": 1,
+        "logicalReadsMarked": 1,
+        "mirrors": 1,
+        "scientificSeedsRead": 0
+      },
+      "registryHead": "42f4685c96a0a1e11af5c212688a20a6aca82f57",
+      "registryRef": "refs/heads/research/g5-source-registry-v1",
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false
+    },
+    {
+      "mode": "source-budget",
+      "fixtureSourceCount": 128,
+      "execution": {
+        "code": 0,
+        "signal": null,
+        "status": "WORKER-COMPLETE",
+        "peakAggregateRssBytes": 30785536,
+        "maxProcesses": 1,
+        "ticks": 51,
+        "mirrorError": null,
+        "stdout": "",
+        "stderr": "",
+        "container": {
+          "memoryBytes": 1073741824,
+          "memorySwapBytes": 1073741824,
+          "image": "sha256:622f209f6c16ba5af4d9a337cae6577d096f17174b904cfc6a5b0c81a2679c24",
+          "state": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-13T07:46:53.340929299Z",
+            "FinishedAt": "2026-10-13T07:46:54.327869887Z"
+          },
+          "pidsLimit": 32
+        }
+      },
+      "worker": {
+        "evidenceClass": "TECHNICAL-PIPELINE-FIXTURE",
+        "status": "GLOBAL-EVIDENCE-RESERVE-LIMIT",
+        "failure": {
+          "message": "GLOBAL-EVIDENCE-RESERVE-LIMIT",
+          "code": "GLOBAL-EVIDENCE-RESERVE-LIMIT"
+        },
+        "read": 0,
+        "closures": 0,
+        "candidates": null,
+        "workerComplete": false,
+        "interpretationComplete": false,
+        "finalMirrorRequired": true,
+        "solution": null,
+        "resumeAuthorized": false,
+        "scientificSeedsRead": 0,
+        "peakWorkerRssBytes": 332664832,
+        "usedBytesBeforeFinal": 0
+      },
+      "phases": [
+        true
+      ],
+      "ackCount": 0,
+      "hostProtocolStatus": "FINISHED",
+      "finalMirrorSaved": true,
+      "technicalComplete": false,
+      "peakHostRssBytes": 324337664,
+      "elapsedHostMs": 1342.1936850000056,
+      "unacknowledgedMarkers": 0,
+      "verified": {
+        "verified": true,
+        "commits": 2,
+        "leases": 1,
+        "logicalReadsMarked": 0,
+        "mirrors": 1,
+        "scientificSeedsRead": 0
+      },
+      "registryHead": "65b38031ce471395a32d4adbc6bd3fab67c09353",
+      "registryRef": "refs/heads/research/g5-source-registry-v1",
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false
+    },
+    {
+      "mode": "domain-budget",
+      "fixtureSourceCount": 16,
+      "execution": {
+        "code": 0,
+        "signal": null,
+        "status": "WORKER-COMPLETE",
+        "peakAggregateRssBytes": 30613504,
+        "maxProcesses": 1,
+        "ticks": 162,
+        "mirrorError": null,
+        "stdout": "",
+        "stderr": "",
+        "container": {
+          "memoryBytes": 1073741824,
+          "memorySwapBytes": 1073741824,
+          "image": "sha256:622f209f6c16ba5af4d9a337cae6577d096f17174b904cfc6a5b0c81a2679c24",
+          "state": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-13T07:46:54.847203038Z",
+            "FinishedAt": "2026-10-13T07:46:59.611624297Z"
+          },
+          "pidsLimit": 32
+        }
+      },
+      "worker": {
+        "evidenceClass": "TECHNICAL-PIPELINE-FIXTURE",
+        "status": "GLOBAL-EVIDENCE-RESERVE-LIMIT",
+        "failure": {
+          "message": "GLOBAL-EVIDENCE-RESERVE-LIMIT",
+          "code": "GLOBAL-EVIDENCE-RESERVE-LIMIT"
+        },
+        "read": 16,
+        "closures": 0,
+        "candidates": 1,
+        "workerComplete": false,
+        "interpretationComplete": false,
+        "finalMirrorRequired": true,
+        "solution": null,
+        "resumeAuthorized": false,
+        "scientificSeedsRead": 0,
+        "peakWorkerRssBytes": 332095488,
+        "usedBytesBeforeFinal": 2207927
+      },
+      "phases": [
+        false,
+        false,
+        true
+      ],
+      "ackCount": 16,
+      "hostProtocolStatus": "FINISHED",
+      "finalMirrorSaved": true,
+      "technicalComplete": false,
+      "peakHostRssBytes": 324337664,
+      "elapsedHostMs": 5161.728870000006,
+      "unacknowledgedMarkers": 0,
+      "verified": {
+        "verified": true,
+        "commits": 20,
+        "leases": 1,
+        "logicalReadsMarked": 16,
+        "mirrors": 3,
+        "scientificSeedsRead": 0
+      },
+      "registryHead": "8fb1832438a3eb769848fa9e629486c8b1897bb3",
+      "registryRef": "refs/heads/research/g5-source-registry-v1",
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false
+    },
+    {
+      "mode": "domain-time",
+      "fixtureSourceCount": 16,
+      "execution": {
+        "code": 0,
+        "signal": null,
+        "status": "WORKER-COMPLETE",
+        "peakAggregateRssBytes": 30932992,
+        "maxProcesses": 1,
+        "ticks": 164,
+        "mirrorError": null,
+        "stdout": "",
+        "stderr": "",
+        "container": {
+          "memoryBytes": 1073741824,
+          "memorySwapBytes": 1073741824,
+          "image": "sha256:622f209f6c16ba5af4d9a337cae6577d096f17174b904cfc6a5b0c81a2679c24",
+          "state": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-13T07:47:01.092309824Z",
+            "FinishedAt": "2026-10-13T07:47:05.965611598Z"
+          },
+          "pidsLimit": 32
+        }
+      },
+      "worker": {
+        "evidenceClass": "TECHNICAL-PIPELINE-FIXTURE",
+        "status": "DOMAIN-TIME-LIMIT",
+        "failure": {
+          "message": "DOMAIN-TIME-LIMIT",
+          "code": "DOMAIN-TIME-LIMIT"
+        },
+        "read": 16,
+        "closures": 0,
+        "candidates": 1,
+        "workerComplete": false,
+        "interpretationComplete": false,
+        "finalMirrorRequired": true,
+        "solution": null,
+        "resumeAuthorized": false,
+        "scientificSeedsRead": 0,
+        "peakWorkerRssBytes": 331165696,
+        "usedBytesBeforeFinal": 2211791
+      },
+      "phases": [
+        false,
+        false,
+        true
+      ],
+      "ackCount": 16,
+      "hostProtocolStatus": "FINISHED",
+      "finalMirrorSaved": true,
+      "technicalComplete": false,
+      "peakHostRssBytes": 324337664,
+      "elapsedHostMs": 5333.482736000005,
+      "unacknowledgedMarkers": 0,
+      "verified": {
+        "verified": true,
+        "commits": 20,
+        "leases": 1,
+        "logicalReadsMarked": 16,
+        "mirrors": 3,
+        "scientificSeedsRead": 0
+      },
+      "registryHead": "cb3a9bbd1f728a6f82c76759be84d85d3a716c9c",
+      "registryRef": "refs/heads/research/g5-source-registry-v1",
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false
+    },
+    {
+      "mode": "domain-time-budget",
+      "fixtureSourceCount": 16,
+      "execution": {
+        "code": 0,
+        "signal": null,
+        "status": "WORKER-COMPLETE",
+        "peakAggregateRssBytes": 30699520,
+        "maxProcesses": 1,
+        "ticks": 164,
+        "mirrorError": null,
+        "stdout": "",
+        "stderr": "",
+        "container": {
+          "memoryBytes": 1073741824,
+          "memorySwapBytes": 1073741824,
+          "image": "sha256:622f209f6c16ba5af4d9a337cae6577d096f17174b904cfc6a5b0c81a2679c24",
+          "state": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-13T07:47:07.563490154Z",
+            "FinishedAt": "2026-10-13T07:47:12.412833156Z"
+          },
+          "pidsLimit": 32
+        }
+      },
+      "worker": {
+        "evidenceClass": "TECHNICAL-PIPELINE-FIXTURE",
+        "status": "INSUFFICIENT-DOMAIN-TIME-BUDGET",
+        "failure": {
+          "message": "INSUFFICIENT-DOMAIN-TIME-BUDGET",
+          "code": "INSUFFICIENT-DOMAIN-TIME-BUDGET"
+        },
+        "read": 16,
+        "closures": 0,
+        "candidates": 1,
+        "workerComplete": false,
+        "interpretationComplete": false,
+        "finalMirrorRequired": true,
+        "solution": null,
+        "resumeAuthorized": false,
+        "scientificSeedsRead": 0,
+        "peakWorkerRssBytes": 331939840,
+        "usedBytesBeforeFinal": 2208007
+      },
+      "phases": [
+        false,
+        false,
+        true
+      ],
+      "ackCount": 16,
+      "hostProtocolStatus": "FINISHED",
+      "finalMirrorSaved": true,
+      "technicalComplete": false,
+      "peakHostRssBytes": 325386240,
+      "elapsedHostMs": 5265.167100000006,
+      "unacknowledgedMarkers": 0,
+      "verified": {
+        "verified": true,
+        "commits": 20,
+        "leases": 1,
+        "logicalReadsMarked": 16,
+        "mirrors": 3,
+        "scientificSeedsRead": 0
+      },
+      "registryHead": "4340f4c90271e438c9ea5a25f581185deb29169b",
+      "registryRef": "refs/heads/research/g5-source-registry-v1",
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false
+    },
+    {
+      "mode": "global-time",
+      "fixtureSourceCount": 128,
+      "execution": {
+        "code": 1,
+        "signal": null,
+        "status": "MIRROR-FAILURE",
+        "solution": null,
+        "peakAggregateRssBytes": 30609408,
+        "maxProcesses": 1,
+        "ticks": 137,
+        "mirrorError": "HOST-GLOBAL-TIME-LIMIT",
+        "stdout": "",
+        "stderr": "context canceled\n",
+        "container": {
+          "memoryBytes": 1073741824,
+          "memorySwapBytes": 1073741824,
+          "image": "sha256:622f209f6c16ba5af4d9a337cae6577d096f17174b904cfc6a5b0c81a2679c24",
+          "state": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 137,
+            "Error": "",
+            "StartedAt": "2026-10-13T07:47:13.916579144Z",
+            "FinishedAt": "2026-10-13T07:47:17.887953132Z"
+          },
+          "pidsLimit": 32
+        }
+      },
+      "worker": null,
+      "phases": [
+        false,
+        true
+      ],
+      "ackCount": 11,
+      "hostProtocolStatus": "STOPPED",
+      "finalMirrorSaved": true,
+      "technicalComplete": false,
+      "peakHostRssBytes": 325373952,
+      "elapsedHostMs": 4389.624739999999,
+      "unacknowledgedMarkers": 1,
+      "verified": {
+        "verified": true,
+        "commits": 15,
+        "leases": 1,
+        "logicalReadsMarked": 12,
+        "mirrors": 2,
+        "scientificSeedsRead": 0
+      },
+      "registryHead": "6f999905c5370717ce8afc0b006a80ccbc2de537",
+      "registryRef": "refs/heads/research/g5-source-registry-v1",
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false
+    },
+    {
+      "mode": "final-mirror-failure",
+      "fixtureSourceCount": 16,
+      "execution": {
+        "code": 0,
+        "signal": null,
+        "status": "MIRROR-FAILURE",
+        "solution": null,
+        "peakAggregateRssBytes": 30851072,
+        "maxProcesses": 1,
+        "ticks": 168,
+        "mirrorError": "INJECTED-FINAL-MIRROR-FAILURE",
+        "stdout": "",
+        "stderr": "",
+        "container": {
+          "memoryBytes": 1073741824,
+          "memorySwapBytes": 1073741824,
+          "image": "sha256:622f209f6c16ba5af4d9a337cae6577d096f17174b904cfc6a5b0c81a2679c24",
+          "state": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-13T07:47:19.107581405Z",
+            "FinishedAt": "2026-10-13T07:47:24.00858287Z"
+          },
+          "pidsLimit": 32
+        }
+      },
+      "worker": {
+        "evidenceClass": "TECHNICAL-PIPELINE-FIXTURE",
+        "status": "PIPELINE-COMPLETE",
+        "failure": null,
+        "read": 16,
+        "closures": 1,
+        "candidates": 1,
+        "workerComplete": true,
+        "interpretationComplete": false,
+        "finalMirrorRequired": true,
+        "solution": null,
+        "resumeAuthorized": false,
+        "scientificSeedsRead": 0,
+        "peakWorkerRssBytes": 332447744,
+        "usedBytesBeforeFinal": 2249241
+      },
+      "phases": [
+        false,
+        false
+      ],
+      "ackCount": 16,
+      "hostProtocolStatus": "STOPPED",
+      "finalMirrorSaved": false,
+      "technicalComplete": false,
+      "peakHostRssBytes": 325234688,
+      "elapsedHostMs": 5173.971826000008,
+      "unacknowledgedMarkers": 0,
+      "verified": {
+        "verified": true,
+        "commits": 19,
+        "leases": 1,
+        "logicalReadsMarked": 16,
+        "mirrors": 2,
+        "scientificSeedsRead": 0
+      },
+      "registryHead": "6610e5f9e0491e8b55213b6877d9e3ba9c81224c",
+      "registryRef": "refs/heads/research/g5-source-registry-v1",
+      "scientificSeedsRead": 0,
+      "scientificLeaseCreated": false,
+      "scientificStudyRegistered": false
+    }
+  ],
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false,
+  "conservativeReadIdentities": 103355,
+  "formalRelationRegistered": false
+}

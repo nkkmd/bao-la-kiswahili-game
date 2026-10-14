@@ -1,0 +1,2444 @@
+{
+  "decision": "STAGE0-TECHNICAL-PASS",
+  "core": {
+    "studyId": "RRSVL-STUDY1",
+    "stageId": "RRSVL-S0-TECHNICAL-2026-10-12-v1",
+    "evidenceClass": "TECHNICAL-FIXTURE",
+    "ruleRevision": "BAO-RULES-V0.2.0-TAKASIA-001",
+    "binding": "943948582df64c561ba1c82f848bb4536d9651d595cb22aa03b6de5e4ee6cadd",
+    "rows": [
+      {
+        "id": "KNOWN-TAKASIA-TRANSITIONS",
+        "kind": "LIMITED-TRANSITIONS",
+        "result": {
+          "status": "PASS",
+          "checks": 25,
+          "passed": 25,
+          "failed": 0,
+          "results": [
+            {
+              "id": "initial-state",
+              "status": "PASS"
+            },
+            {
+              "id": "detection/E30",
+              "status": "PASS"
+            },
+            {
+              "id": "detection/seat-swap",
+              "status": "PASS"
+            },
+            {
+              "id": "detection/singleton-exempt",
+              "status": "PASS"
+            },
+            {
+              "id": "detection/only-occupied-front-exempt",
+              "status": "PASS"
+            },
+            {
+              "id": "detection/only-multi-front-exempt",
+              "status": "PASS"
+            },
+            {
+              "id": "detection/zero-targets",
+              "status": "PASS"
+            },
+            {
+              "id": "detection/two-targets",
+              "status": "PASS"
+            },
+            {
+              "id": "detection/multiple-captures-same-target",
+              "status": "PASS"
+            },
+            {
+              "id": "detection/defender-can-capture",
+              "status": "PASS"
+            },
+            {
+              "id": "detection/unowned-house-position",
+              "status": "PASS"
+            },
+            {
+              "id": "detection/owned-house-exempt",
+              "status": "PASS"
+            },
+            {
+              "id": "detection/prior-capture",
+              "status": "PASS"
+            },
+            {
+              "id": "detection/namua-to-mtaji-no-activation",
+              "status": "PASS"
+            },
+            {
+              "id": "detection/namua-no-activation",
+              "status": "PASS"
+            },
+            {
+              "id": "detection/terminal-no-activation",
+              "status": "PASS"
+            },
+            {
+              "id": "detection/owned-house-five-exempt",
+              "status": "PASS"
+            },
+            {
+              "id": "detection/unowned-house-five-normal",
+              "status": "PASS"
+            },
+            {
+              "id": "E30/predecessor",
+              "status": "PASS"
+            },
+            {
+              "id": "E30/legal-starts",
+              "status": "PASS"
+            },
+            {
+              "id": "E30/reply-0",
+              "status": "PASS"
+            },
+            {
+              "id": "E30/reply-1",
+              "status": "PASS"
+            },
+            {
+              "id": "E30/reply-2",
+              "status": "PASS"
+            },
+            {
+              "id": "E30/reply-3",
+              "status": "PASS"
+            },
+            {
+              "id": "owned-house-start-stops-at-target",
+              "status": "PASS"
+            }
+          ]
+        }
+      },
+      {
+        "id": "INITIAL/depth-1",
+        "kind": "SEARCH",
+        "fixture": "INITIAL",
+        "depth": 1,
+        "state": {
+          "pits": [
+            [
+              [
+                0,
+                0,
+                0,
+                0,
+                6,
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                0,
+                0,
+                0,
+                6,
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          ],
+          "reserve": [
+            22,
+            22
+          ],
+          "houseOwned": [
+            true,
+            true
+          ],
+          "player": 0,
+          "phase": "namua",
+          "winner": null,
+          "reason": "",
+          "turn": 1,
+          "pending": [
+            0,
+            0
+          ],
+          "takasia": null
+        },
+        "rawIdentity": {
+          "pits": [
+            [
+              [
+                0,
+                0,
+                0,
+                0,
+                6,
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                0,
+                0,
+                0,
+                6,
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          ],
+          "reserve": [
+            22,
+            22
+          ],
+          "houseOwned": [
+            true,
+            true
+          ],
+          "player": 0,
+          "phase": "namua",
+          "winner": null,
+          "pending": [
+            0,
+            0
+          ],
+          "takasia": null,
+          "ruleRevision": "BAO-RULES-V0.2.0-TAKASIA-001"
+        },
+        "rawSha256": "6be0d5bcb0913fb8f331f4da71dfe6c1cc816a4f24a605ccf3524a04b7bad3e2",
+        "ranking": {
+          "rows": [
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"namua\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": 116
+            },
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":6,\"phase\":\"namua\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": 79
+            },
+            {
+              "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"namua\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": 104
+            },
+            {
+              "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":6,\"phase\":\"namua\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": 67
+            }
+          ],
+          "selected": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"namua\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+          "topSet": [
+            "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"namua\",\"row\":0,\"side\":null,\"type\":\"takata\"}"
+          ]
+        },
+        "productionNodes": 4,
+        "independentNodes": 4
+      },
+      {
+        "id": "INITIAL/depth-2",
+        "kind": "SEARCH",
+        "fixture": "INITIAL",
+        "depth": 2,
+        "state": {
+          "pits": [
+            [
+              [
+                0,
+                0,
+                0,
+                0,
+                6,
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                0,
+                0,
+                0,
+                6,
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          ],
+          "reserve": [
+            22,
+            22
+          ],
+          "houseOwned": [
+            true,
+            true
+          ],
+          "player": 0,
+          "phase": "namua",
+          "winner": null,
+          "reason": "",
+          "turn": 1,
+          "pending": [
+            0,
+            0
+          ],
+          "takasia": null
+        },
+        "rawIdentity": {
+          "pits": [
+            [
+              [
+                0,
+                0,
+                0,
+                0,
+                6,
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                0,
+                0,
+                0,
+                6,
+                2,
+                2,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            ]
+          ],
+          "reserve": [
+            22,
+            22
+          ],
+          "houseOwned": [
+            true,
+            true
+          ],
+          "player": 0,
+          "phase": "namua",
+          "winner": null,
+          "pending": [
+            0,
+            0
+          ],
+          "takasia": null,
+          "ruleRevision": "BAO-RULES-V0.2.0-TAKASIA-001"
+        },
+        "rawSha256": "6be0d5bcb0913fb8f331f4da71dfe6c1cc816a4f24a605ccf3524a04b7bad3e2",
+        "ranking": {
+          "rows": [
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"namua\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": -127
+            },
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":6,\"phase\":\"namua\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": -118
+            },
+            {
+              "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"namua\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": -85
+            },
+            {
+              "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":6,\"phase\":\"namua\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": -109
+            }
+          ],
+          "selected": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"namua\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+          "topSet": [
+            "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"namua\",\"row\":0,\"side\":null,\"type\":\"takata\"}"
+          ]
+        },
+        "productionNodes": 18,
+        "independentNodes": 18
+      },
+      {
+        "id": "E30/depth-1",
+        "kind": "SEARCH",
+        "fixture": "E30",
+        "depth": 1,
+        "state": {
+          "pits": [
+            [
+              [
+                0,
+                2,
+                0,
+                0,
+                1,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                2,
+                0,
+                2,
+                6,
+                4
+              ]
+            ],
+            [
+              [
+                1,
+                0,
+                1,
+                2,
+                10,
+                0,
+                0,
+                10
+              ],
+              [
+                2,
+                2,
+                8,
+                4,
+                1,
+                2,
+                1,
+                0
+              ]
+            ]
+          ],
+          "reserve": [
+            0,
+            0
+          ],
+          "houseOwned": [
+            false,
+            false
+          ],
+          "player": 1,
+          "phase": "mtaji",
+          "winner": null,
+          "reason": "",
+          "turn": 2,
+          "pending": [
+            0,
+            0
+          ],
+          "takasia": {
+            "player": 1,
+            "index": 3
+          }
+        },
+        "rawIdentity": {
+          "pits": [
+            [
+              [
+                0,
+                2,
+                0,
+                0,
+                1,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                2,
+                0,
+                2,
+                6,
+                4
+              ]
+            ],
+            [
+              [
+                1,
+                0,
+                1,
+                2,
+                10,
+                0,
+                0,
+                10
+              ],
+              [
+                2,
+                2,
+                8,
+                4,
+                1,
+                2,
+                1,
+                0
+              ]
+            ]
+          ],
+          "reserve": [
+            0,
+            0
+          ],
+          "houseOwned": [
+            false,
+            false
+          ],
+          "player": 1,
+          "phase": "mtaji",
+          "winner": null,
+          "pending": [
+            0,
+            0
+          ],
+          "takasia": {
+            "player": 1,
+            "index": 3
+          },
+          "ruleRevision": "BAO-RULES-V0.2.0-TAKASIA-001"
+        },
+        "rawSha256": "d17aa25c15c0616e66fe3c97e2d0873024ce6bbb68b4a2a609313837e19170d9",
+        "ranking": {
+          "rows": [
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":4,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": 753
+            },
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":7,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": 710
+            },
+            {
+              "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":4,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": 634
+            },
+            {
+              "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":7,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": 598
+            }
+          ],
+          "selected": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":4,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+          "topSet": [
+            "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":4,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}"
+          ]
+        },
+        "productionNodes": 4,
+        "independentNodes": 4
+      },
+      {
+        "id": "E30/depth-2",
+        "kind": "SEARCH",
+        "fixture": "E30",
+        "depth": 2,
+        "state": {
+          "pits": [
+            [
+              [
+                0,
+                2,
+                0,
+                0,
+                1,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                2,
+                0,
+                2,
+                6,
+                4
+              ]
+            ],
+            [
+              [
+                1,
+                0,
+                1,
+                2,
+                10,
+                0,
+                0,
+                10
+              ],
+              [
+                2,
+                2,
+                8,
+                4,
+                1,
+                2,
+                1,
+                0
+              ]
+            ]
+          ],
+          "reserve": [
+            0,
+            0
+          ],
+          "houseOwned": [
+            false,
+            false
+          ],
+          "player": 1,
+          "phase": "mtaji",
+          "winner": null,
+          "reason": "",
+          "turn": 2,
+          "pending": [
+            0,
+            0
+          ],
+          "takasia": {
+            "player": 1,
+            "index": 3
+          }
+        },
+        "rawIdentity": {
+          "pits": [
+            [
+              [
+                0,
+                2,
+                0,
+                0,
+                1,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                2,
+                0,
+                2,
+                6,
+                4
+              ]
+            ],
+            [
+              [
+                1,
+                0,
+                1,
+                2,
+                10,
+                0,
+                0,
+                10
+              ],
+              [
+                2,
+                2,
+                8,
+                4,
+                1,
+                2,
+                1,
+                0
+              ]
+            ]
+          ],
+          "reserve": [
+            0,
+            0
+          ],
+          "houseOwned": [
+            false,
+            false
+          ],
+          "player": 1,
+          "phase": "mtaji",
+          "winner": null,
+          "pending": [
+            0,
+            0
+          ],
+          "takasia": {
+            "player": 1,
+            "index": 3
+          },
+          "ruleRevision": "BAO-RULES-V0.2.0-TAKASIA-001"
+        },
+        "rawSha256": "d17aa25c15c0616e66fe3c97e2d0873024ce6bbb68b4a2a609313837e19170d9",
+        "ranking": {
+          "rows": [
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":4,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": 410
+            },
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":7,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": 676
+            },
+            {
+              "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":4,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": 406
+            },
+            {
+              "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":7,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": 483
+            }
+          ],
+          "selected": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":7,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+          "topSet": [
+            "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":7,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}"
+          ]
+        },
+        "productionNodes": 8,
+        "independentNodes": 8
+      },
+      {
+        "id": "E30-SEAT-SWAP/depth-1",
+        "kind": "SEARCH",
+        "fixture": "E30-SEAT-SWAP",
+        "depth": 1,
+        "state": {
+          "pits": [
+            [
+              [
+                1,
+                0,
+                1,
+                2,
+                10,
+                0,
+                0,
+                10
+              ],
+              [
+                2,
+                2,
+                8,
+                4,
+                1,
+                2,
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                2,
+                0,
+                0,
+                1,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                2,
+                0,
+                2,
+                6,
+                4
+              ]
+            ]
+          ],
+          "reserve": [
+            0,
+            0
+          ],
+          "houseOwned": [
+            false,
+            false
+          ],
+          "player": 0,
+          "phase": "mtaji",
+          "winner": null,
+          "reason": "",
+          "turn": 2,
+          "pending": [
+            0,
+            0
+          ],
+          "takasia": {
+            "player": 0,
+            "index": 3
+          }
+        },
+        "rawIdentity": {
+          "pits": [
+            [
+              [
+                1,
+                0,
+                1,
+                2,
+                10,
+                0,
+                0,
+                10
+              ],
+              [
+                2,
+                2,
+                8,
+                4,
+                1,
+                2,
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                2,
+                0,
+                0,
+                1,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                2,
+                0,
+                2,
+                6,
+                4
+              ]
+            ]
+          ],
+          "reserve": [
+            0,
+            0
+          ],
+          "houseOwned": [
+            false,
+            false
+          ],
+          "player": 0,
+          "phase": "mtaji",
+          "winner": null,
+          "pending": [
+            0,
+            0
+          ],
+          "takasia": {
+            "player": 0,
+            "index": 3
+          },
+          "ruleRevision": "BAO-RULES-V0.2.0-TAKASIA-001"
+        },
+        "rawSha256": "bef930d3eb171d19cab50498b00b52a49031c1437969068d02b9e5cb36c97ddd",
+        "ranking": {
+          "rows": [
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":4,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": 753
+            },
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":7,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": 710
+            },
+            {
+              "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":4,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": 634
+            },
+            {
+              "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":7,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": 598
+            }
+          ],
+          "selected": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":4,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+          "topSet": [
+            "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":4,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}"
+          ]
+        },
+        "productionNodes": 4,
+        "independentNodes": 4
+      },
+      {
+        "id": "E30-SEAT-SWAP/depth-2",
+        "kind": "SEARCH",
+        "fixture": "E30-SEAT-SWAP",
+        "depth": 2,
+        "state": {
+          "pits": [
+            [
+              [
+                1,
+                0,
+                1,
+                2,
+                10,
+                0,
+                0,
+                10
+              ],
+              [
+                2,
+                2,
+                8,
+                4,
+                1,
+                2,
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                2,
+                0,
+                0,
+                1,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                2,
+                0,
+                2,
+                6,
+                4
+              ]
+            ]
+          ],
+          "reserve": [
+            0,
+            0
+          ],
+          "houseOwned": [
+            false,
+            false
+          ],
+          "player": 0,
+          "phase": "mtaji",
+          "winner": null,
+          "reason": "",
+          "turn": 2,
+          "pending": [
+            0,
+            0
+          ],
+          "takasia": {
+            "player": 0,
+            "index": 3
+          }
+        },
+        "rawIdentity": {
+          "pits": [
+            [
+              [
+                1,
+                0,
+                1,
+                2,
+                10,
+                0,
+                0,
+                10
+              ],
+              [
+                2,
+                2,
+                8,
+                4,
+                1,
+                2,
+                1,
+                0
+              ]
+            ],
+            [
+              [
+                0,
+                2,
+                0,
+                0,
+                1,
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                2,
+                2,
+                0,
+                2,
+                6,
+                4
+              ]
+            ]
+          ],
+          "reserve": [
+            0,
+            0
+          ],
+          "houseOwned": [
+            false,
+            false
+          ],
+          "player": 0,
+          "phase": "mtaji",
+          "winner": null,
+          "pending": [
+            0,
+            0
+          ],
+          "takasia": {
+            "player": 0,
+            "index": 3
+          },
+          "ruleRevision": "BAO-RULES-V0.2.0-TAKASIA-001"
+        },
+        "rawSha256": "bef930d3eb171d19cab50498b00b52a49031c1437969068d02b9e5cb36c97ddd",
+        "ranking": {
+          "rows": [
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":4,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": 410
+            },
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":7,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": 676
+            },
+            {
+              "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":4,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": 406
+            },
+            {
+              "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":7,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+              "score": 483
+            }
+          ],
+          "selected": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":7,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}",
+          "topSet": [
+            "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":7,\"phase\":\"mtaji\",\"row\":0,\"side\":null,\"type\":\"takata\"}"
+          ]
+        },
+        "productionNodes": 8,
+        "independentNodes": 8
+      },
+      {
+        "id": "KNOWN-HOUSE-CHOICE/depth-1",
+        "kind": "SEARCH",
+        "fixture": "KNOWN-HOUSE-CHOICE",
+        "depth": 1,
+        "state": {
+          "pits": [
+            [
+              [
+                1,
+                1,
+                1,
+                1,
+                0,
+                1,
+                1,
+                0
+              ],
+              [
+                1,
+                1,
+                1,
+                1,
+                0,
+                1,
+                1,
+                2
+              ]
+            ],
+            [
+              [
+                0,
+                0,
+                1,
+                0,
+                7,
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          ],
+          "reserve": [
+            19,
+            20
+          ],
+          "houseOwned": [
+            false,
+            true
+          ],
+          "player": 1,
+          "phase": "namua",
+          "winner": null,
+          "reason": "",
+          "turn": 6,
+          "pending": [
+            0,
+            0
+          ],
+          "takasia": null
+        },
+        "rawIdentity": {
+          "pits": [
+            [
+              [
+                1,
+                1,
+                1,
+                1,
+                0,
+                1,
+                1,
+                0
+              ],
+              [
+                1,
+                1,
+                1,
+                1,
+                0,
+                1,
+                1,
+                2
+              ]
+            ],
+            [
+              [
+                0,
+                0,
+                1,
+                0,
+                7,
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          ],
+          "reserve": [
+            19,
+            20
+          ],
+          "houseOwned": [
+            false,
+            true
+          ],
+          "player": 1,
+          "phase": "namua",
+          "winner": null,
+          "pending": [
+            0,
+            0
+          ],
+          "takasia": null,
+          "ruleRevision": "BAO-RULES-V0.2.0-TAKASIA-001"
+        },
+        "rawSha256": "ff0a58893badfc4192794a096fc08779c2218ed25d4c926c832d678b753aa842",
+        "ranking": {
+          "rows": [
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":\"stop\",\"houseTwo\":false,\"index\":4,\"phase\":\"namua\",\"row\":0,\"side\":\"right\",\"type\":\"capture\"}",
+              "score": 48
+            },
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":\"use\",\"houseTwo\":false,\"index\":4,\"phase\":\"namua\",\"row\":0,\"side\":\"right\",\"type\":\"capture\"}",
+              "score": -9
+            },
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":2,\"phase\":\"namua\",\"row\":0,\"side\":\"right\",\"type\":\"capture\"}",
+              "score": 87
+            },
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"namua\",\"row\":0,\"side\":\"right\",\"type\":\"capture\"}",
+              "score": 134
+            },
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":7,\"phase\":\"namua\",\"row\":0,\"side\":\"right\",\"type\":\"capture\"}",
+              "score": 47
+            },
+            {
+              "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":2,\"phase\":\"namua\",\"row\":0,\"side\":\"left\",\"type\":\"capture\"}",
+              "score": -21
+            },
+            {
+              "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":4,\"phase\":\"namua\",\"row\":0,\"side\":\"left\",\"type\":\"capture\"}",
+              "score": 13
+            },
+            {
+              "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"namua\",\"row\":0,\"side\":\"left\",\"type\":\"capture\"}",
+              "score": -37
+            }
+          ],
+          "selected": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"namua\",\"row\":0,\"side\":\"right\",\"type\":\"capture\"}",
+          "topSet": [
+            "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"namua\",\"row\":0,\"side\":\"right\",\"type\":\"capture\"}"
+          ]
+        },
+        "productionNodes": 8,
+        "independentNodes": 8
+      },
+      {
+        "id": "KNOWN-HOUSE-CHOICE/depth-2",
+        "kind": "SEARCH",
+        "fixture": "KNOWN-HOUSE-CHOICE",
+        "depth": 2,
+        "state": {
+          "pits": [
+            [
+              [
+                1,
+                1,
+                1,
+                1,
+                0,
+                1,
+                1,
+                0
+              ],
+              [
+                1,
+                1,
+                1,
+                1,
+                0,
+                1,
+                1,
+                2
+              ]
+            ],
+            [
+              [
+                0,
+                0,
+                1,
+                0,
+                7,
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          ],
+          "reserve": [
+            19,
+            20
+          ],
+          "houseOwned": [
+            false,
+            true
+          ],
+          "player": 1,
+          "phase": "namua",
+          "winner": null,
+          "reason": "",
+          "turn": 6,
+          "pending": [
+            0,
+            0
+          ],
+          "takasia": null
+        },
+        "rawIdentity": {
+          "pits": [
+            [
+              [
+                1,
+                1,
+                1,
+                1,
+                0,
+                1,
+                1,
+                0
+              ],
+              [
+                1,
+                1,
+                1,
+                1,
+                0,
+                1,
+                1,
+                2
+              ]
+            ],
+            [
+              [
+                0,
+                0,
+                1,
+                0,
+                7,
+                1,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1
+              ]
+            ]
+          ],
+          "reserve": [
+            19,
+            20
+          ],
+          "houseOwned": [
+            false,
+            true
+          ],
+          "player": 1,
+          "phase": "namua",
+          "winner": null,
+          "pending": [
+            0,
+            0
+          ],
+          "takasia": null,
+          "ruleRevision": "BAO-RULES-V0.2.0-TAKASIA-001"
+        },
+        "rawSha256": "ff0a58893badfc4192794a096fc08779c2218ed25d4c926c832d678b753aa842",
+        "ranking": {
+          "rows": [
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":\"stop\",\"houseTwo\":false,\"index\":4,\"phase\":\"namua\",\"row\":0,\"side\":\"right\",\"type\":\"capture\"}",
+              "score": -299
+            },
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":\"use\",\"houseTwo\":false,\"index\":4,\"phase\":\"namua\",\"row\":0,\"side\":\"right\",\"type\":\"capture\"}",
+              "score": -357
+            },
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":2,\"phase\":\"namua\",\"row\":0,\"side\":\"right\",\"type\":\"capture\"}",
+              "score": -129
+            },
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"namua\",\"row\":0,\"side\":\"right\",\"type\":\"capture\"}",
+              "score": -88
+            },
+            {
+              "moveKey": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":7,\"phase\":\"namua\",\"row\":0,\"side\":\"right\",\"type\":\"capture\"}",
+              "score": -220
+            },
+            {
+              "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":2,\"phase\":\"namua\",\"row\":0,\"side\":\"left\",\"type\":\"capture\"}",
+              "score": -418
+            },
+            {
+              "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":4,\"phase\":\"namua\",\"row\":0,\"side\":\"left\",\"type\":\"capture\"}",
+              "score": -243
+            },
+            {
+              "moveKey": "{\"direction\":\"right\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"namua\",\"row\":0,\"side\":\"left\",\"type\":\"capture\"}",
+              "score": -330
+            }
+          ],
+          "selected": "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"namua\",\"row\":0,\"side\":\"right\",\"type\":\"capture\"}",
+          "topSet": [
+            "{\"direction\":\"left\",\"houseChoice\":null,\"houseTwo\":false,\"index\":5,\"phase\":\"namua\",\"row\":0,\"side\":\"right\",\"type\":\"capture\"}"
+          ]
+        },
+        "productionNodes": 45,
+        "independentNodes": 45
+      },
+      {
+        "id": "SYNTHETIC-EXACT-AND-LOSS",
+        "kind": "SYNTHETIC",
+        "graph": [
+          {
+            "id": "R",
+            "player": 0,
+            "winner": null,
+            "moves": [
+              {
+                "key": "a",
+                "to": "T0"
+              },
+              {
+                "key": "b",
+                "to": "B"
+              },
+              {
+                "key": "c",
+                "to": "T1"
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "player": 1,
+            "winner": null,
+            "moves": [
+              {
+                "key": "bc",
+                "to": "C"
+              }
+            ]
+          },
+          {
+            "id": "C",
+            "player": 0,
+            "winner": null,
+            "moves": [
+              {
+                "key": "ct",
+                "to": "T0"
+              }
+            ]
+          },
+          {
+            "id": "T0",
+            "player": 1,
+            "winner": 0,
+            "moves": []
+          },
+          {
+            "id": "T1",
+            "player": 0,
+            "winner": 1,
+            "moves": []
+          },
+          {
+            "id": "L",
+            "player": 0,
+            "winner": null,
+            "moves": [
+              {
+                "key": "a",
+                "to": "T1"
+              },
+              {
+                "key": "b",
+                "to": "D"
+              }
+            ]
+          },
+          {
+            "id": "D",
+            "player": 1,
+            "winner": null,
+            "moves": [
+              {
+                "key": "dt",
+                "to": "T1"
+              }
+            ]
+          },
+          {
+            "id": "X",
+            "player": 0,
+            "winner": null,
+            "moves": [
+              {
+                "key": "xy",
+                "to": "Y"
+              }
+            ]
+          },
+          {
+            "id": "Y",
+            "player": 1,
+            "winner": null,
+            "moves": [
+              {
+                "key": "yx",
+                "to": "X"
+              }
+            ]
+          },
+          {
+            "id": "M",
+            "player": 0,
+            "winner": null,
+            "moves": [
+              {
+                "key": "a",
+                "to": "T0"
+              },
+              {
+                "key": "b",
+                "to": "X"
+              }
+            ]
+          }
+        ],
+        "solution": {
+          "results": {
+            "B": {
+              "status": "LOSS",
+              "absoluteWinner": 0,
+              "dtf": 2,
+              "optimalMoveKeys": [
+                "bc"
+              ],
+              "recurrentMoveKeys": [],
+              "sccId": null,
+              "cyclicScc": false
+            },
+            "C": {
+              "status": "WIN",
+              "absoluteWinner": 0,
+              "dtf": 1,
+              "optimalMoveKeys": [
+                "ct"
+              ],
+              "recurrentMoveKeys": [],
+              "sccId": null,
+              "cyclicScc": false
+            },
+            "D": {
+              "status": "WIN",
+              "absoluteWinner": 1,
+              "dtf": 1,
+              "optimalMoveKeys": [
+                "dt"
+              ],
+              "recurrentMoveKeys": [],
+              "sccId": null,
+              "cyclicScc": false
+            },
+            "L": {
+              "status": "LOSS",
+              "absoluteWinner": 1,
+              "dtf": 2,
+              "optimalMoveKeys": [
+                "b"
+              ],
+              "recurrentMoveKeys": [],
+              "sccId": null,
+              "cyclicScc": false
+            },
+            "M": {
+              "status": "WIN",
+              "absoluteWinner": 0,
+              "dtf": 1,
+              "optimalMoveKeys": [
+                "a"
+              ],
+              "recurrentMoveKeys": [],
+              "sccId": null,
+              "cyclicScc": false
+            },
+            "R": {
+              "status": "WIN",
+              "absoluteWinner": 0,
+              "dtf": 1,
+              "optimalMoveKeys": [
+                "a"
+              ],
+              "recurrentMoveKeys": [],
+              "sccId": null,
+              "cyclicScc": false
+            },
+            "T0": {
+              "status": "TERMINAL",
+              "absoluteWinner": 0,
+              "dtf": 0,
+              "optimalMoveKeys": [],
+              "recurrentMoveKeys": [],
+              "sccId": null,
+              "cyclicScc": false
+            },
+            "T1": {
+              "status": "TERMINAL",
+              "absoluteWinner": 1,
+              "dtf": 0,
+              "optimalMoveKeys": [],
+              "recurrentMoveKeys": [],
+              "sccId": null,
+              "cyclicScc": false
+            },
+            "X": {
+              "status": "RECURRENT",
+              "absoluteWinner": null,
+              "dtf": null,
+              "optimalMoveKeys": null,
+              "recurrentMoveKeys": [
+                "xy"
+              ],
+              "sccId": "SCC-0001",
+              "cyclicScc": true
+            },
+            "Y": {
+              "status": "RECURRENT",
+              "absoluteWinner": null,
+              "dtf": null,
+              "optimalMoveKeys": null,
+              "recurrentMoveKeys": [
+                "yx"
+              ],
+              "sccId": "SCC-0001",
+              "cyclicScc": true
+            }
+          },
+          "recurrentSccs": [
+            {
+              "sccId": "SCC-0001",
+              "members": [
+                "X",
+                "Y"
+              ],
+              "cyclic": true
+            }
+          ],
+          "counts": {
+            "nodes": 10,
+            "terminal": 2,
+            "win": 4,
+            "loss": 2,
+            "recurrent": 2
+          }
+        },
+        "rows": [
+          {
+            "id": "stable-loss",
+            "root": "R",
+            "rankings": [
+              {
+                "rows": [
+                  {
+                    "moveKey": "a",
+                    "score": 0
+                  },
+                  {
+                    "moveKey": "b",
+                    "score": 1
+                  },
+                  {
+                    "moveKey": "c",
+                    "score": 2
+                  }
+                ],
+                "selected": "c",
+                "topSet": [
+                  "c"
+                ]
+              },
+              {
+                "rows": [
+                  {
+                    "moveKey": "a",
+                    "score": 0
+                  },
+                  {
+                    "moveKey": "b",
+                    "score": 1
+                  },
+                  {
+                    "moveKey": "c",
+                    "score": 2
+                  }
+                ],
+                "selected": "c",
+                "topSet": [
+                  "c"
+                ]
+              }
+            ],
+            "comparison": {
+              "rankingChanged": false,
+              "selectedChanged": false,
+              "topSetChanged": false
+            },
+            "losses": [
+              {
+                "status": "ESTIMABLE",
+                "valueLoss": 2,
+                "selectedValue": -1,
+                "exactOptimalSet": [
+                  "a",
+                  "b"
+                ],
+                "outsideOptimalSet": true,
+                "selectedDTF": 1,
+                "dtfRegret": null
+              },
+              {
+                "status": "ESTIMABLE",
+                "valueLoss": 2,
+                "selectedValue": -1,
+                "exactOptimalSet": [
+                  "a",
+                  "b"
+                ],
+                "outsideOptimalSet": true,
+                "selectedDTF": 1,
+                "dtfRegret": null
+              }
+            ]
+          },
+          {
+            "id": "same-value-switch",
+            "root": "R",
+            "rankings": [
+              {
+                "rows": [
+                  {
+                    "moveKey": "a",
+                    "score": 3
+                  },
+                  {
+                    "moveKey": "b",
+                    "score": 2
+                  },
+                  {
+                    "moveKey": "c",
+                    "score": 0
+                  }
+                ],
+                "selected": "a",
+                "topSet": [
+                  "a"
+                ]
+              },
+              {
+                "rows": [
+                  {
+                    "moveKey": "a",
+                    "score": 2
+                  },
+                  {
+                    "moveKey": "b",
+                    "score": 3
+                  },
+                  {
+                    "moveKey": "c",
+                    "score": 0
+                  }
+                ],
+                "selected": "b",
+                "topSet": [
+                  "b"
+                ]
+              }
+            ],
+            "comparison": {
+              "rankingChanged": true,
+              "selectedChanged": true,
+              "topSetChanged": true
+            },
+            "losses": [
+              {
+                "status": "ESTIMABLE",
+                "valueLoss": 0,
+                "selectedValue": 1,
+                "exactOptimalSet": [
+                  "a",
+                  "b"
+                ],
+                "outsideOptimalSet": false,
+                "selectedDTF": 1,
+                "dtfRegret": 0
+              },
+              {
+                "status": "ESTIMABLE",
+                "valueLoss": 0,
+                "selectedValue": 1,
+                "exactOptimalSet": [
+                  "a",
+                  "b"
+                ],
+                "outsideOptimalSet": false,
+                "selectedDTF": 3,
+                "dtfRegret": 2
+              }
+            ]
+          },
+          {
+            "id": "lower-rank-change",
+            "root": "R",
+            "rankings": [
+              {
+                "rows": [
+                  {
+                    "moveKey": "a",
+                    "score": 3
+                  },
+                  {
+                    "moveKey": "b",
+                    "score": 2
+                  },
+                  {
+                    "moveKey": "c",
+                    "score": 0
+                  }
+                ],
+                "selected": "a",
+                "topSet": [
+                  "a"
+                ]
+              },
+              {
+                "rows": [
+                  {
+                    "moveKey": "a",
+                    "score": 3
+                  },
+                  {
+                    "moveKey": "b",
+                    "score": 0
+                  },
+                  {
+                    "moveKey": "c",
+                    "score": 2
+                  }
+                ],
+                "selected": "a",
+                "topSet": [
+                  "a"
+                ]
+              }
+            ],
+            "comparison": {
+              "rankingChanged": true,
+              "selectedChanged": false,
+              "topSetChanged": false
+            },
+            "losses": [
+              {
+                "status": "ESTIMABLE",
+                "valueLoss": 0,
+                "selectedValue": 1,
+                "exactOptimalSet": [
+                  "a",
+                  "b"
+                ],
+                "outsideOptimalSet": false,
+                "selectedDTF": 1,
+                "dtfRegret": 0
+              },
+              {
+                "status": "ESTIMABLE",
+                "valueLoss": 0,
+                "selectedValue": 1,
+                "exactOptimalSet": [
+                  "a",
+                  "b"
+                ],
+                "outsideOptimalSet": false,
+                "selectedDTF": 1,
+                "dtfRegret": 0
+              }
+            ]
+          },
+          {
+            "id": "winner-to-loser",
+            "root": "R",
+            "rankings": [
+              {
+                "rows": [
+                  {
+                    "moveKey": "a",
+                    "score": 3
+                  },
+                  {
+                    "moveKey": "b",
+                    "score": 2
+                  },
+                  {
+                    "moveKey": "c",
+                    "score": 0
+                  }
+                ],
+                "selected": "a",
+                "topSet": [
+                  "a"
+                ]
+              },
+              {
+                "rows": [
+                  {
+                    "moveKey": "a",
+                    "score": 0
+                  },
+                  {
+                    "moveKey": "b",
+                    "score": 2
+                  },
+                  {
+                    "moveKey": "c",
+                    "score": 3
+                  }
+                ],
+                "selected": "c",
+                "topSet": [
+                  "c"
+                ]
+              }
+            ],
+            "comparison": {
+              "rankingChanged": true,
+              "selectedChanged": true,
+              "topSetChanged": true
+            },
+            "losses": [
+              {
+                "status": "ESTIMABLE",
+                "valueLoss": 0,
+                "selectedValue": 1,
+                "exactOptimalSet": [
+                  "a",
+                  "b"
+                ],
+                "outsideOptimalSet": false,
+                "selectedDTF": 1,
+                "dtfRegret": 0
+              },
+              {
+                "status": "ESTIMABLE",
+                "valueLoss": 2,
+                "selectedValue": -1,
+                "exactOptimalSet": [
+                  "a",
+                  "b"
+                ],
+                "outsideOptimalSet": true,
+                "selectedDTF": 1,
+                "dtfRegret": null
+              }
+            ]
+          },
+          {
+            "id": "tie-break",
+            "root": "R",
+            "rankings": [
+              {
+                "rows": [
+                  {
+                    "moveKey": "a",
+                    "score": 3
+                  },
+                  {
+                    "moveKey": "b",
+                    "score": 3
+                  },
+                  {
+                    "moveKey": "c",
+                    "score": 0
+                  }
+                ],
+                "selected": "a",
+                "topSet": [
+                  "a",
+                  "b"
+                ]
+              },
+              {
+                "rows": [
+                  {
+                    "moveKey": "a",
+                    "score": 3
+                  },
+                  {
+                    "moveKey": "b",
+                    "score": 3
+                  },
+                  {
+                    "moveKey": "c",
+                    "score": 0
+                  }
+                ],
+                "selected": "a",
+                "topSet": [
+                  "a",
+                  "b"
+                ]
+              }
+            ],
+            "comparison": {
+              "rankingChanged": false,
+              "selectedChanged": false,
+              "topSetChanged": false
+            },
+            "losses": [
+              {
+                "status": "ESTIMABLE",
+                "valueLoss": 0,
+                "selectedValue": 1,
+                "exactOptimalSet": [
+                  "a",
+                  "b"
+                ],
+                "outsideOptimalSet": false,
+                "selectedDTF": 1,
+                "dtfRegret": 0
+              },
+              {
+                "status": "ESTIMABLE",
+                "valueLoss": 0,
+                "selectedValue": 1,
+                "exactOptimalSet": [
+                  "a",
+                  "b"
+                ],
+                "outsideOptimalSet": false,
+                "selectedDTF": 1,
+                "dtfRegret": 0
+              }
+            ]
+          },
+          {
+            "id": "tie-relation-change",
+            "root": "R",
+            "rankings": [
+              {
+                "rows": [
+                  {
+                    "moveKey": "a",
+                    "score": 3
+                  },
+                  {
+                    "moveKey": "b",
+                    "score": 3
+                  },
+                  {
+                    "moveKey": "c",
+                    "score": 0
+                  }
+                ],
+                "selected": "a",
+                "topSet": [
+                  "a",
+                  "b"
+                ]
+              },
+              {
+                "rows": [
+                  {
+                    "moveKey": "a",
+                    "score": 3
+                  },
+                  {
+                    "moveKey": "b",
+                    "score": 2
+                  },
+                  {
+                    "moveKey": "c",
+                    "score": 0
+                  }
+                ],
+                "selected": "a",
+                "topSet": [
+                  "a"
+                ]
+              }
+            ],
+            "comparison": {
+              "rankingChanged": true,
+              "selectedChanged": false,
+              "topSetChanged": true
+            },
+            "losses": [
+              {
+                "status": "ESTIMABLE",
+                "valueLoss": 0,
+                "selectedValue": 1,
+                "exactOptimalSet": [
+                  "a",
+                  "b"
+                ],
+                "outsideOptimalSet": false,
+                "selectedDTF": 1,
+                "dtfRegret": 0
+              },
+              {
+                "status": "ESTIMABLE",
+                "valueLoss": 0,
+                "selectedValue": 1,
+                "exactOptimalSet": [
+                  "a",
+                  "b"
+                ],
+                "outsideOptimalSet": false,
+                "selectedDTF": 1,
+                "dtfRegret": 0
+              }
+            ]
+          },
+          {
+            "id": "loss-delay-only",
+            "root": "L",
+            "rankings": [
+              {
+                "rows": [
+                  {
+                    "moveKey": "a",
+                    "score": 2
+                  },
+                  {
+                    "moveKey": "b",
+                    "score": 1
+                  }
+                ],
+                "selected": "a",
+                "topSet": [
+                  "a"
+                ]
+              },
+              {
+                "rows": [
+                  {
+                    "moveKey": "a",
+                    "score": 1
+                  },
+                  {
+                    "moveKey": "b",
+                    "score": 2
+                  }
+                ],
+                "selected": "b",
+                "topSet": [
+                  "b"
+                ]
+              }
+            ],
+            "comparison": {
+              "rankingChanged": true,
+              "selectedChanged": true,
+              "topSetChanged": true
+            },
+            "losses": [
+              {
+                "status": "ESTIMABLE",
+                "valueLoss": 0,
+                "selectedValue": -1,
+                "exactOptimalSet": [
+                  "a",
+                  "b"
+                ],
+                "outsideOptimalSet": false,
+                "selectedDTF": 1,
+                "dtfRegret": 1
+              },
+              {
+                "status": "ESTIMABLE",
+                "valueLoss": 0,
+                "selectedValue": -1,
+                "exactOptimalSet": [
+                  "a",
+                  "b"
+                ],
+                "outsideOptimalSet": false,
+                "selectedDTF": 2,
+                "dtfRegret": 0
+              }
+            ]
+          },
+          {
+            "id": "recurrent",
+            "root": "X",
+            "rankings": [
+              {
+                "rows": [
+                  {
+                    "moveKey": "xy",
+                    "score": 1
+                  }
+                ],
+                "selected": "xy",
+                "topSet": [
+                  "xy"
+                ]
+              },
+              {
+                "rows": [
+                  {
+                    "moveKey": "xy",
+                    "score": 1
+                  }
+                ],
+                "selected": "xy",
+                "topSet": [
+                  "xy"
+                ]
+              }
+            ],
+            "comparison": {
+              "rankingChanged": false,
+              "selectedChanged": false,
+              "topSetChanged": false
+            },
+            "losses": [
+              {
+                "status": "NON-ESTIMABLE",
+                "reason": "UNRESOLVED-CHILD",
+                "valueLoss": null,
+                "exactOptimalSet": null,
+                "selectedValue": null,
+                "dtfRegret": null
+              },
+              {
+                "status": "NON-ESTIMABLE",
+                "reason": "UNRESOLVED-CHILD",
+                "valueLoss": null,
+                "exactOptimalSet": null,
+                "selectedValue": null,
+                "dtfRegret": null
+              }
+            ]
+          },
+          {
+            "id": "winning-root-unresolved-child",
+            "root": "M",
+            "rankings": [
+              {
+                "rows": [
+                  {
+                    "moveKey": "a",
+                    "score": 2
+                  },
+                  {
+                    "moveKey": "b",
+                    "score": 1
+                  }
+                ],
+                "selected": "a",
+                "topSet": [
+                  "a"
+                ]
+              },
+              {
+                "rows": [
+                  {
+                    "moveKey": "a",
+                    "score": 1
+                  },
+                  {
+                    "moveKey": "b",
+                    "score": 2
+                  }
+                ],
+                "selected": "b",
+                "topSet": [
+                  "b"
+                ]
+              }
+            ],
+            "comparison": {
+              "rankingChanged": true,
+              "selectedChanged": true,
+              "topSetChanged": true
+            },
+            "losses": [
+              {
+                "status": "NON-ESTIMABLE",
+                "reason": "UNRESOLVED-CHILD",
+                "valueLoss": null,
+                "exactOptimalSet": null,
+                "selectedValue": null,
+                "dtfRegret": null
+              },
+              {
+                "status": "NON-ESTIMABLE",
+                "reason": "UNRESOLVED-CHILD",
+                "valueLoss": null,
+                "exactOptimalSet": null,
+                "selectedValue": null,
+                "dtfRegret": null
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "searchContrasts": [
+      {
+        "fixture": "INITIAL",
+        "comparison": {
+          "rankingChanged": true,
+          "selectedChanged": true,
+          "topSetChanged": true
+        },
+        "exactValueLoss": null
+      },
+      {
+        "fixture": "E30",
+        "comparison": {
+          "rankingChanged": true,
+          "selectedChanged": true,
+          "topSetChanged": true
+        },
+        "exactValueLoss": null
+      },
+      {
+        "fixture": "E30-SEAT-SWAP",
+        "comparison": {
+          "rankingChanged": true,
+          "selectedChanged": true,
+          "topSetChanged": true
+        },
+        "exactValueLoss": null
+      },
+      {
+        "fixture": "KNOWN-HOUSE-CHOICE",
+        "comparison": {
+          "rankingChanged": true,
+          "selectedChanged": false,
+          "topSetChanged": false
+        },
+        "exactValueLoss": null
+      }
+    ],
+    "freshScientificSeedReads": 0,
+    "scientificInference": false,
+    "publicAiChanged": false,
+    "transitionIndependence": "SHARED-ENGINE-SEARCH-CHECK / LIMITED-TAKASIA-ORACLE-ONLY",
+    "formalReadiness": "BLOCKED-PENDING-FULL-INDEPENDENT-TRANSITION-AND-FRESHNESS-CONTRACT"
+  },
+  "coreSha256": "cb8d2651a40b3576cf5d98a08bd7a7bbcbef7a731af729fdf4d617dc13834ed0",
+  "execution": {
+    "sourceCommit": "885e3c4152b6979a70a20755c8bf064b8d4dd29c",
+    "node": "v24.19.0",
+    "elapsedMs": 147,
+    "peakRssBytes": 49385472,
+    "githubRunId": null,
+    "githubRunAttempt": null,
+    "resumed": false
+  }
+}

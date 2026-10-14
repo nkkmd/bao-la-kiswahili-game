@@ -1,0 +1,56 @@
+{
+  "verifiedSavedEvidence": true,
+  "fixturePassed": true,
+  "mode": "host-oom",
+  "runId": "38497935805",
+  "registryHead": "c96ce1b6c0c62b34933739d44d4c6006ed802034",
+  "registryRef": "refs/heads/research/g5-remote-stop-v3-38497935805-a1-host-oom",
+  "registryBlobSha": "502ae47605070eb09057f8c5dfe8ad84870a818f",
+  "registry": {
+    "verified": true,
+    "commits": 3,
+    "leases": 1,
+    "logicalReadsMarked": 1,
+    "mirrors": 1,
+    "scientificSeedsRead": 0
+  },
+  "ackCount": 1,
+  "unacknowledgedMarkers": 0,
+  "remoteProof": {
+    "fullSources": 0,
+    "partialSources": 0,
+    "completeClosures": 0,
+    "partialProofs": [],
+    "sourceGenerationPerformed": false
+  },
+  "localProof": {
+    "fullSources": 1,
+    "partialSources": 0,
+    "completeClosures": 0,
+    "partialProofs": [],
+    "sourceGenerationPerformed": false
+  },
+  "parentPeak": 660426752,
+  "resultPresent": true,
+  "serviceError": null,
+  "guard": null,
+  "finalMirrorSaved": false,
+  "technicalComplete": false,
+  "completedRecordPresent": true,
+  "completionClaimAuthorized": false,
+  "stops": {
+    "records": [
+      {
+        "target": "work",
+        "atMs": 9486.933330999998,
+        "reason": "HOST-OOM-NO-RESUME"
+      }
+    ],
+    "elapsedFromServiceMs": 12100.975966,
+    "scientificSeedsRead": 0
+  },
+  "sourceGenerationPerformed": false,
+  "scientificSeedsRead": 0,
+  "resumeAuthorized": false,
+  "solution": null
+}

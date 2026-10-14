@@ -1,0 +1,65 @@
+name: G5 BEFCS Authenticated Git
+on:
+  push:
+    branches: [research/g5-befcs-git-preflight]
+    paths: ['tools/research/g5-befcs-git/**', 'test/g5-befcs-git.test.cjs', 'doc/research-generation-5/befcs-git-20261014/**', '.github/workflows/g5-befcs-git-preflight.yml']
+  pull_request:
+    paths: ['tools/research/g5-befcs-git/**', 'test/g5-befcs-git.test.cjs', 'doc/research-generation-5/befcs-git-20261014/**', '.github/workflows/g5-befcs-git-preflight.yml']
+permissions:
+  contents: read
+jobs:
+  local-refusal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        # 凍結済みfixtureの入力を当時のコミットで検算する。現在のtreeはcheckpoint CIで検査する。
+        with:
+          ref: 65747ada06be99a43d62109ab78a0edd0d47ba28
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Validate fixture refusal and prior bindings
+        run: |
+          node --test test/g5-befcs-git.test.cjs test/g5-befcs-pipeline.test.cjs
+          node tools/research/g5-befcs-git/run.cjs --bindings
+          node tools/research/g5-befcs-git/run.cjs --check
+  authenticated-git:
+    if: github.event_name == 'push' && github.run_attempt == 1
+    needs: local-refusal
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 65747ada06be99a43d62109ab78a0edd0d47ba28
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Prepare exclusive 256 MiB fixture filesystem
+        run: |
+          node -e "const f=require('fs');f.mkdirSync('artifacts/local/befcs-git',{recursive:true});const fd=f.openSync('artifacts/local/GIT.img','wx');f.ftruncateSync(fd,268435456);f.closeSync(fd);"
+          sudo mkfs.ext4 -q -F -m 0 artifacts/local/GIT.img
+          sudo mount -o loop,nosuid,nodev,noexec artifacts/local/GIT.img artifacts/local/befcs-git
+          sudo chown "$(id -u):$(id -g)" artifacts/local/befcs-git
+          sudo chmod a+rx artifacts/local/befcs-git/lost+found
+      - name: Exercise authenticated fixture refs within cgroup
+        env:
+          BEFCS_GIT_TOKEN: ${{ github.token }}
+        run: node tools/research/g5-befcs-git/run.cjs --ci-live
+      - name: Preserve stopped fixed evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: befcs-git-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/local/befcs-git/
+          include-hidden-files: true
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Close only fixture mount
+        if: always()
+        run: sudo umount artifacts/local/befcs-git || true

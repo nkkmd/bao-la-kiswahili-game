@@ -1,0 +1,5 @@
+"use strict";
+const assert=require('node:assert/strict'),R=require('../g5-befcs-workload/registry.cjs');
+function configure(){const token=process.env.BEFCS_GIT_TOKEN;assert.ok(token&&!/[\r\n]/.test(token));process.env.GIT_CONFIG_COUNT='2';process.env.GIT_CONFIG_KEY_0='http.https://github.com/.extraheader';process.env.GIT_CONFIG_VALUE_0='AUTHORIZATION: basic '+Buffer.from('x-access-token:'+token).toString('base64');process.env.GIT_CONFIG_KEY_1='credential.helper';process.env.GIT_CONFIG_VALUE_1='';process.env.GIT_TERMINAL_PROMPT='0';for(const k of Object.keys(process.env))if(k.startsWith('GIT_TRACE')||k==='GIT_CURL_VERBOSE')delete process.env[k];}
+function proxy(repository,url,ref){const keys=['GIT_CONFIG_COUNT','GIT_CONFIG_KEY_2','GIT_CONFIG_VALUE_2'],prior=keys.map(k=>process.env[k]);try{process.env.GIT_CONFIG_COUNT='3';process.env.GIT_CONFIG_KEY_2='http.proxy';process.env.GIT_CONFIG_VALUE_2='http://127.0.0.1:1';return R.open(repository,url,ref);}finally{keys.forEach((k,n)=>{if(prior[n]===undefined)delete process.env[k];else process.env[k]=prior[n];});}}
+module.exports={configure,proxy};

@@ -1,0 +1,26 @@
+{
+  "kind": "POSTEXECUTION-DESCRIPTION-BINDING",
+  "originalMirrorCommit": "5cfe0f00629f65995a2d6be5889cebbe68bb8940",
+  "files": {
+    ".github/workflows/g5-05-saved-audit.yml": "39df9cede563a3b33f6d4b18365d639202b69c50488ddcb0ff6c0ea75edc7707",
+    "doc/research-generation-5/g5-01/development/results/EVIDENCE.json.gz": "7c950ba4439075e4c96b24e3f72b01542615576352e47262054a7646c0a655c5",
+    "doc/research-generation-5/g5-02/results/EVIDENCE.json.gz": "82b408350441f9bbf405c3f0bf8ca72fac972affaff840ae3f215453f012e6df",
+    "doc/research-generation-5/g5-03/results/EVIDENCE.json.gz": "87f4b057014f7ab7127ec7e4a17d2b00c9bdff128f090d64f6a1a0f383e16704",
+    "doc/research-generation-5/g5-04/results/EVIDENCE.json.gz": "5d7fd9566e6b2792748e3d91ef4156b1c0f33fa6b3c612a61f3153d514152112",
+    "doc/research-generation-5/g5-05/AUTHORIZATION.json": "dc695297b26499524dcfa98593c938343f0bce89e389f6671c26a70321662f6b",
+    "doc/research-generation-5/g5-05/SOURCE_MANIFEST.json": "fa6c74983bef26168d23cdf13474b83481910f76ac29cf0db6977a3e09321d90",
+    "doc/research-generation-5/g5-05/SPEC.json": "bae19b35a3e84cab7d3ea507d218a36bb9777f73a475532c59f687e9c5a36227",
+    "doc/research-generation-5/g5-05/results/CANDIDATES_FROZEN.json": "df7cdd8766603bc6dbee9af746d741406c1f2e115043524cc618ea0395833468",
+    "doc/research-generation-5/g5-05/results/CHECKPOINT.json": "c9ccb7fb593186dbb64c3a42734b625012222ba3ef3555fa82266e1b8eb4c149",
+    "doc/research-generation-5/g5-05/results/CI_RECEIPT.json": "513bd01d858b93972e05d8224c563f25ee11df730b149eb71da71ba4f6529203",
+    "doc/research-generation-5/g5-05/results/DOMAIN_IN_PROGRESS.json": "456b19329f67256e80e7bbce20425a6dda563b536fb1d0085352d57f3c691308",
+    "doc/research-generation-5/g5-05/results/EVIDENCE.json.gz": "be9ec19e16527d462d9e6581d6be3f985732d76780888ee41244b790bf07c0e6",
+    "doc/research-generation-5/g5-05/results/LEASE.json": "345b97ce821a77853f340eff0eda6078310a59cfed408b7ef3f656228dc9f138",
+    "doc/research-generation-5/g5-05/results/RESULT.json": "6c03e6872674c9b60b748041bca61b3f36da93e489007c07a0905ed746b0ac83",
+    "doc/research-generation-5/g5-05/results/SEED_READS.jsonl": "87c1353fe8dbd3d673c9da8f861e24af6c890b0bcbbfee0e00f2dcd1712ef755",
+    "doc/research-generation-5/g5-05/results/START.json": "c545c70ba180a07a33ef0c0807f3f6e2a0d289df462e08ee8c304a0f2771abc9",
+    "doc/research-generation-5/g5-05/results/STATE_READS.jsonl": "70ae4392c19098e23fa9f6a10b2c720d9f405bef8fd9886d5cf48b8816ef07ee",
+    "doc/research-generation-5/g5-05/results/VERIFICATION.json": "ac60c791d3eec15d40a33876c528a64d29375ed5781ed0374367127f80333d09",
+    "tools/research/g5-05/describe-saved.cjs": "a09bdb5abc4b10269b07d4ee0650f14d66a4a5132765121859cda8586c785990"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "technicalId": "RCBI-S0-FIXTURE-2026-10-13-v1",
+  "files": {
+    ".github/workflows/g5-compact-bfs-integration.yml": "fcc5d7300a8e2cbce1fc2d70eedc4b50039f46479038659f39e63438c89f212b",
+    "doc/research-generation-5/bfs-integration-20261013/MEASUREMENT_MANIFEST.json": "a836142f4d59efa18151e1d99326acfe9b4ee68ea4a12adc85758c5afe0d40c4",
+    "doc/research-generation-5/bfs-integration-20261013/MEASUREMENT_SUPPLEMENT.md": "65e945042d00b9ddc8343dd707d3a81c4d35d46bfbc9b152dec345f825ac0ac9",
+    "doc/research-generation-5/bfs-integration-20261013/SOURCE_MANIFEST.json": "48e1e762f2a1fd9119db7bbab9d8620107408e7e07520e77140e4b3a058b1e53",
+    "doc/research-generation-5/bfs-integration-20261013/results/BENCHMARK.json": "80ce61ade5d8a55220feb9e6022778170bd82bef7382e84491cbffc1085e7a56",
+    "doc/research-generation-5/bfs-integration-20261013/results/EXECUTION.json": "c3ffe2309d8677e055b807fefc9976f9b26f1f59de5a1e10a85e20dceec86a65",
+    "doc/research-generation-5/bfs-integration-20261013/results/PROCESS_MEASUREMENT.json": "f3203e3c526bc910528cf5de0bc9f010ae4b979421016846e7a59cefba514f38",
+    "doc/research-generation-5/bfs-integration-20261013/results/README.md": "95861b8a8c702827398fcc157baf77a0d6a298159defd76171c4c9adb560bc7f",
+    "doc/research-generation-5/bfs-integration-20261013/results/RESULT.json": "8af5207cd314f87d327d05a50b1abb868d396386ca7f7a9e533eea7bd9170880",
+    "doc/research-generation-5/bfs-integration-20261013/results/TECHNICAL_EVIDENCE.json.gz": "72e829e37e7ad61df58212fb002b4ee20aeed6af0373198df5de2bb7188c4c6c",
+    "tools/research/g5-compact-bfs/measure-run.cjs": "43622cab9220e309996dfe3917a9fa68c6eef9170048ec8568c116cb12320abf",
+    "tools/research/g5-compact-bfs/rss-observer.cjs": "67d1f4b094a81289d81d1384a9a4c931749766aa31ecf0e3eb0051c9b947ecad"
+  }
+}

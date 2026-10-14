@@ -1,0 +1,7 @@
+# 監督区画の証拠入口
+
+第2版run 38401380127で4 caseと23検査、artifact保存が合格した。CI_ARTIFACT.zipは取得した原ZIPで、111 fileのSHA256はCI_ARTIFACT_VERIFICATION.jsonへ保存した。CI_RESULT.jsonはartifact内RESULT.jsonのbyte列を保持する。VERIFY_ARTIFACT.pyは取得後に使った独立検算器で、fixtureの実行入力とは別にCI_OUTPUT_BINDING.jsonで固定する。
+
+初回run 38401015788は4 caseと23検査が合格したが、lost+foundのEACCESでartifact保存が失敗した。CI_INITIAL_FAILURE.jsonはjob log由来の原結果と失敗状態を保持する。artifactが存在しないため、取得検算済みとは数えない。SOURCE_MANIFEST_V1.jsonは初回入力であり、第2版の保存権限修正・watchdog移動確認とは分ける。
+
+CI_RECEIPT.jsonは実行head・tree・run・artifact digestと取得検算の範囲を固定する。科学seedや科学leaseを作成しない。期限caseは未完で、停止前sampleを保持する。入力manifestと取得後の出力bindingを分離する。原出力内の英語field、ZIP内のGit template・元logのtokenは機械記録の例外であり、解釈は[報告](../REPORT.md)を参照する。

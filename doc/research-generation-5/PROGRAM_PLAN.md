@@ -1,8 +1,18 @@
 # 第五世代研究計画 — 探索順位の変動と厳密価値の損失
 
-作成日: 2026-09-29  
-状態: **将来の研究計画／科学実行は未承認**  
+> 2026-10-14の現在案内: [中間保存](checkpoint-20261014/README.md)に終了済み5 Studyと第3版の取得後検算を整理しました。第五世代全体は継続中で、BEFCSと正式関係は未登録・未実行です。以下の日時付き記録と計画本文は各時点の履歴として保持します。現在の統合状態と残り工程は中間保存PRと[再開位置](RESUME_HERE.md)を参照してください。
+
+作成日: 2026-09-29
+状態: **第五世代研究は継続中／供給5 Study終了・BEFCSと正式関係は未登録・未実行**
 対象: Bao Research Generation 5
+
+> 2026-10-12の着手追補: 本文は計画作成時点の記録を保持する。ユーザーの着手指示に基づく第1段階の技術実行、takasiaを含むRAW識別、資源上限は[G5-01技術契約](g5-01/TECHNICAL_CONTRACT.md)で具体化した。新規証拠の科学実行はまだ開始していない。最新状態は[CURRENT_STATUS.md](CURRENT_STATUS.md)を参照する。
+
+> 開発診断後の追補: [Stage 1報告](g5-01/development/REPORT.md)で32 sourceの新規開発診断を実行・独立再生したが候補は0件だった。今回の区画を消費済みで閉じ、正式な関係の検証は未承認・未実施のままとする。以下の計画本文は作成時点の記録として保持する。
+
+> G5-04終了後の追補: G5-02・G5-03・G5-04の供給診断を独立契約で実行した。G5-04は8完全閉包を取得し、3 rootで同価値内DTF差を記述したがroot内の勝敗価値差は0件だった。正式な主要関係の検証は未承認・未実施。元の問いや指標を差し替えず、[現在状態](CURRENT_STATUS.md)と[G5-04の再開位置](g5-04/RESUME_HERE.md)で対象・最低条件を再評価する。以下の本文は作成時点の計画として保持する。
+
+> 準備再評価の追補: 終了済み4 Studyを再検算し、保存16完全領域の内部も含め勝敗価値差のある手は0件だった。主要関係の開発準備判断はPRIMARY-READINESS-NOT-MET。正式比較は未登録・未実行で、DTFへ主要指標を差し替えない。[再評価](readiness-review-20261012/REPORT.md)と[設計案](readiness-review-20261012/DESIGN_PROPOSAL.md)は新規証拠の実行認可ではなく、下記の原計画を保持して次の登録条件を具体化する。
 
 ## 1. 中心となる問い
 
@@ -83,3 +93,66 @@
 次は個別Studyの着手前レビューである。第1段階の技術作業も、対象と実行範囲を定めてから開始する。正式証拠へのアクセス、計算実行、研究用workflowの起動は本計画の登録だけでは許可されない。
 
 現在状態は[CURRENT_STATUS.md](CURRENT_STATUS.md)、次の作業位置は[RESUME_HERE.md](RESUME_HERE.md)、第四世代の確定結果は[最終統合](../research-generation-4/FINAL_SYNTHESIS.md)を参照する。人間向け文書は[日本語文書品質ゲート](../JAPANESE_DOCUMENTATION_QUALITY_GATE.md)に従う。
+
+## 2026-10-13 — 応手種別による新しい供給設計
+
+[供給設計](source-design-20261013/README.md)で、root手によって相手の捕獲手とtakataの応手集合に分かれる非終局構造層を具体化した。全軌跡の最後の構造適格rootを閉包前に固定する案で、着手の擬似乱数方策を保持する。旧部分グラフ内に284構造適格nodeがあったが、全て未完領域にあり、勝敗価値差・完全閉包供給・費用は未確認である。
+
+状態はSOURCE-DESIGN-SPECIFIED-NOT-EXECUTED。構造判定の7fixtureと保存監査の再生が合格した。新規source・遷移・候補再選定・正式推論は0件。[設計](source-design-20261013/DESIGN.md)で64 source・8候補・資源・有限開発コーパスの記述対象を具体化し、[再開位置](source-design-20261013/RESUME_HERE.md)に実装・新規契約・未使用区画・一度限り実行の条件を残した。主要関係はPRIMARY-READINESS-NOT-MET、正式比較は未登録・未実行のままで、main・公開AIは未変更である。
+
+## 2026-10-13 — G5-05の応手種別供給を事前固定
+
+[G5-05](g5-05/README.md) / MRCS-STUDY1は、全軌跡最後の応手種別分岐rootを新規64 sourceから最大8候補へ固定する開発供給である。[契約](g5-05/CONTRACT.md)で旧58532状態遮断、全合法手閉包・独立再生、資源・読取journal・一度限り消費と不足時の終了を固定した。12技術fixtureがローカルで合格し、ソース固定・Actions技術CIの後、別triggerと永続leaseにより実行する。
+
+正式関係は未登録・未実行、対象は固定有限開発コーパスである。IIDや93ずつの精度案を適用せず、DTFを主課題へ差し替えない。原記録・main・公開AIを保持する。[再開位置](g5-05/RESUME_HERE.md)を参照する。
+
+## 2026-10-13 — G5-05の終了・構造差供給と全閉包未供給
+
+[G5-05報告](g5-05/REPORT.md)で、新規64 sourceを一度だけ実行した結果を確定した。35構造適格代表の最初の8候補を固定して解析し、6領域は5000状態上限、2領域は別の合法枝のruntime guardで停止した。完全閉包0件で、8候補の勝敗価値差は未確定である。全64 source・513 screen・39354保存辺の独立検算と保存は合格した。原証拠は5cfe0f00629f65995a2d6be5889cebbe68bb8940、Actionsは38313556402 / attempt 1で保持する。
+
+5区画は全て消費済み、既読和集合は101691 RAW識別となった。構造差の供給と全解析未達を区別し、guardを自然敗北・無限反復へ変換しない。追加source・未解析27代表の補充・旧root延長・状態上限引上げ・retryをしない。次は[科学用遷移と解析方式の再評価](g5-05/NEXT_RESEARCH.md)を先に行い、新しい区画を自動追加しない。正式関係は未登録・未実行、main・公開AIは未変更である。
+
+## 2026-10-13 — 科学用遷移・可逆保存の技術再評価
+
+[方法再評価](method-review-20261013/README.md)で、runtime上限による勝者付与を外した研究用遷移の二実装を確認した。既知40fixtureの416状態・411遷移と全microstate列が一致し、上限1の技術例では自然停止する5手のruntime勝者と科学的未知を分離した。G5-05の実際のguard witnessを延長した結果ではない。
+
+422技術境界RAWの独立二codecは復号/旧RAW hashが一致し、符号化payloadは104660から13926 byteとなった。科学BFSの実資源改善は未測定である。[方法選択](method-review-20261013/METHOD_DECISION.md)はguard-free遷移と可逆保存を全閉包BFSへ統合する技術検証を優先し、抽象戦略証明の採用は現行Programの全閉包要件との適合レビューへ留保する。新規科学sourceは0件、全閉包要件は保持する。
+
+旧101691状態と新技術RAW射影を合わせた保守的遮断集合は102329識別となる。中間状態を新候補・到達性証拠へ昇格させず、旧5区画・原記録を保持する。正式関係は未登録・未実行、main・公開AIは未変更。[再開位置](method-review-20261013/RESUME_HERE.md)を参照する。
+
+
+## 2026-10-13の全閉包BFS統合検証
+
+[全閉包統合](bfs-integration-20261013/README.md)で、科学用遷移と可逆RAW保存を固定fixtureのBFSへ統合した。既知Baoの3状態・2辺と固定抽象例で全合法手・全辺・独立解・snapshot/journal復元が一致した。未知・停止証拠・未展開境界・各辺metadataを保持した。[報告](bfs-integration-20261013/REPORT.md)に9テスト、全10 fixture、保存量と全測定を示す。
+
+1024状態の抽象例でjournal込み保存は4363460から3988337 byteとなったが、科学BFSの資源改善や新規完全領域を確認した結果ではない。初回RSSの全同値も保持し、Linux補助計測を別契約で保存した。新規科学source/seed/候補・旧witness延長は0件である。
+
+保守的遮断は103355 RAW識別となった。全閉包要件と正式関係未登録/未実行を保ち、次は[別Studyの登録条件](bfs-integration-20261013/RESUME_HERE.md)を具体化する。旧区画を救済・補充せず、技術合格から科学sourceを自動起動しない。main・公開AIは未変更である。
+
+
+## 2026-10-13 — 分岐包絡による新しい供給Studyの設計案
+
+[BEFCS-STUDY1提案](branch-envelope-20261013/README.md)は、G5-05のroot・27代表・seedを延長しない新しい有限開発案である。fresh trajectoryで最初の適格rootを選び、各root子の応手数合計を16以下に事前制限する。提案seed範囲`50613001..50613128`は空き照合のみで、未予約・未消費。10k状態/128k辺/180秒、全体20分・1 GiB・256 MiBと保存reserveを提示するが、新規Baoの完全閉包量や供給成功を保証しない。
+
+状態はPROPOSAL-NOT-REGISTRATION-NOT-EXECUTEDで、seed消費0・leaseなし・source未固定・実行未認可。次は別source実装とfixture preflight、独立候補/閉包検算、保存上限testを行い、条件が揃うまで区画を開始しない。固定有限コーパスにIID/一般局面の推論を適用せず、主要関係は未登録・未実行、DTFへ差し替えない。旧記録、main、公開AIを保持する。
+
+
+## 2026-10-13 — 分岐包絡供給のsource・保存fixture技術合格
+
+[技術preflight](branch-envelope-preflight-20261013/README.md)で、第一適格root、全2-ply screen、独立source/edge再生、予約域付きjournal/snapshotとgzip分割を実装した。22新テストと先行BFS 9テスト、10 source/7 closure fixture、17 bundleが合格した。実容量256 MiB・16 MiB reserve、48 MiB以下・最大6片の復元を検査した。観測532 RAWは全て既読で、保守的遮断は103355識別のまま、555保護入力のbytesを保持した。
+
+科学source/seed/候補・旧root/witness延長・正式推論は0件である。BEFCS-STUDY1は未登録・未実行、leaseなし、科学source未固定、実行未認可。次は科学用SPEC/契約/認可範囲と全区画lease・読取前consume・attempt 1固定の別trigger・常時保存/mirrorを具体化する。fixture技術合格から科学sourceを起動せず、全閉包と未知の保持、不足時終了、追加/差替え/retry禁止を維持する。main・公開AIは未変更である。
+
+## 2026-10-13 — 一度限り運用のfixture検証
+
+[運用preflight](befcs-operations-20261013/README.md)で、Gitの原子的全区画取得・読取前marker・稼働中/終了mirror・合算RSS監督を実装した。15運用テストと31先行回帰テストが合格し、1区画・128論理marker・8 mirror・137 commitを保存Git bundleから独立復元した。科学PRNGの初期化は0件で、新規Bao RAWは観測していない。実128 MiB/1 GiB cgroupはActions確認待ちである。
+
+[科学契約案](befcs-operations-20261013/CONTRACT_DRAFT.md)は未登録案で、次は科学source/独立replay・全閉包保存とcontainer/mirrorの全workload結合、最終freeze・CI receipt・別triggerを整える。584保護入力と103355件遮断を保持し、科学seed消費0・科学leaseなし・科学Study未登録/未実行、正式関係未登録/未実行、main・公開AI未変更である。技術合格を科学供給へ昇格させない。
+
+## 2026-10-13 — 運用cgroupの確認と保存済み全workloadの結合
+
+[運用cgroup確認](befcs-operations-20261013/CI_CONFIRMATION.md)をPR #192へ保存し、実128 MiB/1 GiBのOOMとprefix保持が合格した。[全workload統合](befcs-workload-20261013/README.md)で保存済み技術source 128件・固定抽象閉包8件を共有保存予算、marker、mirror、停止監督へ結合した。58ローカルテスト・8シナリオと実256 MiB容量境界が合格した。科学生成の費用・供給結果へ昇格させず、実1 GiBの全pipeline CIと科学用hostの結合・最終freeze・別triggerは[再開条件](befcs-workload-20261013/RESUME_HERE.md)に残す。科学seed消費0・科学leaseなし・科学Study未登録/未実行、103355件遮断、正式関係未登録/未実行、main・公開AI未変更である。
+
+## 第2版の全workload実cgroup確認完了
+
+[CI確定](befcs-workload-20261013/CI_CONFIRMATION_V2.md)でpush/PRの全stepと同一headの15 runが成功した。旧failureを保持し、実1 GiBの8固定シナリオ、256 MiB共有容量、UID/GID対応後の後片付けとartifact保存を確認した。現行は第2版16入力・623保護入力を固定する。次は科学用host/registry/別triggerの接続と最終科学事前固定であり、科学seed消費0・科学leaseなし・未登録/未実行、103355件遮断、正式関係未登録/未実行、main・公開AI未変更を保つ。

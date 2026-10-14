@@ -1,0 +1,64 @@
+{
+  "verified": true,
+  "mode": "proxy-final-mirror",
+  "registryRef": "refs/heads/research/g5-remote-joined-38473413073-a1-proxy-final-mirror",
+  "registryHead": "e76dd25f4650ee73c78848eb93992c59c67e7d08",
+  "ackCount": 128,
+  "markers": 128,
+  "unacknowledgedMarkers": 0,
+  "technicalComplete": false,
+  "finalMirrorSaved": false,
+  "remoteMirrorProof": {
+    "fullSources": 127,
+    "partialSources": 1,
+    "completeClosures": 0,
+    "partialProofs": [
+      {
+        "dir": "source-127",
+        "verified": true,
+        "scope": "SAVED-PREFIX-ONLY-NOT-FULL",
+        "savedSteps": 9,
+        "savedScreens": 0,
+        "checkpointPly": null,
+        "checkpointScreens": null,
+        "journals": {
+          "source": {
+            "bytes": 8011,
+            "prefixBytes": 8011,
+            "tailBytes": 0,
+            "sha256": "a59d5d76b96ede5045631887ec0aaeb1ba70d5896bec1b52c406aedb2fa0995e",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 10
+          },
+          "receipt": {
+            "bytes": 391,
+            "prefixBytes": 391,
+            "tailBytes": 0,
+            "sha256": "8a43eed46deddac65b98f6065368ad2a99cc0e4e87b46a317a8cd6857e7fc0db",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 1
+          },
+          "reads": {
+            "bytes": 4124,
+            "prefixBytes": 4124,
+            "tailBytes": 0,
+            "sha256": "8e3574d688317500e81d492c4559ebb64a492753cdba8c1dceb6e7a4c04450fd",
+            "tailSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "rows": 11
+          }
+        },
+        "savedReadCoverageVerified": true,
+        "sourceComplete": false,
+        "fullSourceVerified": false,
+        "candidate": null,
+        "solution": null,
+        "resumeAuthorized": false,
+        "scientificSeedGenerationPerformed": false
+      }
+    ],
+    "sourceGenerationPerformed": false
+  },
+  "parentPeak": 600485888,
+  "forensicPreservationAfterDeadline": false,
+  "scientificSeedsRead": 0
+}

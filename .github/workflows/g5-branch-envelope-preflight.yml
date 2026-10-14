@@ -1,0 +1,42 @@
+name: G5 Branch Envelope Fixture Preflight
+on:
+  push:
+    branches: [research/g5-branch-envelope-preflight]
+    paths:
+      - 'tools/research/g5-branch-envelope/**'
+      - 'test/g5-branch-envelope.test.cjs'
+      - 'doc/research-generation-5/branch-envelope-preflight-20261013/**'
+      - '.github/workflows/g5-branch-envelope-preflight.yml'
+  pull_request:
+    paths:
+      - 'tools/research/g5-branch-envelope/**'
+      - 'test/g5-branch-envelope.test.cjs'
+      - 'doc/research-generation-5/branch-envelope-preflight-20261013/**'
+      - '.github/workflows/g5-branch-envelope-preflight.yml'
+permissions:
+  contents: read
+jobs:
+  fixture-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        # 凍結済みfixtureの入力を当時のコミットで検算する。現在のtreeはcheckpoint CIで検査する。
+        with:
+          ref: 5c9d80801d7476ec008a3c95d55440d5939fcfd2
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Test first candidate independent replay pressure limits and recovery
+        run: node --test test/g5-branch-envelope.test.cjs
+      - name: Replay only bound technical fixtures
+        run: node tools/research/g5-branch-envelope/run.cjs --check
+      - name: Verify saved result evidence and workflow bindings
+        run: |
+          python - <<'PY'
+          import json,hashlib,pathlib
+          p=pathlib.Path('doc/research-generation-5/branch-envelope-preflight-20261013/OUTPUT_BINDING.json')
+          for name,expected in json.loads(p.read_text())['files'].items():
+              assert hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest()==expected,name
+          PY

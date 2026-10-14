@@ -1,0 +1,15 @@
+{
+  "evidenceClass": "TECHNICAL-SUPERVISOR-CGROUP-FIXTURE",
+  "scientificSeedsRead": 0,
+  "files": {
+    ".github/workflows/g5-befcs-supervisor-preflight.yml": "e7368f4acf35d07ab76381245bf7fd93976175151dc6fd319294dcd5e5bd642e",
+    "test/g5-befcs-supervisor.test.cjs": "fde91b935e82e3958899b5c6009b44cdff85622ad6140118428686ba6fbf1590",
+    "tools/research/g5-befcs-envelope/envelope.cjs": "b4ac072cb2716944e37f14349ace2e868c483c05bff38237f422075591c6165b",
+    "tools/research/g5-befcs-supervisor/policy.cjs": "48f0cf9a80fbdd0fd77011e28563039573ddff6befb74fafb218fea6e5c1a40a",
+    "tools/research/g5-befcs-supervisor/run.cjs": "25a8bec627c2daae03c6978d6eb153c3bacddf8e3969a068b2c95c4ec4d12c14",
+    "tools/research/g5-befcs-supervisor/task.cjs": "c9aad449914968a905569703c0f2497cb5bf5ac399e6087169c1f6e148fa683f",
+    "tools/research/g5-befcs-supervisor/watch.cjs": "9e127a0302d221812e9c2089f8162e07c09993d463bdba8e8b47e8a1433eff06"
+  },
+  "revision": 2,
+  "previousInputReceipt": "results/SOURCE_MANIFEST_V1.json"
+}

@@ -1,0 +1,182 @@
+{
+  "disposition": "STAGE1-SUPPLY-COMPLETE",
+  "failure": null,
+  "studyId": "MTCS-STUDY1",
+  "stageId": "MTCS-S1-SUPPLY-2026-10-12-v1",
+  "binding": "847717768fb603a61372252b319de9cf41cc59692abb0850639cca881cff04f9",
+  "seedBlock": {
+    "start": 50412001,
+    "end": 50412128,
+    "count": 128
+  },
+  "scientificSeedsRead": 128,
+  "sourceCount": 128,
+  "sourceStops": {
+    "TERMINAL-BEFORE-CANDIDATE": 119,
+    "FIRST-ELIGIBLE-ROOT": 9
+  },
+  "probeCount": 2908,
+  "probeStops": {
+    "2/PROBE-WIDTH-EXCLUDED": 71,
+    "2/PROBE-DEPTH-NOT-CLOSED": 1406,
+    "4/PROBE-DEPTH-NOT-CLOSED": 1287,
+    "4/PROBE-WIDTH-EXCLUDED": 110,
+    "4/PROBE-COMPLETE": 9,
+    "2/PROBE-COMPLETE": 25
+  },
+  "candidateCount": 8,
+  "completeDomains": 8,
+  "domainStatuses": [
+    {
+      "status": "COMPLETE-INDEPENDENT-AGREEMENT",
+      "states": 33,
+      "edges": 32,
+      "elapsedMs": 10,
+      "complete": true,
+      "counts": {
+        "nodes": 33,
+        "terminal": 18,
+        "win": 10,
+        "loss": 5,
+        "recurrent": 0
+      }
+    },
+    {
+      "status": "COMPLETE-INDEPENDENT-AGREEMENT",
+      "states": 18,
+      "edges": 17,
+      "elapsedMs": 2,
+      "complete": true,
+      "counts": {
+        "nodes": 18,
+        "terminal": 8,
+        "win": 8,
+        "loss": 2,
+        "recurrent": 0
+      }
+    },
+    {
+      "status": "COMPLETE-INDEPENDENT-AGREEMENT",
+      "states": 25,
+      "edges": 24,
+      "elapsedMs": 3,
+      "complete": true,
+      "counts": {
+        "nodes": 25,
+        "terminal": 16,
+        "win": 6,
+        "loss": 3,
+        "recurrent": 0
+      }
+    },
+    {
+      "status": "COMPLETE-INDEPENDENT-AGREEMENT",
+      "states": 11,
+      "edges": 10,
+      "elapsedMs": 1,
+      "complete": true,
+      "counts": {
+        "nodes": 11,
+        "terminal": 5,
+        "win": 4,
+        "loss": 2,
+        "recurrent": 0
+      }
+    },
+    {
+      "status": "COMPLETE-INDEPENDENT-AGREEMENT",
+      "states": 11,
+      "edges": 10,
+      "elapsedMs": 1,
+      "complete": true,
+      "counts": {
+        "nodes": 11,
+        "terminal": 7,
+        "win": 3,
+        "loss": 1,
+        "recurrent": 0
+      }
+    },
+    {
+      "status": "COMPLETE-INDEPENDENT-AGREEMENT",
+      "states": 23,
+      "edges": 22,
+      "elapsedMs": 2,
+      "complete": true,
+      "counts": {
+        "nodes": 23,
+        "terminal": 16,
+        "win": 5,
+        "loss": 2,
+        "recurrent": 0
+      }
+    },
+    {
+      "status": "COMPLETE-INDEPENDENT-AGREEMENT",
+      "states": 35,
+      "edges": 35,
+      "elapsedMs": 3,
+      "complete": true,
+      "counts": {
+        "nodes": 35,
+        "terminal": 20,
+        "win": 10,
+        "loss": 5,
+        "recurrent": 0
+      }
+    },
+    {
+      "status": "COMPLETE-INDEPENDENT-AGREEMENT",
+      "states": 13,
+      "edges": 12,
+      "elapsedMs": 1,
+      "complete": true,
+      "counts": {
+        "nodes": 13,
+        "terminal": 9,
+        "win": 3,
+        "loss": 1,
+        "recurrent": 0
+      }
+    }
+  ],
+  "domainGroups": [
+    [
+      0
+    ],
+    [
+      1
+    ],
+    [
+      2
+    ],
+    [
+      3
+    ],
+    [
+      4
+    ],
+    [
+      5
+    ],
+    [
+      6
+    ],
+    [
+      7
+    ]
+  ],
+  "evidenceGzipSha256": "5d7fd9566e6b2792748e3d91ef4156b1c0f33fa6b3c612a61f3153d514152112",
+  "supplyIdentityCount": 11561,
+  "formalInference": false,
+  "publicAiChanged": false,
+  "execution": {
+    "triggerCommit": "4d5607e65e0d1f3425521e9ca582794a41e16132",
+    "sourceCommit": "4d5607e65e0d1f3425521e9ca582794a41e16132",
+    "runId": "38263687093",
+    "runAttempt": "1",
+    "node": "v24.21.0",
+    "elapsedMs": 28586,
+    "peakRssBytes": 478076928
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "decision": "STAGE1-SUPPLY-INDEPENDENT-PASS",
+  "binding": "4f7b482405ed789ce543bf4f252374fd30825003f6221e6de9429ecddd298bae",
+  "sourcesReplayed": 64,
+  "domainsChecked": 8,
+  "verifiedEdges": 37,
+  "probesReplayed": 674,
+  "probeEdgesReplayed": 1477,
+  "completeDomains": 8,
+  "freshSeedGenerationDuringVerification": 0,
+  "formalInference": false,
+  "evidenceGzipSha256": "87f4b057014f7ab7127ec7e4a17d2b00c9bdff128f090d64f6a1a0f383e16704"
+}

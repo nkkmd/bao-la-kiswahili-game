@@ -1,0 +1,68 @@
+name: G5 BEFCS Remote Joined 128
+on:
+  push:
+    branches: [research/g5-befcs-remote-joined-preflight]
+    paths: ['tools/research/g5-befcs-remote-joined/**', 'test/g5-befcs-remote-joined.test.cjs', 'doc/research-generation-5/befcs-remote-joined-20261014/**', '.github/workflows/g5-befcs-remote-joined-preflight.yml']
+  pull_request:
+    paths: ['tools/research/g5-befcs-remote-joined/**', 'test/g5-befcs-remote-joined.test.cjs', 'doc/research-generation-5/befcs-remote-joined-20261014/**', '.github/workflows/g5-befcs-remote-joined-preflight.yml']
+permissions:
+  contents: read
+jobs:
+  refusal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        # 凍結済みfixtureの入力を当時のコミットで検算する。現在のtreeはcheckpoint CIで検査する。
+        with:
+          ref: 750103001fc20ebba3c824b52b2c61c509d95822
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Check locked writes partial replay and original bindings
+        run: |
+          node --test test/g5-befcs-remote-joined.test.cjs test/g5-befcs-joined.test.cjs test/g5-befcs-pipeline.test.cjs
+          node tools/research/g5-befcs-remote-joined/run.cjs --bindings
+  remote-joined:
+    if: github.event_name == 'push' && github.run_attempt == 1
+    needs: refusal
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [complete, host-oom, lost-response, deadline, proxy-final-mirror]
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 750103001fc20ebba3c824b52b2c61c509d95822
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Prepare exclusive fixture filesystem
+        run: |
+          node -e "const f=require('fs');f.mkdirSync('artifacts/local/befcs-remote-joined',{recursive:true});const fd=f.openSync('artifacts/local/REMOTE_JOINED.img','wx');f.ftruncateSync(fd,268435456);f.closeSync(fd);"
+          sudo mkfs.ext4 -q -F -m 0 artifacts/local/REMOTE_JOINED.img
+          sudo mount -o loop,nosuid,nodev,noexec artifacts/local/REMOTE_JOINED.img artifacts/local/befcs-remote-joined
+          sudo chown "$(id -u):$(id -g)" artifacts/local/befcs-remote-joined
+          sudo chmod a+rx artifacts/local/befcs-remote-joined/lost+found
+      - name: Execute common 128 source with real transport and watchdog
+        env:
+          BEFCS_GIT_TOKEN: ${{ github.token }}
+        run: node tools/research/g5-befcs-remote-joined/run.cjs --ci-live ${{ matrix.mode }}
+      - name: Preserve stopped evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: befcs-remote-joined-${{ matrix.mode }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/local/befcs-remote-joined/
+          include-hidden-files: true
+          retention-days: 90
+          if-no-files-found: warn
+      - name: Close only fixture mount
+        if: always()
+        run: sudo umount artifacts/local/befcs-remote-joined || true

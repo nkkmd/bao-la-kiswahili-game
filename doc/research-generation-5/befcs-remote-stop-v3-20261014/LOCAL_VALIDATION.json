@@ -1,0 +1,19 @@
+{
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificStudyRegistered": false,
+  "newTestsPassed": 9,
+  "existingTestsPassed": 15,
+  "protectedFiles": 2345,
+  "inputFiles": 2357,
+  "originalArchivesVerified": 10,
+  "originalArchiveMembers": 4431,
+  "originalArchiveBytes": 53692694,
+  "humanMarkdownAudited": 4,
+  "relativeLinksChecked": 5,
+  "brokenLinks": 0,
+  "englishOnlyHeadings": 0,
+  "ordinaryEnglishSentences": 0,
+  "canonicalChanges": 0,
+  "liveGitCgroupResultConfirmed": false
+}
