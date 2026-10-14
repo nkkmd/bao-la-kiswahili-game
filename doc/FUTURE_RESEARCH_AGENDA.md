@@ -1,14 +1,14 @@
 # Bao今後の研究アジェンダ
 
-> 2026-10-14の現在案内: [中間保存と残り工程](research-generation-5/checkpoint-20261014/README.md)に第3版の全証拠と未完条件を確定しました。第五世代全体は継続中で、BEFCS-STUDY1と正式な主要関係は未登録・未実行です。以下の日時付き追記は各時点の履歴であり、「main未統合」「確認待ち」は現在状態へ読み替えません。現在の再開点は[再開位置](research-generation-5/RESUME_HERE.md)を参照してください。
+> 2026-10-15の現在案内: 第五世代の途中経過と再開条件は[PR #205](https://github.com/nkkmd/bao-la-kiswahili-game/pull/205)でmainへ統合済みです。[統合記録](research-generation-5/checkpoint-20261014/MAIN_INTEGRATION_20261015.md)と[中間保存・残り工程](research-generation-5/checkpoint-20261014/README.md)に根拠を示します。第五世代全体は継続中で、BEFCS-STUDY1と正式な主要関係は未登録・未実行です。以下の日時付き追記の「main未統合」「確認待ち」は当時の履歴です。最新の再開条件は[再開位置](research-generation-5/RESUME_HERE.md)を参照してください。
 
 Version: 5.22.0
 
-更新日: 2026-10-14（日本時間）
+更新日: 2026-10-15（日本時間）
 Research Generation 2: **Closed (2026-08-31)**（完了）
 Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了・統合済み）
 Research Generation 4: **core G4-01〜G4-10 scientific agenda complete / G4-10 CLOSED NON-ESTIMABLE / main integrated**
-Research Generation 5: **G5-01〜G5-05終了・BEFCS第3版技術検算済み・中間保存／正式関係準備未成立・未登録・未実行**
+Research Generation 5: **G5-01〜G5-05終了・BEFCS第3版技術検算済み・中間保存main統合済み／正式関係準備未成立・未登録・未実行**
 
 この文書は、今後の研究課題と、判断の前提となる完了済み研究を整理するものです。まず第1〜3節で現在地・優先課題・新規Studyの条件を確認し、第4〜7節で第一世代から第四世代までの記録を順に参照してください。候補として記載しただけでは、Study開始、seedアクセス、計算実行、公開AI変更は承認されません。
 
@@ -485,7 +485,7 @@ Fresh complete 0..10 prefixはG3-11 canonical exact prefixと一致し、integri
 4. **[完了] 第三世代のlocal game-tree geometryのbounded measurement**
 5. **[完了] 第四世代のcore G4-01〜G4-10 — 各終了判断を保持してmain統合済み。G4-10は`NON-ESTIMABLE`で閉じた**
 6. **[独立・未承認] G4-H01によるqualified human / expert evidenceの収集**
-7. **[G5-01 Stage 1開発診断完了・候補0件・正式検証未実施] [第五世代研究](research-generation-5/README.md) — 順位変動と厳密価値損失の関係を新規の完全解析可能な局面で検証する**
+7. **[継続中・G5-01〜G5-05終了・中間保存main統合済み] [第五世代研究](research-generation-5/README.md) — 計16完全領域を取得したが主要関係の準備は未成立。BEFCSの技術検証を進め、BEFCSと正式関係は未登録・未実行**
 
 ## 9. 研究と公開AI改善の分離
 

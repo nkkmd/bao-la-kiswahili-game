@@ -1,8 +1,22 @@
 # 第五世代研究 — 再現性の索引
 
-> 2026-10-14の現在案内: [中間保存](checkpoint-20261014/README.md)に終了済み5 Studyと第3版の取得後検算を整理しました。第五世代全体は継続中で、BEFCSと正式関係は未登録・未実行です。以下の日時付き記録と計画本文は各時点の履歴として保持します。現在の統合状態と残り工程は中間保存PRと[再開位置](RESUME_HERE.md)を参照してください。
+> 2026-10-15の現在案内: 終了済み5 Studyと第3版の取得後検算は[PR #205](https://github.com/nkkmd/bao-la-kiswahili-game/pull/205)でmainへ統合済みです。[統合記録](checkpoint-20261014/MAIN_INTEGRATION_20261015.md)、[中間保存](checkpoint-20261014/README.md)、[再開位置](RESUME_HERE.md)を参照してください。第五世代全体は継続中で、BEFCSと正式関係は未登録・未実行です。以下の日時付き記録と計画本文は各時点の履歴として保持します。
 
-更新日: 2026-10-14（日本時間）
+更新日: 2026-10-15（日本時間）
+
+## 終了済み供給研究の保存記録
+
+G5-01〜G5-05の5区画は消費済みである。下記は保存済みbyteの再照合先であり、source生成や同一区画の再実行手順ではない。原契約・manifest・結果のhashを現在の文書へ付け直さない。
+
+| 工程 | 原結果・独立検算 | 再現性と固定入力 |
+| --- | --- | --- |
+| G5-01 | [原結果](g5-01/development/results/RESULT.json)・[独立検算](g5-01/development/results/VERIFICATION.json) | [固定入力](g5-01/development/SOURCE_MANIFEST.json)・以下のStage 1案内 |
+| G5-02 | [原結果](g5-02/results/RESULT.json)・[独立検算](g5-02/results/VERIFICATION.json) | [再現性](g5-02/REPRODUCIBILITY.md)・[固定入力](g5-02/SOURCE_MANIFEST.json) |
+| G5-03 | [原結果](g5-03/results/RESULT.json)・[独立検算](g5-03/results/VERIFICATION.json) | [再現性](g5-03/REPRODUCIBILITY.md)・[固定入力](g5-03/SOURCE_MANIFEST.json) |
+| G5-04 | [原結果](g5-04/results/RESULT.json)・[独立検算](g5-04/results/VERIFICATION.json) | [再現性](g5-04/REPRODUCIBILITY.md)・[固定入力](g5-04/SOURCE_MANIFEST.json) |
+| G5-05 | [原結果](g5-05/results/RESULT.json)・[独立検算](g5-05/results/VERIFICATION.json) | [再現性](g5-05/REPRODUCIBILITY.md)・[固定入力](g5-05/SOURCE_MANIFEST.json) |
+
+第3版の5原ZIP・3,361 fileと二経路検算は[中間保存](checkpoint-20261014/README.md)を参照する。現在checkoutからの保存監査は[統合記録](checkpoint-20261014/MAIN_INTEGRATION_20261015.md)に記載した新しい入口を使う。旧監査器と旧bindingはPR #205時点の固定記録として保持する。
 
 ## G5-01 Stage 0の再現資料
 
@@ -48,7 +62,7 @@ node tools/research/g5-01/development/verify.cjs doc/research-generation-5/g5-01
 node tools/research/g5-01/development/diagnose-supply.cjs doc/research-generation-5/g5-01/development/results
 ```
 
-現在はStage 1の開発source記録が存在する。新規閉包・厳密解・正式関係検定の成果物は存在しない。
+G5-01 Stage 1終了時点では開発source記録は存在したが、新規閉包・厳密解・正式関係検定の成果物は存在しなかった。その後に保存したG5-03・G5-04の完全閉包と現在状態は、上記の供給研究一覧と[現在状態](CURRENT_STATUS.md)を参照する。
 
 
 ## 2026-10-13の全閉包BFS統合検証

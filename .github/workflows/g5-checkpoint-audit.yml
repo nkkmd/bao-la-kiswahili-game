@@ -22,4 +22,6 @@ jobs:
       - name: Validate current fixture code without scientific source execution
         run: node --test test/g5-*.cjs
       - name: Verify preserved bytes original archives raw Git and documentation
-        run: python3 tools/research/g5-checkpoint/verify.py
+        run: |
+          python3 tools/research/g5-checkpoint/test-verify-current.py
+          python3 tools/research/g5-checkpoint/verify-current.py
