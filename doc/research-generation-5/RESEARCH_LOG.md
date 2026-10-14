@@ -1,5 +1,7 @@
 # 第五世代研究 — 研究ログ
 
+> 2026-10-14の現在案内: [中間保存](checkpoint-20261014/README.md)に終了済み5 Studyと第3版の取得後検算を整理しました。第五世代全体は継続中で、BEFCSと正式関係は未登録・未実行です。以下の日時付き記録と計画本文は各時点の履歴として保持します。現在の統合状態と残り工程は中間保存PRと[再開位置](RESUME_HERE.md)を参照してください。
+
 ## 2026-10-12 — 最初の技術工程へ着手
 
 ユーザーから第五世代研究へ着手して工程を進める指示を受けた。main `6decdd2bb3979d96420e4da6ff4592be70c8d6c4`、Program計画、再開位置、第四世代の終了判断、現行ルール、文書品質規則を照合した。既存の第五世代研究PRはないことを確認した。
@@ -122,3 +124,7 @@ Actions38237119716 / attempt 1で新規32 sourceを生成し、16適格rootの�
 ## 第2版の全workload実cgroup確認完了
 
 [CI確定](befcs-workload-20261013/CI_CONFIRMATION_V2.md)でpush/PRの全stepと同一headの15 runが成功した。旧failureを保持し、実1 GiBの8固定シナリオ、256 MiB共有容量、UID/GID対応後の後片付けとartifact保存を確認した。現行は第2版16入力・623保護入力を固定する。次は科学用host/registry/別triggerの接続と最終科学事前固定であり、科学seed消費0・科学leaseなし・未登録/未実行、103355件遮断、正式関係未登録/未実行、main・公開AI未変更を保つ。
+
+## 2026-10-14 — 第3版の確定と中間保存
+
+ユーザーの指示に基づき、科学実行前の現在状態を記録してmain統合対象へ整理した。head a5014f79の第3版5原ZIP・3,361 file・Git/ACK/source/停止記録を二経路で独立照合し、原CI metadataと6 decoded job logを保存した。旧10原artifact・失敗3件・期限後回収・最終mirror未完を保持する。現在コードの技術テスト218件は全合格。旧manifestのhashを付け直さず、旧技術CIは凍結入力コミット、現在treeは専用checkpoint CIで検査する。BEFCS科学seed消費0・科学leaseなし・未登録/未実行、正式関係未登録/未実行を維持し、公開ゲーム・AI・Workerは統合前mainと同じである。統合の実際の完了はPRのmerge記録で確認する。

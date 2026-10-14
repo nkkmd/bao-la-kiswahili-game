@@ -71,7 +71,7 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦が
 | 世代横断の今後の研究候補と、完了研究から引き継ぐ境界 | [研究アジェンダ](doc/FUTURE_RESEARCH_AGENDA.md) |
 | 現在の中心課題である第五世代の計画と供給診断の状態 | [第五世代研究](doc/research-generation-5/README.md) |
 
-第五世代は測定・独立遷移・完全解析の基盤を整備し、[G5-03](doc/research-generation-5/g5-03/REPORT.md)・[G5-04](doc/research-generation-5/g5-04/REPORT.md)で計16完全領域を取得しました。同価値内の終局手数差は記述できた一方、勝敗価値差のある手は得ていません。[準備再評価](doc/research-generation-5/readiness-review-20261012/README.md)で旧4 Studyを再検算し、主要な「順位変動と勝敗価値損失」の準備条件は未成立と判断しました。[新しい供給設計](doc/research-generation-5/source-design-20261013/README.md)で相手の捕獲手/takataが分かれる構造層と、全軌跡最後の適格root固定を具体化しました。[G5-05](doc/research-generation-5/g5-05/REPORT.md)は64 sourceから35構造適格代表を得ましたが、固定8候補の完全閉包は0件で、価値差は未確定です。保存・独立検算まで終了しました。[方法再評価](doc/research-generation-5/method-review-20261013/README.md)で科学用遷移と可逆RAW保存が技術合格し、[全閉包BFS統合](doc/research-generation-5/bfs-integration-20261013/REPORT.md)も固定fixtureで独立復元・解が一致しました。[分岐包絡供給案](doc/research-generation-5/branch-envelope-20261013/README.md)を記録し、[source・保存preflight](doc/research-generation-5/branch-envelope-preflight-20261013/REPORT.md)で第一代表・独立再生・停止保存・gzip復元が固定fixtureで合格しました。[一度限り運用preflight](doc/research-generation-5/befcs-operations-20261013/REPORT.md)では全区画取得・読取前記録・mirror・合算RSSが固定fixtureで合格し、[実128 MiB/1 GiB OOM確認](doc/research-generation-5/befcs-operations-20261013/CI_CONFIRMATION.md)も合格しました。[保存済み全workloadの結合](doc/research-generation-5/befcs-workload-20261013/README.md)はローカルで合格し、[全pipeline実cgroup確認](doc/research-generation-5/befcs-workload-20261013/CI_CONFIRMATION_V2.md)も合格しました。科学用hostへの結合・最終freezeが次工程です。科学Studyは未登録・未実行で、科学seed消費0です。正式比較は未登録・未実行です。[第五世代入口](doc/research-generation-5/README.md)に全工程の結果と境界を示します。科学研究と公開AIの開発・改善は別に管理し、研究結果をそのまま公開AIへの採用や変更へ昇格しません。
+第五世代研究は継続中です。G5-01〜G5-05の供給研究は終了し、G5-03・G5-04で計16完全領域を取得しましたが、主要課題に必要な手による勝敗価値差はまだ得ていません。現在はBEFCS-STUDY1の実行基盤を検証しており、実Git・停止処理の第3版と保存証拠の独立検算が合格しました。BEFCSは未登録・未実行で、正式な「順位変動と勝敗価値損失」の検証も未登録・未実行です。[中間保存と残り工程](doc/research-generation-5/checkpoint-20261014/README.md)、[現在状態](doc/research-generation-5/CURRENT_STATUS.md)、[再開位置](doc/research-generation-5/RESUME_HERE.md)を参照してください。研究結果と公開AIの採用・変更は別に判断します。
 
 先攻・後攻差については、独立した[AI-GEN4追加研究](doc/first-player-gen4/FINAL_REPORT.md)の全17,768局と検証が完了し、mainへ統合済みです。公開expertの静的評価上位3手序盤では先攻有利、全合法手からの一様序盤では未確定でした。Bao一般の先後差は未確定とし、第五世代の個別Studyとは別に管理します。
 
@@ -91,7 +91,3 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦が
 プログラムコードはMIT Licenseです。詳細は[LICENSE](LICENSE)を参照してください。
 
 [public/rules.html](public/rules.html)の説明本文と[public/assets/rules/](public/assets/rules/)のSVG図版はCC BY-SA 4.0で提供しています。出典、変更内容、適用範囲は[public/assets/rules/README.md](public/assets/rules/README.md)に記載しています。
-
-## 2026-10-13 — 分岐包絡供給の運用・保存統合
-
-[運用cgroup確認](doc/research-generation-5/befcs-operations-20261013/CI_CONFIRMATION.md)で実128 MiB/1 GiB OOMとprefix保持を確定した。[保存済み全workload統合](doc/research-generation-5/befcs-workload-20261013/README.md)は128件の技術source再生と8固定閉包の結合であり、科学供給Studyの登録・実行ではない。共有256 MiB容量、停止・mirror・markerを検証し、科学用hostへの結合と最終freeze・別triggerを残す。科学seed消費0、科学leaseなし、正式関係未登録/未実行、main・公開AI未変更を保持する。

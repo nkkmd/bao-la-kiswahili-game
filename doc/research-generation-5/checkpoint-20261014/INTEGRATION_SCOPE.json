@@ -1,0 +1,79 @@
+{
+  "sourceHead": "a5014f79b300d3e5731aa272e4c6cb0d16baa350",
+  "baseMain": "6decdd2bb3979d96420e4da6ff4592be70c8d6c4",
+  "mutableNavigation": [
+    "README.md",
+    "doc/RESEARCH_INDEX.md",
+    "doc/FUTURE_RESEARCH_AGENDA.md",
+    "doc/research-generation-5/README.md",
+    "doc/research-generation-5/CURRENT_STATUS.md",
+    "doc/research-generation-5/RESUME_HERE.md",
+    "doc/research-generation-5/REPRODUCIBILITY_INDEX.md",
+    "doc/research-generation-5/RESEARCH_LOG.md",
+    "doc/research-generation-5/PROGRAM_PLAN.md"
+  ],
+  "historicalWorkflows": {
+    ".github/workflows/g5-befcs-contained-preflight.yml": {
+      "historicalInputCommit": "28fb85d96a30df52d856716f63a8080468c42820",
+      "branch": "research/g5-befcs-contained-preflight"
+    },
+    ".github/workflows/g5-befcs-envelope-preflight.yml": {
+      "historicalInputCommit": "b5bef61d4fe4e80ccea6b2a94bfe2c6e88c775bd",
+      "branch": "research/g5-befcs-envelope-preflight"
+    },
+    ".github/workflows/g5-befcs-git-preflight.yml": {
+      "historicalInputCommit": "65747ada06be99a43d62109ab78a0edd0d47ba28",
+      "branch": "research/g5-befcs-git-preflight"
+    },
+    ".github/workflows/g5-befcs-host-preflight.yml": {
+      "historicalInputCommit": "966ca5e14c3be1e5243d9c0a358a71668924cd88",
+      "branch": "research/g5-befcs-host-preflight"
+    },
+    ".github/workflows/g5-befcs-joined-preflight.yml": {
+      "historicalInputCommit": "25b9f730160a58151228ead2209837b16fc12d90",
+      "branch": "research/g5-befcs-joined-preflight"
+    },
+    ".github/workflows/g5-befcs-operations-preflight.yml": {
+      "historicalInputCommit": "39cceb07fce4cd7832567bb1868e585ac9d57f80",
+      "branch": "research/g5-befcs-operations-preflight"
+    },
+    ".github/workflows/g5-befcs-pipeline-preflight.yml": {
+      "historicalInputCommit": "7cbda82d06fb7e5f2f47098bad1c8c4f76f218fc",
+      "branch": "research/g5-befcs-pipeline-preflight"
+    },
+    ".github/workflows/g5-befcs-prefix-preflight.yml": {
+      "historicalInputCommit": "1f0f75c4a80b12d4c016c71f14bc4b4151e89fa4",
+      "branch": "research/g5-befcs-prefix-preflight"
+    },
+    ".github/workflows/g5-befcs-remote-joined-preflight.yml": {
+      "historicalInputCommit": "750103001fc20ebba3c824b52b2c61c509d95822",
+      "branch": "research/g5-befcs-remote-joined-preflight",
+      "reason": "第1・第2版の証拠保存とbindingが確定したPR #203の入力snapshot"
+    },
+    ".github/workflows/g5-befcs-remote-review.yml": {
+      "historicalInputCommit": "750103001fc20ebba3c824b52b2c61c509d95822",
+      "branch": "research/g5-befcs-remote-evidence"
+    },
+    ".github/workflows/g5-befcs-remote-stop-v3-preflight.yml": {
+      "historicalInputCommit": "a5014f79b300d3e5731aa272e4c6cb0d16baa350",
+      "branch": "research/g5-befcs-remote-stop-v3-preflight"
+    },
+    ".github/workflows/g5-befcs-supervisor-preflight.yml": {
+      "historicalInputCommit": "05ef1ddfcbca72d73e220a414d8664487c014176",
+      "branch": "research/g5-befcs-supervisor-preflight"
+    },
+    ".github/workflows/g5-befcs-workload-preflight.yml": {
+      "historicalInputCommit": "91f58642a1b23358fa8bc68a922bb0fcd05b4d51",
+      "branch": "research/g5-befcs-workload-preflight"
+    },
+    ".github/workflows/g5-branch-envelope-preflight.yml": {
+      "historicalInputCommit": "5c9d80801d7476ec008a3c95d55440d5939fcfd2",
+      "branch": "research/g5-branch-envelope-preflight"
+    }
+  },
+  "scientificExecutionPerformed": false,
+  "befcsScientificSeedsRead": 0,
+  "befcsScientificLeaseCreated": false,
+  "befcsStudyRegistered": false,
+  "formalRelationRegistered": false
+}

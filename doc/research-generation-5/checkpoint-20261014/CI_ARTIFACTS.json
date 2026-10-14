@@ -1,0 +1,105 @@
+{
+  "total_count": 5,
+  "artifacts": [
+    {
+      "id": 11865140992,
+      "node_id": "MDg6QXJ0aWZhY3QxMTg2NTE0MDk5Mg==",
+      "name": "befcs-remote-stop-v3-proxy-final-mirror-38497935805-1",
+      "size_in_bytes": 21857676,
+      "url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11865140992",
+      "archive_download_url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11865140992/zip",
+      "expired": false,
+      "digest": "sha256:58ba0359daca971bbd61c6fdeeee43caac6e576100e7e9d0f6fb68160ca60c41",
+      "created_at": "2026-10-14T02:03:21Z",
+      "updated_at": "2026-10-14T02:03:21Z",
+      "expires_at": "2027-01-12T01:51:16Z",
+      "workflow_run": {
+        "id": 38497935805,
+        "repository_id": 1295030808,
+        "head_repository_id": 1295030808,
+        "head_branch": "research/g5-befcs-remote-stop-v3-preflight",
+        "head_sha": "a5014f79b300d3e5731aa272e4c6cb0d16baa350"
+      }
+    },
+    {
+      "id": 11864766607,
+      "node_id": "MDg6QXJ0aWZhY3QxMTg2NDc2NjYwNw==",
+      "name": "befcs-remote-stop-v3-lost-response-38497935805-1",
+      "size_in_bytes": 62032,
+      "url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11864766607",
+      "archive_download_url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11864766607/zip",
+      "expired": false,
+      "digest": "sha256:74876f20dc99ae4b60c7b8d03a715c9bd43418a6ced67b67bf29ceb371968d0a",
+      "created_at": "2026-10-14T01:53:14Z",
+      "updated_at": "2026-10-14T01:53:14Z",
+      "expires_at": "2027-01-12T01:51:16Z",
+      "workflow_run": {
+        "id": 38497935805,
+        "repository_id": 1295030808,
+        "head_repository_id": 1295030808,
+        "head_branch": "research/g5-befcs-remote-stop-v3-preflight",
+        "head_sha": "a5014f79b300d3e5731aa272e4c6cb0d16baa350"
+      }
+    },
+    {
+      "id": 11864189008,
+      "node_id": "MDg6QXJ0aWZhY3QxMTg2NDE4OTAwOA==",
+      "name": "befcs-remote-stop-v3-host-oom-38497935805-1",
+      "size_in_bytes": 87847,
+      "url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11864189008",
+      "archive_download_url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11864189008/zip",
+      "expired": false,
+      "digest": "sha256:343420718e5f1e6716c86ebb58a05cbcbff4f946950d57383a3f4ad56badb9bb",
+      "created_at": "2026-10-14T01:53:16Z",
+      "updated_at": "2026-10-14T01:53:16Z",
+      "expires_at": "2027-01-12T01:51:16Z",
+      "workflow_run": {
+        "id": 38497935805,
+        "repository_id": 1295030808,
+        "head_repository_id": 1295030808,
+        "head_branch": "research/g5-befcs-remote-stop-v3-preflight",
+        "head_sha": "a5014f79b300d3e5731aa272e4c6cb0d16baa350"
+      }
+    },
+    {
+      "id": 11864143755,
+      "node_id": "MDg6QXJ0aWZhY3QxMTg2NDE0Mzc1NQ==",
+      "name": "befcs-remote-stop-v3-complete-38497935805-1",
+      "size_in_bytes": 21015680,
+      "url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11864143755",
+      "archive_download_url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11864143755/zip",
+      "expired": false,
+      "digest": "sha256:7cf0d2d1b1f3a100e5500ef7d0d846a5b79cfc019037c0f65eb36a0744c897f7",
+      "created_at": "2026-10-14T02:01:38Z",
+      "updated_at": "2026-10-14T02:01:38Z",
+      "expires_at": "2027-01-12T01:51:16Z",
+      "workflow_run": {
+        "id": 38497935805,
+        "repository_id": 1295030808,
+        "head_repository_id": 1295030808,
+        "head_branch": "research/g5-befcs-remote-stop-v3-preflight",
+        "head_sha": "a5014f79b300d3e5731aa272e4c6cb0d16baa350"
+      }
+    },
+    {
+      "id": 11864034277,
+      "node_id": "MDg6QXJ0aWZhY3QxMTg2NDAzNDI3Nw==",
+      "name": "befcs-remote-stop-v3-deadline-38497935805-1",
+      "size_in_bytes": 341475,
+      "url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11864034277",
+      "archive_download_url": "https://api.github.com/repos/nkkmd/bao-la-kiswahili-game/actions/artifacts/11864034277/zip",
+      "expired": false,
+      "digest": "sha256:2882a649867463d01c4cb919f0c09d62c99cfc0b96a8f028539a72511b569535",
+      "created_at": "2026-10-14T01:53:28Z",
+      "updated_at": "2026-10-14T01:53:28Z",
+      "expires_at": "2027-01-12T01:51:16Z",
+      "workflow_run": {
+        "id": 38497935805,
+        "repository_id": 1295030808,
+        "head_repository_id": 1295030808,
+        "head_branch": "research/g5-befcs-remote-stop-v3-preflight",
+        "head_sha": "a5014f79b300d3e5731aa272e4c6cb0d16baa350"
+      }
+    }
+  ]
+}

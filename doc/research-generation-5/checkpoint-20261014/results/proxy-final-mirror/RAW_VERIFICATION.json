@@ -1,0 +1,55 @@
+{
+  "verifiedSavedEvidence": true,
+  "fixturePassed": true,
+  "mode": "proxy-final-mirror",
+  "runId": "38497935805",
+  "registryHead": "ce7b9c57d2f576368798da0d4629c84285e9fb27",
+  "registryRef": "refs/heads/research/g5-remote-stop-v3-38497935805-a1-proxy-final-mirror",
+  "registryBlobSha": "e43fc5869f1e67b00085a681e14b7ce8a9ff76cc",
+  "registry": {
+    "verified": true,
+    "commits": 194,
+    "leases": 1,
+    "logicalReadsMarked": 128,
+    "mirrors": 65,
+    "scientificSeedsRead": 0
+  },
+  "ackCount": 128,
+  "unacknowledgedMarkers": 0,
+  "remoteProof": {
+    "fullSources": 126,
+    "partialSources": 0,
+    "completeClosures": 0,
+    "partialProofs": [],
+    "sourceGenerationPerformed": false
+  },
+  "localProof": {
+    "fullSources": 128,
+    "partialSources": 0,
+    "completeClosures": 1,
+    "partialProofs": [],
+    "sourceGenerationPerformed": false
+  },
+  "parentPeak": 575520768,
+  "resultPresent": true,
+  "serviceError": null,
+  "guard": {
+    "locked": true,
+    "reason": "Command failed: git ls-remote https://github.com/nkkmd/bao-la-kiswahili-game.git refs/heads/research/g5-remote-stop-v3-38497935805-a1-proxy-final-mirror\nfatal: unable to access 'https://github.com/nkkmd/bao-la-kiswahili-game.git/': Failed to connect to 127.0.0.1 port 1 after 0 ms: Couldn't connect to server\n",
+    "consumesAcknowledged": 128,
+    "mirrorsSucceeded": 65
+  },
+  "finalMirrorSaved": false,
+  "technicalComplete": false,
+  "completedRecordPresent": true,
+  "completionClaimAuthorized": false,
+  "stops": {
+    "records": [],
+    "elapsedFromServiceMs": 617894.927336,
+    "scientificSeedsRead": 0
+  },
+  "sourceGenerationPerformed": false,
+  "scientificSeedsRead": 0,
+  "resumeAuthorized": false,
+  "solution": null
+}

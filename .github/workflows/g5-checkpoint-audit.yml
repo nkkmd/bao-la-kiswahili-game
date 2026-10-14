@@ -1,0 +1,25 @@
+name: G5 Intermediate Checkpoint Audit
+on:
+  push:
+    branches: [main, research/g5-checkpoint-main-20261014]
+    paths: ['doc/research-generation-5/**', 'tools/research/g5*/**', 'test/g5*.cjs', 'README.md', 'doc/RESEARCH_INDEX.md', 'doc/FUTURE_RESEARCH_AGENDA.md', '.github/workflows/g5*.yml']
+  pull_request:
+    paths: ['doc/research-generation-5/**', 'tools/research/g5*/**', 'test/g5*.cjs', 'README.md', 'doc/RESEARCH_INDEX.md', 'doc/FUTURE_RESEARCH_AGENDA.md', '.github/workflows/g5*.yml']
+permissions:
+  contents: read
+jobs:
+  checkpoint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Validate current fixture code without scientific source execution
+        run: node --test test/g5-*.cjs
+      - name: Verify preserved bytes original archives raw Git and documentation
+        run: python3 tools/research/g5-checkpoint/verify.py

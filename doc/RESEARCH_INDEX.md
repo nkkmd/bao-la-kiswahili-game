@@ -1,9 +1,11 @@
 # Bao研究成果索引
 
-更新日: 2026-10-13（日本時間）
+> 2026-10-14の現在案内: [中間保存と残り工程](research-generation-5/checkpoint-20261014/README.md)に第3版の全証拠と未完条件を確定しました。第五世代全体は継続中で、BEFCS-STUDY1と正式な主要関係は未登録・未実行です。以下の日時付き追記は各時点の履歴であり、「main未統合」「確認待ち」は現在状態へ読み替えません。現在の再開点は[再開位置](research-generation-5/RESUME_HERE.md)を参照してください。
 
-対象: Research Generation 1〜5  
-現在の状態: **Research Generation 2・3は完了済み。Research Generation 4はcore G4-01〜G4-10 scientific agenda完了・main統合済み。Research Generation 5は一度限り運用fixture合格・実cgroup確認待ち・新供給Study登録前・未登録/未実行・正式関係準備未成立・正式比較未登録/未実行**
+更新日: 2026-10-14（日本時間）
+
+対象: Research Generation 1〜5
+現在の状態: **第1〜第4世代の確定結果を保持。第五世代はG5-01〜G5-05終了・BEFCS第3版技術検算済み・中間保存／BEFCSと正式関係は未登録・未実行**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`または`FINAL_REPORT.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 

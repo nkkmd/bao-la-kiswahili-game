@@ -21,6 +21,10 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+        # 凍結済みfixtureの入力を当時のコミットで検算する。現在のtreeはcheckpoint CIで検査する。
+        with:
+          ref: b5bef61d4fe4e80ccea6b2a94bfe2c6e88c775bd
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: '24.19.0'

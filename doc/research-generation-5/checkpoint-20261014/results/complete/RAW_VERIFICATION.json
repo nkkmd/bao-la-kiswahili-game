@@ -1,0 +1,55 @@
+{
+  "verifiedSavedEvidence": true,
+  "fixturePassed": true,
+  "mode": "complete",
+  "runId": "38497935805",
+  "registryHead": "7f04aa503391a31c1220094f3d44b495b969f77d",
+  "registryRef": "refs/heads/research/g5-remote-stop-v3-38497935805-a1-complete",
+  "registryBlobSha": "d2b69c4280b9207491ccbcef3ed0fd65e4126006",
+  "registry": {
+    "verified": true,
+    "commits": 194,
+    "leases": 1,
+    "logicalReadsMarked": 128,
+    "mirrors": 65,
+    "scientificSeedsRead": 0
+  },
+  "ackCount": 128,
+  "unacknowledgedMarkers": 0,
+  "remoteProof": {
+    "fullSources": 128,
+    "partialSources": 0,
+    "completeClosures": 1,
+    "partialProofs": [],
+    "sourceGenerationPerformed": false
+  },
+  "localProof": {
+    "fullSources": 128,
+    "partialSources": 0,
+    "completeClosures": 1,
+    "partialProofs": [],
+    "sourceGenerationPerformed": false
+  },
+  "parentPeak": 604803072,
+  "resultPresent": true,
+  "serviceError": null,
+  "guard": {
+    "locked": false,
+    "reason": null,
+    "consumesAcknowledged": 128,
+    "mirrorsSucceeded": 65
+  },
+  "finalMirrorSaved": true,
+  "technicalComplete": true,
+  "completedRecordPresent": true,
+  "completionClaimAuthorized": true,
+  "stops": {
+    "records": [],
+    "elapsedFromServiceMs": 517459.806697,
+    "scientificSeedsRead": 0
+  },
+  "sourceGenerationPerformed": false,
+  "scientificSeedsRead": 0,
+  "resumeAuthorized": false,
+  "solution": null
+}

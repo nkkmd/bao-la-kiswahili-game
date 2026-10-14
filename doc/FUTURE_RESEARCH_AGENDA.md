@@ -1,12 +1,14 @@
 # Bao今後の研究アジェンダ
 
-Version: 5.21.0
+> 2026-10-14の現在案内: [中間保存と残り工程](research-generation-5/checkpoint-20261014/README.md)に第3版の全証拠と未完条件を確定しました。第五世代全体は継続中で、BEFCS-STUDY1と正式な主要関係は未登録・未実行です。以下の日時付き追記は各時点の履歴であり、「main未統合」「確認待ち」は現在状態へ読み替えません。現在の再開点は[再開位置](research-generation-5/RESUME_HERE.md)を参照してください。
 
-更新日: 2026-10-13（日本時間）  
-Research Generation 2: **Closed (2026-08-31)**（完了）  
-Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了・統合済み）  
-Research Generation 4: **core G4-01〜G4-10 scientific agenda complete / G4-10 CLOSED NON-ESTIMABLE / main integrated**  
-Research Generation 5: **方法技術合格・全閉包BFS統合前／正式関係準備未成立／正式比較未登録・未実行**
+Version: 5.22.0
+
+更新日: 2026-10-14（日本時間）
+Research Generation 2: **Closed (2026-08-31)**（完了）
+Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了・統合済み）
+Research Generation 4: **core G4-01〜G4-10 scientific agenda complete / G4-10 CLOSED NON-ESTIMABLE / main integrated**
+Research Generation 5: **G5-01〜G5-05終了・BEFCS第3版技術検算済み・中間保存／正式関係準備未成立・未登録・未実行**
 
 この文書は、今後の研究課題と、判断の前提となる完了済み研究を整理するものです。まず第1〜3節で現在地・優先課題・新規Studyの条件を確認し、第4〜7節で第一世代から第四世代までの記録を順に参照してください。候補として記載しただけでは、Study開始、seedアクセス、計算実行、公開AI変更は承認されません。
 
@@ -50,7 +52,7 @@ G4-10 main integration = COMPLETE / FAST-FORWARD
 
 [第五世代研究計画](research-generation-5/PROGRAM_PLAN.md)を作成しました。探索条件による手の順位変動が、完全解析できる新規局面における選択手の厳密価値損失と結び付くかを調べます。順位変動、着手変更、厳密最適集合からの逸脱、同価値の手の入替えを分離し、局面段階・合法手幅・解析領域による成立範囲を検証します。
 
-これはG4-03の順位変動の結果を悪手の証明へ読み替えるものではありません。G4-05・G4-09の固定8領域、G4-09の未読namespace、G4-10の未完成depth-11を新しい正式証拠へ転用しません。[現在の状態](research-generation-5/CURRENT_STATUS.md)は2026-10-12に[G5-01技術準備](research-generation-5/g5-01/README.md)へ着手しました。Stage 0のID・既知fixture・資源上限を固定し、ローカル・Actionsで技術検証が合格しました。続く[独立ルール遷移の技術検証](research-generation-5/g5-01/transition/REPORT.md)も固定40局面・411辺で合格し、[開発診断設計](research-generation-5/g5-01/DEVELOPMENT_PLAN.md)を具体化しました。続く[Stage 1開発診断](research-generation-5/g5-01/development/REPORT.md)で固定32 sourceを一度だけ実行・独立再生しましたが、占有穴数条件で候補は0件でした。本区画を消費済みで閉じ、正式関係の検証は未承認・未実施です。次は[新しい独立Studyの供給設計](research-generation-5/g5-01/development/NEXT_RESEARCH.md)を検討します。公開AIの変更は別判断です。
+これはG4-03の順位変動の結果を悪手の証明へ読み替えるものではありません。G4-05・G4-09の固定8領域、G4-09の未読namespace、G4-10の未完成depth-11を新しい正式証拠へ転用しません。G5-01〜G5-05の供給研究は終了し、計16完全領域を取得しましたが、主要課題に必要な手による勝敗価値差は得ていません。現在はBEFCS-STUDY1の実行前技術検証を進めており、実Git・停止処理の第3版と保存証拠の独立検算が合格しました。次は全起動から保存までの資源・単一時計、科学処理の統合、最終事前固定を確認します。[中間保存](research-generation-5/checkpoint-20261014/README.md)と[再開位置](research-generation-5/RESUME_HERE.md)を参照してください。BEFCSと正式関係は未登録・未実行であり、公開AIの変更は別判断です。
 
 ### 2.2 G4-09・G4-10終了後の次研究境界
 
