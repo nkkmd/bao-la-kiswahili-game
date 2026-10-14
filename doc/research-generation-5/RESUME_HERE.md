@@ -1,12 +1,12 @@
 # 第五世代研究 — 安全な再開位置
 
-更新日: 2026-10-14（日本時間）
-再開点: **第3版の取得後検算確定後／全起動保存予算と科学処理の統合前**
+更新日: 2026-10-15（日本時間）
+再開点: **中間保存main統合後／全起動保存予算と科学処理の統合前**
 
 ## 最初に確認する記録
 
 1. [中間保存](checkpoint-20261014/README.md)、[現在状態](CURRENT_STATUS.md)、[研究入口](README.md)を読む。
-2. GitHub mainと中間保存PRのmerge記録、[元head・変更範囲](checkpoint-20261014/INTEGRATION_SCOPE.json)を照合する。
+2. [main統合記録](checkpoint-20261014/MAIN_INTEGRATION_20261015.md)と[PR #205](https://github.com/nkkmd/bao-la-kiswahili-game/pull/205)を読み、現在のmainが統合コミット44d7dafを祖先に持つことを確認する。[元head・変更範囲](checkpoint-20261014/INTEGRATION_SCOPE.json)と凍結証拠を照合する。統合後の文書追補により現在treeは変わるため、統合時treeと現在treeの同一性を再開条件にしない。
 3. 第3版の全5原ZIP・3,361 fileと二経路の検算結果を保存済みbyteから確認する。旧10原artifact・失敗3件、期限後回収・最終mirrorなし・未ACK 1を保持する。技術取引や生成器を再起動しない。
 4. 過去の案内はcheckpointの原snapshotと元コミットを参照する。旧案内の「次工程」を最新の再開条件として使わない。
 

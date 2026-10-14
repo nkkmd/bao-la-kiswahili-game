@@ -71,7 +71,7 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦が
 | 世代横断の今後の研究候補と、完了研究から引き継ぐ境界 | [研究アジェンダ](doc/FUTURE_RESEARCH_AGENDA.md) |
 | 現在の中心課題である第五世代の計画と供給診断の状態 | [第五世代研究](doc/research-generation-5/README.md) |
 
-第五世代研究は継続中です。G5-01〜G5-05の供給研究は終了し、G5-03・G5-04で計16完全領域を取得しましたが、主要課題に必要な手による勝敗価値差はまだ得ていません。現在はBEFCS-STUDY1の実行基盤を検証しており、実Git・停止処理の第3版と保存証拠の独立検算が合格しました。BEFCSは未登録・未実行で、正式な「順位変動と勝敗価値損失」の検証も未登録・未実行です。[中間保存と残り工程](doc/research-generation-5/checkpoint-20261014/README.md)、[現在状態](doc/research-generation-5/CURRENT_STATUS.md)、[再開位置](doc/research-generation-5/RESUME_HERE.md)を参照してください。研究結果と公開AIの採用・変更は別に判断します。
+第五世代研究の途中経過と再開条件は、2026-10-15（日本時間）に[PR #205](https://github.com/nkkmd/bao-la-kiswahili-game/pull/205)でmainへ統合済みです。研究全体は継続中です。G5-01〜G5-05の供給研究は終了し、G5-03・G5-04で計16完全領域を取得しましたが、主要課題に必要な手による勝敗価値差はまだ得ていません。現在はBEFCS-STUDY1の実行基盤を検証しており、実Git・停止処理の第3版と保存証拠の独立検算が合格しました。BEFCSは未登録・未実行で、正式な「順位変動と勝敗価値損失」の検証も未登録・未実行です。[main統合記録](doc/research-generation-5/checkpoint-20261014/MAIN_INTEGRATION_20261015.md)、[中間保存と残り工程](doc/research-generation-5/checkpoint-20261014/README.md)、[現在状態](doc/research-generation-5/CURRENT_STATUS.md)、[再開位置](doc/research-generation-5/RESUME_HERE.md)を参照してください。研究結果と公開AIの採用・変更は別に判断します。
 
 先攻・後攻差については、独立した[AI-GEN4追加研究](doc/first-player-gen4/FINAL_REPORT.md)の全17,768局と検証が完了し、mainへ統合済みです。公開expertの静的評価上位3手序盤では先攻有利、全合法手からの一様序盤では未確定でした。Bao一般の先後差は未確定とし、第五世代の個別Studyとは別に管理します。
 

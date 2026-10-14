@@ -1,11 +1,11 @@
 # Bao研究成果索引
 
-> 2026-10-14の現在案内: [中間保存と残り工程](research-generation-5/checkpoint-20261014/README.md)に第3版の全証拠と未完条件を確定しました。第五世代全体は継続中で、BEFCS-STUDY1と正式な主要関係は未登録・未実行です。以下の日時付き追記は各時点の履歴であり、「main未統合」「確認待ち」は現在状態へ読み替えません。現在の再開点は[再開位置](research-generation-5/RESUME_HERE.md)を参照してください。
+> 2026-10-15の現在案内: 第五世代の途中経過と再開条件は[PR #205](https://github.com/nkkmd/bao-la-kiswahili-game/pull/205)でmainへ統合済みです。[統合記録](research-generation-5/checkpoint-20261014/MAIN_INTEGRATION_20261015.md)と[中間保存・残り工程](research-generation-5/checkpoint-20261014/README.md)に根拠を示します。第五世代全体は継続中で、BEFCS-STUDY1と正式な主要関係は未登録・未実行です。以下の日時付き追記の「main未統合」「確認待ち」は当時の履歴です。最新の再開条件は[再開位置](research-generation-5/RESUME_HERE.md)を参照してください。
 
-更新日: 2026-10-14（日本時間）
+更新日: 2026-10-15（日本時間）
 
 対象: Research Generation 1〜5
-現在の状態: **第1〜第4世代の確定結果を保持。第五世代はG5-01〜G5-05終了・BEFCS第3版技術検算済み・中間保存／BEFCSと正式関係は未登録・未実行**
+現在の状態: **第1〜第4世代の確定結果を保持。第五世代はG5-01〜G5-05終了・BEFCS第3版技術検算済み・中間保存main統合済み／BEFCSと正式関係は未登録・未実行**
 
 この文書は、研究成果の入口を世代別にまとめた索引です。各研究ディレクトリの`README.md`または`FINAL_REPORT.md`を共通の入口とし、詳細な根拠・再現方法・固定済み境界は各Studyの正本を参照してください。
 
@@ -45,7 +45,17 @@
 
 ## Research Generation 5 — 探索順位と厳密価値損失
 
-第五世代は[計画](research-generation-5/PROGRAM_PLAN.md)の第1段階として、2026-10-12に[G5-01](research-generation-5/g5-01/README.md) / `RRSVL-STUDY1` の技術準備へ着手した。現行takasiaルールに合わせ、既知fixtureで順位変動、選択手の変更、厳密最適集合からの逸脱、勝敗価値損失、同価値内DTFを分ける[Stage 0技術検証](research-generation-5/g5-01/STAGE_0_REPORT.md)がローカル・Actionsで合格した。続く[独立ルール遷移の技術検証](research-generation-5/g5-01/transition/REPORT.md)も固定40局面・411辺で合格し、[新規局面の開発診断設計](research-generation-5/g5-01/DEVELOPMENT_PLAN.md)を具体化した。[Stage 1開発診断](research-generation-5/g5-01/development/REPORT.md)では固定32 sourceを一度だけ実行・独立再生したが、占有穴数の固定条件で候補は0件だった。本区画を消費済みで閉じ、正式関係の検証は未承認・未実施である。次は[新しい独立Studyの設計](research-generation-5/g5-01/development/NEXT_RESEARCH.md)で解析領域の供給を検討する。第四世代の固定8領域や未完成depth-11層を新しい正式証拠に転用しない。[現在の状態](research-generation-5/CURRENT_STATUS.md)と[再開位置](research-generation-5/RESUME_HERE.md)を参照する。公開AIへの変更は別のAI Engineering判断を必要とする。
+第五世代は[計画](research-generation-5/PROGRAM_PLAN.md)に従い、探索順位の変動と選択手の勝敗価値損失の関係を調べる。2026-10-12に着手したG5-01〜G5-05の供給研究は終了し、途中経過と再開条件を2026-10-15（日本時間）に[PR #205](https://github.com/nkkmd/bao-la-kiswahili-game/pull/205)でmainへ統合した。
+
+| 工程 | source数 | 確定した結果 |
+| --- | ---: | --- |
+| [G5-01](research-generation-5/g5-01/development/REPORT.md) | 32 | 開発候補0件。測定と独立ルール遷移の基盤を検証 |
+| [G5-02](research-generation-5/g5-02/REPORT.md) | 32 | 固定8候補すべて状態上限で未完 |
+| [G5-03](research-generation-5/g5-03/REPORT.md) | 64 | 8完全領域・45状態37辺。手による勝敗価値差0件 |
+| [G5-04](research-generation-5/g5-04/REPORT.md) | 128 | 8完全領域・169状態162辺。同価値内DTF差は3 root、勝敗価値差0件 |
+| [G5-05](research-generation-5/g5-05/REPORT.md) | 64 | 固定8候補は6状態上限・2 runtime guardで未完。価値差未確定 |
+
+5区画の計320 sourceは消費済みで、計16完全領域・214状態199辺を保持する。主要関係の準備判断は`PRIMARY-READINESS-NOT-MET`であり、正式仮説の否定ではない。BEFCS-STUDY1は実行前の技術検証を進め、第3版の保存証拠を独立検算したが、科学Studyと正式関係の検証はともに未登録・未実行である。全起動から保存までの資源・単一時計、科学処理の統合、最終事前固定が残る。[統合記録](research-generation-5/checkpoint-20261014/MAIN_INTEGRATION_20261015.md)、[現在の状態](research-generation-5/CURRENT_STATUS.md)、[再開位置](research-generation-5/RESUME_HERE.md)を参照する。第四世代の固定8領域や未完成depth-11層を新しい正式証拠へ転用せず、公開AIへの採用・変更は別のAI Engineering工程で判断する。
 
 ## Research Generation 4 — 局所幾何の意味・移送可能性・exact帰結
 
