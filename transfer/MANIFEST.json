@@ -1,0 +1,100 @@
+{
+  "target": "4bf0e33e6785367495b143950027b9f989050f57",
+  "parent": "67984fa90b305cb8092f80d8b74392b94a659fcb",
+  "tree": "b8a73c56a1cb1a3af035a5ee3028f10686b5aa04",
+  "bundleSha256": "dc236bacd94ab65ed8cbc7c29b4912cbd4b80d7d3581d414c0a6349058aeb0f6",
+  "bundleBytes": 47846525,
+  "parts": [
+    {
+      "path": "transfer/v3-chunk-00.bin",
+      "size": 4194304,
+      "sha256": "11e6d747135748aaaa0ad7686782d7b6f492b862a5aaa4d8e2b91d281b9cb955"
+    },
+    {
+      "path": "transfer/v3-chunk-01.bin",
+      "size": 4194304,
+      "sha256": "210ce2e531ba9b599513fc887006021ca1ef031ffe57527e4dbeca902ced8670"
+    },
+    {
+      "path": "transfer/v3-chunk-02.bin",
+      "size": 4194304,
+      "sha256": "7253a470feb7aa1bb59098a2e0fb6b70a44135be3415d37309abc9481e317ada"
+    },
+    {
+      "path": "transfer/v3-chunk-03.bin",
+      "size": 4194304,
+      "sha256": "5d1d74ecb53b42ed386080959e43baca91f2ef20d62c453d764e93747ff5330d"
+    },
+    {
+      "path": "transfer/v3-chunk-04.bin",
+      "size": 4194304,
+      "sha256": "2a437b0bfd7e53220f20e3910b3de3941b779fe28698aa7882db56cf5c1b3639"
+    },
+    {
+      "path": "transfer/v3-chunk-05.bin",
+      "size": 4194304,
+      "sha256": "a6b10368a4978a86d7aa59c104ae09daa8252f33d76a386e48fca6776e74358f"
+    },
+    {
+      "path": "transfer/v3-chunk-06.bin",
+      "size": 4194304,
+      "sha256": "76382855266095c9672ee3d94e3ac076e2c3d063f7606f5784314cae0045cf8b"
+    },
+    {
+      "path": "transfer/v3-chunk-07.bin",
+      "size": 4194304,
+      "sha256": "50be1c06001f8dc4c826e19f167864ab64a011aa1dff87f2a171001ba7a674a9"
+    },
+    {
+      "path": "transfer/v3-chunk-08.bin",
+      "size": 4194304,
+      "sha256": "f021ce15c2914c8cf731ba1df98e5b1d95865c959698ee6b463f522360897baf"
+    },
+    {
+      "path": "transfer/v3-chunk-09.bin",
+      "size": 4194304,
+      "sha256": "f95666e5203fb0e68e81d003c53e133c2b72cdc0f4bfad2881ebc44c52135da3"
+    },
+    {
+      "path": "transfer/v3-chunk-10.bin",
+      "size": 4194304,
+      "sha256": "653920eaa6d7240c704a653b1ea364cdaff0550c9e154d276075ee5bf44f473e"
+    },
+    {
+      "path": "transfer/v3-chunk-11.bin",
+      "size": 1709181,
+      "sha256": "67c17d287ed04bf0661d7194f5b690f214cd863e28e8e53fab21caa78f319267"
+    }
+  ],
+  "changedFiles": [
+    "doc/research-generation-5/befcs-remote-joined-20261014/CI_ACQUIRED_BINDING.json",
+    "doc/research-generation-5/befcs-remote-joined-20261014/CI_ACQUIRED_CONFIRMATION.md",
+    "doc/research-generation-5/befcs-remote-joined-20261014/SOURCE_MANIFEST_V3.json",
+    "doc/research-generation-5/befcs-remote-joined-20261014/V3_AUDIT.md",
+    "doc/research-generation-5/befcs-remote-joined-20261014/V3_RESUME_HERE.md",
+    "doc/research-generation-5/befcs-remote-joined-20261014/V3_REVISION.md",
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/ACQUIRED_REPLAY.json",
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/CI_ACQUIRED_RECEIPT.json",
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/V2_SOURCE_SNAPSHOT.json.gz",
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/artifact-11852327460.zip",
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/artifact-11852472353.zip",
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/artifact-11852619342.zip",
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/artifact-11852707959.zip",
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/artifact-11853148638.zip",
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/artifact-11853262654.zip",
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/artifact-11853716667.zip",
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/artifact-11853741139.zip",
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/artifact-11854461369.zip",
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/artifact-11854985340.zip",
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/job-115558190533.log",
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/job-115561215908.log",
+    "doc/research-generation-5/befcs-remote-joined-20261014/results/acquired/job-115561216008.log",
+    "test/g5-befcs-remote-joined.test.cjs",
+    "tools/research/g5-befcs-remote-joined/guard.cjs",
+    "tools/research/g5-befcs-remote-joined/host.cjs",
+    "tools/research/g5-befcs-remote-joined/lifecycle.cjs",
+    "tools/research/g5-befcs-remote-joined/run.cjs",
+    "tools/research/g5-befcs-remote-joined/verify-history.cjs"
+  ],
+  "scientificSeedsRead": 0
+}

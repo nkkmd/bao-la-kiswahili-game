@@ -1,0 +1,23 @@
+name: G5 V3 exact Git transfer
+on:
+  push:
+    branches: [research/g5-v3-transfer-20261014]
+    paths: ['transfer/**', '.github/workflows/g5-v3-transfer-20261014.yml']
+permissions:
+  contents: read
+jobs:
+  import:
+    if: github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Import exact reviewed commit to isolated ref
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node transfer/import.cjs
