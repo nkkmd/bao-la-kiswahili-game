@@ -1,0 +1,32 @@
+{
+  "decision": "INTEGRATED-FIXTURE-VERIFIED-WHOLE-LIFECYCLE-PENDING",
+  "runId": 38825929386,
+  "cases": [
+    {
+      "mode": "ack-loss",
+      "imageUnchanged": true,
+      "inputAndRemoteDiagnosticMatched": true,
+      "workCompleted": true,
+      "preservationCompleted": false,
+      "imageSha256": "ddb3999bbbeb0a6e1e7f5f911bba6236712f9d5a07fac3514162e450d892658b"
+    },
+    {
+      "mode": "complete",
+      "imageUnchanged": true,
+      "inputAndRemoteDiagnosticMatched": true,
+      "workCompleted": true,
+      "preservationCompleted": true,
+      "imageSha256": "fb979e67dcbfb89405bcde804c61d075c5ad1120224a0e054e1b734031b2a53d"
+    },
+    {
+      "mode": "enospc",
+      "imageUnchanged": true,
+      "inputAndRemoteDiagnosticMatched": true,
+      "workCompleted": false,
+      "preservationCompleted": true,
+      "imageSha256": "6aaa41fc0ed2d562cb83e8a6486e494c9b1850bbe602adbf080aeb3f1a5e84d3"
+    }
+  ],
+  "scientificSeedsRead": 0,
+  "wholeLifecycleOsProven": false
+}

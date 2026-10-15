@@ -1,0 +1,37 @@
+{
+  "runId": 38825929386,
+  "runAttempt": 1,
+  "event": "push",
+  "headSha": "88eaf28c7e05c708defe53a6b10babaa57c01eb7",
+  "conclusion": "success",
+  "artifacts": [
+    {
+      "mode": "ack-loss",
+      "artifactId": 12015525016,
+      "bytes": 237806,
+      "sha256": "b5b0f1479faed4e3b05544a2a2497aef7fc8fb435340350eeaa5a8d211d8a36d"
+    },
+    {
+      "mode": "complete",
+      "artifactId": 12015445480,
+      "bytes": 240628,
+      "sha256": "b202e95c9df43aac391f29c7f0bd0a846b5826fe110895580e8c8b7d2f51d8b2"
+    },
+    {
+      "mode": "enospc",
+      "artifactId": 12015357279,
+      "bytes": 241690,
+      "sha256": "a90d93218700a4e2dd022996e7de4868f1b5dcbe4d33807903c21c3d288adb73"
+    }
+  ],
+  "inputs": {
+    "tools/research/g5-befcs-integrated/run.cjs": "9a72e52aa2c1189b4753066d00f4b7429596d401bb8f435c2d4616797fbee33c",
+    "tools/research/g5-befcs-integrated/transport.cjs": "036a56f8674bc817fd3ed9a23e5d203df2db47b6cdfffa3d135ef0c9193b8146",
+    "tools/research/g5-befcs-lifecycle/ledger.cjs": "87bea9debfc5a150bec7f7e7cbf339b304655f648b85129a0fe7db2c3242c5ec",
+    "tools/research/g5-befcs-lifecycle/os-fixture.cjs": "adc246e6d5828dd41b9d17db9fb2d71158b621902587f7ad7c32551501505eee",
+    "tools/research/g5-befcs-envelope/envelope.cjs": "b4ac072cb2716944e37f14349ace2e868c483c05bff38237f422075591c6165b",
+    ".github/workflows/g5-befcs-integrated.yml": "def23bf6e3fcd5bdff812db9030f4103bdf88fa4f94634291300a4546600da59"
+  },
+  "scientificSeedsRead": 0,
+  "wholeLifecycleOsProven": false
+}

@@ -21,3 +21,21 @@ node --test test/g5-befcs-integrated.test.cjs
 payloadの分類・namespace・ENOSPCの未完・ACK抑止後の非再書込み・image/sidecar計数を4検査で確認する。実GitHub/cgroup/imageの統合は専用push・attempt1のActionsで確認し、原artifact取得後に独立検算する。結果を得るまでは実OS合格を先取りしない。
 
 本文・見出しは日本語で、field・ID・path・command・hashは機械定義の例外とする。旧凍結入力・原結果・認可状態を保持し、BEFCS-STUDY1と正式関係は未登録・未実行を維持する。
+
+## 実行と取得後検算の確定
+
+[Actions 38825929386](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38825929386)はhead `88eaf28c7e05c708defe53a6b10babaa57c01eb7`・push・attempt 1で3 caseと原artifact保存が成功した。[固定入力と来歴](CI_RECEIPT.json)、resultsの原ZIPとRESULT、[別経路のremote読取](REMOTE_INDEPENDENT_READ.json)、[独立検算](VERIFICATION.json)を保存した。原ZIPのbytesとSHA-256はGitHub metadataへ一致した。
+
+| case | work | 停止診断の保存 | parent peak |
+| --- | --- | --- | ---: |
+| 通常 | 1 MiBを完了 | ACK・読戻し一致 | 45,891,584 byte |
+| ENOSPC | 181,403,648 byteで未完 | 未完の診断をACK・読戻し一致 | 411,725,824 byte |
+| ACK抑止 | 1 MiBを完了 | 未ACK・保存未完を保持 | 46,440,448 byte |
+
+全caseのimageは234,881,024 byteで、sidecarを加えても256 MiB以内だった。作業未完と診断保存の成功を分け、ENOSPCを科学的完了や解へ変換しない。原imageを変更しないe2fsck/debugfs検査で、取得input・停止証拠・通信prefix・remote診断が一致し、検査前後のimage hashも一致した。
+
+```bash
+python3 tools/research/g5-befcs-integrated/verify.py
+```
+
+検算器は保存済み証拠だけを読み、元の通信・OS work・科学sourceを再実行しない。全G5ローカル技術テストは238件が合格し、先行3経路の独立検算も再確認した。次に残る条件は[完了までの判定表](COMPLETION_GATES.md)を参照する。

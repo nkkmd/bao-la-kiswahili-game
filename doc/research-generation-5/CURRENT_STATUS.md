@@ -1,5 +1,7 @@
 # 第五世代研究 — 現在の状態
 
+> 2026-10-16の[統合fixture](befcs-integrated-20261016/README.md)で有限image内の初回技術input取得・work・停止診断の外部保存を接続し、3 caseの原imageを独立検算した。科学code全体の取得・完全原証拠の外部保存は未成立。残りは[完了判定表](befcs-integrated-20261016/COMPLETION_GATES.md)に固定する。
+
 > [有限imageの物理容量検証](befcs-capacity-20261015/README.md)で通常・ENOSPCの2 caseと予約解放後の停止保存がActions合格し、原imageを独立検算した。外部保存経路との結合と外側起動処理は未完で、全工程の成立は未認定である。
 
 > [同一scopeの外部保存](befcs-external-20261015/README.md)は、固定技術データで通常・ACK抑止の2 caseをActions実行し、原ZIP・remote内容・未ACKを独立検算した。外側bootstrap・物理領域hard cap・Actions uploadを含む全工程の成立は未認定で、科学seed消費0を維持する。

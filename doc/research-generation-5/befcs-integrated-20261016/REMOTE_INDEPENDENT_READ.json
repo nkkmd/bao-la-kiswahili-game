@@ -1,0 +1,27 @@
+{
+  "reader": "GitHub fetch_file connector",
+  "readAfterRun": true,
+  "reads": {
+    "complete": {
+      "content": "{\"evidenceClass\":\"TECHNICAL-INTEGRATED-FIXTURE\",\"inputBlob\":\"4c35ece242bc55a57a4ceebdbaaa815dadc666a7\",\"mode\":\"complete\",\"scientificSeedsRead\":0,\"workCompleted\":true,\"workErrno\":null}",
+      "encoding": "utf-8",
+      "sha": "9a7bf6310a0b0c6c964d80d652707265aa38e087",
+      "display_url": "https://github.com/nkkmd/bao-la-kiswahili-game/blob/research/g5-integrated-preservation-38825929386-a1-complete/FIXTURE.json",
+      "display_title": "FIXTURE.json"
+    },
+    "enospc": {
+      "content": "{\"evidenceClass\":\"TECHNICAL-INTEGRATED-FIXTURE\",\"inputBlob\":\"4c35ece242bc55a57a4ceebdbaaa815dadc666a7\",\"mode\":\"enospc\",\"scientificSeedsRead\":0,\"workCompleted\":false,\"workErrno\":28}",
+      "encoding": "utf-8",
+      "sha": "6d9afc080f7c6136a17b425cc379b230f9e121b5",
+      "display_url": "https://github.com/nkkmd/bao-la-kiswahili-game/blob/research/g5-integrated-preservation-38825929386-a1-enospc/FIXTURE.json",
+      "display_title": "FIXTURE.json"
+    },
+    "ack-loss": {
+      "content": "{\"evidenceClass\":\"TECHNICAL-INTEGRATED-FIXTURE\",\"inputBlob\":\"4c35ece242bc55a57a4ceebdbaaa815dadc666a7\",\"mode\":\"ack-loss\",\"scientificSeedsRead\":0,\"workCompleted\":true,\"workErrno\":null}",
+      "encoding": "utf-8",
+      "sha": "fa72a6ecbaa396d433e07692e92bf318a00fe534",
+      "display_url": "https://github.com/nkkmd/bao-la-kiswahili-game/blob/research/g5-integrated-preservation-38825929386-a1-ack-loss/FIXTURE.json",
+      "display_title": "FIXTURE.json"
+    }
+  }
+}
