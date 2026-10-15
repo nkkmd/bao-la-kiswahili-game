@@ -20,7 +20,7 @@ jobs:
           node-version: '24.19.0'
       - run: node --test test/g5-befcs-lifecycle*.test.cjs
   os-fixture:
-    if: github.event_name == 'push' && github.run_attempt == 1
+    if: github.run_attempt == 1
     needs: refusal
     runs-on: ubuntu-latest
     timeout-minutes: 8
