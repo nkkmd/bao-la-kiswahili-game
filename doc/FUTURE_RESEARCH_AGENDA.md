@@ -1,5 +1,7 @@
 # Bao今後の研究アジェンダ
 
+> 2026-10-16の技術進捗: [有限image内のinput取得と外部停止診断の統合](research-generation-5/befcs-integrated-20261016/README.md)を3 caseで検証し、原image・通信prefix・remote内容を独立照合した。科学供給と正式関係は未登録・未実行、全起動・原証拠保存の条件は未成立である。[研究完了の判定表](research-generation-5/befcs-integrated-20261016/COMPLETION_GATES.md)を参照する。
+
 > 2026-10-15の現在案内: 第五世代の途中経過と再開条件は[PR #205](https://github.com/nkkmd/bao-la-kiswahili-game/pull/205)でmainへ統合済みです。[統合記録](research-generation-5/checkpoint-20261014/MAIN_INTEGRATION_20261015.md)と[中間保存・残り工程](research-generation-5/checkpoint-20261014/README.md)に根拠を示します。第五世代全体は継続中で、BEFCS-STUDY1と正式な主要関係は未登録・未実行です。以下の日時付き追記の「main未統合」「確認待ち」は当時の履歴です。最新の再開条件は[再開位置](research-generation-5/RESUME_HERE.md)を参照してください。
 
 Version: 5.22.0
