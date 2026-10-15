@@ -1,6 +1,6 @@
 # 第五世代研究 — 再現性の索引
 
-> 全起動・保存の[監督台帳](befcs-lifecycle-20261015/README.md)を既知fixtureで検証した。単一時計・全役割計数・保存ACKの10検査は合格したが、実OS adapterは未実装で、全工程の成立は未認定である。
+> 全起動・保存の[監督台帳](befcs-lifecycle-20261015/README.md)を既知fixtureで検証した。単一時計・全役割計数・保存ACKの10検査は合格したが、専用unitの実OS fixtureを追加したが、Actionsの確認前であり、外側bootstrap・外部保存を含む全工程の成立は未認定である。
 
 > 2026-10-15の再開監査: [保存済みG5-05の重複除外監査](resume-audit-20261015/README.md)で採用35代表・8候補の選定差0件を確認した。凍結契約は先行候補rootだけを追加する規則であり、元実装の不足という当初の解釈を撤回した。原実行を繰り返さない。現在checkoutの保存監査には[現在用の手順](../../tools/research/g5-checkpoint/CURRENT_USAGE.md)を使う。BEFCSと正式関係は未登録・未実行である。
 

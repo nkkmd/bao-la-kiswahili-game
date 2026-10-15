@@ -6,4 +6,4 @@
 node --test test/g5-befcs-lifecycle.test.cjs
 ```
 
-実clock・cgroup・保存通信を注入するadapterは未実装である。全役割のcoverageや保存ACKのfieldを模擬入力で満たしても、実OSの証明や科学実行認可にはならない。
+専用systemd unitで実clock・cgroup・ローカルfsync保存を確認するos-fixture.cjsを追加した。実行は専用Actionsで行い、外側bootstrapと外部保存の接続は未完である。全役割のcoverageや保存ACKのfieldを模擬入力で満たしても、実OSの証明や科学実行認可にはならない。

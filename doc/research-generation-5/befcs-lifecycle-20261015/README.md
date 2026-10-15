@@ -40,3 +40,11 @@ node --test test/g5-befcs-lifecycle.test.cjs
 ```
 
 新規説明2文書は日本語で、英語だけの見出し・通常説明文は0件。field・ID・path・commandは機械定義の例外である。旧科学入力・原結果・認可状態は変更しない。実行結果と相対リンク監査はPRで記録する。
+
+## 実OS fixtureの接続
+
+os-fixture.cjsと専用Actionsを追加した。既知の小さなGit fixtureを作成・cloneし、workの記録、fsyncしたローカル保存先と別プロセスによるdigest照合を同じ専用unit内で行う。通常、128 MiBの子cgroupでのOOM、保存ACK欠落の3 caseを使う。親1 GiBとswap無効、kernel memory peak、controllerのscope所属を実fileから確認する。OOMは技術故障の注入であり、科学workerの資源適合を証明しない。
+
+専用unit名以外・別unit・root cgroupを拒否する検査を追加した。ローカルでは既存10件と合わせ11件が合格した。この環境のPID 1はsystemdではないので、実cgroupの合格はActionsの原logとOS_RESULTで確認する。結果が得られるまで実OS合格とは記載しない。
+
+workflowの初回checkout・Node準備・systemd起動と、Actionsのartifactアップロードは監督scopeの外にある。ローカル保存先は外部Git/Actions保存先ではない。したがって実OS fixtureが合格しても、外側bootstrap・外部保存ACK・全起動の単一時計・全作業領域の物理容量上限は未完である。OS_RESULTにもこの未成立を記録する。実行器は科学API・認証・ネットワークを使わない。

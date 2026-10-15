@@ -1,0 +1,53 @@
+name: G5 Lifecycle OS Fixture
+on:
+  push:
+    branches: [research/g5-resume-audit-20261015]
+    paths: ['tools/research/g5-befcs-lifecycle/**', 'test/g5-befcs-lifecycle*.cjs', '.github/workflows/g5-befcs-lifecycle-os.yml']
+  pull_request:
+    paths: ['tools/research/g5-befcs-lifecycle/**', 'test/g5-befcs-lifecycle*.cjs', '.github/workflows/g5-befcs-lifecycle-os.yml']
+permissions:
+  contents: read
+jobs:
+  refusal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - run: node --test test/g5-befcs-lifecycle*.test.cjs
+  os-fixture:
+    if: github.event_name == 'push' && github.run_attempt == 1
+    needs: refusal
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [complete, memory, preserve-no-ack]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Execute isolated source-free OS fixture
+        env:
+          MODE: ${{ matrix.mode }}
+        run: |
+          unit="bao-g5-lifecycle-$(openssl rand -hex 8).service"
+          output="$RUNNER_TEMP/g5-lifecycle-$MODE"
+          sudo systemd-run --quiet --wait --pipe --unit="$unit" --property=MemoryMax=1073741824 --property=MemorySwapMax=0 --property=TasksMax=64 --property=Delegate=yes --property=KillMode=control-group --property=RuntimeMaxSec=90 "$(command -v node)" "$GITHUB_WORKSPACE/tools/research/g5-befcs-lifecycle/os-fixture.cjs" --os-fixture "$output" "$MODE" "$unit"
+          sudo chown -R "$(id -u):$(id -g)" "$output"
+      - name: Preserve fixture evidence outside measured scope
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g5-lifecycle-os-${{ matrix.mode }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/g5-lifecycle-${{ matrix.mode }}/
+          retention-days: 90
+          if-no-files-found: error
