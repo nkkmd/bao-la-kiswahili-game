@@ -1,5 +1,7 @@
 # 第五世代研究 — 再現性の索引
 
+> 2026-10-15の再開監査: [保存済みG5-05の重複除外監査](resume-audit-20261015/README.md)で採用35代表・8候補の選定差0件を確認した。旧実行器の不足は保持・記録し、原実行を繰り返さない。現在checkoutの保存監査には[現在用の手順](../../tools/research/g5-checkpoint/CURRENT_USAGE.md)を使う。BEFCSと正式関係は未登録・未実行である。
+
 > 2026-10-15の現在案内: 終了済み5 Studyと第3版の取得後検算は[PR #205](https://github.com/nkkmd/bao-la-kiswahili-game/pull/205)でmainへ統合済みです。[統合記録](checkpoint-20261014/MAIN_INTEGRATION_20261015.md)、[中間保存](checkpoint-20261014/README.md)、[再開位置](RESUME_HERE.md)を参照してください。第五世代全体は継続中で、BEFCSと正式関係は未登録・未実行です。以下の日時付き記録と計画本文は各時点の履歴として保持します。
 
 更新日: 2026-10-15（日本時間）
