@@ -1,5 +1,7 @@
 # 第五世代研究 — 現在の状態
 
+> [有限imageの物理容量検証](befcs-capacity-20261015/README.md)で通常・ENOSPCの2 caseと予約解放後の停止保存がActions合格し、原imageを独立検算した。外部保存経路との結合と外側起動処理は未完で、全工程の成立は未認定である。
+
 > [同一scopeの外部保存](befcs-external-20261015/README.md)は、固定技術データで通常・ACK抑止の2 caseをActions実行し、原ZIP・remote内容・未ACKを独立検算した。外側bootstrap・物理領域hard cap・Actions uploadを含む全工程の成立は未認定で、科学seed消費0を維持する。
 
 > 全起動・保存の[監督台帳](befcs-lifecycle-20261015/README.md)を既知fixtureで検証した。単一時計・全役割計数・保存ACKの10検査は合格したが、専用unitの実OS 3 caseはActionsで合格し原ZIPを独立検算した。外側bootstrap・外部保存を含む全工程の成立は未認定である。

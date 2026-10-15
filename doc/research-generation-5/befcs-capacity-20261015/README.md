@@ -17,3 +17,17 @@ Actionsでは通常と容量不足の2 caseを実行し、原imageを含むartif
 ## 品質と再開
 
 人間向け本文・見出しは日本語とし、field・path・command・hash・IDは機械定義の例外とする。旧実行器・原証拠・manifest・認可状態を変更しない。BEFCS-STUDY1と正式関係は未登録・未実行、科学seed消費0・科学leaseなしである。
+
+## 取得後の確定記録
+
+[Actions 38745436271](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38745436271)はhead `bec5f15efebfac3991e0499108ccafe1008a5eb8`・pull_request・attempt 1で2 caseと原artifact保存が成功した。[来歴・固定入力](CI_RECEIPT.json)、resultsの原ZIPとRESULT、[独立検算](VERIFICATION.json)を保存した。各ZIPのbytesとSHA-256はGitHub metadataに一致した。
+
+通常caseは1,048,576 byteを書込み、parent peak 267,722,752 byteだった。容量不足caseは196,083,712 byteでENOSPCを記録し、parent peak 425,426,944 byteだった。両方ともimageは251,658,240 byteで、imageとsidecarの合計は256 MiB以下だった。容量不足caseは処理未完・`solution: null`のままで、終了予約16 MiBを解放して停止証拠を保存した。
+
+```bash
+python3 tools/research/g5-befcs-capacity/verify.py
+```
+
+検算器は各原ZIPから原imageを一時領域へ取り出し、hash、e2fsckの読取検査、debugfsによるWORK size・停止証拠・予約file不在、検査前後のimage hash一致を確認する。元OS fixtureの再実行や原imageの修復・変更は行わない。
+
+次はこの有限作業領域と既存の外部保存経路を結合し、初回checkout/実行準備を専用scopeの内側へ移す実行経路を作る。旧workflowの外側処理が自動的に監督済みになったとは解釈しない。科学用のAPI/初期状態/途中closure・microstate証拠、最終仕様・認可・入力hash・専用triggerも引き続き未完である。
