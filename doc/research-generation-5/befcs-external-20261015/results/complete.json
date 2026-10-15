@@ -1,0 +1,289 @@
+{
+  "mode": "complete",
+  "ref": "refs/heads/research/g5-lifecycle-preservation-38743877526-a1-complete",
+  "finished": {
+    "decision": "TECHNICAL-LIFECYCLE-LEDGER-PASS-OS-ADAPTER-PENDING",
+    "phase": "closed",
+    "elapsedMs": 2324.014159,
+    "memoryPeakBytes": 45658112,
+    "chargedBytes": 420263,
+    "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service",
+    "scientificSeedsRead": 0,
+    "scientificExecutionAuthorized": false,
+    "wholeLifecycleOsProven": false
+  },
+  "failure": null,
+  "remote": {
+    "ref": "refs/heads/research/g5-lifecycle-preservation-38743877526-a1-complete",
+    "commit": "32464322e31cb929521e5bc443748a976193f3c4",
+    "blob": "4c35ece242bc55a57a4ceebdbaaa815dadc666a7",
+    "sha256": "920156f413590cd7084f6dec5ec8be76ba039d3e1e61ad34d1eb5b17aa463f65",
+    "acknowledged": true,
+    "calls": [
+      {
+        "method": "POST",
+        "suffix": "/git/blobs"
+      },
+      {
+        "method": "POST",
+        "suffix": "/git/trees"
+      },
+      {
+        "method": "POST",
+        "suffix": "/git/commits"
+      },
+      {
+        "method": "POST",
+        "suffix": "/git/refs"
+      },
+      {
+        "method": "GET",
+        "suffix": "/git/ref/heads/research/g5-lifecycle-preservation-38743877526-a1-complete"
+      },
+      {
+        "method": "GET",
+        "suffix": "/git/commits/32464322e31cb929521e5bc443748a976193f3c4"
+      },
+      {
+        "method": "GET",
+        "suffix": "/git/blobs/4c35ece242bc55a57a4ceebdbaaa815dadc666a7"
+      }
+    ],
+    "writesLocked": true
+  },
+  "children": [
+    {
+      "status": 0,
+      "signal": null
+    },
+    {
+      "status": 0,
+      "signal": null
+    },
+    {
+      "status": 0,
+      "signal": null
+    },
+    {
+      "status": 0,
+      "signal": null
+    }
+  ],
+  "records": {
+    "samples": [
+      {
+        "phase": "checkout",
+        "elapsedMs": 0.2034529999999961,
+        "memoryPeakBytes": 14331904,
+        "chargedBytes": 4096,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "checkout",
+        "elapsedMs": 6.422793999999996,
+        "memoryPeakBytes": 15540224,
+        "chargedBytes": 126976,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "checkout",
+        "elapsedMs": 10.005693,
+        "memoryPeakBytes": 16191488,
+        "chargedBytes": 143360,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "checkout",
+        "elapsedMs": 16.589115999999997,
+        "memoryPeakBytes": 16891904,
+        "chargedBytes": 188416,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "checkout",
+        "elapsedMs": 29.268394999999998,
+        "memoryPeakBytes": 17383424,
+        "chargedBytes": 397312,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "prepare",
+        "elapsedMs": 31.88244299999999,
+        "memoryPeakBytes": 17383424,
+        "chargedBytes": 397312,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "work",
+        "elapsedMs": 33.456024,
+        "memoryPeakBytes": 17805312,
+        "chargedBytes": 397312,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "finalize",
+        "elapsedMs": 34.998959,
+        "memoryPeakBytes": 17805312,
+        "chargedBytes": 401408,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "preserve",
+        "elapsedMs": 36.243841,
+        "memoryPeakBytes": 18030592,
+        "chargedBytes": 401408,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "preserve",
+        "elapsedMs": 38.611282,
+        "memoryPeakBytes": 18030592,
+        "chargedBytes": 401408,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "preserve",
+        "elapsedMs": 389.607735,
+        "memoryPeakBytes": 26521600,
+        "chargedBytes": 405764,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "preserve",
+        "elapsedMs": 391.62018800000004,
+        "memoryPeakBytes": 27570176,
+        "chargedBytes": 405764,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "preserve",
+        "elapsedMs": 682.0644440000001,
+        "memoryPeakBytes": 45658112,
+        "chargedBytes": 406299,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "preserve",
+        "elapsedMs": 683.2008450000001,
+        "memoryPeakBytes": 45658112,
+        "chargedBytes": 406299,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "preserve",
+        "elapsedMs": 1090.536979,
+        "memoryPeakBytes": 45658112,
+        "chargedBytes": 408475,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "preserve",
+        "elapsedMs": 1091.888269,
+        "memoryPeakBytes": 45658112,
+        "chargedBytes": 408475,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "preserve",
+        "elapsedMs": 1670.708574,
+        "memoryPeakBytes": 45658112,
+        "chargedBytes": 409138,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "preserve",
+        "elapsedMs": 1672.133314,
+        "memoryPeakBytes": 45658112,
+        "chargedBytes": 409138,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "preserve",
+        "elapsedMs": 1864.953669,
+        "memoryPeakBytes": 45658112,
+        "chargedBytes": 413771,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "preserve",
+        "elapsedMs": 1866.079143,
+        "memoryPeakBytes": 45658112,
+        "chargedBytes": 413771,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "preserve",
+        "elapsedMs": 2138.1881689999996,
+        "memoryPeakBytes": 45658112,
+        "chargedBytes": 415812,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "preserve",
+        "elapsedMs": 2139.334954,
+        "memoryPeakBytes": 45658112,
+        "chargedBytes": 415812,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "preserve",
+        "elapsedMs": 2322.0501679999998,
+        "memoryPeakBytes": 45658112,
+        "chargedBytes": 416167,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "closed",
+        "elapsedMs": 2324.014159,
+        "memoryPeakBytes": 45658112,
+        "chargedBytes": 420263,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      }
+    ],
+    "receipts": [
+      {
+        "phase": "checkout",
+        "elapsedMs": 0.2034529999999961,
+        "memoryPeakBytes": 14331904,
+        "chargedBytes": 4096,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "prepare",
+        "elapsedMs": 31.88244299999999,
+        "memoryPeakBytes": 17383424,
+        "chargedBytes": 397312,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "work",
+        "elapsedMs": 33.456024,
+        "memoryPeakBytes": 17805312,
+        "chargedBytes": 397312,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "finalize",
+        "elapsedMs": 34.998959,
+        "memoryPeakBytes": 17805312,
+        "chargedBytes": 401408,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      },
+      {
+        "phase": "preserve",
+        "elapsedMs": 36.243841,
+        "memoryPeakBytes": 18030592,
+        "chargedBytes": 401408,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-16fa6e37502744c8.service"
+      }
+    ]
+  },
+  "elapsedMs": 2325.8036789999996,
+  "memoryPeakBytes": 45658112,
+  "externalBootstrapCovered": false,
+  "actionsArtifactUploadCovered": false,
+  "physicalWorkspaceHardLimitProven": false,
+  "wholeLifecycleOsProven": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false
+}

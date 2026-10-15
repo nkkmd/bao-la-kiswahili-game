@@ -1,0 +1,18 @@
+{
+  "decision": "EXTERNAL-FIXED-FIXTURE-VERIFIED-WHOLE-LIFECYCLE-PENDING",
+  "runId": 38743877526,
+  "cases": [
+    {
+      "mode": "complete",
+      "archiveAndRemoteDataMatch": true,
+      "acknowledged": true
+    },
+    {
+      "mode": "ack-loss",
+      "archiveAndRemoteDataMatch": true,
+      "acknowledged": false
+    }
+  ],
+  "scientificSeedsRead": 0,
+  "wholeLifecycleOsProven": false
+}

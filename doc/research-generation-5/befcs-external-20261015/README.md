@@ -27,3 +27,15 @@ node --test test/g5-befcs-external.test.cjs
 通信前拒否、固定内容以外の拒否、通信retryの不在、未ACK、読戻し後だけのACKを既知fixtureで確認する。実GitHub/cgroupの結果はActions終了後に保存し、成功を先取りしない。
 
 本文・見出しは日本語で、ID・field・path・commandは機械定義の例外である。旧凍結入力・原結果・認可状態を変更しない。
+
+## 実行と取得後検算の確定
+
+[Actions 38743877526](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38743877526)はhead `e99c05de09a67b8505dc768b3ce485dd7e54b943`・push・attempt 1で通常とACK抑止の2 case、原artifact保存とも成功した。[来歴と固定入力](CI_RECEIPT.json)、resultsの原ZIPと原RESULT、[別経路のremote読取](REMOTE_INDEPENDENT_READ.json)、[独立検算](VERIFICATION.json)を保存した。ZIPのbytesとSHA-256はGitHubの原artifact metadataに一致する。
+
+通常caseは約2.326秒・parent peak 45,658,112 byteで、4 POST後の3 GETにより保存内容を確認した。ACK抑止caseは約2.062秒・44,781,568 byteで、refが存在していても未ACK・未完のまま終了し、再POSTは0件だった。2技術refは削除せず来歴として保持する。いずれも固定技術データだけで科学seedを含まない。
+
+```bash
+python3 tools/research/g5-befcs-external/verify.py
+```
+
+検算器は原ZIP・API操作順・保存blob・別経路の読取・ACK/未ACKを照合するだけで、元の取引を再実行しない。固定fixtureの外部保存が確認できたことと、全起動/物理容量/Actions uploadの未成立を区別する。
