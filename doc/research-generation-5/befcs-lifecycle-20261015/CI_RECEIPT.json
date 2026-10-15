@@ -1,0 +1,41 @@
+{
+  "runId": 38739433923,
+  "runAttempt": 1,
+  "event": "push",
+  "headSha": "9a4591d459107eba18ae6063c900c5731fa9d002",
+  "conclusion": "success",
+  "workflow": ".github/workflows/g5-befcs-lifecycle-os.yml",
+  "workflowVersionNote": "PRでも実OSを実行する条件追補41a28ddより前のpush実行。実fixtureの入力bytesは同じ。",
+  "inputs": {
+    "tools/research/g5-befcs-lifecycle/os-fixture.cjs": "adc246e6d5828dd41b9d17db9fb2d71158b621902587f7ad7c32551501505eee",
+    "tools/research/g5-befcs-lifecycle/ledger.cjs": "87bea9debfc5a150bec7f7e7cbf339b304655f648b85129a0fe7db2c3242c5ec",
+    "tools/research/g5-befcs-envelope/envelope.cjs": "b4ac072cb2716944e37f14349ace2e868c483c05bff38237f422075591c6165b",
+    "test/g5-befcs-lifecycle-os.test.cjs": "319819c27e78747cc68f8b6a847c836fc8c230f9f95e6622ff55bbd497d507fc",
+    "test/g5-befcs-lifecycle.test.cjs": "8ec77d07c0dd09d4ec79f7755223abcabe494e1fdb870f2c26fe0781aac38ed5"
+  },
+  "artifacts": [
+    {
+      "mode": "complete",
+      "artifactId": 11975320834,
+      "jobId": 116437320297,
+      "bytes": 1803,
+      "sha256": "ed386d7c2fd5e06962313582a40300508f9085c7716cd4b4c18b44f35a2eace8"
+    },
+    {
+      "mode": "memory",
+      "artifactId": 11975625709,
+      "jobId": 116437320199,
+      "bytes": 1033,
+      "sha256": "1688b41a717643a26eba0ab186818922da06e9c5baed1c6999b585bd59ca0f8f"
+    },
+    {
+      "mode": "preserve-no-ack",
+      "artifactId": 11976230474,
+      "jobId": 116437320339,
+      "bytes": 1726,
+      "sha256": "fa2c5c2bb3c13f7185be64022e8ff722d9cd888b299a455d738eb851d3049484"
+    }
+  ],
+  "scientificSeedsRead": 0,
+  "wholeLifecycleOsProven": false
+}

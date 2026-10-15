@@ -45,6 +45,24 @@ node --test test/g5-befcs-lifecycle.test.cjs
 
 os-fixture.cjsと専用Actionsを追加した。既知の小さなGit fixtureを作成・cloneし、workの記録、fsyncしたローカル保存先と別プロセスによるdigest照合を同じ専用unit内で行う。通常、128 MiBの子cgroupでのOOM、保存ACK欠落の3 caseを使う。親1 GiBとswap無効、kernel memory peak、controllerのscope所属を実fileから確認する。OOMは技術故障の注入であり、科学workerの資源適合を証明しない。
 
-専用unit名以外・別unit・root cgroupを拒否する検査を追加した。ローカルでは既存10件と合わせ11件が合格した。この環境のPID 1はsystemdではないので、実cgroupの合格はActionsの原logとOS_RESULTで確認する。結果が得られるまで実OS合格とは記載しない。
+専用unit名以外・別unit・root cgroupを拒否する検査を追加した。ローカルでは既存10件と合わせ11件が合格した。この環境のPID 1はsystemdではないので、実cgroupの合格はActionsの原logとOS_RESULTで確認した。取得後の確定記録は次節を参照する。
 
 workflowの初回checkout・Node準備・systemd起動と、Actionsのartifactアップロードは監督scopeの外にある。ローカル保存先は外部Git/Actions保存先ではない。したがって実OS fixtureが合格しても、外側bootstrap・外部保存ACK・全起動の単一時計・全作業領域の物理容量上限は未完である。OS_RESULTにもこの未成立を記録する。実行器は科学API・認証・ネットワークを使わない。
+
+## 実OSの取得後検算
+
+[push実行38739433923](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38739433923)はhead `9a4591d459107eba18ae6063c900c5731fa9d002`・attempt 1で3 caseと保存stepが成功した。[来歴と入力hash](CI_RECEIPT.json)、os-resultsの原ZIP3件と展開したOS_RESULT、[独立検算結果](OS_VERIFICATION.json)を保存した。各原ZIPはGitHub metadataのdigestとbytesに一致する。
+
+| case | 実測parent peak | 終了判断 |
+| --- | ---: | --- |
+| 通常 | 29,908,992 byte | ローカルfsync保存・別プロセスdigest照合まで完了 |
+| 子OOM | 150,966,272 byte | 子SIGKILL・未完を保持 |
+| ACK欠落 | 30,355,456 byte | 保存データが存在しても完成へ昇格しない |
+
+3 caseのfixture合格は、3 caseの処理完成を意味しない。外側bootstrap・Actions uploadの範囲は未成立のままである。ZIPにはhiddenな.git objectを含めておらず、Git履歴の完全保存の証明として使わない。小さい既知cloneを実行した技術検証に限る。
+
+```bash
+python3 tools/research/g5-befcs-lifecycle/verify-os.py
+```
+
+この検算器は原ZIPのhash、固定入力、保存されたcase・停止・local sink・完了条件を照合する。元OS実行や科学sourceを再実行しない。

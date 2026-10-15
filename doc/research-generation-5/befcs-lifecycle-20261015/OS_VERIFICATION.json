@@ -1,0 +1,23 @@
+{
+  "decision": "SAVED-OS-FIXTURE-VERIFIED-WHOLE-LIFECYCLE-PENDING",
+  "runId": 38739433923,
+  "cases": [
+    {
+      "mode": "complete",
+      "archiveBytes": 1803,
+      "resultMatched": true
+    },
+    {
+      "mode": "memory",
+      "archiveBytes": 1033,
+      "resultMatched": true
+    },
+    {
+      "mode": "preserve-no-ack",
+      "archiveBytes": 1726,
+      "resultMatched": true
+    }
+  ],
+  "scientificSeedsRead": 0,
+  "wholeLifecycleOsProven": false
+}
