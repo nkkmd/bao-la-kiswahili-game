@@ -1,0 +1,36 @@
+{
+  "bytes": 12430887,
+  "sha256": "08116466fbad31059053044e4302f72727c138e8f77c296888ee48f314813504",
+  "parts": [
+    {
+      "name": "CI_ARTIFACT.zip.part-000",
+      "bytes": 2097152,
+      "sha256": "7fc94874e056bf555ac8a1600f5bb064d7f286ecf332bbe6daca3c85231f8e6d"
+    },
+    {
+      "name": "CI_ARTIFACT.zip.part-001",
+      "bytes": 2097152,
+      "sha256": "a04306ef791f9606229ded3e08fabb17f13472229dcffef0e3338f4338e4e712"
+    },
+    {
+      "name": "CI_ARTIFACT.zip.part-002",
+      "bytes": 2097152,
+      "sha256": "dc5027e689f00d42c724e796639986d64dcd66083337762d11ffb4e3c7fb7d27"
+    },
+    {
+      "name": "CI_ARTIFACT.zip.part-003",
+      "bytes": 2097152,
+      "sha256": "54e7567c9c0bb94f365c0f70149acc854f39d495cc6f8427d5297b85028a1787"
+    },
+    {
+      "name": "CI_ARTIFACT.zip.part-004",
+      "bytes": 2097152,
+      "sha256": "74eb0c98f009ecb03facfa8b56b512db7ad3681d0bce88d39318425577a50314"
+    },
+    {
+      "name": "CI_ARTIFACT.zip.part-005",
+      "bytes": 1945127,
+      "sha256": "869dc3c27403728992abf746d346734b9b89e8d9f310ce967e928584c3685c65"
+    }
+  ]
+}

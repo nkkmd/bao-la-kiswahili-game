@@ -1,0 +1,24 @@
+{
+  "decision": "TECHNICAL-CAPSULE-EVIDENCE-VERIFIED",
+  "cases": {
+    "complete": {
+      "filesVerified": 1266,
+      "sourceBytes": 11746870,
+      "imageSha256": "a12fd5f3133320cf674cff94e01240b7531bd015c75cae4a91a806fc1a513820",
+      "archiveSha256": "e7e6a87ce358a4856c602d54fc3303ceb9cd4e116b859ae0c8b79e2f4d790312",
+      "runAcknowledged": true,
+      "afterRunRestored": true
+    },
+    "ack-loss": {
+      "filesVerified": 1266,
+      "sourceBytes": 11746870,
+      "imageSha256": "81d45578d0e172ab70f0206183ee97ce5211b211175db454195ce6151c0f5345",
+      "archiveSha256": "5db432f2ce9f358fa7735c1b2763d17f8e0612166109d0caf7535f4f768b8a33",
+      "runAcknowledged": false,
+      "afterRunRestored": true
+    }
+  },
+  "scientificSeedsRead": 0,
+  "wholeLifecycleOsProven": false,
+  "scientificExecutionAuthorized": false
+}

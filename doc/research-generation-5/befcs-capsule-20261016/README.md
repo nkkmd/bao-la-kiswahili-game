@@ -26,6 +26,34 @@ imageをunmountしてからgzip化し、raw imageとgzipのhashを計算する�
 node --test test/g5-befcs-capsule.test.cjs
 ```
 
-分類/branch/retry拒否、ACK抑止、通信失敗、圧縮上限、manifestとsource改変、読戻し不一致を6検査で確認する。実OS・GitHubの取得/保存は専用push・attempt1のActionsで確認し、原artifactとremote archiveから独立検算する。結果を先取りしない。
+分類/branch/retry拒否、ACK抑止、通信失敗、圧縮上限、manifestとsource改変、読戻し不一致を6検査で確認する。実OS・GitHubの取得/保存は専用push・attempt1のActionsで確認し、原artifactとremote archiveから独立検算する。実測結果は次節に示す。
 
 人間向け本文・見出しは日本語で、field・ID・path・command・hashは機械定義例外である。旧input・原証拠・認可状態を変更せず、BEFCSと正式関係は未登録・未実行、科学seed消費0を維持する。
+
+## 実測と独立復元
+
+[Actions実行38850453567](https://github.com/nkkmd/bao-la-kiswahili-game/actions/runs/38850453567)のpush・attempt1で通常/ACK抑止の両ケースが所定の判定を満たした。両ケースとも固定code 1,266ファイル・11,746,870 byteと科学gate拒否を照合した。全G5技術テスト244件も合格した。
+
+| ケース | 圧縮image | 実行内ACK | 実行後の独立復元 |
+| --- | ---: | --- | --- |
+| 通常 | 6,305,109 byte | あり | 原image・全codeが一致 |
+| ACK抑止 | 6,309,944 byte | なし・finishedなし | 原image・全codeが一致 |
+
+保存先を別経路で取得し、原imageを192 MiBへ復元してファイルシステムと全codeのsize・SHA-256・Git blob・実行bitを照合した。実行後の読取専用観測で復元できた事実は、ACK抑止ケースの実行内ACKへの昇格を意味しない。
+
+原Actions ZIPを`results`内の順序付き分割ファイルとしてbyte単位で保存した。[CI_RECEIPT.json](CI_RECEIPT.json)は実行入力と原ZIPのhash、[REMOTE_RESTORATION.json](REMOTE_RESTORATION.json)は別取得したGit objectの原byteと復元観測、[VERIFICATION.json](VERIFICATION.json)は次の検算結果を保持する。
+
+```bash
+python3 tools/research/g5-checkpoint/test-verify-capsule.py
+python3 tools/research/g5-checkpoint/verify-capsule.py
+```
+
+検証器は保存済みGit履歴と原ZIPだけを使い、通信・mount・科学処理を実行しない。原ZIP全体、gzipと原image、ファイルシステム、取得code、取得記録・封印prefix・bootstrapのコピー、remote commit/tree/blob、送信journal、ACKの区別、科学未認可と既存上限を照合する。原ZIPのbyte改変、remote object改変、ACK抑止の昇格を拒否する3検査も合格した。
+
+専用の読取専用CIで同じ検算を行う。実行後の復旧・検算作業を元実行の上限証明へ合算・昇格しない。成功した外部保存取引を繰り返さず、元の技術実行workflowも変更しない。保存証拠の検算器は別のpathとworkflowに配置する。
+
+## 次の工程と品質確認
+
+残りは[現在の完了判定表](COMPLETION_GATES.md)に示す。外側起動、封印後の制御記録、最終科学inputと科学処理の既知fixture接続、最終事前固定を順に閉じる。現在の証拠だけで科学hostを開放しない。
+
+今回の監査対象は本README・完了判定表・現在案内9文書である。人間向け見出しと説明は日本語、field・ID・path・command・hashは機械定義例外である。英語だけの説明見出し・通常説明文、壊れた相対リンク、意図しないcode block変更・canonical情報変更を0件と確認する。凍結済み科学記録・旧証拠・公開ゲームを変更しない。

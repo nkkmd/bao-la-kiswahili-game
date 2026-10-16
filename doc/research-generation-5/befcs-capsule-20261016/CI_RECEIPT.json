@@ -1,0 +1,34 @@
+{
+  "runId": 38850453567,
+  "runAttempt": 1,
+  "event": "push",
+  "headSha": "36327be0da5ed9fdb9d0cee813227530316d3665",
+  "conclusion": "success",
+  "inputs": {
+    "tools/research/g5-befcs-capsule/run.cjs": "1dc07ff0a0b67acf5f883958e21161e36e2f90faefd08f007632ea7b168be854",
+    "tools/research/g5-befcs-capsule/codec.cjs": "0d994f0c2a29b8926ad7ee6f7f1890856965b418132c93e517b72025c0329a03",
+    "tools/research/g5-befcs-capsule/transport.cjs": "f9c9d67abce3b54d3bb706e9782c40df65b8b65c85a4703adac60a229b7c3e17",
+    "tools/research/g5-befcs-lifecycle/ledger.cjs": "87bea9debfc5a150bec7f7e7cbf339b304655f648b85129a0fe7db2c3242c5ec",
+    "tools/research/g5-befcs-lifecycle/os-fixture.cjs": "adc246e6d5828dd41b9d17db9fb2d71158b621902587f7ad7c32551501505eee",
+    "tools/research/g5-befcs-integrated/run.cjs": "9a72e52aa2c1189b4753066d00f4b7429596d401bb8f435c2d4616797fbee33c",
+    "tools/research/g5-befcs-envelope/envelope.cjs": "b4ac072cb2716944e37f14349ace2e868c483c05bff38237f422075591c6165b",
+    "doc/research-generation-5/befcs-capsule-20261016/CODE_MANIFEST.json": "307af38bfa25636e782032d2b8e1318c3381442fc6c1625e6007d8b8c07a9fbb",
+    ".github/workflows/g5-befcs-capsule.yml": "a36c257c88fc1c9d70ad625df7da5b69222b3a99c8b1510506dd258284754a7c"
+  },
+  "artifacts": [
+    {
+      "mode": "complete",
+      "artifactId": 12024674097,
+      "bytes": 12423332,
+      "sha256": "b088df2df17cb424aa9e28b61d5e991c3c1813db962588547f78b4746ba17c32"
+    },
+    {
+      "mode": "ack-loss",
+      "artifactId": 12024479786,
+      "bytes": 12430887,
+      "sha256": "08116466fbad31059053044e4302f72727c138e8f77c296888ee48f314813504"
+    }
+  ],
+  "scientificSeedsRead": 0,
+  "wholeLifecycleOsProven": false
+}
