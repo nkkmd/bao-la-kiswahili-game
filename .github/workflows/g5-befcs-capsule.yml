@@ -1,0 +1,56 @@
+name: G5 Runtime Capsule Full Image Preservation
+on:
+  push:
+    branches: [research/g5-capsule-20261016]
+    paths: ['tools/research/g5-befcs-capsule/**', 'test/g5-befcs-capsule.test.cjs', '.github/workflows/g5-befcs-capsule.yml']
+  pull_request:
+    paths: ['tools/research/g5-befcs-capsule/**', 'test/g5-befcs-capsule.test.cjs', '.github/workflows/g5-befcs-capsule.yml']
+permissions:
+  contents: read
+jobs:
+  refusal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - run: node --test test/g5-befcs-capsule.test.cjs
+  external:
+    if: github.event_name == 'push' && github.run_attempt == 1
+    needs: refusal
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [complete, ack-loss]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Acquire pinned runtime code and preserve sealed full image
+        env:
+          BEFCS_FIXTURE_TOKEN: ${{ github.token }}
+          MODE: ${{ matrix.mode }}
+        run: |
+          unit="bao-g5-lifecycle-$(openssl rand -hex 8).service"
+          output="$RUNNER_TEMP/g5-capsule-$MODE"
+          sudo --preserve-env=BEFCS_FIXTURE_TOKEN,GITHUB_ACTIONS,GITHUB_REPOSITORY,GITHUB_EVENT_NAME,GITHUB_RUN_ATTEMPT,GITHUB_REF,GITHUB_RUN_ID,GITHUB_SHA systemd-run --quiet --wait --pipe --unit="$unit" --property=MemoryMax=1073741824 --property=MemorySwapMax=0 --property=TasksMax=64 --property=KillMode=control-group --property=RuntimeMaxSec=660 --setenv=BEFCS_FIXTURE_TOKEN --setenv=GITHUB_ACTIONS --setenv=GITHUB_REPOSITORY --setenv=GITHUB_EVENT_NAME --setenv=GITHUB_RUN_ATTEMPT --setenv=GITHUB_REF --setenv=GITHUB_RUN_ID --setenv=GITHUB_SHA "$(command -v node)" "$GITHUB_WORKSPACE/tools/research/g5-befcs-capsule/run.cjs" "$output" "$MODE" "$unit"
+          sudo chown -R "$(id -u):$(id -g)" "$output"
+      - name: Preserve raw technical evidence outside measured scope
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g5-capsule-${{ matrix.mode }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/g5-capsule-${{ matrix.mode }}/
+          retention-days: 90
+          if-no-files-found: error
