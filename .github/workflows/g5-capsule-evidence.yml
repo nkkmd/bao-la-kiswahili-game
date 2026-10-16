@@ -1,0 +1,23 @@
+name: G5 Capsule Preserved Evidence Audit
+on:
+  push:
+    branches: [main, research/g5-capsule-20261016]
+    paths: ['doc/research-generation-5/befcs-capsule-20261016/**', 'tools/research/g5-checkpoint/*capsule.py', '.github/workflows/g5-capsule-evidence.yml']
+  pull_request:
+    paths: ['doc/research-generation-5/befcs-capsule-20261016/**', 'tools/research/g5-checkpoint/*capsule.py', '.github/workflows/g5-capsule-evidence.yml']
+permissions:
+  contents: read
+jobs:
+  preserved:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Verify original archives restored code Git objects and ACK boundaries
+        run: |
+          python3 tools/research/g5-checkpoint/test-verify-capsule.py
+          python3 tools/research/g5-checkpoint/verify-capsule.py > "$RUNNER_TEMP/capsule-verification.json"
+          diff -u doc/research-generation-5/befcs-capsule-20261016/VERIFICATION.json "$RUNNER_TEMP/capsule-verification.json"

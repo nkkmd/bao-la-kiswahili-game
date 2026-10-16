@@ -1,5 +1,7 @@
 # 第五世代研究計画 — 探索順位の変動と厳密価値の損失
 
+> 2026-10-16の最新状態: [固定code取得と封印原image全体の外部保存](befcs-capsule-20261016/README.md)を検証し、1,266ファイルと通常/ACK抑止の両原imageを独立復元した。ACK抑止は未ACKのまま保持する。外側起動・封印後制御記録・最終科学input等は未完で、科学seed消費0・未登録/未実行を維持する。[現在の完了判定表](befcs-capsule-20261016/COMPLETION_GATES.md)を参照する。以下の追補は各段階時点の履歴である。
+
 > 2026-10-15の現在案内: 終了済み5 Studyと第3版の取得後検算は[PR #205](https://github.com/nkkmd/bao-la-kiswahili-game/pull/205)でmainへ統合済みです。[統合記録](checkpoint-20261014/MAIN_INTEGRATION_20261015.md)、[中間保存](checkpoint-20261014/README.md)、[再開位置](RESUME_HERE.md)を参照してください。第五世代全体は継続中で、BEFCSと正式関係は未登録・未実行です。以下の日時付き記録と計画本文は各時点の履歴として保持します。
 
 作成日: 2026-09-29

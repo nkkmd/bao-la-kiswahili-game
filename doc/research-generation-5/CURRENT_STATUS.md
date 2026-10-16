@@ -1,5 +1,7 @@
 # 第五世代研究 — 現在の状態
 
+> 2026-10-16の最新状態: [固定code取得と封印原image全体の外部保存](befcs-capsule-20261016/README.md)を検証し、1,266ファイルと通常/ACK抑止の両原imageを独立復元した。ACK抑止は未ACKのまま保持する。外側起動・封印後制御記録・最終科学input等は未完で、科学seed消費0・未登録/未実行を維持する。[現在の完了判定表](befcs-capsule-20261016/COMPLETION_GATES.md)を参照する。以下の追補は各段階時点の履歴である。
+
 > 2026-10-16の[統合fixture](befcs-integrated-20261016/README.md)で有限image内の初回技術input取得・work・停止診断の外部保存を接続し、3 caseの原imageを独立検算した。科学code全体の取得・完全原証拠の外部保存は未成立。残りは[完了判定表](befcs-integrated-20261016/COMPLETION_GATES.md)に固定する。
 
 > [有限imageの物理容量検証](befcs-capacity-20261015/README.md)で通常・ENOSPCの2 caseと予約解放後の停止保存がActions合格し、原imageを独立検算した。外部保存経路との結合と外側起動処理は未完で、全工程の成立は未認定である。
