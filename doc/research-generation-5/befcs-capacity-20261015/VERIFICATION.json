@@ -1,0 +1,20 @@
+{
+  "decision": "CAPACITY-FIXTURE-VERIFIED-WHOLE-LIFECYCLE-PENDING",
+  "runId": 38745436271,
+  "cases": [
+    {
+      "mode": "complete",
+      "originalImageUnchanged": true,
+      "filesystemCheck": true,
+      "stopWitnessVerified": true
+    },
+    {
+      "mode": "enospc",
+      "originalImageUnchanged": true,
+      "filesystemCheck": true,
+      "stopWitnessVerified": true
+    }
+  ],
+  "scientificSeedsRead": 0,
+  "wholeLifecycleOsProven": false
+}

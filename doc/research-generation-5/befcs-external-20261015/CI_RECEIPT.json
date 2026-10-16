@@ -1,0 +1,33 @@
+{
+  "runId": 38743877526,
+  "runAttempt": 1,
+  "event": "push",
+  "headSha": "e99c05de09a67b8505dc768b3ce485dd7e54b943",
+  "conclusion": "success",
+  "inputs": {
+    "tools/research/g5-befcs-external/run.cjs": "748d544d439dfaa406a89fbb8e3fb4542af000500a4d111abed3d494d6b22b8a",
+    "tools/research/g5-befcs-external/transport.cjs": "acb97025ff9670096cfb09e94cf4197e22fe4d439e293176c157154503f295fb",
+    "tools/research/g5-befcs-lifecycle/ledger.cjs": "87bea9debfc5a150bec7f7e7cbf339b304655f648b85129a0fe7db2c3242c5ec",
+    "tools/research/g5-befcs-lifecycle/os-fixture.cjs": "adc246e6d5828dd41b9d17db9fb2d71158b621902587f7ad7c32551501505eee",
+    "tools/research/g5-befcs-envelope/envelope.cjs": "b4ac072cb2716944e37f14349ace2e868c483c05bff38237f422075591c6165b",
+    ".github/workflows/g5-befcs-external.yml": "9f9747022a62d855549ebff51d5fa565a45a6f172f3857fcea1b6baaa7f014e4"
+  },
+  "artifacts": [
+    {
+      "mode": "complete",
+      "artifactId": 11977311696,
+      "jobId": 116452564176,
+      "bytes": 4280,
+      "sha256": "66258fc9c69a927e8433ff262fc1440f43407215d90c428badc53556f7daa8d6"
+    },
+    {
+      "mode": "ack-loss",
+      "artifactId": 11976571825,
+      "jobId": 116452564114,
+      "bytes": 3827,
+      "sha256": "0dc5ea0b56decb3f400b2e1f88535050840041cc93381c6e6e5e2369b35f4d58"
+    }
+  ],
+  "scientificSeedsRead": 0,
+  "wholeLifecycleOsProven": false
+}

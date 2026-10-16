@@ -1,0 +1,142 @@
+{
+  "mode": "preserve-no-ack",
+  "fixturePassed": true,
+  "finished": null,
+  "failure": "PRESERVATION-NOT-ACKNOWLEDGED\n\nfalse !== true\n",
+  "roles": [
+    "checkout",
+    "checkout",
+    "checkout",
+    "checkout",
+    "worker",
+    "transport",
+    "preserver"
+  ],
+  "children": [
+    {
+      "role": "checkout",
+      "status": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "role": "checkout",
+      "status": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "role": "checkout",
+      "status": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "role": "checkout",
+      "status": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "role": "worker",
+      "status": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "role": "transport",
+      "status": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "role": "preserver",
+      "status": 0,
+      "signal": null,
+      "error": null
+    }
+  ],
+  "records": {
+    "samples": [
+      {
+        "phase": "checkout",
+        "elapsedMs": 0.21293800000000118,
+        "memoryPeakBytes": 13807616,
+        "chargedBytes": 4096,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-d5019f70eaa147bd.service"
+      },
+      {
+        "phase": "prepare",
+        "elapsedMs": 37.81786100000001,
+        "memoryPeakBytes": 16474112,
+        "chargedBytes": 397312,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-d5019f70eaa147bd.service"
+      },
+      {
+        "phase": "work",
+        "elapsedMs": 39.775619000000006,
+        "memoryPeakBytes": 16474112,
+        "chargedBytes": 397312,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-d5019f70eaa147bd.service"
+      },
+      {
+        "phase": "finalize",
+        "elapsedMs": 68.663285,
+        "memoryPeakBytes": 28389376,
+        "chargedBytes": 401408,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-d5019f70eaa147bd.service"
+      },
+      {
+        "phase": "preserve",
+        "elapsedMs": 84.59201300000001,
+        "memoryPeakBytes": 28389376,
+        "chargedBytes": 405504,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-d5019f70eaa147bd.service"
+      }
+    ],
+    "receipts": [
+      {
+        "phase": "checkout",
+        "elapsedMs": 0.21293800000000118,
+        "memoryPeakBytes": 13807616,
+        "chargedBytes": 4096,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-d5019f70eaa147bd.service"
+      },
+      {
+        "phase": "prepare",
+        "elapsedMs": 37.81786100000001,
+        "memoryPeakBytes": 16474112,
+        "chargedBytes": 397312,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-d5019f70eaa147bd.service"
+      },
+      {
+        "phase": "work",
+        "elapsedMs": 39.775619000000006,
+        "memoryPeakBytes": 16474112,
+        "chargedBytes": 397312,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-d5019f70eaa147bd.service"
+      },
+      {
+        "phase": "finalize",
+        "elapsedMs": 68.663285,
+        "memoryPeakBytes": 28389376,
+        "chargedBytes": 401408,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-d5019f70eaa147bd.service"
+      },
+      {
+        "phase": "preserve",
+        "elapsedMs": 84.59201300000001,
+        "memoryPeakBytes": 28389376,
+        "chargedBytes": 405504,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-d5019f70eaa147bd.service"
+      }
+    ]
+  },
+  "memoryPeakBytes": 30355456,
+  "elapsedMs": 143.008802,
+  "preservation": "LOCAL-FSYNC-SINK-ONLY",
+  "wholeLifecycleOsProven": false,
+  "externalBootstrapAndActionsUploadCovered": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false
+}

@@ -1,0 +1,100 @@
+{
+  "mode": "memory",
+  "fixturePassed": true,
+  "finished": null,
+  "failure": "EXPECTED-CHILD-CGROUP-OOM",
+  "roles": [
+    "checkout",
+    "checkout",
+    "checkout",
+    "checkout",
+    "worker"
+  ],
+  "children": [
+    {
+      "role": "checkout",
+      "status": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "role": "checkout",
+      "status": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "role": "checkout",
+      "status": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "role": "checkout",
+      "status": 0,
+      "signal": null,
+      "error": null
+    },
+    {
+      "role": "worker",
+      "status": null,
+      "signal": "SIGKILL",
+      "error": null
+    }
+  ],
+  "records": {
+    "samples": [
+      {
+        "phase": "checkout",
+        "elapsedMs": 0.22822599999999937,
+        "memoryPeakBytes": 13807616,
+        "chargedBytes": 4096,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-24ac706b4e295ac3.service"
+      },
+      {
+        "phase": "prepare",
+        "elapsedMs": 27.9576,
+        "memoryPeakBytes": 16781312,
+        "chargedBytes": 397312,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-24ac706b4e295ac3.service"
+      },
+      {
+        "phase": "work",
+        "elapsedMs": 39.173353000000006,
+        "memoryPeakBytes": 16781312,
+        "chargedBytes": 397312,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-24ac706b4e295ac3.service"
+      }
+    ],
+    "receipts": [
+      {
+        "phase": "checkout",
+        "elapsedMs": 0.22822599999999937,
+        "memoryPeakBytes": 13807616,
+        "chargedBytes": 4096,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-24ac706b4e295ac3.service"
+      },
+      {
+        "phase": "prepare",
+        "elapsedMs": 27.9576,
+        "memoryPeakBytes": 16781312,
+        "chargedBytes": 397312,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-24ac706b4e295ac3.service"
+      },
+      {
+        "phase": "work",
+        "elapsedMs": 39.173353000000006,
+        "memoryPeakBytes": 16781312,
+        "chargedBytes": 397312,
+        "scopeId": "/sys/fs/cgroup/system.slice/bao-g5-lifecycle-24ac706b4e295ac3.service"
+      }
+    ]
+  },
+  "memoryPeakBytes": 150966272,
+  "elapsedMs": 156.01003,
+  "preservation": "LOCAL-FSYNC-SINK-ONLY",
+  "wholeLifecycleOsProven": false,
+  "externalBootstrapAndActionsUploadCovered": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false
+}

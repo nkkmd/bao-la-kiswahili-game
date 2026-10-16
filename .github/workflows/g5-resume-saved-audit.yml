@@ -1,0 +1,19 @@
+name: G5 Saved Selection Resume Audit
+on:
+  pull_request:
+    paths: ['tools/research/g5-resume-audit/**', 'doc/research-generation-5/resume-audit-20261015/**', '.github/workflows/g5-resume-saved-audit.yml']
+  push:
+    branches: [main, research/g5-resume-audit-20261015]
+    paths: ['tools/research/g5-resume-audit/**', 'doc/research-generation-5/resume-audit-20261015/**', '.github/workflows/g5-resume-saved-audit.yml']
+permissions:
+  contents: read
+jobs:
+  saved-selection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Audit stored evidence without source generation
+        run: python3 tools/research/g5-resume-audit/audit.py --check

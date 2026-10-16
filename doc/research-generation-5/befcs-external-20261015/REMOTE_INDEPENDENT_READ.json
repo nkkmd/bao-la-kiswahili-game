@@ -1,0 +1,20 @@
+{
+  "readAfterRun": true,
+  "reader": "GitHub fetch_file connector",
+  "reads": {
+    "complete": {
+      "content": "{\"fixtureVersion\":1,\"scientificSeedsRead\":0}\n",
+      "encoding": "utf-8",
+      "sha": "4c35ece242bc55a57a4ceebdbaaa815dadc666a7",
+      "display_url": "https://github.com/nkkmd/bao-la-kiswahili-game/blob/research/g5-lifecycle-preservation-38743877526-a1-complete/FIXTURE.json",
+      "display_title": "FIXTURE.json"
+    },
+    "ack-loss": {
+      "content": "{\"fixtureVersion\":1,\"scientificSeedsRead\":0}\n",
+      "encoding": "utf-8",
+      "sha": "4c35ece242bc55a57a4ceebdbaaa815dadc666a7",
+      "display_url": "https://github.com/nkkmd/bao-la-kiswahili-game/blob/research/g5-lifecycle-preservation-38743877526-a1-ack-loss/FIXTURE.json",
+      "display_title": "FIXTURE.json"
+    }
+  }
+}

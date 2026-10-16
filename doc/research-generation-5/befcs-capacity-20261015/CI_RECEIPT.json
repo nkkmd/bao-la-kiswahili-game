@@ -1,0 +1,27 @@
+{
+  "runId": 38745436271,
+  "runAttempt": 1,
+  "event": "pull_request",
+  "headSha": "bec5f15efebfac3991e0499108ccafe1008a5eb8",
+  "conclusion": "success",
+  "artifacts": [
+    {
+      "mode": "complete",
+      "artifactId": 11978255969,
+      "bytes": 249149,
+      "sha256": "cf8348be1b59a9faa7be9c1c727c49642545c6e25b0a0716b36e023417f78fab"
+    },
+    {
+      "mode": "enospc",
+      "artifactId": 11977233891,
+      "bytes": 249700,
+      "sha256": "5b92170491fbf50277658cfc23afe1ccc05c4b9db0ce796018307d86bc873b03"
+    }
+  ],
+  "inputs": {
+    "tools/research/g5-befcs-capacity/run.cjs": "9023552a1868d34725a5423b5f8c48cf09d459c09e647f7ef18145514e3a464a",
+    "tools/research/g5-befcs-lifecycle/os-fixture.cjs": "adc246e6d5828dd41b9d17db9fb2d71158b621902587f7ad7c32551501505eee",
+    "tools/research/g5-befcs-envelope/envelope.cjs": "b4ac072cb2716944e37f14349ace2e868c483c05bff38237f422075591c6165b",
+    ".github/workflows/g5-befcs-capacity.yml": "9f39f59b4f522558ba61cce716a34ad2c68966fe48ccd621b261f7d79f86dfac"
+  }
+}

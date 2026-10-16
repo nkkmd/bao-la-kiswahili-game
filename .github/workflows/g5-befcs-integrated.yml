@@ -1,0 +1,56 @@
+name: G5 Integrated Capacity Input Preservation Fixture
+on:
+  push:
+    branches: [research/g5-resume-audit-20261015]
+    paths: ['tools/research/g5-befcs-integrated/**', 'test/g5-befcs-integrated.test.cjs', '.github/workflows/g5-befcs-integrated.yml']
+  pull_request:
+    paths: ['tools/research/g5-befcs-integrated/**', 'test/g5-befcs-integrated.test.cjs', '.github/workflows/g5-befcs-integrated.yml']
+permissions:
+  contents: read
+jobs:
+  refusal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - run: node --test test/g5-befcs-integrated.test.cjs
+  external:
+    if: github.event_name == 'push' && github.run_attempt == 1
+    needs: refusal
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        mode: [complete, enospc, ack-loss]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Fetch input and preserve diagnostic within one bounded workspace
+        env:
+          BEFCS_FIXTURE_TOKEN: ${{ github.token }}
+          MODE: ${{ matrix.mode }}
+        run: |
+          unit="bao-g5-lifecycle-$(openssl rand -hex 8).service"
+          output="$RUNNER_TEMP/g5-integrated-$MODE"
+          sudo --preserve-env=BEFCS_FIXTURE_TOKEN,GITHUB_ACTIONS,GITHUB_REPOSITORY,GITHUB_EVENT_NAME,GITHUB_RUN_ATTEMPT,GITHUB_REF,GITHUB_RUN_ID systemd-run --quiet --wait --pipe --unit="$unit" --property=MemoryMax=1073741824 --property=MemorySwapMax=0 --property=TasksMax=64 --property=KillMode=control-group --property=RuntimeMaxSec=90 --setenv=BEFCS_FIXTURE_TOKEN --setenv=GITHUB_ACTIONS --setenv=GITHUB_REPOSITORY --setenv=GITHUB_EVENT_NAME --setenv=GITHUB_RUN_ATTEMPT --setenv=GITHUB_REF --setenv=GITHUB_RUN_ID "$(command -v node)" "$GITHUB_WORKSPACE/tools/research/g5-befcs-integrated/run.cjs" "$output" "$MODE" "$unit"
+          sudo chown -R "$(id -u):$(id -g)" "$output"
+      - name: Preserve raw technical evidence outside measured scope
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: g5-integrated-${{ matrix.mode }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/g5-integrated-${{ matrix.mode }}/
+          retention-days: 90
+          if-no-files-found: error

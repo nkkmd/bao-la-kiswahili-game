@@ -1,0 +1,89 @@
+{
+  "decision": "PHYSICAL-FIXTURE-CAP-VERIFIED-WHOLE-LIFECYCLE-PENDING",
+  "mode": "enospc",
+  "filesystem": {
+    "type": 61267,
+    "blockSize": 4096,
+    "blocks": 53438,
+    "bytes": 218882048
+  },
+  "imageBytes": 251658240,
+  "imageSha256": "d1f16096445b7934194709b99605f9cbe1c49489c461caa83877d3850f561e43",
+  "chargedBeforeResult": {
+    "logical": 251658240,
+    "allocated": 213053440,
+    "charged": 251658240,
+    "files": 1
+  },
+  "storageReserveBytes": 16777216,
+  "reserveReleased": true,
+  "fill": {
+    "writtenBytes": 196083712,
+    "errno": 28
+  },
+  "states": [
+    {
+      "phase": "reserve-created",
+      "freeBytes": 202080256
+    },
+    {
+      "phase": "after-work",
+      "freeBytes": 5996544
+    },
+    {
+      "phase": "witness-saved",
+      "freeBytes": 22769664
+    }
+  ],
+  "commands": [
+    {
+      "file": "mkfs.ext4",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "file": "mount",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "file": "fallocate",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "file": "sync",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "file": "umount",
+      "status": 0,
+      "signal": null
+    },
+    {
+      "file": "e2fsck",
+      "status": 0,
+      "signal": null
+    }
+  ],
+  "witness": {
+    "fixtureOnly": true,
+    "mode": "enospc",
+    "fill": {
+      "writtenBytes": 196083712,
+      "errno": 28
+    },
+    "solution": null,
+    "scientificSeedsRead": 0
+  },
+  "elapsedMs": 606.484568,
+  "memoryPeakBytes": 425426944,
+  "fixtureWorkCompleted": false,
+  "dedicatedImageHardLimitProven": true,
+  "externalBootstrapCovered": false,
+  "actionsArtifactUploadCovered": false,
+  "wholeLifecycleOsProven": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false
+}
