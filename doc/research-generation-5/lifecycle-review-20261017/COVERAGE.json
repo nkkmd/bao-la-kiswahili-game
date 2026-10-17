@@ -1,0 +1,46 @@
+{
+  "decision": "WHOLE-LIFECYCLE-READINESS-NOT-MET",
+  "sourceRunId": 38850453567,
+  "sourceAttempt": 1,
+  "verifiedEvidenceDecision": "TECHNICAL-CAPSULE-EVIDENCE-VERIFIED",
+  "cases": [
+    {
+      "mode": "complete",
+      "inScopeElapsedMs": 8033.007857,
+      "inScopeMemoryPeakBytes": 354795520,
+      "inScopePreResultChargedBytes": 213940680,
+      "inScopeFinalChargedBytes": null,
+      "inRunArchiveAcknowledged": true,
+      "wholeLifecycleElapsedMs": null,
+      "wholeLifecycleMemoryPeakBytes": null,
+      "wholeLifecycleStoragePeakBytes": null,
+      "postSealJournalInMeasuredService": true,
+      "postSealJournalInSealedImage": false,
+      "postSealJournalDurableWithinWholeLifecycle": null
+    },
+    {
+      "mode": "ack-loss",
+      "inScopeElapsedMs": 4630.7917560000005,
+      "inScopeMemoryPeakBytes": 319672320,
+      "inScopePreResultChargedBytes": 213948620,
+      "inScopeFinalChargedBytes": null,
+      "inRunArchiveAcknowledged": false,
+      "wholeLifecycleElapsedMs": null,
+      "wholeLifecycleMemoryPeakBytes": null,
+      "wholeLifecycleStoragePeakBytes": null,
+      "postSealJournalInMeasuredService": true,
+      "postSealJournalInSealedImage": false,
+      "postSealJournalDurableWithinWholeLifecycle": null
+    }
+  ],
+  "blockers": [
+    "OUTER-BOOTSTRAP-AND-ACTIONS-PREPARATION-OUTSIDE-SCOPE",
+    "ARTIFACT-UPLOAD-AND-RECEIPT-OUTSIDE-SCOPE",
+    "NO-COMBINED-CLOCK-MEMORY-STORAGE-ENFORCEMENT-EVIDENCE",
+    "POST-SEAL-CONTROL-DURABILITY-NOT-ESTABLISHED-IN-WHOLE-LIFECYCLE"
+  ],
+  "wholeLifecycleOsProven": false,
+  "scientificExecutionAuthorized": false,
+  "scientificSeedsRead": 0,
+  "interpretation": "SAVED-EVIDENCE-COVERAGE-ONLY-NOT-NEW-OS-PROOF"
+}
