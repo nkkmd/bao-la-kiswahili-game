@@ -26,7 +26,8 @@ def coverage(result):
         raise ValueError('FINISH-BOUNDARY-CHANGED')
     return {'mode': mode, 'inScopeElapsedMs': result['elapsedMs'],
             'inScopeMemoryPeakBytes': result['memoryPeakBytes'],
-            'inScopeFinalChargedBytes': result['chargedBytes'],
+            'inScopePreResultChargedBytes': result['chargedBytes'],
+            'inScopeFinalChargedBytes': None,
             'inRunArchiveAcknowledged': ack,
             'wholeLifecycleElapsedMs': None, 'wholeLifecycleMemoryPeakBytes': None,
             'wholeLifecycleStoragePeakBytes': None,

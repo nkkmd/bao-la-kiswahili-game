@@ -16,6 +16,8 @@ class Boundaries(unittest.TestCase):
 
     def test_partial_measurements_remain_unknown_for_whole_lifecycle(self):
         row = audit.coverage(self.result)
+        self.assertEqual(row['inScopePreResultChargedBytes'], self.result['chargedBytes'])
+        self.assertIsNone(row['inScopeFinalChargedBytes'])
         self.assertIsNone(row['wholeLifecycleElapsedMs'])
         self.assertIsNone(row['wholeLifecycleMemoryPeakBytes'])
         self.assertIsNone(row['wholeLifecycleStoragePeakBytes'])

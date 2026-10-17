@@ -4,7 +4,7 @@
 
 2026-10-17の再開時点で、GitHubのmainはPR #208の統合コミット`16218592f417b1e5f19a38a5beabc15f66a4c7b2`だった。保存済み原ZIP・原image・Git objectを再検算し、通常ケースの実行内ACKと、ACK抑止ケースの未ACKを確認した。研究の主要準備判断は`PRIMARY-READINESS-NOT-MET`のままである。
 
-今回は成功済みの取引を再実行せず、[計測範囲の監査器](../../../tools/research/g5-checkpoint/audit-lifecycle.py)と[機械可読結果](COVERAGE.json)を追加した。監査器は原証拠の完全検算を先に行い、service内の測定値と全工程の未測定値を分離する。全工程の時間・memory peak・storage peakは`null`であり、0でもservice内測定値でもない。将来の入力が範囲成立を主張しても、旧証拠専用の監査器は自動承認せず停止する。
+今回は成功済みの取引を再実行せず、[計測範囲の監査器](../../../tools/research/g5-checkpoint/audit-lifecycle.py)と[機械可読結果](COVERAGE.json)を追加した。監査器は原証拠の完全検算を先に行い、service内の測定値と全工程の未測定値を分離する。全工程の時間・memory peak・storage peakは`null`であり、0でもservice内測定値でもない。元の`chargedBytes`は`RESULT.json`書込前の測定であり、`inScopePreResultChargedBytes`として保持する。service内の最終保存量も`null`であり、元記録の上限再検査の成功から正確な最終byte数を推測しない。将来の入力が範囲成立を主張しても、旧証拠専用の監査器は自動承認せず停止する。
 
 判断は`WHOLE-LIFECYCLE-READINESS-NOT-MET`。これは今回追加した計測範囲の技術判断で、科学的仮説の否定や第五世代研究の終了判断ではない。科学実行を認可する機能もない。BEFCS-STUDY1と正式関係は未登録・未実行、新規科学seed消費0・科学leaseなしを維持する。
 
