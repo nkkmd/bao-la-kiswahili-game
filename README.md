@@ -1,5 +1,7 @@
 # Bao la Kiswahili
 
+> 2026-10-17の再開監査: PR #208までの保存証拠を再検算し、[全工程の計測範囲と次の実装条件](doc/research-generation-5/lifecycle-review-20261017/README.md)を整理した。外側準備とartifact保全の親監督が未成立で、全工程の測定値は未確定である。次は初回準備より前から動く監督環境の実装可能性確認とし、成功済み取引を反復しない。科学seed消費0・科学leaseなし・BEFCSと正式関係の未登録/未実行を維持する。
+
 Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦ができる Bao のブラウザーゲームです。ゲーム本体は public/ の静的ファイルで動作し、ビルドは不要です。
 
 公式公開サイト: [bao-la-kiswahili.cultivationdata.net](https://bao-la-kiswahili.cultivationdata.net/)

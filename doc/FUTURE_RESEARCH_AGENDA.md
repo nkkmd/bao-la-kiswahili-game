@@ -1,5 +1,7 @@
 # Bao今後の研究アジェンダ
 
+> 2026-10-17の再開監査: PR #208までの保存証拠を再検算し、[全工程の計測範囲と次の実装条件](research-generation-5/lifecycle-review-20261017/README.md)を整理した。外側準備とartifact保全の親監督が未成立で、全工程の測定値は未確定である。次は初回準備より前から動く監督環境の実装可能性確認とし、成功済み取引を反復しない。科学seed消費0・科学leaseなし・BEFCSと正式関係の未登録/未実行を維持する。
+
 > 2026-10-16の最新状態: [固定code取得と封印原image全体の外部保存](research-generation-5/befcs-capsule-20261016/README.md)を検証し、1,266ファイルと通常/ACK抑止の両原imageを独立復元した。ACK抑止は未ACKのまま保持する。外側起動・封印後制御記録・最終科学input等は未完で、科学seed消費0・未登録/未実行を維持する。[現在の完了判定表](research-generation-5/befcs-capsule-20261016/COMPLETION_GATES.md)を参照する。以下の追補は各段階時点の履歴である。
 
 > 2026-10-16の技術進捗: [有限image内のinput取得と外部停止診断の統合](research-generation-5/befcs-integrated-20261016/README.md)を3 caseで検証し、原image・通信prefix・remote内容を独立照合した。科学供給と正式関係は未登録・未実行、全起動・原証拠保存の条件は未成立である。[研究完了の判定表](research-generation-5/befcs-integrated-20261016/COMPLETION_GATES.md)を参照する。

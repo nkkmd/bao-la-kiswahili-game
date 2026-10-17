@@ -1,0 +1,24 @@
+name: G5 Saved Lifecycle Coverage Audit
+on:
+  push:
+    branches: [main, research/g5-lifecycle-admission-20261017]
+    paths: ['tools/research/g5-checkpoint/*lifecycle.py', 'doc/research-generation-5/lifecycle-review-20261017/**', '.github/workflows/g5-lifecycle-coverage.yml']
+  pull_request:
+    paths: ['tools/research/g5-checkpoint/*lifecycle.py', 'doc/research-generation-5/lifecycle-review-20261017/**', '.github/workflows/g5-lifecycle-coverage.yml']
+permissions:
+  contents: read
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Audit saved evidence without repeating transactions
+        run: |
+          python3 tools/research/g5-checkpoint/test-audit-lifecycle.py
+          python3 tools/research/g5-checkpoint/test-verify-capsule.py
+          python3 tools/research/g5-checkpoint/audit-lifecycle.py > "$RUNNER_TEMP/lifecycle-coverage.json"
+          diff -u doc/research-generation-5/lifecycle-review-20261017/COVERAGE.json "$RUNNER_TEMP/lifecycle-coverage.json"
