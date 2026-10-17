@@ -1,0 +1,1319 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Runtime.Serialization;
+using System.Threading;
+using System.Threading.Tasks;
+using GitHub.DistributedTask.ObjectTemplating.Tokens;
+using GitHub.DistributedTask.Pipelines;
+using GitHub.DistributedTask.Pipelines.ContextData;
+using GitHub.DistributedTask.Pipelines.ObjectTemplating;
+using GitHub.DistributedTask.WebApi;
+using GitHub.Runner.Common;
+using GitHub.Runner.Common.Util;
+using GitHub.Runner.Sdk;
+using GitHub.Runner.Worker.Dap;
+using GitHub.Services.Common;
+using Newtonsoft.Json;
+using Pipelines = GitHub.DistributedTask.Pipelines;
+
+namespace GitHub.Runner.Worker
+{
+    [DataContract]
+    public class SetupInfo
+    {
+        [DataMember]
+        public string Group { get; set; }
+
+        [DataMember]
+        public string Detail { get; set; }
+    }
+
+    [ServiceLocator(Default = typeof(JobExtension))]
+
+    public interface IJobExtension : IRunnerService
+    {
+        Task<List<IStep>> InitializeJob(IExecutionContext jobContext, Pipelines.AgentJobRequestMessage message);
+        Task FinalizeJob(IExecutionContext jobContext, Pipelines.AgentJobRequestMessage message, DateTime jobStartTimeUtc);
+    }
+
+    public sealed class JobExtension : RunnerService, IJobExtension
+    {
+        private readonly HashSet<string> _existingProcesses = new(StringComparer.OrdinalIgnoreCase);
+        private readonly List<Task<CheckResult>> _connectivityCheckTasks = new();
+        private readonly List<Task<CheckResult>> _connectivityAndDNSCheckTasks = new();
+        private bool _processCleanup;
+        private string _processLookupId = $"github_{Guid.NewGuid()}";
+        private CancellationTokenSource _diskSpaceCheckToken = new();
+        private Task _diskSpaceCheckTask = null;
+        private CancellationTokenSource _serviceConnectivityCheckToken = new();
+        private Task _serviceConnectivityCheckTask = null;
+        private IDapDebugger _dapDebugger;
+
+        // Download all required actions.
+        // Make sure all condition inputs are valid.
+        // Build up three list of steps for jobrunner (pre-job, job, post-job).
+        public async Task<List<IStep>> InitializeJob(IExecutionContext jobContext, Pipelines.AgentJobRequestMessage message)
+        {
+            Trace.Entering();
+            ArgUtil.NotNull(jobContext, nameof(jobContext));
+            ArgUtil.NotNull(message, nameof(message));
+
+            // Create a new timeline record for 'Set up job'
+            IExecutionContext context = jobContext.CreateChild(Guid.NewGuid(), "Set up job", $"{nameof(JobExtension)}_Init", null, null, ActionRunStage.Pre);
+            context.StepTelemetry.Type = "runner";
+            context.StepTelemetry.Action = "setup_job";
+
+            List<IStep> preJobSteps = new();
+            List<IStep> jobSteps = new();
+            var initSucceeded = false;
+            using (var register = jobContext.CancellationToken.Register(() => { context.CancelToken(); }))
+            {
+                try
+                {
+                    context.Start();
+                    context.Debug($"Starting: Set up job");
+                    context.Output($"Current runner version: '{BuildConstants.RunnerPackage.Version}'");
+
+                    var setting = HostContext.GetService<IConfigurationStore>().GetSettings();
+                    var credFile = HostContext.GetConfigFile(WellKnownConfigFile.Credentials);
+                    var credData = File.Exists(credFile) ? IOUtil.LoadObject<CredentialData>(credFile) : null;
+                    // self-hosted runner is the only runner type using OAuth, can be identified via clientId
+                    if (credData != null &&
+                        credData.Data.TryGetValue("clientId", out _))
+                    {
+                        context.Output($"Runner name: '{setting.AgentName}'");
+                        // use system variable for group name since self-hosted runners can be renamed
+                        if (message.Variables.TryGetValue("system.runnerGroupName", out VariableValue runnerGroupName))
+                        {
+                            context.Output($"Runner group name: '{runnerGroupName.Value}'");
+                        }
+                        // print out machine name for self-hosted runner
+                        context.Output($"Machine name: '{Environment.MachineName}'");
+                    }
+                    // print runner info for lhr runners, skips standard runners (PoolId = 0)
+                    else if (setting.PoolId > 0 && !string.IsNullOrEmpty(setting.PoolName) && !string.IsNullOrEmpty(setting.AgentName))
+                    {
+                        context.Output($"Runner name: '{setting.AgentName}'");
+                        context.Output($"Runner group name: '{setting.PoolName}'");
+                    }
+
+                    var setupInfoFile = HostContext.GetConfigFile(WellKnownConfigFile.SetupInfo);
+                    if (File.Exists(setupInfoFile))
+                    {
+                        Trace.Info($"Load machine setup info from {setupInfoFile}");
+                        try
+                        {
+                            var setupInfo = IOUtil.LoadObject<List<SetupInfo>>(setupInfoFile);
+                            if (setupInfo?.Count > 0)
+                            {
+                                foreach (var info in setupInfo)
+                                {
+                                    if (!string.IsNullOrEmpty(info?.Detail))
+                                    {
+                                        var groupName = info.Group;
+                                        if (string.IsNullOrEmpty(groupName))
+                                        {
+                                            groupName = "Machine Setup Info";
+                                        }
+
+                                        // not output internal groups
+                                        if (groupName.StartsWith("_internal_", StringComparison.OrdinalIgnoreCase))
+                                        {
+                                            jobContext.Global.JobTelemetry.Add(new JobTelemetry() { Type = JobTelemetryType.General, Message = info.Detail });
+                                            continue;
+                                        }
+
+                                        context.Output($"##[group]{groupName}");
+                                        var multiLines = info.Detail.Replace("\r\n", "\n").TrimEnd('\n').Split('\n');
+                                        foreach (var line in multiLines)
+                                        {
+                                            context.Output(line);
+                                        }
+                                        context.Output("##[endgroup]");
+                                    }
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            context.Output($"Fail to load and print machine setup info: {ex.Message}");
+                            Trace.Error(ex);
+                        }
+                    }
+
+                    try
+                    {
+                        var tokenPermissions = jobContext.Global.Variables.Get("system.github.token.permissions") ?? "";
+                        if (!string.IsNullOrEmpty(tokenPermissions))
+                        {
+                            context.Output($"##[group]GITHUB_TOKEN Permissions");
+                            var permissions = StringUtil.ConvertFromJson<Dictionary<string, string>>(tokenPermissions);
+                            foreach (KeyValuePair<string, string> entry in permissions)
+                            {
+                                context.Output($"{entry.Key}: {entry.Value}");
+                            }
+                            context.Output("##[endgroup]");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        context.Output($"Fail to parse and display GITHUB_TOKEN permissions list: {ex.Message}");
+                        Trace.Error(ex);
+                    }
+
+                    var secretSource = context.GetGitHubContext("secret_source");
+                    if (!string.IsNullOrEmpty(secretSource))
+                    {
+                        context.Output($"Secret source: {secretSource}");
+                    }
+
+                    var cacheMode = jobContext.Global.Variables.Get("actions_cache_mode");
+                    if (!string.IsNullOrEmpty(cacheMode))
+                    {
+                        context.Output($"Cache mode: {cacheMode}");
+                    }
+
+                    var repoFullName = context.GetGitHubContext("repository");
+                    ArgUtil.NotNull(repoFullName, nameof(repoFullName));
+                    context.Debug($"Primary repository: {repoFullName}");
+
+                    // Print proxy setting information for better diagnostic experience
+                    if (!string.IsNullOrEmpty(HostContext.WebProxy.HttpProxyAddress))
+                    {
+                        context.Output($"Runner is running behind proxy server '{HostContext.WebProxy.HttpProxyAddress}' for all HTTP requests.");
+                    }
+                    if (!string.IsNullOrEmpty(HostContext.WebProxy.HttpsProxyAddress))
+                    {
+                        context.Output($"Runner is running behind proxy server '{HostContext.WebProxy.HttpsProxyAddress}' for all HTTPS requests.");
+                    }
+
+                    // Signal to the user that the job is using locked action
+                    // versions from the workflow's lockfile.
+                    if (message.ActionsDependencies != null && message.ActionsDependencies.Count > 0)
+                    {
+                        context.Output("Using locked action versions from the workflow's lockfile");
+                    }
+
+                    // Prepare the workflow directory
+                    context.Output("Prepare workflow directory");
+                    var directoryManager = HostContext.GetService<IPipelineDirectoryManager>();
+                    TrackingConfig trackingConfig = directoryManager.PrepareDirectory(
+                        context,
+                        message.Workspace);
+
+                    // Set the directory variables
+                    context.Debug("Update context data");
+                    string _workDirectory = HostContext.GetDirectory(WellKnownDirectory.Work);
+                    context.SetRunnerContext("workspace", Path.Combine(_workDirectory, trackingConfig.PipelineDirectory));
+
+                    var githubWorkspace = Path.Combine(_workDirectory, trackingConfig.WorkspaceDirectory);
+                    if (jobContext.Global.Variables.GetBoolean(Constants.Runner.Features.UseContainerPathForTemplate) ?? false)
+                    {
+                        // This value is used to translate paths from the container path back to the host path.
+                        context.SetGitHubContext("host-workspace", githubWorkspace);
+                    }
+                    context.SetGitHubContext("workspace", githubWorkspace);
+
+                    // Temporary hack for GHES alpha
+                    var configurationStore = HostContext.GetService<IConfigurationStore>();
+                    var runnerSettings = configurationStore.GetSettings();
+                    if (string.IsNullOrEmpty(context.GetGitHubContext("server_url")) && !runnerSettings.IsHostedServer && !string.IsNullOrEmpty(runnerSettings.GitHubUrl))
+                    {
+                        var url = new Uri(runnerSettings.GitHubUrl);
+                        var portInfo = url.IsDefaultPort ? string.Empty : $":{url.Port.ToString(CultureInfo.InvariantCulture)}";
+                        context.SetGitHubContext("server_url", $"{url.Scheme}://{url.Host}{portInfo}");
+                        context.SetGitHubContext("api_url", $"{url.Scheme}://{url.Host}{portInfo}/api/v3");
+                        context.SetGitHubContext("graphql_url", $"{url.Scheme}://{url.Host}{portInfo}/api/graphql");
+                    }
+
+                    // Evaluate the job-level environment variables
+                    context.Debug("Evaluating job-level environment variables");
+                    var templateEvaluator = context.ToPipelineTemplateEvaluator();
+                    foreach (var token in message.EnvironmentVariables)
+                    {
+                        var environmentVariables = templateEvaluator.EvaluateStepEnvironment(token, jobContext.ExpressionValues, jobContext.ExpressionFunctions, VarUtil.EnvironmentVariableKeyComparer);
+                        foreach (var pair in environmentVariables)
+                        {
+                            context.Global.EnvironmentVariables[pair.Key] = pair.Value ?? string.Empty;
+                            context.SetEnvContext(pair.Key, pair.Value ?? string.Empty);
+                        }
+                    }
+
+                    // Evaluate the job container
+                    context.Debug("Evaluating job container");
+                    var container = templateEvaluator.EvaluateJobContainer(message.JobContainer, jobContext.ExpressionValues, jobContext.ExpressionFunctions);
+                    ValidateJobContainer(container);
+                    if (container != null)
+                    {
+                        jobContext.Global.Container = new Container.ContainerInfo(HostContext, container);
+                    }
+
+                    // Evaluate the job service containers
+                    context.Debug("Evaluating job service containers");
+                    var serviceContainers = templateEvaluator.EvaluateJobServiceContainers(message.JobServiceContainers, jobContext.ExpressionValues, jobContext.ExpressionFunctions);
+                    if (serviceContainers?.Count > 0)
+                    {
+                        foreach (var pair in serviceContainers)
+                        {
+                            var networkAlias = pair.Key;
+                            var serviceContainer = pair.Value;
+                            if (serviceContainer == null)
+                            {
+                                context.Output($"The service '{networkAlias}' will not be started because the container definition has an empty image.");
+                                continue;
+                            }
+                            jobContext.Global.ServiceContainers.Add(new Container.ContainerInfo(HostContext, serviceContainer, false, networkAlias));
+                        }
+                    }
+
+                    // Evaluate the job defaults
+                    context.Debug("Evaluating job defaults");
+                    foreach (var token in message.Defaults)
+                    {
+                        var defaults = token.AssertMapping("defaults");
+                        if (defaults.Any(x => string.Equals(x.Key.AssertString("defaults key").Value, "run", StringComparison.OrdinalIgnoreCase)))
+                        {
+                            context.Global.JobDefaults["run"] = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+                            var defaultsRun = defaults.First(x => string.Equals(x.Key.AssertString("defaults key").Value, "run", StringComparison.OrdinalIgnoreCase));
+                            var jobDefaults = templateEvaluator.EvaluateJobDefaultsRun(defaultsRun.Value, jobContext.ExpressionValues, jobContext.ExpressionFunctions);
+                            foreach (var pair in jobDefaults)
+                            {
+                                if (!string.IsNullOrEmpty(pair.Value))
+                                {
+                                    context.Global.JobDefaults["run"][pair.Key] = pair.Value;
+                                }
+                            }
+                        }
+                    }
+
+                    // Build up 2 lists of steps, pre-job, job
+                    // Download actions not already in the cache
+                    Trace.Info("Downloading actions");
+                    var actionManager = HostContext.GetService<IActionManager>();
+                    var prepareResult = await actionManager.PrepareActionsAsync(context, message.Steps);
+
+                    // add hook to preJobSteps
+                    var startedHookPath = Environment.GetEnvironmentVariable("ACTIONS_RUNNER_HOOK_JOB_STARTED");
+                    if (!string.IsNullOrEmpty(startedHookPath))
+                    {
+                        var hookProvider = HostContext.GetService<IJobHookProvider>();
+                        var jobHookData = new JobHookData(ActionRunStage.Pre, startedHookPath);
+                        preJobSteps.Add(new JobExtensionRunner(runAsync: hookProvider.RunHook,
+                                                                          condition: $"{PipelineTemplateConstants.Always}()",
+                                                                          displayName: Constants.Hooks.JobStartedStepName,
+                                                                          data: (object)jobHookData));
+                    }
+
+                    preJobSteps.AddRange(prepareResult.ContainerSetupSteps);
+
+                    // Add start-container steps, record and stop-container steps
+                    if (jobContext.Global.Container != null || jobContext.Global.ServiceContainers.Count > 0)
+                    {
+                        var containerProvider = HostContext.GetService<IContainerOperationProvider>();
+                        var containers = new List<Container.ContainerInfo>();
+                        if (jobContext.Global.Container != null)
+                        {
+                            containers.Add(jobContext.Global.Container);
+                        }
+                        containers.AddRange(jobContext.Global.ServiceContainers);
+
+                        preJobSteps.Add(new JobExtensionRunner(runAsync: containerProvider.StartContainersAsync,
+                                                                          condition: $"{PipelineTemplateConstants.Success}()",
+                                                                          displayName: "Initialize containers",
+                                                                          data: (object)containers));
+                    }
+
+                    // Add action steps
+                    foreach (var step in message.Steps)
+                    {
+                        if (step.Type == Pipelines.StepType.Action)
+                        {
+                            var action = step as Pipelines.ActionStep;
+                            Trace.Info($"Adding {action.DisplayName}.");
+                            var actionRunner = HostContext.CreateService<IActionRunner>();
+                            actionRunner.Action = action;
+                            actionRunner.Stage = ActionRunStage.Main;
+                            actionRunner.Condition = step.Condition;
+                            var contextData = new Pipelines.ContextData.DictionaryContextData();
+                            if (message.ContextData?.Count > 0)
+                            {
+                                foreach (var pair in message.ContextData)
+                                {
+                                    contextData[pair.Key] = pair.Value;
+                                }
+                            }
+
+                            actionRunner.EvaluateDisplayName(contextData, context, out _);
+                            jobSteps.Add(actionRunner);
+
+                            if (prepareResult.PreStepTracker.TryGetValue(step.Id, out var preStep))
+                            {
+                                Trace.Info($"Adding pre-{action.DisplayName}.");
+                                preStep.EvaluateDisplayName(contextData, context, out _);
+                                preStep.DisplayName = $"Pre {preStep.DisplayName}";
+                                preJobSteps.Add(preStep);
+                            }
+                        }
+                        else if (step.Type == Pipelines.StepType.BackgroundStepControl)
+                        {
+                            var ctrl = step as Pipelines.BackgroundStepControl;
+                            Trace.Info($"Adding {ctrl.ControlType} step for: {string.Join(", ", ctrl.StepIds ?? Array.Empty<string>())}");
+                            var controlType = ctrl.ControlType;
+                            if (string.IsNullOrEmpty(controlType))
+                            {
+                                throw new ArgumentException($"Background step control '{step.Name}' has no control type.");
+                            }
+                            if (controlType != Pipelines.BackgroundControlTypes.Wait &&
+                                controlType != Pipelines.BackgroundControlTypes.WaitAll &&
+                                controlType != Pipelines.BackgroundControlTypes.Cancel)
+                            {
+                                throw new ArgumentException($"Unknown background step control type '{controlType}' for step '{step.Name}'.");
+                            }
+                            var displayName = (ctrl.DisplayNameToken as GitHub.DistributedTask.ObjectTemplating.Tokens.StringToken)?.Value
+                                ?? step.DisplayName ?? step.Name ?? ctrl.ControlType;
+                            var data = new BackgroundStepControlFlowData
+                            {
+                                Type = controlType,
+                                StepId = step.Id,
+                                StepName = step.Name,
+                                StepIds = ctrl.StepIds,
+                                ParallelGroupId = ctrl.ParallelGroupId,
+                            };
+                            var bgCoord = HostContext.GetService<IBackgroundStepCoordinator>();
+                            jobSteps.Add(new JobExtensionRunner(
+                                runAsync: bgCoord.RunControlFlowAsync,
+                                condition: $"{PipelineTemplateConstants.Always}()",
+                                displayName: displayName,
+                                data: data));
+                        }
+                    }
+
+                    if (message.Variables.TryGetValue("system.workflowFileFullPath", out VariableValue workflowFileFullPath))
+                    {
+                        var usesLogText = $"Uses: {workflowFileFullPath.Value}";
+                        var reference = GetWorkflowReference(message.Variables);
+                        context.Output(usesLogText + reference);
+
+                        if (message.ContextData.TryGetValue("inputs", out var pipelineContextData))
+                        {
+                            var inputs = pipelineContextData.AssertDictionary("inputs");
+                            if (inputs.Any())
+                            {
+                                context.Output($"##[group] Inputs");
+                                foreach (var input in inputs)
+                                {
+                                    context.Output($"  {input.Key}: {input.Value}");
+                                }
+                                context.Output("##[endgroup]");
+                            }
+                        }
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(message.JobDisplayName))
+                    {
+                        context.Output($"Complete job name: {message.JobDisplayName}");
+                    }
+
+                    var intraActionStates = new Dictionary<Guid, Dictionary<string, string>>();
+                    foreach (var preStep in prepareResult.PreStepTracker)
+                    {
+                        intraActionStates[preStep.Key] = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+                    }
+
+                    // Create execution context for pre-job steps
+                    foreach (var step in preJobSteps)
+                    {
+                        if (step is JobExtensionRunner)
+                        {
+                            JobExtensionRunner extensionStep = step as JobExtensionRunner;
+                            ArgUtil.NotNull(extensionStep, extensionStep.DisplayName);
+                            Guid stepId = Guid.NewGuid();
+                            extensionStep.ExecutionContext = jobContext.CreateChild(stepId, extensionStep.DisplayName, stepId.ToString("N"), null, stepId.ToString("N"), ActionRunStage.Pre);
+                            extensionStep.ExecutionContext.StepTelemetry.Type = "runner";
+                            extensionStep.ExecutionContext.StepTelemetry.Action = extensionStep.DisplayName.ToLowerInvariant().Replace(' ', '_');
+                        }
+                        else if (step is IActionRunner actionStep)
+                        {
+                            ArgUtil.NotNull(actionStep, step.DisplayName);
+                            Guid stepId = Guid.NewGuid();
+                            actionStep.ExecutionContext = jobContext.CreateChild(stepId, actionStep.DisplayName, stepId.ToString("N"), null, null, ActionRunStage.Pre, intraActionStates[actionStep.Action.Id]);
+                        }
+                    }
+
+                    // Create execution context for job steps
+                    // Build mapping of logical step ID (ContextName) → external ID (timeline record GUID)
+                    // so wait/cancel steps can reference background steps by external ID.
+                    var contextNameToExternalId = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+                    var hasBackgroundSteps = false;
+                    var backgroundStepExternalIds = new List<string>();
+
+                    // Track which background steps are explicitly covered by wait/wait-all/cancel
+                    var coveredBackgroundIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+                    foreach (var step in jobSteps)
+                    {
+                        if (step is IActionRunner actionStep)
+                        {
+                            ArgUtil.NotNull(actionStep, step.DisplayName);
+                            intraActionStates.TryGetValue(actionStep.Action.Id, out var intraActionState);
+
+                            var isBg = actionStep.Action?.Background == true;
+                            actionStep.ExecutionContext = jobContext.CreateChild(
+                                actionStep.Action.Id, actionStep.DisplayName, actionStep.Action.Name,
+                                null, actionStep.Action.ContextName, ActionRunStage.Main, intraActionState,
+                                isBackground: isBg,
+                                parallelGroupId: isBg ? actionStep.Action.ParallelGroupId : null);
+
+                            if (isBg)
+                            {
+                                hasBackgroundSteps = true;
+                                var externalId = actionStep.Action.Id.ToString("N");
+                                contextNameToExternalId[actionStep.Action.ContextName] = externalId;
+                                backgroundStepExternalIds.Add(externalId);
+                            }
+                        }
+                        else if (step is JobExtensionRunner runnerStep && runnerStep.Data is BackgroundStepControlFlowData cf)
+                        {
+                            // Resolve step IDs to external IDs and track coverage
+                            string[] externalIds = null;
+                            if (cf.StepIds != null && cf.StepIds.Length > 0)
+                            {
+                                foreach (var id in cf.StepIds)
+                                {
+                                    coveredBackgroundIds.Add(id);
+                                }
+                                externalIds = cf.StepIds
+                                    .Where(id => contextNameToExternalId.ContainsKey(id))
+                                    .Select(id => contextNameToExternalId[id])
+                                    .ToArray();
+                            }
+
+                            if (cf.Type == Pipelines.BackgroundControlTypes.WaitAll)
+                            {
+                                externalIds = backgroundStepExternalIds.Count > 0 ? backgroundStepExternalIds.ToArray() : null;
+                                foreach (var id in contextNameToExternalId.Keys)
+                                {
+                                    coveredBackgroundIds.Add(id);
+                                }
+                            }
+
+                            step.ExecutionContext = jobContext.CreateChild(
+                                cf.StepId, step.DisplayName, cf.StepName,
+                                null, cf.StepName, ActionRunStage.Main,
+                                backgroundControlType: cf.Type,
+                                backgroundControlStepIds: externalIds,
+                                parallelGroupId: cf.ParallelGroupId);
+                        }
+                    }
+
+                    // Add implicit wait-all only if there are background steps not covered by any wait/wait-all/cancel
+                    var allBackgroundIds = contextNameToExternalId.Keys;
+                    var hasUncoveredBackgroundSteps = allBackgroundIds.Any(id => !coveredBackgroundIds.Contains(id));
+                    if (hasBackgroundSteps)
+                    {
+                        // Initialize coordinator only when there are background steps
+                        var bgCoordinator = HostContext.GetService<IBackgroundStepCoordinator>();
+                        var maxBgSteps = jobContext.Global.Variables.GetInt("system.runner.maxbackgroundsteps");
+                        var maxConcurrent = (maxBgSteps.HasValue && maxBgSteps.Value > 0) ? maxBgSteps.Value : 10;
+                        bgCoordinator.InitializeCoordinator(maxConcurrent);
+
+                        // Add implicit wait-all only if there are uncovered background steps
+                        if (hasUncoveredBackgroundSteps)
+                        {
+                            var implicitStepId = Guid.NewGuid();
+                            var implicitWaitAllData = new BackgroundStepControlFlowData
+                            {
+                                Type = Pipelines.BackgroundControlTypes.WaitAll,
+                                StepId = implicitStepId,
+                                StepName = "__implicit_wait_all",
+                            };
+                            var implicitWaitAll = new JobExtensionRunner(
+                                runAsync: bgCoordinator.RunControlFlowAsync,
+                                condition: $"{PipelineTemplateConstants.Always}()",
+                                displayName: "Wait for all background steps",
+                                data: implicitWaitAllData);
+                            var uncoveredExternalIds = contextNameToExternalId
+                                .Where(kvp => !coveredBackgroundIds.Contains(kvp.Key))
+                                .Select(kvp => kvp.Value)
+                                .ToArray();
+                            implicitWaitAll.ExecutionContext = jobContext.CreateChild(
+                                implicitStepId, implicitWaitAll.DisplayName, "__implicit_wait_all",
+                                null, "__implicit_wait_all", ActionRunStage.Main,
+                                backgroundControlType: Pipelines.BackgroundControlTypes.WaitAll,
+                                backgroundControlStepIds: uncoveredExternalIds.Length > 0 ? uncoveredExternalIds : null);
+                            jobSteps.Add(implicitWaitAll);
+                        }
+                    }
+
+                    // Register custom image creation post-job step if the "snapshot" token is present in the message.
+                    var snapshotRequest = templateEvaluator.EvaluateJobSnapshotRequest(message.Snapshot, jobContext.ExpressionValues, jobContext.ExpressionFunctions);
+                    if (snapshotRequest != null)
+                    {
+                        var snapshotOperationProvider = HostContext.GetService<ISnapshotOperationProvider>();
+                        // Check that that runner is capable of taking a snapshot
+                        snapshotOperationProvider.RunSnapshotPreflightChecks(context);
+
+                        // Add postjob step to write snapshot file
+                        jobContext.RegisterPostJobStep(new JobExtensionRunner(
+                            runAsync: (executionContext, _) => snapshotOperationProvider.CreateSnapshotRequestAsync(executionContext, snapshotRequest),
+                            condition: snapshotRequest.Condition,
+                            displayName: $"Create custom image",
+                            data: null));
+                    }
+
+                    // Register Job Completed hook if the variable is set
+                    var completedHookPath = Environment.GetEnvironmentVariable("ACTIONS_RUNNER_HOOK_JOB_COMPLETED");
+                    if (!string.IsNullOrEmpty(completedHookPath))
+                    {
+                        var hookProvider = HostContext.GetService<IJobHookProvider>();
+                        var jobHookData = new JobHookData(ActionRunStage.Post, completedHookPath);
+                        jobContext.RegisterPostJobStep(new JobExtensionRunner(runAsync: hookProvider.RunHook,
+                                                                          condition: $"{PipelineTemplateConstants.Always}()",
+                                                                          displayName: Constants.Hooks.JobCompletedStepName,
+                                                                          data: (object)jobHookData));
+                    }
+
+                    List<IStep> steps = new();
+                    steps.AddRange(preJobSteps);
+                    steps.AddRange(jobSteps);
+
+                    // Prepare for orphan process cleanup
+                    _processCleanup = jobContext.Global.Variables.GetBoolean("process.clean") ?? true;
+                    if (_processCleanup)
+                    {
+                        // Set the RUNNER_TRACKING_ID env variable.
+                        Environment.SetEnvironmentVariable(Constants.ProcessTrackingId, _processLookupId);
+                        context.Debug("Collect running processes for tracking orphan processes.");
+
+                        // Take a snapshot of current running processes
+                        Dictionary<int, Process> processes = SnapshotProcesses();
+                        foreach (var proc in processes)
+                        {
+                            // Pid_ProcessName
+                            _existingProcesses.Add($"{proc.Key}_{proc.Value.ProcessName}");
+                        }
+                    }
+
+                    jobContext.Global.EnvironmentVariables.TryGetValue(Constants.Runner.Features.DiskSpaceWarning, out var enableWarning);
+                    if (StringUtil.ConvertToBoolean(enableWarning, defaultValue: true))
+                    {
+                        _diskSpaceCheckTask = CheckDiskSpaceAsync(context, _diskSpaceCheckToken.Token);
+                    }
+
+                    // Check server connectivity in background
+                    ServiceEndpoint systemConnection = message.Resources.Endpoints.Single(x => string.Equals(x.Name, WellKnownServiceEndpointNames.SystemVssConnection, StringComparison.OrdinalIgnoreCase));
+                    if (systemConnection.Data.TryGetValue("ConnectivityChecks", out var connectivityChecksPayload) &&
+                        !string.IsNullOrEmpty(connectivityChecksPayload))
+                    {
+                        Trace.Info($"Start checking server connectivity.");
+                        var checkUrls = StringUtil.ConvertFromJson<List<string>>(connectivityChecksPayload);
+                        if (checkUrls?.Count > 0)
+                        {
+                            foreach (var checkUrl in checkUrls)
+                            {
+                                _connectivityCheckTasks.Add(CheckConnectivity(checkUrl, accessToken: string.Empty, timeoutInSeconds: 5));
+                            }
+                        }
+                    }
+
+                    if (systemConnection.Data.TryGetValue("ConnectivityAndDNSChecks", out var connectivityAndDNSChecksPayload) &&
+                        !string.IsNullOrEmpty(connectivityAndDNSChecksPayload))
+                    {
+                        Trace.Info($"Start checking server connectivity and DNS.");
+                        var checkUrls = StringUtil.ConvertFromJson<List<string>>(connectivityAndDNSChecksPayload);
+                        if (checkUrls?.Count > 0)
+                        {
+                            foreach (var checkUrl in checkUrls)
+                            {
+                                _connectivityAndDNSCheckTasks.Add(CheckConnectivity(checkUrl, accessToken: string.Empty, timeoutInSeconds: 5, checkDNS: true));
+                            }
+                        }
+                    }
+
+                    Trace.Info($"Start checking service connectivity in background.");
+                    _serviceConnectivityCheckTask = CheckServiceConnectivityAsync(context, _serviceConnectivityCheckToken.Token);
+
+                    // Start the DAP debugger and wait for a client connection inside
+                    // "Set up job" so the step stays in-progress while we wait.
+                    if (jobContext.Global.Debugger?.Enabled == true)
+                    {
+                        Trace.Info("Debugger enabled — starting inside Set up job");
+                        context.Output("Starting debugger…");
+
+                        try
+                        {
+                            _dapDebugger = HostContext.GetService<IDapDebugger>();
+                            await _dapDebugger.StartAsync(jobContext);
+
+                            context.Output("Waiting for debugger client to connect…");
+
+                            await _dapDebugger.WaitUntilReadyAsync();
+                            context.Output("Debugger connected.");
+                            AddDebuggerConnectionTelemetry(jobContext, "Connected");
+                        }
+                        catch (OperationCanceledException) when (jobContext.CancellationToken.IsCancellationRequested)
+                        {
+                            Trace.Info("Job was cancelled before debugger client connected.");
+                            AddDebuggerConnectionTelemetry(jobContext, "Canceled");
+                            context.Error("Job was cancelled before debugger client connected.");
+                            throw;
+                        }
+                        catch (DebuggerTunnelException ex)
+                        {
+                            // The Dev Tunnel relay could not be established, or dropped while we
+                            // were waiting. The user can't do anything about that, so report it
+                            // as an infrastructure failure rather than a job error.
+                            Trace.Error($"DAP debugger tunnel failed: {ex.Message}");
+                            AddDebuggerConnectionTelemetry(jobContext, "TunnelFailed");
+                            context.InfrastructureError(
+                                ex.Message,
+                                category: Constants.Runner.InfrastructureFailureCategories.DebuggerTunnelFailure);
+                            throw;
+                        }
+                        catch (Exception ex)
+                        {
+                            Trace.Error($"DAP debugger failed: {ex.Message}");
+                            AddDebuggerConnectionTelemetry(jobContext, $"Failed: {ex.GetType().Name}");
+                            context.Error("The debugger failed to start or no debugger client connected in time.");
+                            throw;
+                        }
+                    }
+
+                    initSucceeded = true;
+                    return steps;
+                }
+                catch (OperationCanceledException ex) when (jobContext.CancellationToken.IsCancellationRequested)
+                {
+                    // Log the exception and cancel the JobExtension Initialization.
+                    Trace.Error($"Caught cancellation exception from JobExtension Initialization: {ex}");
+                    context.Error(ex);
+                    context.Result = TaskResult.Canceled;
+                    throw;
+                }
+                catch (Exception ex)
+                {
+                    // Log the error and fail the JobExtension Initialization.
+                    Trace.Error($"Caught exception from JobExtension Initialization: {ex}");
+                    context.Error(ex);
+                    context.Result = TaskResult.Failed;
+                    throw;
+                }
+                finally
+                {
+                    // If InitializeJob failed after the debugger was started,
+                    // tear down the transport here since FinalizeJob won't run.
+                    if (!initSucceeded && _dapDebugger != null)
+                    {
+                        try
+                        {
+                            await _dapDebugger.StopAsync();
+                        }
+                        catch (Exception ex)
+                        {
+                            Trace.Warning($"DAP debugger cleanup during failed init: {ex.Message}");
+                        }
+                        _dapDebugger = null;
+                    }
+
+                    context.Debug("Finishing: Set up job");
+                    context.Complete();
+                }
+            }
+        }
+
+        private static void AddDebuggerConnectionTelemetry(IExecutionContext jobContext, string result)
+        {
+            jobContext.Global.JobTelemetry.Add(new JobTelemetry
+            {
+                Type = JobTelemetryType.General,
+                Message = $"DebuggerConnectionResult: {result}"
+            });
+        }
+
+        private string GetWorkflowReference(IDictionary<string, VariableValue> variables)
+        {
+            var reference = "";
+            if (variables.TryGetValue("system.workflowFileSha", out VariableValue workflowFileSha))
+            {
+                if (variables.TryGetValue("system.workflowFileRef", out VariableValue workflowFileRef)
+                    && !string.IsNullOrEmpty(workflowFileRef.Value))
+                {
+                    reference += $"@{workflowFileRef.Value} ({workflowFileSha.Value})";
+                }
+                else
+                {
+                    reference += $"@{workflowFileSha.Value}";
+                }
+            }
+            return reference;
+        }
+
+        public async Task FinalizeJob(IExecutionContext jobContext, Pipelines.AgentJobRequestMessage message, DateTime jobStartTimeUtc)
+        {
+            Trace.Entering();
+            ArgUtil.NotNull(jobContext, nameof(jobContext));
+
+            // create a new timeline record node for 'Finalize job'
+            IExecutionContext context = jobContext.CreateChild(Guid.NewGuid(), "Complete job", $"{nameof(JobExtension)}_Final", null, null, ActionRunStage.Post);
+            context.StepTelemetry.Type = "runner";
+            context.StepTelemetry.Action = "complete_job";
+            using (var register = jobContext.CancellationToken.Register(() => { context.CancelToken(); }))
+            {
+                try
+                {
+                    context.Start();
+                    context.Debug("Starting: Complete job");
+
+                    Trace.Info("Initialize Env context");
+
+#if OS_WINDOWS
+                    var envContext = new DictionaryContextData();
+#else
+                    var envContext = new CaseSensitiveDictionaryContextData();
+#endif
+                    context.ExpressionValues["env"] = envContext;
+                    foreach (var pair in context.Global.EnvironmentVariables)
+                    {
+                        envContext[pair.Key] = new StringContextData(pair.Value ?? string.Empty);
+                    }
+
+                    // Populate env context for each step
+                    Trace.Info("Initialize steps context");
+                    context.ExpressionValues["steps"] = context.Global.StepsContext.GetScope(context.ScopeName);
+
+                    var templateEvaluator = context.ToPipelineTemplateEvaluator();
+                    // Evaluate job outputs
+                    if (message.JobOutputs != null && message.JobOutputs.Type != TokenType.Null)
+                    {
+                        try
+                        {
+                            context.Output($"Evaluate and set job outputs");
+
+                            // Populate env context for each step
+                            Trace.Info("Initialize Env context for evaluating job outputs");
+
+                            var outputs = templateEvaluator.EvaluateJobOutput(message.JobOutputs, context.ExpressionValues, context.ExpressionFunctions);
+                            foreach (var output in outputs)
+                            {
+                                if (string.IsNullOrEmpty(output.Value))
+                                {
+                                    context.Debug($"Skip output '{output.Key}' since it's empty");
+                                    continue;
+                                }
+
+                                if (!string.Equals(output.Value, HostContext.SecretMasker.MaskSecrets(output.Value)))
+                                {
+                                    context.Warning($"Skip output '{output.Key}' since it may contain secret.");
+                                    continue;
+                                }
+
+                                context.Output($"Set output '{output.Key}'");
+                                jobContext.JobOutputs[output.Key] = output.Value;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            context.Result = TaskResult.Failed;
+                            context.Error($"Fail to evaluate job outputs");
+                            context.Error(ex);
+                            jobContext.Result = TaskResultUtil.MergeTaskResults(jobContext.Result, TaskResult.Failed);
+                        }
+                    }
+
+                    // Evaluate environment data
+                    if (jobContext.ActionsEnvironment?.Url != null && jobContext.ActionsEnvironment?.Url.Type != TokenType.Null)
+                    {
+                        try
+                        {
+                            context.Output($"Evaluate and set environment url");
+
+                            var environmentUrlToken = templateEvaluator.EvaluateEnvironmentUrl(jobContext.ActionsEnvironment.Url, context.ExpressionValues, context.ExpressionFunctions);
+                            var environmentUrl = environmentUrlToken.AssertString("environment.url");
+                            if (!string.Equals(environmentUrl.Value, HostContext.SecretMasker.MaskSecrets(environmentUrl.Value)))
+                            {
+                                context.Warning($"Skip setting environment url as environment '{jobContext.ActionsEnvironment.Name}' may contain secret.");
+                            }
+                            else
+                            {
+                                context.Output($"Evaluated environment url: {environmentUrl}");
+                                jobContext.ActionsEnvironment.Url = environmentUrlToken;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            context.Result = TaskResult.Failed;
+                            context.Error($"Failed to evaluate environment url");
+                            context.Error(ex);
+                            jobContext.Result = TaskResultUtil.MergeTaskResults(jobContext.Result, TaskResult.Failed);
+                        }
+                    }
+
+                    if (context.Global.Variables.GetBoolean(Constants.Variables.Actions.RunnerDebug) ?? false)
+                    {
+                        Trace.Info("Support log upload starting.");
+                        context.Output("Uploading runner diagnostic logs");
+
+                        IDiagnosticLogManager diagnosticLogManager = HostContext.GetService<IDiagnosticLogManager>();
+
+                        try
+                        {
+                            diagnosticLogManager.UploadDiagnosticLogs(executionContext: context, parentContext: jobContext, message: message, jobStartTimeUtc: jobStartTimeUtc);
+
+                            Trace.Info("Support log upload complete.");
+                            context.Output("Completed runner diagnostic log upload");
+                        }
+                        catch (Exception ex)
+                        {
+                            // Log the error but make sure we continue gracefully.
+                            Trace.Info("Error uploading support logs.");
+                            context.Output("Error uploading runner diagnostic logs");
+                            Trace.Error(ex);
+                        }
+                    }
+
+                    if (_processCleanup)
+                    {
+                        context.Output("Cleaning up orphan processes");
+
+                        // Only check environment variable for any process that doesn't run before we invoke our process.
+                        Dictionary<int, Process> currentProcesses = SnapshotProcesses();
+                        foreach (var proc in currentProcesses)
+                        {
+                            if (proc.Key == Process.GetCurrentProcess().Id)
+                            {
+                                // skip for current process.
+                                continue;
+                            }
+
+                            if (_existingProcesses.Contains($"{proc.Key}_{proc.Value.ProcessName}"))
+                            {
+                                Trace.Verbose($"Skip existing process. PID: {proc.Key} ({proc.Value.ProcessName})");
+                            }
+                            else
+                            {
+                                Trace.Info($"Inspecting process environment variables. PID: {proc.Key} ({proc.Value.ProcessName})");
+
+                                string lookupId = null;
+                                try
+                                {
+                                    lookupId = proc.Value.GetEnvironmentVariable(HostContext, Constants.ProcessTrackingId);
+                                }
+                                catch (Exception ex)
+                                {
+                                    Trace.Warning($"Ignore exception during read process environment variables: {ex.Message}");
+                                    Trace.Verbose(ex.ToString());
+                                }
+
+                                if (string.Equals(lookupId, _processLookupId, StringComparison.OrdinalIgnoreCase))
+                                {
+                                    context.Output($"Terminate orphan process: pid ({proc.Key}) ({proc.Value.ProcessName})");
+                                    try
+                                    {
+                                        proc.Value.Kill();
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        Trace.Error("Catch exception during orphan process cleanup.");
+                                        Trace.Error(ex);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    if (_diskSpaceCheckTask != null)
+                    {
+                        _diskSpaceCheckToken.Cancel();
+                    }
+
+                    // Collect server connectivity check result
+                    if (_connectivityCheckTasks.Count > 0)
+                    {
+                        try
+                        {
+                            Trace.Info($"Wait for all connectivity checks to finish.");
+                            await Task.WhenAll(_connectivityCheckTasks);
+                            foreach (var check in _connectivityCheckTasks)
+                            {
+                                var result = await check;
+                                Trace.Info($"Connectivity check result: {StringUtil.ConvertToJson(result)}");
+                                context.Global.JobTelemetry.Add(new JobTelemetry() { Type = JobTelemetryType.ConnectivityCheck, Message = $"{result.EndpointUrl}: {result.StatusCode}" });
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Trace.Error($"Fail to check server connectivity.");
+                            Trace.Error(ex);
+                            context.Global.JobTelemetry.Add(new JobTelemetry() { Type = JobTelemetryType.ConnectivityCheck, Message = $"Fail to check server connectivity. {ex.Message}" });
+                        }
+                    }
+
+                    if (_connectivityAndDNSCheckTasks.Count > 0)
+                    {
+                        try
+                        {
+                            Trace.Info($"Wait for all connectivity and DNS checks to finish.");
+                            await Task.WhenAll(_connectivityAndDNSCheckTasks);
+                            foreach (var check in _connectivityAndDNSCheckTasks)
+                            {
+                                var result = await check;
+                                Trace.Info($"Connectivity and DNS check result: {StringUtil.ConvertToJson(result)}");
+                                context.Global.JobTelemetry.Add(new JobTelemetry() { Type = JobTelemetryType.ConnectivityCheck, Message = $"connectivity_dns_telemetry:{StringUtil.ConvertToJson(result, Formatting.None)}" });
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Trace.Error($"Fail to check server connectivity and DNS.");
+                            Trace.Error(ex);
+                            context.Global.JobTelemetry.Add(new JobTelemetry() { Type = JobTelemetryType.ConnectivityCheck, Message = $"Fail to check server connectivity and DNS. {ex.Message}" });
+                        }
+                    }
+
+                    // Collect service connectivity check result
+                    if (_serviceConnectivityCheckTask != null)
+                    {
+                        _serviceConnectivityCheckToken.Cancel();
+                        try
+                        {
+                            await _serviceConnectivityCheckTask;
+                        }
+                        catch (Exception ex)
+                        {
+                            Trace.Error($"Fail to check service connectivity.");
+                            Trace.Error(ex);
+                            context.Global.JobTelemetry.Add(new JobTelemetry() { Type = JobTelemetryType.ConnectivityCheck, Message = $"Fail to check service connectivity. {ex.Message}" });
+                        }
+                    }
+
+                    // Read dates from server variables with hardcoded fallbacks
+                    var node24DefaultDateRaw = context.Global.Variables?.Get(Constants.Runner.NodeMigration.Node24DefaultDateVariable);
+                    var node24DefaultDate = string.IsNullOrEmpty(node24DefaultDateRaw) ? Constants.Runner.NodeMigration.Node24DefaultDate : node24DefaultDateRaw;
+                    var node20RemovalDateRaw = context.Global.Variables?.Get(Constants.Runner.NodeMigration.Node20RemovalDateVariable);
+                    var node20RemovalDate = string.IsNullOrEmpty(node20RemovalDateRaw) ? Constants.Runner.NodeMigration.Node20RemovalDate : node20RemovalDateRaw;
+
+                    // Add deprecation warning annotation for Node.js 20 actions (Phase 1 - actions still running on node20)
+                    if (context.Global.DeprecatedNode20Actions?.Count > 0)
+                    {
+                        var sortedActions = context.Global.DeprecatedNode20Actions.OrderBy(a => a, StringComparer.OrdinalIgnoreCase);
+                        var actionsList = string.Join(", ", sortedActions);
+                        var deprecationMessage = $"Node.js 20 actions are deprecated. The following actions are running on Node.js 20 and may not work as expected: {actionsList}. Actions will be forced to run with Node.js 24 by default starting {node24DefaultDate}. Node.js 20 will be removed from the runner on {node20RemovalDate}. Please check if updated versions of these actions are available that support Node.js 24. To opt into Node.js 24 now, set the FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true environment variable on the runner or in your workflow file. Once Node.js 24 becomes the default, you can temporarily opt out by setting ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true. For more information see: {Constants.Runner.NodeMigration.Node20DeprecationUrl}";
+                        context.Warning(deprecationMessage);
+                    }
+
+                    // Add annotation for actions upgraded from Node.js 20 to Node.js 24 (Phase 2/3)
+                    if (context.Global.UpgradedToNode24Actions?.Count > 0)
+                    {
+                        var sortedActions = context.Global.UpgradedToNode24Actions.OrderBy(a => a, StringComparer.OrdinalIgnoreCase);
+                        var actionsList = string.Join(", ", sortedActions);
+                        var upgradeMessage = $"Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: {actionsList}. For more information see: {Constants.Runner.NodeMigration.Node20DeprecationUrl}";
+                        context.Warning(upgradeMessage);
+                    }
+
+                    // Add annotation for ARM32 actions stuck on Node.js 20 (ARM32 can't run node24)
+                    if (context.Global.Arm32Node20Actions?.Count > 0)
+                    {
+                        var sortedActions = context.Global.Arm32Node20Actions.OrderBy(a => a, StringComparer.OrdinalIgnoreCase);
+                        var actionsList = string.Join(", ", sortedActions);
+                        var arm32Message = $"The following actions are running on Node.js 20 because Node.js 24 is not available on Linux ARM32: {actionsList}. Linux ARM32 runners are deprecated and will no longer be supported after {node20RemovalDate}. Please migrate to a supported platform. For more information see: {Constants.Runner.NodeMigration.Node20DeprecationUrl}";
+                        context.Warning(arm32Message);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Log and ignore the error from JobExtension finalization.
+                    Trace.Error($"Caught exception from JobExtension finalization: {ex}");
+                    context.Output(ex.Message);
+                }
+                finally
+                {
+                    // Pause for debugger inspection, then tear down the DAP session.
+                    // OnJobCompletedAsync pauses first, then sends terminated/exited
+                    // events and stops the transport.
+                    if (_dapDebugger != null)
+                    {
+                        context.Output("Job completed — pausing for debugger inspection. Press continue to finish.");
+                        try
+                        {
+                            await _dapDebugger.OnJobCompletedAsync();
+                        }
+                        catch (Exception ex)
+                        {
+                            Trace.Warning($"DAP debugger completion error: {ex.Message}");
+                        }
+                        finally
+                        {
+                            try
+                            {
+                                await _dapDebugger.StopAsync();
+                            }
+                            catch (Exception ex)
+                            {
+                                Trace.Warning($"DAP debugger stop error: {ex.Message}");
+                            }
+                        }
+                        _dapDebugger = null;
+                    }
+
+                    context.Debug("Finishing: Complete job");
+                    context.Complete();
+                }
+            }
+        }
+
+        private async Task<CheckResult> CheckConnectivity(string endpointUrl, string accessToken, int timeoutInSeconds, bool checkDNS = false, CancellationToken token = default)
+        {
+            Trace.Info($"Check server connectivity for {endpointUrl}.");
+            CheckResult result = new CheckResult() { EndpointUrl = endpointUrl };
+            using (var timeoutTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(timeoutInSeconds)))
+            using (var linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(token, timeoutTokenSource.Token))
+            {
+                if (checkDNS)
+                {
+                    try
+                    {
+                        var dnsStopwatch = Stopwatch.StartNew();
+                        var addresses = await Dns.GetHostAddressesAsync(new Uri(endpointUrl).Host, linkedTokenSource.Token);
+                        dnsStopwatch.Stop();
+                        result.DNSResolutionDurationInMs = (int)dnsStopwatch.ElapsedMilliseconds;
+                        result.EndpointIPs = addresses.Select(a => a.ToString()).ToArray();
+                    }
+                    catch (Exception ex) when (ex is OperationCanceledException && token.IsCancellationRequested)
+                    {
+                        Trace.Error($"DNS resolution canceled: {ex}");
+                        result.DNSError = "dns_canceled";
+                    }
+                    catch (Exception ex) when (ex is OperationCanceledException && timeoutTokenSource.IsCancellationRequested)
+                    {
+                        Trace.Error($"DNS resolution timeout: {ex}");
+                        result.DNSError = "dns_timeout";
+                    }
+                    catch (Exception ex)
+                    {
+                        Trace.Error($"Catch exception during DNS resolution: {ex}");
+                        result.DNSError = $"dns_{ex.Message}";
+                    }
+                }
+
+                try
+                {
+                    var httpStopwatch = Stopwatch.StartNew();
+                    using (var httpClientHandler = HostContext.CreateHttpClientHandler())
+                    using (var httpClient = new HttpClient(httpClientHandler))
+                    {
+                        httpClient.DefaultRequestHeaders.UserAgent.AddRange(HostContext.UserAgents);
+                        if (!string.IsNullOrEmpty(accessToken))
+                        {
+                            httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
+                        }
+
+                        var response = await httpClient.GetAsync(endpointUrl, linkedTokenSource.Token);
+                        result.StatusCode = $"http_{response.StatusCode}";
+
+                        var githubRequestId = UrlUtil.GetGitHubRequestId(response.Headers);
+                        var vssRequestId = UrlUtil.GetVssRequestId(response.Headers);
+                        if (!string.IsNullOrEmpty(githubRequestId))
+                        {
+                            result.RequestId = githubRequestId;
+                        }
+                        else if (!string.IsNullOrEmpty(vssRequestId))
+                        {
+                            result.RequestId = vssRequestId;
+                        }
+                        httpStopwatch.Stop();
+                        result.HttpRequestDurationInMs = (int)httpStopwatch.ElapsedMilliseconds;
+                    }
+                }
+                catch (Exception ex) when (ex is OperationCanceledException && token.IsCancellationRequested)
+                {
+                    Trace.Error($"Request canceled during connectivity check: {ex}");
+                    result.StatusCode = "http_canceled";
+                }
+                catch (Exception ex) when (ex is OperationCanceledException && timeoutTokenSource.IsCancellationRequested)
+                {
+                    Trace.Error($"Request timeout during connectivity check: {ex}");
+                    result.StatusCode = "http_timeout";
+                }
+                catch (Exception ex)
+                {
+                    Trace.Error($"Catch exception during connectivity check: {ex}");
+                    result.StatusCode = $"http_{ex.Message}";
+                }
+            }
+
+            return result;
+        }
+
+        private async Task CheckDiskSpaceAsync(IExecutionContext context, CancellationToken token)
+        {
+            while (!token.IsCancellationRequested)
+            {
+                // Add warning when disk is lower than system.runner.lowdiskspacethreshold from service (default to 100 MB on service side)
+                var lowDiskSpaceThreshold = context.Global.Variables.GetInt(WellKnownDistributedTaskVariables.RunnerLowDiskspaceThreshold);
+                if (lowDiskSpaceThreshold == null)
+                {
+                    Trace.Info($"Low diskspace warning is not enabled.");
+                    return;
+                }
+                var workDirRoot = Directory.GetDirectoryRoot(HostContext.GetDirectory(WellKnownDirectory.Work));
+                var driveInfo = new DriveInfo(workDirRoot);
+                var freeSpaceInMB = driveInfo.AvailableFreeSpace / 1024 / 1024;
+                if (freeSpaceInMB < lowDiskSpaceThreshold)
+                {
+                    var issue = new Issue() { Type = IssueType.Warning, Message = $"You are running out of disk space. The runner will stop working when the machine runs out of disk space. Free space left: {freeSpaceInMB} MB" };
+                    issue.Data[Constants.Runner.InternalTelemetryIssueDataKey] = Constants.Runner.LowDiskSpace;
+                    context.AddIssue(issue, ExecutionContextLogOptions.Default);
+                    return;
+                }
+
+                try
+                {
+                    await Task.Delay(10 * 1000, token);
+                }
+                catch (TaskCanceledException)
+                {
+                    // ignore
+                }
+            }
+        }
+
+        private async Task CheckServiceConnectivityAsync(IExecutionContext context, CancellationToken token)
+        {
+            var connectionTest = context.Global.Variables.Get(WellKnownDistributedTaskVariables.RunnerServiceConnectivityTest);
+            if (string.IsNullOrEmpty(connectionTest))
+            {
+                return;
+            }
+
+            ServiceConnectivityCheckInput checkConnectivityInfo;
+            try
+            {
+                checkConnectivityInfo = StringUtil.ConvertFromJson<ServiceConnectivityCheckInput>(connectionTest);
+            }
+            catch (Exception ex)
+            {
+                context.Global.JobTelemetry.Add(new JobTelemetry() { Type = JobTelemetryType.General, Message = $"Fail to parse JSON. {ex.Message}" });
+                return;
+            }
+
+            if (checkConnectivityInfo == null)
+            {
+                return;
+            }
+
+            // make sure interval is at least 10 seconds
+            checkConnectivityInfo.IntervalInSecond = Math.Max(10, checkConnectivityInfo.IntervalInSecond);
+
+            var systemConnection = context.Global.Endpoints.Single(x => string.Equals(x.Name, WellKnownServiceEndpointNames.SystemVssConnection, StringComparison.OrdinalIgnoreCase));
+            var accessToken = systemConnection.Authorization.Parameters[EndpointAuthorizationParameters.AccessToken];
+
+            var testResult = new ServiceConnectivityCheckResult();
+            while (!token.IsCancellationRequested)
+            {
+                foreach (var endpoint in checkConnectivityInfo.Endpoints)
+                {
+                    if (string.IsNullOrEmpty(endpoint.Key) || string.IsNullOrEmpty(endpoint.Value))
+                    {
+                        continue;
+                    }
+
+                    if (!testResult.EndpointsResult.ContainsKey(endpoint.Key))
+                    {
+                        testResult.EndpointsResult[endpoint.Key] = new List<string>();
+                    }
+
+                    try
+                    {
+                        var result = await CheckConnectivity(endpoint.Value, accessToken: accessToken, timeoutInSeconds: checkConnectivityInfo.RequestTimeoutInSecond, token: token);
+                        testResult.EndpointsResult[endpoint.Key].Add($"{result.StartTime:s}: {result.StatusCode} - {result.RequestId} - {result.HttpRequestDurationInMs}ms");
+                        if (!testResult.HasFailure &&
+                            result.StatusCode != "OK" &&
+                            result.StatusCode != "canceled")
+                        {
+                            // track if any endpoint is not reachable
+                            testResult.HasFailure = true;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        testResult.EndpointsResult[endpoint.Key].Add($"{DateTime.UtcNow:s}: {ex.Message}");
+                    }
+                }
+
+                try
+                {
+                    await Task.Delay(TimeSpan.FromSeconds(checkConnectivityInfo.IntervalInSecond), token);
+                }
+                catch (TaskCanceledException)
+                {
+                    // ignore
+                }
+            }
+
+            var telemetryData = StringUtil.ConvertToJson(testResult, Formatting.None);
+            Trace.Verbose($"Connectivity check result: {telemetryData}");
+            context.Global.JobTelemetry.Add(new JobTelemetry() { Type = JobTelemetryType.ConnectivityCheck, Message = telemetryData });
+        }
+
+        private Dictionary<int, Process> SnapshotProcesses()
+        {
+            Dictionary<int, Process> snapshot = new();
+            foreach (var proc in Process.GetProcesses())
+            {
+                try
+                {
+                    // On Windows, this will throw exception on error.
+                    // On Linux, this will be NULL on error.
+                    if (!string.IsNullOrEmpty(proc.ProcessName))
+                    {
+                        snapshot[proc.Id] = proc;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Trace.Verbose($"Ignore any exception during taking process snapshot of process pid={proc.Id}: '{ex.Message}'.");
+                }
+            }
+
+            Trace.Info($"Total accessible running process: {snapshot.Count}.");
+            return snapshot;
+        }
+
+        private static void ValidateJobContainer(JobContainer container)
+        {
+            if (StringUtil.ConvertToBoolean(Environment.GetEnvironmentVariable(Constants.Variables.Actions.RequireJobContainer)) && container == null)
+            {
+                throw new ArgumentException("Jobs without a job container are forbidden on this runner, please add a 'container:' to your job or contact your self-hosted runner administrator.");
+            }
+        }
+
+        private class CheckResult
+        {
+            public CheckResult()
+            {
+                StartTime = DateTime.UtcNow;
+            }
+
+            public string EndpointUrl { get; set; }
+
+            public string[] EndpointIPs { get; set; }
+
+            public DateTime StartTime { get; set; }
+
+            public string StatusCode { get; set; }
+
+            public string RequestId { get; set; }
+
+            public int HttpRequestDurationInMs { get; set; }
+
+            public int DNSResolutionDurationInMs { get; set; }
+
+            public string DNSError { get; set; }
+        }
+    }
+}

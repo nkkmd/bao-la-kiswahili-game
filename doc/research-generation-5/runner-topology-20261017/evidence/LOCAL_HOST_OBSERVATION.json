@@ -1,0 +1,16 @@
+{
+  "evidenceClass": "READ-ONLY-HOST-OBSERVATION",
+  "pid1Comm": "supervisord",
+  "systemdBooted": false,
+  "cgroupV2Mounted": true,
+  "memoryControllerPresent": true,
+  "cgroupMountReadOnly": true,
+  "cgroupRootWritableByObserver": false,
+  "dedicatedDelegationInspected": false,
+  "runnerInstallationInspected": false,
+  "mutationsPerformed": false,
+  "scientificSeedsRead": 0,
+  "parentRunnerEnvironmentConfirmed": false,
+  "wholeLifecycleOsProven": false,
+  "scientificExecutionAuthorized": false
+}

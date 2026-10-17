@@ -1,0 +1,30 @@
+{
+  "decision": "PARENT-RUNNER-SCOPE-REQUIRED-NOT-PROVEN",
+  "runnerSourceCommit": "397b032cbf865e9c3ddfab89d533ec19325e1273",
+  "observedRunnerVersion": "2.337.0",
+  "sourceEvidence": {
+    "prepareActionsLine": 299,
+    "jobStartedHookRegistrationLine": 302,
+    "containerSetupRegistrationLine": 313,
+    "initializeJobLine": 190,
+    "runStepsLine": 240
+  },
+  "observedJob": {
+    "runId": 38993598222,
+    "jobId": 117281084211,
+    "attempt": 1,
+    "runnerVersionLine": 1,
+    "checkoutDownloadLine": 31,
+    "nodeDownloadLine": 32,
+    "firstCheckoutStepLine": 34
+  },
+  "jobHookCoversInitialActionDownloads": false,
+  "jobContainerAloneCoversInitialActionDownloads": false,
+  "retryPossibleInPinnedActionDownloader": true,
+  "observedRetryExecutionClaimed": false,
+  "runnerBinaryIdentityProvenByVersionString": false,
+  "parentRunnerEnvironmentConfirmed": false,
+  "wholeLifecycleOsProven": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false
+}

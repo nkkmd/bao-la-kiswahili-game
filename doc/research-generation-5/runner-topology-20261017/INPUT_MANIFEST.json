@@ -1,0 +1,47 @@
+{
+  "evidenceClass": "SAVED-RUNNER-TOPOLOGY-AUDIT",
+  "sourceCommit": "397b032cbf865e9c3ddfab89d533ec19325e1273",
+  "sourceTag": "v2.337.0",
+  "files": {
+    "SOURCE_ORIGIN.json": {
+      "bytes": 619,
+      "sha256": "353e181d8f41ddf1b57bf841531d355ba3b5dfd4e807ce250c6b986f020d0003"
+    },
+    "evidence/CHECKPOINT_JOB.log": {
+      "bytes": 95202,
+      "sha256": "836e498b1feac3245c16559f9fabd2ad4a1b6219c204c71f3a6e770911edf67a"
+    },
+    "evidence/JOB_METADATA.json": {
+      "bytes": 1296,
+      "sha256": "c4e8aae8d93ffec6aba8dee4ca0c9fdbdb8dd652c783efae344af75b9132b48a"
+    },
+    "evidence/RUN_METADATA.json": {
+      "bytes": 14080,
+      "sha256": "7a374df7e6d1fa3f252fba9e0c802dd45db231d6100fd2eb64658518d8ee5407"
+    },
+    "upstream/LICENSE": {
+      "bytes": 1072,
+      "sha256": "621a1e0b6163b9d63fe780b9d6f5a7f775a5781065024a1ebf8010726c44cec1"
+    },
+    "upstream/src/Runner.Worker/ActionManager.cs": {
+      "bytes": 102163,
+      "sha256": "084a98970ed891514c6dc9a6a28c5d12d987ef54e60695f5c11edd5d96a546fd"
+    },
+    "upstream/src/Runner.Worker/JobExtension.cs": {
+      "bytes": 73085,
+      "sha256": "f07c797dd13cc55823a55d2a00ea2381a6ec8de8968774fb1d44897bd37ca910"
+    },
+    "upstream/src/Runner.Worker/JobRunner.cs": {
+      "bytes": 27494,
+      "sha256": "006421e85af890f4ac2192d494992582ca155bfa8996ff94b87d3e152638d6e3"
+    },
+    "evidence/LOCAL_HOST_OBSERVATION.json": {
+      "bytes": 503,
+      "sha256": "667421717f0f79811e186c3c65f24cce9a310e002e31c0b26e15803114acbb3d"
+    }
+  },
+  "hostObserver": {
+    "path": "tools/research/g5-runner-topology/inspect-host.py",
+    "sha256": "78814ec29c6d33fd9c529d66152ff6c8ed72da5b28065a030e950ef1e47d2353"
+  }
+}
