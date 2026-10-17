@@ -1,9 +1,5 @@
 # Bao la Kiswahili
 
-> 2026-10-17の親監督調査: [固定runnerソースと既存jobの照合](doc/research-generation-5/runner-topology-20261017/README.md)で、開始hook・job containerより前のActions取得と内部retry経路を確認した。hookの追加だけの方式を除外し、runner起動前からの親監督を設計候補とする。専用環境は未確認で、全工程未成立・科学seed消費0・科学leaseなし・科学実行未認可を維持する。
-
-> 2026-10-17の再開監査: PR #208までの保存証拠を再検算し、[全工程の計測範囲と次の実装条件](doc/research-generation-5/lifecycle-review-20261017/README.md)を整理した。外側準備とartifact保全の親監督が未成立で、全工程の測定値は未確定である。次は初回準備より前から動く監督環境の実装可能性確認とし、成功済み取引を反復しない。科学seed消費0・科学leaseなし・BEFCSと正式関係の未登録/未実行を維持する。
-
 Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦ができる Bao のブラウザーゲームです。ゲーム本体は public/ の静的ファイルで動作し、ビルドは不要です。
 
 公式公開サイト: [bao-la-kiswahili.cultivationdata.net](https://bao-la-kiswahili.cultivationdata.net/)
@@ -73,11 +69,9 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦が
 | AI-GEN4以降の改善案 | [今後の改善候補](doc/ai-engineering/AI_GEN4_FUTURE_IMPROVEMENT_OPTIONS_20260923.md) |
 | 研究世代ごとの結果と現在状態 | [研究成果の中央索引](doc/RESEARCH_INDEX.md) |
 | 世代横断の今後の研究候補と、完了研究から引き継ぐ境界 | [研究アジェンダ](doc/FUTURE_RESEARCH_AGENDA.md) |
-| 現在の中心課題である第五世代の計画と供給診断の状態 | [第五世代研究](doc/research-generation-5/README.md) |
+| 第五世代研究の目的、計画、成果 | [第五世代研究](doc/research-generation-5/README.md) |
 
-2026-10-16の[固定code取得と封印原imageの保存](doc/research-generation-5/befcs-capsule-20261016/README.md)では、1,266ファイルの取得と原image全体の外部保存・独立復元を確認しました。ACK抑止は未ACKを維持します。科学供給と正式関係は未登録・未実行、新規科学seed消費0です。外側起動・封印後制御記録等を含む全工程は未成立であり、[現在の完了判定表](doc/research-generation-5/befcs-capsule-20261016/COMPLETION_GATES.md)に残る条件を示します。
-
-第五世代研究の途中経過と再開条件は、2026-10-15（日本時間）に[PR #205](https://github.com/nkkmd/bao-la-kiswahili-game/pull/205)でmainへ統合済みです。研究全体は継続中です。G5-01〜G5-05の供給研究は終了し、G5-03・G5-04で計16完全領域を取得しましたが、主要課題に必要な手による勝敗価値差はまだ得ていません。現在はBEFCS-STUDY1の実行基盤を検証しており、実Git・停止処理の第3版と保存証拠の独立検算が合格しました。BEFCSは未登録・未実行で、正式な「順位変動と勝敗価値損失」の検証も未登録・未実行です。[main統合記録](doc/research-generation-5/checkpoint-20261014/MAIN_INTEGRATION_20261015.md)、[中間保存と残り工程](doc/research-generation-5/checkpoint-20261014/README.md)、[現在状態](doc/research-generation-5/CURRENT_STATUS.md)、[再開位置](doc/research-generation-5/RESUME_HERE.md)を参照してください。研究結果と公開AIの採用・変更は別に判断します。
+第五世代研究では、探索条件による着手順位の変化と、完全解析で確定した勝敗価値の損失との関係を調べています。研究は継続中です。[研究の計画と概要](doc/research-generation-5/README.md)、[現在の進捗](doc/research-generation-5/CURRENT_STATUS.md)、[再開手順](doc/research-generation-5/RESUME_HERE.md)を参照してください。研究結果と公開AIの採用・変更は別に判断します。
 
 先攻・後攻差については、独立した[AI-GEN4追加研究](doc/first-player-gen4/FINAL_REPORT.md)の全17,768局と検証が完了し、mainへ統合済みです。公開expertの静的評価上位3手序盤では先攻有利、全合法手からの一様序盤では未確定でした。Bao一般の先後差は未確定とし、第五世代の個別Studyとは別に管理します。
 
