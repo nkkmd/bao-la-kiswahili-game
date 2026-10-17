@@ -1,0 +1,22 @@
+name: G5 Preserved Runner Topology Audit
+on:
+  push:
+    branches: [main, research/g5-parent-scope-20261017]
+    paths: ['tools/research/g5-runner-topology/**', 'doc/research-generation-5/runner-topology-20261017/**', '.github/workflows/g5-runner-topology.yml']
+  pull_request:
+    paths: ['tools/research/g5-runner-topology/**', 'doc/research-generation-5/runner-topology-20261017/**', '.github/workflows/g5-runner-topology.yml']
+permissions:
+  contents: read
+jobs:
+  topology:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify preserved runner source and existing job order without executing either
+        run: |
+          python3 tools/research/g5-runner-topology/test-verify.py
+          python3 tools/research/g5-runner-topology/verify.py > "$RUNNER_TEMP/runner-topology.json"
+          diff -u doc/research-generation-5/runner-topology-20261017/VERIFICATION.json "$RUNNER_TEMP/runner-topology.json"

@@ -1,0 +1,24 @@
+{
+  "repository": "actions/runner",
+  "tag": "v2.337.0",
+  "commit": "397b032cbf865e9c3ddfab89d533ec19325e1273",
+  "observedVersion": "2.337.0",
+  "files": [
+    {
+      "path": "src/Runner.Worker/JobExtension.cs",
+      "blob": "1705f749f2f4692c75d56c53944d59b39c437c7e"
+    },
+    {
+      "path": "src/Runner.Worker/ActionManager.cs",
+      "blob": "7615309ce1cd20bf91c312326616c110f212acaf"
+    },
+    {
+      "path": "src/Runner.Worker/JobRunner.cs",
+      "blob": "3c4799a29e0223235b0128c2ceac2861c4d07f3d"
+    },
+    {
+      "path": "LICENSE",
+      "blob": "f97f5c674845bbb3a82cea59afcc307d43acb072"
+    }
+  ]
+}

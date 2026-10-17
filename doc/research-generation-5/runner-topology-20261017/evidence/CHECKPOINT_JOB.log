@@ -1,0 +1,818 @@
+﻿2026-10-17T02:06:22.4843702Z Current runner version: '2.337.0'
+2026-10-17T02:06:22.4868493Z ##[group]Runner Image Provisioner
+2026-10-17T02:06:22.4869414Z Hosted Compute Agent
+2026-10-17T02:06:22.4870060Z Version: 20261012.601
+2026-10-17T02:06:22.4870748Z Commit: f3dc54e1fb89da6852db922499a0233137369e1d
+2026-10-17T02:06:22.4871507Z Build Date: 2026-10-12T17:48:21Z
+2026-10-17T02:06:22.4872280Z Worker ID: {8f46cfef-cc1e-43c1-ba81-82833b7836db}
+2026-10-17T02:06:22.4873479Z Region: eastus
+2026-10-17T02:06:22.4874105Z Cloud: Azure
+2026-10-17T02:06:22.4874697Z ##[endgroup]
+2026-10-17T02:06:22.4876323Z ##[group]Operating System
+2026-10-17T02:06:22.4877074Z Ubuntu
+2026-10-17T02:06:22.4877717Z 24.04.5
+2026-10-17T02:06:22.4878351Z LTS
+2026-10-17T02:06:22.4878907Z ##[endgroup]
+2026-10-17T02:06:22.4879583Z ##[group]Runner Image
+2026-10-17T02:06:22.4880285Z Image: ubuntu-24.04
+2026-10-17T02:06:22.4880946Z Version: 20261012.334.1
+2026-10-17T02:06:22.4882267Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-17T02:06:22.4884188Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-17T02:06:22.4885210Z ##[endgroup]
+2026-10-17T02:06:22.4886391Z ##[group]GITHUB_TOKEN Permissions
+2026-10-17T02:06:22.4888560Z Contents: read
+2026-10-17T02:06:22.4889245Z Metadata: read
+2026-10-17T02:06:22.4889881Z ##[endgroup]
+2026-10-17T02:06:22.4892393Z Secret source: Actions
+2026-10-17T02:06:22.4893687Z Cache mode: write
+2026-10-17T02:06:22.4894616Z Prepare workflow directory
+2026-10-17T02:06:22.5223536Z Prepare all required actions
+2026-10-17T02:06:22.5271365Z Getting action download info
+2026-10-17T02:06:22.7294538Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-17T02:06:22.8457628Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-10-17T02:06:23.0424528Z Complete job name: checkpoint
+2026-10-17T02:06:23.1190466Z ##[group]Run actions/checkout@v4
+2026-10-17T02:06:23.1191373Z with:
+2026-10-17T02:06:23.1191828Z   fetch-depth: 0
+2026-10-17T02:06:23.1192309Z   persist-credentials: false
+2026-10-17T02:06:23.1193078Z   repository: nkkmd/bao-la-kiswahili-game
+2026-10-17T02:06:23.1197135Z   token: ***
+2026-10-17T02:06:23.1197639Z   ssh-strict: true
+2026-10-17T02:06:23.1198142Z   ssh-user: git
+2026-10-17T02:06:23.1198629Z   clean: true
+2026-10-17T02:06:23.1199139Z   sparse-checkout-cone-mode: true
+2026-10-17T02:06:23.1199732Z   fetch-tags: false
+2026-10-17T02:06:23.1200250Z   show-progress: true
+2026-10-17T02:06:23.1200767Z   lfs: false
+2026-10-17T02:06:23.1201260Z   submodules: false
+2026-10-17T02:06:23.1201778Z   set-safe-directory: true
+2026-10-17T02:06:23.1202353Z   allow-unsafe-pr-checkout: false
+2026-10-17T02:06:23.1203438Z ##[endgroup]
+2026-10-17T02:06:23.2213154Z Syncing repository: nkkmd/bao-la-kiswahili-game
+2026-10-17T02:06:23.2216271Z ##[group]Getting Git version info
+2026-10-17T02:06:23.2217749Z Working directory is '/home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game'
+2026-10-17T02:06:23.2219911Z [command]/usr/bin/git version
+2026-10-17T02:06:23.2352519Z git version 2.55.0
+2026-10-17T02:06:23.2375767Z ##[endgroup]
+2026-10-17T02:06:23.2390905Z Temporarily overriding HOME='/home/runner/work/_temp/a3ca575f-b3cb-4015-8208-e6dca99e715b' before making global git config changes
+2026-10-17T02:06:23.2393548Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-17T02:06:23.2400303Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game
+2026-10-17T02:06:23.2456711Z Deleting the contents of '/home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game'
+2026-10-17T02:06:23.2462955Z ##[group]Initializing the repository
+2026-10-17T02:06:23.2467176Z [command]/usr/bin/git init /home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game
+2026-10-17T02:06:23.2608953Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-17T02:06:23.2611291Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-17T02:06:23.2613604Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-17T02:06:23.2615469Z hint: call:
+2026-10-17T02:06:23.2616641Z hint:
+2026-10-17T02:06:23.2618032Z hint: 	git config --global init.defaultBranch <name>
+2026-10-17T02:06:23.2619636Z hint:
+2026-10-17T02:06:23.2621130Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-17T02:06:23.2623460Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-17T02:06:23.2625137Z hint:
+2026-10-17T02:06:23.2626165Z hint: 	git branch -m <name>
+2026-10-17T02:06:23.2627364Z hint:
+2026-10-17T02:06:23.2628931Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-17T02:06:23.2631659Z Initialized empty Git repository in /home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game/.git/
+2026-10-17T02:06:23.2636106Z [command]/usr/bin/git remote add origin https://github.com/nkkmd/bao-la-kiswahili-game
+2026-10-17T02:06:23.2698981Z ##[endgroup]
+2026-10-17T02:06:23.2700185Z ##[group]Disabling automatic garbage collection
+2026-10-17T02:06:23.2703216Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-17T02:06:23.2736188Z ##[endgroup]
+2026-10-17T02:06:23.2737388Z ##[group]Setting up auth
+2026-10-17T02:06:23.2744221Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-17T02:06:23.2781719Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-17T02:06:23.3187583Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-17T02:06:23.3227755Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-17T02:06:23.3450402Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-17T02:06:23.3488414Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-17T02:06:23.3708488Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-17T02:06:23.3748254Z ##[endgroup]
+2026-10-17T02:06:23.3749261Z ##[group]Fetching the repository
+2026-10-17T02:06:23.3758547Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/* +f19ad81fd38cc9a2228914bdc916cbd8bac94d81:refs/remotes/pull/209/merge
+2026-10-17T02:06:35.4355174Z From https://github.com/nkkmd/bao-la-kiswahili-game
+2026-10-17T02:06:35.4358877Z  * [new branch]        agent/add-current-status-standing-rule   -> origin/agent/add-current-status-standing-rule
+2026-10-17T02:06:35.4363024Z  * [new branch]        agent/add-phase-transition-research-ledger -> origin/agent/add-phase-transition-research-ledger
+2026-10-17T02:06:35.4367082Z  * [new branch]        agent/candidate-board-audit              -> origin/agent/candidate-board-audit
+2026-10-17T02:06:35.4369510Z  * [new branch]        agent/classify-phase-transition-candidates -> origin/agent/classify-phase-transition-candidates
+2026-10-17T02:06:35.4372198Z  * [new branch]        agent/document-rules-baseline            -> origin/agent/document-rules-baseline
+2026-10-17T02:06:35.4374786Z  * [new branch]        agent/fix-archetype-ply-key              -> origin/agent/fix-archetype-ply-key
+2026-10-17T02:06:35.4377762Z  * [new branch]        agent/fix-phase-transition-array-columns -> origin/agent/fix-phase-transition-array-columns
+2026-10-17T02:06:35.4380766Z  * [new branch]        agent/joseki-research-phase-0-3          -> origin/agent/joseki-research-phase-0-3
+2026-10-17T02:06:35.4384422Z  * [new branch]        agent/localize-pilot-v2-doc              -> origin/agent/localize-pilot-v2-doc
+2026-10-17T02:06:35.4387877Z  * [new branch]        agent/phase-transition-archetypes        -> origin/agent/phase-transition-archetypes
+2026-10-17T02:06:35.4391240Z  * [new branch]        agent/phase-transition-candidate-analysis -> origin/agent/phase-transition-candidate-analysis
+2026-10-17T02:06:35.4395164Z  * [new branch]        agent/phase-transition-forcing-ablation  -> origin/agent/phase-transition-forcing-ablation
+2026-10-17T02:06:35.4398942Z  * [new branch]        agent/phase-transition-opening-diversity -> origin/agent/phase-transition-opening-diversity
+2026-10-17T02:06:35.4403004Z  * [new branch]        agent/phase-transition-pilot-profile     -> origin/agent/phase-transition-pilot-profile
+2026-10-17T02:06:35.4406173Z  * [new branch]        agent/phase-transition-pilot-v2          -> origin/agent/phase-transition-pilot-v2
+2026-10-17T02:06:35.4409389Z  * [new branch]        agent/phase-transition-pilot-v2-seed-fix -> origin/agent/phase-transition-pilot-v2-seed-fix
+2026-10-17T02:06:35.4413081Z  * [new branch]        agent/phase-transition-research-foundation -> origin/agent/phase-transition-research-foundation
+2026-10-17T02:06:35.4416460Z  * [new branch]        agent/phase-transition-smoke-runner      -> origin/agent/phase-transition-smoke-runner
+2026-10-17T02:06:35.4419727Z  * [new branch]        agent/refine-phase-transition-analysis-v2 -> origin/agent/refine-phase-transition-analysis-v2
+2026-10-17T02:06:35.4422599Z  * [new branch]        chore/disable-subagents                  -> origin/chore/disable-subagents
+2026-10-17T02:06:35.4425804Z  * [new branch]        docs-root-readme-ai-engineering-index    -> origin/docs-root-readme-ai-engineering-index
+2026-10-17T02:06:35.4429229Z  * [new branch]        docs/ai-gen3-live-verification           -> origin/docs/ai-gen3-live-verification
+2026-10-17T02:06:35.4433857Z  * [new branch]        docs/ai-gen4-future-improvement-options-20260923 -> origin/docs/ai-gen4-future-improvement-options-20260923
+2026-10-17T02:06:35.4438178Z  * [new branch]        docs/ai-gen4-options-rg4-synthesis-20260928 -> origin/docs/ai-gen4-options-rg4-synthesis-20260928
+2026-10-17T02:06:35.4442119Z  * [new branch]        docs/ai-gen4-proposal-refinement-20260923 -> origin/docs/ai-gen4-proposal-refinement-20260923
+2026-10-17T02:06:35.4448000Z  * [new branch]        docs/ai-improvement-final-consistency-20260923 -> origin/docs/ai-improvement-final-consistency-20260923
+2026-10-17T02:06:35.4453704Z  * [new branch]        docs/clarify-research-navigation-20260929 -> origin/docs/clarify-research-navigation-20260929
+2026-10-17T02:06:35.4457417Z  * [new branch]        docs/enforce-japanese-documentation-quality -> origin/docs/enforce-japanese-documentation-quality
+2026-10-17T02:06:35.4461749Z  * [new branch]        docs/g5-main-status-audit-20261015       -> origin/docs/g5-main-status-audit-20261015
+2026-10-17T02:06:35.4465621Z  * [new branch]        docs/game-record-production-ops-20260916 -> origin/docs/game-record-production-ops-20260916
+2026-10-17T02:06:35.4468851Z  * [new branch]        docs/japanese-human-docs-phase1          -> origin/docs/japanese-human-docs-phase1
+2026-10-17T02:06:35.4472103Z  * [new branch]        docs/japanese-human-docs-phase2          -> origin/docs/japanese-human-docs-phase2
+2026-10-17T02:06:35.4477230Z  * [new branch]        docs/japanese-human-docs-phase3          -> origin/docs/japanese-human-docs-phase3
+2026-10-17T02:06:35.4483446Z  * [new branch]        docs/jev-direct-policy-final-consistency-20260923 -> origin/docs/jev-direct-policy-final-consistency-20260923
+2026-10-17T02:06:35.4490259Z  * [new branch]        docs/jev-direct-policy-posthoc-analysis-20260923 -> origin/docs/jev-direct-policy-posthoc-analysis-20260923
+2026-10-17T02:06:35.4495218Z  * [new branch]        docs/jev-direct-policy-tactical-followup-20260923 -> origin/docs/jev-direct-policy-tactical-followup-20260923
+2026-10-17T02:06:35.4499808Z  * [new branch]        docs/jev-posthoc-index-audit-20260923    -> origin/docs/jev-posthoc-index-audit-20260923
+2026-10-17T02:06:35.4503951Z  * [new branch]        docs/next-ai-candidate-preflight-20260914 -> origin/docs/next-ai-candidate-preflight-20260914
+2026-10-17T02:06:35.4507357Z  * [new branch]        docs/normalize-formal-decision-labels    -> origin/docs/normalize-formal-decision-labels
+2026-10-17T02:06:35.4511164Z  * [new branch]        docs/oracle-integrity-next-study         -> origin/docs/oracle-integrity-next-study
+2026-10-17T02:06:35.4514542Z  * [new branch]        docs/pbai-p12-post-merge-status-sync     -> origin/docs/pbai-p12-post-merge-status-sync
+2026-10-17T02:06:35.4517573Z  * [new branch]        docs/pbai-p14-closure-20260928           -> origin/docs/pbai-p14-closure-20260928
+2026-10-17T02:06:35.4520632Z  * [new branch]        docs/pbai-p15-final-crosscheck-20260928  -> origin/docs/pbai-p15-final-crosscheck-20260928
+2026-10-17T02:06:35.4524105Z  * [new branch]        docs/pbai-p15-support-closure-20260928   -> origin/docs/pbai-p15-support-closure-20260928
+2026-10-17T02:06:35.4527301Z  * [new branch]        docs/readme-ai-status-audit-20260912     -> origin/docs/readme-ai-status-audit-20260912
+2026-10-17T02:06:35.4530762Z  * [new branch]        docs/readme-jev-independent-comparison-20260923 -> origin/docs/readme-jev-independent-comparison-20260923
+2026-10-17T02:06:35.4534399Z  * [new branch]        docs/readme-public-ai-navigation         -> origin/docs/readme-public-ai-navigation
+2026-10-17T02:06:35.4537285Z  * [new branch]        docs/readme-usability-refresh            -> origin/docs/readme-usability-refresh
+2026-10-17T02:06:35.4540472Z  * [new branch]        docs/reorder-future-research-agenda-20260929 -> origin/docs/reorder-future-research-agenda-20260929
+2026-10-17T02:06:35.4544191Z  * [new branch]        docs/reorder-stage2-research-priority    -> origin/docs/reorder-stage2-research-priority
+2026-10-17T02:06:35.4547602Z  * [new branch]        docs/replay-v0.5.0-consistency-20260918  -> origin/docs/replay-v0.5.0-consistency-20260918
+2026-10-17T02:06:35.4550844Z  * [new branch]        docs/research-sequence-endgame-symmetry  -> origin/docs/research-sequence-endgame-symmetry
+2026-10-17T02:06:35.4554123Z  * [new branch]        docs/resolve-symmetry-limit              -> origin/docs/resolve-symmetry-limit
+2026-10-17T02:06:35.4557051Z  * [new branch]        docs/second-generation-research-agenda   -> origin/docs/second-generation-research-agenda
+2026-10-17T02:06:35.4560000Z  * [new branch]        docs/streamline-root-readme              -> origin/docs/streamline-root-readme
+2026-10-17T02:06:35.4563202Z  * [new branch]        engineering/ai-gen4-deployed-verification -> origin/engineering/ai-gen4-deployed-verification
+2026-10-17T02:06:35.4566431Z  * [new branch]        engineering/ai-gen4-deployment-handoff   -> origin/engineering/ai-gen4-deployment-handoff
+2026-10-17T02:06:35.4569336Z  * [new branch]        engineering/ai-gen4-release-001          -> origin/engineering/ai-gen4-release-001
+2026-10-17T02:06:35.4572252Z  * [new branch]        engineering/pbai-c015-adoption-review    -> origin/engineering/pbai-c015-adoption-review
+2026-10-17T02:06:35.4575875Z  * [new branch]        engineering/pbai-c015-expert-deployment-handoff -> origin/engineering/pbai-c015-expert-deployment-handoff
+2026-10-17T02:06:35.4579850Z  * [new branch]        engineering/pbai-c015-expert-production  -> origin/engineering/pbai-c015-expert-production
+2026-10-17T02:06:35.4583230Z  * [new branch]        engineering/pbai-c015-hard-integration   -> origin/engineering/pbai-c015-hard-integration
+2026-10-17T02:06:35.4586269Z  * [new branch]        engineering/pbai-p1-c001-v1-closure      -> origin/engineering/pbai-p1-c001-v1-closure
+2026-10-17T02:06:35.4589313Z  * [new branch]        engineering/pbai-p1-c001-v1-development  -> origin/engineering/pbai-p1-c001-v1-development
+2026-10-17T02:06:35.4592555Z  * [new branch]        engineering/pbai-p1-c001-v1-predevelopment -> origin/engineering/pbai-p1-c001-v1-predevelopment
+2026-10-17T02:06:35.4595903Z  * [new branch]        engineering/pbai-p1-c002-v1-closure      -> origin/engineering/pbai-p1-c002-v1-closure
+2026-10-17T02:06:35.4599099Z  * [new branch]        engineering/pbai-p1-c002-v1-development  -> origin/engineering/pbai-p1-c002-v1-development
+2026-10-17T02:06:35.4602115Z  * [new branch]        engineering/pbai-p1-c003-v1-closure      -> origin/engineering/pbai-p1-c003-v1-closure
+2026-10-17T02:06:35.4605435Z  * [new branch]        engineering/pbai-p1-c003-v1-predevelopment -> origin/engineering/pbai-p1-c003-v1-predevelopment
+2026-10-17T02:06:35.4608525Z  * [new branch]        engineering/pbai-p1-c004-v1-closure      -> origin/engineering/pbai-p1-c004-v1-closure
+2026-10-17T02:06:35.4611434Z  * [new branch]        engineering/pbai-p1-c004-v1-contract     -> origin/engineering/pbai-p1-c004-v1-contract
+2026-10-17T02:06:35.4614733Z  * [new branch]        engineering/pbai-p1-c004-v1-development  -> origin/engineering/pbai-p1-c004-v1-development
+2026-10-17T02:06:35.4617959Z  * [new branch]        engineering/pbai-p1-phase-a-evidence-audit -> origin/engineering/pbai-p1-phase-a-evidence-audit
+2026-10-17T02:06:35.4621303Z  * [new branch]        engineering/pbai-p1-phase-b-ai-gen2-baseline -> origin/engineering/pbai-p1-phase-b-ai-gen2-baseline
+2026-10-17T02:06:35.4624915Z  * [new branch]        engineering/pbai-p1-phase-c-benchmark-gates -> origin/engineering/pbai-p1-phase-c-benchmark-gates
+2026-10-17T02:06:35.4628225Z  * [new branch]        engineering/pbai-p1-phase-d-c002-contract -> origin/engineering/pbai-p1-phase-d-c002-contract
+2026-10-17T02:06:35.4631346Z  * [new branch]        engineering/pbai-p10-expert-validation   -> origin/engineering/pbai-p10-expert-validation
+2026-10-17T02:06:35.4634692Z  * [new branch]        engineering/pbai-p11-expert-validation   -> origin/engineering/pbai-p11-expert-validation
+2026-10-17T02:06:35.4637850Z  * [new branch]        engineering/pbai-p12-margin-bounded-search -> origin/engineering/pbai-p12-margin-bounded-search
+2026-10-17T02:06:35.4641000Z  * [new branch]        engineering/pbai-p14-a1-support          -> origin/engineering/pbai-p14-a1-support
+2026-10-17T02:06:35.4644033Z  * [new branch]        engineering/pbai-p14-c017-development    -> origin/engineering/pbai-p14-c017-development
+2026-10-17T02:06:35.4647041Z  * [new branch]        engineering/pbai-p14-c017-performance    -> origin/engineering/pbai-p14-c017-performance
+2026-10-17T02:06:35.4650114Z  * [new branch]        engineering/pbai-p14-c017-performance-002 -> origin/engineering/pbai-p14-c017-performance-002
+2026-10-17T02:06:35.4653174Z  * [new branch]        engineering/pbai-p15-f1-support          -> origin/engineering/pbai-p15-f1-support
+2026-10-17T02:06:35.4656053Z  * [new branch]        engineering/pbai-p2-c008-v1-development  -> origin/engineering/pbai-p2-c008-v1-development
+2026-10-17T02:06:35.4659060Z  * [new branch]        engineering/pbai-p2-c009-v1-development  -> origin/engineering/pbai-p2-c009-v1-development
+2026-10-17T02:06:35.4662218Z  * [new branch]        engineering/pbai-p2-program-initialization -> origin/engineering/pbai-p2-program-initialization
+2026-10-17T02:06:35.4665475Z  * [new branch]        engineering/pbai-p3-c-contract-freeze    -> origin/engineering/pbai-p3-c-contract-freeze
+2026-10-17T02:06:35.4668390Z  * [new branch]        engineering/pbai-p3-d-support-audit      -> origin/engineering/pbai-p3-d-support-audit
+2026-10-17T02:06:35.4671440Z  * [new branch]        engineering/pbai-p3-program-initialization -> origin/engineering/pbai-p3-program-initialization
+2026-10-17T02:06:35.4674935Z  * [new branch]        engineering/pbai-p4-c011-lightweight-transitions -> origin/engineering/pbai-p4-c011-lightweight-transitions
+2026-10-17T02:06:35.4677996Z  * [new branch]        engineering/pbai-p5-evidence             -> origin/engineering/pbai-p5-evidence
+2026-10-17T02:06:35.4681027Z  * [new branch]        engineering/pbai-p5-reverification-preparation -> origin/engineering/pbai-p5-reverification-preparation
+2026-10-17T02:06:35.4684423Z  * [new branch]        engineering/pbai-p6-logic-gate-evaluator -> origin/engineering/pbai-p6-logic-gate-evaluator
+2026-10-17T02:06:35.4687543Z  * [new branch]        engineering/pbai-p7-logic-inference      -> origin/engineering/pbai-p7-logic-inference
+2026-10-17T02:06:35.4690616Z  * [new branch]        engineering/pbai-p8-independent-revalidation -> origin/engineering/pbai-p8-independent-revalidation
+2026-10-17T02:06:35.4694069Z  * [new branch]        engineering/pbai-p9-standard-time-readiness -> origin/engineering/pbai-p9-standard-time-readiness
+2026-10-17T02:06:35.4696972Z  * [new branch]        experiment/jev-ai-gen4-20260921          -> origin/experiment/jev-ai-gen4-20260921
+2026-10-17T02:06:35.4699699Z  * [new branch]        experiment/jev-direct-policy-20260922    -> origin/experiment/jev-direct-policy-20260922
+2026-10-17T02:06:35.4702309Z  * [new branch]        feat/ai-badge-difficulty                 -> origin/feat/ai-badge-difficulty
+2026-10-17T02:06:35.4704965Z  * [new branch]        feat/app-version-display-20260915        -> origin/feat/app-version-display-20260915
+2026-10-17T02:06:35.4707835Z  * [new branch]        feat/board-color-accessibility-20260915  -> origin/feat/board-color-accessibility-20260915
+2026-10-17T02:06:35.4710796Z  * [new branch]        feat/game-record-contribution-20260916   -> origin/feat/game-record-contribution-20260916
+2026-10-17T02:06:35.4713690Z  * [new branch]        feat/game-record-replay-20260918         -> origin/feat/game-record-replay-20260918
+2026-10-17T02:06:35.4716279Z  * [new branch]        feat/game-record-save-20260915           -> origin/feat/game-record-save-20260915
+2026-10-17T02:06:35.4718684Z  * [new branch]        feat/illustrated-rules                   -> origin/feat/illustrated-rules
+2026-10-17T02:06:35.4721186Z  * [new branch]        feat/live-rule-commentary-20260914       -> origin/feat/live-rule-commentary-20260914
+2026-10-17T02:06:35.4723828Z  * [new branch]        feat/privacy-auto-locale                 -> origin/feat/privacy-auto-locale
+2026-10-17T02:06:35.4726449Z  * [new branch]        feat/public-game-visual-refresh          -> origin/feat/public-game-visual-refresh
+2026-10-17T02:06:35.4729114Z  * [new branch]        feat/public-ui-auto-locale               -> origin/feat/public-ui-auto-locale
+2026-10-17T02:06:35.4731494Z  * [new branch]        feat/release-v060-20261009               -> origin/feat/release-v060-20261009
+2026-10-17T02:06:35.4733913Z  * [new branch]        feat/seo-foundation                      -> origin/feat/seo-foundation
+2026-10-17T02:06:35.4736337Z  * [new branch]        feat/takasia-preparation-20261008        -> origin/feat/takasia-preparation-20261008
+2026-10-17T02:06:35.4739033Z  * [new branch]        fix/board-border-clearance-20261001      -> origin/fix/board-border-clearance-20261001
+2026-10-17T02:06:35.4741771Z  * [new branch]        fix/board-vertical-balance-20261001      -> origin/fix/board-vertical-balance-20261001
+2026-10-17T02:06:35.4744548Z  * [new branch]        fix/english-expert-label-bingwa          -> origin/fix/english-expert-label-bingwa
+2026-10-17T02:06:35.4747174Z  * [new branch]        fix/japanese-expert-label-bingwa         -> origin/fix/japanese-expert-label-bingwa
+2026-10-17T02:06:35.4749596Z  * [new branch]        fix/mobile-setup-frame                   -> origin/fix/mobile-setup-frame
+2026-10-17T02:06:35.4751832Z  * [new branch]        fix/pit-label-placement                  -> origin/fix/pit-label-placement
+2026-10-17T02:06:35.4754427Z  * [new branch]        fix/public-canvas-quality-20261001       -> origin/fix/public-canvas-quality-20261001
+2026-10-17T02:06:35.4757015Z  * [new branch]        fix/rules-row-spacing-20260913           -> origin/fix/rules-row-spacing-20260913
+2026-10-17T02:06:35.4759703Z  * [new branch]        fix/rules-south-label-alignment-20260913 -> origin/fix/rules-south-label-alignment-20260913
+2026-10-17T02:06:35.4762537Z  * [new branch]        fix/tactical-motif-stage1-closure-ci     -> origin/fix/tactical-motif-stage1-closure-ci
+2026-10-17T02:06:35.4765298Z  * [new branch]        integration/g3-07-main-doc-sync          -> origin/integration/g3-07-main-doc-sync
+2026-10-17T02:06:35.4767753Z  * [new branch]        integration/g3-09-main-finalize          -> origin/integration/g3-09-main-finalize
+2026-10-17T02:06:35.4770540Z  * [new branch]        integration/g3-09-main-finalize-active   -> origin/integration/g3-09-main-finalize-active
+2026-10-17T02:06:35.4773402Z  * [new branch]        integration/g3-09-main-finalize-run      -> origin/integration/g3-09-main-finalize-run
+2026-10-17T02:06:35.4776068Z  * [new branch]        integration/g3-09-main-finalize-work     -> origin/integration/g3-09-main-finalize-work
+2026-10-17T02:06:35.4778215Z  * [new branch]        main                                     -> origin/main
+2026-10-17T02:06:35.4780369Z  * [new branch]        maintenance/g2-05-followup-hardening     -> origin/maintenance/g2-05-followup-hardening
+2026-10-17T02:06:35.4783155Z  * [new branch]        maintenance/g2-06-post-merge-closure     -> origin/maintenance/g2-06-post-merge-closure
+2026-10-17T02:06:35.4786089Z  * [new branch]        maintenance/g2-07-g2-08-japanese-docs-2026-08-30 -> origin/maintenance/g2-07-g2-08-japanese-docs-2026-08-30
+2026-10-17T02:06:35.4789117Z  * [new branch]        maintenance/g2-07-japanese-documentation -> origin/maintenance/g2-07-japanese-documentation
+2026-10-17T02:06:35.4791877Z  * [new branch]        maintenance/g2-07-post-merge-closure     -> origin/maintenance/g2-07-post-merge-closure
+2026-10-17T02:06:35.4795121Z  * [new branch]        maintenance/g3-03-g3-04-post-merge-integration-record -> origin/maintenance/g3-03-g3-04-post-merge-integration-record
+2026-10-17T02:06:35.4865445Z  * [new branch]        maintenance/japanese-documentation-integration-2026-08-29 -> origin/maintenance/japanese-documentation-integration-2026-08-29
+2026-10-17T02:06:35.4871424Z  * [new branch]        maintenance/japanese-documentation-standard -> origin/maintenance/japanese-documentation-standard
+2026-10-17T02:06:35.4878248Z  * [new branch]        maintenance/lgtgmiv-current-doc-consistency-2026-09-01 -> origin/maintenance/lgtgmiv-current-doc-consistency-2026-09-01
+2026-10-17T02:06:35.4883384Z  * [new branch]        maintenance/pre-g2-11-strategic-representation-prerequisite -> origin/maintenance/pre-g2-11-strategic-representation-prerequisite
+2026-10-17T02:06:35.4887083Z  * [new branch]        maintenance/repository-consistency-20260922 -> origin/maintenance/repository-consistency-20260922
+2026-10-17T02:06:35.4890349Z  * [new branch]        maintenance/repository-consistency-audit-20260917 -> origin/maintenance/repository-consistency-audit-20260917
+2026-10-17T02:06:35.4894416Z  * [new branch]        maintenance/repository-consistency-audit-followup-20260917 -> origin/maintenance/repository-consistency-audit-followup-20260917
+2026-10-17T02:06:35.4897537Z  * [new branch]        pbai-p1-c005-closure                     -> origin/pbai-p1-c005-closure
+2026-10-17T02:06:35.4900139Z  * [new branch]        program-review/post-g3-02-g3-03-authorization -> origin/program-review/post-g3-02-g3-03-authorization
+2026-10-17T02:06:35.4903012Z  * [new branch]        release/ai-gen3-promotion                -> origin/release/ai-gen3-promotion
+2026-10-17T02:06:35.4905553Z  * [new branch]        release/pbai-c011-public-verification    -> origin/release/pbai-c011-public-verification
+2026-10-17T02:06:35.4908416Z  * [new branch]        release/pbai-c011-staged-public-activation -> origin/release/pbai-c011-staged-public-activation
+2026-10-17T02:06:35.4911146Z  * [new branch]        release/v0.4.0-finalize-20260916         -> origin/release/v0.4.0-finalize-20260916
+2026-10-17T02:06:35.4913970Z  * [new branch]        research/blunder-misvaluation-patterns   -> origin/research/blunder-misvaluation-patterns
+2026-10-17T02:06:35.4917213Z  * [new branch]        research/blunder-misvaluation-patterns-stage2-formal -> origin/research/blunder-misvaluation-patterns-stage2-formal
+2026-10-17T02:06:35.4920658Z  * [new branch]        research/critical-positions-outcome-branching -> origin/research/critical-positions-outcome-branching
+2026-10-17T02:06:35.4923897Z  * [new branch]        research/first-player-ai-gen4-20261003   -> origin/research/first-player-ai-gen4-20261003
+2026-10-17T02:06:35.4926798Z  * [new branch]        research/first-player-study-1000         -> origin/research/first-player-study-1000
+2026-10-17T02:06:35.4929464Z  * [new branch]        research/forced-capture-regime-analysis  -> origin/research/forced-capture-regime-analysis
+2026-10-17T02:06:35.4933739Z  * [new branch]        research/g2-01-position-evaluation-empirical-outcome-calibration-replication -> origin/research/g2-01-position-evaluation-empirical-outcome-calibration-replication
+2026-10-17T02:06:35.4937838Z  * [new branch]        research/g2-01-stage1-implementation-backup -> origin/research/g2-01-stage1-implementation-backup
+2026-10-17T02:06:35.4941112Z  * [new branch]        research/g2-02-search-reliability-decision-robustness -> origin/research/g2-02-search-reliability-decision-robustness
+2026-10-17T02:06:35.4945617Z  * [new branch]        research/g2-03-state-transformation-semantics-canonicalization-validation -> origin/research/g2-03-state-transformation-semantics-canonicalization-validation
+2026-10-17T02:06:35.4950014Z  * [new branch]        research/g2-04-restricted-endgame-exact-oracle-expansion -> origin/research/g2-04-restricted-endgame-exact-oracle-expansion
+2026-10-17T02:06:35.4953690Z  * [new branch]        research/g2-05-deep-raw-state-space-enumeration -> origin/research/g2-05-deep-raw-state-space-enumeration
+2026-10-17T02:06:35.4957063Z  * [new branch]        research/g2-06-rich-critical-position-representation -> origin/research/g2-06-rich-critical-position-representation
+2026-10-17T02:06:35.4960991Z  * [new branch]        research/g2-07-practical-comeback-reply-pressure-representation -> origin/research/g2-07-practical-comeback-reply-pressure-representation
+2026-10-17T02:06:35.4965112Z  * [new branch]        research/g2-08-machine-decision-failure-taxonomy -> origin/research/g2-08-machine-decision-failure-taxonomy
+2026-10-17T02:06:35.4968907Z  * [new branch]        research/g2-09-tactical-motif-generalization-counterexample -> origin/research/g2-09-tactical-motif-generalization-counterexample
+2026-10-17T02:06:35.4973365Z  * [new branch]        research/g2-10-unified-multiaxial-strategic-state-representation -> origin/research/g2-10-unified-multiaxial-strategic-state-representation
+2026-10-17T02:06:35.4977366Z  * [new branch]        research/g2-12-state-space-game-tree-growth-estimation -> origin/research/g2-12-state-space-game-tree-growth-estimation
+2026-10-17T02:06:35.4980507Z  * [new branch]        research/g2-final-program-closure        -> origin/research/g2-final-program-closure
+2026-10-17T02:06:35.4984056Z  * [new branch]        research/g3-01-local-game-tree-geometry-measurement-foundation -> origin/research/g3-01-local-game-tree-geometry-measurement-foundation
+2026-10-17T02:06:35.4988094Z  * [new branch]        research/g3-02-effective-branching-reply-width-structure -> origin/research/g3-02-effective-branching-reply-width-structure
+2026-10-17T02:06:35.4991716Z  * [new branch]        research/g3-03-transposition-tree-graph-divergence -> origin/research/g3-03-transposition-tree-graph-divergence
+2026-10-17T02:06:35.4995519Z  * [new branch]        research/g3-04-structural-forcing-corridor-decision-funnel -> origin/research/g3-04-structural-forcing-corridor-decision-funnel
+2026-10-17T02:06:35.4999350Z  * [new branch]        research/g3-05-branch-expansion-compression-transition -> origin/research/g3-05-branch-expansion-compression-transition
+2026-10-17T02:06:35.5003161Z  * [new branch]        research/g3-06-bao-rule-mechanism-geometry-intervention -> origin/research/g3-06-bao-rule-mechanism-geometry-intervention
+2026-10-17T02:06:35.5006984Z  * [new branch]        research/g3-07-search-instability-local-geometry-mechanism -> origin/research/g3-07-search-instability-local-geometry-mechanism
+2026-10-17T02:06:35.5010815Z  * [new branch]        research/g3-08-local-geometry-persistence-memory-length -> origin/research/g3-08-local-geometry-persistence-memory-length
+2026-10-17T02:06:35.5014241Z  * [new branch]        research/g3-08-main-integration-finalize -> origin/research/g3-08-main-integration-finalize
+2026-10-17T02:06:35.5017684Z  * [new branch]        research/g3-09-continuous-local-geometry-representation -> origin/research/g3-09-continuous-local-geometry-representation
+2026-10-17T02:06:35.5021466Z  * [new branch]        research/g3-10-geometry-conditioned-longitudinal-dynamics -> origin/research/g3-10-geometry-conditioned-longitudinal-dynamics
+2026-10-17T02:06:35.5025227Z  * [new branch]        research/g3-11-fresh-depth10-exact-geometry-holdout -> origin/research/g3-11-fresh-depth10-exact-geometry-holdout
+2026-10-17T02:06:35.5029281Z  * [new branch]        research/g3-12-local-game-tree-geometry-generalization-counterexample -> origin/research/g3-12-local-game-tree-geometry-generalization-counterexample
+2026-10-17T02:06:35.5032976Z  * [new branch]        research/g3-final-program-closure        -> origin/research/g3-final-program-closure
+2026-10-17T02:06:35.5035370Z  * [new branch]        research/g3-program-plan                 -> origin/research/g3-program-plan
+2026-10-17T02:06:35.5038149Z  * [new branch]        research/g4-01-transfer-compatibility-instrument -> origin/research/g4-01-transfer-compatibility-instrument
+2026-10-17T02:06:35.5041284Z  * [new branch]        research/g4-02-authorization-review-20260918 -> origin/research/g4-02-authorization-review-20260918
+2026-10-17T02:06:35.5044362Z  * [new branch]        research/g4-02-corridor-tree-graph-transfer -> origin/research/g4-02-corridor-tree-graph-transfer
+2026-10-17T02:06:35.5047135Z  * [new branch]        research/g4-02-sfcdf-transfer-study1     -> origin/research/g4-02-sfcdf-transfer-study1
+2026-10-17T02:06:35.5049593Z  * [new branch]        research/g4-02-sfcdft-study1             -> origin/research/g4-02-sfcdft-study1
+2026-10-17T02:06:35.5052025Z  * [new branch]        research/g4-02-sfcdft-study2-prereg      -> origin/research/g4-02-sfcdft-study2-prereg
+2026-10-17T02:06:35.5054912Z  * [new branch]        research/g4-02-sfcdft-study3-prereg      -> origin/research/g4-02-sfcdft-study3-prereg
+2026-10-17T02:06:35.5057497Z  * [new branch]        research/g4-02-sfcdft-study4-prereg      -> origin/research/g4-02-sfcdft-study4-prereg
+2026-10-17T02:06:35.5060139Z  * [new branch]        research/g4-03-main-integration-record   -> origin/research/g4-03-main-integration-record
+2026-10-17T02:06:35.5062968Z  * [new branch]        research/g4-03-width-ranking-transfer    -> origin/research/g4-03-width-ranking-transfer
+2026-10-17T02:06:35.5066206Z  * [new branch]        research/g4-03-width-ranking-transfer-actions-transition -> origin/research/g4-03-width-ranking-transfer-actions-transition
+2026-10-17T02:06:35.5069581Z  * [new branch]        research/g4-04-geometry-trajectory-transfer -> origin/research/g4-04-geometry-trajectory-transfer
+2026-10-17T02:06:35.5072893Z  * [new branch]        research/g4-05-exact-microdomain-oracle-foundation -> origin/research/g4-05-exact-microdomain-oracle-foundation
+2026-10-17T02:06:35.5076214Z  * [new branch]        research/g4-06-geometry-exact-consequence-bridge -> origin/research/g4-06-geometry-exact-consequence-bridge
+2026-10-17T02:06:35.5079450Z  * [new branch]        research/g4-07-multiscale-geometry-memory-return -> origin/research/g4-07-multiscale-geometry-memory-return
+2026-10-17T02:06:35.5082781Z  * [new branch]        research/g4-08-rule-semantic-geometry-transition -> origin/research/g4-08-rule-semantic-geometry-transition
+2026-10-17T02:06:35.5086017Z  * [new branch]        research/g4-09-search-reliability-exact-agreement -> origin/research/g4-09-search-reliability-exact-agreement
+2026-10-17T02:06:35.5089522Z  * [new branch]        research/g4-10-fresh-depth11-exact-reachability-topology -> origin/research/g4-10-fresh-depth11-exact-reachability-topology
+2026-10-17T02:06:35.5092469Z  * [new branch]        research/g4-program-plan                 -> origin/research/g4-program-plan
+2026-10-17T02:06:35.5095301Z  * [new branch]        research/g4-program-plan-main-integration-sync -> origin/research/g4-program-plan-main-integration-sync
+2026-10-17T02:06:35.5098194Z  * [new branch]        research/g5-01-measurement-readiness     -> origin/research/g5-01-measurement-readiness
+2026-10-17T02:06:35.5100765Z  * [new branch]        research/g5-02-exact-supply              -> origin/research/g5-02-exact-supply
+2026-10-17T02:06:35.5103382Z  * [new branch]        research/g5-03-bounded-terminal-supply   -> origin/research/g5-03-bounded-terminal-supply
+2026-10-17T02:06:35.5105992Z  * [new branch]        research/g5-04-terminal-span-supply      -> origin/research/g5-04-terminal-span-supply
+2026-10-17T02:06:35.5108507Z  * [new branch]        research/g5-05-mixed-reply-supply        -> origin/research/g5-05-mixed-reply-supply
+2026-10-17T02:06:35.5111078Z  * [new branch]        research/g5-befcs-contained-preflight    -> origin/research/g5-befcs-contained-preflight
+2026-10-17T02:06:35.5113863Z  * [new branch]        research/g5-befcs-envelope-preflight     -> origin/research/g5-befcs-envelope-preflight
+2026-10-17T02:06:35.5116414Z  * [new branch]        research/g5-befcs-git-preflight          -> origin/research/g5-befcs-git-preflight
+2026-10-17T02:06:35.5118869Z  * [new branch]        research/g5-befcs-host-preflight         -> origin/research/g5-befcs-host-preflight
+2026-10-17T02:06:35.5121359Z  * [new branch]        research/g5-befcs-joined-preflight       -> origin/research/g5-befcs-joined-preflight
+2026-10-17T02:06:35.5124114Z  * [new branch]        research/g5-befcs-operations-preflight   -> origin/research/g5-befcs-operations-preflight
+2026-10-17T02:06:35.5126790Z  * [new branch]        research/g5-befcs-pipeline-preflight     -> origin/research/g5-befcs-pipeline-preflight
+2026-10-17T02:06:35.5129391Z  * [new branch]        research/g5-befcs-prefix-preflight       -> origin/research/g5-befcs-prefix-preflight
+2026-10-17T02:06:35.5131904Z  * [new branch]        research/g5-befcs-remote-evidence        -> origin/research/g5-befcs-remote-evidence
+2026-10-17T02:06:35.5134812Z  * [new branch]        research/g5-befcs-remote-joined-preflight -> origin/research/g5-befcs-remote-joined-preflight
+2026-10-17T02:06:35.5137688Z  * [new branch]        research/g5-befcs-remote-stop-v3-preflight -> origin/research/g5-befcs-remote-stop-v3-preflight
+2026-10-17T02:06:35.5140475Z  * [new branch]        research/g5-befcs-supervisor-preflight   -> origin/research/g5-befcs-supervisor-preflight
+2026-10-17T02:06:35.5143240Z  * [new branch]        research/g5-befcs-workload-preflight     -> origin/research/g5-befcs-workload-preflight
+2026-10-17T02:06:35.5145870Z  * [new branch]        research/g5-branch-envelope-preflight    -> origin/research/g5-branch-envelope-preflight
+2026-10-17T02:06:35.5148602Z  * [new branch]        research/g5-branch-envelope-supply-design -> origin/research/g5-branch-envelope-supply-design
+2026-10-17T02:06:35.5151160Z  * [new branch]        research/g5-capsule-20261016             -> origin/research/g5-capsule-20261016
+2026-10-17T02:06:35.5154046Z  * [new branch]        research/g5-capsule-archive-38850453567-a1-ack-loss -> origin/research/g5-capsule-archive-38850453567-a1-ack-loss
+2026-10-17T02:06:35.5157355Z  * [new branch]        research/g5-capsule-archive-38850453567-a1-complete -> origin/research/g5-capsule-archive-38850453567-a1-complete
+2026-10-17T02:06:35.5160296Z  * [new branch]        research/g5-checkpoint-main-20261014     -> origin/research/g5-checkpoint-main-20261014
+2026-10-17T02:06:35.5163000Z  * [new branch]        research/g5-compact-bfs-integration      -> origin/research/g5-compact-bfs-integration
+2026-10-17T02:06:35.5165812Z  * [new branch]        research/g5-envelope-registry-fixture-20261013 -> origin/research/g5-envelope-registry-fixture-20261013
+2026-10-17T02:06:35.5168882Z  * [new branch]        research/g5-git-fixture-38428546919-a1-complete -> origin/research/g5-git-fixture-38428546919-a1-complete
+2026-10-17T02:06:35.5172025Z  * [new branch]        research/g5-git-fixture-38428546919-a1-lost-response -> origin/research/g5-git-fixture-38428546919-a1-lost-response
+2026-10-17T02:06:35.5175900Z  * [new branch]        research/g5-git-fixture-38428546919-a1-proxy-before-consume -> origin/research/g5-git-fixture-38428546919-a1-proxy-before-consume
+2026-10-17T02:06:35.5179747Z  * [new branch]        research/g5-git-fixture-38428546919-a1-proxy-final-mirror -> origin/research/g5-git-fixture-38428546919-a1-proxy-final-mirror
+2026-10-17T02:06:35.5183193Z  * [new branch]        research/g5-git-fixture-38428546919-a1-stale-cas -> origin/research/g5-git-fixture-38428546919-a1-stale-cas
+2026-10-17T02:06:35.5186242Z  * [new branch]        research/g5-git-fixture-38429924827-a1-complete -> origin/research/g5-git-fixture-38429924827-a1-complete
+2026-10-17T02:06:35.5189396Z  * [new branch]        research/g5-git-fixture-38429924827-a1-lost-response -> origin/research/g5-git-fixture-38429924827-a1-lost-response
+2026-10-17T02:06:35.5193008Z  * [new branch]        research/g5-git-fixture-38429924827-a1-proxy-before-consume -> origin/research/g5-git-fixture-38429924827-a1-proxy-before-consume
+2026-10-17T02:06:35.5196666Z  * [new branch]        research/g5-git-fixture-38429924827-a1-proxy-final-mirror -> origin/research/g5-git-fixture-38429924827-a1-proxy-final-mirror
+2026-10-17T02:06:35.5199993Z  * [new branch]        research/g5-git-fixture-38429924827-a1-stale-cas -> origin/research/g5-git-fixture-38429924827-a1-stale-cas
+2026-10-17T02:06:35.5203484Z  * [new branch]        research/g5-integrated-preservation-38825929386-a1-ack-loss -> origin/research/g5-integrated-preservation-38825929386-a1-ack-loss
+2026-10-17T02:06:35.5207265Z  * [new branch]        research/g5-integrated-preservation-38825929386-a1-complete -> origin/research/g5-integrated-preservation-38825929386-a1-complete
+2026-10-17T02:06:35.5210976Z  * [new branch]        research/g5-integrated-preservation-38825929386-a1-enospc -> origin/research/g5-integrated-preservation-38825929386-a1-enospc
+2026-10-17T02:06:35.5214832Z  * [new branch]        research/g5-integrated-preservation-38826440613-a1-ack-loss -> origin/research/g5-integrated-preservation-38826440613-a1-ack-loss
+2026-10-17T02:06:35.5218726Z  * [new branch]        research/g5-integrated-preservation-38826440613-a1-complete -> origin/research/g5-integrated-preservation-38826440613-a1-complete
+2026-10-17T02:06:35.5222460Z  * [new branch]        research/g5-integrated-preservation-38826440613-a1-enospc -> origin/research/g5-integrated-preservation-38826440613-a1-enospc
+2026-10-17T02:06:35.5225748Z  * [new branch]        research/g5-lifecycle-admission-20261017 -> origin/research/g5-lifecycle-admission-20261017
+2026-10-17T02:06:35.5228945Z  * [new branch]        research/g5-lifecycle-preservation-38743877526-a1-ack-loss -> origin/research/g5-lifecycle-preservation-38743877526-a1-ack-loss
+2026-10-17T02:06:35.5232752Z  * [new branch]        research/g5-lifecycle-preservation-38743877526-a1-complete -> origin/research/g5-lifecycle-preservation-38743877526-a1-complete
+2026-10-17T02:06:35.5236445Z  * [new branch]        research/g5-lifecycle-preservation-38744322461-a1-ack-loss -> origin/research/g5-lifecycle-preservation-38744322461-a1-ack-loss
+2026-10-17T02:06:35.5240136Z  * [new branch]        research/g5-lifecycle-preservation-38744322461-a1-complete -> origin/research/g5-lifecycle-preservation-38744322461-a1-complete
+2026-10-17T02:06:35.5243659Z  * [new branch]        research/g5-plan-ranking-instability-exact-loss -> origin/research/g5-plan-ranking-instability-exact-loss
+2026-10-17T02:06:35.5246504Z  * [new branch]        research/g5-primary-readiness-review     -> origin/research/g5-primary-readiness-review
+2026-10-17T02:06:35.5249342Z  * [new branch]        research/g5-remote-joined-38473413073-a1-complete -> origin/research/g5-remote-joined-38473413073-a1-complete
+2026-10-17T02:06:35.5252441Z  * [new branch]        research/g5-remote-joined-38473413073-a1-deadline -> origin/research/g5-remote-joined-38473413073-a1-deadline
+2026-10-17T02:06:35.5255669Z  * [new branch]        research/g5-remote-joined-38473413073-a1-host-oom -> origin/research/g5-remote-joined-38473413073-a1-host-oom
+2026-10-17T02:06:35.5258920Z  * [new branch]        research/g5-remote-joined-38473413073-a1-lost-response -> origin/research/g5-remote-joined-38473413073-a1-lost-response
+2026-10-17T02:06:35.5262771Z  * [new branch]        research/g5-remote-joined-38473413073-a1-proxy-final-mirror -> origin/research/g5-remote-joined-38473413073-a1-proxy-final-mirror
+2026-10-17T02:06:35.5266185Z  * [new branch]        research/g5-remote-joined-38474301794-a1-complete -> origin/research/g5-remote-joined-38474301794-a1-complete
+2026-10-17T02:06:35.5269309Z  * [new branch]        research/g5-remote-joined-38474301794-a1-deadline -> origin/research/g5-remote-joined-38474301794-a1-deadline
+2026-10-17T02:06:35.5272415Z  * [new branch]        research/g5-remote-joined-38474301794-a1-host-oom -> origin/research/g5-remote-joined-38474301794-a1-host-oom
+2026-10-17T02:06:35.5275759Z  * [new branch]        research/g5-remote-joined-38474301794-a1-lost-response -> origin/research/g5-remote-joined-38474301794-a1-lost-response
+2026-10-17T02:06:35.5279329Z  * [new branch]        research/g5-remote-joined-38474301794-a1-proxy-final-mirror -> origin/research/g5-remote-joined-38474301794-a1-proxy-final-mirror
+2026-10-17T02:06:35.5282852Z  * [new branch]        research/g5-remote-joined-38497706251-a1-complete -> origin/research/g5-remote-joined-38497706251-a1-complete
+2026-10-17T02:06:35.5285972Z  * [new branch]        research/g5-remote-joined-38497706251-a1-deadline -> origin/research/g5-remote-joined-38497706251-a1-deadline
+2026-10-17T02:06:35.5289046Z  * [new branch]        research/g5-remote-joined-38497706251-a1-host-oom -> origin/research/g5-remote-joined-38497706251-a1-host-oom
+2026-10-17T02:06:35.5292300Z  * [new branch]        research/g5-remote-joined-38497706251-a1-lost-response -> origin/research/g5-remote-joined-38497706251-a1-lost-response
+2026-10-17T02:06:35.5295971Z  * [new branch]        research/g5-remote-joined-38497706251-a1-proxy-final-mirror -> origin/research/g5-remote-joined-38497706251-a1-proxy-final-mirror
+2026-10-17T02:06:35.5299533Z  * [new branch]        research/g5-remote-stop-v3-38497935805-a1-complete -> origin/research/g5-remote-stop-v3-38497935805-a1-complete
+2026-10-17T02:06:35.5302790Z  * [new branch]        research/g5-remote-stop-v3-38497935805-a1-deadline -> origin/research/g5-remote-stop-v3-38497935805-a1-deadline
+2026-10-17T02:06:35.5306138Z  * [new branch]        research/g5-remote-stop-v3-38497935805-a1-host-oom -> origin/research/g5-remote-stop-v3-38497935805-a1-host-oom
+2026-10-17T02:06:35.5309673Z  * [new branch]        research/g5-remote-stop-v3-38497935805-a1-lost-response -> origin/research/g5-remote-stop-v3-38497935805-a1-lost-response
+2026-10-17T02:06:35.5313401Z  * [new branch]        research/g5-remote-stop-v3-38497935805-a1-proxy-final-mirror -> origin/research/g5-remote-stop-v3-38497935805-a1-proxy-final-mirror
+2026-10-17T02:06:35.5316812Z  * [new branch]        research/g5-reply-mode-source-design     -> origin/research/g5-reply-mode-source-design
+2026-10-17T02:06:35.5319343Z  * [new branch]        research/g5-resume-audit-20261015        -> origin/research/g5-resume-audit-20261015
+2026-10-17T02:06:35.5321757Z  * [new branch]        research/g5-science-method-review        -> origin/research/g5-science-method-review
+2026-10-17T02:06:35.5324232Z  * [new branch]        research/g5-v3-import-20261014           -> origin/research/g5-v3-import-20261014
+2026-10-17T02:06:35.5326511Z  * [new branch]        research/g5-v3-transfer-20261014         -> origin/research/g5-v3-transfer-20261014
+2026-10-17T02:06:35.5328993Z  * [new branch]        research/game-start-replication-2026-07  -> origin/research/game-start-replication-2026-07
+2026-10-17T02:06:35.5331711Z  * [new branch]        research/namua-mtaji-temporal-transition -> origin/research/namua-mtaji-temporal-transition
+2026-10-17T02:06:35.5334365Z  * [new branch]        research/namua-symmetry-audit            -> origin/research/namua-symmetry-audit
+2026-10-17T02:06:35.5337561Z  * [new branch]        research/oracle-representation-integrity-symmetry-confirmation -> origin/research/oracle-representation-integrity-symmetry-confirmation
+2026-10-17T02:06:35.5340904Z  * [new branch]        research/paired-opening-retest-plan      -> origin/research/paired-opening-retest-plan
+2026-10-17T02:06:35.5343866Z  * [new branch]        research/position-complexity-difficulty  -> origin/research/position-complexity-difficulty
+2026-10-17T02:06:35.5346838Z  * [new branch]        research/position-evaluation-winrate-calibration -> origin/research/position-evaluation-winrate-calibration
+2026-10-17T02:06:35.5349915Z  * [new branch]        research/position-typology-and-playing-style -> origin/research/position-typology-and-playing-style
+2026-10-17T02:06:35.5353089Z  * [new branch]        research/practical-comeback-error-inducing-moves -> origin/research/practical-comeback-error-inducing-moves
+2026-10-17T02:06:35.5356691Z  * [new branch]        research/pre-g2-11-strategic-regime-representation-eligibility -> origin/research/pre-g2-11-strategic-regime-representation-eligibility
+2026-10-17T02:06:35.5361497Z  * [new branch]        research/pre-g3-02-local-game-tree-geometry-measurement-instrument-verification -> origin/research/pre-g3-02-local-game-tree-geometry-measurement-instrument-verification
+2026-10-17T02:06:35.5366298Z  * [new branch]        research/pre-g3-10-canonical-resource-robust-continuous-geometry -> origin/research/pre-g3-10-canonical-resource-robust-continuous-geometry
+2026-10-17T02:06:35.5370269Z  * [new branch]        research/pre-g3-10-resource-robust-continuous-local-geometry -> origin/research/pre-g3-10-resource-robust-continuous-local-geometry
+2026-10-17T02:06:35.5373794Z  * [new branch]        research/restricted-endgame-winning-regions -> origin/research/restricted-endgame-winning-regions
+2026-10-17T02:06:35.5376628Z  * [new branch]        research/state-space-game-tree-complexity -> origin/research/state-space-game-tree-complexity
+2026-10-17T02:06:35.5379347Z  * [new branch]        research/symmetry-isomorphic-positions   -> origin/research/symmetry-isomorphic-positions
+2026-10-17T02:06:35.5382484Z  * [new branch]        research/symmetry-isomorphic-stage0-verification -> origin/research/symmetry-isomorphic-stage0-verification
+2026-10-17T02:06:35.5386036Z  * [new branch]        research/symmetry-isomorphic-stage1-formal-verification -> origin/research/symmetry-isomorphic-stage1-formal-verification
+2026-10-17T02:06:35.5389749Z  * [new branch]        research/symmetry-isomorphic-stage1-prefreeze-verification -> origin/research/symmetry-isomorphic-stage1-prefreeze-verification
+2026-10-17T02:06:35.5393198Z  * [new branch]        research/symmetry-oracle-anchor-diagnostic -> origin/research/symmetry-oracle-anchor-diagnostic
+2026-10-17T02:06:35.5395902Z  * [new branch]        research/symmetry-stage1-formal-rerun    -> origin/research/symmetry-stage1-formal-rerun
+2026-10-17T02:06:35.5398791Z  * [new branch]        research/symmetry-stage1-prefreeze-verification -> origin/research/symmetry-stage1-prefreeze-verification
+2026-10-17T02:06:35.5401941Z  * [new branch]        research/symmetry-study1-central-doc-integration -> origin/research/symmetry-study1-central-doc-integration
+2026-10-17T02:06:35.5404860Z  * [new branch]        research/tactical-motif-discovery        -> origin/research/tactical-motif-discovery
+2026-10-17T02:06:35.5407452Z  * [new branch]        research/tactical-motif-human-validation -> origin/research/tactical-motif-human-validation
+2026-10-17T02:06:35.5410334Z  * [new branch]        tmp-g3-10-main-integration-finalize      -> origin/tmp-g3-10-main-integration-finalize
+2026-10-17T02:06:35.5412891Z  * [new branch]        tmp/g4-10-post-integration-sync          -> origin/tmp/g4-10-post-integration-sync
+2026-10-17T02:06:35.5414800Z  * [new tag]           v0.1.0                                   -> v0.1.0
+2026-10-17T02:06:35.5416229Z  * [new tag]           v0.2.0                                   -> v0.2.0
+2026-10-17T02:06:35.5417638Z  * [new tag]           v0.3.0                                   -> v0.3.0
+2026-10-17T02:06:35.5419049Z  * [new tag]           v0.4.0                                   -> v0.4.0
+2026-10-17T02:06:35.5420468Z  * [new tag]           v0.5.0                                   -> v0.5.0
+2026-10-17T02:06:35.5422064Z  * [new tag]           v0.6.0                                   -> v0.6.0
+2026-10-17T02:06:35.5423784Z  * [new ref]           f19ad81fd38cc9a2228914bdc916cbd8bac94d81 -> pull/209/merge
+2026-10-17T02:06:35.5427017Z ##[endgroup]
+2026-10-17T02:06:35.5428363Z ##[group]Determining the checkout info
+2026-10-17T02:06:35.5429876Z ##[endgroup]
+2026-10-17T02:06:35.5430769Z [command]/usr/bin/git sparse-checkout disable
+2026-10-17T02:06:35.5433435Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-17T02:06:35.5436528Z ##[group]Checking out the ref
+2026-10-17T02:06:35.5437884Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/209/merge
+2026-10-17T02:06:36.4722620Z Updating files:  68% (6098/8930)
+2026-10-17T02:06:36.4912618Z Updating files:  69% (6162/8930)
+2026-10-17T02:06:36.5938010Z Updating files:  70% (6251/8930)
+2026-10-17T02:06:36.6095211Z Updating files:  71% (6341/8930)
+2026-10-17T02:06:36.6754720Z Updating files:  72% (6430/8930)
+2026-10-17T02:06:36.7055854Z Updating files:  73% (6519/8930)
+2026-10-17T02:06:36.7603925Z Updating files:  74% (6609/8930)
+2026-10-17T02:06:36.7663834Z Updating files:  75% (6698/8930)
+2026-10-17T02:06:36.7723914Z Updating files:  76% (6787/8930)
+2026-10-17T02:06:36.7776209Z Updating files:  77% (6877/8930)
+2026-10-17T02:06:36.7834236Z Updating files:  78% (6966/8930)
+2026-10-17T02:06:36.7887280Z Updating files:  79% (7055/8930)
+2026-10-17T02:06:36.7942546Z Updating files:  80% (7144/8930)
+2026-10-17T02:06:36.8030412Z Updating files:  81% (7234/8930)
+2026-10-17T02:06:36.8118874Z Updating files:  82% (7323/8930)
+2026-10-17T02:06:36.8182971Z Updating files:  83% (7412/8930)
+2026-10-17T02:06:36.8229510Z Updating files:  84% (7502/8930)
+2026-10-17T02:06:36.8278416Z Updating files:  85% (7591/8930)
+2026-10-17T02:06:36.8329263Z Updating files:  86% (7680/8930)
+2026-10-17T02:06:36.8395181Z Updating files:  87% (7770/8930)
+2026-10-17T02:06:36.8451396Z Updating files:  88% (7859/8930)
+2026-10-17T02:06:36.8510712Z Updating files:  89% (7948/8930)
+2026-10-17T02:06:36.8581769Z Updating files:  90% (8037/8930)
+2026-10-17T02:06:36.8644480Z Updating files:  91% (8127/8930)
+2026-10-17T02:06:36.8711915Z Updating files:  92% (8216/8930)
+2026-10-17T02:06:36.8773788Z Updating files:  93% (8305/8930)
+2026-10-17T02:06:36.8834192Z Updating files:  94% (8395/8930)
+2026-10-17T02:06:36.8886890Z Updating files:  95% (8484/8930)
+2026-10-17T02:06:36.8952198Z Updating files:  96% (8573/8930)
+2026-10-17T02:06:36.9009160Z Updating files:  97% (8663/8930)
+2026-10-17T02:06:36.9057663Z Updating files:  98% (8752/8930)
+2026-10-17T02:06:36.9113878Z Updating files:  99% (8841/8930)
+2026-10-17T02:06:36.9114510Z Updating files: 100% (8930/8930)
+2026-10-17T02:06:36.9114877Z Updating files: 100% (8930/8930), done.
+2026-10-17T02:06:36.9215953Z Note: switching to 'refs/remotes/pull/209/merge'.
+2026-10-17T02:06:36.9216504Z 
+2026-10-17T02:06:36.9216979Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-17T02:06:36.9217882Z changes and commit them, and you can discard any commits you make in this
+2026-10-17T02:06:36.9218687Z state without impacting any branches by switching back to a branch.
+2026-10-17T02:06:36.9219077Z 
+2026-10-17T02:06:36.9219329Z If you want to create a new branch to retain commits you create, you may
+2026-10-17T02:06:36.9219923Z do so (now or later) by using -c with the switch command. Example:
+2026-10-17T02:06:36.9220269Z 
+2026-10-17T02:06:36.9220419Z   git switch -c <new-branch-name>
+2026-10-17T02:06:36.9220659Z 
+2026-10-17T02:06:36.9220791Z Or undo this operation with:
+2026-10-17T02:06:36.9221011Z 
+2026-10-17T02:06:36.9221157Z   git switch -
+2026-10-17T02:06:36.9221325Z 
+2026-10-17T02:06:36.9221609Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-17T02:06:36.9222028Z 
+2026-10-17T02:06:36.9222507Z HEAD is now at f19ad81f Merge 3b345d697cc1b043902c3569fdf5b55af895116b into 16218592f417b1e5f19a38a5beabc15f66a4c7b2
+2026-10-17T02:06:36.9299860Z ##[endgroup]
+2026-10-17T02:06:36.9356505Z [command]/usr/bin/git log -1 --format=%H
+2026-10-17T02:06:36.9387842Z f19ad81fd38cc9a2228914bdc916cbd8bac94d81
+2026-10-17T02:06:36.9399799Z ##[group]Removing auth
+2026-10-17T02:06:36.9402101Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-17T02:06:36.9440081Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-17T02:06:36.9695696Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-17T02:06:36.9725890Z http.https://github.com/.extraheader
+2026-10-17T02:06:36.9736371Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-17T02:06:36.9778703Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-17T02:06:37.0011201Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-17T02:06:37.0042862Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-17T02:06:37.0266299Z ##[endgroup]
+2026-10-17T02:06:37.0519858Z ##[group]Run actions/setup-node@v4
+2026-10-17T02:06:37.0520173Z with:
+2026-10-17T02:06:37.0520379Z   node-version: 24.19.0
+2026-10-17T02:06:37.0520617Z   always-auth: false
+2026-10-17T02:06:37.0520837Z   check-latest: false
+2026-10-17T02:06:37.0523914Z   token: ***
+2026-10-17T02:06:37.0524131Z ##[endgroup]
+2026-10-17T02:06:37.1878889Z Attempting to download 24.19.0...
+2026-10-17T02:06:37.1982889Z (node:2370) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-17T02:06:37.1984155Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-17T02:06:37.6423116Z Acquiring 24.19.0 - x64 from https://github.com/actions/node-versions/releases/download/24.19.0-30872449280/node-24.19.0-linux-x64.tar.gz
+2026-10-17T02:06:38.0918688Z Extracting ...
+2026-10-17T02:06:38.1039394Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/895008b1-f71e-458e-aa33-0b5c3a888151 -f /home/runner/work/_temp/8705c6ee-aef0-4dab-a032-0ff7b242ef68
+2026-10-17T02:06:39.3357494Z Adding to the cache ...
+2026-10-17T02:06:41.3344063Z ##[group]Environment details
+2026-10-17T02:06:41.5657384Z node: v24.19.0
+2026-10-17T02:06:41.5657782Z npm: 11.17.0
+2026-10-17T02:06:41.5658118Z yarn: 1.22.22
+2026-10-17T02:06:41.5658806Z ##[endgroup]
+2026-10-17T02:06:41.5826857Z ##[group]Run node --test test/g5-*.cjs
+2026-10-17T02:06:41.5827238Z [36;1mnode --test test/g5-*.cjs[0m
+2026-10-17T02:06:41.6115998Z shell: /usr/bin/bash -e {0}
+2026-10-17T02:06:41.6116299Z ##[endgroup]
+2026-10-17T02:06:41.8263292Z ✔ 閉包の上限到達は未完として保持し、完全な小領域だけを解く (17.118004ms)
+2026-10-17T02:06:41.8290771Z ✔ 共有する閉包を連結domain群として数える (0.377266ms)
+2026-10-17T02:06:41.8297012Z ✔ source規則は同じ記録を独立再生でき、draw改変を拒否する (7.533174ms)
+2026-10-17T02:06:41.8298306Z ✔ root選定は実行前の状態条件だけを使う (64.835131ms)
+2026-10-17T02:06:41.8299507Z ✔ leaseはrun・attempt・ソース結合と区画を固定し、再試行を拒否する (9.896883ms)
+2026-10-17T02:06:42.3705799Z ✔ RAW識別はtakasia全対象とpendingを区別し、表示用turnを除外する (5.293627ms)
+2026-10-17T02:06:42.3727274Z ✔ nyumba停止・使用・houseTwo・パスの手キーは衝突しない (6.831742ms)
+2026-10-17T02:06:42.3744262Z ✔ 不完全・重複・非有限の順位を拒否し、同点の手を固定する (1.626962ms)
+2026-10-17T02:06:42.3745171Z ✔ 完全閉包の欠損を両解法が拒否する (1.370362ms)
+2026-10-17T02:06:42.3746178Z ✔ 再帰を引分けや中間価値へ読み替えず、同価値と距離差を分離する (14.146859ms)
+2026-10-17T02:06:42.3747330Z ✔ 計算上限・連続蒔きの安全停止は勝敗価値として使用しない (1.535792ms)
+2026-10-17T02:06:42.3748258Z ✔ 中断復帰・成果物改変・同時実行防止を確認する (603.557423ms)
+2026-10-17T02:06:42.3934707Z ✔ 独立エンジンはimportせず、productionは基準mainのbyteを保持する (4.556579ms)
+2026-10-17T02:06:42.3983842Z ✔ takasia検出の既知17条件をproductionと独立実装が照合する (1.090489ms)
+2026-10-17T02:06:42.4004186Z ✔ phase省略・誤記を入力のルール変更に使わず、違法開始を拒否する (2.614107ms)
+2026-10-17T02:06:42.4005212Z ✔ nyumba停止・使用は子状態で識別し、pendingの終局保持を独立に計算する (7.079968ms)
+2026-10-17T02:06:42.4006206Z ✔ takasia最終着地とruntime上限の優先順・資源停止を区別する (10.748466ms)
+2026-10-17T02:06:42.4007269Z ✔ 固定fixtureと深さ2の全合法遷移が独立実装と一致する (196.118708ms)
+2026-10-17T02:06:45.4874455Z ✔ 閉包の上限到達は未完として保持し、完全な小領域だけを解く (18.571732ms)
+2026-10-17T02:06:45.4875387Z ✔ 共有する閉包を連結domain群として数える (0.339985ms)
+2026-10-17T02:06:45.4893816Z ✔ source規則は同じ記録を独立再生でき、draw改変を拒否する (8.95907ms)
+2026-10-17T02:06:45.4903683Z ✔ root選定は実行前の状態条件だけを使う (78.171062ms)
+2026-10-17T02:06:45.4933983Z ✔ leaseはrun・attempt・ソース結合と区画を固定し、再試行を拒否する (18.682899ms)
+2026-10-17T02:06:45.4935462Z ✔ 新Studyの占有穴数は全穴を許容し、合法手幅と前列条件を独立判定する (5.593458ms)
+2026-10-17T02:06:45.4937997Z ✔ 閉包の旧読取重複は解を付けず、未収容子も証跡に残す (3.584271ms)
+2026-10-17T02:06:45.4939331Z ✔ 旧2094読取状態は新Studyのrootと閉包から隔離する (3423.573316ms)
+2026-10-17T02:06:45.5260970Z ✔ 全手即終局fixtureは完全構造で独立一致し、勝敗解は別途照合する (27.877049ms)
+2026-10-17T02:06:45.5262111Z ✔ 非終局の深さ境界は未閉包とし、DRAWや厳密解を付けない (0.552874ms)
+2026-10-17T02:06:45.5285522Z ✔ 全合法手を保持し、幅超過と手内部上限を構造不成立と分離する (11.582094ms)
+2026-10-17T02:06:45.5286874Z ✔ 旧証拠は両Studyの43409状態の和集合で、閉包への接触は解を拒否する (517.870854ms)
+2026-10-17T02:06:45.5288072Z ✔ technical seed 123の保存sourceを独立再生し、draw改変を拒否する (4.053559ms)
+2026-10-17T02:06:45.5289214Z ✔ sourceの事前条件はmtajiと全手幅だけに依存し、phaseを限定する (0.266658ms)
+2026-10-17T02:06:45.5290222Z ✔ 共有閉包は独立標本数に数えず、状態上限はnullで保存する (0.733912ms)
+2026-10-17T02:06:45.5291249Z ✔ 凍結仕様とleaseはrun・attempt・区画を結合し、二度目を拒否する (12.491103ms)
+2026-10-17T02:06:45.5292511Z ✔ 全手即終局fixtureは完全構造で独立一致し、勝敗解は別途照合する (31.442966ms)
+2026-10-17T02:06:45.5294522Z ✔ 非終局の深さ境界は未閉包とし、DRAWや厳密解を付けない (0.441015ms)
+2026-10-17T02:06:45.5301731Z ✔ 全合法手を保持し、幅超過と手内部上限を構造不成立と分離する (11.258139ms)
+2026-10-17T02:06:45.5303631Z ✔ 旧証拠は3 Studyの47483状態の和集合で、閉包への接触は解を拒否する (610.614433ms)
+2026-10-17T02:06:45.5308353Z ✔ technical seed 123の保存sourceを独立再生し、draw改変を拒否する (5.911472ms)
+2026-10-17T02:06:45.5309711Z ✔ sourceの事前条件はmtajiと全手幅だけに依存し、phaseを限定する (0.305171ms)
+2026-10-17T02:06:45.5311265Z ✔ 共有閉包は独立標本数に数えず、状態上限はnullで保存する (0.866059ms)
+2026-10-17T02:06:45.5312542Z ✔ 凍結仕様とleaseはrun・attempt・区画を結合し、二度目を拒否する (22.423283ms)
+2026-10-17T02:06:45.5320332Z ✔ 二段階判定は短期層を除外し、3〜4手層と異常停止を区別する (0.520303ms)
+2026-10-17T02:06:45.5321384Z ✔ 既知40fixtureの条件通過rootで全手screenを独立照合する (47.171687ms)
+2026-10-17T02:06:45.5322354Z ✔ 抽象軌跡は最初で止まらず最後の適格rootを固定する (50.374849ms)
+2026-10-17T02:06:45.5323713Z ✔ 最後のroot/子が既読なら前のrootへ戻らない (18.807423ms)
+2026-10-17T02:06:45.5324645Z ✔ 後続screenの手内部上限で古い代表も破棄する (10.858441ms)
+2026-10-17T02:06:45.5347376Z ✔ ply上限でのscreenも含めて最後の代表を独立確認する (13.25949ms)
+2026-10-17T02:06:45.5373660Z ✔ draw改変・後続screen欠落を独立再生で拒否する (17.45756ms)
+2026-10-17T02:06:45.5400130Z ✔ 資源停止時も進行中sourceと観測状態を呼出元へ残す (3.061334ms)
+2026-10-17T02:06:45.5401613Z ✔ 旧4Studyの58532状態を遮断し、重複閉包に解を与えない (663.385491ms)
+2026-10-17T02:06:45.5402581Z ✔ 既知完全fixtureの解・状態上限・共有成分を分離する (14.721513ms)
+2026-10-17T02:06:45.5404257Z ✔ 読取journalとcheckpointをfsync保存し、予約域到達でもcheckpointを保持する (17.576091ms)
+2026-10-17T02:06:45.5408279Z ✔ 新契約とleaseは区画・run・attemptを固定し二度目を拒否する (19.354325ms)
+2026-10-17T02:06:45.5409643Z ✔ source着手そのものの手内部上限を独立検算し候補を拒否する (12.682321ms)
+2026-10-17T02:06:45.5410756Z ✔ 科学分類・別branch・retryと不整合archiveを通信前に拒否する (5.147474ms)
+2026-10-17T02:06:45.5411798Z ✔ 応答抑止後のGETと追加POSTをしない (2.84006ms)
+2026-10-17T02:06:45.5414713Z ✔ 通信失敗をretryしない (0.947191ms)
+2026-10-17T02:06:45.5415636Z ✔ 圧縮は保存上限前で止まり原imageを変更しない (23.74767ms)
+2026-10-17T02:06:45.5435496Z ✔ manifestは重複・traversal・symlinkとsource bytes不一致を拒否する (9.266084ms)
+2026-10-17T02:06:45.5436826Z ✔ archiveとmanifestを読み戻して一致するまでACKを与えない (3.121295ms)
+2026-10-17T02:06:45.5437956Z ✔ 科学分類・科学seed消費・source数変更・上限変更を副作用前に拒否する (4.45577ms)
+2026-10-17T02:06:45.5438971Z ✔ 通常20分/終了180秒と短縮fixtureを区別する (0.313596ms)
+2026-10-17T02:06:45.5439998Z ✔ kernel停止対象はcase固有のcgroup v2だけに限定する (0.832076ms)
+2026-10-17T02:06:45.5440948Z ✔ 同じdeadlineの通常・終了・全体境界を判定する (0.234438ms)
+2026-10-17T02:06:45.5442101Z ✔ 外部observerの全体停止fixtureも科学上限を変更せず別枠にする (0.413593ms)
+2026-10-17T02:06:45.5443369Z ✔ 科学分類と上限変更を計測・出力より前に拒否する (4.375411ms)
+2026-10-17T02:06:45.5470347Z ✔ 提案20分・領域180秒と終了予約180秒を同じ時計で監督する (0.787763ms)
+2026-10-17T02:06:45.5471520Z ✔ 領域上限と残余不足を個別に保持する (0.398556ms)
+2026-10-17T02:06:45.5472917Z ✔ 制御・Git・mirror一時領域と累積remote保存を同一容量へ課金する (0.756735ms)
+2026-10-17T02:06:45.5474017Z ✔ 全cgroupメモリが上限を越えたら科学的な値へ置換せず停止する (0.31001ms)
+2026-10-17T02:06:45.5475127Z ✔ disk会計は疎ファイルとhard linkを過少計数せずsymlinkを拒否する (2.608928ms)
+2026-10-17T02:06:45.5476257Z ✔ remote markerが成立しても応答不明なら許可0・retry禁止・区画保全になる (2.063287ms)
+2026-10-17T02:06:45.5477295Z ✔ 送信前失敗と終了mirror失敗は未完として停止する (1.994439ms)
+2026-10-17T02:06:45.5478218Z ✔ 通信中に終了予約へ入れば永続markerがあっても許可を返さない (0.80259ms)
+2026-10-17T02:06:45.5479284Z ✔ 技術transportは科学分類・提案seed区画・attempt 2を接続前に拒否する (0.583752ms)
+2026-10-17T02:06:45.5480644Z ✔ 科学namespace・retry・別triggerを通信前に拒否する (2.821104ms)
+2026-10-17T02:06:45.5481642Z ✔ 応答欠落は同じPOSTを再実行せず書込みを止める (2.051316ms)
+2026-10-17T02:06:45.5482477Z ✔ 通信失敗時にretryしない (0.755673ms)
+2026-10-17T02:06:45.5483508Z ✔ 固定技術データ以外は通信前に拒否する (1.311653ms)
+2026-10-17T02:06:45.5484509Z ✔ remoteのref・commit・blobを読み戻した後だけACKを返す (0.649555ms)
+2026-10-17T02:06:46.3541337Z ✔ 科学分類・retry・未知modeを技術ref作成前に拒否する (15.312048ms)
+2026-10-17T02:06:46.3551227Z ✔ 実remote入口は専用pushと既定repoとattempt1以外を拒否する (1.108373ms)
+2026-10-17T02:06:46.3552540Z ✔ local Git履歴と停止境界を独立bundleから照合: complete (659.539922ms)
+2026-10-17T02:06:46.3566198Z ✔ local Git履歴と停止境界を独立bundleから照合: stale-cas (482.865417ms)
+2026-10-17T02:06:46.3600852Z ✔ local Git履歴と停止境界を独立bundleから照合: lost-response (555.523809ms)
+2026-10-17T02:06:46.3615733Z ✔ local Git履歴と停止境界を独立bundleから照合: proxy-before-consume (453.971549ms)
+2026-10-17T02:06:46.3653825Z ✔ local Git履歴と停止境界を独立bundleから照合: proxy-final-mirror (539.690438ms)
+2026-10-17T02:06:46.3660722Z ✔ エラー保存でtokenとauth headerを伏せる (0.366575ms)
+2026-10-17T02:07:03.7731288Z ✔ 科学freeze不在ではGit接続・科学lease・source初期化前に拒否する (3.776611ms)
+2026-10-17T02:07:03.7738026Z ✔ 科学専用transportは未固定の取得・consume・mirrorを拒否し、生commitを公開しない (27.526624ms)
+2026-10-17T02:07:03.7745053Z ✔ 専用triggerはpush・PR・attempt 2・不正head/ref/namespaceを拒否する (2.030326ms)
+2026-10-17T02:07:03.7748954Z ✔ 全128論理markerのreceiptをremote再読取してからpermitを返す (18474.429123ms)
+2026-10-17T02:07:03.7754049Z ✔ 必要mirror失敗では次consumeもpermitも作らずsessionを停止する (139.994384ms)
+2026-10-17T02:07:03.7755315Z ✔ consume保存後の通信不明ではmarkerを保持しpermitを返さない (223.095124ms)
+2026-10-17T02:07:03.7756419Z ✔ receiptのremote不一致では読取許可を作らず保存markerを保持する (224.778363ms)
+2026-10-17T02:07:03.7783846Z ✔ 全区画lease後の中断・別runは同じStageを再起動できない (142.084345ms)
+2026-10-17T02:07:03.7784744Z ✔ 最終mirror失敗は完了へ昇格せず、permit発行を再開できない (185.11879ms)
+2026-10-17T02:07:03.7785626Z ✔ 重複・順序違い・別bindingの要求をconsume前に拒否する (500.0625ms)
+2026-10-17T02:07:03.7786531Z ✔ 残余予算不足は次consume前に停止しmarkerを追加しない (123.440974ms)
+2026-10-17T02:07:03.7903878Z ✔ 旧ref・科学分類・異なる診断payloadを保存前に拒否する (5.715315ms)
+2026-10-17T02:07:03.7925756Z ✔ ENOSPCはwork未完の診断だけを保存しACKを区別する (1.656107ms)
+2026-10-17T02:07:03.7938585Z ✔ ACK抑止後は追加POSTをしない (1.906755ms)
+2026-10-17T02:07:03.7939672Z ✔ backing imageとmounted viewを二重に数えずsidecarを含める (9.240028ms)
+2026-10-17T02:07:03.7940760Z ✔ 科学入力・追加source・上限変更を開始前に拒否する (4.368026ms)
+2026-10-17T02:07:03.7941791Z ✔ 親1 GiB内の512/448/64 MiBと科学提案の20分を固定する (0.349584ms)
+2026-10-17T02:07:03.7942933Z ✔ 遅い同期保存より先に全停止命令を発行する (0.272259ms)
+2026-10-17T02:07:03.7944120Z ✔ 停止対象は自分の委譲serviceだけに限定する (10.42503ms)
+2026-10-17T02:07:03.7945027Z ✔ 専用unit自身のcgroup以外を拒否する (10.145037ms)
+2026-10-17T02:07:03.7946008Z ✔ checkoutから保存ACKまで同じ時計を使用し科学条件を開放しない (4.523367ms)
+2026-10-17T02:07:03.7946942Z ✔ checkoutの遅延も終了予約時間を消費する (1.772765ms)
+2026-10-17T02:07:03.7947837Z ✔ 保存ACKが全体期限に達した場合は完成扱いを拒否する (0.534189ms)
+2026-10-17T02:07:03.7948799Z ✔ supervisorや転送の監督漏れ・後付けscopeを拒否する (1.249126ms)
+2026-10-17T02:07:03.7949779Z ✔ 現在RSSが低くてもkernel peakの超過を保持する (0.399988ms)
+2026-10-17T02:07:03.7950760Z ✔ checkoutとremote保存の合算容量・終了予約域を検査する (0.322613ms)
+2026-10-17T02:07:03.7951696Z ✔ 時計逆行とscope切替を拒否する (1.054842ms)
+2026-10-17T02:07:03.7952586Z ✔ ACK欠落・停止未確認・途中phaseを完成へ昇格しない (1.48716ms)
+2026-10-17T02:07:03.7953729Z ✔ 科学分類と予算変更を最初の測定より前に拒否する (1.605461ms)
+2026-10-17T02:07:03.7954642Z ✔ kernel peakとremote累積量の巻戻しを拒否する (1.162834ms)
+2026-10-17T02:07:03.7956041Z ✔ 全区画leaseはremote receiptへ保存され、二取得・重複範囲を拒否する (171.779483ms)
+2026-10-17T02:07:03.7957078Z ✔ attempt 2・科学区画・未実装の科学認可を拒否する (28.006234ms)
+2026-10-17T02:07:03.7958009Z ✔ 競合した古いheadでは更新できず、他者の記録を保持する (222.567354ms)
+2026-10-17T02:07:03.7959051Z ✔ 各読取りのcallbackより前にremote consume commitが存在する (470.720433ms)
+2026-10-17T02:07:03.7960223Z ✔ consume失敗・binding/run不一致・順番違いではcallbackへ進まない (183.134992ms)
+2026-10-17T02:07:03.7961437Z ✔ callback内の強制的失敗後もconsume markerを取り消さず、同番号を再読しない (208.386166ms)
+2026-10-17T02:07:03.7962613Z ✔ 128 logical IDの全逐次消費を独立履歴検査する（PRNG読取りは0） (11157.00108ms)
+2026-10-17T02:07:03.7964276Z ✔ mirrorは元byte hash・逐次履歴を保持し、順番違いと改変を拒否する (399.247306ms)
+2026-10-17T02:07:03.7965278Z ✔ 独立履歴検査はbeforeReadの改変を拒否する (233.559511ms)
+2026-10-17T02:07:03.7966331Z ✔ 複数processの合算RSSが上限を超えたらgroup全体を止める (169.686512ms)
+2026-10-17T02:07:03.7967512Z ✔ workerがSIGTERMを無視してもkillし、fsync済journal・終局未知を保持する (492.073328ms)
+2026-10-17T02:07:03.7968641Z ✔ 稼働中mirrorと終了mirrorの両方をremoteから復元する (926.077741ms)
+2026-10-17T02:07:03.7969637Z ✔ mirrorの分割再利用と累積byte上限を検査する (324.09036ms)
+2026-10-17T02:07:03.7970787Z ✔ journal末尾断片をbyte保存し、完全prefixだけを検算する (21.886254ms)
+2026-10-17T02:07:03.7978661Z ✔ mirror保存が失敗したら科学値を付けずworkerを停止する (67.830466ms)
+2026-10-17T02:07:03.7979759Z ✔ 共通hostの直接APIでも未解放の科学経路を出力とlease前に拒否する (3.288429ms)
+2026-10-17T02:07:03.7980794Z ✔ 科学workerの未固定拒否は出力と状態とPRNGの初期化前に成立する (1.954064ms)
+2026-10-17T02:07:03.7981796Z ✔ 技術driverはscience分類やseed消費の偽装を拒否する (0.558614ms)
+2026-10-17T02:07:03.7983092Z ✔ sourceから固定したrootを全合法手閉包へ接続して独立順序も一致する (1549.893126ms)
+2026-10-17T02:07:03.7984378Z ✔ 稼働中checkpointとpermitのmirror順序を同じsessionで管理する (944.729978ms)
+2026-10-17T02:07:38.8280693Z ✔ checkpoint前の強制終了は保存2手だけを検算する (3761.224147ms)
+2026-10-17T02:07:38.8282993Z ✔ 古いcheckpoint8手と新しいjournal10手を混ぜず両方照合する (3234.62862ms)
+2026-10-17T02:07:38.8285668Z ✔ screen保存直後の停止では次のstepを呼ばずcheckpointを埋めない (3457.503386ms)
+2026-10-17T02:07:38.8299881Z ✔ screen後の1手のみ保存した停止では保存49手だけを検算する (3319.626088ms)
+2026-10-17T02:07:38.8300921Z ✔ 協調的資源停止のfailure snapshotも未知とnullを保持する (3587.237885ms)
+2026-10-17T02:07:38.8301947Z ✔ 不完全な末尾は復元せずbyte数とhashを別記録する (3443.977519ms)
+2026-10-17T02:07:38.8303298Z ✔ journalのhash改変・順序欠落・receipt差替えを拒否する (5210.826285ms)
+2026-10-17T02:07:38.8304385Z ✔ hashを再計算してもPRNG・metadata・欠落screenの科学的整合性を拒否する (5389.299667ms)
+2026-10-17T02:07:38.8309957Z ✔ snapshot改変・候補への昇格・偽完了を拒否する (7262.79542ms)
+2026-10-17T02:07:38.8310856Z ✔ RAW payloadの改変とfixtureの新規RAWを拒否する (3092.038502ms)
+2026-10-17T02:07:38.8318015Z ✔ read hashを再計算しても保存RAWのcoverage欠落と未許可RAWを拒否する (3610.096878ms)
+2026-10-17T02:07:38.8318975Z ✔ snapshotに必須screenが欠ける改変と空journalを拒否する (3608.691332ms)
+2026-10-17T02:07:38.8319867Z ✔ 科学経路は未固定gateで入力getter・遷移・PRNGの前に拒否する (761.242509ms)
+2026-10-17T02:07:38.8892561Z ✔ 科学分類・source増量・予算変更・retryを開始前に拒否する (6.141427ms)
+2026-10-17T02:07:38.8893897Z ✔ 専用push・既定repo・attempt1以外では認証Gitへ接続しない (0.907695ms)
+2026-10-17T02:07:38.8894646Z ✔ commit後の応答不明でmarkerを保持し、旧終了回復mirrorも遮断する (210.096871ms)
+2026-10-17T02:07:38.8895484Z ✔ 終了mirrorの通信失敗後に通常transportへ回復書込しない (0.493993ms)
+2026-10-17T02:07:38.8897776Z ✔ 時間境界で拒否されたconsumeはregistryへ到達しない (0.302364ms)
+2026-10-17T02:07:38.8898301Z ✔ 完成済みfixtureだけを旧source検算へ渡し、途中snapshotは補わない (3573.967112ms)
+2026-10-17T02:07:38.8898837Z fatal: Not a valid commit name 0000000000000000000000000000000000000000
+2026-10-17T02:07:38.8899355Z ✔ 生bundleの祖先ではないACKへ差し替えた記録を拒否する (2781.564736ms)
+2026-10-17T02:07:38.8899802Z ✔ 原RESULTと異なるSCENARIOの技術完了への昇格を拒否する (2319.43578ms)
+2026-10-17T02:08:10.7377679Z ✔ 未完成workerの最終mirrorは容量解放・実writeの前に拒否する (3.190846ms)
+2026-10-17T02:08:10.7378423Z ✔ session.stop後の旧回復mirrorと全後続writeを固定遮断する (0.764106ms)
+2026-10-17T02:08:10.7378933Z ✔ 完成workerの最終mirror通信拒否も元理由を保持し再試行しない (4.571052ms)
+2026-10-17T02:08:10.7379414Z ✔ 判定失敗でも停止が保存より先でtimer/watchを終え元errorを投げる (1.41957ms)
+2026-10-17T02:08:10.7379955Z ✔ work停止確認失敗時はwatchを保ちcleanup errorで原因を上書きしない (0.501967ms)
+2026-10-17T02:08:10.7380396Z ✔ 保存失敗・watch終了失敗でも最初の失敗を保持する (0.409515ms)
+2026-10-17T02:08:10.7380806Z ✔ 本物の待機timerを持つ子も判定失敗後に期限待ちせず終了する (33.885292ms)
+2026-10-17T02:08:10.7381253Z ✔ 科学入力・旧branch・retry・source増量・予算増加を拒否する (3.849044ms)
+2026-10-17T02:08:10.7381774Z ✔ 実workerとローカルGitの統合でも完成128件だけ最終mirrorを許可する (65673.117234ms)
+2026-10-17T02:08:10.7568315Z ✔ 科学入力と固定上限の変更を拒否する (3.882577ms)
+2026-10-17T02:08:10.7569107Z ✔ 全子区画の上限合計は提案1 GiBと同一 (0.267008ms)
+2026-10-17T02:08:10.7569806Z ✔ 委譲された自分のcase serviceだけを操作する (11.271628ms)
+2026-10-17T02:08:10.7570465Z ✔ 別source/domainの通常領域と終了reserveを同じ保存予算で検査する (6.317401ms)
+2026-10-17T02:08:10.7570974Z ✔ atomic snapshotの旧byteとtemporaryの共存を合算する (1.729107ms)
+2026-10-17T02:08:10.7587622Z ✔ hash連鎖journalの追加byteにも共有予算を適用する (4.829664ms)
+2026-10-17T02:08:10.7588570Z ✔ 入れ子directoryと末尾断片を元byteのままmirrorする (2.387205ms)
+2026-10-17T02:08:10.7589571Z ✔ 既存attemptとsymlinkを拒否し、他directoryを読まない (6.481457ms)
+2026-10-17T02:08:10.7591216Z ✔ 未固定の科学SPECでは、primary PRNG初期化とsource callbackへ進まない (2.496739ms)
+2026-10-17T02:08:10.7592256Z ✔ 未固定の科学SPECでは、独立sourceと全閉包の入口も拒否する (12.584069ms)
+2026-10-17T02:08:10.7593632Z ✔ 稼働中atomic renameで消えたtemporaryを明記し、既存byteを完成扱いしない (6.164957ms)
+2026-10-17T02:08:10.7594576Z ✔ 通常fileの消失をtemporaryの競合として隠さない (4.503145ms)
+2026-10-17T02:08:10.7595852Z ✔ blob再利用版の独立履歴検算も既存137 commitと同じ結果になる (1113.674028ms)
+2026-10-17T02:08:10.7596878Z ✔ directory列挙とstatの間にrenameされたtemporaryも競合として記録する (1.260273ms)
+2026-10-17T02:08:10.7598044Z ✔ 1 MiBを超えるregistry metadataも16 MiB契約内なら主・独立読取りが一致する (567.678543ms)
+2026-10-17T02:08:10.7598831Z ✔ 最初の適格rootと48 ply境界を独立再生する (135.934684ms)
+2026-10-17T02:08:10.7599460Z ✔ 各子8手以内でも応手数合計17は除外する (47.930046ms)
+2026-10-17T02:08:10.7600138Z ✔ 最初のroot/子/2 ply先が既読なら後のrootへ差し替えない (66.246943ms)
+2026-10-17T02:08:10.7600925Z ✔ 2 ply screenの未知・後続未知は自然敗北や代替候補にならない (28.425821ms)
+2026-10-17T02:08:10.7601763Z ✔ terminal子、個別応手上限、同種応手の判定を値なしで拒否する (1.995496ms)
+2026-10-17T02:08:10.7602655Z ✔ 候補固定後の重複・件数不足・未選択を独立検算する (17.777721ms)
+2026-10-17T02:08:10.7603762Z ✔ PRNG draw・選定root・screen欠落・metadata改変を拒否する (31.936676ms)
+2026-10-17T02:08:10.7604721Z ✔ xorshift整数棄却は最後のdrawだけを採用し独立再生する (25.188317ms)
+2026-10-17T02:08:10.7605638Z ✔ 科学seedとfixture未許可seed・実装不一致を開始前に拒否する (19.178687ms)
+2026-10-17T02:08:10.7606526Z ✔ 512 ply上限とsource資源停止のprefixを保持する (106.824843ms)
+2026-10-17T02:08:10.7607451Z ✔ 証拠予約域で書込前に停止し、最後のsnapshotとhash journalを保持する (5.80022ms)
+2026-10-17T02:08:10.7608405Z ✔ fsync直後のプロセス強制終了でもjournal prefixが再生できる (58.935874ms)
+2026-10-17T02:08:10.7609365Z ✔ snapshot fsync後rename前の障害で旧checkpointを失わない (2.125739ms)
+2026-10-17T02:08:10.7610273Z ✔ 圧縮分割は全片hash・順序・解凍bytesを独立検算する (44.878028ms)
+2026-10-17T02:08:10.7611136Z ✔ gzip総量・片数上限停止はpartial indexを残し完全扱いを拒否する (12.310143ms)
+2026-10-17T02:08:10.7611966Z ✔ 既知Bao完全閉包と途中既読停止は全辺検算・解の境界を守る (45.814854ms)
+2026-10-17T02:08:10.7613641Z ✔ BFS記録中の保存予約域停止はpartial graph・frontier・未知を保持する (23.019398ms)
+2026-10-17T02:08:10.7614660Z ✔ 手内microstate RAWの既読も停止witnessへ保存する (25.431063ms)
+2026-10-17T02:08:10.7615962Z ✔ 保存辺のmetadata・microstate hash・停止witness改変を独立検算で拒否する (14.536028ms)
+2026-10-17T02:08:10.7616990Z ✔ graph完成後の全体停止でも解をnullに戻し区画完了を主張しない (25.689452ms)
+2026-10-17T02:08:10.7617734Z ✔ 時間・RSSの管理停止を未知のまま閉じる (0.865957ms)
+2026-10-17T02:08:10.7618633Z ✔ 実上限256 MiB・16 MiB reserveと48 MiB分割を別プロセスで検証する (15053.162754ms)
+2026-10-17T02:08:10.7619937Z ✔ known Bao full closure retains every move and independent solution (42.775109ms)
+2026-10-17T02:08:10.7621393Z ✔ transposition keeps edge metadata and boundary recurrence is not DRAW (8.803598ms)
+2026-10-17T02:08:10.7623039Z ✔ all fixed cutoff witnesses remain partial with unknown successor (16.488395ms)
+2026-10-17T02:08:10.7624049Z ✔ fixed full abstract graphs retain all legal edges (1585.978099ms)
+2026-10-17T02:08:10.7625157Z ✔ snapshot corruption, truncation, extra bytes and false completion are rejected (10.37341ms)
+2026-10-17T02:08:10.7626623Z ✔ durable journal and snapshot reconstruct independently; damaged logs reject (12.077645ms)
+2026-10-17T02:08:10.7628028Z ✔ shared states group transitively; an unadmitted observed child still groups (1.828585ms)
+2026-10-17T02:08:10.7629186Z ✔ time and RSS limits fail closed without invoking a solver (0.815834ms)
+2026-10-17T02:08:10.7630437Z ✔ guard terminals, absent legal sets and contradictory witnesses are rejected (1.715714ms)
+2026-10-17T02:08:10.7631703Z ✔ 全17takasia codeと数値境界を独立二codecで可逆保存する (50.212292ms)
+2026-10-17T02:08:10.7632539Z ✔ 範囲外・未知winner・takasia未知field・配列形をclampせず棄却する (17.449687ms)
+2026-10-17T02:08:10.7633498Z ✔ paddingや予約codeの改変を棄却する (4.845268ms)
+2026-10-17T02:08:10.7634263Z ✔ reason/turnはRAW codecの対象外で、勝敗labelを自然終局と認証しない (0.335757ms)
+2026-10-17T02:08:10.7635132Z ✔ 既知全40rootの合法手と自然遷移/microstate列が二経路で一致する (90.730937ms)
+2026-10-17T02:08:10.7635900Z ✔ 管理上限は勝者を付けず、既知relayの自然停止と分離する (3.929277ms)
+2026-10-17T02:08:10.7636662Z ✔ 完全microstateは盤だけでなくcursorを含み、反復証明の周期を持つ (2.279357ms)
+2026-10-17T02:08:10.7637393Z ✔ 抽象自然停止と上限による未知を0価値へ変換しない (0.395729ms)
+2026-10-17T02:08:10.7638038Z ✔ 有限戦略証明と全root手の値を二検算器で照合する (1.636246ms)
+2026-10-17T02:08:10.7638681Z ✔ 相手の合法分岐欠落と非合法辺を拒否する (1.9975ms)
+2026-10-17T02:08:10.7639262Z ✔ 非減少rankと循環による偽の勝利証明を拒否する (7.1331ms)
+2026-10-17T02:08:10.7639874Z ✔ 未知の合法集合と非終局空集合を勝利にしない (1.363697ms)
+2026-10-17T02:08:10.7640606Z ✔ runtime guardの勝者を自然な終局証明として拒否する (1.771428ms)
+2026-10-17T02:08:10.7641375Z ✔ root勝利の1証明だけでは全root手の損失を評価できない (0.540058ms)
+2026-10-17T02:08:10.7642023Z ✔ 証明に無関係なnodeや重複IDを拒否する (0.86204ms)
+2026-10-17T02:08:10.7642648Z ✔ DTF差だけでは主要な勝敗価値差の条件を通過しない (1.37076ms)
+2026-10-17T02:08:10.7643499Z ✔ 勝者0を欠損にせず、異なる勝敗価値を識別する (0.214231ms)
+2026-10-17T02:08:10.7644151Z ✔ 未解決子の値やDTFを0へ補填しない (0.301984ms)
+2026-10-17T02:08:10.7644760Z ✔ 提案精度の境界は92では不足し93ずつで満たす (0.302033ms)
+2026-10-17T02:08:10.7645435Z ✔ 精度の数だけ満たしても独立性未検証・既読なら承認しない (5.062351ms)
+2026-10-17T02:08:10.7646149Z ✔ 同じsource・共有閉包の推移的連結を重複標本として数えない (0.934585ms)
+2026-10-17T02:08:10.7646887Z ✔ 損失観測が未実施または一様なら主要関係の情報条件を通過しない (1.074366ms)
+2026-10-17T02:08:10.7647337Z ✔ 全root枝の応手種別差だけを適格とする (1.464625ms)
+2026-10-17T02:08:10.7647889Z ✔ 欠落枝・未展開子の種別を0や非適格に埋めない (0.223017ms)
+2026-10-17T02:08:10.7648242Z ✔ 自然終局子を勝者にかかわらず除く (0.264083ms)
+2026-10-17T02:08:10.7648610Z ✔ mtaji・reserve・root幅・応手幅の境界を守る (0.303678ms)
+2026-10-17T02:08:10.7649011Z ✔ 最後の構造適格rootを値・後続の閉包成否によらず固定する (1.567707ms)
+2026-10-17T02:08:10.7649485Z ✔ 保存グラフの値・DTF・順位を読み出さない (0.505955ms)
+2026-10-17T02:08:10.7650160Z ✔ 混在合法手・空集合を単一種別とみなさない (1.306961ms)
+2026-10-17T02:08:10.7650655Z ℹ tests 244
+2026-10-17T02:08:10.7650993Z ℹ suites 0
+2026-10-17T02:08:10.7651349Z ℹ pass 244
+2026-10-17T02:08:10.7651696Z ℹ fail 0
+2026-10-17T02:08:10.7652019Z ℹ cancelled 0
+2026-10-17T02:08:10.7652243Z ℹ skipped 0
+2026-10-17T02:08:10.7652451Z ℹ todo 0
+2026-10-17T02:08:10.7652940Z ℹ duration_ms 89105.836912
+2026-10-17T02:08:10.7690768Z ##[group]Run python3 tools/research/g5-checkpoint/test-verify-current.py
+2026-10-17T02:08:10.7691327Z [36;1mpython3 tools/research/g5-checkpoint/test-verify-current.py[0m
+2026-10-17T02:08:10.7691806Z [36;1mpython3 tools/research/g5-checkpoint/verify-current.py[0m
+2026-10-17T02:08:10.7757584Z shell: /usr/bin/bash -e {0}
+2026-10-17T02:08:10.7757849Z ##[endgroup]
+2026-10-17T02:08:11.1012431Z ......
+2026-10-17T02:08:11.1013650Z ----------------------------------------------------------------------
+2026-10-17T02:08:11.1014374Z Ran 6 tests in 0.263s
+2026-10-17T02:08:11.1014655Z 
+2026-10-17T02:08:11.1015160Z OK
+2026-10-17T02:08:47.6107216Z proxy-final-mirror 保存証拠一致 1643
+2026-10-17T02:08:48.6801163Z lost-response 保存証拠一致 89
+2026-10-17T02:08:51.3388517Z host-oom 保存証拠一致 107
+2026-10-17T02:09:30.5217951Z complete 保存証拠一致 1312
+2026-10-17T02:09:33.7191844Z deadline 保存証拠一致 210
+2026-10-17T02:09:33.7822039Z {
+2026-10-17T02:09:33.7822540Z   "binding": {
+2026-10-17T02:09:33.7823730Z     "snapshotCommit": "44d7dafefce100e636b86c66136a754e4fbef727",
+2026-10-17T02:09:33.7824846Z     "snapshotTree": "076114f0386129bc4bee6a885765a5ad46d96235",
+2026-10-17T02:09:33.7825621Z     "historicalBoundFiles": 10,
+2026-10-17T02:09:33.7826112Z     "currentFrozenFiles": 61,
+2026-10-17T02:09:33.7826648Z     "mutableNavigationFiles": 9,
+2026-10-17T02:09:33.7827214Z     "originalBindingPreserved": true
+2026-10-17T02:09:33.7827704Z   },
+2026-10-17T02:09:33.7828054Z   "preservation": {
+2026-10-17T02:09:33.7828517Z     "preservedSourceFiles": 8760,
+2026-10-17T02:09:33.7829054Z     "historicalSnapshots": 23,
+2026-10-17T02:09:33.7829601Z     "publicAndWorkerFiles": 48,
+2026-10-17T02:09:33.7830095Z     "historicalWorkflows": 14
+2026-10-17T02:09:33.7830397Z   },
+2026-10-17T02:09:33.7830611Z   "history": {
+2026-10-17T02:09:33.7830902Z     "pullRequestHeadsPreserved": 24,
+2026-10-17T02:09:33.7831271Z     "supersededVariantFiles": 28
+2026-10-17T02:09:33.7831564Z   },
+2026-10-17T02:09:33.7831781Z   "evidence": {
+2026-10-17T02:09:33.7832028Z     "archives": 5,
+2026-10-17T02:09:33.7832272Z     "members": 3361,
+2026-10-17T02:09:33.7832532Z     "archiveBytes": 43364710,
+2026-10-17T02:09:33.7833115Z     "originalWorkflows": 13
+2026-10-17T02:09:33.7833389Z   },
+2026-10-17T02:09:33.7833614Z   "documentation": {
+2026-10-17T02:09:33.7833877Z     "markdownFiles": 252,
+2026-10-17T02:09:33.7834159Z     "relativeLinks": 1138,
+2026-10-17T02:09:33.7834435Z     "brokenLinks": 0,
+2026-10-17T02:09:33.7834703Z     "englishOnlyHeadings": 0,
+2026-10-17T02:09:33.7835042Z     "englishOnlyNormalSentences": 0
+2026-10-17T02:09:33.7835353Z   },
+2026-10-17T02:09:33.7835624Z   "befcsScientificSeedsRead": 0,
+2026-10-17T02:09:33.7836018Z   "scientificSourceGenerationPerformed": false
+2026-10-17T02:09:33.7836381Z }
+2026-10-17T02:09:33.8000832Z Post job cleanup.
+2026-10-17T02:09:33.9219791Z (node:33143) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-17T02:09:33.9220724Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-17T02:09:33.9429149Z Post job cleanup.
+2026-10-17T02:09:34.0335231Z [command]/usr/bin/git version
+2026-10-17T02:09:34.0380526Z git version 2.55.0
+2026-10-17T02:09:34.0425497Z Temporarily overriding HOME='/home/runner/work/_temp/28acffe0-2ae9-4937-848c-0fd405f36182' before making global git config changes
+2026-10-17T02:09:34.0427057Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-17T02:09:34.0431086Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/bao-la-kiswahili-game/bao-la-kiswahili-game
+2026-10-17T02:09:34.0470928Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-17T02:09:34.0510116Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-17T02:09:34.0787996Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-17T02:09:34.0844247Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-17T02:09:34.1168773Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-17T02:09:34.1170822Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-17T02:09:34.1555646Z Cleaning up orphan processes
+2026-10-17T02:09:34.2047083Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
