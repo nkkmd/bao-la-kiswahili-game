@@ -1,5 +1,7 @@
 # 起動前から管理する親runnerの設計候補
 
+> 続く[追加制御の設計レビュー](fail-first-20261020/README.md)で、外側handlerや環境変数だけでは不足することを整理した。最内側要求guardは設計候補で未実装、全工程未成立・科学実行未認可のままである。
+
 > 最新の[shell経路監査](shell-route-20261020/README.md)で、job stepと独立した起動・受信retryを確認した。shell中心化だけでは不足し、追加の失敗即停止制御は未設計・未配備である。
 
 > 最新の[軽量経路レビュー](lightweight-20261020/README.md)で、標準配布物と両runtime選別案の不足を分けた。次はshell中心の実Actions job経路の静的監査で、runner部分選別・通信retry拒否・容量成立は未実証である。

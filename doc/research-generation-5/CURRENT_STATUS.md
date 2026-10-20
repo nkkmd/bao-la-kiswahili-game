@@ -1,5 +1,7 @@
 # 第五世代研究 — 現在の状態
 
+> 2026-10-20の追加制御設計: [最初の失敗で停止する要求guardの設計レビュー](runner-topology-20261017/fail-first-20261020/README.md)で、HTTP retry設定の下限補正・内側retry/認証経路を確認した。候補をsource管理下の最内側要求guardとし、許可消費・body検算・共有停止・保存専用許可を具体化したが、未実装・全client未監査である。配備・結合試験・科学実行を開始せず、全工程未成立・科学seed0・leaseなし・未認可を維持する。
+
 > 2026-10-20のshell経路監査: [job開始前の通信retry](runner-topology-20261017/shell-route-20261020/README.md)を通常・Broker両listenerで確認した。shell中心化・単一job・attempt 1だけでは初回通信失敗時のretry拒否は成立しない。次は追加の失敗即停止制御の設計レビューで、配備や新規remote試験を行わない。全工程未成立・科学seed0・leaseなし・未認可を維持する。
 
 > 2026-10-20の軽量経路レビュー: [固定ソースと候補比較](runner-topology-20261017/lightweight-20261020/README.md)で、bin全体とNode20/24両実行fileを保持する案も容量超過と確認した。次の静的監査はshell中心の実Actions job経路を優先するが、内部runtime・通信retry・全入力容量は未成立で、方式を採用していない。独立executorを実job/attemptの代用にせず、全工程未成立・科学seed0・leaseなし・未認可を維持する。

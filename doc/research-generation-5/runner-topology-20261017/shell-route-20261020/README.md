@@ -1,5 +1,7 @@
 # shell中心のActions経路と起動前通信の静的監査
 
+> 続く[追加制御の設計レビュー](../fail-first-20261020/README.md)で、外側handlerや環境変数だけでは不足することを整理した。最内側要求guardは設計候補で未実装、全工程未成立・科学実行未認可のままである。
+
 ## 結論
 
 main `07cf1707f2aeae054ca7a528ccb0ee139ac84f3a`から、前段で優先したshell中心の実Actions job経路を調べた。**外部JavaScript Actionsを使わないことだけでは、初回通信失敗時のretry拒否は成立しない。** 未改変runnerには、jobのstepを処理する以前のsession作成・受信・再接続にもretry経路がある。
