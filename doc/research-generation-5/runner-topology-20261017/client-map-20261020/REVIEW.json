@@ -1,0 +1,19 @@
+{
+  "decision": "CLIENT-INSERTION-MAP-PARTIAL-NOT-IMPLEMENTED",
+  "sourceCommit": "397b032cbf865e9c3ddfab89d533ec19325e1273",
+  "sourceTree": "1cf45b8c44018e52dfde0edb4ab4141f5ac9a19a",
+  "scannedCSharpFiles": 817,
+  "matchedFiles": 32,
+  "literalMatchCount": 72,
+  "scanGzipSha256": "e6da9eb93e31beec2916b3bfd526ba86f3c2d72f7f07583721798b9cdb36b243",
+  "scanGzipBytes": 66865,
+  "sourcesGzipSha256": "358a73f2aa101e7d1a30628902766f1338fe0a7c3a4f45b4b186099ef77f4b10",
+  "sourcesGzipBytes": 131749,
+  "allClientsEnumerated": false,
+  "allEgressMediated": false,
+  "innerTransportAudited": false,
+  "controlImplemented": false,
+  "wholeLifecycleOsProven": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false
+}
