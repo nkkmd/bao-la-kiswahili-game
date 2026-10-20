@@ -1,0 +1,28 @@
+{
+  "evidenceClass": "USER-PASTED-READ-ONLY-SELECTED-HOST-FILES",
+  "reportedDateJapan": "2026-10-20",
+  "observerCommit": "7c6062d7900b8e4ccdb7a717d287e2b2fa11ade1",
+  "observerPath": "tools/research/g5-runner-topology/inventory-host.py",
+  "provenance": "User-pasted output transcribed into this record; not a signed host receipt or independent host observation",
+  "files": [
+    {"role":"python3","selectedPath":"/usr/bin/python3","resolvedPath":"/usr/bin/python3.12","logicalBytes":8020928,"allocatedBytes":8024064,"sha256":"e50d468e8b0adfb05733f5b87b3cff34829c4a8c1aea50c865aa8bdfe4bb150f"},
+    {"role":"node","selectedPath":"/usr/local/bin/node","resolvedPath":"/usr/local/bin/node","logicalBytes":129129032,"allocatedBytes":129130496,"sha256":"e943ee9282bef08233665cb71cc57a9f5794bbe70a4822b38e60e394c15979e2"},
+    {"role":"git","selectedPath":"/usr/bin/git","resolvedPath":"/usr/bin/git","logicalBytes":4066232,"allocatedBytes":4067328,"sha256":"2a8c18fbf43da9f692d75474c72bea9dfd796c260b0f3dfe456376abc3bbd668"},
+    {"role":"systemd-run","selectedPath":"/usr/bin/systemd-run","resolvedPath":"/usr/bin/systemd-run","logicalBytes":68392,"allocatedBytes":69632,"sha256":"dbc8b988a849d5c9d7ef2de7068a6f107021bc6c11e0d7864c73f373eef726a7"},
+    {"role":"timeout","selectedPath":"/usr/bin/timeout","resolvedPath":"/usr/bin/timeout","logicalBytes":39880,"allocatedBytes":40960,"sha256":"12690a043dfd555a6c14ccc1564f5649c18f1762c0d6ff66729948130898ec52"},
+    {"role":"gzip","selectedPath":"/usr/bin/gzip","resolvedPath":"/usr/bin/gzip","logicalBytes":93424,"allocatedBytes":94208,"sha256":"afea077ce127d4fa9ad410d3066ba2b54dea19c0b44f04adf56c72d5f7b7a9bb"}
+  ],
+  "logicalBytesSumByRole": 141417888,
+  "allocatedBytesSumByRole": 141426688,
+  "sumIsCompleteBudget": false,
+  "duplicateRoleFilesCountedSeparately": true,
+  "dependenciesInspected": false,
+  "runnerInspected": false,
+  "directoriesRecursivelyScanned": false,
+  "executablesInvoked": false,
+  "mutationsPerformed": false,
+  "scientificSeedsRead": 0,
+  "parentRunnerEnvironmentConfirmed": false,
+  "wholeLifecycleOsProven": false,
+  "scientificExecutionAuthorized": false
+}
