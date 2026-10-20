@@ -1,0 +1,32 @@
+{
+  "sourceCommit": "397b032cbf865e9c3ddfab89d533ec19325e1273",
+  "evidenceClass": "PINNED-SOURCE-READ-ONLY",
+  "files": [
+    {
+      "path": "src/Runner.Common/Util/NodeUtil.cs",
+      "gitBlob": "d87224f98205fa5ef714eae184f52f5a3907d4bd",
+      "url": "https://github.com/actions/runner/blob/397b032cbf865e9c3ddfab89d533ec19325e1273/src/Runner.Common/Util/NodeUtil.cs",
+      "bytes": 9373,
+      "sha256": "091e663fca7e7df8f669fcd2db970efa7a9e99c0044c8438fcac5358134a303a"
+    },
+    {
+      "path": "src/Runner.Worker/Handlers/NodeScriptActionHandler.cs",
+      "gitBlob": "85ff32777f71e0880ec5e594ce7505eef849e4c7",
+      "url": "https://github.com/actions/runner/blob/397b032cbf865e9c3ddfab89d533ec19325e1273/src/Runner.Worker/Handlers/NodeScriptActionHandler.cs",
+      "bytes": 9722,
+      "sha256": "eefddd78888f2b359ea4bd6a69d788ac0a72817c13bb05860c64e52baec5142e"
+    },
+    {
+      "path": "src/Runner.Worker/Expressions/HashFilesFunction.cs",
+      "gitBlob": "ddd318c3c4a8e75c9615d6f8979c43f477a380ac",
+      "url": "https://github.com/actions/runner/blob/397b032cbf865e9c3ddfab89d533ec19325e1273/src/Runner.Worker/Expressions/HashFilesFunction.cs",
+      "bytes": 12097,
+      "sha256": "f754e1b3cede2cc2b527192bdcf4fc30188797bb8ee4ef14239d538a3efa4723"
+    }
+  ],
+  "license": {
+    "path": "LICENSE",
+    "bytes": 1072,
+    "sha256": "621a1e0b6163b9d63fe780b9d6f5a7f775a5781065024a1ebf8010726c44cec1"
+  }
+}
