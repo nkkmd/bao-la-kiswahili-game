@@ -1,0 +1,27 @@
+{
+  "sourceCommit": "397b032cbf865e9c3ddfab89d533ec19325e1273",
+  "files": [
+    {
+      "path": "src/Runner.Listener/MessageListener.cs",
+      "gitBlob": "ef06dd1af3ce3509a8a5e61d9e2cc2edd5e0239b",
+      "url": "https://github.com/actions/runner/blob/397b032cbf865e9c3ddfab89d533ec19325e1273/src/Runner.Listener/MessageListener.cs",
+      "bytes": 27937,
+      "sha256": "3ca0e003a50a79305375a50212095b40bf0f4b09c3625f528f6737f72be6608f"
+    },
+    {
+      "path": "src/Runner.Listener/BrokerMessageListener.cs",
+      "gitBlob": "cfea82fd5ffb27831984cbf88e176b456994de1d",
+      "url": "https://github.com/actions/runner/blob/397b032cbf865e9c3ddfab89d533ec19325e1273/src/Runner.Listener/BrokerMessageListener.cs",
+      "bytes": 25277,
+      "sha256": "83aa42613ddd8353ecceee9b97c99a3bebe1f25bce0a8d6c17cd9d13f844a7ce"
+    },
+    {
+      "path": "src/Runner.Listener/Runner.cs",
+      "gitBlob": "31c87130257f534a1a30f0cbcc37bc61e6406405",
+      "url": "https://github.com/actions/runner/blob/397b032cbf865e9c3ddfab89d533ec19325e1273/src/Runner.Listener/Runner.cs",
+      "bytes": 64169,
+      "sha256": "96f998692e2715b2c95800c843da4ac6206561f69b7fd41228d28d0fa007b5cd"
+    }
+  ],
+  "licenseSha256": "621a1e0b6163b9d63fe780b9d6f5a7f775a5781065024a1ebf8010726c44cec1"
+}
