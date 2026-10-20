@@ -64,4 +64,4 @@ python3 tools/research/g5-runner-topology/test-review-shell-route.py
 
 保存したC#とLICENSEは原資料例外で、同commitの著作権表示を保持する。source originは正規化した取得元・hashの記録、JSON/path/field/hash/ID/commandは機械定義の例外である。現在案内と本書の新規説明・見出しは日本語で記述し、意味・限界・未成立を説明する。実際のCI・レビュー・main統合はPR記録で確認する。
 
-ローカルでは新規の限定判断・改変拒否2検査、前段レビュー2検査、旧runner保存照合3検査が合格した。人間向け変更9文書の新規部分について、英語だけの説明見出し・通常説明文、壊れた相対リンク、既存code block・canonical情報の意図しない変更は0件。C#原文・MIT LICENSEは原資料例外として保持し、保存byteのGit blob・SHA-256を照合した。git diff --checkも合格。これらは静的監査であり、実機や下位HTTP clientの全挙動の実証ではない。
+ローカルでは新規の限定判断・改変拒否2検査、前段レビュー2検査、旧runner保存照合3検査が合格した。人間向け変更9文書の新規部分について、英語だけの説明見出し・通常説明文、壊れた相対リンク、既存code block・canonical情報の意図しない変更は0件。C#原文・MIT LICENSEは原資料例外として保持し、保存byteのGit blob・SHA-256を照合した。上流Runner.csの691行にある空白だけの行は、原文のGit blob一致を保つため末尾空白の例外として保持した。この1原文fileを除くgit diff --checkは合格。これらは静的監査であり、実機や下位HTTP clientの全挙動の実証ではない。
