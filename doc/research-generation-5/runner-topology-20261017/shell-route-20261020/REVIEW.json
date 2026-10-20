@@ -1,0 +1,36 @@
+{
+  "decision": "SHELL-ONLY-NOT-SUFFICIENT-FOR-FAIL-FIRST-COMMUNICATION",
+  "sourceCommit": "397b032cbf865e9c3ddfab89d533ec19325e1273",
+  "sourceEvidence": {
+    "runnerListenerChoiceLine": 395,
+    "scriptExecutionLine": 917,
+    "MessageListener.cs": {
+      "createSessionLine": 73,
+      "createSessionRetryDelayLine": 190,
+      "getNextMessageLine": 233,
+      "sessionRecoveryGuardLine": 339,
+      "retryClassifierLine": 499
+    },
+    "BrokerMessageListener.cs": {
+      "createSessionLine": 65,
+      "createSessionRetryDelayLine": 233,
+      "getNextMessageLine": 275,
+      "sessionRecoveryGuardLine": 347,
+      "retryClassifierLine": 445
+    }
+  },
+  "normalAndBrokerListenersHaveRetryPaths": true,
+  "scriptReferenceHasSeparateExecutionData": true,
+  "allJobPathsAudited": false,
+  "allLowerHttpRetriesAudited": false,
+  "runOnceProvesCommunicationRetryDisabled": false,
+  "skipSessionRecoverProvesAllRetriesDisabled": false,
+  "retryObservedInExistingJobClaimed": false,
+  "additionalFailFirstControlRequired": true,
+  "additionalControlImplemented": false,
+  "shellOnlyRouteCertified": false,
+  "nextStep": "REVIEW-FAIL-FIRST-CONTROL-DESIGN-NO-DEPLOYMENT",
+  "wholeLifecycleOsProven": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false
+}

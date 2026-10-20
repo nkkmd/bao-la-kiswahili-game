@@ -1,5 +1,7 @@
 # 第五世代研究 — 研究ログ
 
+> 2026-10-20のshell経路監査: [job開始前の通信retry](runner-topology-20261017/shell-route-20261020/README.md)を通常・Broker両listenerで確認した。shell中心化・単一job・attempt 1だけでは初回通信失敗時のretry拒否は成立しない。次は追加の失敗即停止制御の設計レビューで、配備や新規remote試験を行わない。全工程未成立・科学seed0・leaseなし・未認可を維持する。
+
 > 2026-10-20の軽量経路レビュー: [固定ソースと候補比較](runner-topology-20261017/lightweight-20261020/README.md)で、bin全体とNode20/24両実行fileを保持する案も容量超過と確認した。次の静的監査はshell中心の実Actions job経路を優先するが、内部runtime・通信retry・全入力容量は未成立で、方式を採用していない。独立executorを実job/attemptの代用にせず、全工程未成立・科学seed0・leaseなし・未認可を維持する。
 
 > 2026-10-20の容量検算: [WSL共有値と標準x64 runnerの静的検算](runner-topology-20261017/capacity-20261020/README.md)で、標準配布物の通常file論理量679562451 byteを確認した。標準配布物全体の通常展開案は現行256 MiBに収まらない。WSL自体の不採用とは区別し、次は最小実行経路の契約適合レビューとする。追加の導入・実機試験を行わず、全工程未成立・科学seed消費0・leaseなし・未認可を維持する。
