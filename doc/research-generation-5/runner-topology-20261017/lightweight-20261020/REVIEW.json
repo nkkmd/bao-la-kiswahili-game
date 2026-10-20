@@ -1,0 +1,19 @@
+{
+  "decision": "NO-LIGHTWEIGHT-ROUTE-CERTIFIED",
+  "binLogicalBytes": 84243487,
+  "node20ExecutableBytes": 98932688,
+  "node24ExecutableBytes": 125989464,
+  "binAndTwoNodeExecutablesBytes": 309165639,
+  "dualRuntimeSubsetExceeds256MiB": true,
+  "singleRuntimeIllustrativeComponentBytes": 250844197,
+  "singleRuntimeArithmeticRemainderBytes": 17591259,
+  "remainderIsAvailableBudget": false,
+  "shellOnlyActionsJob": "PRIORITY-FOR-STATIC-ROUTE-AUDIT-NOT-IMPLEMENTED",
+  "standaloneExecutor": "JOB-ATTEMPT-PROVENANCE-CONTRACT-REVIEW-REQUIRED",
+  "runnerSubsetProvenExecutable": false,
+  "retryFreeTransportProven": false,
+  "hostArchitectureConfirmed": false,
+  "wholeLifecycleOsProven": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false
+}
