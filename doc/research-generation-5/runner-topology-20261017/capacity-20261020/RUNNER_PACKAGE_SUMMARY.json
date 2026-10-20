@@ -1,0 +1,18 @@
+{
+  "evidenceClass": "STATIC-RUNNER-ARCHIVE-INVENTORY",
+  "archiveBytes": 226430031,
+  "archiveSha256": "70920811a4f8ad4328818682bca5c6469c1c942fab52448868071d0063816613",
+  "regularFileLogicalBytes": 679562451,
+  "regularFiles": 9304,
+  "directories": 2136,
+  "symlinks": 6,
+  "hardlinks": 0,
+  "archiveExtracted": false,
+  "runnerExecuted": false,
+  "hostArchitectureConfirmed": false,
+  "wholeLifecycleOsProven": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false,
+  "inventoryGzipSha256": "d15aa6e65c370186676f529740c4ee61ec9d7a65b672401c47ea691cc544b8c1",
+  "inventoryGzipBytes": 78524
+}

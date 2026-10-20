@@ -2,9 +2,9 @@ name: G5 Parent Inventory Read-only Tests
 on:
   push:
     branches: [main, research/g5-parent-inventory-20261020]
-    paths: ['tools/research/g5-runner-topology/*inventory*', '.github/workflows/g5-parent-inventory.yml']
+    paths: ['tools/research/g5-runner-topology/*inventory*', 'doc/research-generation-5/runner-topology-20261017/capacity-20261020/**', '.github/workflows/g5-parent-inventory.yml']
   pull_request:
-    paths: ['tools/research/g5-runner-topology/*inventory*', '.github/workflows/g5-parent-inventory.yml']
+    paths: ['tools/research/g5-runner-topology/*inventory*', 'doc/research-generation-5/runner-topology-20261017/capacity-20261020/**', '.github/workflows/g5-parent-inventory.yml']
 permissions:
   contents: read
 jobs:
@@ -16,3 +16,4 @@ jobs:
         with:
           persist-credentials: false
       - run: python3 tools/research/g5-runner-topology/test-inventory-host.py
+      - run: python3 tools/research/g5-runner-topology/test-inventory-package.py
