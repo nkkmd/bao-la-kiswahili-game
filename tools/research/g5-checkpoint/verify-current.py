@@ -1,6 +1,8 @@
 """固定された中間保存と更新可能な現在案内を読取り専用で監査する。"""
 from pathlib import Path
 import hashlib
+import gzip
+import os
 import importlib.util
 import json
 import subprocess
@@ -66,12 +68,60 @@ def verify_bindings(repo, snapshot_commit, snapshot_tree):
             "mutableNavigationFiles": len(navigation), "originalBindingPreserved": True}
 
 
+AGENTS_POLICY_COMMIT = "d01685a0156e1b56238d24d680d089248720d74b"
+AGENTS_POLICY_BLOB = "05b34d723d2448ac4e4a7510b39f3bf821ec5b4a"
+
+
+def verify_agents(repo):
+    """PR #211の正当な方針更新だけを固定コミット・blobで照合する。"""
+    assert subprocess.run(["git", "-C", str(repo), "merge-base", "--is-ancestor",
+                           AGENTS_POLICY_COMMIT, "HEAD"], capture_output=True).returncode == 0
+    historical = git(repo, "show", AGENTS_POLICY_COMMIT + ":AGENTS.md")
+    assert hashlib.sha1(b"blob " + str(len(historical)).encode() + b"\0" + historical).hexdigest() == AGENTS_POLICY_BLOB
+    assert (repo / "AGENTS.md").read_bytes() == historical, "AGENTS.md"
+
+
+def preserved_current(frozen):
+    scope = frozen.read("INTEGRATION_SCOPE.json")
+    old = frozen.tree(scope["sourceHead"])
+    allowed = set(scope["mutableNavigation"]) | set(scope["historicalWorkflows"])
+    snapshots = json.loads(gzip.decompress((frozen.DOC / "HISTORICAL_NAVIGATION.json.gz").read_bytes()))
+    assert set(snapshots) == allowed
+    for name, text in snapshots.items():
+        assert text.encode() == frozen.git("show", scope["sourceHead"] + ":" + name), name
+    count = 0
+    for name, (mode, expected) in old.items():
+        if name in allowed:
+            continue
+        p = BASE / name
+        data = os.readlink(p).encode() if mode == "120000" else p.read_bytes()
+        if name == "AGENTS.md":
+            verify_agents(BASE)
+            count += 1
+            continue
+        actual = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+        assert actual == expected, name
+        count += 1
+    public = [n for n in frozen.tree(scope["baseMain"]) if n.startswith(("public/", "cloudflare/"))]
+    original_main = frozen.tree(scope["baseMain"])
+    assert all(old[n] == original_main[n] for n in public)
+    for name, pin in scope["historicalWorkflows"].items():
+        text = (BASE / name).read_text()
+        assert "ref: " + pin["historicalInputCommit"] in text, name
+        assert pin["historicalInputCommit"] in frozen.git("rev-list", scope["sourceHead"]).decode().split()
+    assert scope["befcsScientificSeedsRead"] == 0
+    for k in ["befcsScientificLeaseCreated", "befcsStudyRegistered", "formalRelationRegistered", "scientificExecutionPerformed"]:
+        assert scope[k] is False
+    return {"agentsPolicyCommit": AGENTS_POLICY_COMMIT, "preservedSourceFiles": count, "historicalSnapshots": len(snapshots),
+            "publicAndWorkerFiles": len(public), "historicalWorkflows": len(scope["historicalWorkflows"])}
+
+
 def check():
     bindings = verify_bindings(BASE, SNAPSHOT_COMMIT, SNAPSHOT_TREE)
     spec = importlib.util.spec_from_file_location("g5_frozen_checkpoint", Path(__file__).with_name("verify.py"))
     frozen = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(frozen)
-    result = {"binding": bindings, "preservation": frozen.preserved(),
+    result = {"binding": bindings, "preservation": preserved_current(frozen),
               "history": frozen.history(), "evidence": frozen.archives("--hashes-only" in sys.argv),
               "documentation": frozen.language(), "befcsScientificSeedsRead": 0,
               "scientificSourceGenerationPerformed": False}

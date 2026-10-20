@@ -100,5 +100,24 @@ class BindingTest(unittest.TestCase):
             self.verify()
 
 
+class AgentsPolicyTest(unittest.TestCase):
+    def test_current_policy_matches_pinned_commit(self):
+        audit.verify_agents(audit.BASE)
+
+    def test_policy_modification_and_loss_are_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            repo = Path(directory)
+            (repo / "AGENTS.md").write_bytes(b"changed")
+            from unittest.mock import patch
+            with patch.object(audit.subprocess, "run") as run, patch.object(audit, "git") as git:
+                run.return_value.returncode = 0
+                git.return_value = (audit.BASE / "AGENTS.md").read_bytes()
+                with self.assertRaises(AssertionError):
+                    audit.verify_agents(repo)
+                (repo / "AGENTS.md").unlink()
+                with self.assertRaises(FileNotFoundError):
+                    audit.verify_agents(repo)
+
+
 if __name__ == "__main__":
     unittest.main()
