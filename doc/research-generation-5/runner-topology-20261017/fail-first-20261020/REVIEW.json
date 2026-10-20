@@ -1,0 +1,37 @@
+{
+  "decision": "INNER-REQUEST-GUARD-DESIGN-CANDIDATE-NOT-IMPLEMENTED",
+  "sourceCommit": "397b032cbf865e9c3ddfab89d533ec19325e1273",
+  "sourceEvidence": {
+    "helperClampLines": [
+      77,
+      146
+    ],
+    "retryPipelineInsertionLines": [
+      64
+    ],
+    "retryHandlerAttemptCountLines": [
+      65
+    ],
+    "authHandlerSendLines": [
+      217
+    ],
+    "authHandlerLoopLines": [
+      310
+    ],
+    "brokerRequestWrapperLines": [
+      69
+    ]
+  },
+  "environmentZeroAloneProvesNoRetry": false,
+  "listenerPatchAloneProvesNoRetry": false,
+  "outerHandlerAloneProvesNoRetry": false,
+  "selectedDesignCandidate": "SOURCE-CONTROLLED-INNER-REQUEST-GUARD",
+  "controlImplemented": false,
+  "atomicAdmissionProven": false,
+  "allClientsAndInnerTransportAudited": false,
+  "allResourcesAccounted": false,
+  "knownDataIntegrationStarted": false,
+  "wholeLifecycleOsProven": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false
+}

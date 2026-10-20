@@ -1,0 +1,41 @@
+{
+  "sourceCommit": "397b032cbf865e9c3ddfab89d533ec19325e1273",
+  "files": [
+    {
+      "path": "src/Runner.Sdk/Util/VssUtil.cs",
+      "gitBlob": "012d27f73456611dc5ca067a6ac9c790c291387d",
+      "url": "https://github.com/actions/runner/blob/397b032cbf865e9c3ddfab89d533ec19325e1273/src/Runner.Sdk/Util/VssUtil.cs",
+      "bytes": 8124,
+      "sha256": "855f64601c7398dc59afd2db8d508f99b60c5e1b78d620b1db9992032965f272"
+    },
+    {
+      "path": "src/Sdk/Common/Common/VssHttpRetryMessageHandler.cs",
+      "gitBlob": "8920d89e79de3f875d8585345d4c0f5c01005093",
+      "url": "https://github.com/actions/runner/blob/397b032cbf865e9c3ddfab89d533ec19325e1273/src/Sdk/Common/Common/VssHttpRetryMessageHandler.cs",
+      "bytes": 10824,
+      "sha256": "732cbc54372abb19d3c5d6f47d3155e9a53043278bf8b7118c7433c89e802c9e"
+    },
+    {
+      "path": "src/Sdk/Common/Common/VssHttpMessageHandler.cs",
+      "gitBlob": "f48eec41af8641932c166a9829e1ddddebf2a4e5",
+      "url": "https://github.com/actions/runner/blob/397b032cbf865e9c3ddfab89d533ec19325e1273/src/Sdk/Common/Common/VssHttpMessageHandler.cs",
+      "bytes": 27530,
+      "sha256": "fbaedcd14690cd0f0923863ba26fc30602e5444a181fadf7d9043f3d9287e120"
+    },
+    {
+      "path": "src/Runner.Common/BrokerServer.cs",
+      "gitBlob": "8bb94bd2dc35082d502043054344f30c37d9c56c",
+      "url": "https://github.com/actions/runner/blob/397b032cbf865e9c3ddfab89d533ec19325e1273/src/Runner.Common/BrokerServer.cs",
+      "bytes": 4571,
+      "sha256": "3ef8c48b949e37222b71f95b72bc8b74360f6f1d20d689b7a1b89b0de1f470c9"
+    },
+    {
+      "path": "src/Sdk/WebApi/WebApi/VssConnection.cs",
+      "gitBlob": "38bfad8c766e13a6f81ecb7b8c9f629a5015d192",
+      "url": "https://github.com/actions/runner/blob/397b032cbf865e9c3ddfab89d533ec19325e1273/src/Sdk/WebApi/WebApi/VssConnection.cs",
+      "bytes": 27986,
+      "sha256": "618586a386f090fd9c625841469a7ea2ac9c41854cddf94aebc2d2bbfadb85f3"
+    }
+  ],
+  "licenseSha256": "621a1e0b6163b9d63fe780b9d6f5a7f775a5781065024a1ebf8010726c44cec1"
+}
