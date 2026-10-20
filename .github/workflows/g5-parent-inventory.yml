@@ -1,0 +1,18 @@
+name: G5 Parent Inventory Read-only Tests
+on:
+  push:
+    branches: [main, research/g5-parent-inventory-20261020]
+    paths: ['tools/research/g5-runner-topology/*inventory*', '.github/workflows/g5-parent-inventory.yml']
+  pull_request:
+    paths: ['tools/research/g5-runner-topology/*inventory*', '.github/workflows/g5-parent-inventory.yml']
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 tools/research/g5-runner-topology/test-inventory-host.py
