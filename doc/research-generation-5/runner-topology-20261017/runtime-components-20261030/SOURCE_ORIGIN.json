@@ -1,0 +1,10 @@
+{
+  "repository": "dotnet/runtime",
+  "tag": "v8.0.30",
+  "commit": "a83db3e0eb2defb6220e15dae2f1a0462fdbf99f",
+  "path": "src/libraries/System.Net.Http/src/System/Net/Http/SocketsHttpHandler/HttpConnectionPool.cs",
+  "gitBlob": "a4221c9f039dc3cbb339b0fd0278ea5704a29335",
+  "bytes": 127892,
+  "sha256": "5f7002109435bdd2cbd35a16aabbe0cf74150635f22b65d670ff2cf97df9a0c3",
+  "licenseGitBlob": "984713a49622a96da110443c15477613bc12656b"
+}

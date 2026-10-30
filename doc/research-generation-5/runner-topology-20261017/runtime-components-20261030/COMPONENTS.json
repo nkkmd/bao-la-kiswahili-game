@@ -1,0 +1,46 @@
+{
+  "archiveSha256": "70920811a4f8ad4328818682bca5c6469c1c942fab52448868071d0063816613",
+  "archiveBytes": 226430031,
+  "members": {
+    "./bin/Runner.Listener.deps.json": {
+      "bytes": 121171,
+      "sha256": "92964707e5246c7f698a298f55205eb2715187ac3cacb5673a0273da9c0f9adb"
+    },
+    "./bin/System.Private.CoreLib.dll": {
+      "bytes": 12783912,
+      "sha256": "003ac935a51189b420a7d84de724ccb94eca31e2d07b4faf1e2d943052018028"
+    },
+    "./bin/libhostpolicy.so": {
+      "bytes": 309792,
+      "sha256": "9a6a43e65e64fe4b320247efb043550d1076aefe17584b30421da450f6d2aacd"
+    },
+    "./bin/System.Net.Http.dll": {
+      "bytes": 1711440,
+      "sha256": "ce84247f78f35740555fc97393e3df287ef03f9bc6380a5e775dfaa05a983aa0"
+    },
+    "./bin/Runner.Listener.runtimeconfig.json": {
+      "bytes": 418,
+      "sha256": "2349aceaec47e742386005940d1f394c8433717bc321facc1162a05fb9b586d2"
+    },
+    "./bin/Runner.Worker.deps.json": {
+      "bytes": 127776,
+      "sha256": "bd4cb38b3b5efe7f8081d56dcc155fc6b0b19a8c0aa5ee632816839e58d7be1e"
+    },
+    "./bin/libhostfxr.so": {
+      "bytes": 288848,
+      "sha256": "db345b429ef0ec9a0158850dc5e32acd51f66b75c74b7cdafc32a71b4ee8be05"
+    },
+    "./bin/libcoreclr.so": {
+      "bytes": 6906008,
+      "sha256": "fedf4074258e14b425cd3b4209bedc3e102765623445cc1bcfe8361f6193231c"
+    },
+    "./bin/Runner.Worker.runtimeconfig.json": {
+      "bytes": 418,
+      "sha256": "2349aceaec47e742386005940d1f394c8433717bc321facc1162a05fb9b586d2"
+    }
+  },
+  "runnerExecuted": false,
+  "wholeLifecycleOsProven": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false
+}

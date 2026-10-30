@@ -1,5 +1,7 @@
 # 第五世代研究 — 再現性の索引
 
+> 2026-10-30の配布runtime確認: [静的同定と内側retry](runner-topology-20261017/runtime-components-20261030/README.md)で固定x64配布物のJSONがruntimepack 8.0.30を示すことと、対応.NETソースの内部retryを確認した。binary/sourceの厳密対応と全経路は未証明。外側guardだけでは無再送を認定せず、runner改変・build・実行、remote結合試験、科学実行を開始しない。
+
 > 2026-10-30の静的確認: [runtime指定とtransport置換](runner-topology-20261017/runtime-20261030/README.md)でnet8.0・self-containedとSDK 8.0.424の指定を確認した。配布runtime patch版は未確定。Vss/Rawの別型transportへの置換には設定移管が必要で、guard・迂回禁止・容量・最終receiptは未成立。runner改変・build・実行、remote結合試験、科学実行を開始しない。
 
 > 2026-10-30の再開確認: [Linux x64の通信・権限境界設計](runner-topology-20261017/BOUNDARY_DESIGN_20261030.md)にユーザーWSLの再観察と差込・迂回禁止・runtime/容量の未解決条件を整理した。architectureはx86_64、委任先のmemory/swap上限はmaxで、親制限の実効性は未検証。設計案の段階を維持し、runner改変・build・登録・実行、remote結合試験、科学実行を開始しない。
