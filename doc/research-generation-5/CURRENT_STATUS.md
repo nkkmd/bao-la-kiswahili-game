@@ -1,5 +1,7 @@
 # 第五世代研究 — 現在の状態
 
+> 2026-10-31の通信・容量照合: [既存通信経路と容量下限](runner-topology-20261017/protocol-scope-20261031/README.md)で、最終科学workflowの未固定、Git/Node/Actionsの別経路とpromisor追加取得の監査条件を確認した。複数runtime保持案の容量超過を保持し、次は実行不可の候補経路台帳を具体化する。runner改変・build・実行、remote結合試験、科学実行は開始しない。
+
 > 2026-10-30の方式比較: [送信境界と設定移管](runner-topology-20261017/TRANSPORT_DECISION_20261030.md)で、別主体への移動だけでは内側retryが残ることを整理し、限定IPC・一度限りtransportの最小契約と設定移管を設計した。優先する静的調査候補で、方式採用・実装・全工程成立は未認定。全必要protocolと容量下限の確認へ進み、runner改変・build・実行、remote結合試験、科学実行は開始しない。
 
 > 2026-10-30の配布runtime確認: [静的同定と内側retry](runner-topology-20261017/runtime-components-20261030/README.md)で固定x64配布物のJSONがruntimepack 8.0.30を示すことと、対応.NETソースの内部retryを確認した。binary/sourceの厳密対応と全経路は未証明。外側guardだけでは無再送を認定せず、runner改変・build・実行、remote結合試験、科学実行を開始しない。

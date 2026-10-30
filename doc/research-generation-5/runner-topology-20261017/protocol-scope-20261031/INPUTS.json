@@ -1,0 +1,35 @@
+{
+  "commit": "c4505ee0761fcd2ed33f5de89f5aa1a2fc98b8b8",
+  "scope": "SELECTED-HISTORICAL-FIXTURE-NOT-FINAL-SCIENTIFIC-WORKFLOW",
+  "files": [
+    {
+      "path": ".github/workflows/g5-befcs-capsule.yml",
+      "gitBlob": "6c4f39e8c623861319d8a114627e1f838a98954e",
+      "bytes": 2535,
+      "sha256": "a36c257c88fc1c9d70ad625df7da5b69222b3a99c8b1510506dd258284754a7c"
+    },
+    {
+      "path": "tools/research/g5-befcs-capsule/run.cjs",
+      "gitBlob": "35d9c523f17d7890b047d4ba57a1023fc4d235d5",
+      "bytes": 7923,
+      "sha256": "1dc07ff0a0b67acf5f883958e21161e36e2f90faefd08f007632ea7b168be854"
+    },
+    {
+      "path": "tools/research/g5-befcs-capsule/transport.cjs",
+      "gitBlob": "e3add6028ae57d5b85368244ebabcace096b576d",
+      "bytes": 3263,
+      "sha256": "f9c9d67abce3b54d3bb706e9782c40df65b8b65c85a4703adac60a229b7c3e17"
+    },
+    {
+      "path": "tools/research/g5-befcs-operations/registry.cjs",
+      "gitBlob": "d9265f37cfadd04dda8c4a27a012dad1bb677aae",
+      "bytes": 6477,
+      "sha256": "70028c203f7af49945fcffba36a99106114fb80211e8770d1fd002c17ffd07a4"
+    }
+  ],
+  "completeCallGraph": false,
+  "finalScientificWorkflowFixed": false,
+  "wholeLifecycleOsProven": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false
+}
