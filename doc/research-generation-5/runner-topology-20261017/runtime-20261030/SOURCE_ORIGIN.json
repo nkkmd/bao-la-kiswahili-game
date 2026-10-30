@@ -1,0 +1,29 @@
+{
+  "sourceCommit": "397b032cbf865e9c3ddfab89d533ec19325e1273",
+  "files": [
+    {
+      "path": "src/Directory.Build.props",
+      "sha": "9c069b12f6f6f872343b8d831871219ec923ffae",
+      "bytes": 3388,
+      "sha256": "dbf9f9c296891f862a7bee731e0df0f3bc93ce8146a2af4c30b425d36cb20749"
+    },
+    {
+      "path": "src/global.json",
+      "sha": "9af44fb9eedb2da719bf817b7db36814612f21d5",
+      "bytes": 44,
+      "sha256": "41444c76123f9ce2a3822347d0a6bd6852e0b48fc97ec7bfed76c1b77ffc5e3b"
+    },
+    {
+      "path": "src/Runner.Listener/Runner.Listener.csproj",
+      "sha": "d2b1060d21fbb840c8f9c7b399eb6d45b71d81c9",
+      "bytes": 1391,
+      "sha256": "1706059cf61e42577aa9a40f699c151ccd8a3071f6fc1c42ca72abce30ab84a7"
+    },
+    {
+      "path": "src/Runner.Worker/Runner.Worker.csproj",
+      "sha": "2da02b6a48fb8ab7922e0019b5d1309a40456735",
+      "bytes": 1569,
+      "sha256": "76078128be1627a080718ba22c6e999fdb22565b8eac6931cdbd0869e3f5bffb"
+    }
+  ]
+}
