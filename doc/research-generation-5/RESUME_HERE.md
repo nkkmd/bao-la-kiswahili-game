@@ -1,5 +1,7 @@
 # 第五世代研究 — 安全な再開位置
 
+> 2026-10-30の静的確認: [runtime指定とtransport置換](runner-topology-20261017/runtime-20261030/README.md)でnet8.0・self-containedとSDK 8.0.424の指定を確認した。配布runtime patch版は未確定。Vss/Rawの別型transportへの置換には設定移管が必要で、guard・迂回禁止・容量・最終receiptは未成立。runner改変・build・実行、remote結合試験、科学実行を開始しない。
+
 > 2026-10-30の再開確認: [Linux x64の通信・権限境界設計](runner-topology-20261017/BOUNDARY_DESIGN_20261030.md)にユーザーWSLの再観察と差込・迂回禁止・runtime/容量の未解決条件を整理した。architectureはx86_64、委任先のmemory/swap上限はmaxで、親制限の実効性は未検証。設計案の段階を維持し、runner改変・build・登録・実行、remote結合試験、科学実行を開始しない。
 
 > 2026-10-20の通信経路台帳: [client生成箇所とguard差込位置の部分調査](runner-topology-20261017/client-map-20261020/README.md)で、固定C#817ファイルから32ファイル・72構文一致を保存した。共通factory以外のVss・Raw・OAuth等にも生成経路があり、単一箇所の変更では不足する。全client列挙・迂回禁止・下位transport・実装は未成立。次は対象architectureの読取確認と差込・OS境界設計で、結合試験や科学実行を開始しない。全工程未成立・科学seed0・leaseなし・未認可を維持する。
