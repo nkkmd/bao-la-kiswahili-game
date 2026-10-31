@@ -1,5 +1,7 @@
 # 第五世代研究 — 現在の状態
 
+> 2026-10-31の候補経路台帳: [単一runtime仮説の候補](runner-topology-20261017/candidate-route-20261031/README.md)に取得・registry・保存・全子停止をまとめた。内部Node20とworkの共用は未証明の容量比較仮説で、Node24除外や方式採用は未認定。workflow/head/job等は未固定で、次は静的互換性とGit仲介の適合確認。runner改変・build・実行、remote結合試験、科学実行は開始しない。
+
 > 2026-10-31の通信・容量照合: [既存通信経路と容量下限](runner-topology-20261017/protocol-scope-20261031/README.md)で、最終科学workflowの未固定、Git/Node/Actionsの別経路とpromisor追加取得の監査条件を確認した。複数runtime保持案の容量超過を保持し、次は実行不可の候補経路台帳を具体化する。runner改変・build・実行、remote結合試験、科学実行は開始しない。
 
 > 2026-10-30の方式比較: [送信境界と設定移管](runner-topology-20261017/TRANSPORT_DECISION_20261030.md)で、別主体への移動だけでは内側retryが残ることを整理し、限定IPC・一度限りtransportの最小契約と設定移管を設計した。優先する静的調査候補で、方式採用・実装・全工程成立は未認定。全必要protocolと容量下限の確認へ進み、runner改変・build・実行、remote結合試験、科学実行は開始しない。
