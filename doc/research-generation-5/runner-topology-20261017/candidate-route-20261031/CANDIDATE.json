@@ -1,0 +1,108 @@
+{
+  "candidateId": "G5-PARENT-SCRIPT-S20-DRAFT-001",
+  "status": "DESIGN-ONLY-NOT-EXECUTABLE-NOT-ADOPTED",
+  "baseCommit": "b55ba31ca13120f83f149958e602c7d08948848e",
+  "architecture": "linux-x64",
+  "runnerSourceCommit": "397b032cbf865e9c3ddfab89d533ec19325e1273",
+  "repository": "nkkmd/bao-la-kiswahili-game",
+  "workflowPath": null,
+  "workflowSha": null,
+  "acceptedHeadSha": null,
+  "acceptedJobId": null,
+  "acceptedRunId": null,
+  "acceptedAttempt": 1,
+  "runnerRegistered": false,
+  "triggerCreated": false,
+  "runtimeHypothesis": {
+    "runnerFramework": "net8.0",
+    "distributedRuntimePack": "8.0.30",
+    "internalAndWorkNode": "node20-shared-candidate-only",
+    "node20WorkCompatibilityProven": false,
+    "node24RemovedFromFinalInputs": false,
+    "runnerSubsetProvenExecutable": false
+  },
+  "limits": {
+    "totalSeconds": 1200,
+    "finishReserveSeconds": 180,
+    "memoryBytes": 1073741824,
+    "swapBytes": 0,
+    "storageBytes": 268435456,
+    "finishReserveBytes": 16777216
+  },
+  "phases": [
+    {
+      "id": "P0",
+      "role": "parent",
+      "purpose": "establish-limits-clock-and-input-ledger",
+      "egress": "none"
+    },
+    {
+      "id": "P1",
+      "role": "sender",
+      "purpose": "runner-registration-authentication-and-job-metadata",
+      "egress": "permit-mediated-control-only"
+    },
+    {
+      "id": "P2",
+      "role": "parent",
+      "purpose": "validate-job-head-workflow-attempt-before-work",
+      "egress": "permit-mediated-metadata-only"
+    },
+    {
+      "id": "P3",
+      "role": "sender",
+      "purpose": "pinned-input-fetch-and-completeness-check",
+      "egress": "permit-mediated-git-smart-http"
+    },
+    {
+      "id": "P4",
+      "role": "worker",
+      "purpose": "known-fixture-work-with-science-gate-closed",
+      "egress": "none"
+    },
+    {
+      "id": "P5",
+      "role": "sender",
+      "purpose": "registry-protocol-design-only-no-scientific-lease",
+      "egress": "not-authorized"
+    },
+    {
+      "id": "P6",
+      "role": "preserver",
+      "purpose": "seal-prefix-and-preserve-with-fixed-receipt",
+      "egress": "permit-mediated-preservation-only"
+    },
+    {
+      "id": "P7",
+      "role": "parent",
+      "purpose": "stop-all-children-close-final-receipt-and-accounting",
+      "egress": "not-yet-defined"
+    }
+  ],
+  "illustrativeAccounting": {
+    "runnerBinLogicalBytes": 84243487,
+    "node20ExecutableLogicalBytes": 98932688,
+    "historicalCodeBytes": 11746870,
+    "historicalPythonBytes": 8020928,
+    "historicalGitBytes": 4066232,
+    "finishReserveBytes": 16777216,
+    "sumBytes": 223787421,
+    "arithmeticRemainderBytes": 44648035,
+    "remainderIsAvailableBudget": false,
+    "fullPeakBytes": null
+  },
+  "blockingGates": [
+    "exact-job-and-workflow-identity",
+    "all-client-and-setting-coverage",
+    "git-smart-http-and-cas-mediation",
+    "node20-work-compatibility",
+    "binary-source-and-inner-transport-no-retry",
+    "os-egress-and-privilege-isolation",
+    "all-input-dependency-and-storage-peak",
+    "final-preservation-and-all-child-stop-terminal"
+  ],
+  "wholeLifecycleOsProven": false,
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificExecutionAuthorized": false
+}
