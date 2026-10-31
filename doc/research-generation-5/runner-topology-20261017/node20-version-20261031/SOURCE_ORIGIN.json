@@ -1,0 +1,35 @@
+{
+  "runnerCommit": "397b032cbf865e9c3ddfab89d533ec19325e1273",
+  "runnerPath": "src/Misc/externals.sh",
+  "nodeTag": "v20.20.2",
+  "nodeTagObject": "35e07843146797923006aa01c6daabf4f53a4fb9",
+  "nodeCommit": "3626fea570e44896ad99aaf3bf6e59def5adede5",
+  "v8Path": "deps/v8/src/builtins/array-to-reversed.tq",
+  "v8LicensePath": "deps/v8/LICENSE",
+  "files": [
+    {
+      "path": "upstream/externals.sh",
+      "gitBlob": "c3eff13c70c64afef6bb146c98b484c4eb4edfdd",
+      "bytes": 8935,
+      "sha256": "e5d61ace178669504b6a401ffbefdf80bfbb9576f6f5aa5de8d24a111ffd4661"
+    },
+    {
+      "path": "upstream/array-to-reversed.tq",
+      "gitBlob": "cb098e1a4555ae1439dcce43bcd1b4d14174084e",
+      "bytes": 5342,
+      "sha256": "961fa87d376c3201ce6a09b4e646fdb6453d0cd9760ef3502ae0119283a5c6b7"
+    },
+    {
+      "path": "upstream/V8_LICENSE",
+      "gitBlob": "f665c480d2c169427b4104806fef7a6e3937e38a",
+      "bytes": 3098,
+      "sha256": "81680185f0cb339021e3b73714499264de72f33b17cfdb0c14f400de6d95cf0e"
+    }
+  ],
+  "node20DownloadVersion": "20.20.2",
+  "distributedNodeBinaryIdentified": false,
+  "node20WorkCompatibilityProven": false,
+  "wholeLifecycleOsProven": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false
+}
