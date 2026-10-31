@@ -1,0 +1,473 @@
+{
+  "evidenceClass": "TEXTUAL-LITERAL-REQUIRE-OVERAPPROXIMATION-NOT-CALL-GRAPH",
+  "sourceCommit": "e8da76a89e42c534960ba060df154e9538b32bc3",
+  "entries": [
+    "tools/research/g5-befcs-workload/scientific-source.cjs",
+    "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+    "tools/research/g5-befcs-workload/scientific-closure.cjs",
+    "tools/research/g5-befcs-host/host.cjs"
+  ],
+  "files": [
+    {
+      "path": "public/engine.js",
+      "bytes": 17284,
+      "sha256": "7147697b8befd0c4c483e12aaf11f88432ce77a0cc189787d98ec184c24085f1",
+      "gitBlob": "1d60ab1e2393cc9f12105748d8346c6c67608d1c"
+    },
+    {
+      "path": "tools/engineering/browser/pbai-p9/fixtures.json",
+      "bytes": 13728,
+      "sha256": "a483296e004a92cf92059c790baadaede14caf761c2f4880830f133e081d145f",
+      "gitBlob": "a45d229680337b427dd3849ebed06d3093a12b92"
+    },
+    {
+      "path": "tools/experiments/lib/restricted-endgame-retrograde-independent.js",
+      "bytes": 7203,
+      "sha256": "427ffa7784bc649a3f83418745b2e75856b669437cced8d1a1c1096edf944855",
+      "gitBlob": "8d8d087b610b65806cd552f3b8038c6fecc8cec7"
+    },
+    {
+      "path": "tools/experiments/lib/restricted-endgame-retrograde.js",
+      "bytes": 7265,
+      "sha256": "8d3aa85b79104413a0e3ad0a66766713f0c3f5c7408142c761d0def9e62dbdd5",
+      "gitBlob": "e07b78b388996213c859145cd5a546b62d6f6d68"
+    },
+    {
+      "path": "tools/research/g5-01/measurement.cjs",
+      "bytes": 5245,
+      "sha256": "31d5ee12082ee10d54a4f400de02692f6fca982fe608bd8f9c08b057125898cd",
+      "gitBlob": "988aa52c7245761e64c92276a5d9f9afd3b67952"
+    },
+    {
+      "path": "tools/research/g5-01/transition/fixtures.cjs",
+      "bytes": 2449,
+      "sha256": "6e9f6f08fc9c7fcf66235d84dfb185705246fe3f357678c845dcb1c4683a4b0d",
+      "gitBlob": "f0304ad52ee81b5311ef1bd7148c6256604259a5"
+    },
+    {
+      "path": "tools/research/g5-befcs-host/host.cjs",
+      "bytes": 3927,
+      "sha256": "6f39e73a03f6c2c3fb5e0409c2cfadcfb79508d6803f6e23a76b2c000779c8f8",
+      "gitBlob": "74bb24a6700f93e64dd6f445dc062c332dea5b0c"
+    },
+    {
+      "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+      "bytes": 7445,
+      "sha256": "b3002e5301795dd3f5bbc9cdbfc790a99cdfe498893f0904a61d14dd1e44d106",
+      "gitBlob": "5d52dcfb20cca16a00037bd750b5910592c0390e"
+    },
+    {
+      "path": "tools/research/g5-befcs-host/session.cjs",
+      "bytes": 3222,
+      "sha256": "cf53301da18d8552b0e4c149d751e2fda339fbb41a7c4d348c4799092e374224",
+      "gitBlob": "ce9c02e78d3cd645b020c97f8c6a050870439f35"
+    },
+    {
+      "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+      "bytes": 7488,
+      "sha256": "e26ce921d69e93cf42e4e8bd03c87631a7e26f8d01e1f0c8f615bfb8fbd6f3e3",
+      "gitBlob": "cc4378d4a11212b50b81cacd0f2dd83cee4693c9"
+    },
+    {
+      "path": "tools/research/g5-befcs-workload/registry.cjs",
+      "bytes": 6597,
+      "sha256": "b68815eff8100e2279fed37f3bc28fd653c22fafedc470a0528cd87af58896f4",
+      "gitBlob": "ca08d8949bfbaed210ef470af94c6a07a5d238b4"
+    },
+    {
+      "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+      "bytes": 2365,
+      "sha256": "4d3e47a19e0371a952822690175831ed3e5cb43a795883598a69e058ce4c899c",
+      "gitBlob": "164aacff6ea12eb89af536bbf55131565a943612"
+    },
+    {
+      "path": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+      "bytes": 5539,
+      "sha256": "22d960d6ad11359edebadad562e2c6cffce0b559ed5ee20f087a8929fb73eeb3",
+      "gitBlob": "9c8ae8a1fca07e5dd797c4b1e88bf55375d277ff"
+    },
+    {
+      "path": "tools/research/g5-befcs-workload/scientific-source.cjs",
+      "bytes": 4371,
+      "sha256": "da89ce6bfd807fbc8ded2790bc0eb4149d4808cef27aadf0eea1046c4a969aaf",
+      "gitBlob": "6f853e41edc0b1be164644e749a728bf0b87257d"
+    },
+    {
+      "path": "tools/research/g5-branch-envelope/independent-closure.cjs",
+      "bytes": 1845,
+      "sha256": "a430fcaa6464ffc6b4ca29d78c83cc207042621a57029d7ce81cddd1e1a7568e",
+      "gitBlob": "3522cd50b8c1b3e32eb9e5eda03697d5060c2686"
+    },
+    {
+      "path": "tools/research/g5-branch-envelope/source.cjs",
+      "bytes": 9672,
+      "sha256": "76277d622fe244a5d65f5e0e863f97c22cd41f2b3be68a3a12c46a388ba6d550",
+      "gitBlob": "46d9572161906b072fa1c599ad8e7ac35039aed0"
+    },
+    {
+      "path": "tools/research/g5-compact-bfs/compact.cjs",
+      "bytes": 4595,
+      "sha256": "eb374e28e815de88f218a2e2204d05716ff2cc7a820a669dfac51302c7ae92c1",
+      "gitBlob": "0327d6bc533ae9de40550a93c132e3247c3cbfc3"
+    },
+    {
+      "path": "tools/research/g5-compact-bfs/fixtures.cjs",
+      "bytes": 3154,
+      "sha256": "8c4c773d916c71fa291ecc4f3242f06ea2f01a45700ee7778490028c7b96f504",
+      "gitBlob": "54abe85dcb498ad6e3bcf5e7af12174fe7c7a71b"
+    },
+    {
+      "path": "tools/research/g5-compact-bfs/journal.cjs",
+      "bytes": 2728,
+      "sha256": "4d7a3e17d1b5d4ccf2237c1a3826cf525196040f00add687f9f13b81ae6d6e96",
+      "gitBlob": "ef1608f7c1dd0d4d3086cfbb1019e4dbb39745c3"
+    },
+    {
+      "path": "tools/research/g5-compact-bfs/reference.cjs",
+      "bytes": 5966,
+      "sha256": "03c9379d3b1b24299fe1d0b8a7e13e359a95fe6286a21be14d63081e5d25a69f",
+      "gitBlob": "699d4599d3f584de8d4273adace69969f128c0a9"
+    },
+    {
+      "path": "tools/research/g5-method/independent-raw-codec.cjs",
+      "bytes": 2639,
+      "sha256": "f83ec42619fc0b5b3ed7bdd10cd88ead911df6c39e331867bf03bc96b371e7e6",
+      "gitBlob": "c24008ed19d496c96ab0f957c3bd5711cfcf8c27"
+    },
+    {
+      "path": "tools/research/g5-method/microstate-check.cjs",
+      "bytes": 1640,
+      "sha256": "98725ec3160fa0dd8a57dad8afc17c0fe2d876e6a1a757323989113479d87300",
+      "gitBlob": "6f8bce9c76907ae55d126366de719e4b6278017b"
+    },
+    {
+      "path": "tools/research/g5-method/object-engine.cjs",
+      "bytes": 17939,
+      "sha256": "3dcf2d2be0e2752c747337fc705a1874e89edbe255f1a138f6a8ca9ecbca4ec1",
+      "gitBlob": "b9144752ac5ffd85c4833c964329e52018c6674e"
+    },
+    {
+      "path": "tools/research/g5-method/raw-codec.cjs",
+      "bytes": 2067,
+      "sha256": "89aa6c1ba1b743f39ef35cf7a4e68738bb717608e0d04f87dba3a5db8e4e2287",
+      "gitBlob": "ad78b9f9695a274b5a9f3fcf26413117caaa6441"
+    },
+    {
+      "path": "tools/research/g5-method/ring-engine.cjs",
+      "bytes": 10289,
+      "sha256": "66ec9bf4820f63a35b9a2101369be9bea9290ef765cf378110bfff0058ded57c",
+      "gitBlob": "4f06733af895d4cc806ccad5e667a518cbf4bcd4"
+    },
+    {
+      "path": "tools/takasia/fixtures.json",
+      "bytes": 28770,
+      "sha256": "f3096da061690038f128cbbf822e04f64b2d2575d36d8715661b0bd6dd08c3bd",
+      "gitBlob": "d7619798be6e7e67d3eceb40e5dc948cfd83013e"
+    }
+  ],
+  "edges": [
+    {
+      "from": "tools/research/g5-01/measurement.cjs",
+      "line": 3,
+      "specifier": "../../../public/engine.js",
+      "to": "public/engine.js"
+    },
+    {
+      "from": "tools/research/g5-01/transition/fixtures.cjs",
+      "line": 2,
+      "specifier": "../../../takasia/fixtures.json",
+      "to": "tools/takasia/fixtures.json"
+    },
+    {
+      "from": "tools/research/g5-01/transition/fixtures.cjs",
+      "line": 3,
+      "specifier": "../../../engineering/browser/pbai-p9/fixtures.json",
+      "to": "tools/engineering/browser/pbai-p9/fixtures.json"
+    },
+    {
+      "from": "tools/research/g5-befcs-host/host.cjs",
+      "line": 4,
+      "specifier": "../g5-befcs-workload/registry.cjs",
+      "to": "tools/research/g5-befcs-workload/registry.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-host/host.cjs",
+      "line": 5,
+      "specifier": "./scientific-registry.cjs",
+      "to": "tools/research/g5-befcs-host/scientific-registry.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-host/host.cjs",
+      "line": 6,
+      "specifier": "./session.cjs",
+      "to": "tools/research/g5-befcs-host/session.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-host/host.cjs",
+      "line": 25,
+      "specifier": "../g5-befcs-workload/science-gate.cjs",
+      "to": "tools/research/g5-befcs-workload/science-gate.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-host/host.cjs",
+      "line": 41,
+      "specifier": "../g5-befcs-workload/science-gate.cjs",
+      "to": "tools/research/g5-befcs-workload/science-gate.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-host/scientific-registry.cjs",
+      "line": 41,
+      "specifier": "../g5-befcs-workload/science-gate.cjs",
+      "to": "tools/research/g5-befcs-workload/science-gate.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-host/scientific-registry.cjs",
+      "line": 42,
+      "specifier": "./host.cjs",
+      "to": "tools/research/g5-befcs-host/host.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-host/scientific-registry.cjs",
+      "line": 58,
+      "specifier": "../g5-befcs-workload/science-gate.cjs",
+      "to": "tools/research/g5-befcs-workload/science-gate.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-host/scientific-registry.cjs",
+      "line": 60,
+      "specifier": "./host.cjs",
+      "to": "tools/research/g5-befcs-host/host.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-host/scientific-registry.cjs",
+      "line": 72,
+      "specifier": "../g5-befcs-workload/science-gate.cjs",
+      "to": "tools/research/g5-befcs-workload/science-gate.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-host/scientific-registry.cjs",
+      "line": 74,
+      "specifier": "./host.cjs",
+      "to": "tools/research/g5-befcs-host/host.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+      "line": 3,
+      "specifier": "../g5-01/measurement.cjs",
+      "to": "tools/research/g5-01/measurement.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+      "line": 3,
+      "specifier": "../g5-method/microstate-check.cjs",
+      "to": "tools/research/g5-method/microstate-check.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+      "line": 50,
+      "specifier": "./science-gate.cjs",
+      "to": "tools/research/g5-befcs-workload/science-gate.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+      "line": 3,
+      "specifier": "../g5-01/measurement.cjs",
+      "to": "tools/research/g5-01/measurement.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+      "line": 3,
+      "specifier": "../g5-branch-envelope/source.cjs",
+      "to": "tools/research/g5-branch-envelope/source.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+      "line": 3,
+      "specifier": "../g5-method/raw-codec.cjs",
+      "to": "tools/research/g5-method/raw-codec.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+      "line": 4,
+      "specifier": "../g5-compact-bfs/compact.cjs",
+      "to": "tools/research/g5-compact-bfs/compact.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+      "line": 4,
+      "specifier": "../g5-compact-bfs/journal.cjs",
+      "to": "tools/research/g5-compact-bfs/journal.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+      "line": 4,
+      "specifier": "../g5-compact-bfs/reference.cjs",
+      "to": "tools/research/g5-compact-bfs/reference.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+      "line": 5,
+      "specifier": "../../experiments/lib/restricted-endgame-retrograde-independent.js",
+      "to": "tools/experiments/lib/restricted-endgame-retrograde-independent.js"
+    },
+    {
+      "from": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+      "line": 5,
+      "specifier": "../../experiments/lib/restricted-endgame-retrograde.js",
+      "to": "tools/experiments/lib/restricted-endgame-retrograde.js"
+    },
+    {
+      "from": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+      "line": 6,
+      "specifier": "../g5-branch-envelope/independent-closure.cjs",
+      "to": "tools/research/g5-branch-envelope/independent-closure.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+      "line": 8,
+      "specifier": "./science-gate.cjs",
+      "to": "tools/research/g5-befcs-workload/science-gate.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-workload/scientific-source.cjs",
+      "line": 2,
+      "specifier": "../g5-01/measurement.cjs",
+      "to": "tools/research/g5-01/measurement.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-workload/scientific-source.cjs",
+      "line": 3,
+      "specifier": "../g5-branch-envelope/source.cjs",
+      "to": "tools/research/g5-branch-envelope/source.cjs"
+    },
+    {
+      "from": "tools/research/g5-befcs-workload/scientific-source.cjs",
+      "line": 6,
+      "specifier": "./science-gate.cjs",
+      "to": "tools/research/g5-befcs-workload/science-gate.cjs"
+    },
+    {
+      "from": "tools/research/g5-branch-envelope/independent-closure.cjs",
+      "line": 3,
+      "specifier": "../g5-01/measurement.cjs",
+      "to": "tools/research/g5-01/measurement.cjs"
+    },
+    {
+      "from": "tools/research/g5-branch-envelope/independent-closure.cjs",
+      "line": 3,
+      "specifier": "../g5-method/microstate-check.cjs",
+      "to": "tools/research/g5-method/microstate-check.cjs"
+    },
+    {
+      "from": "tools/research/g5-branch-envelope/source.cjs",
+      "line": 3,
+      "specifier": "../g5-01/measurement.cjs",
+      "to": "tools/research/g5-01/measurement.cjs"
+    },
+    {
+      "from": "tools/research/g5-branch-envelope/source.cjs",
+      "line": 3,
+      "specifier": "../g5-method/microstate-check.cjs",
+      "to": "tools/research/g5-method/microstate-check.cjs"
+    },
+    {
+      "from": "tools/research/g5-compact-bfs/compact.cjs",
+      "line": 2,
+      "specifier": "../g5-01/measurement.cjs",
+      "to": "tools/research/g5-01/measurement.cjs"
+    },
+    {
+      "from": "tools/research/g5-compact-bfs/compact.cjs",
+      "line": 2,
+      "specifier": "./fixtures.cjs",
+      "to": "tools/research/g5-compact-bfs/fixtures.cjs"
+    },
+    {
+      "from": "tools/research/g5-compact-bfs/compact.cjs",
+      "line": 2,
+      "specifier": "../g5-method/microstate-check.cjs",
+      "to": "tools/research/g5-method/microstate-check.cjs"
+    },
+    {
+      "from": "tools/research/g5-compact-bfs/compact.cjs",
+      "line": 2,
+      "specifier": "../g5-method/raw-codec.cjs",
+      "to": "tools/research/g5-method/raw-codec.cjs"
+    },
+    {
+      "from": "tools/research/g5-compact-bfs/fixtures.cjs",
+      "line": 2,
+      "specifier": "../g5-01/measurement.cjs",
+      "to": "tools/research/g5-01/measurement.cjs"
+    },
+    {
+      "from": "tools/research/g5-compact-bfs/fixtures.cjs",
+      "line": 2,
+      "specifier": "../g5-01/transition/fixtures.cjs",
+      "to": "tools/research/g5-01/transition/fixtures.cjs"
+    },
+    {
+      "from": "tools/research/g5-compact-bfs/fixtures.cjs",
+      "line": 2,
+      "specifier": "../g5-method/microstate-check.cjs",
+      "to": "tools/research/g5-method/microstate-check.cjs"
+    },
+    {
+      "from": "tools/research/g5-compact-bfs/fixtures.cjs",
+      "line": 2,
+      "specifier": "../g5-method/object-engine.cjs",
+      "to": "tools/research/g5-method/object-engine.cjs"
+    },
+    {
+      "from": "tools/research/g5-compact-bfs/fixtures.cjs",
+      "line": 2,
+      "specifier": "../g5-method/ring-engine.cjs",
+      "to": "tools/research/g5-method/ring-engine.cjs"
+    },
+    {
+      "from": "tools/research/g5-compact-bfs/journal.cjs",
+      "line": 2,
+      "specifier": "../g5-01/measurement.cjs",
+      "to": "tools/research/g5-01/measurement.cjs"
+    },
+    {
+      "from": "tools/research/g5-compact-bfs/journal.cjs",
+      "line": 2,
+      "specifier": "../g5-method/independent-raw-codec.cjs",
+      "to": "tools/research/g5-method/independent-raw-codec.cjs"
+    },
+    {
+      "from": "tools/research/g5-compact-bfs/reference.cjs",
+      "line": 3,
+      "specifier": "../g5-01/measurement.cjs",
+      "to": "tools/research/g5-01/measurement.cjs"
+    },
+    {
+      "from": "tools/research/g5-compact-bfs/reference.cjs",
+      "line": 3,
+      "specifier": "../g5-method/independent-raw-codec.cjs",
+      "to": "tools/research/g5-method/independent-raw-codec.cjs"
+    },
+    {
+      "from": "tools/research/g5-compact-bfs/reference.cjs",
+      "line": 3,
+      "specifier": "../g5-method/microstate-check.cjs",
+      "to": "tools/research/g5-method/microstate-check.cjs"
+    }
+  ],
+  "builtins": [
+    "node:assert/strict",
+    "node:child_process",
+    "node:crypto",
+    "node:fs",
+    "node:path"
+  ],
+  "externalSpecifiers": [],
+  "unresolved": [],
+  "computedRequireSites": [],
+  "runtimeExecuted": false,
+  "node20CompatibilityProven": false,
+  "wholeLifecycleOsProven": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false
+}

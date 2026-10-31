@@ -1,5 +1,7 @@
 # 第五世代研究 — 現在の状態
 
+> 2026-10-31のwork依存・CAS確認: [4入口の静的索引](runner-topology-20261017/work-deps-20261031/README.md)に26ファイル・48 literal参照を保存した。完全依存解析やNode20互換性の証明ではない。Git仲介でも期待旧ref付きpushとreceipt後読取を維持し、次は同梱Node20の静的版特定。runner改変・build・実行、remote結合試験、科学実行は開始しない。
+
 > 2026-10-31の候補経路台帳: [単一runtime仮説の候補](runner-topology-20261017/candidate-route-20261031/README.md)に取得・registry・保存・全子停止をまとめた。内部Node20とworkの共用は未証明の容量比較仮説で、Node24除外や方式採用は未認定。workflow/head/job等は未固定で、次は静的互換性とGit仲介の適合確認。runner改変・build・実行、remote結合試験、科学実行は開始しない。
 
 > 2026-10-31の通信・容量照合: [既存通信経路と容量下限](runner-topology-20261017/protocol-scope-20261031/README.md)で、最終科学workflowの未固定、Git/Node/Actionsの別経路とpromisor追加取得の監査条件を確認した。複数runtime保持案の容量超過を保持し、次は実行不可の候補経路台帳を具体化する。runner改変・build・実行、remote結合試験、科学実行は開始しない。
