@@ -1,0 +1,19 @@
+name: G5 Read Only Parent Observer Tests
+on:
+  pull_request:
+    paths: ['tools/research/g5-runner-topology/*observe-parent-host.py', '.github/workflows/g5-parent-observer-audit.yml']
+  push:
+    branches: [main]
+    paths: ['tools/research/g5-runner-topology/*observe-parent-host.py', '.github/workflows/g5-parent-observer-audit.yml']
+permissions:
+  contents: read
+jobs:
+  synthetic-observer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Test selected reads on synthetic inputs without observing host
+        run: python3 -B tools/research/g5-runner-topology/test-observe-parent-host.py
