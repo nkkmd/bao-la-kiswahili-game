@@ -82,3 +82,16 @@
   .rules-page h2, .rules-page h3 { break-after: avoid; }
   .rules-footer { color: #172c2b; }
 }
+
+/* 詳細ガイドの長い表・局面表記を小画面でも参照できるようにする。 */
+.rules-page { overflow-wrap: anywhere; }
+.rules-page pre { max-width: 100%; overflow: auto; white-space: pre; padding: 16px; background: #101e1f; }
+.guide-table { max-width: 100%; overflow-x: auto; margin: 20px 0; }
+.guide-table table { width: 100%; border-collapse: collapse; font-size: .9em; }
+.guide-table th, .guide-table td { border: 1px solid #456158; padding: 10px; min-width: 7em; text-align: left; vertical-align: top; }
+.guide-table th { background: #20332e; }
+.guide-table:focus-visible { outline: 3px solid #e2c36b; }
+#reference { border-top: 4px solid #e2c36b; margin-top: 48px; padding-top: 32px; }
+.guide-chapter h4, .guide-chapter h5 { font-size: 1.05em; color: #d3e4a5; }
+.rules-section > .back-to-top { margin-right: 24px; }
+@media print { .guide-table { overflow: visible; } .guide-table th { background: white; } .rules-page pre { background: white; white-space: pre-wrap; } }

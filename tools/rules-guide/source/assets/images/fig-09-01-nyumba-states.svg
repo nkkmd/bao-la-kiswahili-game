@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-labelledby="title desc">
+  <title id="title">図9-1 nyumbaの所有と機能</title>
+  <desc id="desc">本書の採用規則。所有中のnyumbaは6個未満でも所有を保ち、6個以上を条件とする機能だけが一時停止する。6個に戻れば再開する。空にした場合やmtajiの最初の捕獲で所有を失う。namuaの停止選択とmtajiの所有を区別する。</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#374151"/></marker></defs>
+  <rect width="960" height="520" fill="#fff"/>
+  <text x="480" y="40" text-anchor="middle" font-family="sans-serif" font-size="25" font-weight="700">nyumba: 所有状態と6個条件の機能を分ける</text>
+  <rect x="55" y="125" width="350" height="115" rx="20" fill="#fef3c7" stroke="#92400e" stroke-width="4"/>
+  <rect x="555" y="125" width="350" height="115" rx="20" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+  <g font-family="sans-serif" text-anchor="middle">
+    <text x="230" y="158" font-size="21" font-weight="700">所有中・6個以上</text>
+    <text x="230" y="190" font-size="16">namuaで捕獲できず到達したとき:</text>
+    <text x="230" y="219" font-size="16">takataは停止／捕獲手は停止を選べる</text>
+    <text x="730" y="158" font-size="21" font-weight="700">所有中・6個未満</text>
+    <text x="730" y="190" font-size="17">6個条件の機能は一時停止</text>
+    <text x="730" y="219" font-size="17">所有状態は保つ</text>
+  </g>
+  <path d="M405 150 L535 150" stroke="#374151" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M555 220 L425 220" stroke="#374151" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="480" y="132" text-anchor="middle" font-family="sans-serif" font-size="15">6個未満へ</text>
+  <text x="480" y="257" text-anchor="middle" font-family="sans-serif" font-size="15">6個以上へ</text>
+  <path d="M230 240 L350 345" stroke="#374151" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M730 240 L610 345" stroke="#374151" stroke-width="3" marker-end="url(#arrow)"/>
+  <text x="480" y="310" text-anchor="middle" font-family="sans-serif" font-size="18">空にする／mtajiで最初の捕獲が起きる</text>
+  <rect x="280" y="355" width="400" height="80" rx="20" fill="#f3f4f6" stroke="#4b5563" stroke-width="3"/>
+  <text x="480" y="386" text-anchor="middle" font-family="sans-serif" font-size="21" font-weight="700">所有を失う</text>
+  <text x="480" y="418" text-anchor="middle" font-family="sans-serif" font-size="17">通常穴として扱い、6個に戻っても再所有しない</text>
+  <text x="480" y="471" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#4b5563">mtajiでは、個数にかかわらずnamuaの停止選択・2個蒔きを適用しない。</text>
+  <text x="480" y="500" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#4b5563">本書の採用規則を図示。5個時の地域差と開始条件の境界は本文で確認する。</text>
+</svg>

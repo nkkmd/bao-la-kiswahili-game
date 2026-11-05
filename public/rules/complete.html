@@ -1,0 +1,2502 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PDFFMB59');</script>
+<!-- End Google Tag Manager -->
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#172c2b" name="theme-color"/>
+<meta content="Learn the Bao la Kiswahili rules used in this game with diagrams: board setup, sowing, captures, namua, mtaji and nyumba. Available in English and Japanese." data-ja-content="図解で学ぶバオのルール。このゲームが採用する初期配置、種まき、捕獲、namua、mtaji、nyumbaを日本語・英語で説明します。" name="description"/>
+<link href="https://bao-la-kiswahili.cultivationdata.net/rules/complete" rel="canonical"/>
+<link href="../icon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../style.css" rel="stylesheet"/>
+<link href="../rules.css" rel="stylesheet"/>
+<title data-ja="詳細ルールガイド | Bao la Kiswahili">Detailed rules | Bao la Kiswahili</title>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-PDFFMB59" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<main class="game-shell rules-page" id="top">
+<div class="rules-topbar"><a data-ja="← はじめてのバオへ" data-locale-link="" href="../rules">← Quick start</a>
+<a data-ja="← ゲームを開く" data-locale-link="" href="../">← Open game</a>
+<nav aria-label="Language / 言語" class="language-nav">
+<a data-language="ja" href="?lang=ja" hreflang="ja" lang="ja">日本語</a>
+<a data-language="en" href="?lang=en" hreflang="en" lang="en">English</a>
+</nav>
+</div>
+<header class="rules-hero">
+<span class="rules-eyebrow" data-ja="BAO LA KISWAHILI · 図解ルール">BAO LA KISWAHILI · ILLUSTRATED RULES</span>
+<h1><span data-ja="詳細ルールガイド">Detailed rules guide</span></h1>
+<p class="rules-lead" data-ja="盤を見て、石の動きを追ってみましょう。1つの手が何度も続く、バオならではの面白さ。このゲームで使うルールを、図と一緒に順番に説明します。">Learn the board, follow the pieces, and discover how a single move can keep going. This guide explains the rules used in this game, one step at a time.</p>
+<ul class="rules-quick">
+<li>
+<strong data-ja="2人">2 players</strong>
+<span data-ja="1つの盤で向かい合う">One board, two sides</span>
+</li>
+<li>
+<strong data-ja="64個">64 pieces</strong>
+<span data-ja="自分の2列で石を蒔く">Sow within your own two rows</span>
+</li>
+<li>
+<strong data-ja="2段階">2 phases</strong>
+<span data-ja="namua → mtaji">Namua → Mtaji</span>
+</li>
+</ul>
+<p class="rules-baseline" data-ja="採用基準：v0.2.0・takasia対応。このゲームの実装に沿った図解です。">Rules used here: v0.2.0 with takasia. An illustrated guide to this implementation.</p>
+<p class="rule-note" data-ja="日本語完全ガイド v0.2.0（検証版）に基づく詳細解説です。前半は日英の図解、後半は日本語のガイド本文です。外部レビュー未実施・未解決の細則があります。">Based on the Japanese guide v0.2.0 (pre-release). Illustrated rules in English and Japanese come first, followed by the full Japanese text. External review and some rule details remain unresolved.</p></header>
+<nav aria-labelledby="contents-title" class="rules-toc" id="contents">
+<h2 data-ja="知りたいところから読む" id="contents-title">Find what you need</h2>
+<ol>
+<li>
+<a data-ja="何を目指すゲーム？" href="#goal">What are you trying to do?</a>
+</li>
+<li>
+<a data-ja="盤の見方を覚える" href="#board">Read the board</a>
+</li>
+<li>
+<a data-ja="初期配置と対局の流れ" href="#setup">Set up the pieces</a>
+</li>
+<li>
+<a data-ja="種まき・連続種まき・停止" href="#sowing">Sow, continue, stop</a>
+</li>
+<li>
+<a data-ja="namua：手元の1個から始める" href="#namua">Namua: use a piece from hand</a>
+</li>
+<li>
+<a data-ja="捕獲と入口の選び方" href="#capture">Capture and choose an entry side</a>
+</li>
+<li>
+<a data-ja="mtaji：盤上の石だけで進める" href="#mtaji">Mtaji: play from the board</a>
+</li>
+<li>
+<a data-ja="nyumba：家の特別な扱い" href="#nyumba">Nyumba: the house</a>
+</li>
+<li>
+<a data-ja="takasia：次の1手だけの制約" href="#takasia">Takasia: a one-turn restriction</a>
+</li>
+<li>
+<a data-ja="ゲーム画面の操作と表示" href="#controls">Use the game screen</a>
+</li>
+<li>
+<a data-ja="このゲームの採用範囲と出典" href="#rules-used">Rules used here and sources</a>
+</li>
+<li><a data-ja="日本語完全ガイドの本文・用語・FAQ・局面例" href="#reference-contents">Full Japanese guide, glossary, FAQ and examples</a></li></ol>
+</nav>
+<section aria-labelledby="goal-title" class="rules-section" id="goal">
+<span class="section-number">01</span>
+<h2 data-ja="何を目指すゲーム？" id="goal-title">What are you trying to do?</h2>
+<p data-ja="バオ（Bao la Kiswahili）は、64個のkete（石）を使う2人用のマンカラ系ゲームです。自分の2列で石を動かし、相手の前列から石を捕獲します。">Bao la Kiswahili is a two-player mancala game played with 64 kete (seeds or pieces). You move pieces around your own two rows and capture pieces from the opponent’s front row.</p>
+<div class="rules-columns">
+<div class="rules-card">
+<h3 data-ja="相手の前列を空にする">Empty the opponent’s front row</h3>
+<p data-ja="相手の前列8穴がすべて空になれば勝利です。捕獲の途中でも、その時点で対局が終わります。">If all eight pits in the opponent’s front row become empty, you win—even during a move.</p>
+</div>
+<div class="rules-card">
+<h3 data-ja="相手の合法手をなくす">Leave the opponent without a move</h3>
+<p data-ja="相手が手番に合法な着手をできなくなっても勝利です。「捕獲できない」だけなら、捕獲しない手で続けられる場合があります。">You also win if the opponent has no legal move on their turn. Having no capture is different: a non-capturing move may still be available.</p>
+</div>
+</div>
+<figure>
+<img alt="Every pit a1–a8 contains zero. South’s A4 contains 3." data-ja-alt="a1〜a8の全穴が0個。SouthのA4には3個あります。" decoding="async" height="260" loading="lazy" src="../assets/rules/front-empty.svg" width="660"/>
+<figcaption>
+<span data-ja="Northの前列が空になり、Southの勝ち。図は両者の前列だけを示しています。">North’s front row is empty: South wins. Only the front rows are shown.</span>
+</figcaption>
+<a aria-label="Enlarge: North’s front row is empty: South wins. Only the front rows are shown." class="figure-zoom" data-ja-aria-label="図を拡大：Northの前列が空になり、Southの勝ち。図は両者の前列だけを示しています。" href="../assets/rules/front-empty.svg" rel="noopener noreferrer" target="_blank">
+<span data-ja="図を拡大 ↗">Enlarge diagram ↗</span>
+</a>
+</figure>
+<aside class="rule-note">
+<p data-ja="盤外に石を集めて得点を競うゲームではありません。捕獲した石は通常、そのまま自分側へ蒔きます。石の総数の多さだけでは勝敗は決まりません。">The goal is not to collect points off the board. Captured pieces normally go straight back into play on your side. Piece totals alone do not decide the winner.</p>
+</aside>
+<a class="back-to-top" data-ja="目次へ戻る ↑" href="#contents">Back to contents ↑</a>
+</section>
+<section aria-labelledby="board-title" class="rules-section" id="board">
+<span class="section-number">02</span>
+<h2 data-ja="盤の見方を覚える" id="board-title">Read the board</h2>
+<p data-ja="盤は4列×8穴です。各プレイヤーは手前の2列を使います。盤の中央で向かい合う列が「前列」、外側の列が「後列」です。">The board has four rows of eight pits. Each player uses the two rows nearest them. The front rows face each other in the middle; the back rows are on the outside.</p>
+<figure>
+<img alt="Rows from top to bottom: b8 to b1, a8 to a1, A1 to A8, B1 to B8. A5 and a5 are square houses." data-ja-alt="上からb8〜b1、a8〜a1、A1〜A8、B1〜B8。A5とa5は四角い家の穴です。" decoding="async" height="410" loading="lazy" src="../assets/rules/board-overview.svg" width="660"/>
+<figcaption>
+<span data-ja="SouthはA列（前列）とB列（後列）、Northはa列（前列）とb列（後列）を使います。緑の帯が前列です。">South uses A (front) and B (back). North uses a (front) and b (back). The green bands are the front rows.</span>
+</figcaption>
+<a aria-label="Enlarge: South uses A (front) and B (back). North uses a (front) and b (back). The green bands are the front rows." class="figure-zoom" data-ja-aria-label="図を拡大：SouthはA列（前列）とB列（後列）、Northはa列（前列）とb列（後列）を使います。緑の帯が前列です。" href="../assets/rules/board-overview.svg" rel="noopener noreferrer" target="_blank">
+<span data-ja="図を拡大 ↗">Enlarge diagram ↗</span>
+</a>
+</figure>
+<dl class="rule-terms">
+<dt data-ja="kete（ケテ）">kete</dt>
+<dd data-ja="盤で使う石です。石そのものに所有者の区別はなく、どちら側の穴にあるかで扱いが決まります。">The playing pieces. All pieces are interchangeable; the pit they occupy determines whose side they are on.</dd>
+<dt data-ja="nyumba（ニュンバ）">nyumba</dt>
+<dd data-ja="「家」。各プレイヤーから見て前列の左から5番目、A5・a5です。所有している間は特別な規則があります。">The house: the fifth front-row pit from each player’s own left, A5 or a5. It has special rules while owned.</dd>
+<dt data-ja="kichwa（キチュワ）">kichwa</dt>
+<dd data-ja="前列の両端にある入口の穴。A1・A8、a1・a8です。捕獲した石はここから蒔きます。">The entry pits at the two ends of the front row: A1/A8 or a1/a8. Captured pieces enter here.</dd>
+<dt data-ja="kimbi（キンビ）">kimbi</dt>
+<dd data-ja="入口の隣の穴。A2・A7、a2・a7です。端の穴と同様に、捕獲した石を入れる側の指定に関わります。">The pits next to the entry pits: A2/A7 or a2/a7. Like the ends, they constrain the entry side for captures.</dd>
+</dl>
+<aside class="rule-note">
+<p data-ja="穴番号とLEFT／RIGHTは、そのプレイヤー本人から見た向きが基準です。画面上のNorthは左右が反転します。向かい合う穴はA1とa8、A2とa7……で、A4の向かいはa5です。">Pit numbers and LEFT/RIGHT refer to the player’s own viewpoint. North is reversed on screen: A1 faces a8, A2 faces a7, and so on. A4 faces a5—not a4.</p>
+</aside>
+<a class="back-to-top" data-ja="目次へ戻る ↑" href="#contents">Back to contents ↑</a>
+</section>
+<section aria-labelledby="setup-title" class="rules-section" id="setup">
+<span class="section-number">03</span>
+<h2 data-ja="初期配置と対局の流れ" id="setup-title">Set up the pieces</h2>
+<ol>
+<li data-ja="nyumbaに6個、その本人から見て右隣の2穴に2個ずつ置きます。">Put 6 pieces in your nyumba, and 2 in each of the next two pits to your own right.</li>
+<li data-ja="残り22個を手元に置きます。後列はすべて空です。">Keep the remaining 22 pieces in your hand. The back row starts empty.</li>
+<li data-ja="Southが先手です。その後は交互に手番を進めます。">South moves first. The players then alternate turns.</li>
+</ol>
+<figure>
+<img alt="A5 and a5 hold 6 each; A6, A7, a6, a7 hold 2 each; all other pits are empty." data-ja-alt="A5・a5に6個、A6・A7・a6・a7に2個ずつ。他の穴は空です。" decoding="async" height="410" loading="lazy" src="../assets/rules/initial-setup.svg" width="660"/>
+<figcaption>
+<span data-ja="各側は盤上10個＋手元22個＝32個。両者で64個です。ゲームでは自動で配置されます。">Each player starts with 10 pieces on the board and 22 in hand: 32 each, 64 altogether. The game sets this up for you.</span>
+</figcaption>
+<a aria-label="Enlarge: Each player starts with 10 pieces on the board and 22 in hand: 32 each, 64 altogether. The game sets this up for you." class="figure-zoom" data-ja-aria-label="図を拡大：各側は盤上10個＋手元22個＝32個。両者で64個です。ゲームでは自動で配置されます。" href="../assets/rules/initial-setup.svg" rel="noopener noreferrer" target="_blank">
+<span data-ja="図を拡大 ↗">Enlarge diagram ↗</span>
+</a>
+</figure>
+<div class="rules-columns">
+<div class="rules-card">
+<h3 data-ja="前半：namua（ナムア）">First phase: namua</h3>
+<p data-ja="各手番の最初に、手元の石を1個使います。入れられるのは、規則に従って選ぶ、石のある前列の穴です。">Use one piece from your hand at the start of each turn. It must be placed in a permitted occupied front-row pit.</p>
+</div>
+<div class="rules-card">
+<h3 data-ja="後半：mtaji（ムタジ）">Second phase: mtaji</h3>
+<p data-ja="両者の手元がなくなると、盤上の石だけで続ける段階に移ります。途中で終局しなければ、合計44手番後に移行します。">Once both hands are empty, play continues using only the pieces on the board. If the game has not ended earlier, this happens after 44 turns in total.</p>
+</div>
+</div>
+<a class="back-to-top" data-ja="目次へ戻る ↑" href="#contents">Back to contents ↑</a>
+</section>
+<section aria-labelledby="sowing-title" class="rules-section" id="sowing">
+<span class="section-number">04</span>
+<h2 data-ja="種まき・連続種まき・停止" id="sowing-title">Sow, continue, stop</h2>
+<p data-ja="「種まき」は、所定の石を取り上げ、進行方向に沿って1穴に1個ずつ置く操作です。自分の2列だけを巡り、前列の端から後列へ、後列の端から前列へ戻ります。">To sow, lift the required pieces and drop one into each successive pit. Stay within your own two rows: at the end of the front row, turn into the back row, then return at the other end.</p>
+<p data-ja="次の図は、mtajiで捕獲しない手の例です。Southの2列だけを表示しています。RIGHTは前列を右へ、後列を左へ巡る向きで、LEFTはその逆です。">The example below is a non-capturing mtaji move. Only South’s two rows are shown. RIGHT travels rightward along the front row and leftward along the back row; LEFT follows the reverse route.</p>
+<figure>
+<img alt="A3 holds 3 and A6 holds 2. Arrows lead from A3 through A4 and A5 to A6." data-ja-alt="A3に3個、A6に2個。矢印はA3からA4・A5を経てA6へ進みます。" decoding="async" height="260" loading="lazy" src="../assets/rules/sowing-before.svg" width="660"/>
+<figcaption>
+<span data-ja="① A3の3個をすべて取り、A4・A5・A6へ1個ずつ。最初の1個は取り上げた穴の次へ置きます。">① Lift all 3 pieces from A3. Put one each in A4, A5 and A6. The first piece goes into the next pit, not back into A3.</span>
+</figcaption>
+<a aria-label="Enlarge: ① Lift all 3 pieces from A3. Put one each in A4, A5 and A6. The first piece goes into the next pit, not back into A3." class="figure-zoom" data-ja-aria-label="図を拡大：① A3の3個をすべて取り、A4・A5・A6へ1個ずつ。最初の1個は取り上げた穴の次へ置きます。" href="../assets/rules/sowing-before.svg" rel="noopener noreferrer" target="_blank">
+<span data-ja="図を拡大 ↗">Enlarge diagram ↗</span>
+</a>
+</figure>
+<figure>
+<img alt="A4 and A5 now hold 1 each. A6 holds 3. Arrows continue through A7 and A8 into B8." data-ja-alt="A4・A5に1個ずつ、A6に3個。矢印はA7・A8から後列B8へ続きます。" decoding="async" height="260" loading="lazy" src="../assets/rules/sowing-relay.svg" width="660"/>
+<figcaption>
+<span data-ja="② 最後の1個が石のあったA6へ入り、3個になります。全3個を取り、同じ向きのA7・A8・B8へ続けて蒔きます。これが連続種まきです。">② The last piece lands in occupied A6, making 3. Lift all 3 and continue in the same direction: A7, A8, B8. This is relay sowing.</span>
+</figcaption>
+<a aria-label="Enlarge: ② The last piece lands in occupied A6, making 3. Lift all 3 and continue in the same direction: A7, A8, B8. This is relay sowing." class="figure-zoom" data-ja-aria-label="図を拡大：② 最後の1個が石のあったA6へ入り、3個になります。全3個を取り、同じ向きのA7・A8・B8へ続けて蒔きます。これが連続種まきです。" href="../assets/rules/sowing-relay.svg" rel="noopener noreferrer" target="_blank">
+<span data-ja="図を拡大 ↗">Enlarge diagram ↗</span>
+</a>
+</figure>
+<figure>
+<img alt="A4, A5, A7, A8 and B8 each hold 1; A3 and A6 are empty. B8 is highlighted." data-ja-alt="A4・A5・A7・A8・B8に1個ずつ。A3・A6は空。最後のB8を強調しています。" decoding="async" height="260" loading="lazy" src="../assets/rules/sowing-stop.svg" width="660"/>
+<figcaption>
+<span data-ja="③ 最後の石が入る前のB8は空でした。1個だけになったので、この手は終了し、相手の手番です。">③ B8 was empty before the last piece arrived. It now holds 1, so this move ends and the opponent takes a turn.</span>
+</figcaption>
+<a aria-label="Enlarge: ③ B8 was empty before the last piece arrived. It now holds 1, so this move ends and the opponent takes a turn." class="figure-zoom" data-ja-aria-label="図を拡大：③ 最後の石が入る前のB8は空でした。1個だけになったので、この手は終了し、相手の手番です。" href="../assets/rules/sowing-stop.svg" rel="noopener noreferrer" target="_blank">
+<span data-ja="図を拡大 ↗">Enlarge diagram ↗</span>
+</a>
+</figure>
+<aside class="rule-note">
+<p data-ja="1回の種まきが終わるたびに、最後の穴を判定します。捕獲手で捕獲条件を満たした場合は、連続種まきより捕獲が優先です。namuaでは、所有中のnyumbaの規則によって止まる場合もあります。">Check the last pit of each sowing run. During a capturing move, a valid capture takes priority over relay sowing. An owned nyumba can also stop a namua move under its special rules.</p>
+</aside>
+<a class="back-to-top" data-ja="目次へ戻る ↑" href="#contents">Back to contents ↑</a>
+</section>
+<section aria-labelledby="namua-title" class="rules-section" id="namua">
+<span class="section-number">05</span>
+<h2 data-ja="namua：手元の1個から始める" id="namua-title">Namua: use a piece from hand</h2>
+<h3 data-ja="まず捕獲できるかを調べる">First, look for a capture</h3>
+<p data-ja="自分の前列で石のある穴と、その真向かいの相手前列で石のある穴を探します。組が1つでもあれば捕獲が義務です。自分の穴に手元から1個加え、向かいの相手穴の全石を取ります。">Find an occupied pit in your front row facing an occupied pit in the opponent’s front row. If any such pair exists, you must choose a capture. Add one piece from hand to your pit, then take every piece from the facing opponent pit.</p>
+<h3 data-ja="捕獲できないとき：takata（タカタ）">If there is no capture: takata</h3>
+<p data-ja="takataは捕獲しない手です。規則に従って選んだ、石のある前列の穴へ手元から1個を加え、その内容を取り上げて左右どちらかへ蒔きます。必要なら連続種まきを続けます。">Takata is a non-capturing move. Add one piece from hand to a permitted occupied front-row pit, lift its contents, then sow left or right. Continue relay sowing when required.</p>
+<aside class="rule-note">
+<p data-ja="takataは、手番の途中も最後まで捕獲しません。種まきの終点で相手と石が向かい合っても、その手では捕獲できません。">A takata remains non-capturing for the entire turn. Even if its last piece creates the same facing-pit pattern, you do not capture during that move.</p>
+</aside>
+<details>
+<summary data-ja="namuaのtakataを始められる穴は？">Which pits may start a namua takata?</summary>
+<div class="rule-detail">
+<ul>
+<li data-ja="開始できるのは石のある前列の穴です。空穴や後列からは始められません。">Start in the front row, never in an empty pit or the back row.</li>
+<li data-ja="通常は投入前に2個以上ある穴を選びます。ただし、前列の開始候補に2個以上の穴がない場合、またはnyumbaをまだ所有している場合は、1個の穴も使えます。">Normally choose a pit holding at least 2 pieces before the addition. A 1-piece pit is permitted when no eligible front-row starting pit holds 2 or more, or while you still own your nyumba.</li>
+<li data-ja="所有中で6個以上あるnyumbaからは通常始められません。前列で所有中のnyumbaだけに石が残った場合は、後述の「2個蒔き」を使います。">An owned nyumba holding 6 or more cannot normally be the starting pit. If it is the only occupied front-row pit, use the special two-piece start described below.</li>
+<li data-ja="前列に石のある穴が端のkichwaだけの場合、それを空にして後列へ進む向きでは始められません。">If your only occupied front pit is an end pit, you cannot start by emptying it toward the back row.</li>
+</ul>
+</div>
+</details>
+<a class="back-to-top" data-ja="目次へ戻る ↑" href="#contents">Back to contents ↑</a>
+</section>
+<section aria-labelledby="capture-title" class="rules-section" id="capture">
+<span class="section-number">06</span>
+<h2 data-ja="捕獲と入口の選び方" id="capture-title">Capture and choose an entry side</h2>
+<p data-ja="捕獲した石は、相手の前列から自分側へ移します。最初の1個は選んだkichwaそのものへ入れ、前列の内側へ向かって蒔きます。捕獲に使った自分の穴にある石は、そのまま残ります。">Captured pieces move from the opponent’s front row to your side. Place the first captured piece in the chosen kichwa itself, then continue inward along your front row. Your capturing pit keeps the pieces already in it.</p>
+<p data-ja="namuaの例を見てみましょう。図は両者の前列だけを示す説明用の局面で、初期配置ではありません。">Here is a namua example. Only the front rows are shown; these are explanatory positions, not the initial setup.</p>
+<figure>
+<img alt="Before the move: South A4 has 2; North a5 has 3 and a1 has 1." data-ja-alt="開始前：SouthのA4に2個、Northのa5に3個、a1に1個。" decoding="async" height="260" loading="lazy" src="../assets/rules/capture-before.svg" width="660"/>
+<figcaption>
+<span data-ja="① A4に2個、向かいのa5に3個。手元からA4へ1個加え、3個にします。">① A4 holds 2 and the facing a5 holds 3. Add one piece from your hand to A4, making 3.</span>
+</figcaption>
+<a aria-label="Enlarge: ① A4 holds 2 and the facing a5 holds 3. Add one piece from your hand to A4, making 3." class="figure-zoom" data-ja-aria-label="図を拡大：① A4に2個、向かいのa5に3個。手元からA4へ1個加え、3個にします。" href="../assets/rules/capture-before.svg" rel="noopener noreferrer" target="_blank">
+<span data-ja="図を拡大 ↗">Enlarge diagram ↗</span>
+</a>
+</figure>
+<figure>
+<img alt="a5 is now empty; A4 holds 3. The captured 3 pieces are temporarily in transit to A1." data-ja-alt="a5は空、A4は3個。捕獲した3個はA1から蒔くために取り上げられています。" decoding="async" height="260" loading="lazy" src="../assets/rules/capture-taken.svg" width="660"/>
+<figcaption>
+<span data-ja="② a5の3個をすべて取ります。A4の3個は残ります。この例では左の入口A1を選びます。">② Lift all 3 pieces from a5. A4 keeps its 3. This example chooses the left entry, A1.</span>
+</figcaption>
+<a aria-label="Enlarge: ② Lift all 3 pieces from a5. A4 keeps its 3. This example chooses the left entry, A1." class="figure-zoom" data-ja-aria-label="図を拡大：② a5の3個をすべて取ります。A4の3個は残ります。この例では左の入口A1を選びます。" href="../assets/rules/capture-taken.svg" rel="noopener noreferrer" target="_blank">
+<span data-ja="図を拡大 ↗">Enlarge diagram ↗</span>
+</a>
+</figure>
+<figure>
+<img alt="A1, A2 and A3 now contain 1 each; A4 still contains 3. North a5 is empty." data-ja-alt="A1・A2・A3に1個ずつ、A4は3個のまま。Northのa5は空です。" decoding="async" height="260" loading="lazy" src="../assets/rules/capture-after.svg" width="660"/>
+<figcaption>
+<span data-ja="③ 捕獲した石をA1・A2・A3へ1個ずつ。A3は空だったので、この手はそこで終わります。">③ Put one captured piece in A1, then one in A2 and A3. A3 was empty, so this move stops there.</span>
+</figcaption>
+<a aria-label="Enlarge: ③ Put one captured piece in A1, then one in A2 and A3. A3 was empty, so this move stops there." class="figure-zoom" data-ja-aria-label="図を拡大：③ 捕獲した石をA1・A2・A3へ1個ずつ。A3は空だったので、この手はそこで終わります。" href="../assets/rules/capture-after.svg" rel="noopener noreferrer" target="_blank">
+<span data-ja="図を拡大 ↗">Enlarge diagram ↗</span>
+</a>
+</figure>
+<h3 data-ja="入口をいつでも自由に選べるわけではない">The entry side is not always a free choice</h3>
+<ul>
+<li data-ja="自分の1番・2番の穴で捕獲する場合：左のkichwa（1番）から入れます。">Capture at your own pit 1 or 2: enter at your left kichwa, pit 1.</li>
+<li data-ja="自分の7番・8番の穴で捕獲する場合：右のkichwa（8番）から入れます。">Capture at your own pit 7 or 8: enter at your right kichwa, pit 8.</li>
+<li data-ja="3〜6番の穴では、namuaの最初の捕獲なら左右を選べます。手の途中の捕獲やmtajiの捕獲では、それまでの種まき方向を維持します。">At pits 3–6, the first capture of a namua move allows either side. Later captures, and mtaji captures, preserve the current sowing direction at these middle pits.</li>
+</ul>
+<details>
+<summary data-ja="種まき後の捕獲は、いつ起きる？">When does a later capture happen?</summary>
+<div class="rule-detail">
+<p data-ja="捕獲手の途中では、最後の1個が、もともと石のあった自分の前列穴へ入り、向かいの相手穴にも石があると捕獲します。連続種まきより先に捕獲を判定し、種まきが終わるたびに同じ確認を繰り返します。">During a capturing move, the last piece must land in your front-row pit that already contained pieces, and the facing opponent pit must also contain pieces. Capture before considering relay sowing. Repeat this check after each sowing run.</p>
+<p data-ja="kichwa・kimbiでは入口が指定されるため、途中で進行方向が変わることがあります。中央の穴では同じ方向を保ちます。相手の前列最後の石を捕獲したときは、捕獲した石を蒔く前に対局が終わります。">At kichwa or kimbi, the forced entry side can change the direction. At the middle pits it stays the same. If you empty the opponent’s last occupied front pit, the game ends immediately, before sowing the captured pieces.</p>
+</div>
+</details>
+<a class="back-to-top" data-ja="目次へ戻る ↑" href="#contents">Back to contents ↑</a>
+</section>
+<section aria-labelledby="mtaji-title" class="rules-section" id="mtaji">
+<span class="section-number">07</span>
+<h2 data-ja="mtaji：盤上の石だけで進める" id="mtaji-title">Mtaji: play from the board</h2>
+<p data-ja="両者の手元は空です。石を追加せず、合法な開始穴から2個以上の石をすべて取り上げ、次の穴から蒔きます。捕獲できる手があれば、引き続き捕獲が義務です。">Both hands are now empty. Do not add a piece. Choose a legal starting pit with at least 2 pieces, lift all of them, and sow from the next pit. Capture remains compulsory whenever a capturing move exists.</p>
+<ol>
+<li data-ja="自分の前列・後列から、2〜15個ある開始穴を調べます。">Look for a starting pit with 2–15 pieces, in either your front or back row.</li>
+<li data-ja="最初の種まきが、石のある自分の前列穴で終わり、向かいの相手穴にも石がある手が捕獲手です。1つでもあれば、その中から選びます。">A capturing start must end its first sowing run in an already occupied front-row pit facing an occupied opponent pit. Choose one of these starts if any exist.</li>
+<li data-ja="捕獲手がなければtakataを行います。前列に2個以上の開始穴があれば前列を使い、なければ後列を使います。">If none exist, play a takata. Use a front-row pit with at least 2 pieces when available; use the back row only when the front row has no such starting pit.</li>
+<li data-ja="種まきの終点を確認し、捕獲・連続種まき・停止を判定します。takataでは、その手の途中も捕獲しません。">Continue sowing and checking the last pit under the same capture / relay / stop principles. A takata never captures during the turn.</li>
+</ol>
+<details>
+<summary data-ja="16個以上の穴・端の穴・合法手なし">Large piles, end pits and no legal move</summary>
+<div class="rule-detail">
+<p data-ja="この採用基準では、16個以上の穴から捕獲手を始めることはできません。ただし、他の条件を満たせばtakataの開始穴には使えます。空穴と1個の穴からは、mtajiの手を始められません。">Under this adopted baseline, a pit with 16 or more pieces cannot start a capturing move, but may start a takata if the other conditions allow it. Empty pits and 1-piece pits cannot start any mtaji move.</p>
+<p data-ja="自分の16穴がすべて0個または1個なら、合法手がなく敗北します。前列に石のある端穴が1つだけ残るとき、それを空にして後列へ向かうtakataを始められない制約も適用されます。">If every one of your 16 pits holds at most 1 piece, you have no legal move and lose. The restriction against emptying your sole occupied end pit toward the back row also applies to takata.</p>
+</div>
+</details>
+<aside class="rule-note">
+<p data-ja="mtajiのtakataの後には、次の1手だけ対象穴の開始と連続種まきを制限するtakasiaが成立する場合があります。後述の「takasia」を参照してください。">A mtaji takata can establish takasia: a restriction on starting and relay sowing at one pit for the next turn only. See “Takasia” below.</p>
+</aside>
+<a class="back-to-top" data-ja="目次へ戻る ↑" href="#contents">Back to contents ↑</a>
+</section>
+<section aria-labelledby="nyumba-title" class="rules-section" id="nyumba">
+<span class="section-number">08</span>
+<h2 data-ja="nyumba：家の特別な扱い" id="nyumba-title">Nyumba: the house</h2>
+<p data-ja="A5・a5はnyumbaの位置です。初めは各側が所有し、6個の石が入っています。特別な状態を失っても、穴の位置や画面上の形は変わりません。">A5 and a5 are the house positions. At the start, each is owned and holds 6 pieces. The position remains a house-shaped pit even after its special status is lost.</p>
+<h3 data-ja="namuaの種まきが自分の家で終わったら">Finishing a namua sowing run at your house</h3>
+<p data-ja="次の規則は、所有中の家に最後の1個が入り、その時点で6個以上ある場合に適用します。">The following applies when your owned house holds at least 6 pieces after the last piece arrives.</p>
+<ul>
+<li data-ja="takataの場合：そこで止まります。家の石を取り上げて続けることはしません。">During a takata: stop there. You do not lift the house contents to continue.</li>
+<li data-ja="捕獲手で、向かいの相手穴に石がある場合：捕獲を優先します。代わりに停止することは選べません。">During a capturing move, if the facing opponent pit contains pieces: capture first. You cannot choose to stop instead.</li>
+<li data-ja="捕獲手で、そこで捕獲できない場合：NYUMBA STOPで止まって家を保つか、NYUMBA USEで全内容を取り上げ、特別な状態を失って同じ方向へ続けるかを選びます。">During a capturing move with no capture available there: choose NYUMBA STOP to keep the house, or NYUMBA USE to lift its contents and continue in the same direction, giving up its special status.</li>
+</ul>
+<h3 data-ja="家からの2個蒔き">The two-piece start</h3>
+<p data-ja="namuaで捕獲できず、前列で所有中の家だけに石が残っているときは、手元の1個を家へ加え、そこから2個だけ取り出して左右どちらかへ蒔きます。">In namua, if you cannot capture and your owned house is the only occupied pit in your front row, add one piece from hand to the house, then take just 2 pieces from it and sow them left or right.</p>
+<figure>
+<img alt="After the special start, A5 holds 5, A6 and A7 hold 1 each. The house was not emptied." data-ja-alt="特別な開始後、A5に5個、A6・A7に1個ずつ。家を空にしていません。" decoding="async" height="260" loading="lazy" src="../assets/rules/nyumba-two.svg" width="660"/>
+<figcaption>
+<span data-ja="家が6個の例：1個加え、2個だけ蒔き、5個残します。ここではA6・A7へ1個ずつ。図はSouthの2列です。">Starting with 6 in the house: add 1, sow 2, leave 5. Here, one piece goes to A6 and one to A7. Only South’s rows are shown.</span>
+</figcaption>
+<a aria-label="Enlarge: Starting with 6 in the house: add 1, sow 2, leave 5. Here, one piece goes to A6 and one to A7. Only South’s rows are shown." class="figure-zoom" data-ja-aria-label="図を拡大：家が6個の例：1個加え、2個だけ蒔き、5個残します。ここではA6・A7へ1個ずつ。図はSouthの2列です。" href="../assets/rules/nyumba-two.svg" rel="noopener noreferrer" target="_blank">
+<span data-ja="図を拡大 ↗">Enlarge diagram ↗</span>
+</a>
+</figure>
+<details>
+<summary data-ja="所有状態・6個未満・mtajiとの関係">Ownership, fewer than 6 pieces, and mtaji</summary>
+<div class="rule-detail">
+<p data-ja="このゲームは前列に所有中の家だけが残ると、個数によらず2個蒔きを選びます。参照ガイドで確定した開始前6個以上の例と、開始前5個の未解決境界を区別しています。">When the owned house is the only occupied front-row pit, this implementation offers the two-piece start regardless of its count. The guide confirms the example starting with at least 6; the boundary starting with 5 remains unresolved.</p>
+<p data-ja="2個蒔きでは家を空にしません。6個未満になると、6個以上を条件とする停止規則は働かなくなります。採用基準では、所有状態が残り、namua中に再び6個以上になれば、その規則が再び適用されます。">The two-piece start does not empty the house. When it drops below 6, the stopping rules that require 6 or more do not apply. Under the adopted baseline, if ownership remains and it later reaches 6 again in namua, those rules can apply again.</p>
+<p data-ja="家の石をすべて捕獲された場合や、NYUMBA USEを選んだ場合は、所有状態を失います。mtajiでは最初の捕獲で両側の所有状態を失います。所有中の家はtakasiaの対象外ですが、所有を失った家の位置は通常穴として対象になり得ます。namuaの2個蒔きや家で止まる選択はmtajiでは使いません。">Losing all house pieces to a capture, or choosing NYUMBA USE, removes ownership. The first mtaji capture removes ownership on both sides. An owned house is exempt from takasia; an unowned house position can be restricted as an ordinary pit. The namua two-piece start and optional house stop do not apply in mtaji.</p>
+</div>
+</details>
+<a class="back-to-top" data-ja="目次へ戻る ↑" href="#contents">Back to contents ↑</a>
+</section>
+<section aria-labelledby="takasia-title" class="rules-section" id="takasia">
+<span class="section-number">09</span>
+<h2 data-ja="takasia：次の1手だけの制約" id="takasia-title">Takasia: a one-turn restriction</h2>
+<p data-ja="takasia（タカシア）は、mtajiで相手の次の1手だけ、前列の1穴を制限する規則です。石を奪ったり、その穴への種まき自体を禁止したりする規則ではありません。">Takasia restricts one front-row pit for the opponent’s next mtaji turn only. It does not remove pieces or prevent pieces being sown into that pit.</p>
+<h3 data-ja="いつ成立する？">When does it apply?</h3>
+<ol>
+<li data-ja="mtajiのtakataが終わった、まだ終局していない盤面で判定します。">Check the position after a completed mtaji takata, while the game is still ongoing.</li>
+<li data-ja="次の手番側に、最初の種まきで捕獲できる手がありません。">The next player has no move that captures on its first sowing run.</li>
+<li data-ja="直前に指した側が同じ盤面でもう一度指すと仮定すると、最初の種まきで捕獲できる相手前列の穴が、ちょうど1穴だけです。候補手が何通りあっても、捕獲対象の穴が1つならこの条件を満たします。">If the player who just moved could move again in that same position, their first-sowing captures would target exactly one opponent front-row pit. Several possible moves may all target that same pit.</li>
+<li data-ja="その穴が下記の例外に当たらなければ、次の1手のtakasia対象になります。相手が応手を指した後の盤面で成立を予測する規則ではありません。">If that pit is not exempt below, it becomes the target for the next turn. Establishment is checked now, not by predicting the position after the opponent’s response.</li>
+</ol>
+<h3 data-ja="T印の穴で何が変わる？">What changes at the pit marked T?</h3>
+<ul>
+<li data-ja="この1手は、対象穴からtakataを開始できません。別の合法な穴から始めます。">You cannot start this takata from the target. Choose another legal starting pit.</li>
+<li data-ja="途中で通過するだけなら、対象穴へ1個を置いてそのまま続けます。">When passing through the target, drop one piece there and keep going.</li>
+<li data-ja="最後の1個が対象穴へ入ったら、何個になっても取り上げず、その手を終了します。nyumbaから開始した手も同じです。">If the last piece lands in the target, leave all pieces there and end the move, regardless of the resulting count. This also applies when starting from a nyumba.</li>
+<li data-ja="対象の1手が終わると失効します。その手で相手への新しいtakasiaが成立した場合は、新しい対象へ切り替わります。">The restriction expires when that turn ends. If this move establishes a new takasia against the opponent, a new target replaces it.</li>
+</ul>
+<figure>
+<img alt="E30: North a4 has 2 and is marked T. North may start from a8 or a5, but not a4. Both house positions are unowned." data-ja-alt="E30：Northのa4は2個でT印。a8・a5から開始できますがa4からは開始できません。両側の家は所有なしです。" decoding="async" height="410" loading="lazy" src="../assets/rules/takasia-target.svg" width="660"/>
+<figcaption><span data-ja="① 出典付き局面E30。SouthのA7から左へ蒔くtakataの後、Northのa4が対象になります。a5は所有を失った通常穴です。初期配置からの到達可能性は示していません。">① Sourced position E30. After South’s leftward takata from A7, North’s a4 is restricted. a5 is an unowned ordinary pit. This is not evidence of reachability from the initial setup.</span></figcaption>
+<a aria-label="Enlarge takasia target position" class="figure-zoom" data-ja-aria-label="takasia対象局面の図を拡大" href="../assets/rules/takasia-target.svg" rel="noopener noreferrer" target="_blank"><span data-ja="図を拡大 ↗">Enlarge diagram ↗</span></a>
+</figure>
+<figure>
+<img alt="E30 response: sow left from North a8. The last piece of the fifth sowing run lands in a4, making 5. Leave all 5 there and stop." data-ja-alt="E30の応手：Northのa8から左へ。5回目の種まきの最後の1個がa4に入り5個になります。全5個を残して停止します。" decoding="async" height="410" loading="lazy" src="../assets/rules/takasia-stop.svg" width="660"/>
+<figcaption><span data-ja="② Northがa8からLEFTで応じた例。5回目の種まきがa4で終わり、5個になっても連続種まきをしません。図は停止直後・失効前です。この後、a4の制約が消え、Southの手番になります。">② North replies LEFT from a8. The fifth sowing run ends at a4 with 5 pieces, so no relay follows. The diagram shows the stop before expiry; the restriction then clears and South takes the turn.</span></figcaption>
+<a aria-label="Enlarge takasia stop position" class="figure-zoom" data-ja-aria-label="takasia停止局面の図を拡大" href="../assets/rules/takasia-stop.svg" rel="noopener noreferrer" target="_blank"><span data-ja="図を拡大 ↗">Enlarge diagram ↗</span></a>
+</figure>
+<details>
+<summary data-ja="対象にならない穴と段階の境界">Exempt pits and phase boundaries</summary>
+<div class="rule-detail">
+<p data-ja="対象候補が1個だけの穴、相手前列で唯一石のある穴、相手前列で唯一2個以上ある穴、所有中のnyumbaならtakasiaは成立しません。所有を失ったnyumbaの位置は通常の前列穴として扱います。">Takasia does not apply if the candidate holds only 1 piece, is the defender’s only occupied front-row pit, is their only front-row pit with at least 2 pieces, or is an owned nyumba. An unowned house position is treated as an ordinary front-row pit.</p>
+<p data-ja="namuaのtakataがmtajiへ移行しただけのとき、mtajiの捕獲手の後、終局後には新たに成立しません。">It is not newly established merely by a namua takata entering mtaji, after a mtaji capturing move, or after the game ends.</p>
+</div>
+</details>
+<a class="back-to-top" data-ja="目次へ戻る ↑" href="#contents">Back to contents ↑</a>
+</section>
+<section aria-labelledby="controls-title" class="rules-section" id="controls">
+<span class="section-number">10</span>
+<h2 data-ja="ゲーム画面の操作と表示" id="controls-title">Use the game screen</h2>
+<ol>
+<li data-ja="コンピュータ対戦または同じ端末での2人対戦を選びます。コンピュータ対戦では強さと先手（South）・後手（North）を選び、START GAMEを押します。">Choose computer or local two-player mode. Against the computer, choose a difficulty and whether you play first (South) or second (North), then press START GAME.</li>
+<li data-ja="光っている穴をタップまたはクリックし、盤の下に出る着手候補を選びます。ゲームが合法な選択肢を示し、種まきを自動で進めます。">Tap or click a highlighted pit, then choose one of the moves displayed below the board. The game shows legal choices and carries out the sowing automatically.</li>
+<li data-ja="HANDは手元に残る石の数、NAMUA／MTAJIは対局の段階です。NEW GAMEは、必要に応じた確認の後に現在の対局を終了し、対局設定へ戻ります。">HAND is the number of pieces still in hand. NAMUA / MTAJI shows the phase. NEW GAME ends the current game and returns to setup after confirmation when needed.</li>
+</ol>
+<dl class="rule-terms">
+<dt data-ja="LEFT / RIGHT">LEFT / RIGHT</dt>
+<dd data-ja="本人の前列を左／右へ進む周回方向です。後列での進行方向は逆になり、Northでは画面上の左右も逆になります。">The sowing circuit, from the player’s own viewpoint: LEFT goes left along the front row, RIGHT goes right. The back-row travel direction is reversed. North is also reversed on screen.</dd>
+<dt data-ja="LEFT CAPTURE / RIGHT CAPTURE">LEFT CAPTURE / RIGHT CAPTURE</dt>
+<dd data-ja="namuaでは捕獲した石を入れる左／右の入口を示します。mtajiでは選んだ穴から最初に蒔く方向を示し、その後の捕獲の入口は捕獲規則で決まります。">In namua, these select the left / right entry for captured pieces. In mtaji, the direction describes the initial sowing from your chosen pit; the later capture entry follows the capture rules.</dd>
+<dt data-ja="T / TAKASIA">T / TAKASIA</dt>
+<dd data-ja="点線とT印はtakasiaの対象穴です。盤の下に穴番号と、この1手だけの制約を表示します。旧棋譜ではtakasiaを適用せず、そのルール版を再生欄に表示します。">A dotted ring and T mark identify the takasia target. Below the board, its pit name and one-turn restriction are shown. Older records replay without takasia, with their rule version displayed in the replay panel.</dd>
+<dt data-ja="NYUMBA STOP / NYUMBA USE">NYUMBA STOP / NYUMBA USE</dt>
+<dd data-ja="着手候補に付く場合、STOPは条件を満たす家で停止し、USEは家の全内容を使って続行する選択です。アニメーションが始まる前に着手と一緒に選びます。">When offered with a move, STOP chooses to stop at an eligible house; USE chooses to empty it and continue. You select this with the move before its animation.</dd>
+</dl>
+<aside class="rule-note">
+<p data-ja="この説明ページはゲームから別タブで開きます。対局を続けるときは元のゲームのタブへ戻ってください。下の「ゲームを開く」はゲームページを開くリンクで、保存局面を復元する機能ではありません。">This guide opens in a separate tab from the game. To continue an existing game, return to its original tab. “Open game” below opens the game page; it does not restore a saved position.</p>
+</aside>
+<a class="back-to-top" data-ja="目次へ戻る ↑" href="#contents">Back to contents ↑</a>
+</section>
+<section aria-labelledby="rules-used-title" class="rules-section" id="rules-used">
+<span class="section-number">11</span>
+<h2 data-ja="このゲームの採用範囲と出典" id="rules-used-title">Rules used here and sources</h2>
+<p data-ja="このブラウザゲームで採用しているルールの図解です。日本語ガイドv0.2.0の、下記の固定参照版に基づき、takasiaを適用します。旧棋譜version 1の再生には当時のR-002を使用します。すべての地域・大会に共通する公式ルールブックという位置づけではありません。">This is an illustrated explanation of the rules used by this browser game. It follows the Japanese guide v0.2.0 at the fixed reference below, including takasia. Version 1 game records replay under their original R-002 rules. It is not a claim to be an official rulebook for every region or tournament.</p>
+<ul>
+<li data-ja="takasiaはv0.2.0で採用された条件と例外に従います。nyumbaから開始した蒔きにも対象穴での停止を適用します。">Takasia follows the conditions and exemptions adopted in v0.2.0. Landing the last piece in the target also stops a move started from a nyumba.</li>
+<li data-ja="連続種まきなどの継続処理には512回の安全上限があります。まだ継続する状態で上限に達した場合、この実装は手番側の敗北として終了します。ブラウザの動作を守る制約であり、一般の対人競技ルールとして加えるものではありません。">The game limits continuing relay processing to 512 iterations. If a move reaches that limit while still continuing, the implementation ends the game as a loss for the moving player. This protects browser operation; it is not a general human-play rule.</li>
+<li data-ja="参照ガイドはドラフトで、競技者・研究者による外部レビューは未実施です。一部の細則には資料差があります。他の場で遊ぶときは、大会や対局者間で明示された規則に従ってください。">The reference remains a draft. It has not yet received external player / researcher review, and some details differ between sources. Follow the rules explicitly chosen by your tournament or playing group when playing elsewhere.</li>
+</ul>
+<p>
+<a data-ja="固定参照：Bao la Kiswahili 日本語完全ガイド" href="https://github.com/nkkmd/bao-la-kiswahili-ja/tree/aad9fda3ffb12c2ca785509951c71ce8a42bef5a" rel="noopener noreferrer" target="_blank">Fixed reference: Bao la Kiswahili Japanese Complete Guide</a>
+<br/>
+<code>aad9fda3ffb12c2ca785509951c71ce8a42bef5a</code>
+</p>
+<p>
+<a data-ja="ゲームの採用ルール基準と既知の差異" href="https://github.com/nkkmd/bao-la-kiswahili-game/blob/main/doc/RULES_BASELINE.md" rel="noopener noreferrer" target="_blank">Game rule baseline and known differences</a>
+</p>
+<h3 data-ja="クレジットと再利用">Credits and reuse</h3>
+<p data-ja="bao-la-kiswahili-ja contributors（2026）による「Bao la Kiswahili 日本語完全ガイド」第02〜10章の規則説明を基に、要約・英訳し、このゲーム向けに構成を変更しました。図版は新たに描き、図示した着手はゲームのルールエンジンで照合しています。">Based on the rule explanations in chapters 02–10 of Bao la Kiswahili Japanese Complete Guide, by bao-la-kiswahili-ja contributors (2026). The explanations have been condensed, translated into English and adapted for this game. The diagrams have been newly drawn; the illustrated moves have been checked against the game engine.</p>
+<p data-ja="本ページの翻案した説明本文と図版は、bao-la-kiswahili-game contributors（2026）がCC BY-SA 4.0で提供します。改変して共有する際は、出典とライセンスへのリンクを残し、変更を明示して同じライセンスを使用してください。ゲームのプログラムコードは引き続きMITライセンスです。">The adapted explanatory text and diagrams on this page are provided under CC BY-SA 4.0 by bao-la-kiswahili-game contributors (2026). When sharing adaptations, retain attribution, link to the license, identify changes and use the same license. The game’s program code remains under its MIT license.</p>
+<p>
+<a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener noreferrer" target="_blank">Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0)</a>
+</p>
+<p class="rules-baseline">
+<span data-ja="説明ページ更新日：2026年10月8日。takasia対応版の説明です。">Guide updated: October 8, 2026. This guide describes the takasia revision.</span>
+</p>
+<a class="back-to-top" data-ja="目次へ戻る ↑" href="#contents">Back to contents ↑</a>
+</section>
+<article aria-labelledby="reference-title" id="reference" lang="ja"><h2 id="reference-title">日本語完全ガイド：本文と補助教材</h2><p>以下は v0.2.0 の日本語本文です。英語表示を選んでも、この部分は日本語で掲載します。第11章は構成案です。図解部分に、このゲームの採用範囲と実装上の差異を記載しています。</p><p>出典：bao-la-kiswahili-ja contributors（2026）「Bao la Kiswahili 日本語完全ガイド」v0.2.0。本文は固定版から収録し、HTML化・リンク変換・見出し階層の調整を行いました。文章と自作図版は <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC BY-SA 4.0</a>。外部資料には適用されません。</p><nav aria-label="日本語完全ガイドの目次" class="rules-toc" id="reference-contents"><ol><li><a href="#guide-00-preface">はじめに</a></li><li><a href="#guide-01-introduction">Bao la Kiswahiliとは</a></li><li><a href="#guide-02-board">盤と用具</a></li><li><a href="#guide-03-setup">初期配置</a></li><li><a href="#guide-04-glossary">用語辞典</a></li><li><a href="#guide-05-namua">namua</a></li><li><a href="#guide-06-mtaji">mtaji</a></li><li><a href="#guide-07-capture">捕獲</a></li><li><a href="#guide-08-relay-sowing">relay sowing</a></li><li><a href="#guide-09-nyumba">nyumba</a></li><li><a href="#guide-10-endgame">終局と勝敗</a></li><li><a href="#guide-11-kujifunza">Bao la kujifunza</a></li><li><a href="#guide-12-strategy">戦術入門</a></li><li><a href="#guide-13-faq">よくある質問</a></li><li><a href="#guide-examples">規則確認用の局面例</a></li><li><a href="#guide-validation-cases">正式版検証用の完全局面</a></li></ol></nav><section class="rules-section guide-chapter" id="guide-00-preface"><h2 id="guide-00-preface--はじめに">はじめに</h2>
+<p>Bao la Kiswahiliは、穴に入ったkete（駒）を蒔き、相手のketeを捕獲する2人用ゲームです。短い基本操作の中に、強制される捕獲、1手の途中で何度も続く蒔き、特別な穴nyumbaなどが組み合わさっています。</p>
+<p>本書は、Bao la Kiswahiliを初めて学ぶ日本語話者のためのガイドです。単なる用語の翻訳ではなく、盤を準備し、合法手を選び、一局を最後まで進められることを目標にしています。</p>
+<h3 id="guide-00-preface--本書が扱うルール">本書が扱うルール</h3>
+<p>中心にするのは、Alex de Voogtが1990年代前半にザンジバルの競技者から記録したルール系統です。本書ではこれを「ザンジバル版」と呼びます。この呼び方は、ザンジバルで行われるすべてのBaoが完全に同じだという意味ではありません。</p>
+<p>de Voogt (1995) の全文は2026-10-08に入手しました。takasiaと主要規則を同書の規則章・Donkers (2003) の形式規則・後年の著者解説と項目別に照合しました。5個のnyumbaから始める手の境界、現在の大会での運用、外部人物のレビューは残っています。資料差や残る制約には「確認メモ」を付けます。<a href="https://github.com/nkkmd/bao-la-kiswahili-ja/blob/aad9fda3ffb12c2ca785509951c71ce8a42bef5a/docs/drafts/v1-validation-20261008.md">公開前の検証記録</a>で確認範囲と公開条件を説明します。</p>
+<h3 id="guide-00-preface--読み方">読み方</h3>
+<p>初めて遊ぶ場合は、<a href="#guide-01-introduction">Bao la Kiswahiliとは</a>から<a href="#guide-10-endgame">終局と勝敗</a>まで順に読んでください。特に、次の3段階に分けると理解しやすくなります。</p>
+<ol>
+<li>盤と初期配置を覚える。</li>
+<li>namuaとmtajiで、手を始める方法を覚える。</li>
+<li>捕獲、relay sowing、nyumbaの例外を重ねる。</li>
+</ol>
+<p>本文では「初心者向け説明」で全体像を示し、「正式ルール」で条件を詳しく述べます。「具体例」は手順の確認用です。資料差や未確認事項は「地域差・確認メモ」へ分け、確定事項と混ぜません。</p>
+<h3 id="guide-00-preface--用語について">用語について</h3>
+<p><code>namua</code>、<code>mtaji</code>、<code>nyumba</code>、<code>kichwa</code>、<code>kimbi</code>などは、無理に日本語へ置き換えません。初出時に短い説明を添え、一覧は<a href="#guide-04-glossary">用語辞典</a>にまとめます。</p>
+<h3 id="guide-00-preface--参考文献">参考文献</h3>
+<p>各章の根拠記号 <code>R-001</code> などは、<a href="https://github.com/nkkmd/bao-la-kiswahili-ja/blob/aad9fda3ffb12c2ca785509951c71ce8a42bef5a/docs/REFERENCES.md">参考文献</a>の番号に対応します。ルールの基準と未確認事項は<a href="https://github.com/nkkmd/bao-la-kiswahili-ja/blob/aad9fda3ffb12c2ca785509951c71ce8a42bef5a/docs/drafts/zanzibar-rules-baseline.md">ザンジバル版ルール基準調査</a>でも確認できます。</p>
+<p>次章: <a href="#guide-01-introduction">Bao la Kiswahiliとは</a></p><a class="back-to-top" href="#reference-contents">日本語本文の目次へ戻る ↑</a></section><section class="rules-section guide-chapter" id="guide-01-introduction"><h2 id="guide-01-introduction--bao-la-kiswahiliとは">Bao la Kiswahiliとは</h2>
+<h3 id="guide-01-introduction--初心者向け説明">初心者向け説明</h3>
+<p>Bao la Kiswahiliは、mancala（マンカラ）と総称されるゲーム群の一つです。2人が向かい合い、自分側の穴にあるketeを1個ずつ順に置く「蒔き」を行います。</p>
+<p>目的は、相手の前列を空にすること、または相手が合法手を行えない状態にすることです。捕獲したketeは盤外へ取り除きません。自分側へ持ってきて、その手の中ですぐ蒔き直します。そのため、1回の捕獲が長い連続手へ発展することがあります。</p>
+<h3 id="guide-01-introduction--ゲームの全体像">ゲームの全体像</h3>
+<p>一局は次の2段階に分かれます。</p>
+<ul>
+<li><code>namua</code>: 各プレイヤーの手元にあるketeを、1手ごとに1個ずつ盤へ入れる前半段階です。</li>
+<li><code>mtaji</code>: すべてのketeが盤上へ入った後、穴の中身を取り上げて手を始める後半段階です。</li>
+</ul>
+<p>どちらの段階でも、捕獲できるなら捕獲が優先されます。捕獲できない手を本書では<code>takata</code>と呼びます。蒔きの最後のketeがすでにketeのある穴へ入ると、原則としてその穴の全keteを取り上げ、同じ方向へ蒔き続けます。これが<code>relay sowing</code>です。</p>
+<p>前列には<code>nyumba</code>という特別な穴があります。nyumbaをまだ所有している間は、一定の条件で手を止めたり、中身の一部だけを蒔いたりできます。この例外がBao la Kiswahiliの進行を特徴づけています。</p>
+<h3 id="guide-01-introduction--正式ルールの骨格">正式ルールの骨格</h3>
+<ul>
+<li>プレイヤーは2人です。</li>
+<li>盤は4列×8穴、keteは合計64個です。</li>
+<li>各プレイヤーは、自分に近い2列だけを使って蒔きます。</li>
+<li>相手側へketeを直接蒔き入れることはありません。</li>
+<li>捕獲は、向かい合う両者の前列穴を使って成立します。</li>
+<li>1手は、1回または複数回の蒔きと捕獲から成ります。</li>
+<li>手が終わると、相手の手番になります。</li>
+</ul>
+<p>具体的な合法手は、<a href="#guide-05-namua">namua</a>、<a href="#guide-06-mtaji">mtaji</a>、<a href="#guide-07-capture">捕獲</a>で説明します。</p>
+<h3 id="guide-01-introduction--注意点">注意点</h3>
+<p>「蒔く方向を自由に変えられる」「捕獲するかどうかを選べる」と考えると、Bao la Kiswahiliでは誤りになります。方向は手の途中で原則維持され、捕獲可能なら捕獲は義務です。kichwaまたはkimbiで捕獲した場合などに限って、方向の扱いが変わります。</p>
+<h3 id="guide-01-introduction--地域差確認メモ">地域差・確認メモ</h3>
+<p>Baoには複数のルール系統と簡略版があります。本書の初期配置やnyumbaの細則を、別地域のBaoへそのまま当てはめないでください。<a href="#guide-11-kujifunza">Bao la kujifunzaの章</a>は練習用の簡略版を扱う構成案で、本文は未確定です。</p>
+<p>根拠: R-002, pp. 163–168、R-003, Issue 4, pp. 21–22。</p>
+<p>前章: <a href="#guide-00-preface">はじめに</a>／次章: <a href="#guide-02-board">盤と用具</a></p><a class="back-to-top" href="#reference-contents">日本語本文の目次へ戻る ↑</a></section><section class="rules-section guide-chapter" id="guide-02-board"><h2 id="guide-02-board--盤と用具">盤と用具</h2>
+<h3 id="guide-02-board--初心者向け説明">初心者向け説明</h3>
+<p>Bao盤には、横8穴の列が4列あります。向かい合う2人が、手前の2列ずつを受け持ちます。中央で向かい合う列が「前列」、盤の外側にある列が「後列」です。</p>
+<figure><img alt="図2-1 Bao盤の全体像。上2列はNorth、下2列はSouthが使い、中央側が前列、外側が後列である。" decoding="async" loading="lazy" src="../assets/complete-guide/fig-02-01-board-overview.svg"/><figcaption>図2-1 Bao盤の全体像。上2列はNorth、下2列はSouthが使い、中央側が前列、外側が後列である。</figcaption><a class="figure-zoom" href="../assets/complete-guide/fig-02-01-board-overview.svg" rel="noopener noreferrer" target="_blank">図を拡大 ↗</a></figure>
+<h3 id="guide-02-board--用具">用具</h3>
+<ul>
+<li>Bao盤: 4列×8穴、合計32穴</li>
+<li>kete: 64個</li>
+<li>プレイヤー: 2人</li>
+</ul>
+<p>穴はスワヒリ語で、単数を<code>shimo</code>、複数を<code>mashimo</code>といいます。駒は<code>kete</code>と呼びます。keteは全個体を同じものとして扱い、所有者別に色分けする必要はありません。</p>
+<h3 id="guide-02-board--各プレイヤーの領域">各プレイヤーの領域</h3>
+<p>各プレイヤーは自分の前列と後列だけにketeを蒔きます。蒔きは2列の外周を回るように進みます。自分の前列の端から先へ進むと自分の後列へ移り、後列の端から前列へ戻ります。</p>
+<p>本書の図では、下側のプレイヤーをSouth、上側をNorthとします。Southの前列を<code>A</code>、後列を<code>B</code>、Northの前列を<code>a</code>、後列を<code>b</code>と表します。穴番号は、それぞれの所有者から見て左から右へ1〜8です。North側は紙面上の見た目と番号の進み方が逆になります。そのため、真向かいの前列穴は同じ番号ではなく、<code>A1</code>と<code>a8</code>、<code>A2</code>と<code>a7</code>、……、<code>A8</code>と<code>a1</code>のように対応します。</p>
+<h3 id="guide-02-board--特別な穴">特別な穴</h3>
+<figure><img alt="図2-2 特別な穴の位置。前列の両端がkichwa、その隣がkimbiで、A5とa5がnyumbaである。" decoding="async" loading="lazy" src="../assets/complete-guide/fig-02-02-special-pits.svg"/><figcaption>図2-2 特別な穴の位置。前列の両端がkichwa、その隣がkimbiで、A5とa5がnyumbaである。</figcaption><a class="figure-zoom" href="../assets/complete-guide/fig-02-02-special-pits.svg" rel="noopener noreferrer" target="_blank">図を拡大 ↗</a></figure>
+<ul>
+<li><code>nyumba</code>: 各プレイヤーから見て前列の左から5番目の穴です。SouthはA5、Northはa5です。</li>
+<li><code>kichwa</code>: 各前列の左右端です。A1・A8・a1・a8です。</li>
+<li><code>kimbi</code>: 各前列でkichwaの隣にある穴です。A2・A7・a2・a7です。</li>
+</ul>
+<p>kichwaとkimbiは、捕獲したketeをどちら側から蒔き始めるかに関係します。nyumbaは、所有中だけ特別な停止・開始規則を持ちます。</p>
+<h3 id="guide-02-board--注意点">注意点</h3>
+<ul>
+<li>「右」「左」は、つねに手番プレイヤー本人から見た向きで判断します。</li>
+<li>前列は盤の中央側です。自分の身体に近い列は後列です。</li>
+<li>盤に大きな四角い穴や貯蔵部があっても、それが自動的にnyumbaとは限りません。nyumbaは前列の所定位置です。</li>
+<li>64個のketeのうち、初めは44個を盤外の手元に置きます。捕獲済みのketeを保管する場所ではありません。</li>
+</ul>
+<h3 id="guide-02-board--地域差確認メモ">地域差・確認メモ</h3>
+<p>資料によってkichwaを<code>kitchwa</code>と綴る例があります。本書では<code>kichwa</code>に統一します。また、kichwaをkimbiの一部として広く説明する用法もありますが、本書の盤面説明では端の穴をkichwa、その隣をkimbiとして区別します。</p>
+<p>根拠: R-002, pp. 163–164、R-003, Issue 4, p. 21。</p>
+<p>前章: <a href="#guide-01-introduction">Bao la Kiswahiliとは</a>／次章: <a href="#guide-03-setup">初期配置</a></p><a class="back-to-top" href="#reference-contents">日本語本文の目次へ戻る ↑</a></section><section class="rules-section guide-chapter" id="guide-03-setup"><h2 id="guide-03-setup--初期配置">初期配置</h2>
+<h3 id="guide-03-setup--初心者向け説明">初心者向け説明</h3>
+<p>各プレイヤーは32個のketeを受け取ります。そのうち10個を自分の前列へ置き、残る22個を手元に置きます。後列はすべて空です。</p>
+<figure><img alt="図3-1 Bao la Kiswahiliの初期配置。各側はnyumbaに6個、その本人から見て右隣の2穴に2個ずつ置き、22個を手元に残す。" decoding="async" loading="lazy" src="../assets/complete-guide/fig-03-01-initial-setup.svg"/><figcaption>図3-1 Bao la Kiswahiliの初期配置。各側はnyumbaに6個、その本人から見て右隣の2穴に2個ずつ置き、22個を手元に残す。</figcaption><a class="figure-zoom" href="../assets/complete-guide/fig-03-01-initial-setup.svg" rel="noopener noreferrer" target="_blank">図を拡大 ↗</a></figure>
+<h3 id="guide-03-setup--配置手順">配置手順</h3>
+<p>各プレイヤーが、自分側について次の順に配置します。</p>
+<ol>
+<li>nyumbaへ6個置きます。</li>
+<li>nyumbaの本人から見て右隣の穴へ2個置きます。</li>
+<li>さらに右隣の穴へ2個置きます。</li>
+<li>残る22個を手元に置きます。</li>
+<li>後列8穴がすべて空であることを確認します。</li>
+</ol>
+<p>本書の座標では、SouthはA5に6個、A6とA7に2個ずつ置きます。Northも本人から見た右側へ置くため、紙面上ではa5に6個、a6とa7に2個ずつとなり、Southとは左右反転して見えます。</p>
+<h3 id="guide-03-setup--先手と段階">先手と段階</h3>
+<p>R-002の形式規則ではSouthが先手です。両者は交互に手を行い、namuaでは各手の開始時に手元から1個を使います。各プレイヤーが22手ずつ行って手元のketeを使い切ると、mtajiへ移ります。ただし、その前に終局条件を満たせばゲームは終了します。</p>
+<h3 id="guide-03-setup--配置の確認例">配置の確認例</h3>
+<p>片側だけを数えると、盤上は<code>6 + 2 + 2 = 10個</code>、手元は22個です。合計32個になります。両者を合わせると、盤上20個、手元44個、総数64個です。</p>
+<h3 id="guide-03-setup--注意点">注意点</h3>
+<ul>
+<li>右隣は観察者から見た右ではなく、各プレイヤー本人から見た右です。</li>
+<li>2個ずつ置く穴はnyumbaに隣接する側から連続した2穴です。</li>
+<li>手元の22個は共有しません。各プレイヤーが自分の分を管理します。</li>
+<li><a href="#guide-11-kujifunza">Bao la kujifunza</a>など、別の版の初期配置と混ぜないでください。</li>
+</ul>
+<h3 id="guide-03-setup--地域差確認メモ">地域差・確認メモ</h3>
+<p>この初期配置はR-002とR-003で一致しています。先手をSouthとする記述はR-002で確認しています。実際の対局で先手の決定方法が別に定められている場合は、使用する大会・団体の規則を優先してください。</p>
+<p>根拠: R-002, pp. 165–166、R-003, Issue 4, p. 21。</p>
+<p>関連例: <a href="#guide-examples--盤座標初期配置">E03〜E04 初期配置</a></p>
+<p>前章: <a href="#guide-02-board">盤と用具</a>／次章: <a href="#guide-04-glossary">用語辞典</a></p><a class="back-to-top" href="#reference-contents">日本語本文の目次へ戻る ↑</a></section><section class="rules-section guide-chapter" id="guide-04-glossary"><h2 id="guide-04-glossary--用語辞典">用語辞典</h2>
+<p>本文で使う専門用語の標準表記、意味、異表記をまとめます。ここでは短く確認できることを優先し、合法手の詳しい条件は各ルール章へ分けます。</p>
+<h3 id="guide-04-glossary--この辞典の読み方">この辞典の読み方</h3>
+<p>各項目の「扱い」は、次のいずれかです。</p>
+<ul>
+<li><strong>標準用語</strong>: 本文で原語のまま用います。</li>
+<li><strong>日本語表記</strong>: 本文では日本語を用います。括弧内の英語は確認用です。</li>
+<li><strong>説明語</strong>: 固有の専門用語として固定せず、意味を日本語で説明します。</li>
+<li><strong>資料上の表記</strong>: 参考資料には現れますが、本文の標準表記には採用しません。</li>
+</ul>
+<p>根拠欄の<code>R-001</code>〜<code>R-009</code>は<a href="https://github.com/nkkmd/bao-la-kiswahili-ja/blob/aad9fda3ffb12c2ca785509951c71ce8a42bef5a/docs/REFERENCES.md">参考文献</a>の番号です。R-001の全文は入手し、takasiaは原典と著者解説を照合して正式採用しました。他の細則で項目別照合が残る箇所は、そのことを明記します。</p>
+<h3 id="guide-04-glossary--索引">索引</h3>
+<div aria-label="横にスクロールできる表" class="guide-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>分類</th>
+<th>用語</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ゲームと版</td>
+<td>Bao、Bao la Kiswahili、Bao la kujifunza、mancala</td>
+</tr>
+<tr>
+<td>盤・駒・座標</td>
+<td>kete、shimo／mashimo、前列、後列、空穴、占有穴、North／South、A・B・a・b、手元</td>
+</tr>
+<tr>
+<td>段階と手</td>
+<td>namua、mtaji、手、合法手、蒔き、方向</td>
+</tr>
+<tr>
+<td>捕獲と継続</td>
+<td>捕獲、捕獲穴、被捕獲穴、捕獲可能穴、捕獲手、takata、takasa、relay sowing、endelea</td>
+</tr>
+<tr>
+<td>特別な穴と細則</td>
+<td>nyumba、nyumbaの所有、nyumbaを使う、nyumbaからの2個蒔き、kichwa、kitchwa、kimbi、takasia</td>
+</tr>
+<tr>
+<td>終局</td>
+<td>終局、合法手なし、投了、終わらない手</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="guide-04-glossary--ゲームと版">ゲームと版</h3>
+<h4 id="guide-04-glossary--bao">Bao</h4>
+<ul>
+<li>読み方: バオ</li>
+<li>扱い: 標準用語</li>
+<li>意味: 東アフリカで行われるmancala系ゲーム、またはその複数のルール系統を指す名称です。単に「Bao」と書かれた資料が、本書と同じザンジバル版を指すとは限りません。</li>
+<li>関連: <a href="#guide-01-introduction">Bao la Kiswahiliとは</a></li>
+<li>根拠: R-001〜R-003。対象地域と版の区別は本書の編集上の注意です。</li>
+</ul>
+<h4 id="guide-04-glossary--bao-la-kiswahili">Bao la Kiswahili</h4>
+<ul>
+<li>読み方: バオ・ラ・キスワヒリ</li>
+<li>扱い: 標準用語</li>
+<li>意味: 本書が扱うBaoのルール系統です。本書では、de Voogtが1990年代前半にザンジバルの競技者から記録した系統を中心にします。</li>
+<li>注意: 地理的にザンジバルで行われるすべてのBaoが同一だという意味ではありません。</li>
+<li>関連: <a href="#guide-00-preface">はじめに</a>、<a href="#guide-01-introduction">Bao la Kiswahiliとは</a></li>
+<li>根拠: R-001〜R-003。本書での対象範囲は<a href="https://github.com/nkkmd/bao-la-kiswahili-ja/blob/aad9fda3ffb12c2ca785509951c71ce8a42bef5a/docs/drafts/zanzibar-rules-baseline.md">基準調査</a>によります。</li>
+</ul>
+<h4 id="guide-04-glossary--bao-la-kujifunza">Bao la kujifunza</h4>
+<ul>
+<li>読み方: バオ・ラ・クジフンザ</li>
+<li>扱い: 標準用語</li>
+<li>意味: Baoの蒔きと捕獲を学ぶための簡略版として、本書で別章に分けて扱う名称です。</li>
+<li>注意: Phase 1の中心調査範囲外であり、規則本文は未確定です。Bao la Kiswahili本編の別名ではありません。</li>
+<li>関連: <a href="#guide-11-kujifunza">Bao la kujifunza</a></li>
+<li>根拠: 追加資料の確認待ち。</li>
+</ul>
+<h4 id="guide-04-glossary--mancala">mancala</h4>
+<ul>
+<li>読み方: マンカラ</li>
+<li>扱い: 説明語</li>
+<li>意味: 穴と駒を使い、駒を穴へ分配するゲーム群の総称です。Bao la Kiswahiliはこのゲーム群に含まれます。</li>
+<li>注意: <code>mancala</code>は単一のルールを持つ1つのゲーム名としては使いません。</li>
+<li>関連: <a href="#guide-01-introduction">Bao la Kiswahiliとは</a></li>
+<li>根拠: R-002, p. 163、R-003, Issue 4, p. 21。</li>
+</ul>
+<h3 id="guide-04-glossary--盤駒座標">盤・駒・座標</h3>
+<h4 id="guide-04-glossary--kete">kete</h4>
+<ul>
+<li>読み方: ケテ</li>
+<li>扱い: 標準用語</li>
+<li>意味: 盤上で1個ずつ蒔く、64個の同一の駒です。</li>
+<li>注意: 資料では英語で<code>seed</code>、<code>stone</code>、<code>counter</code>などとも説明されます。本書では所有者別の「石」や植物の「種」に限定せず、<code>kete</code>に統一します。</li>
+<li>関連: <a href="#guide-02-board">盤と用具</a></li>
+<li>根拠: R-002, p. 163、R-003, Issue 4, p. 21。</li>
+</ul>
+<h4 id="guide-04-glossary--shimomashimo">shimo／mashimo</h4>
+<ul>
+<li>読み方: シモ／マシモ</li>
+<li>扱い: 標準用語。ただし通常の本文では「穴」も使います。</li>
+<li>意味: 盤の穴です。<code>shimo</code>は単数形、<code>mashimo</code>は複数形として記録しています。</li>
+<li>注意: 語形と語義はR-001およびスワヒリ語資料との再確認が残っています。</li>
+<li>関連: <a href="#guide-02-board">盤と用具</a></li>
+<li>根拠: Phase 1用語草稿。R-001本文との照合待ち。</li>
+</ul>
+<h4 id="guide-04-glossary--前列front-row">前列（front row）</h4>
+<ul>
+<li>扱い: 日本語表記</li>
+<li>意味: 盤の中央で相手側と向かい合う、自分の8穴の列です。SouthはA列、Northはa列です。捕獲の成立に使います。</li>
+<li>関連: <a href="#guide-02-board">盤と用具</a>、<a href="#guide-07-capture">捕獲</a></li>
+<li>根拠: R-002, pp. 163–164、R-003, Issue 4, p. 21。</li>
+</ul>
+<h4 id="guide-04-glossary--後列back-row">後列（back row）</h4>
+<ul>
+<li>扱い: 日本語表記</li>
+<li>意味: 各プレイヤーの身体に近い外側の8穴の列です。SouthはB列、Northはb列です。</li>
+<li>注意: 相手の後列から直接捕獲することはありません。</li>
+<li>関連: <a href="#guide-02-board">盤と用具</a>、<a href="#guide-07-capture">捕獲</a></li>
+<li>根拠: R-002, pp. 163–164、R-003, Issue 4, p. 21。</li>
+</ul>
+<h4 id="guide-04-glossary--空穴empty-pit">空穴（empty pit）</h4>
+<ul>
+<li>扱い: 日本語表記</li>
+<li>意味: keteが1個も入っていない穴です。蒔きの最後の1個が空穴へ入ると、通常はそのketeだけが残り、手を終了します。</li>
+<li>注意: 「最後の1個を置いた後に1個ある」ことと、「置く前から占有されていた」ことを区別します。</li>
+<li>関連: <a href="#guide-08-relay-sowing">relay sowing</a></li>
+<li>根拠: R-002, pp. 164–165、R-003, Issue 4, pp. 21–22。</li>
+</ul>
+<h4 id="guide-04-glossary--占有穴non-empty-pit">占有穴（non-empty pit）</h4>
+<ul>
+<li>扱い: 日本語表記</li>
+<li>意味: keteが1個以上入っている穴です。蒔きの最後の1個が占有穴へ入ると、置いた後は2個以上になり、捕獲またはrelay sowingの判定を行います。</li>
+<li>注意: 占有されているだけで必ず捕獲できるわけではありません。自分の前列穴と真向かいの相手前列穴がともに占有されるなど、追加条件が必要です。</li>
+<li>関連: <a href="#guide-07-capture">捕獲</a>、<a href="#guide-08-relay-sowing">relay sowing</a></li>
+<li>根拠: R-002, pp. 164–165、R-003, Issue 4, pp. 21–22。</li>
+</ul>
+<h4 id="guide-04-glossary--northsouth">North／South</h4>
+<ul>
+<li>扱い: 説明語</li>
+<li>意味: 本書の盤面図で、上側のプレイヤーをNorth、下側をSouthと呼びます。人名や陣営名ではなく、盤面上の位置を区別するラベルです。</li>
+<li>関連: <a href="#guide-02-board">盤と用具</a></li>
+<li>根拠: R-002, pp. 163–164。</li>
+</ul>
+<h4 id="guide-04-glossary--abab">A・B・a・b</h4>
+<ul>
+<li>扱い: 座標記号</li>
+<li>意味: Southの前列を<code>A</code>、後列を<code>B</code>、Northの前列を<code>a</code>、後列を<code>b</code>と表します。各列の穴番号は、その列を所有するプレイヤー本人から見て左から1〜8です。そのため、真向かいの前列穴は<code>A1</code>と<code>a8</code>、<code>A2</code>と<code>a7</code>、……、<code>A8</code>と<code>a1</code>のように対応します。</li>
+<li>例: SouthのnyumbaはA5、Northのnyumbaはa5です。</li>
+<li>関連: <a href="#guide-02-board">盤と用具</a>、<a href="#guide-examples">規則確認用の局面例</a></li>
+<li>根拠: R-002, p. 164。</li>
+</ul>
+<h4 id="guide-04-glossary--手元storestock">手元（store／stock）</h4>
+<ul>
+<li>扱い: 日本語表記</li>
+<li>意味: namuaでまだ盤へ入れていない、自分のketeを置く盤外の場所、またはそこに残るketeです。初期配置では各プレイヤー22個です。</li>
+<li>注意: 捕獲したketeを保管する得点置き場ではありません。</li>
+<li>関連: <a href="#guide-03-setup">初期配置</a>、<a href="#guide-05-namua">namua</a></li>
+<li>根拠: R-002, pp. 165–166。R-003は<code>stock</code>を使用。</li>
+</ul>
+<h3 id="guide-04-glossary--段階と手">段階と手</h3>
+<h4 id="guide-04-glossary--namua">namua</h4>
+<ul>
+<li>読み方: ナムア</li>
+<li>扱い: 標準用語</li>
+<li>意味: 手元のketeを、各手の開始時に1個ずつ盤へ入れる前半段階です。</li>
+<li>注意: 後列からtakataを始めないなど、namua固有の開始制約があります。</li>
+<li>関連: <a href="#guide-05-namua">namua</a></li>
+<li>根拠: R-002, pp. 165–166。段階の骨格はR-003, Issue 4, pp. 21–22と一致。</li>
+</ul>
+<h4 id="guide-04-glossary--mtaji">mtaji</h4>
+<ul>
+<li>読み方: ムタジ</li>
+<li>扱い: 標準用語</li>
+<li>意味: 両者の手元が空になり、すべてのketeが盤上へ入った後半段階です。穴の中身をすべて取り上げて手を始めます。</li>
+<li>注意: 1個だけの穴からは始められません。捕獲手は2〜15個から始めますが、takataには15個上限を適用しません。R-001との照合を終えた本書の採用規則です。</li>
+<li>関連: <a href="#guide-06-mtaji">mtaji</a></li>
+<li>根拠: R-002, pp. 166–167。段階の骨格はR-003, Issue 4, p. 22と一致。</li>
+</ul>
+<h4 id="guide-04-glossary--手move">手（move）</h4>
+<ul>
+<li>扱い: 日本語表記</li>
+<li>意味: 1人の手番で行う、1回以上の蒔きと捕獲の連なりです。空穴などの停止条件へ達するまで、同じプレイヤーが処理を続けます。</li>
+<li>注意: relay sowingの途中で相手へ手番を渡しません。</li>
+<li>関連: <a href="#guide-08-relay-sowing">relay sowing</a></li>
+<li>根拠: R-002, pp. 164–165。</li>
+</ul>
+<h4 id="guide-04-glossary--合法手legal-move">合法手（legal move）</h4>
+<ul>
+<li>扱い: 日本語表記</li>
+<li>意味: 現在の段階、捕獲義務、開始穴、方向、特別な停止規則をすべて満たす手です。</li>
+<li>注意: 単にketeを物理的に蒔ける手という意味ではありません。捕獲手があるときのtakataは合法手ではありません。</li>
+<li>関連: <a href="#guide-05-namua">namua</a>、<a href="#guide-06-mtaji">mtaji</a></li>
+<li>根拠: R-002, pp. 164–167。本書で条件をまとめるための日本語表記です。</li>
+</ul>
+<h4 id="guide-04-glossary--蒔きsowingspreading">蒔き（sowing／spreading）</h4>
+<ul>
+<li>扱い: 日本語表記</li>
+<li>意味: 決められた個数のketeを、自分の連続する穴へ1個ずつ置く操作です。</li>
+<li>注意: 1手には複数回の蒔きが含まれることがあります。相手側の列へ直接蒔きません。</li>
+<li>関連: <a href="#guide-02-board">盤と用具</a>、<a href="#guide-08-relay-sowing">relay sowing</a></li>
+<li>根拠: R-002, p. 164、R-003, Issue 4, pp. 21–22。</li>
+</ul>
+<h4 id="guide-04-glossary--方向clockwiseanti-clockwise">方向（clockwise／anti-clockwise）</h4>
+<ul>
+<li>扱い: 日本語表記</li>
+<li>意味: 自分の2列の外周に沿って蒔く向きです。左のkichwaから始める捕獲後の蒔きは時計回り、右のkichwaから始める蒔きは反時計回りです。</li>
+<li>注意: 左右は手番プレイヤー本人から見て判断します。通常、1回の手の途中で自由に方向を変えません。</li>
+<li>関連: <a href="#guide-07-capture">捕獲</a></li>
+<li>根拠: R-002, pp. 164–165、R-003, Issue 4, pp. 21–22。</li>
+</ul>
+<h3 id="guide-04-glossary--捕獲と継続">捕獲と継続</h3>
+<h4 id="guide-04-glossary--捕獲capture">捕獲（capture）</h4>
+<ul>
+<li>扱い: 日本語表記</li>
+<li>意味: 自分の占有された前列穴へ蒔き終わり、その真向かいの相手前列穴も占有されているとき、相手穴の全keteを取って自分側で直ちに蒔く処理です。</li>
+<li>注意: 捕獲したketeを盤外へ除いたり、得点として保管したりしません。捕獲可能なら捕獲は義務です。</li>
+<li>関連: <a href="#guide-07-capture">捕獲</a></li>
+<li>根拠: R-002, pp. 164–167、R-003, Issue 4, pp. 21–22。</li>
+</ul>
+<h4 id="guide-04-glossary--捕獲穴capturing-pit">捕獲穴（capturing pit）</h4>
+<ul>
+<li>扱い: 日本語表記</li>
+<li>意味: 捕獲成立時に、最後のketeが入った自分の前列穴です。namuaの開始捕獲では、手元の1個を入れる自分の占有穴を指します。</li>
+<li>関連: <a href="#guide-07-capture">捕獲</a></li>
+<li>根拠: R-002, pp. 164, 166。</li>
+</ul>
+<h4 id="guide-04-glossary--被捕獲穴captured-pit">被捕獲穴（captured pit）</h4>
+<ul>
+<li>扱い: 日本語表記</li>
+<li>意味: 捕獲穴の真向かいにある、全keteを取られる相手の前列穴です。</li>
+<li>関連: <a href="#guide-07-capture">捕獲</a></li>
+<li>根拠: R-002, p. 164。</li>
+</ul>
+<h4 id="guide-04-glossary--捕獲可能穴marker">捕獲可能穴（marker）</h4>
+<ul>
+<li>扱い: 説明語</li>
+<li>意味: 向かいの相手前列穴も占有され、捕獲の候補となる自分の前列穴です。</li>
+<li>表記: <code>marker</code>は英語圏の補助資料に見られる説明語です。本書では原語の専門用語にせず、「捕獲可能穴」と書きます。</li>
+<li>関連: <a href="#guide-05-namua">namua</a>、<a href="#guide-examples--e05-namuaの捕獲可能穴">規則確認用の局面例 E05</a></li>
+<li>根拠: 概念はR-002, pp. 164–167。<code>marker</code>の用例はR-005。</li>
+</ul>
+<h4 id="guide-04-glossary--捕獲手capture-move">捕獲手（capture move）</h4>
+<ul>
+<li>扱い: 日本語表記</li>
+<li>意味: 捕獲から始まる手です。最初の捕獲後も、relay sowingの終点で条件を満たせば追加の捕獲が起こります。</li>
+<li>対義的な表現: takata。</li>
+<li>関連: <a href="#guide-05-namua">namua</a>、<a href="#guide-06-mtaji">mtaji</a>、<a href="#guide-07-capture">捕獲</a></li>
+<li>根拠: R-002, pp. 165–167。</li>
+</ul>
+<h4 id="guide-04-glossary--takata">takata</h4>
+<ul>
+<li>読み方: タカタ</li>
+<li>扱い: 標準用語</li>
+<li>意味: 捕獲から始まらず、その手の途中でも捕獲を行わない手です。捕獲手が存在しない場合に行います。</li>
+<li>注意: 「最初だけ捕獲しない手」ではありません。途中で向かい合う占有穴ができても、相手のketeを取りません。</li>
+<li>異表記: R-002・R-003では<code>takasa</code>。</li>
+<li>語形: R-008では動詞形<code>kutakata</code>を用います。本書の標準表記は<code>takata</code>のままです。</li>
+<li>関連: <a href="#guide-05-namua">namua</a>、<a href="#guide-06-mtaji">mtaji</a></li>
+<li>根拠: 概念はR-002, pp. 165–167、R-003, Issue 5, pp. 22–23。標準表記の選択はR-005を含むPhase 1の整理によります。</li>
+</ul>
+<h4 id="guide-04-glossary--takasa">takasa</h4>
+<ul>
+<li>読み方: タカサ</li>
+<li>扱い: 資料上の表記</li>
+<li>意味: R-002・R-003が、捕獲から始まらず、その手では捕獲しない手に用いる語です。</li>
+<li>本文での扱い: 通常は<code>takata</code>と書き、資料差を説明するときだけ<code>takasa</code>を併記します。</li>
+<li>注意: <code>takasia</code>とは別の規則です。</li>
+<li>根拠: R-002, pp. 165–167、R-003, Issue 5, pp. 22–23。</li>
+</ul>
+<h4 id="guide-04-glossary--relay-sowing">relay sowing</h4>
+<ul>
+<li>扱い: 標準用語</li>
+<li>意味: 蒔きの最後のketeが占有穴へ入り、捕獲や停止が起きないとき、その穴の全keteを取り上げ、同じ手の中で蒔きを続ける仕組みです。</li>
+<li>注意: 通常は同じ方向を維持します。空穴、所有中のnyumba、takasiaなどで停止する場合があります。</li>
+<li>関連: <a href="#guide-08-relay-sowing">relay sowing</a></li>
+<li>根拠: R-002, p. 165、R-003, Issue 4, pp. 21–22。</li>
+</ul>
+<h4 id="guide-04-glossary--endelea">endelea</h4>
+<ul>
+<li>読み方: エンデレア</li>
+<li>扱い: 資料上の表記</li>
+<li>意味: R-002が、占有穴から同じ方向へ蒔きを継続する処理に用いる語です。</li>
+<li>本文での扱い: 一般的な仕組みの名称には<code>relay sowing</code>を用い、R-002の用語を説明するときに<code>endelea</code>を併記します。</li>
+<li>語形: R-008では<code>kuendelea</code>を用います。</li>
+<li>関連: <a href="#guide-08-relay-sowing">relay sowing</a></li>
+<li>根拠: R-002, p. 165。</li>
+</ul>
+<h3 id="guide-04-glossary--特別な穴と細則">特別な穴と細則</h3>
+<h4 id="guide-04-glossary--nyumba">nyumba</h4>
+<ul>
+<li>読み方: ニュンバ</li>
+<li>扱い: 標準用語</li>
+<li>意味: 各プレイヤーの前列に1つある特別な穴です。本人から見て左から5番目、SouthはA5、Northはa5です。</li>
+<li>注意: <code>nyumba</code>は穴の位置を指すと同時に、特別な機能を所有している状態とも関係します。</li>
+<li>関連: <a href="#guide-09-nyumba">nyumba</a></li>
+<li>根拠: R-002, pp. 163–167、R-003, Issue 4–5。</li>
+</ul>
+<h4 id="guide-04-glossary--nyumbaの所有owned-house">nyumbaの所有（owned house）</h4>
+<ul>
+<li>扱い: 説明語</li>
+<li>意味: nyumbaが特別な停止・開始規則をまだ持つ状態です。両者は所有中の状態で対局を始めます。</li>
+<li>喪失: R-002では、nyumbaを空にした場合、またはmtajiで最初の捕獲が起きた場合に所有状態を失います。</li>
+<li>機能条件: R-008では、6個未満の間は6個以上を条件とする特別規則が働かず、再び6個以上になれば適用されます。これは所有状態そのものの喪失とは区別されます。</li>
+<li>資料差: R-003 Issue 5の機能するnyumbaの定義と、R-001・R-002・R-006・R-008のmtajiへの所有の持ち越しを分けて読みます。同記事にも5個時の追加説明と地域差があります。</li>
+<li>注意: 穴としてのnyumbaは、所有状態を失っても同じ位置に残ります。</li>
+<li>関連: <a href="#guide-09-nyumba">nyumba</a></li>
+<li>根拠: R-001, p. 42、R-002, pp. 166–167、R-003, Issue 5, pp. 22–23、R-006, p. 25、R-008, §§3.2, 4.2.1。所有の持ち越しは原典照合済み。5個からの開始境界と現行運用は未確認。</li>
+</ul>
+<h4 id="guide-04-glossary--nyumbaを使うplay-the-house">nyumbaを使う（play the house）</h4>
+<ul>
+<li>扱い: 説明語</li>
+<li>意味: namuaの捕獲手のrelay sowingが所有中のnyumbaへ達し、到達後に6個以上あり、そこで捕獲が起きないとき、停止せずnyumbaの全keteを取り上げて蒔きを続ける選択です。</li>
+<li>結果: nyumbaを空にするため、所有状態を失います。</li>
+<li>関連: <a href="#guide-09-nyumba">nyumba</a></li>
+<li>根拠: R-001, pp. 38–39、R-008, §4.2.1.2。R-002, pp. 165–167、R-003, Issue 5, pp. 22–23も参照。6個条件の記述差は第09章で説明。</li>
+</ul>
+<h4 id="guide-04-glossary--nyumbaからの2個蒔きtaxation">nyumbaからの2個蒔き（taxation）</h4>
+<ul>
+<li>扱い: 説明語</li>
+<li>意味: namuaで捕獲できず、前列で6個以上ある所有中のnyumbaだけが占有されている場合に、手元から1個を入れた後、nyumbaから2個だけを取り出して蒔く開始方法です。すでに5個の場合の開始処理の境界は未確認です。</li>
+<li>表記: <code>taxation</code>は英語圏の補助資料に見られるラベルです。本書では専門用語として採用しません。</li>
+<li>関連: <a href="#guide-09-nyumba">nyumba</a>、<a href="#guide-examples--e14-nyumbaだけが前列に残った場合">規則確認用の局面例 E14</a></li>
+<li>根拠: 処理はR-002, p. 166、R-003, Issue 5, pp. 22–23。<code>taxation</code>の用例はR-005。</li>
+</ul>
+<h4 id="guide-04-glossary--kichwa">kichwa</h4>
+<ul>
+<li>読み方: キチュワ</li>
+<li>扱い: 標準用語</li>
+<li>意味: 各前列の左右端の穴です。SouthはA1・A8、Northはa1・a8です。捕獲したketeは、左右いずれかのkichwaから蒔き始めます。</li>
+<li>異綴り: R-002には<code>kitchwa</code>も現れます。</li>
+<li>関連: <a href="#guide-02-board">盤と用具</a>、<a href="#guide-07-capture">捕獲</a></li>
+<li>根拠: R-002, pp. 163–165、R-003, Issue 4, pp. 21–22。</li>
+</ul>
+<h4 id="guide-04-glossary--kitchwa">kitchwa</h4>
+<ul>
+<li>扱い: 資料上の表記</li>
+<li>意味: R-002に現れる<code>kichwa</code>の異綴りです。</li>
+<li>本文での扱い: 引用や資料差の説明を除き、<code>kichwa</code>へ統一します。</li>
+<li>根拠: R-002, pp. 163–165。</li>
+</ul>
+<h4 id="guide-04-glossary--kimbi">kimbi</h4>
+<ul>
+<li>読み方: キンビ</li>
+<li>扱い: 標準用語</li>
+<li>意味: 各前列でkichwaの隣にある穴です。SouthはA2・A7、Northはa2・a7です。kimbiで捕獲すると、同じ側のkichwaから捕獲したketeを蒔きます。</li>
+<li>注意: kichwaをkimbiに含めて説明する用法もあります。本書の盤面図では端の穴をkichwa、その隣をkimbiとして区別します。</li>
+<li>関連: <a href="#guide-02-board">盤と用具</a>、<a href="#guide-07-capture">捕獲</a></li>
+<li>根拠: R-002, pp. 163–165、R-003, Issue 4, pp. 21–22。</li>
+</ul>
+<h4 id="guide-04-glossary--takasia">takasia</h4>
+<ul>
+<li>読み方: タカシア</li>
+<li>扱い: 標準用語。2026-10-08に原典と著者解説を照合して正式採用</li>
+<li>意味: mtajiのtakataで一定条件を満たしたとき、次の相手が特定の穴を空にできなくなる制約です。relay sowingがその穴で終わると、全keteを取り上げずに手を止めます。</li>
+<li>注意: 1個だけの穴、所有中のnyumba、前列で唯一占有された穴、前列で唯一2個以上ある穴には適用できません。所有を失ったnyumbaの位置は通常穴です。最後の1個が対象穴へ入ると停止しますが、途中の通過では停止しません。制約は相手の次の1手だけです。</li>
+<li>語形: R-008では<code>kutakatia</code>を用います。R-002の<code>takasia</code>と同系統の規則として照合できますが、語形の最終判断は現地資料による確認待ちです。</li>
+<li>関連: <a href="#guide-06-mtaji">mtaji</a>、<a href="#guide-examples--e30-takasia対象穴でrelay-sowingを止める">規則確認用の局面例 E30</a></li>
+<li>根拠: R-001, pp. 41–43、R-006, p. 25、R-002, p. 167。完全局面はR-009, §4.5。</li>
+</ul>
+<h3 id="guide-04-glossary--終局">終局</h3>
+<h4 id="guide-04-glossary--終局end-of-the-game">終局（end of the game）</h4>
+<ul>
+<li>扱い: 日本語表記</li>
+<li>意味: 一方の前列がすべて空になるか、手番プレイヤーに合法手がなくなり、対局が終了することです。</li>
+<li>注意: 前列が空になる条件は、手の途中でも判定します。</li>
+<li>関連: <a href="#guide-10-endgame">終局と勝敗</a></li>
+<li>根拠: R-002, p. 164。前列空の勝利条件はR-003, Issue 4, p. 21とも一致。</li>
+</ul>
+<h4 id="guide-04-glossary--合法手なしcannot-move">合法手なし（cannot move）</h4>
+<ul>
+<li>扱い: 説明語</li>
+<li>意味: 規則を満たす開始穴と手順が1つもない状態です。R-002では、その手番プレイヤーが敗北します。</li>
+<li>例: mtajiで自分の16穴がすべて0個または1個なら、2個以上の開始穴がありません。</li>
+<li>注意: 「捕獲手がない」こととは異なります。takataが可能ならゲームは続きます。</li>
+<li>関連: <a href="#guide-10-endgame">終局と勝敗</a></li>
+<li>根拠: R-001, pp. 40–41、R-002, pp. 164, 167。mtajiの0個・1個のみの場合は原典と照合済み。</li>
+</ul>
+<h4 id="guide-04-glossary--投了resignation">投了（resignation）</h4>
+<ul>
+<li>扱い: 日本語表記</li>
+<li>意味: プレイヤーが敗北を認め、対局を終了することです。</li>
+<li>注意: 宣言方法や大会上の手続は、現在の基準資料では確定していません。</li>
+<li>関連: <a href="#guide-10-endgame">終局と勝敗</a></li>
+<li>根拠: R-002, p. 168の棋譜例。</li>
+</ul>
+<h4 id="guide-04-glossary--終わらない手infinite-move">終わらない手（infinite move）</h4>
+<ul>
+<li>扱い: 説明語</li>
+<li>意味: relay sowingが循環し、有限回で終了しない手です。</li>
+<li>注意: R-002には計算機用の判定規則があります。R-008は対局前に判定基準を定めるクラブ運用を示しますが、ザンジバルの現地競技規則としては未確認です。</li>
+<li>関連: <a href="#guide-08-relay-sowing">relay sowing</a>、<a href="#guide-10-endgame">終局と勝敗</a></li>
+<li>根拠: R-004、R-008, §1.5.6。R-002, p. 165の規定は計算機専用です。</li>
+</ul>
+<h3 id="guide-04-glossary--表記早見表">表記早見表</h3>
+<div aria-label="横にスクロールできる表" class="guide-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>資料・英語の表記</th>
+<th>本文の標準表記</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>capture</td>
+<td>捕獲</td>
+</tr>
+<tr>
+<td>sowing／spreading</td>
+<td>蒔き</td>
+</tr>
+<tr>
+<td>pit／hole</td>
+<td>穴。必要に応じてshimo／mashimo</td>
+</tr>
+<tr>
+<td>counter／seed／stone</td>
+<td>kete</td>
+</tr>
+<tr>
+<td>store／stock</td>
+<td>手元</td>
+</tr>
+<tr>
+<td>takasa</td>
+<td>takata</td>
+</tr>
+<tr>
+<td>kitchwa</td>
+<td>kichwa</td>
+</tr>
+<tr>
+<td>marker</td>
+<td>捕獲可能穴</td>
+</tr>
+<tr>
+<td>taxation</td>
+<td>nyumbaからの2個蒔き</td>
+</tr>
+<tr>
+<td>house／owned house</td>
+<td>nyumba／所有中のnyumba</td>
+</tr>
+<tr>
+<td>play the house</td>
+<td>nyumbaを使う</td>
+</tr>
+<tr>
+<td>endelea</td>
+<td>R-002の用語として併記。一般説明はrelay sowing</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="guide-04-glossary--未確認事項">未確認事項</h3>
+<ul>
+<li><code>shimo</code>／<code>mashimo</code>、<code>takata</code>／<code>takasa</code>／<code>takasia</code>の語形は、スワヒリ語資料または現地話者による確認が残っています。</li>
+<li>読み方は日本語で参照しやすくするための目安です。音韻・アクセントを示すものではありません。</li>
+<li>語源や直訳は、確認できる資料がないため記載していません。</li>
+<li>Bao la kujifunzaの用語と規則は追加資料の確認後に補います。</li>
+</ul>
+<p>用語判断の履歴: <a href="https://github.com/nkkmd/bao-la-kiswahili-ja/blob/aad9fda3ffb12c2ca785509951c71ce8a42bef5a/docs/drafts/terminology.md">Phase 1用語草稿</a></p>
+<p>前章: <a href="#guide-03-setup">初期配置</a>／次章: <a href="#guide-05-namua">namua</a></p><a class="back-to-top" href="#reference-contents">日本語本文の目次へ戻る ↑</a></section><section class="rules-section guide-chapter" id="guide-05-namua"><h2 id="guide-05-namua--namua">namua</h2>
+<h3 id="guide-05-namua--初心者向け説明">初心者向け説明</h3>
+<p>namuaは、各プレイヤーが手元に22個のketeを持って始める前半段階です。自分の手番では、まず手元から1個を自分の前列へ入れます。ただし、どの穴へ入れてもよいわけではありません。最初に捕獲できるかを調べ、できるなら必ず捕獲します。</p>
+<figure><img alt="図5-1 namuaでは捕獲可能かを先に確認し、可能なら捕獲手、できない場合だけtakataを行う。" decoding="async" loading="lazy" src="../assets/complete-guide/fig-05-01-namua-choice.svg"/><figcaption>図5-1 namuaでは捕獲可能かを先に確認し、可能なら捕獲手、できない場合だけtakataを行う。</figcaption><a class="figure-zoom" href="../assets/complete-guide/fig-05-01-namua-choice.svg" rel="noopener noreferrer" target="_blank">図を拡大 ↗</a></figure>
+<h3 id="guide-05-namua--合法手を選ぶ順序">合法手を選ぶ順序</h3>
+<p>手番では次の順に確認します。</p>
+<ol>
+<li>自分の前列で、keteが1個以上ある穴を探します。</li>
+<li>その真向かいにある相手の前列穴にもketeがあれば、その組は捕獲候補です。</li>
+<li>捕獲候補が1つでもあれば、そのうち1つから捕獲手を行います。</li>
+<li>捕獲候補がなければ、takataを行います。</li>
+</ol>
+<h4 id="guide-05-namua--捕獲手">捕獲手</h4>
+<ol>
+<li>手元から1個を捕獲に使う自分の前列穴へ入れます。</li>
+<li>真向かいの相手穴にあるketeをすべて取ります。</li>
+<li>取ったketeを、自分の左または右のkichwaから蒔きます。</li>
+<li>蒔き終わりに応じて、捕獲またはrelay sowingを続けます。</li>
+</ol>
+<p>捕獲穴がkichwaまたはkimbiなら、同じ側のkichwaから蒔き始めます。それ以外の穴なら、namuaの最初の捕獲では左右どちらのkichwaから始めるかを選べます。詳しくは<a href="#guide-07-capture">捕獲</a>を参照してください。</p>
+<h4 id="guide-05-namua--捕獲できないときのtakata">捕獲できないときのtakata</h4>
+<p>takataでは、手元から1個を、自分の前列にある占有穴へ入れます。その穴のketeをまとめて取り、左または右へ蒔きます。この手の途中では、捕獲できる形で蒔き終えても捕獲しません。方向を変えずにrelay sowingを続けます。</p>
+<p>開始穴には次の制約があります。</p>
+<ul>
+<li>後列からは始められません。</li>
+<li>原則として、1個だけの穴からは始められません。</li>
+<li>ただし、前列に2個以上の穴がない場合、またはnyumbaをまだ所有している場合は、1個だけの穴から始められます。</li>
+<li>6個以上ある所有中のnyumbaからは、原則として始められません。</li>
+<li>前列で6個以上ある所有中のnyumbaだけが占有されている場合は、nyumbaの例外を使います。</li>
+</ul>
+<h3 id="guide-05-namua--nyumbaだけが前列に残った場合">nyumbaだけが前列に残った場合</h3>
+<p>6個以上ある所有中のnyumbaだけが自分の前列に残っているときは、手元の1個をnyumbaへ入れた後、nyumbaから2個だけを取り出して左右どちらかへ蒔きます。全内容を取るのではありません。すでに5個の場合の開始処理の境界は、外部レビューで確認する事項です。詳しくは<a href="#guide-09-nyumba">nyumba</a>を参照してください。</p>
+<h3 id="guide-05-namua--具体例">具体例</h3>
+<p>自分の前列A4に2個、真向かいのa5に3個あるとします。A4は捕獲可能穴です。</p>
+<ol>
+<li>手元から1個をA4へ入れ、A4を3個にします。</li>
+<li>a5の3個をすべて取ります。</li>
+<li>A4はkichwaでもkimbiでもないため、左右どちらのkichwaから蒔くか選びます。</li>
+<li>選んだkichwaから3個を1個ずつ蒔き、その終点を判定します。</li>
+</ol>
+<p>ほかにtakataをしたい穴があっても、この局面では捕獲が義務です。</p>
+<h3 id="guide-05-namua--namuaの終了">namuaの終了</h3>
+<p>自分の手元が空になっても、相手に手元のketeが残っていれば、その相手はnamuaの手を続けます。両者の手元がすべて空になった時点でmtajiへ移ります。R-002の初期配置では、終局しなければ各プレイヤー22手、合計44手番で移行します。</p>
+<h3 id="guide-05-namua--注意点">注意点</h3>
+<ul>
+<li>手元の1個を空穴へ直接置いて手を始めることはできません。</li>
+<li>捕獲可能かどうかは、自分と相手の前列だけで判定します。</li>
+<li>takataは「最初だけ非捕獲」ではありません。その手の全体が非捕獲です。</li>
+<li>左右のkichwaを選べるのは、namuaの最初の捕獲穴がkichwa・kimbi以外の場合です。手の途中では既存の方向を維持します。</li>
+<li>前列にkichwaだけが残る場合、そのkichwaから後列へ向かう方向を選ぶと前列が空になり敗北するため、その方向は選べません。</li>
+</ul>
+<h3 id="guide-05-namua--地域差確認メモ">地域差・確認メモ</h3>
+<p>R-002とR-003は非捕獲手を<code>takasa</code>と呼びます。本書では<code>takata</code>に統一します。1個だけの穴とnyumbaに関する制約はR-003 Issue 5でIssue 4の説明が補足・訂正されているため、Issue 5を優先しました。</p>
+<p>根拠: R-001, pp. 38–40, 42、R-002, pp. 165–167、R-003, Issue 4, pp. 21–22およびIssue 5, pp. 22–23。2個蒔きの6個条件はR-008, §2.3.2も参照。</p>
+<p>関連例: <a href="#guide-examples--namua">E05〜E14 namua</a></p>
+<p>前章: <a href="#guide-04-glossary">用語辞典</a>／次章: <a href="#guide-06-mtaji">mtaji</a></p><a class="back-to-top" href="#reference-contents">日本語本文の目次へ戻る ↑</a></section><section class="rules-section guide-chapter" id="guide-06-mtaji"><h2 id="guide-06-mtaji--mtaji">mtaji</h2>
+<h3 id="guide-06-mtaji--初心者向け説明">初心者向け説明</h3>
+<p>mtajiは、両者の手元にketeがなくなり、64個すべてが盤上へ入った後半段階です。namuaのように手元から1個を加えません。自分の穴を1つ選び、その中のketeをすべて取って蒔き始めます。</p>
+<figure><img alt="図6-1 mtajiでは合法な開始穴のketeをすべて取り上げ、選んだ方向へ1個ずつ蒔く。" decoding="async" loading="lazy" src="../assets/complete-guide/fig-06-01-mtaji-start.svg"/><figcaption>図6-1 mtajiでは合法な開始穴のketeをすべて取り上げ、選んだ方向へ1個ずつ蒔く。</figcaption><a class="figure-zoom" href="../assets/complete-guide/fig-06-01-mtaji-start.svg" rel="noopener noreferrer" target="_blank">図を拡大 ↗</a></figure>
+<h3 id="guide-06-mtaji--合法手を選ぶ順序">合法手を選ぶ順序</h3>
+<ol>
+<li>2個以上のketeがある自分の穴から、最初の蒔きで捕獲できる手を探します。</li>
+<li>捕獲手が1つでもあれば、必ずそのうち1つを選びます。</li>
+<li>捕獲手がなければ、takataを行います。</li>
+<li>takataは、可能なら前列の穴から始めます。前列から合法に始められない場合に後列を使います。</li>
+</ol>
+<p>空穴や1個だけの穴から手を始めることはできません。自分の16穴がすべて0個または1個なら、合法手がなく敗北します。</p>
+<h3 id="guide-06-mtaji--捕獲手">捕獲手</h3>
+<p>捕獲手は、次の条件をすべて満たす開始穴と方向から選びます。</p>
+<ul>
+<li>自分の前列または後列にある穴である。</li>
+<li>その穴に2個以上15個以下のketeがある。</li>
+<li>全keteを選んだ方向へ蒔くと、最後の1個が自分の占有された前列穴へ入る。</li>
+<li>その真向かいの相手前列穴にもketeがある。</li>
+</ul>
+<p>最後の条件を満たしたら、相手穴の全keteを取り、自分のkichwaから蒔きます。蒔き始める側は、それまでの方向と、捕獲穴がkichwa・kimbiかどうかで決まります。</p>
+<h3 id="guide-06-mtaji--捕獲できないときのtakata">捕獲できないときのtakata</h3>
+<p>捕獲手がない場合は、2個以上ある穴の中身をすべて取り、選んだ方向へ蒔きます。可能なら前列から開始しなければなりません。takataの途中では捕獲を行わず、停止条件に達するまで同じ方向へrelay sowingを続けます。</p>
+<p>前列で占有されている穴がkichwaだけの場合、そのkichwaを空にして前列が空になる方向は選べません。</p>
+<h3 id="guide-06-mtaji--16個以上ある穴">16個以上ある穴</h3>
+<p>R-001, p. 38とR-002は、捕獲手の開始穴を2〜15個に限定しています。16個以上の穴は「最初の蒔きで捕獲する手」の開始穴にはなりません。一方、捕獲手がなくtakataを行う場合は、前列優先などの条件を満たせば16個以上の穴からも始められます。R-001, p. 41の非捕獲手には、捕獲手の15個上限を適用しません。</p>
+<p>2026-10-08に原典を照合しました。16個を蒔く左右両方向の全手順は、<a href="#guide-validation-cases--v01-16個の穴から始めるtakata">64個の構成局面 V01</a>で確認できます。</p>
+<h3 id="guide-06-mtaji--takasia">takasia</h3>
+<p>takasiaは、mtajiで相手の次のtakataに制約を与える規則です。本書では2026-10-08に、R-001の原典とR-006の著者解説を照合して正式採用しました。</p>
+<p>自分のtakataを終えた盤面で、次の2条件を確認します。</p>
+<ol>
+<li>相手に捕獲手がなく、次の手がtakataになる。</li>
+<li>同じ盤面で自分がもう一度手を指すと仮定すると、最初の蒔きで捕獲できる相手前列穴がちょうど1つである。</li>
+</ol>
+<p>数えるのは「捕獲手の数」ではなく「捕獲対象の穴の数」です。開始穴や方向が異なる複数の手でも、対象が同じ穴だけなら2番目の条件を満たします。相手の応手後の盤面を先読みして成立を判定するのではありません。</p>
+<p>ただし、次の穴にはtakasiaを適用できません。</p>
+<ul>
+<li>keteが1個だけの穴</li>
+<li>相手の前列で唯一占有されている穴</li>
+<li>相手の前列で唯一2個以上ある穴</li>
+<li>所有状態が残っているnyumba（所有を失った同じ位置の穴は通常穴として判定する）</li>
+</ul>
+<p>例外に当たらなければ、その穴を相手の次の1手の間だけtakasiaの対象にします。相手はそこから蒔き始めたり、relay sowingで中身を取り上げたりできません。蒔きの最後の1個が対象穴へ入ったら、そこで必ず手を止めます。途中で通過するだけなら、通常どおり1個を加えて蒔き続けます。</p>
+<p>相手が自分のnyumbaから蒔き始めた場合も、最後の1個が対象穴へ入れば停止します。この開始方法による例外は採用しません。対象穴が永久に使用不能になるわけではありません。</p>
+<p>成立判定、直前のtakata、相手の全4応手は<a href="#guide-examples--e30-takasia対象穴でrelay-sowingを止める">完全局面 E30</a>で確認できます。</p>
+<h3 id="guide-06-mtaji--具体例">具体例</h3>
+<p>自分の穴に4個あり、選んだ方向へ4個蒔いた最後の1個が、自分の前列の占有穴へ入るとします。真向かいの相手前列にもketeがあれば、これは捕獲手の候補です。同じ局面に捕獲できない前列の穴があっても、そちらからtakataを始めることはできません。</p>
+<h3 id="guide-06-mtaji--注意点">注意点</h3>
+<ul>
+<li>mtajiでは手元からketeを追加しません。</li>
+<li>「2個以上ある穴ならどれでもよい」ではなく、捕獲手を先に全体から探します。</li>
+<li>捕獲手は前列だけでなく、後列から始めた蒔きでも成立し得ます。</li>
+<li>捕獲手の開始条件「2〜15個」を、takataの開始条件へ転用しません。</li>
+<li>takasiaは相手の次のtakataへの制約です。蒔きの途中の通過と、最後の1個の到達を区別します。</li>
+</ul>
+<h3 id="guide-06-mtaji--地域差確認メモ">地域差・確認メモ</h3>
+<p>takasiaの「1個だけの穴は対象にしない」という例外は、R-006, p. 25の著者解説で明記されています。R-001とR-002の例外一覧には同じ明示がないため、後年の補足として採用します。R-001, pp. 42–43にはnyumbaから始めた蒔きなら対象穴で継続できるという異説も記録されていますが、同書の競技者による否定と、R-006・R-002の停止規則に従い、本書では継続を認めません。資料差と採用理由は<a href="https://github.com/nkkmd/bao-la-kiswahili-ja/blob/aad9fda3ffb12c2ca785509951c71ce8a42bef5a/docs/drafts/takasia-adoption-20261008.md">採用記録</a>に残します。現在のすべての地域・大会で共通するとの主張ではありません。</p>
+<p>16個以上の開始穴、前列優先、両列が0個・1個だけの場合の敗北は、R-001, pp. 38, 40–41と照合済みです。現在の大会すべてに共通するとの主張ではありません。</p>
+<p>根拠: R-001, pp. 38–41、R-002, pp. 167–168。mtajiの骨格はR-003, Issue 4, p. 22でも確認。</p>
+<p>takasiaの根拠: R-001, pp. 41–43、R-006, p. 25、R-002, p. 167, §4.1(a–c)。完全局面はR-009, §4.5。</p>
+<p>関連例: <a href="#guide-examples--mtaji">E15〜E22 mtaji</a></p>
+<p>前章: <a href="#guide-05-namua">namua</a>／次章: <a href="#guide-07-capture">捕獲</a></p><a class="back-to-top" href="#reference-contents">日本語本文の目次へ戻る ↑</a></section><section class="rules-section guide-chapter" id="guide-07-capture"><h2 id="guide-07-capture--捕獲">捕獲</h2>
+<h3 id="guide-07-capture--初心者向け説明">初心者向け説明</h3>
+<p>Bao la Kiswahiliの捕獲は、相手のketeを盤外へ除く操作ではありません。相手の前列穴を空にし、そこにあった全keteを自分側へ移して、直ちに蒔きます。</p>
+<p>捕獲できる手があれば、捕獲は義務です。ただし、捕獲から始まらないtakataの途中では捕獲しません。</p>
+<h3 id="guide-07-capture--捕獲が成立する基本条件">捕獲が成立する基本条件</h3>
+<p>蒔きの最後の1個が自分の前列の占有穴へ入り、その真向かいにある相手の前列穴も占有されていれば捕獲が成立します。「占有穴」は、蒔く前からketeがあり、最後の1個を置いた後に2個以上になる穴です。</p>
+<p>namuaの手の開始時だけは、手元の1個を自分の占有された前列穴へ直接入れることで、この条件を作ります。mtajiでは開始穴の全keteを蒔いた終点で判定します。</p>
+<figure><img alt="図7-1 捕獲が成立すると、相手穴のketeをすべて取り、対応するkichwaから自分側へ蒔く。" decoding="async" loading="lazy" src="../assets/complete-guide/fig-07-01-capture-sequence.svg"/><figcaption>図7-1 捕獲が成立すると、相手穴のketeをすべて取り、対応するkichwaから自分側へ蒔く。</figcaption><a class="figure-zoom" href="../assets/complete-guide/fig-07-01-capture-sequence.svg" rel="noopener noreferrer" target="_blank">図を拡大 ↗</a></figure>
+<h3 id="guide-07-capture--捕獲の手順">捕獲の手順</h3>
+<ol>
+<li>捕獲穴の真向かいにある相手の前列穴を確認します。</li>
+<li>その相手穴からketeをすべて取ります。</li>
+<li>左右どちらから蒔くかを、下記の方向規則で決めます。</li>
+<li>決まった側のkichwaへ最初の1個を置きます。</li>
+<li>残りを自分の2列へ1個ずつ蒔きます。</li>
+<li>蒔き終わりの穴を判定し、捕獲、relay sowing、または手の終了へ進みます。</li>
+</ol>
+<h3 id="guide-07-capture--kichwakimbiと方向">kichwa・kimbiと方向</h3>
+<figure><img alt="図7-2 左右のkichwa・kimbiと、捕獲したketeを蒔き始める側の関係。" decoding="async" loading="lazy" src="../assets/complete-guide/fig-07-02-kichwa-kimbi-direction.svg"/><figcaption>図7-2 左右のkichwa・kimbiと、捕獲したketeを蒔き始める側の関係。</figcaption><a class="figure-zoom" href="../assets/complete-guide/fig-07-02-kichwa-kimbi-direction.svg" rel="noopener noreferrer" target="_blank">図を拡大 ↗</a></figure>
+<ul>
+<li>捕獲穴が左のkichwaまたは左のkimbiなら、左のkichwaから蒔き始めます。</li>
+<li>捕獲穴が右のkichwaまたは右のkimbiなら、右のkichwaから蒔き始めます。</li>
+<li>namuaの最初の捕獲で、捕獲穴がkichwa・kimbi以外なら、左右を選べます。</li>
+<li>それ以外の捕獲では、手の中ですでに進んでいた方向を維持します。</li>
+</ul>
+<p>左のkichwaから始める蒔きは時計回り、右のkichwaから始める蒔きは反時計回りです。ここでいう左右は、手番プレイヤー本人から見た向きです。</p>
+<h3 id="guide-07-capture--連続捕獲">連続捕獲</h3>
+<p>捕獲したketeを蒔き終えた先でも捕獲条件を満たせば、同じ手の中で再び相手穴を捕獲します。捕獲穴がkichwaまたはkimbiなら、その側のkichwaから蒔き直すため、手の進行方向が変わることがあります。それ以外の穴での捕獲は、既存の方向を維持します。</p>
+<h3 id="guide-07-capture--具体例">具体例</h3>
+<p>namuaで、中央寄りの前列穴に自分と相手のketeが向かい合っているとします。</p>
+<ol>
+<li>手元から1個を自分の穴へ入れます。</li>
+<li>相手穴の全keteを取ります。</li>
+<li>捕獲穴がkichwa・kimbi以外なら、左右どちらのkichwaから始めるか選びます。</li>
+<li>捕獲したketeを蒔きます。</li>
+<li>終点が別の捕獲可能穴なら、続けて捕獲します。</li>
+</ol>
+<h3 id="guide-07-capture--注意点">注意点</h3>
+<ul>
+<li>相手の後列からは捕獲しません。</li>
+<li>真向かいの相手前列穴が空なら捕獲できません。</li>
+<li>自分の終点が空穴なら、keteを置いた後に1個だけなので捕獲できません。</li>
+<li>捕獲したketeを手元へ戻したり、得点として盤外へ保管したりしません。</li>
+<li>takataの途中では、盤面が捕獲可能な形になっても捕獲しません。</li>
+</ul>
+<h3 id="guide-07-capture--地域差確認メモ">地域差・確認メモ</h3>
+<p>捕獲義務と方向規則は、R-001, pp. 38–39、R-002、R-003を照合済みです。図7-2の左右は、手番プレイヤー本人から見た左右です。<a href="#guide-validation-cases--v02-実戦棋譜の冒頭2手番">実戦冒頭 V02</a>でNorth側の座標と蒔き始めを、<a href="#guide-validation-cases--v04-kimbiでの捕獲による方向変更">構成局面 V04</a>でkimbiの方向変更を確認できます。</p>
+<p>根拠: R-001, pp. 38–39、R-002, pp. 164–167、R-003, Issue 4, pp. 21–22。</p>
+<p>関連例: <a href="#guide-examples--捕獲方向">E23〜E25 捕獲方向</a></p>
+<p>前章: <a href="#guide-06-mtaji">mtaji</a>／次章: <a href="#guide-08-relay-sowing">relay sowing</a></p><a class="back-to-top" href="#reference-contents">日本語本文の目次へ戻る ↑</a></section><section class="rules-section guide-chapter" id="guide-08-relay-sowing"><h2 id="guide-08-relay-sowing--relay-sowing">relay sowing</h2>
+<h3 id="guide-08-relay-sowing--初心者向け説明">初心者向け説明</h3>
+<p>1回蒔いて終わりとは限らないことが、Bao la Kiswahiliの大きな特徴です。最後のketeが、すでにketeのある穴へ入った場合、その穴の全keteを取り上げて蒔きを続けます。本書ではこの仕組みを<code>relay sowing</code>と呼びます。R-002では継続を<code>endelea</code>と呼びます。</p>
+<figure><img alt="図8-1 蒔きの最後のketeが占有穴に入り、捕獲や停止条件がなければ、その穴の全keteを取って同じ方向へ蒔き続ける。" decoding="async" loading="lazy" src="../assets/complete-guide/fig-08-01-relay-sowing.svg"/><figcaption>図8-1 蒔きの最後のketeが占有穴に入り、捕獲や停止条件がなければ、その穴の全keteを取って同じ方向へ蒔き続ける。</figcaption><a class="figure-zoom" href="../assets/complete-guide/fig-08-01-relay-sowing.svg" rel="noopener noreferrer" target="_blank">図を拡大 ↗</a></figure>
+<h3 id="guide-08-relay-sowing--基本手順">基本手順</h3>
+<ol>
+<li>所定のketeを、選んだ方向へ1個ずつ蒔きます。</li>
+<li>最後の1個を置いた穴を確認します。</li>
+<li>その穴が空だったなら、通常は手を終了します。</li>
+<li>その穴に元からketeがあり、捕獲が起きないなら、穴の全keteを取ります。</li>
+<li>同じ方向の次の穴から、1個ずつ蒔き続けます。</li>
+</ol>
+<figure><img alt="図8-2 蒔きの最後のketeが空穴へ入ると、通常はそこで手を終了する。" decoding="async" loading="lazy" src="../assets/complete-guide/fig-08-02-stop-empty-pit.svg"/><figcaption>図8-2 蒔きの最後のketeが空穴へ入ると、通常はそこで手を終了する。</figcaption><a class="figure-zoom" href="../assets/complete-guide/fig-08-02-stop-empty-pit.svg" rel="noopener noreferrer" target="_blank">図を拡大 ↗</a></figure>
+<p>「占有穴へ終わる」とは、最後の1個を置いた後に2個以上になったことを指します。空穴へ最後の1個を置いた場合は、置いた後に1個だけなので継続しません。</p>
+<h3 id="guide-08-relay-sowing--捕獲との関係">捕獲との関係</h3>
+<p>捕獲手の途中で、最後のketeが自分の占有された前列穴へ入り、真向かいの相手前列穴にもketeがあれば、relay sowingより先に捕獲します。捕獲したketeをkichwaから蒔き、その終点を改めて判定します。</p>
+<p>takataは手全体が非捕獲です。takataの途中で同じ盤面条件が生じても捕獲せず、通常のrelay sowingとして続けます。</p>
+<h3 id="guide-08-relay-sowing--方向">方向</h3>
+<p>通常のrelay sowingでは、手を始めたときの方向を維持します。毎回方向を選び直すことはできません。捕獲穴がkichwaまたはkimbiだった場合は、捕獲したketeを同じ側のkichwaから蒔くため、結果として方向が変わることがあります。</p>
+<h3 id="guide-08-relay-sowing--停止条件">停止条件</h3>
+<p>手は次の場合に止まります。</p>
+<ul>
+<li>最後のketeが空穴へ入った。</li>
+<li>所有中のnyumbaへ到達し、nyumbaの規則によって止まった。</li>
+<li>mtajiで、相手のtakasiaによる制約があるtakataの最後の1個が対象穴へ入った。</li>
+<li>手の途中で相手の前列が空になり、ゲームそのものが終了した。</li>
+</ul>
+<p>捕獲条件を満たした場合は手を止めず、捕獲処理へ移ります。</p>
+<h3 id="guide-08-relay-sowing--具体例">具体例</h3>
+<p>3個を蒔き、最後の1個が元から2個ある穴へ入ったとします。その穴は3個になります。捕獲条件や特別な停止条件がなければ、3個すべてを取り、同じ方向の次の穴から蒔きます。次の蒔きが空穴で終われば、そこで手が終わります。</p>
+<h3 id="guide-08-relay-sowing--注意点">注意点</h3>
+<ul>
+<li>最後の穴に置いたketeだけでなく、その穴の全keteを取り上げます。</li>
+<li>取り上げた穴の次の穴から蒔きます。同じ穴へ最初の1個を戻しません。</li>
+<li>空穴、所有中のnyumba、takasiaでは通常則と異なる停止が起こります。</li>
+<li>takasiaの対象穴を蒔きの途中で通過するだけなら停止しません。nyumbaから始めた蒔きでも、最後の1個が対象穴へ入れば停止します。制約は次の相手の1手だけです（R-001, p. 42、R-006, p. 25）。<a href="#guide-06-mtaji--takasia">成立条件と例外</a>、<a href="#guide-examples--e30-takasia対象穴でrelay-sowingを止める">完全局面 E30</a>も参照してください。</li>
+<li>長い手でも、途中で相手へ手番を渡しません。</li>
+</ul>
+<h3 id="guide-08-relay-sowing--地域差確認メモ">地域差・確認メモ</h3>
+<p>R-002には、所定数を超えてketeを蒔く手を「終わらない手」とみなして不合法にする計算機専用規則があります。本書はこれを対人競技の正式ルールとして採用しません。終わらない連続蒔き自体はR-004の研究対象ですが、対人対局での処理は未確認です。</p>
+<p>根拠: R-002, pp. 164–165、R-003, Issue 4, pp. 21–22。終わらない手はR-004。</p>
+<p>関連例: <a href="#guide-examples--relay-sowingとtakata">E26〜E28 relay sowingとtakata</a></p>
+<p>前章: <a href="#guide-07-capture">捕獲</a>／次章: <a href="#guide-09-nyumba">nyumba</a></p><a class="back-to-top" href="#reference-contents">日本語本文の目次へ戻る ↑</a></section><section class="rules-section guide-chapter" id="guide-09-nyumba"><h2 id="guide-09-nyumba--nyumba">nyumba</h2>
+<h3 id="guide-09-nyumba--初心者向け説明">初心者向け説明</h3>
+<p>nyumbaは、各プレイヤーの前列に1つずつある特別な穴です。初期配置で6個のketeを入れ、「所有している」状態から始めます。所有中だけ、通常のrelay sowingとは異なる停止や開始を選べます。</p>
+<p>nyumbaは場所の名前であると同時に、特別な機能を持つ状態でもあります。特別な機能を失った後も穴そのものは残りますが、通常の前列穴として扱います。</p>
+<figure><img alt="図9-1 nyumbaの所有状態と6個以上で働く機能を区別する。6個未満だけでは所有を失わない。空にした場合やmtajiの最初の捕獲で所有を失う。" decoding="async" loading="lazy" src="../assets/complete-guide/fig-09-01-nyumba-states.svg"/><figcaption>図9-1 nyumbaの所有状態と6個以上で働く機能を区別する。6個未満だけでは所有を失わない。空にした場合やmtajiの最初の捕獲で所有を失う。</figcaption><a class="figure-zoom" href="../assets/complete-guide/fig-09-01-nyumba-states.svg" rel="noopener noreferrer" target="_blank">図を拡大 ↗</a></figure>
+<h3 id="guide-09-nyumba--位置と初期状態">位置と初期状態</h3>
+<p>nyumbaは、各プレイヤー本人から見て前列の左から5番目にあります。SouthはA5、Northはa5です。初期配置では6個入り、両者がそれぞれ自分のnyumbaを所有します。</p>
+<h3 id="guide-09-nyumba--namuaでnyumbaへ到達したとき">namuaでnyumbaへ到達したとき</h3>
+<p>所有中のnyumbaへ蒔き終わった場合は、手の種類によって扱いが変わります。</p>
+<h4 id="guide-09-nyumba--takataの場合">takataの場合</h4>
+<p>nyumbaが6個以上になったなら、そこで手を止めます。全keteを取り上げてrelay sowingを続けません。</p>
+<h4 id="guide-09-nyumba--捕獲手の場合">捕獲手の場合</h4>
+<p>nyumbaの真向かいから捕獲できるなら、通常どおり捕獲します。捕獲できず、最後の1個を置いた後にnyumbaが6個以上ある場合は、そこで止めるか、nyumbaを「使う」かを選べます。6個未満なら、この停止選択はなく、通常のrelay sowingに従います。</p>
+<p>nyumbaを使う場合は、中の全keteを取り上げ、同じ手の方向へ蒔き続けます。nyumbaを空にした時点で所有状態を失います。</p>
+<h3 id="guide-09-nyumba--nyumbaからの2個蒔き">nyumbaからの2個蒔き</h3>
+<p>namuaで捕獲できず、自分の前列で6個以上ある所有中のnyumbaだけが占有されている場合に使う開始方法です。</p>
+<ol>
+<li>手元から1個をnyumbaへ入れます。</li>
+<li>nyumbaから2個だけを取り出します。</li>
+<li>左右どちらかを選び、1個ずつ蒔きます。</li>
+</ol>
+<figure><img alt="図9-2 認められる条件でnyumbaからtakataを始める場合は、手元から1個を入れた後、全内容ではなく2個だけを取り出して蒔く。開始時が6個ならnyumbaに5個残り、6個以上を条件とする機能は一時停止する。" decoding="async" loading="lazy" src="../assets/complete-guide/fig-09-02-nyumba-two-seed-sowing.svg"/><figcaption>図9-2 認められる条件でnyumbaからtakataを始める場合は、手元から1個を入れた後、全内容ではなく2個だけを取り出して蒔く。開始時が6個ならnyumbaに5個残り、6個以上を条件とする機能は一時停止する。</figcaption><a class="figure-zoom" href="../assets/complete-guide/fig-09-02-nyumba-two-seed-sowing.svg" rel="noopener noreferrer" target="_blank">図を拡大 ↗</a></figure>
+<p>この操作ではnyumbaを空にしません。7個から2個を蒔くと5個残るため、6個以上を条件とする特別な停止規則は働かなくなります。本書では所有状態を保ち、再び6個以上になれば条件付きの機能が戻る扱いを採用します。5個時の地域差は下の「資料差・確認メモ」で説明します。英語資料で<code>taxation</code>と呼ばれることがありますが、本書では「nyumbaからの2個蒔き」と説明します。</p>
+<p>この開始方法の確実な例は、開始前に6個以上あるnyumbaだけが前列に残る場合です。すでに5個で、手元の1個を追加して6個になる場合の開始処理には解釈の余地があるため、外部レビューで確認する事項とします。この境界を2個蒔きの確定例として使いません。</p>
+<h3 id="guide-09-nyumba--所有状態を失う条件">所有状態を失う条件</h3>
+<p>R-002の形式規則とR-008では、次の場合にnyumbaの所有状態を失います。</p>
+<ul>
+<li>nyumbaの中身をすべて取り、空にした。</li>
+<li>mtajiに入った後、最初の捕獲が起きた。</li>
+</ul>
+<p>mtaji開始時にまだ所有していれば、最初の捕獲までは所有状態が残ります。この持ち越しはR-001, p. 42とR-006, p. 25でも確認でき、所有中のnyumbaはtakasiaの対象になりません。所有を失った後は、その位置の穴も通常穴としてtakasiaを判定します。ただし、namuaにおけるnyumbaからの2個蒔きや、nyumbaで止まる選択はmtajiでは適用しません。</p>
+<p>nyumbaから蒔き始めたことによるtakasiaの停止免除は認めません。蒔きの最後の1個が別のtakasia対象穴へ入った場合は停止します。<a href="#guide-06-mtaji--takasia">mtajiの採用規則</a>を参照してください。</p>
+<p>相手にnyumbaの真向かいから捕獲されて空になった場合も、「空になった」ため特別な機能を失います。</p>
+<h3 id="guide-09-nyumba--具体例">具体例</h3>
+<p>捕獲手のrelay sowingが、所有中で6個以上ある自分のnyumbaへ到達し、真向かいの相手穴が空だったとします。この場合は次の2択です。</p>
+<ul>
+<li>nyumbaで手を止め、所有状態を保つ。</li>
+<li>nyumbaの全keteを取り上げて同じ方向へ蒔き、所有状態を失う。</li>
+</ul>
+<p>同じ到達でもtakataなら、6個以上の所有中nyumbaで停止し、続行を選びません。</p>
+<h3 id="guide-09-nyumba--注意点">注意点</h3>
+<ul>
+<li>盤上のnyumbaは、所有状態を失っても位置が変わりません。</li>
+<li>所有中のnyumbaへ、いつでも手元の1個を入れられるわけではありません。</li>
+<li>2個蒔きは全内容を蒔く操作ではなく、namuaの限定された開始規則です。</li>
+<li>捕獲手でnyumbaに到達しても、真向かいに相手のketeがあれば停止を選ばず捕獲します。</li>
+<li>mtajiではnamuaのnyumba例外をそのまま使いません。</li>
+</ul>
+<h3 id="guide-09-nyumba--資料差確認メモ">資料差・確認メモ</h3>
+<p>本書は、nyumbaの「所有状態」と、6個以上のときに働く機能を分けます。停止の6個条件は、最後の1個を加えた後に判定します。R-001, pp. 38–39の機能するhouseの定義と停止選択、およびR-008, §4.2.1.2の明示条件を根拠に、捕獲手の停止選択にも6個条件を適用します。R-002, §1.6(a)は6個以上を示しますが、§2.5(b)の停止選択文には個数条件を繰り返していません。この記述差も残します。<a href="#guide-validation-cases--v03-所有中nyumbaへの到達が5個と6個になる場合">比較局面 V03</a>で採用する扱いを確認できます。</p>
+<p>R-001, p. 42は、空にしていないhouseが5個でも残り、6個へ戻る場合を説明します。同頁は、Dar es Salaamでは他に1個穴があっても5個のhouseをtakataする地域差も記録しています。R-003 Issue 5, p. 23も、冒頭の機能するhouseの定義に加え、5個でも次のtakataまではhouseとみなす場合と、5個で直ちにhouseではなくなる地域差を説明します。同記事が5個で一律に所有を失うとだけ説明しているわけではありません。</p>
+<p>mtajiへの持ち越しは、R-001, p. 42、R-006, p. 25、R-002・R-008の扱いを採用します。R-003の「mtajiにはhouseがない」という簡略な説明とは、所有と機能を分けて比較します。5個から始める手の追加前後の条件判定や、現在の地域・大会での運用は外部レビューで確認します。</p>
+<p>根拠: R-002, pp. 165–167、R-003, Issue 4, pp. 21–22およびIssue 5, pp. 22–23、R-008, §§3.2, 4.2.1–4.2.3。</p>
+<p>takasiaと所有状態の持ち越し: R-001, pp. 42–43、R-006, p. 25。</p>
+<p>関連例: <a href="#guide-examples--e29-namuaの捕獲手が所有中nyumbaへ到達する">E29 nyumba</a></p>
+<p>前章: <a href="#guide-08-relay-sowing">relay sowing</a>／次章: <a href="#guide-10-endgame">終局と勝敗</a></p><a class="back-to-top" href="#reference-contents">日本語本文の目次へ戻る ↑</a></section><section class="rules-section guide-chapter" id="guide-10-endgame"><h2 id="guide-10-endgame--終局と勝敗">終局と勝敗</h2>
+<h3 id="guide-10-endgame--初心者向け説明">初心者向け説明</h3>
+<p>Bao la Kiswahiliでは、相手の前列8穴をすべて空にすると勝ちです。また、相手が合法手を行えない場合も勝ちます。keteの総数を比べて勝敗を決めるゲームではありません。</p>
+<figure><img alt="図10-1 一方のプレイヤーの前列8穴がすべて空になると、そのプレイヤーは敗北する。" decoding="async" loading="lazy" src="../assets/complete-guide/fig-10-01-empty-front-row.svg"/><figcaption>図10-1 一方のプレイヤーの前列8穴がすべて空になると、そのプレイヤーは敗北する。</figcaption><a class="figure-zoom" href="../assets/complete-guide/fig-10-01-empty-front-row.svg" rel="noopener noreferrer" target="_blank">図を拡大 ↗</a></figure>
+<h3 id="guide-10-endgame--終局条件">終局条件</h3>
+<p>R-002の形式規則では、次のどちらかが起きるとゲームを終了します。</p>
+<ol>
+<li>一方のプレイヤーの前列がすべて空になった。</li>
+<li>手番プレイヤーに合法手がない。</li>
+</ol>
+<p>どちらの場合も、条件を満たした側が敗者、相手が勝者です。</p>
+<h3 id="guide-10-endgame--手の途中で前列が空になった場合">手の途中で前列が空になった場合</h3>
+<p>前列が空になる条件は、手の終了時だけでなく手の途中でも判定します。捕獲によって相手の前列最後のketeを取り去ったなら、その時点でゲームが終了します。捕獲したketeを最後まで蒔いてから判定するのではありません。</p>
+<p>また、自分の前列最後の占有穴から蒔き始めて一時的に前列を空にする方向は、敗北につながります。R-002は、前列にkichwaだけが残る場合、前列を空にして後列へ向かうtakataを禁止しています。</p>
+<h3 id="guide-10-endgame--合法手がない場合">合法手がない場合</h3>
+<p>mtajiでは、空穴と1個だけの穴から手を始められません。自分の前列・後列の全16穴が0個または1個なら合法手がなく、敗北します。</p>
+<p>namuaでは手元から1個を使いますが、前列の状態と開始制約に従う必要があります。R-002は一般条件として「動けないプレイヤーの敗北」を定めています。</p>
+<h3 id="guide-10-endgame--具体例">具体例</h3>
+<p>相手前列にketeがある穴が1つだけ残っているとします。自分がその真向かいで捕獲し、相手穴の全keteを取ると、相手前列は空になります。relay sowingが続く形でも、その時点で終局です。</p>
+<p>別の例として、mtajiで自分の16穴すべてに0個または1個しかない場合、2個以上の開始穴がありません。相手前列にketeが残っていても、合法手なしで敗北します。</p>
+<h3 id="guide-10-endgame--投了">投了</h3>
+<p>R-002には棋譜例で投了が記録されています。勝ち目がないと判断したプレイヤーが投了すれば、相手の勝ちとして対局を終えられます。投了の宣言方法は、大会や対局者間の取り決めに従ってください。</p>
+<h3 id="guide-10-endgame--引き分けと終わらない手">引き分けと終わらない手</h3>
+<p>今回確認した基準資料には、通常の引き分け条件を確定できる記述がありません。R-002は終わらない手を不合法とし、有限手がなければ敗北とする規則を置いていますが、明示的に計算機用の特則です。R-008のK.I.B.A.規則も終わらない手を禁止し、判定基準を対局前に定める運用を示します。ただし、これはクラブ規則であり、ザンジバルの現地競技規則として確認したものではありません。</p>
+<p>したがって、本書は「一定回数を超えたら引き分け」「終わらない手なら自動的に敗北」といった処理を、対人競技の正式ルールとして採用しません。該当局面では棋譜を残し、採用する競技規則または裁定者に従ってください。</p>
+<h3 id="guide-10-endgame--注意点">注意点</h3>
+<ul>
+<li>盤上や手元のkete数の多さだけでは勝敗を決めません。</li>
+<li>相手の後列が空でも、それだけでは勝ちになりません。</li>
+<li>前列空は手の途中でも判定します。</li>
+<li>「合法手なし」と「捕獲手なし」は別です。捕獲できなくてもtakataが可能ならゲームは続きます。</li>
+</ul>
+<h3 id="guide-10-endgame--原典に記録された対人手続">原典に記録された対人手続</h3>
+<p>R-001, pp. 43–44は、1990年代の調査として誤操作の戻し、触れた穴を指す義務、数える時機、手元の個数の誤りを扱います。合法な手を任意に戻すことは認めず、数えるのは自分の手番に限ると説明します。namuaでは手元のketeを持ったまま穴に触れること、mtajiでは捕獲できる穴の個数を数えることが、着手義務に関係します。</p>
+<p>これらは現在のすべての大会の手続を確定する根拠ではありません。誤操作、盤面の復元、個数の補正、罰則は対局前に採用規則を確認し、競技会では裁定者に従ってください。オンライン対局の操作制限へ自動的に転用しません。</p>
+<h3 id="guide-10-endgame--地域差確認メモ">地域差・確認メモ</h3>
+<p>前列が一時的に空の場合も敗北することと、mtajiで両列が0個・1個だけなら敗北することは、R-001, pp. 40–41でも確認しました。R-001, p. 38は終わらない手の対処について名人の意見が分かれたことを記録します。R-004の提案も計算機用であり、現行の対人競技規則の確認は残ります。投了の宣言と大会での細かな裁定も外部レビューの対象です。</p>
+<p>根拠: R-002, pp. 164–168、R-003, Issue 4, p. 21、R-008, §§1.1–1.5。終わらない手はR-004も参照。</p>
+<p>関連例: <a href="#guide-examples--nyumbatakasia終局">E31〜E32 終局</a></p>
+<p>前章: <a href="#guide-09-nyumba">nyumba</a>／次章: <a href="#guide-11-kujifunza">Bao la kujifunza</a></p><a class="back-to-top" href="#reference-contents">日本語本文の目次へ戻る ↑</a></section><section class="rules-section guide-chapter" id="guide-11-kujifunza"><h2 id="guide-11-kujifunza--bao-la-kujifunza">Bao la kujifunza</h2>
+<h3 id="guide-11-kujifunza--この章の目的">この章の目的</h3>
+<p>Baoの基本的な蒔きと捕獲を学ぶための簡略版を、Bao la Kiswahili本編と混同しない形で紹介する。</p>
+<ul>
+<li>対象読者: 簡略版から練習したい初心者と指導者</li>
+<li>扱う範囲: 簡略版の導入と本編との差。ザンジバル版本編の詳細は扱わない</li>
+</ul>
+<h3 id="guide-11-kujifunza--構成案">構成案</h3>
+<ul>
+<li>Bao la kujifunzaの位置づけ</li>
+<li>初期配置</li>
+<li>省略されるnamua</li>
+<li>Bao la Kiswahiliとの共通点</li>
+<li>省略・簡略化される規則</li>
+<li>練習から本編へ移る目安</li>
+</ul>
+<h3 id="guide-11-kujifunza--注意">注意</h3>
+<p>簡略版の規則はPhase 1の中心調査範囲外である。追加資料を確認してから本文を確定する。</p>
+<p>前章: <a href="#guide-10-endgame">終局と勝敗</a>／次章: <a href="#guide-12-strategy">戦術入門</a></p><a class="back-to-top" href="#reference-contents">日本語本文の目次へ戻る ↑</a></section><section class="rules-section guide-chapter" id="guide-12-strategy"><h2 id="guide-12-strategy--戦術入門">戦術入門</h2>
+<p>この章は、合法手を選べるようになった読者が、候補手を比較し、読みを記録するための入口です。定跡集や必勝法ではありません。</p>
+<h3 id="guide-12-strategy--この章で断定する範囲">この章で断定する範囲</h3>
+<p>戦術に関する記述を、次の3種類に分けます。</p>
+<ol>
+<li><strong>規則から直接確認できる読み方</strong>: 捕獲義務、停止条件、終局条件などを候補手の検査に使います。</li>
+<li><strong>R-003・R-006の入門記事が明示する学習上の助言</strong>: 規則習得、nyumba、捕獲手、takataの候補数に関する記述です。</li>
+<li><strong>未検証の評価</strong>: 定跡、最善手、穴ごとの一般的価値、勝率、何手先まで読めば十分かなどです。本書では断定しません。</li>
+</ol>
+<p>R-003は、規則を誤りなく進められるようになってから戦術を考えるべきだと説明しています。R-006は、捕獲手では効果的な捕獲を探すこと、takataでは候補が多くなりやすいことを指摘しています。本章は、この範囲を越えて独自の「強い手」を作りません。</p>
+<h3 id="guide-12-strategy--すべての段階で使う確認表">すべての段階で使う確認表</h3>
+<p>候補手を評価する前に、まず合法性を確定します。</p>
+<div aria-label="横にスクロールできる表" class="guide-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>順序</th>
+<th>確認すること</th>
+<th>関連章</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>namuaかmtajiか</td>
+<td><a href="#guide-05-namua">namua</a>、<a href="#guide-06-mtaji">mtaji</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>捕獲手が1つでもあるか</td>
+<td><a href="#guide-07-capture">捕獲</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>合法な開始穴と方向はどれか</td>
+<td><a href="#guide-05-namua">namua</a>、<a href="#guide-06-mtaji">mtaji</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>1回目の蒔きはどこで終わるか</td>
+<td><a href="#guide-examples">規則確認用の局面例</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>捕獲、relay sowing、nyumba、takasiaのどれへ進むか</td>
+<td><a href="#guide-08-relay-sowing">relay sowing</a>、<a href="#guide-09-nyumba">nyumba</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>手の途中で前列空にならないか</td>
+<td><a href="#guide-10-endgame">終局と勝敗</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>手が終わった局面と相手の合法手は何か</td>
+<td>本章の候補比較</td>
+</tr>
+</tbody>
+</table></div>
+<p>この順序は強さの評価ではなく、読み間違いを減らすための手順です。捕獲義務を見落とした候補や、停止条件を誤った候補は、戦術比較の対象になりません。</p>
+<h3 id="guide-12-strategy--初級-1手を正確に最後まで読む">初級: 1手を正確に最後まで読む</h3>
+<h4 id="guide-12-strategy--目標">目標</h4>
+<ul>
+<li>捕獲手とtakataを区別する。</li>
+<li>1手の開始から停止まで、盤面を動かさずに説明できる。</li>
+<li>手の途中で方向を選び直さない。</li>
+<li>前列空による即時終局を見落とさない。</li>
+</ul>
+<h4 id="guide-12-strategy--1-捕獲候補を先に列挙する">1. 捕獲候補を先に列挙する</h4>
+<p>自分の「やりたい手」を探す前に、捕獲が義務かを確認します。</p>
+<p>namuaでは、向かい合う占有前列穴をすべて探します。R-002の形式規則によるmtajiでは、2個以上15個以下の開始穴と方向から、最初の蒔きで捕獲へ到達する候補を探します。候補が複数あるなら、1つに絞る前にすべて記録します。</p>
+<p>練習には<a href="#guide-examples--namua">E05〜E06</a>と<a href="#guide-examples--mtaji">E18〜E19</a>を使えます。これらは合法性確認用の部分局面であり、戦術的な最善手を示す例ではありません。</p>
+<h4 id="guide-12-strategy--2-1手を途中で切らない">2. 1手を途中で切らない</h4>
+<p>Baoの1手は、最初の蒔きだけでは評価できません。占有穴へ終わればrelay sowingが続き、捕獲が連鎖する場合があります。空穴、所有中のnyumba、takasia、または終局条件へ達するまで追います。</p>
+<p>読み上げるときは、次の形に統一すると誤りを見つけやすくなります。</p>
+<blockquote>
+<p>開始穴と方向 → 1回目の終点 → 捕獲または継続 → 次の終点 → 停止理由</p>
+</blockquote>
+<h4 id="guide-12-strategy--3-開始穴と方向を記録する">3. 開始穴と方向を記録する</h4>
+<p>R-003は、開始穴と、必要な場合は方向を示せば、通常の手を伝えられると説明しています。本書では正式な棋譜体系をまだ採用しませんが、練習記録には少なくとも次を残します。</p>
+<ul>
+<li>段階: namua／mtaji</li>
+<li>手番: North／South</li>
+<li>開始穴</li>
+<li>左右の方向</li>
+<li>捕獲手／takata</li>
+<li>nyumbaを使ったか</li>
+<li>手の終了穴と終了理由</li>
+</ul>
+<h4 id="guide-12-strategy--4-初級の練習方法">4. 初級の練習方法</h4>
+<ol>
+<li><a href="#guide-examples">規則確認用の局面例</a>を1例選びます。</li>
+<li>図の判定部分を隠し、合法か不合法かを答えます。</li>
+<li>根拠となる規則章を声に出して説明します。</li>
+<li>間違えた場合は「候補の列挙」「方向」「停止条件」のどこで崩れたか記録します。</li>
+</ol>
+<p>候補の少ない局面から始めてかまいません。R-006も、選択肢が少ない局面は初心者の思考負担を抑えると述べています。これは「選択肢を減らせば必ず有利」という局面評価ではなく、練習設計上の助言です。</p>
+<h3 id="guide-12-strategy--中級-候補手を同じ尺度で比較する">中級: 候補手を同じ尺度で比較する</h3>
+<h4 id="guide-12-strategy--目標-1">目標</h4>
+<ul>
+<li>合法な候補を1つずつ最後まで読む。</li>
+<li>最初に読めた手だけで決めない。</li>
+<li>nyumbaを保つ選択と使う選択を別の候補として記録する。</li>
+<li>相手の次の強制手まで確認する。</li>
+</ul>
+<h4 id="guide-12-strategy--1-捕獲数だけで順位を決めない">1. 捕獲数だけで順位を決めない</h4>
+<p>R-006は「効果的な捕獲」を探すことを戦術の中心課題として挙げますが、効果を捕獲したketeの個数だけで定義していません。本書にも、捕獲数と勝率を結び付ける検証済み資料はありません。</p>
+<p>そこで候補手ごとに、少なくとも次の事実を記録します。</p>
+<div aria-label="横にスクロールできる表" class="guide-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>観察項目</th>
+<th>記録する内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>終局</td>
+<td>その手の途中でどちらかの前列が空になるか</td>
+</tr>
+<tr>
+<td>手の終了</td>
+<td>どの穴で、どの停止条件により終わるか</td>
+</tr>
+<tr>
+<td>自分の前列</td>
+<td>手の終了後に占有されている穴</td>
+</tr>
+<tr>
+<td>相手の前列</td>
+<td>捕獲後に残る占有穴</td>
+</tr>
+<tr>
+<td>nyumba</td>
+<td>所有を保ったか、空にして失ったか</td>
+</tr>
+<tr>
+<td>相手の次手</td>
+<td>捕獲が義務か、takataか</td>
+</tr>
+</tbody>
+</table></div>
+<p>この表は観察事実を揃えるためのものです。各項目へ点数を付けたり、常に一定の優先順位を置いたりはしません。</p>
+<h4 id="guide-12-strategy--2-nyumbaを保つと使うを分けて読む">2. nyumbaを「保つ」と「使う」を分けて読む</h4>
+<p>R-003 Issue 5は、namuaでnyumbaを捕獲から守ることと、nyumbaを使って複数捕獲を行うことを重要な技能として挙げています。ただし、いつ保つべきかを一律に定める公式は示していません。</p>
+<p>namuaの捕獲手が所有中のnyumbaへ到達し、到達後に6個以上あり、捕獲できず停止を選べる場合は、次の2本を別々に読みます。</p>
+<ul>
+<li>停止する: 現在の手を終え、nyumbaの所有を保つ。</li>
+<li>使う: nyumbaの全keteを蒔き、現在の手を続け、所有を失う。</li>
+</ul>
+<p>比較するときは、<a href="#guide-examples--e29-namuaの捕獲手が所有中nyumbaへ到達する">E29</a>のように状態変化を明記します。E29自体は選択規則の確認例であり、どちらが有利かは示していません。</p>
+<h4 id="guide-12-strategy--3-takataでは候補を先に数える">3. takataでは候補を先に数える</h4>
+<p>R-006は、捕獲できない局面では候補が多くなり、初心者が読めた1手だけで探索を止めやすいと説明しています。takataでは次の順に整理します。</p>
+<ol>
+<li>段階固有の開始制約を適用します。</li>
+<li>合法な開始穴をすべて書きます。</li>
+<li>各開始穴で認められる方向を書きます。</li>
+<li>それぞれを停止まで読みます。</li>
+<li>読めなかった候補を「不利」とみなさず、未計算として残します。</li>
+</ol>
+<p>mtajiでは前列開始の優先やtakasiaがあるため、見た目の占有穴すべてが候補になるわけではありません。<a href="#guide-06-mtaji">mtaji</a>の合法手選択を先に適用してください。</p>
+<h4 id="guide-12-strategy--4-相手の次の手を分類する">4. 相手の次の手を分類する</h4>
+<p>自分の候補手を最後まで読んだら、相手について次の3点だけでも確認します。</p>
+<ul>
+<li>相手前列は空になっていないか。</li>
+<li>相手に捕獲手があるか。</li>
+<li>捕獲手がなければ、どのtakataが合法か。</li>
+</ul>
+<p>これは「相手の捕獲を必ず避けるべき」という原則ではありません。次の応手を未確認のまま、自分の手だけを評価しないための最低限の分類です。</p>
+<h3 id="guide-12-strategy--上級-読みを再現可能な分析へする">上級: 読みを再現可能な分析へする</h3>
+<h4 id="guide-12-strategy--目標-2">目標</h4>
+<ul>
+<li>複数手の分岐を、第三者が再現できる形で記録する。</li>
+<li>事実、計算結果、評価、未確認事項を分ける。</li>
+<li>資料や実戦で裏付けられない一般則を作らない。</li>
+</ul>
+<h4 id="guide-12-strategy--1-分岐ごとに盤面を保存する">1. 分岐ごとに盤面を保存する</h4>
+<p>長いrelay sowingを頭の中だけで比較すると、開始局面へ戻したときにkete数を誤りやすくなります。各候補について、少なくとも次の4状態を記録します。</p>
+<ol>
+<li>開始局面</li>
+<li>最初の捕獲または1回目の蒔きが終わった局面</li>
+<li>手が完全に終わった局面</li>
+<li>相手の応手が完全に終わった局面</li>
+</ol>
+<p>盤面はA・B・a・bの4列で記録し、各列8穴の個数を残します。部分局面を使う場合は、未指定穴を空穴と解釈しないよう明記します。</p>
+<h4 id="guide-12-strategy--2-分析文を4種類に分ける">2. 分析文を4種類に分ける</h4>
+<div aria-label="横にスクロールできる表" class="guide-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>種類</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>規則上の事実</td>
+<td>この局面では捕獲が義務である</td>
+</tr>
+<tr>
+<td>計算結果</td>
+<td>この候補はA6で空穴に終わる</td>
+</tr>
+<tr>
+<td>評価</td>
+<td>この終了局面を候補Bより選びたい</td>
+</tr>
+<tr>
+<td>未確認</td>
+<td>候補Cのrelay sowingを最後まで検算していない</td>
+</tr>
+</tbody>
+</table></div>
+<p>評価を事実のように書かないことが重要です。「良い」「安全」「強制」と書く場合は、何を計算し、どこまで確認したかを添えます。</p>
+<h4 id="guide-12-strategy--3-戦術仮説は反例を探す">3. 戦術仮説は反例を探す</h4>
+<p>たとえば「nyumbaは常に保つべき」「多く捕獲する手が常に強い」といった文は、本章の資料からは導けません。仮説として検討する場合は、次の手順を取ります。</p>
+<ol>
+<li>適用する段階と条件を限定します。</li>
+<li>反対の選択が可能な局面を集めます。</li>
+<li>両方の候補を同じ深さまで読みます。</li>
+<li>実戦棋譜、競技者レビュー、または戦術資料と照合します。</li>
+<li>反例があれば、条件を狭めるか仮説を撤回します。</li>
+</ol>
+<h4 id="guide-12-strategy--4-現段階で上級戦術として断定しない項目">4. 現段階で上級戦術として断定しない項目</h4>
+<p>次の項目は、検証可能な実戦例や追加資料が不足しているため、本書では課題として残します。</p>
+<ul>
+<li>ザンジバル版の定跡と、その分岐評価</li>
+<li>各kichwa・kimbiの一般的な価値順位</li>
+<li>nyumbaを使う最適な時機</li>
+<li>takasiaを使う手の最善性、勝率、実戦での作り方の一般化（成立する完全局面は<a href="#guide-examples--e30-takasia対象穴でrelay-sowingを止める">E30</a>で検証済み）</li>
+<li>16個以上の穴を含むtakataの評価</li>
+<li>終わらない手を含む対人対局の戦術判断</li>
+<li>特定の捕獲数と勝率の関係</li>
+</ul>
+<h3 id="guide-12-strategy--段階別の練習目安">段階別の練習目安</h3>
+<div aria-label="横にスクロールできる表" class="guide-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>段階</th>
+<th>できるようにすること</th>
+<th>使用する教材</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>初級</td>
+<td>1手を停止まで正確に追う</td>
+<td><a href="#guide-examples">規則確認用の局面例</a></td>
+</tr>
+<tr>
+<td>中級</td>
+<td>全合法候補を列挙し、手の終了後と相手の次手を比較する</td>
+<td>本章の比較表、自分の完全盤面記録</td>
+</tr>
+<tr>
+<td>上級</td>
+<td>複数手の分岐を再現可能に記録し、評価と事実を分ける</td>
+<td>実戦棋譜、競技者レビュー、追加戦術資料</td>
+</tr>
+</tbody>
+</table></div>
+<p>「何手先まで読めれば上級」とは定めません。長い1手を正確に完了することと、複数手を比較することは別の技能です。</p>
+<h3 id="guide-12-strategy--参考文献と確認メモ">参考文献と確認メモ</h3>
+<ul>
+<li>R-003, Issue 4, pp. 21–22: 規則を誤りなく行えるようになってから戦術学習へ進むという導入。</li>
+<li>R-003, Issue 5, pp. 22–23: 手の記録、nyumbaの保持と複数捕獲への利用。</li>
+<li>R-006, Issue 7, pp. 24–25: 捕獲手とtakataの候補探索、初心者にとっての選択肢の多さ。</li>
+<li>R-002, pp. 163–168: 候補手の合法性と停止条件を検査するための形式規則。</li>
+</ul>
+<p>R-003・R-006の記事は入門的な説明であり、完全な定跡集ではありません。R-001本文、現地棋譜、競技者レビューとの照合は今後の課題です。</p>
+<p>前章: <a href="#guide-11-kujifunza">Bao la kujifunza</a>／次章: <a href="#guide-13-faq">よくある質問</a></p><a class="back-to-top" href="#reference-contents">日本語本文の目次へ戻る ↑</a></section><section class="rules-section guide-chapter" id="guide-13-faq"><h2 id="guide-13-faq--よくある質問">よくある質問</h2>
+<p>章をまたいで生じやすい疑問へ、結論から短く答えます。詳しい条件は各回答のリンク先を確認してください。</p>
+<h3 id="guide-13-faq--このfaqの方針">このFAQの方針</h3>
+<ul>
+<li>Bao la Kiswahiliのザンジバル版を中心に答えます。</li>
+<li>回答は、R-001の規則章とR-002・R-003等を照合した本書本文に基づきます。</li>
+<li>R-002だけで確認した細則は、そのことを回答内で明記します。</li>
+<li>現在の資料で確定できない内容は、推測せず「未確認」と答えます。</li>
+<li>Baoの別地域版やBao la kujifunzaへ、そのまま適用できるとは限りません。</li>
+</ul>
+<h3 id="guide-13-faq--はじめる前">はじめる前</h3>
+<h4 id="guide-13-faq--q01-bao-la-kiswahiliはどのようなゲームですか">Q01. Bao la Kiswahiliはどのようなゲームですか？</h4>
+<p>穴へketeを1個ずつ蒔き、相手前列のketeを捕獲する2人用のmancala系ゲームです。捕獲したketeを自分側で蒔き直し、1手が何度も続く点が特徴です。詳しくは<a href="#guide-01-introduction">Bao la Kiswahiliとは</a>を参照してください。</p>
+<h4 id="guide-13-faq--q02-何人で遊びますか">Q02. 何人で遊びますか？</h4>
+<p>2人です。盤の上側をNorth、下側をSouthとして説明します。これは盤面上の位置を表すラベルです。<a href="#guide-02-board">盤と用具</a>を参照してください。</p>
+<h4 id="guide-13-faq--q03-何をすれば勝ちですか">Q03. 何をすれば勝ちですか？</h4>
+<p>相手の前列8穴をすべて空にするか、相手が合法手を行えない状態にすると勝ちます。keteの総数を比べるゲームではありません。<a href="#guide-10-endgame">終局と勝敗</a>を参照してください。</p>
+<h4 id="guide-13-faq--q04-捕獲したketeは盤外へ取り除きますか">Q04. 捕獲したketeは盤外へ取り除きますか？</h4>
+<p>いいえ。相手穴から取った全keteを、自分のkichwaから直ちに蒔きます。得点として手元へ保管しません。<a href="#guide-07-capture">捕獲</a>を参照してください。</p>
+<h4 id="guide-13-faq--q05-namuaとmtajiは何が違いますか">Q05. namuaとmtajiは何が違いますか？</h4>
+<p>namuaは手元から毎手1個を盤へ入れる前半、mtajiはすべてのketeが盤上へ入った後半です。mtajiでは自分の穴の中身をすべて取って手を始めます。<a href="#guide-05-namua">namua</a>と<a href="#guide-06-mtaji">mtaji</a>を参照してください。</p>
+<h4 id="guide-13-faq--q06-初心者はどの順に覚えるとよいですか">Q06. 初心者はどの順に覚えるとよいですか？</h4>
+<p>まず盤と初期配置、次にnamuaとmtajiの開始方法、最後に捕獲、relay sowing、nyumbaの例外を学ぶと追いやすくなります。<a href="#guide-00-preface">はじめに</a>に推奨順を示しています。</p>
+<h4 id="guide-13-faq--q07-分からない用語はどこで確認できますか">Q07. 分からない用語はどこで確認できますか？</h4>
+<p><a href="#guide-04-glossary">用語辞典</a>で40項目を確認できます。標準用語、資料上だけの異表記、未確認事項も区別しています。</p>
+<h3 id="guide-13-faq--盤と初期配置">盤と初期配置</h3>
+<h4 id="guide-13-faq--q08-盤とketeはいくつ必要ですか">Q08. 盤とketeはいくつ必要ですか？</h4>
+<p>4列×8穴、合計32穴の盤と、64個の同一のketeを使います。<a href="#guide-02-board">盤と用具</a>を参照してください。</p>
+<h4 id="guide-13-faq--q09-前列と後列はどちらですか">Q09. 前列と後列はどちらですか？</h4>
+<p>相手の列と中央で向かい合う列が前列、自分の身体に近い外側の列が後列です。<a href="#guide-02-board">盤と用具</a>の図2-1で確認できます。</p>
+<h4 id="guide-13-faq--q10-相手側の穴へketeを蒔きますか">Q10. 相手側の穴へketeを蒔きますか？</h4>
+<p>いいえ。通常の蒔きは自分の前列と後列を回ります。相手前列から捕獲したketeも、自分側へ持ってきて蒔きます。<a href="#guide-02-board">盤と用具</a>と<a href="#guide-07-capture">捕獲</a>を参照してください。</p>
+<h4 id="guide-13-faq--q11-nyumbakichwakimbiはどこですか">Q11. nyumba、kichwa、kimbiはどこですか？</h4>
+<p>nyumbaは各プレイヤーから見て前列の左から5番目、kichwaは前列の両端、kimbiは各kichwaの隣です。<a href="#guide-02-board--特別な穴">盤と用具</a>を参照してください。</p>
+<h4 id="guide-13-faq--q12-ababは何を表しますか">Q12. A・B・a・bは何を表しますか？</h4>
+<p>Southの前列がA、後列がB、Northの前列がa、後列がbです。番号は各列の所有者本人から見て左から1〜8です。<a href="#guide-04-glossary">用語辞典</a>も参照してください。</p>
+<h4 id="guide-13-faq--q13-初期配置では何個ずつ置きますか">Q13. 初期配置では何個ずつ置きますか？</h4>
+<p>各プレイヤーはnyumbaへ6個、本人から見て右隣の2穴へ2個ずつ置き、22個を手元に残します。後列は空です。<a href="#guide-03-setup">初期配置</a>を参照してください。</p>
+<h4 id="guide-13-faq--q14-nyumbaの右隣は誰から見た右ですか">Q14. 「nyumbaの右隣」は誰から見た右ですか？</h4>
+<p>その列を所有するプレイヤー本人から見た右です。North側は紙面上で左右が反転して見えるので注意してください。<a href="#guide-03-setup--配置手順">初期配置</a>を参照してください。</p>
+<h4 id="guide-13-faq--q15-先手はどちらですか">Q15. 先手はどちらですか？</h4>
+<p>R-002の形式規則ではSouthが先手です。ただし、大会や対局場所に別の先手決定規則がある場合は、そちらを優先してください。<a href="#guide-03-setup--先手と段階">初期配置</a>を参照してください。</p>
+<h3 id="guide-13-faq--namua">namua</h3>
+<h4 id="guide-13-faq--q16-namuaでは毎手何を最初にしますか">Q16. namuaでは毎手何を最初にしますか？</h4>
+<p>手元から1個を自分の前列へ入れます。ただし、先に捕獲可能穴を調べ、捕獲できるなら必ず捕獲手を選びます。<a href="#guide-05-namua--合法手を選ぶ順序">namua</a>を参照してください。</p>
+<h4 id="guide-13-faq--q17-手元のketeは一度に何個使いますか">Q17. 手元のketeは一度に何個使いますか？</h4>
+<p>各手の開始時に1個です。その1個を入れた後、捕獲やrelay sowingによって同じ手が長く続くことはあります。<a href="#guide-05-namua">namua</a>を参照してください。</p>
+<h4 id="guide-13-faq--q18-手元の1個を空穴へ置いて始められますか">Q18. 手元の1個を空穴へ置いて始められますか？</h4>
+<p>いいえ。namuaの捕獲手でもtakataでも、開始に使う自分の前列穴は、入れる前から占有されている必要があります。<a href="#guide-examples--e08-自分側が空でも捕獲できない">規則確認用の局面例 E08</a>も参照してください。</p>
+<h4 id="guide-13-faq--q19-namuaで捕獲できる穴はどう探しますか">Q19. namuaで捕獲できる穴はどう探しますか？</h4>
+<p>自分の占有された前列穴を調べ、その真向かいの相手前列穴にもketeがあれば捕獲候補です。候補が1つでもあれば捕獲は義務です。<a href="#guide-05-namua--合法手を選ぶ順序">namua</a>を参照してください。</p>
+<h4 id="guide-13-faq--q20-捕獲候補が複数ある場合はどうしますか">Q20. 捕獲候補が複数ある場合はどうしますか？</h4>
+<p>候補のうち1つを選びます。捕獲そのものは義務ですが、複数候補からどれを選ぶかは手番プレイヤーが決めます。<a href="#guide-examples--e06-捕獲候補が複数ある">規則確認用の局面例 E06</a>を参照してください。</p>
+<h4 id="guide-13-faq--q21-捕獲できない場合はどうしますか">Q21. 捕獲できない場合はどうしますか？</h4>
+<p>takataを行います。手元から1個を合法な占有前列穴へ入れ、その穴の全keteを選んだ方向へ蒔きます。<a href="#guide-05-namua--捕獲できないときのtakata">namua</a>を参照してください。</p>
+<h4 id="guide-13-faq--q22-namuaのtakataを後列から始められますか">Q22. namuaのtakataを後列から始められますか？</h4>
+<p>いいえ。R-002の形式規則では、namuaのtakataは前列から始めます。<a href="#guide-examples--e10-namuaは後列から始めない">規則確認用の局面例 E10</a>を参照してください。</p>
+<h4 id="guide-13-faq--q23-1個だけ入った穴からtakataを始められますか">Q23. 1個だけ入った穴からtakataを始められますか？</h4>
+<p>原則として始められません。ただし、前列に2個以上の穴がない場合、またはnyumbaをまだ所有している場合など、例外があります。R-001, p. 40とR-002を照合済みです。5個のnyumbaに関係する地域差は別途確認が必要です。<a href="#guide-05-namua--捕獲できないときのtakata">namua</a>を参照してください。</p>
+<h3 id="guide-13-faq--mtaji">mtaji</h3>
+<h4 id="guide-13-faq--q24-いつmtajiへ移りますか">Q24. いつmtajiへ移りますか？</h4>
+<p>両者の手元のketeがすべて盤上へ入ったときです。その前に終局条件を満たした場合は、mtajiへ移らず対局が終了します。<a href="#guide-06-mtaji">mtaji</a>を参照してください。</p>
+<h4 id="guide-13-faq--q25-mtajiでは穴から何個取りますか">Q25. mtajiでは穴から何個取りますか？</h4>
+<p>選んだ開始穴の全keteを取ります。1個だけを選んで動かすことはできません。<a href="#guide-examples--e16-開始穴の全内容を取る">規則確認用の局面例 E16</a>を参照してください。</p>
+<h4 id="guide-13-faq--q26-mtajiで1個だけの穴から始められますか">Q26. mtajiで1個だけの穴から始められますか？</h4>
+<p>いいえ。開始穴には2個以上必要です。自分の16穴がすべて0個または1個なら、R-002では合法手なしで敗北します。<a href="#guide-06-mtaji--合法手を選ぶ順序">mtaji</a>を参照してください。</p>
+<h4 id="guide-13-faq--q27-mtajiでも捕獲は優先ですか">Q27. mtajiでも捕獲は優先ですか？</h4>
+<p>はい。最初の蒔きで捕獲に至る合法手があれば、そのうち1つを選ばなければなりません。捕獲できない場合だけtakataを行います。<a href="#guide-06-mtaji--合法手を選ぶ順序">mtaji</a>を参照してください。</p>
+<h4 id="guide-13-faq--q28-後列の穴から始めて捕獲できますか">Q28. 後列の穴から始めて捕獲できますか？</h4>
+<p>はい。mtajiでは、後列から始めた蒔きの最後のketeが捕獲条件を満たす場合も、捕獲手の候補になり得ます。<a href="#guide-06-mtaji--捕獲手">mtaji</a>を参照してください。</p>
+<h4 id="guide-13-faq--q29-mtajiのtakataは前列と後列のどちらから始めますか">Q29. mtajiのtakataは前列と後列のどちらから始めますか？</h4>
+<p>R-002の形式規則では、可能なら前列から始めます。前列から合法に始められない場合に後列を使います。<a href="#guide-examples--e21-takataは可能なら前列から始める">規則確認用の局面例 E21</a>を参照してください。</p>
+<h4 id="guide-13-faq--q30-16個以上ある穴から手を始められますか">Q30. 16個以上ある穴から手を始められますか？</h4>
+<p>捕獲手の開始穴にはできません。捕獲手がなくtakataを行う場合は、前列優先などの開始条件を満たせば使えます。R-001, pp. 38, 41とR-002を照合済みです。<a href="#guide-06-mtaji--16個以上ある穴">mtaji</a>と<a href="#guide-validation-cases--v01-16個の穴から始めるtakata">完全局面 V01</a>を参照してください。</p>
+<h4 id="guide-13-faq--q31-takasiaとは何ですか">Q31. takasiaとは何ですか？</h4>
+<p>自分のmtajiのtakata後、相手に捕獲手がなく、同じ盤面で自分が捕獲できる相手前列穴が1つだけなら、その穴を相手の次のtakataで空にできなくする規則です。最後の1個がその穴へ入れば停止します。1個だけの穴、所有中のnyumba、前列で唯一占有された穴、前列で唯一2個以上ある穴は対象外です。原典と著者解説を照合して正式採用しました。<a href="#guide-06-mtaji--takasia">mtaji</a>と<a href="#guide-examples--e30-takasia対象穴でrelay-sowingを止める">完全局面 E30</a>を参照してください。</p>
+<h3 id="guide-13-faq--捕獲">捕獲</h3>
+<h4 id="guide-13-faq--q32-捕獲が成立する基本条件は何ですか">Q32. 捕獲が成立する基本条件は何ですか？</h4>
+<p>捕獲手の蒔きが自分の占有された前列穴で終わり、真向かいの相手前列穴も占有されていることです。namuaの開始捕獲には専用の手順があります。<a href="#guide-07-capture--捕獲が成立する基本条件">捕獲</a>を参照してください。</p>
+<h4 id="guide-13-faq--q33-相手の後列から捕獲できますか">Q33. 相手の後列から捕獲できますか？</h4>
+<p>いいえ。捕獲されるのは、捕獲穴の真向かいにある相手の前列穴です。<a href="#guide-07-capture--注意点">捕獲</a>を参照してください。</p>
+<h4 id="guide-13-faq--q34-捕獲したketeはどこから蒔き始めますか">Q34. 捕獲したketeはどこから蒔き始めますか？</h4>
+<p>自分の左右いずれかのkichwaからです。どちら側を使うかは、捕獲穴の位置と、それまでの手の方向で決まります。<a href="#guide-07-capture--kichwakimbiと方向">捕獲</a>を参照してください。</p>
+<h4 id="guide-13-faq--q35-kichwaまたはkimbiで捕獲した場合どちらから蒔きますか">Q35. kichwaまたはkimbiで捕獲した場合、どちらから蒔きますか？</h4>
+<p>左のkichwa・kimbiで捕獲したなら左のkichwa、右のkichwa・kimbiなら右のkichwaから蒔きます。<a href="#guide-examples--捕獲方向">規則確認用の局面例 E23〜E24</a>を参照してください。</p>
+<h4 id="guide-13-faq--q36-中央部で捕獲した場合左右を選べますか">Q36. 中央部で捕獲した場合、左右を選べますか？</h4>
+<p>namuaの最初の捕獲で、捕獲穴がkichwa・kimbi以外なら選べます。それ以外の捕獲では、原則として手の既存方向を維持します。<a href="#guide-07-capture--kichwakimbiと方向">捕獲</a>を参照してください。</p>
+<h3 id="guide-13-faq--relay-sowing">relay sowing</h3>
+<h4 id="guide-13-faq--q37-relay-sowingはいつ起きますか">Q37. relay sowingはいつ起きますか？</h4>
+<p>蒔きの最後のketeが、元からketeのある占有穴へ入り、捕獲や特別な停止条件が起きないときです。その穴の全keteを取り、同じ方向へ続けます。<a href="#guide-08-relay-sowing--基本手順">relay sowing</a>を参照してください。</p>
+<h4 id="guide-13-faq--q38-空穴へ最後のketeが入った場合はどうなりますか">Q38. 空穴へ最後のketeが入った場合はどうなりますか？</h4>
+<p>通常はそこで手が終わります。最後のketeを置いた後に1個だけなので、relay sowingを行いません。<a href="#guide-examples--e27-空穴で手を終える">規則確認用の局面例 E27</a>を参照してください。</p>
+<h4 id="guide-13-faq--q39-takataの途中で捕獲できる形になったら捕獲しますか">Q39. takataの途中で捕獲できる形になったら捕獲しますか？</h4>
+<p>いいえ。takataは手全体が非捕獲です。相手穴を取らず、通常のrelay sowingとして続けます。<a href="#guide-examples--e28-takataの途中では捕獲しない">規則確認用の局面例 E28</a>を参照してください。</p>
+<h3 id="guide-13-faq--nyumba">nyumba</h3>
+<h4 id="guide-13-faq--q40-nyumbaは単なる大きな穴ですか">Q40. nyumbaは単なる大きな穴ですか？</h4>
+<p>いいえ。前列の所定位置にある穴であり、所有中だけ特別な停止・開始規則を持ちます。盤の形だけでnyumbaを判断しません。<a href="#guide-09-nyumba">nyumba</a>を参照してください。</p>
+<h4 id="guide-13-faq--q41-nyumbaを所有しているとはどういう意味ですか">Q41. 「nyumbaを所有している」とはどういう意味ですか？</h4>
+<p>そのnyumbaが特別な状態をまだ失っていないことです。R-002・R-008では、6個未満で機能が一時停止することと、所有状態を失うことを区別します。R-003 Issue 5とはmtajiへの持ち越し方が異なります。<a href="#guide-09-nyumba--所有状態を失う条件">nyumba</a>を参照してください。</p>
+<h4 id="guide-13-faq--q42-namuaのtakataが所有中のnyumbaへ到達したらどうなりますか">Q42. namuaのtakataが所有中のnyumbaへ到達したらどうなりますか？</h4>
+<p>nyumbaが6個以上になったなら、そこで手を止めます。全keteを取り上げてrelay sowingを続けません。<a href="#guide-09-nyumba--takataの場合">nyumba</a>を参照してください。</p>
+<h4 id="guide-13-faq--q43-namuaの捕獲手が所有中のnyumbaへ到達したらどうなりますか">Q43. namuaの捕獲手が所有中のnyumbaへ到達したらどうなりますか？</h4>
+<p>真向かいから捕獲できるなら捕獲します。捕獲できず、到達後に6個以上ある場合は、そこで止まるか、nyumbaの全keteを蒔いて所有を失うか選べます。6個未満ならこの停止選択はありません。<a href="#guide-examples--e29-namuaの捕獲手が所有中nyumbaへ到達する">E29</a>と<a href="#guide-validation-cases--v03-所有中nyumbaへの到達が5個と6個になる場合">5個・6個の比較 V03</a>を参照してください。</p>
+<h4 id="guide-13-faq--q44-nyumbaから2個だけ蒔くのはいつですか">Q44. nyumbaから2個だけ蒔くのはいつですか？</h4>
+<p>namuaで捕獲できず、自分の前列で6個以上ある所有中のnyumbaだけが占有されている場合です。手元から1個を入れた後、全内容ではなく2個だけを蒔きます。6個から始めたなら5個残り、6個条件の機能は働かなくなります。すでに5個の場合の開始処理の境界は未確認です。<a href="#guide-09-nyumba--nyumbaからの2個蒔き">nyumba</a>を参照してください。</p>
+<h4 id="guide-13-faq--q45-nyumbaが5個になった場合も特別な機能は残りますか">Q45. nyumbaが5個になった場合も特別な機能は残りますか？</h4>
+<p>5個の間は、6個以上を条件とする特別な機能は働きません。本書は所有状態を保ち、再び6個以上なら条件付きの機能が戻る扱いを採用します。R-001, p. 42とR-003 Issue 5, p. 23には5個時の地域差もあります。mtajiへの所有状態の持ち越しは原典で確認済みですが、現地の現在の運用は未確認です。<a href="#guide-09-nyumba--資料差確認メモ">nyumba</a>を参照してください。</p>
+<h3 id="guide-13-faq--終局資料差表記">終局・資料差・表記</h3>
+<h4 id="guide-13-faq--q46-ゲームはいつ終了しますか">Q46. ゲームはいつ終了しますか？</h4>
+<p>一方の前列がすべて空になるか、手番プレイヤーに合法手がないときです。前列空はR-002とR-003で一致し、合法手なしはR-002で明示されています。<a href="#guide-10-endgame--終局条件">終局と勝敗</a>を参照してください。</p>
+<h4 id="guide-13-faq--q47-手の途中で相手前列が空になった場合も終了しますか">Q47. 手の途中で相手前列が空になった場合も終了しますか？</h4>
+<p>はい。捕獲したketeを最後まで蒔く前でも、相手前列が空になった時点でゲームが終了します。<a href="#guide-10-endgame--手の途中で前列が空になった場合">終局と勝敗</a>を参照してください。</p>
+<h4 id="guide-13-faq--q48-引き分けや終わらない手はどう扱いますか">Q48. 引き分けや終わらない手はどう扱いますか？</h4>
+<p>ザンジバル現地での統一的な処理は、現在の基準資料から確定できません。R-002の回数上限は計算機専用です。R-008は判定基準を対局前に定めるクラブ運用を示しますが、本書はこれを現地の一般規則とはみなしません。採用する競技規則や裁定者に従ってください。<a href="#guide-10-endgame--引き分けと終わらない手">終局と勝敗</a>を参照してください。</p>
+<h4 id="guide-13-faq--q49-takataとtakasaは違う手ですか">Q49. takataとtakasaは違う手ですか？</h4>
+<p>本書では同じ非捕獲手の概念を指す資料差として扱います。標準表記は<code>takata</code>です。R-002・R-003の用語を説明するときだけ<code>takasa</code>を併記します。<a href="#guide-04-glossary--takata">用語辞典</a>を参照してください。</p>
+<h4 id="guide-13-faq--q50-資料や地域によって説明が違う場合どれを採用しますか">Q50. 資料や地域によって説明が違う場合、どれを採用しますか？</h4>
+<p>本書はR-001のザンジバル系統を中心にし、規則章をR-002とR-003等に照合しました。差異は消さず、地域差・確認メモ・TODOへ分けます。大会や地域に明示された規則がある場合は、その規則を優先してください。<a href="#guide-00-preface--本書が扱うルール">はじめに</a>と<a href="https://github.com/nkkmd/bao-la-kiswahili-ja/blob/aad9fda3ffb12c2ca785509951c71ce8a42bef5a/docs/REFERENCES.md">参考文献</a>を参照してください。</p>
+<p>前章: <a href="#guide-12-strategy">戦術入門</a>／<a href="#reference-contents">ガイド目次</a></p><a class="back-to-top" href="#reference-contents">日本語本文の目次へ戻る ↑</a></section><section class="rules-section guide-chapter" id="guide-examples"><h2 id="guide-examples--規則確認用の局面例">規則確認用の局面例</h2>
+<p>この実例集は、Bao la Kiswahili（ザンジバル版）の規則を1項目ずつ確認するためのものです。E30はR-009のクラブ規則に掲載された64個の完全局面、その他の31例は本プロジェクトが構成した部分局面です。実在の対局を採録した棋譜ではありません。</p>
+<h3 id="guide-examples--読む前の注意">読む前の注意</h3>
+<ul>
+<li>部分局面の図にない穴は「空」ではなく「未指定」です。E30は全32穴、手元、手番、nyumbaの所有状態を指定します。</li>
+<li><code>A4=2</code>は、Southの前列A4にketeが2個あることを表します。</li>
+<li><code>A4=2 ↔ a5=3</code>は、向かい合う前列穴の個数を表します。両者の番号はそれぞれ本人から見た左右を基準にするため、向かい合う番号の合計は9になります。</li>
+<li><code>A3=2 → A4=1 → A5=1</code>は、A3から選んだ方向へ蒔く順序を表します。</li>
+<li><code>手元=1+</code>は、手番プレイヤーの手元に1個以上残っていることを表します。</li>
+<li>部分局面では、明記しないかぎり、図示した判定を妨げる別の強制手はないものとします。E30では全盤面から捕獲手を列挙します。</li>
+<li>これらは局所的な規則の確認例です。完全な盤面の到達可能性や戦術的な良し悪しは主張しません。</li>
+</ul>
+<h3 id="guide-examples--根拠状態">根拠状態</h3>
+<div aria-label="横にスクロールできる表" class="guide-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>表示</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>R-002とR-003で骨格が一致する規則</td>
+</tr>
+<tr>
+<td>B</td>
+<td>R-002の形式規則で確認した細則。R-001本文との照合待ち</td>
+</tr>
+<tr>
+<td>C</td>
+<td>R-001の原典とR-006の著者解説を照合して採用した規則。E30の盤面と数値検証はR-009に基づく</td>
+</tr>
+<tr>
+<td>D</td>
+<td>2026-10-08にR-001の原典とR-002を項目別に照合した細則</td>
+</tr>
+</tbody>
+</table></div>
+<p>根拠記号は<a href="https://github.com/nkkmd/bao-la-kiswahili-ja/blob/aad9fda3ffb12c2ca785509951c71ce8a42bef5a/docs/REFERENCES.md">参考文献</a>に対応します。Bの例は「ザンジバル版一般に普遍的な規則」としてではなく、本書が採用する暫定基準の確認用として掲載します。</p>
+<h3 id="guide-examples--盤座標初期配置">盤・座標・初期配置</h3>
+<h4 id="guide-examples--e01-各プレイヤーが使う2列">E01: 各プレイヤーが使う2列</h4>
+<ul>
+<li>部分局面図: <code>North: b列・a列 / South: A列・B列</code></li>
+<li>判定: Northは<code>a</code>と<code>b</code>、Southは<code>A</code>と<code>B</code>だけへ蒔きます。中央側の<code>a</code>と<code>A</code>が前列です。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, pp. 163–164、R-003, Issue 4, p. 21。</li>
+</ul>
+<h4 id="guide-examples--e02-特別な穴の座標">E02: 特別な穴の座標</h4>
+<ul>
+<li>部分局面図: <code>South: A1 [A2] A3 A4 {A5} A6 [A7] A8</code></li>
+<li>判定: A1・A8がkichwa、A2・A7がkimbi、A5がnyumbaです。North側は小文字の対応座標です。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, pp. 163–164、R-003, Issue 4, p. 21。</li>
+</ul>
+<h4 id="guide-examples--e03-southの初期配置">E03: Southの初期配置</h4>
+<ul>
+<li>部分局面図: <code>A1..A8 = [0, 0, 0, 0, 6, 2, 2, 0] / B1..B8 = すべて0 / 手元=22</code></li>
+<li>判定: nyumbaのA5に6個、本人から見て右隣のA6・A7に2個ずつ置きます。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, pp. 165–166、R-003, Issue 4, p. 21。</li>
+</ul>
+<h4 id="guide-examples--e04-northも本人から見た右へ置く">E04: Northも本人から見た右へ置く</h4>
+<ul>
+<li>部分局面図: <code>a5=6, a6=2, a7=2 / b列=すべて0 / 手元=22</code></li>
+<li>判定: Northも本人の視点で右隣へ置きます。紙面を見る観察者の右を基準にしません。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, pp. 165–166、R-003, Issue 4, p. 21。</li>
+</ul>
+<h3 id="guide-examples--namua">namua</h3>
+<h4 id="guide-examples--e05-namuaの捕獲可能穴">E05: namuaの捕獲可能穴</h4>
+<ul>
+<li>部分局面図: <code>A4=2 ↔ a5=3 / 手元=1+</code></li>
+<li>判定: A4とa5がともに占有されているため、Southは手元から1個をA4へ入れてa5を捕獲できます。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, p. 166、R-003, Issue 4, pp. 21–22。</li>
+</ul>
+<h4 id="guide-examples--e06-捕獲候補が複数ある">E06: 捕獲候補が複数ある</h4>
+<ul>
+<li>部分局面図: <code>A3=1 ↔ a6=2</code>、<code>A6=4 ↔ a3=1 / 手元=1+</code></li>
+<li>判定: A3とA6はどちらも捕獲候補です。捕獲義務はありますが、この2候補のどちらを選ぶかは手番プレイヤーが決めます。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, pp. 165–166、R-003, Issue 4, pp. 21–22。</li>
+</ul>
+<h4 id="guide-examples--e07-真向かいが空なら捕獲できない">E07: 真向かいが空なら捕獲できない</h4>
+<ul>
+<li>部分局面図: <code>A4=2 ↔ a5=0 / 手元=1+</code></li>
+<li>判定: 自分のA4が占有されていても、a5が空なのでA4から捕獲はできません。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, pp. 164, 166。</li>
+</ul>
+<h4 id="guide-examples--e08-自分側が空でも捕獲できない">E08: 自分側が空でも捕獲できない</h4>
+<ul>
+<li>部分局面図: <code>A4=0 ↔ a5=3 / 手元=1+</code></li>
+<li>判定: a5にketeがあっても、自分のA4が空なので、手元の1個をA4へ入れて捕獲することはできません。namuaの捕獲開始穴は、入れる前から占有されている必要があります。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, p. 166。</li>
+</ul>
+<h4 id="guide-examples--e09-捕獲不能時のtakata">E09: 捕獲不能時のtakata</h4>
+<ul>
+<li>部分局面図: <code>A4=2 ↔ a5=0 / 手元=1+ / 他に捕獲候補なし</code></li>
+<li>判定: 手元から1個をA4へ入れます。A4は3個になり、その3個を選んだ方向へ蒔いてtakataを続けます。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, pp. 165–166、R-003, Issue 5, pp. 22–23。</li>
+</ul>
+<h4 id="guide-examples--e10-namuaは後列から始めない">E10: namuaは後列から始めない</h4>
+<ul>
+<li>部分局面図: <code>B4=3 / 手元=1+ / 捕獲候補なし</code></li>
+<li>判定: B4に複数のketeがあっても、namuaのtakataをB4から始めることはできません。開始穴は前列から選びます。</li>
+<li>根拠状態: B</li>
+<li>根拠: R-002, p. 166。</li>
+</ul>
+<h4 id="guide-examples--e11-1個だけの穴を選べない場合">E11: 1個だけの穴を選べない場合</h4>
+<ul>
+<li>部分局面図: <code>A3=1, A6=2 / 捕獲候補なし / 所有中nyumbaなし</code></li>
+<li>判定: A6のような2個以上の前列穴があるため、A3からtakataを始めることはできません。</li>
+<li>根拠状態: B</li>
+<li>根拠: R-002, p. 166、R-003, Issue 5, pp. 22–23。</li>
+</ul>
+<h4 id="guide-examples--e12-1個だけの穴を選べる例外">E12: 1個だけの穴を選べる例外</h4>
+<ul>
+<li>部分局面図: <code>A3=1, A6=1 / 前列の他穴=0 / 捕獲候補なし</code></li>
+<li>判定: 前列に2個以上の穴がないため、1個だけの占有穴からtakataを始められます。</li>
+<li>根拠状態: B</li>
+<li>根拠: R-002, p. 166。</li>
+</ul>
+<h4 id="guide-examples--e13-所有中のnyumbaから通常開始しない">E13: 所有中のnyumbaから通常開始しない</h4>
+<ul>
+<li>部分局面図: <code>{A5=6 所有中}, A6=2 / 捕獲候補なし</code></li>
+<li>判定: A6という別の占有穴があるため、6個以上ある所有中のA5からtakataを始めることはできません。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, p. 166、R-003, Issue 5, pp. 22–23。</li>
+</ul>
+<h4 id="guide-examples--e14-nyumbaだけが前列に残った場合">E14: nyumbaだけが前列に残った場合</h4>
+<ul>
+<li>部分局面図: <code>{A5=6 所有中}, 前列の他穴=0 / 手元=1+ / 捕獲候補なし</code></li>
+<li>操作図: <code>手元からA5へ1個 → A5=7 → A5から2個だけ取って左右へ蒔く</code></li>
+<li>判定: 全7個ではなく2個だけを蒔き、A5に5個残します。6個条件の機能は働かなくなりますが、本書では所有状態を保ち、再び6個以上なら条件付きの機能が戻る扱いを採用します。R-003 Issue 5には5個時の追加説明と地域差があります。</li>
+<li>根拠状態: D</li>
+<li>根拠: R-001, pp. 40, 42、R-002, p. 166、R-003, Issue 5, pp. 22–23、R-008, §§2.3.2, 4.2.1.3。<a href="#guide-validation-cases--補足-開始前6個の2個蒔き">V03の補足</a>でも左右両方向を確認。開始前5個の境界は未解決。</li>
+</ul>
+<h3 id="guide-examples--mtaji">mtaji</h3>
+<h4 id="guide-examples--e15-mtajiへの移行">E15: mtajiへの移行</h4>
+<ul>
+<li>部分局面図: <code>South手元=0 / North手元=0</code></li>
+<li>判定: 両者の手元のketeが盤上へ入り終わるとmtajiです。以後は手元から1個を加えません。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, pp. 166–167、R-003, Issue 4, p. 22。</li>
+</ul>
+<h4 id="guide-examples--e16-開始穴の全内容を取る">E16: 開始穴の全内容を取る</h4>
+<ul>
+<li>部分局面図: <code>B3=4</code></li>
+<li>操作図: <code>B3から4個すべて取る → 選んだ方向の次の4穴へ1個ずつ</code></li>
+<li>判定: 1個だけを動かすのではなく、開始穴の全keteを蒔きます。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, p. 167、R-003, Issue 4, p. 22。</li>
+</ul>
+<h4 id="guide-examples--e17-1個だけの穴から始められない">E17: 1個だけの穴から始められない</h4>
+<ul>
+<li>部分局面図: <code>A3=1</code></li>
+<li>判定: mtajiではA3から手を始められません。開始穴には2個以上必要です。</li>
+<li>根拠状態: B</li>
+<li>根拠: R-002, p. 167。</li>
+</ul>
+<h4 id="guide-examples--e18-mtajiで最初の蒔きから捕獲する">E18: mtajiで最初の蒔きから捕獲する</h4>
+<ul>
+<li>部分局面図: <code>A3=2, A4=1, A5=1 ↔ a4=3</code></li>
+<li>操作図: <code>A3の2個を右へ: A4へ1個 → A5へ1個</code></li>
+<li>判定: 最後の1個が占有されていたA5へ入り、真向かいのa4も占有されているため、a4の3個を捕獲します。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, pp. 164, 167、R-003, Issue 4, p. 22。</li>
+</ul>
+<h4 id="guide-examples--e19-捕獲手があればtakataを選べない">E19: 捕獲手があればtakataを選べない</h4>
+<ul>
+<li>部分局面図: <code>E18の捕獲手あり / B6=4からは捕獲なし</code></li>
+<li>判定: B6からのtakataではなく、捕獲に至る開始穴と方向を選ばなければなりません。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, pp. 165, 167、R-003, Issue 4, pp. 21–22。</li>
+</ul>
+<h4 id="guide-examples--e20-16個の穴は捕獲手の開始穴にしない">E20: 16個の穴は捕獲手の開始穴にしない</h4>
+<ul>
+<li>部分局面図: <code>B3=16</code></li>
+<li>判定: mtajiの捕獲手は2個以上15個以下の穴から始めます。B3を最初の捕獲手の開始穴にはできません。takataとして16個を蒔く手順は<a href="#guide-validation-cases--v01-16個の穴から始めるtakata">完全局面 V01</a>を参照してください。</li>
+<li>根拠状態: D</li>
+<li>根拠: R-001, pp. 38, 41、R-002, p. 167。</li>
+</ul>
+<h4 id="guide-examples--e21-takataは可能なら前列から始める">E21: takataは可能なら前列から始める</h4>
+<ul>
+<li>部分局面図: <code>A4=2, B4=5 / 捕獲手なし</code></li>
+<li>判定: 前列A4から合法にtakataを始められるため、後列B4を選びません。</li>
+<li>根拠状態: D</li>
+<li>根拠: R-001, p. 41、R-002, p. 167。</li>
+</ul>
+<h4 id="guide-examples--e22-mtajiで合法手がない">E22: mtajiで合法手がない</h4>
+<ul>
+<li>部分局面図: <code>自分のA列・B列の全16穴が0個または1個</code></li>
+<li>判定: 2個以上ある開始穴がないため、手番プレイヤーは敗北します。</li>
+<li>根拠状態: D</li>
+<li>根拠: R-001, pp. 40–41、R-002, pp. 164, 167。</li>
+</ul>
+<h3 id="guide-examples--捕獲方向">捕獲方向</h3>
+<h4 id="guide-examples--e23-左のkichwakimbiでの捕獲">E23: 左のkichwa・kimbiでの捕獲</h4>
+<ul>
+<li>部分局面図: <code>捕獲穴=A1またはA2</code></li>
+<li>判定: 捕獲したketeは左のkichwa A1から蒔き始め、時計回りに進みます。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, pp. 164–165、R-003, Issue 4, pp. 21–22。</li>
+</ul>
+<h4 id="guide-examples--e24-右のkichwakimbiでの捕獲">E24: 右のkichwa・kimbiでの捕獲</h4>
+<ul>
+<li>部分局面図: <code>捕獲穴=A7またはA8</code></li>
+<li>判定: 捕獲したketeは右のkichwa A8から蒔き始め、反時計回りに進みます。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, pp. 164–165、R-003, Issue 4, pp. 21–22。</li>
+</ul>
+<h4 id="guide-examples--e25-namua中央部の最初の捕獲">E25: namua中央部の最初の捕獲</h4>
+<ul>
+<li>部分局面図: <code>A4=2 ↔ a5=3 / namuaの手の開始</code></li>
+<li>判定: A4はkichwaでもkimbiでもないため、a5の3個を左右どちらのkichwaから蒔くか選べます。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, pp. 164–166、R-003, Issue 4, pp. 21–22。</li>
+</ul>
+<h3 id="guide-examples--relay-sowingとtakata">relay sowingとtakata</h3>
+<h4 id="guide-examples--e26-占有穴でrelay-sowingを続ける">E26: 占有穴でrelay sowingを続ける</h4>
+<ul>
+<li>部分局面図: <code>3個を蒔く → 終点A6には元から2個</code></li>
+<li>操作図: <code>最後の1個でA6=3 → A6の3個すべてを取る → 同じ方向の次穴から蒔く</code></li>
+<li>判定: 捕獲や特別な停止条件がなければ、同じ手を継続します。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, p. 165、R-003, Issue 4, pp. 21–22。</li>
+</ul>
+<h4 id="guide-examples--e27-空穴で手を終える">E27: 空穴で手を終える</h4>
+<ul>
+<li>部分局面図: <code>3個を蒔く → 終点B6=0</code></li>
+<li>操作図: <code>最後の1個でB6=1 → 終了</code></li>
+<li>判定: 元が空だった穴ではrelay sowingを行いません。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, pp. 164–165、R-003, Issue 4, pp. 21–22。</li>
+</ul>
+<h4 id="guide-examples--e28-takataの途中では捕獲しない">E28: takataの途中では捕獲しない</h4>
+<ul>
+<li>部分局面図: <code>takata中の終点A4が占有穴になり、a5にもketeがある</code></li>
+<li>判定: 形だけ見れば向かい合っていますが、takataは手全体が非捕獲です。a5を取らず、通常のrelay sowingを続けます。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, p. 165。</li>
+</ul>
+<h3 id="guide-examples--nyumbatakasia終局">nyumba・takasia・終局</h3>
+<h4 id="guide-examples--e29-namuaの捕獲手が所有中nyumbaへ到達する">E29: namuaの捕獲手が所有中nyumbaへ到達する</h4>
+<ul>
+<li>部分局面図: <code>namuaの捕獲手中 → {A5=6 所有中}へ最後の1個 → A5=7 ↔ a4=0</code></li>
+<li>判定: 捕獲できないため、A5で止まって所有を保つか、A5の全7個を取って蒔き、所有を失うか選べます。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, pp. 165–167、R-003, Issue 5, pp. 22–23。</li>
+</ul>
+<h4 id="guide-examples--e30-takasia対象穴でrelay-sowingを止める">E30: takasia対象穴でrelay sowingを止める</h4>
+<p>以下はR-009, §4.5に掲載された完全局面です。表はSouthから見た左から右の順です。Northの座標は逆順になるため、SouthのA5に向かい合うのはNorthのa4です。</p>
+<div aria-label="横にスクロールできる表" class="guide-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>列</th>
+<th>左端</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>右端</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>North後列（b8→b1）</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>4</td>
+<td>8</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>North前列（a8→a1）</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>10</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>South前列（A1→A8）</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>South後列（B1→B8）</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>6</td>
+<td>4</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>状態: mtaji、両者の手元0個、合計64個、Northの手番。両者ともnyumbaを所有していません。a5には10個ありますが、通常穴です。所有状態は個数だけから推測しません。</li>
+<li>直前の手の作例: South前列だけを<code>[0, 2, 0, 0, 0, 0, 2, 0]</code>に戻し、Southの手番とします。他の穴と所有状態は同じです。この盤面ではSouthに捕獲手がありません。A7の2個を<code>A7 → A6 → A5</code>と蒔くtakataは、もともと空のA5で止まり、上の盤面になります。この直前局面は本プロジェクトが逆算した作例であり、資料に掲載された直前手や実戦棋譜ではありません。</li>
+<li>成立判定: Northには捕獲手がありません。同じ盤面でSouthが指すと仮定した捕獲手は、B8の4個を<code>B8 → A8 → A7 → A6 → A5</code>と蒔く手だけです。A5に蒔き終わって向かいのa4を捕獲するので、捕獲対象はa4の1穴だけです。</li>
+<li>例外判定: a4は2個入りです。North前列には他にも占有穴と2個以上の穴があり、a4は所有中のnyumbaでもありません。したがってa4がtakasiaの対象になります。</li>
+</ul>
+<p>Northの合法な開始穴はa8とa5です。方向を含めた全4応手を、最初の蒔きから停止まで検証すると次のとおりです。「紙面の左・右」はSouthから見た前列上の方向を指します。</p>
+<div aria-label="横にスクロールできる表" class="guide-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>開始穴</th>
+<th>前列上の方向</th>
+<th>蒔きの回数（最初の蒔きを含む）</th>
+<th>最後の到達穴</th>
+<th>a4の最終個数</th>
+<th>停止理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a8</td>
+<td>紙面の左</td>
+<td>1</td>
+<td>a2</td>
+<td>2</td>
+<td>到達前は空穴</td>
+</tr>
+<tr>
+<td>a8</td>
+<td>紙面の右</td>
+<td>5</td>
+<td>a4</td>
+<td>5</td>
+<td>takasia対象穴</td>
+</tr>
+<tr>
+<td>a5</td>
+<td>紙面の左</td>
+<td>2</td>
+<td>a2</td>
+<td>2</td>
+<td>到達前は空穴</td>
+</tr>
+<tr>
+<td>a5</td>
+<td>紙面の右</td>
+<td>10</td>
+<td>a3</td>
+<td>6</td>
+<td>到達前は空穴</td>
+</tr>
+</tbody>
+</table></div>
+<p>2行目のrelay sowingは、<code>a8（10個）→ b3（9個）→ a5（12個）→ b8（2個）→ a7（3個）→ a4</code>と続きます。括弧内はその穴から取り上げる時点の個数です。最後にa4は5個になりますが、全5個を取り上げず停止します。途中でa4を通過するときは1個を加えるだけです。全4応手で64個が保存され、Southにはa4から捕獲できる手が残ります。</p>
+<ul>
+<li>根拠状態: C</li>
+<li>根拠: R-001, pp. 41–43、R-006, p. 25、R-002, p. 167、R-009, §4.5。</li>
+<li>検証: <code>python3 tools/verify_takasia.py</code>（リポジトリのルートで実行）。<a href="https://github.com/nkkmd/bao-la-kiswahili-ja/blob/aad9fda3ffb12c2ca785509951c71ce8a42bef5a/docs/drafts/takasia-adoption-20261008.md">採用記録</a>を参照してください。</li>
+<li>限界: 初期配置からこの局面へ到達する棋譜や、Southの直前手が最善手であることは確認していません。</li>
+</ul>
+<h4 id="guide-examples--e31-相手前列を空にして勝つ">E31: 相手前列を空にして勝つ</h4>
+<ul>
+<li>部分局面図: <code>namua / A4=1 ↔ a5=3 / 相手前列はa5だけが占有 / 手元=1+</code></li>
+<li>操作図: <code>手元からA4へ1個 → a5の3個を捕獲 → 相手前列8穴がすべて0</code></li>
+<li>判定: 手の途中でも、この時点で相手が敗北します。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, p. 164、R-003, Issue 4, p. 21。</li>
+</ul>
+<h4 id="guide-examples--e32-捕獲手なしと合法手なしは異なる">E32: 捕獲手なしと合法手なしは異なる</h4>
+<ul>
+<li>部分局面図: <code>mtaji / 捕獲手なし / A4=2</code></li>
+<li>判定: A4から合法なtakataができるならゲームは続きます。「捕獲できない」だけでは敗北しません。</li>
+<li>根拠状態: A</li>
+<li>根拠: R-002, pp. 165, 167、R-003, Issue 4, pp. 21–22。</li>
+</ul>
+<h3 id="guide-examples--未収録の例">未収録の例</h3>
+<p>次の例は、数を満たすために推測で作らず、追加検証後に収録します。</p>
+<ul>
+<li>原典の実戦棋譜を全盤面で再生したtakasiaの例と、各例外の出典付き完全局面</li>
+<li>5個のnyumbaから始める手の境界と地域差を比較する完全局面</li>
+<li>終わらないrelay sowingと対人競技での裁定</li>
+<li>R-001または現地棋譜から採録した全対局の再生</li>
+</ul>
+<p>16個のtakata、実戦棋譜の冒頭2手番、nyumbaへの5個・6個の到達、kimbiの方向変更は<a href="#guide-validation-cases">正式版検証用の完全局面 V01〜V04</a>へ追加しました。</p>
+<p>これらの検証課題は<a href="https://github.com/nkkmd/bao-la-kiswahili-ja/blob/aad9fda3ffb12c2ca785509951c71ce8a42bef5a/docs/TODO.md">TODO</a>で管理します。</p><a class="back-to-top" href="#reference-contents">日本語本文の目次へ戻る ↑</a></section><section class="rules-section guide-chapter" id="guide-validation-cases"><h2 id="guide-validation-cases--正式版検証用の完全局面">正式版検証用の完全局面</h2>
+<p>2026-10-08の検証で追加した教材です。<a href="#guide-examples">E01〜E32</a>とは別にV番号を付けます。表はSouthから見た左から右で、Northの番号は逆順です。指定した行以外を勝手に補いません。</p>
+<p>V01・V03・V04は構成した作例で、初期配置からの到達可能性や最善性を証明したものではありません。V02だけが原典の実戦棋譜から採録した冒頭です。<a href="https://github.com/nkkmd/bao-la-kiswahili-ja/blob/aad9fda3ffb12c2ca785509951c71ce8a42bef5a/tools/verify_rule_cases.py">検証スクリプト</a>は掲載範囲の独立計算であり、全規則を実装した対局エンジンではありません。</p>
+<h3 id="guide-validation-cases--v01-16個の穴から始めるtakata">V01: 16個の穴から始めるtakata</h3>
+<p>mtaji、South手番、手元は両者0個、nyumbaは両者とも所有していません。合計64個です。</p>
+<div aria-label="横にスクロールできる表" class="guide-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>列・左から右</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>North後列 b8〜b1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>46</td>
+</tr>
+<tr>
+<td>North前列 a8〜a1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>South前列 A1〜A8</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>16</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>South後列 B1〜B8</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p>捕獲手の開始条件2〜15個を満たす穴がありません。唯一のtakata開始穴は前列A4です。</p>
+<div aria-label="横にスクロールできる表" class="guide-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>方向</th>
+<th>A4を空にしてから置く順序</th>
+<th>最後の穴</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>左</td>
+<td>A3, A2, A1, B1, B2, B3, B4, B5, B6, B7, B8, A8, A7, A6, A5, A4</td>
+<td>A4</td>
+</tr>
+<tr>
+<td>右</td>
+<td>A5, A6, A7, A8, B8, B7, B6, B5, B4, B3, B2, B1, A1, A2, A3, A4</td>
+<td>A4</td>
+</tr>
+</tbody>
+</table></div>
+<p>どちらも1周して、空にしたA4へ最後の1個を置きます。A4は1個になり、継続せず停止します。最終盤面はSouthのA1が2個、その他の15穴が各1個です。Northは変わらず、合計は64個です。</p>
+<p>根拠: R-001, pp. 38, 41、R-002, p. 167。16個のtakataを許すことと、16個の穴で捕獲手を始めないことを区別します。</p>
+<h3 id="guide-validation-cases--v02-実戦棋譜の冒頭2手番">V02: 実戦棋譜の冒頭2手番</h3>
+<p>R-001, p. 151（PDF第162ページ）、1994-10-17のRamadhan（South）対Kijumbe（North）の第1組 <code>A7L a5R</code>を採録します。全対局の再生や後のtakasiaの検証ではありません。開始時はnamua、South手番、手元22個ずつ、nyumbaは両者とも所有中です。</p>
+<div aria-label="横にスクロールできる表" class="guide-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>列・左から右</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>North後列 b8〜b1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>North前列 a8〜a1</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td>6</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>South前列 A1〜A8</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>6</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>South後列 B1〜B8</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<ol>
+<li>SouthのA7Lはtakataです。A7へ手元の1個を加えて3個を取り、A6→A5→A4へ蒔きます。A4は空だったので1個で停止します。South前列は <code>[0,0,0,1,7,3,0,0]</code>、手元はSouth21個・North22個です。</li>
+<li>Northのa5Rは捕獲手です。a5（表の4列目）へ1個を加えて7個にし、向かいのA4から1個を捕獲します。本人から見た右のkichwa、a8（表の1列目）へその1個を置きます。a8は空だったので停止します。</li>
+</ol>
+<p>2手番後の盤面は次のとおりです。手元は21個ずつ、nyumbaは両者とも所有中です。盤上22個と手元42個で合計64個です。</p>
+<div aria-label="横にスクロールできる表" class="guide-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>列・左から右</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>North後列 b8〜b1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>North前列 a8〜a1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>7</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>South前列 A1〜A8</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>7</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>South後列 B1〜B8</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p>規則根拠: R-001, pp. 38–40、R-002, pp. 165–166。棋譜の左右を両者本人の向きとして読み、盤面の物理的な左右と分けます。</p>
+<h3 id="guide-validation-cases--v03-所有中nyumbaへの到達が5個と6個になる場合">V03: 所有中nyumbaへの到達が5個と6個になる場合</h3>
+<p>namua、South手番、手元1個ずつ、Southのnyumbaは所有中、Northは所有なしと指定する作例です。SouthのA5の開始個数をhとします。h=4、h=5の両ケースとも合計64個です。</p>
+<div aria-label="横にスクロールできる表" class="guide-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>列・左から右</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>North後列 b8〜b1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>54−h</td>
+</tr>
+<tr>
+<td>North前列 a8〜a1</td>
+<td>1</td>
+<td>0</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>South前列 A1〜A8</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>h</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>South後列 B1〜B8</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p>SouthはA3へ手元の1個を加え、向かいのa6から5個を捕獲し、左kichwaのA1からA5まで各1個を蒔きます。到達したA5の真向かい、a4は空です。A5の個数はh+1になります。</p>
+<div aria-label="横にスクロールできる表" class="guide-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>ケース</th>
+<th>到達後</th>
+<th>本書の停止選択</th>
+<th>続けて蒔く場合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h=4</td>
+<td>A5=5</td>
+<td>選べない。通常のrelay sowingを続ける</td>
+<td>A6→A7→A8→B8→B7へ5個。空だったB7で停止</td>
+</tr>
+<tr>
+<td>h=5</td>
+<td>A5=6</td>
+<td>止めて所有を保つか、全6個を蒔くか選べる</td>
+<td>A6→A7→A8→B8→B7→B6へ6個。空だったB6で停止</td>
+</tr>
+</tbody>
+</table></div>
+<p>止める場合のSouth前列は <code>[1,1,4,1,6,0,0,0]</code>、後列はすべて0個です。蒔き続ける場合は、South前列が両ケースとも <code>[1,1,4,1,0,1,1,1]</code>、後列はh=4ならB7・B8が1個、h=5ならB6・B7・B8が1個です。中身を取り上げてA5を空にするため所有を失います。</p>
+<p>Northは捕獲されたa6だけが0個になり、それ以外は変わりません。手元はSouth0個・North1個です。各分岐とも合計64個を保ち、両者の前列にketeが残ります。</p>
+<p>この例は「到達後の6個判定」の比較です。5個のnyumbaへ手元の1個を直接追加してtakataを始める場合の境界や、地域差の全手順を確定する例ではありません。</p>
+<h4 id="guide-validation-cases--補足-開始前6個の2個蒔き">補足: 開始前6個の2個蒔き</h4>
+<p>別の構成局面として、namua・South手番・手元1個ずつ・Southのnyumba所有中・North所有なしを指定します。South前列は<code>[0,0,0,0,6,0,0,0]</code>、後列は全0個。North前列は<code>[1,0,0,0,0,0,0,0]</code>、後列は<code>[0,0,0,0,0,0,0,55]</code>で、合計64個です。捕獲できず、nyumbaだけがSouth前列に残っています。</p>
+<p>A5へ1個を加えて7個にし、2個だけ取ります。左ならA4→A3、右ならA6→A7へ置いて停止します。A5は5個、選んだ2穴は各1個、その他の盤面は変わらず、手元はSouth0個・North1個です。両方向とも合計64個を保ち、A5を空にしないため本書では所有を保つとします。開始前5個の場合を検証したものではありません。</p>
+<p>根拠: R-001, pp. 38–39, 42、R-008, §§1.6.2, 4.2.1.2–4.2.1.3。本書の採用判断とR-002の記述差は<a href="#guide-09-nyumba--資料差確認メモ">nyumba本文</a>を参照してください。</p>
+<h3 id="guide-validation-cases--v04-kimbiでの捕獲による方向変更">V04: kimbiでの捕獲による方向変更</h3>
+<p>mtaji、South手番、手元は両者0個、nyumbaは両者とも所有なし、合計64個です。</p>
+<div aria-label="横にスクロールできる表" class="guide-table" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>列・左から右</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>North後列 b8〜b1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>58</td>
+</tr>
+<tr>
+<td>North前列 a8〜a1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>South前列 A1〜A8</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>South後列 B1〜B8</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></div>
+<p>SouthはA4の2個を左へA3→A2と蒔きます。A2は2個になり、向かいのa7の1個を捕獲します。A2は左kimbiなので、捕獲した1個を左kichwaのA1へ置きます。A1は空だったため1個で停止します。既存の左向きから、捕獲後の蒔きは右向きへ変わります。</p>
+<p>最終South前列は <code>[1,2,1,0,0,0,0,1]</code>、後列はすべて0個です。Northはa7だけが0個になり、a1の1個とb1の58個は残ります。合計64個です。</p>
+<p>根拠: R-001, p. 39、R-002, pp. 165, 167。中央穴の捕獲で方向を維持する場合と、kichwa・kimbiの例外を混同しません。</p>
+<p>前の教材: <a href="#guide-examples">規則確認用の局面例</a>／検証記録: <a href="https://github.com/nkkmd/bao-la-kiswahili-ja/blob/aad9fda3ffb12c2ca785509951c71ce8a42bef5a/docs/drafts/v1-validation-20261008.md">正式版検証</a></p><a class="back-to-top" href="#reference-contents">日本語本文の目次へ戻る ↑</a></section></article><footer class="rules-footer">
+<nav>
+<a data-ja="ゲームを開く" data-locale-link="" href="../">Open game</a>
+<a href="https://github.com/nkkmd/bao-la-kiswahili-game" rel="noopener noreferrer" target="_blank">GitHub</a>
+<a data-ja="プライバシーポリシー" data-locale-link="" href="../privacy">Privacy Policy</a>
+</nav>
+<p data-ja="本ページの説明本文・図版：CC BY-SA 4.0。">The text and diagrams on this page: CC BY-SA 4.0.</p>
+</footer>
+</main>
+<dialog aria-label="Enlarged diagram" data-ja-aria-label="拡大した図" id="figure-dialog">
+<div class="zoom-toolbar">
+<span data-ja="横にスクロールして盤面を確認できます。">Scroll sideways to inspect the board.</span>
+<button autofocus="" data-ja="閉じる" type="button">Close</button>
+</div>
+<div aria-label="Scrollable diagram" class="zoom-scroll" data-ja-aria-label="スクロールできる図" role="region" tabindex="0">
+<img alt=""/>
+</div>
+<p class="zoom-caption">
+</p>
+</dialog>
+<script src="../locale.js">
+</script>
+<script src="../rules.js">
+</script>
+</body>
+</html>
+

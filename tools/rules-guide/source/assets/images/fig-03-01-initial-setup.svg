@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="610" viewBox="0 0 960 610" role="img" aria-labelledby="title desc">
+  <title id="title">図3-1 Bao la Kiswahiliの初期配置</title>
+  <desc id="desc">各プレイヤーはnyumbaに6個、その本人から見て右隣の2穴に2個ずつ置き、残る22個を手元に置く。ほかの穴は空である。</desc>
+  <defs>
+    <circle id="pit" r="29" fill="#fff" stroke="#6b7280" stroke-width="2"/>
+    <g id="row"><use href="#pit" x="0"/><use href="#pit" x="82"/><use href="#pit" x="164"/><use href="#pit" x="246"/><use href="#pit" x="328"/><use href="#pit" x="410"/><use href="#pit" x="492"/><use href="#pit" x="574"/></g>
+  </defs>
+  <rect width="960" height="610" fill="#fff"/>
+  <text x="480" y="36" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="700">初期配置</text>
+  <text x="480" y="64" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#4b5563">各側: 盤上10個、手元22個</text>
+  <rect x="120" y="90" width="720" height="410" rx="28" fill="#f3f4f6" stroke="#374151" stroke-width="4"/>
+  <g transform="translate(193 145)"><use href="#row"/></g>
+  <g transform="translate(193 235)"><use href="#row"/></g>
+  <g transform="translate(193 355)"><use href="#row"/></g>
+  <g transform="translate(193 445)"><use href="#row"/></g>
+  <rect x="410" y="206" width="58" height="58" rx="9" fill="#fef08a" stroke="#92400e" stroke-width="4"/>
+  <rect x="492" y="326" width="58" height="58" rx="9" fill="#fef08a" stroke="#92400e" stroke-width="4"/>
+  <g font-family="sans-serif" font-size="21" font-weight="700" text-anchor="middle" dominant-baseline="middle">
+    <text x="275" y="235">2</text><text x="357" y="235">2</text><text x="439" y="235">6</text>
+    <text x="521" y="355">6</text><text x="603" y="355">2</text><text x="685" y="355">2</text>
+  </g>
+  <g font-family="sans-serif" font-size="17" fill="#111827">
+    <rect x="25" y="190" width="75" height="90" rx="14" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+    <text x="62" y="222" text-anchor="middle" font-weight="700">North</text><text x="62" y="250" text-anchor="middle">手元22</text>
+    <rect x="860" y="330" width="75" height="90" rx="14" fill="#ffedd5" stroke="#ea580c" stroke-width="3"/>
+    <text x="897" y="362" text-anchor="middle" font-weight="700">South</text><text x="897" y="390" text-anchor="middle">手元22</text>
+  </g>
+  <g font-family="sans-serif" font-size="15" fill="#4b5563" text-anchor="middle">
+    <text x="480" y="548">各プレイヤーから見て、nyumbaの右隣2穴に2個ずつ置く。</text>
+    <text x="480" y="575">North側は紙面上で左右が反転して見える。</text>
+  </g>
+</svg>

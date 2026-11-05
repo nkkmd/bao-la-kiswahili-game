@@ -1,16 +1,18 @@
 "use strict";
-// Refresh marker: v0.6.0の表記へ更新 (2026-10-09)。takasia対応版のリリース準備。
-const CACHE = "bao-la-kiswahili-v58";
+// Refresh marker: 簡易ルールと詳細ガイドをオフライン対応 (2026-11-05)。
+const CACHE = "bao-la-kiswahili-v59";
 const FILES = ["./", "./index.html", "./style.css", "./locale.js", "./engine.js", "./ai-weights.js", "./ai.js", "./logic-evaluator.js", "./ai-candidate.js", "./ai-release.js", "./ai-release-worker.js", "./ai-config.js", "./ai-worker.js", "./diagnostics.js", "./review-suggestion.js", "./diagnostic-download.js", "./main.js", "./game-record.js", "./game-record-replay.js", "./game-record-contribution-config.js", "./game-record-contribution.js", "./manifest.webmanifest", "./icon.svg", "./privacy"];
 FILES.push("./engine-r002.js", "./rule-versions.js");
 FILES.push("./rules", "./rules.css", "./rules.js",
   ...["board-overview", "initial-setup", "sowing-before", "sowing-relay", "sowing-stop",
     "capture-before", "capture-taken", "capture-after", "nyumba-two", "front-empty", "takasia-target", "takasia-stop"]
     .map((name) => `./assets/rules/${name}.svg`));
+FILES.push("./rules/complete", "./assets/complete-guide/fig-02-01-board-overview.svg", "./assets/complete-guide/fig-02-02-special-pits.svg", "./assets/complete-guide/fig-03-01-initial-setup.svg", "./assets/complete-guide/fig-05-01-namua-choice.svg", "./assets/complete-guide/fig-06-01-mtaji-start.svg", "./assets/complete-guide/fig-07-01-capture-sequence.svg", "./assets/complete-guide/fig-07-02-kichwa-kimbi-direction.svg", "./assets/complete-guide/fig-08-01-relay-sowing.svg", "./assets/complete-guide/fig-08-02-stop-empty-pit.svg", "./assets/complete-guide/fig-09-01-nyumba-states.svg", "./assets/complete-guide/fig-09-02-nyumba-two-seed-sowing.svg", "./assets/complete-guide/fig-10-01-empty-front-row.svg");
 // 言語はクライアントで選ぶため、既知のHTMLページだけURLの別名を同一キャッシュに対応させる。
 // 他のリソースや外部URLのクエリーは維持する。
 const DOCUMENTS = new Map([
   ["./", "./"], ["./index.html", "./"],
+  ["./rules/complete", "./rules/complete"], ["./rules/complete.html", "./rules/complete"],
   ["./rules", "./rules"], ["./rules.html", "./rules"],
   ["./privacy", "./privacy"], ["./privacy.html", "./privacy"],
 ].map(([requestPath, cachedPath]) => [new URL(requestPath, self.registration.scope).href,

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="360" viewBox="0 0 820 360" role="img" aria-labelledby="title desc">
+  <title id="title">図8-2 空穴での停止</title>
+  <desc id="desc">蒔きの最後のketeが空だった穴に入ると、通常はそこで手が終了し、その穴のketeを取り上げて続けない。</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ea580c"/></marker></defs>
+  <rect width="820" height="360" fill="#fff"/>
+  <text x="410" y="38" text-anchor="middle" font-family="sans-serif" font-size="25" font-weight="700">最後のketeが空穴へ入る → 手を終了</text>
+  <g transform="translate(150 175)" fill="#fff" stroke="#6b7280" stroke-width="3"><circle cx="0" r="48"/><circle cx="130" r="48"/><circle cx="260" r="48"/><circle cx="390" r="48"/></g>
+  <g font-family="sans-serif" font-size="26" text-anchor="middle"><text x="150" y="183">2</text><text x="280" y="183">1</text><text x="410" y="183">0</text><text x="540" y="183">3</text></g>
+  <path d="M300 100 C340 65,395 80,410 120" fill="none" stroke="#ea580c" stroke-width="5" marker-end="url(#arrow)"/>
+  <rect x="630" y="125" width="145" height="100" rx="18" fill="#dcfce7" stroke="#166534" stroke-width="4"/>
+  <text x="702" y="165" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="700">ここで終了</text>
+  <text x="702" y="198" text-anchor="middle" font-family="sans-serif" font-size="16">取り上げない</text>
+  <text x="410" y="270" text-anchor="middle" font-family="sans-serif" font-size="17">到達前は0個。最後の1個を置いた後は1個。</text>
+  <text x="410" y="325" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#4b5563">nyumbaなどの特別な停止条件は別に確認する。</text>
+</svg>

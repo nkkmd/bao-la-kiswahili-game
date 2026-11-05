@@ -5,6 +5,7 @@ on:
       - 'public/**'
       - 'tools/build-rules-figures.js'
       - 'tools/test-rules-browser.cjs'
+      - 'tools/rules-guide/**'
       - 'test/ai-generation-release.test.js'
       - 'tools/takasia/check-current-assets.cjs'
       - '.github/workflows/illustrated-rules.yml'
@@ -26,6 +27,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: 詳細ページの再生成と固定原稿を確認
+        run: |
+          pip install -r tools/rules-guide/requirements.txt
+          python tools/rules-guide/build.py --check
+          python tools/rules-guide/check.py
       - name: 図版と既存表示の回帰確認
         run: |
           node tools/build-rules-figures.js --check

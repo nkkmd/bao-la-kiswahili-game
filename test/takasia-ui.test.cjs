@@ -127,7 +127,7 @@ test("日英説明・図版・既存anchor・新キャッシュの参照が整�
   assert.match(fs.readFileSync("public/style.css", "utf8"), /\.takasia-status\[hidden\]\s*\{\s*display:\s*none/);
   for (const name of ["takasia-target", "takasia-stop"]) {
     assert.ok(sw.includes(name));
-    assert.match(guide, new RegExp(name + '\\.svg'));
+    assert.match(fs.readFileSync("public/rules/complete.html", "utf8"), new RegExp(name + '\\.svg'));
     assert.match(fs.readFileSync("public/assets/rules/" + name + ".svg", "utf8"), /aad9fda3ffb12c2ca785509951c71ce8a42bef5a/);
   }
 });
