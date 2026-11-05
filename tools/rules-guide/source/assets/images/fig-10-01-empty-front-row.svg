@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400" role="img" aria-labelledby="title desc">
+  <title id="title">図10-1 前列が空になった終局</title>
+  <desc id="desc">一方のプレイヤーの前列8穴がすべて空になると、そのプレイヤーは敗北し、ゲームが終了する。</desc>
+  <defs><circle id="pit" r="34" fill="#fff" stroke="#6b7280" stroke-width="3"/></defs>
+  <rect width="900" height="400" fill="#fff"/>
+  <text x="450" y="40" text-anchor="middle" font-family="sans-serif" font-size="25" font-weight="700">前列8穴がすべて空 → 敗北</text>
+  <rect x="85" y="85" width="730" height="205" rx="24" fill="#f3f4f6" stroke="#374151" stroke-width="4"/>
+  <text x="45" y="145" font-family="sans-serif" font-size="17" font-weight="700">後列</text><text x="45" y="235" font-family="sans-serif" font-size="17" font-weight="700" fill="#991b1b">前列</text>
+  <g transform="translate(155 140)"><use href="#pit" x="0"/><use href="#pit" x="82"/><use href="#pit" x="164"/><use href="#pit" x="246"/><use href="#pit" x="328"/><use href="#pit" x="410"/><use href="#pit" x="492"/><use href="#pit" x="574"/></g>
+  <g transform="translate(155 230)"><use href="#pit" x="0"/><use href="#pit" x="82"/><use href="#pit" x="164"/><use href="#pit" x="246"/><use href="#pit" x="328"/><use href="#pit" x="410"/><use href="#pit" x="492"/><use href="#pit" x="574"/></g>
+  <g font-family="sans-serif" font-size="22" text-anchor="middle" fill="#991b1b"><text x="155" y="238">0</text><text x="237" y="238">0</text><text x="319" y="238">0</text><text x="401" y="238">0</text><text x="483" y="238">0</text><text x="565" y="238">0</text><text x="647" y="238">0</text><text x="729" y="238">0</text></g>
+  <rect x="295" y="320" width="310" height="55" rx="15" fill="#fee2e2" stroke="#991b1b" stroke-width="3"/><text x="450" y="355" text-anchor="middle" font-family="sans-serif" font-size="21" font-weight="700" fill="#991b1b">このプレイヤーの敗北</text>
+</svg>

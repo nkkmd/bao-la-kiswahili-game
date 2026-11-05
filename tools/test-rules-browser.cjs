@@ -20,11 +20,11 @@ const server = http.createServer((req, res) => {
   if (originUnavailable) { req.socket.destroy(); return; }
   const url = new URL(req.url, "http://localhost");
   // Cloudflare Pagesと同じ、HTMLからclean URLへのリダイレクトを再現する。
-  if (["/rules.html", "/privacy.html", "/index.html"].includes(url.pathname)) {
+  if (["/rules.html", "/rules/complete.html", "/privacy.html", "/index.html"].includes(url.pathname)) {
     const clean = url.pathname === "/index.html" ? "/" : url.pathname.replace(/\.html$/, "");
     res.writeHead(301, { Location: clean + url.search }); res.end(); return;
   }
-  const resource = { "/": "/index.html", "/rules": "/rules.html", "/privacy": "/privacy.html" }[url.pathname] || url.pathname;
+  const resource = { "/": "/index.html", "/rules": "/rules.html", "/rules/complete": "/rules/complete.html", "/privacy": "/privacy.html" }[url.pathname] || url.pathname;
   const file = path.resolve(root, "." + resource);
   if (!file.startsWith(root + path.sep) || !fs.existsSync(file) || !fs.statSync(file).isFile()) {
     res.writeHead(404); res.end(); return;
@@ -34,7 +34,7 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, { "Content-Type": mime, "Cache-Control": "no-store" }); res.end(body);
 });
 async function check(name, run) { await run(); report.checks.push(name); console.log(name); }
-async function cacheReady(page, version = "v58") {
+async function cacheReady(page, version = "v59") {
   await page.evaluate(() => navigator.serviceWorker.ready);
   await page.waitForFunction(() => !!navigator.serviceWorker.controller);
   await page.waitForFunction(async v => (await caches.keys()).includes("bao-la-kiswahili-" + v), version);
@@ -46,7 +46,7 @@ async function cacheReady(page, version = "v58") {
 async function allImages(page) {
   await page.locator("figure img").evaluateAll(images => images.forEach(img => { img.loading = "eager"; }));
   await page.waitForFunction(() => [...document.querySelectorAll("figure img")].every(img => img.complete && img.naturalWidth > 0));
-  assert.equal(await page.locator("figure img").count(), 12);
+  assert.equal(await page.locator("figure img").count(), 24);
 }
 async function fits(page) {
   assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), "横にはみ出さない");
@@ -64,13 +64,22 @@ let browser;
     context.on("page", p => p.on("pageerror", e => errors.push(String(e))));
     const page = await context.newPage();
     await check("日本語自動表示・全図版・ページ内リンク", async () => {
-      await page.goto(origin + "/rules");
+      await page.goto(origin + "/rules/complete");
       await allImages(page); await cacheReady(page); await fits(page);
       assert.equal(await page.locator("html").getAttribute("lang"), "ja");
       assert.equal(await page.locator("[data-ja]").evaluateAll(nodes => nodes.every(n => n.textContent === n.dataset.ja)), true);
       assert.equal(await page.locator("[data-ja-alt]").evaluateAll(nodes => nodes.every(n => n.alt === n.dataset.jaAlt)), true);
-      assert.equal(await page.locator('a[href^="#"]').evaluateAll(nodes => nodes.every(n => document.getElementById(n.hash.slice(1)))), true);
-      await page.screenshot({ path: path.join(out, "rules-ja-mobile.png"), fullPage: true });
+      assert.equal(await page.locator('a[href^="#"]').evaluateAll(nodes => nodes.every(n => document.getElementById(decodeURIComponent(n.hash.slice(1))))), true);
+      await page.screenshot({ path: path.join(out, "rules-ja-mobile.png"), fullPage: false });
+    });
+    await check("簡易版から詳細版へ言語と項目を引き継ぐ", async () => {
+      await page.goto(origin + "/rules?lang=ja#nyumba");
+      assert.equal(await page.locator("figure img").count(), 6);
+      await page.locator('#nyumba a[href*="complete"]').click();
+      assert.ok(page.url().endsWith("/rules/complete?lang=ja#nyumba"));
+      assert.equal(await page.locator("#reference[lang=ja]").count(), 1);
+      assert.equal(await page.locator("#reference-contents li").count(), 16);
+      await page.goto(origin + "/rules/complete?lang=ja");
     });
     await check("図の拡大・Escapeで閉じる・フォーカス復帰", async () => {
       const zoom = page.locator(".figure-zoom").first();
@@ -80,6 +89,21 @@ let browser;
       await page.keyboard.press("Escape");
       assert.equal(await page.locator("dialog").evaluate(d => d.open), false);
       assert.equal(await zoom.evaluate(n => n === document.activeElement), true);
+    });
+    await check("日本語本文の目次・章間移動・原典図の拡大", async () => {
+      await page.locator('a[href="#reference-contents"]').first().click();
+      await page.screenshot({ path: path.join(out, "reference-contents-mobile.png") });
+      await page.locator('#reference-contents a[href="#guide-02-board"]').click();
+      await page.screenshot({ path: path.join(out, "reference-board-mobile.png") });
+      const zoom = page.locator("#guide-02-board .figure-zoom").first();
+      await zoom.click();
+      assert.equal(await page.locator("dialog").evaluate(d => d.open), true);
+      assert.ok((await page.locator("dialog img").getAttribute("src")).includes("complete-guide"));
+      await page.keyboard.press("Escape");
+      assert.equal(await zoom.evaluate(n => n === document.activeElement), true);
+      await page.locator('#guide-02-board a[href="#guide-03-setup"]').click();
+      assert.ok(page.url().endsWith("#guide-03-setup"));
+      await page.goto(origin + "/rules/complete?lang=ja");
     });
     await check("英語への明示切替と節の位置の維持", async () => {
       await page.locator('#contents a[href="#capture"]').click();
@@ -94,22 +118,26 @@ let browser;
     });
     await check("日英・幅320/360/412/1280で本文と細則が収まる", async () => {
       for (const lang of ["en", "ja"]) {
-        await page.goto(origin + "/rules?lang=" + lang);
+        await page.goto(origin + "/rules/complete?lang=" + lang);
         await page.locator("details").evaluateAll(nodes => nodes.forEach(n => n.open = true));
         for (const width of [320, 360, 412, 1280]) { await page.setViewportSize({ width, height: 900 }); await fits(page); }
         await allImages(page);
-        await page.screenshot({ path: path.join(out, `rules-${lang}-desktop.png`), fullPage: true });
+        await page.screenshot({ path: path.join(out, `rules-${lang}-desktop.png`), fullPage: false });
       }
     });
     await check("オフラインで言語指定・HTML別名・未閲覧の図版・ゲームへ戻る", async () => {
       await cacheReady(page);
       originUnavailable = true;
-      for (const suffix of ["/rules?lang=en", "/rules?lang=ja", "/rules.html?lang=en"]) {
+      for (const suffix of ["/rules/complete?lang=en", "/rules/complete?lang=ja", "/rules/complete.html?lang=en"]) {
         console.log("通信遮断中のURL: " + suffix);
         await page.goto(origin + suffix); await allImages(page);
         assert.equal(await page.locator("html").getAttribute("lang"), suffix.includes("lang=ja") ? "ja" : "en");
       }
-      await page.locator(".rules-topbar [data-locale-link]").click();
+      await page.goto(origin + "/rules?lang=en");
+      assert.equal(await page.locator("html").getAttribute("lang"), "en");
+      await page.locator('a[href*="rules/complete"]').first().click();
+      await allImages(page);
+      await page.locator('.rules-topbar a[href*="?lang=en"]').filter({ hasText: "Open game" }).click();
       assert.equal(await page.locator("html").getAttribute("lang"), "en");
       await page.waitForFunction(() => !!window.BaoEngine);
       originUnavailable = false;
@@ -125,7 +153,7 @@ let browser;
       assert.ok(guide.url().endsWith("/rules?lang=ja"));
       assert.equal(await page.evaluate(() => JSON.stringify(state)), before);
       await guide.close();
-      await page.screenshot({ path: path.join(out, "game-rules-link.png"), fullPage: true });
+      await page.screenshot({ path: path.join(out, "game-rules-link.png"), fullPage: false });
     });
     await check("盤面の高精細描画・画面幅変更・タップ位置・表示サイズの維持", async () => {
       const layouts = new Map();
@@ -199,7 +227,7 @@ let browser;
           await board.locator("#move-choices button").first().click();
           await board.waitForFunction(() => state.turn === 2 && !animation);
           assert.equal(await board.evaluate(() => state.player), 1);
-          if (deviceScaleFactor === 3) await board.screenshot({ path: path.join(out, "game-ja-high-dpi.png"), fullPage: true });
+          if (deviceScaleFactor === 3) await board.screenshot({ path: path.join(out, "game-ja-high-dpi.png"), fullPage: false });
         } finally {
           await display.close();
         }
@@ -208,8 +236,8 @@ let browser;
     await check("JavaScript無効時も英語本文と図版を読める", async () => {
       const noJS = await browser.newContext({ javaScriptEnabled: false });
       const staticPage = await noJS.newPage();
-      await staticPage.goto(origin + "/rules");
-      assert.equal(await staticPage.locator(".rules-section").count(), 11);
+      await staticPage.goto(origin + "/rules/complete");
+      assert.equal(await staticPage.locator(".rules-section").count(), 27);
       assert.equal(await staticPage.locator("#goal-title").textContent(), "What are you trying to do?");
       await noJS.close();
     });
@@ -225,10 +253,10 @@ let browser;
         await (await navigator.serviceWorker.getRegistration()).update();
         await changed;
       });
-      await cacheReady(p, "v58");
+      await cacheReady(p, "v59");
       await p.waitForFunction(async () => !(await caches.keys()).includes("bao-la-kiswahili-v39"));
       originUnavailable = true;
-      await p.goto(origin + "/rules?lang=ja"); await allImages(p);
+      await p.goto(origin + "/rules/complete?lang=ja"); await allImages(p);
       assert.equal(await p.locator("html").getAttribute("lang"), "ja");
       await p.locator('[data-language="en"]').click();
       await p.waitForLoadState("load");

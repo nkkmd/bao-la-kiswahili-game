@@ -24,7 +24,7 @@ const server = http.createServer((req, res) => {
   const name = req.url.split('?')[0] === '/' ? 'index.html' : req.url.split('?')[0].slice(1);
   if (!/^[\w./-]+$/.test(name)) return res.writeHead(404).end();
   if ((modelUnavailable && name === 'logic-evaluator.js') || (candidateUnavailable && name === 'ai-candidate.js')) return res.writeHead(404).end();
-  const file = path.resolve(dir, name === 'privacy' ? 'privacy.html' : name === 'rules' ? 'rules.html' : name);
+  const file = path.resolve(dir, name === 'privacy' ? 'privacy.html' : name === 'rules' ? 'rules.html' : name === 'rules/complete' ? 'rules/complete.html' : name);
   if (!file.startsWith(dir + path.sep)) return res.writeHead(404).end();
   if (!fs.existsSync(file) || !fs.statSync(file).isFile()) return res.writeHead(404).end();
   let body = fs.readFileSync(file);

@@ -1,6 +1,7 @@
 "use strict";
 
 (() => {
+  const assetBase = new URL(".", document.currentScript.src);
   const locale = window.BaoLocale;
   locale.localize(document);
   const languageLinks = document.querySelectorAll("[data-language]");
@@ -46,6 +47,6 @@
     closedDetails = [];
   });
   if ("serviceWorker" in navigator && location.protocol !== "file:") {
-    window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js"));
+    window.addEventListener("load", () => navigator.serviceWorker.register(new URL("service-worker.js", assetBase)));
   }
 })();

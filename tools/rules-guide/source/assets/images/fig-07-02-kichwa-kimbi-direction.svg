@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">図7-2 kichwa・kimbiと捕獲後の蒔き始め</title>
+  <desc id="desc">左側のkichwaまたはkimbiで捕獲した場合は左kichwa、右側の場合は右kichwaから蒔き始める。中央4穴では手の段階や継続方向に従う。</desc>
+  <defs><marker id="blue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker><marker id="orange" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#ea580c"/></marker></defs>
+  <rect width="960" height="420" fill="#fff"/>
+  <text x="480" y="40" text-anchor="middle" font-family="sans-serif" font-size="25" font-weight="700">捕獲位置と蒔き始めるkichwa</text>
+  <g transform="translate(160 190)" fill="#fff" stroke="#6b7280" stroke-width="3"><circle cx="0" r="42"/><circle cx="90" r="42"/><circle cx="180" r="42"/><circle cx="270" r="42"/><circle cx="360" r="42"/><circle cx="450" r="42"/><circle cx="540" r="42"/><circle cx="630" r="42"/></g>
+  <g fill="none" stroke-width="6"><circle cx="160" cy="190" r="47" stroke="#2563eb"/><circle cx="250" cy="190" r="47" stroke="#2563eb" stroke-dasharray="8 5"/><circle cx="700" cy="190" r="47" stroke="#ea580c" stroke-dasharray="8 5"/><circle cx="790" cy="190" r="47" stroke="#ea580c"/></g>
+  <path d="M250 125 C220 70,180 70,160 125" fill="none" stroke="#2563eb" stroke-width="4" marker-end="url(#blue)"/>
+  <path d="M700 125 C730 70,770 70,790 125" fill="none" stroke="#ea580c" stroke-width="4" marker-end="url(#orange)"/>
+  <g font-family="sans-serif" text-anchor="middle"><text x="205" y="285" font-size="18" fill="#1d4ed8">左kichwa／kimbi</text><text x="745" y="285" font-size="18" fill="#c2410c">右kichwa／kimbi</text><text x="475" y="340" font-size="17">中央4穴: namuaの手始めでは左右を選択可能。継続中は既存の方向を維持する。</text></g>
+  <text x="480" y="390" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#4b5563">左右は本人から見た向き。R-001, p. 39と照合済み。本文とV02・V04も参照。</text>
+</svg>
