@@ -120,6 +120,11 @@ class AgentsPolicyTest(unittest.TestCase):
 
 
 class RulesUpdateTest(unittest.TestCase):
+    def test_directive_normalization_preserves_originals(self):
+        self.assertEqual(audit.verify_rules_update(audit.BASE,
+            "a5014f79b300d3e5731aa272e4c6cb0d16baa350",
+            audit.DIRECTIVE_NORMALIZATION_BLOBS, audit.DIRECTIVE_NORMALIZATION_COMMIT), 19)
+
     def test_pinned_document_editorial_update(self):
         self.assertEqual(audit.verify_rules_update(audit.BASE,
             "a5014f79b300d3e5731aa272e4c6cb0d16baa350",

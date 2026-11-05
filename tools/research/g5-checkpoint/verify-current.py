@@ -144,6 +144,50 @@ DOCUMENT_EDITORIAL_COMMIT = '78a3101e3308941dbd58baca53b0e1868b6c17ec'
 DOCUMENT_EDITORIAL_BLOBS = {'doc/ai-engineering/pbai-c015-adoption-review/ADOPTION.md': ('f477e2962dc69c8ddb7c29b9660d7765ea6e1ba5', 'd61f2762d709f6134f70e7fcdf48594042349d0e'), 'doc/first-player-gen4/MAIN_INTEGRATION.md': ('d4cca0dc59b6488bd39e341be1d27e971d885990', '8495b9602a984ff732632bc128bdd90e479d73ba')}
 
 
+# 指示の逐語引用の整理と文書規約更新。元版と認可範囲を保持した19文書を限定照合する。
+DIRECTIVE_NORMALIZATION_COMMIT = '312c0d05abe2ba5a4652443f8ed9fbf156b22e4d'
+DIRECTIVE_NORMALIZATION_BLOBS = {
+    'doc/DOCUMENTATION_LANGUAGE_POLICY.md': (
+        'a8c6a65aa50717d516fcb0cb108448fff3b42913', '2f3526f347a4834e9d7320f01fdd8b31828a9a89'),
+    'doc/JAPANESE_DOCUMENTATION_QUALITY_GATE.md': (
+        '32935b1cc8ce4d331168579e1bc5f2ee70a6295a', 'b18f83e81fb6a51112da0e0fbae21befdaa01349'),
+    'doc/ai-engineering/public-ai-improvement-program-5/AUTHORIZATION_REVIEW.md': (
+        '3bab36b311dfb327ba445c82da3f922167023567', '88e0caf5c126c4c40956061af51926dede634365'),
+    'doc/ai-engineering/public-ai-improvement-program-5/EXECUTION_CONTRACT.md': (
+        '55cf728448c1a108f2f9c3b9e58a35d4f0d39e6d', 'c9d13f03abec46cf51483051baa329fd9277a44c'),
+    'doc/ai-engineering/public-ai-improvement-program-6/AUTHORIZATION_REVIEW.md': (
+        '274d4d735e3f010a1ac8de9dc529dae0a81776a6', '503a38f129afc3dd52b3dfcf3fdab9f3d5d68775'),
+    'doc/ai-engineering/public-ai-improvement-program-7/AUTHORIZATION_REVIEW.md': (
+        '4388ca841ebf016f9e0ffdb29616ad16d1d0b84f', 'd76f5c3943cdc619f8c674c25f59dae326249438'),
+    'doc/ai-engineering/public-ai-improvement-program-8/AUTHORIZATION_REVIEW.md': (
+        'a9d6c25ec50b71c3fc4e0ebea4f65ec608eb79d4', 'df34df79264c1eef1287f0985c14d9e1da28ad81'),
+    'doc/ai-engineering/public-ai-improvement-program-9/AUTHORIZATION.md': (
+        'bc53afaf6d49cc951303b19ccb7c5c115f6808eb', '2980a5b5c0fd66244e3aefc8dbed58708a823508'),
+    'doc/first-player-gen4/AUTHORIZATION.md': (
+        '90566fb0efe8e1e28d8e01e11655e93382ceea98', 'bf5a63d1fbda9d91271f16b7d507fde89d799a4c'),
+    'doc/phase-transition/RESEARCH_LOG.md': (
+        'c22dd770529d5db7647a8381b465584c7667960f', 'de28e011106542229ea15d400a88874be7806693'),
+    'doc/phase-transition/checkpoints/2026-08-01-e011-formal-start-authorization.md': (
+        '898830e9a69596bb45a4652d1b878b02ad87ec2f', '70840bfff1eb441739a07bed5e62818c414e43e1'),
+    'doc/phase-transition/checkpoints/2026-08-01-e017-formal-start-authorization.md': (
+        'fab9f778d63c5763c6098e7d3db084b061ff4917', 'a465fa6a3fb879df408468830cccee6205d57c8a'),
+    'doc/phase-transition/checkpoints/2026-08-02-e018-formal-start-authorization.md': (
+        '3687824e592d27a1be16bb5a4b549fb3fbbcf280', '4fd3083dcb82a6816d8f291133bf35ce66f301d7'),
+    'doc/research-generation-5/g5-01/PREEXECUTION_REVIEW.md': (
+        'b7e259c6c02a4a00fdd999d7714397b63484797d', 'b2b25215f003a519246f75eaaf2cdf8a2f41b9b6'),
+    'doc/research-generation-5/g5-01/development/PREEXECUTION_REVIEW.md': (
+        '82a30c26dde983932e5c6d03702f60a24b535c19', 'ee30ab4cba307a95ea753789ba6a42b83583b3f9'),
+    'doc/research-generation-5/g5-01/transition/TECHNICAL_CONTRACT.md': (
+        'b8c9904a64e6a0d9ea223d406ffda604790a056a', '392820797e7d255e4a3d5f827d391d18fa7148ed'),
+    'doc/research-generation-5/g5-02/PREEXECUTION_REVIEW.md': (
+        '563a3295b167166e589e4ca2f57b961fcd48f11c', '60cbab8d76b5ac82e9f13fe1fc1d4eb7c934f476'),
+    'doc/research-generation-5/g5-03/PREEXECUTION_REVIEW.md': (
+        '59f5e1974522b5a2f7e11a3b2fdfea06b61ea68e', 'ffcd5e29b799ae4c4a3563581a609b094cfa2fb8'),
+    'doc/research-generation-5/g5-04/PREEXECUTION_REVIEW.md': (
+        'd78d609cf17b501cccabea70c75b5aa931309e10', '35bac10685781c6325688b54e1a9c8fbab2b2342'),
+}
+
+
 def preserved_current(frozen):
     scope = frozen.read("INTEGRATION_SCOPE.json")
     old = frozen.tree(scope["sourceHead"])
@@ -155,6 +199,8 @@ def preserved_current(frozen):
     updated = verify_rules_update(BASE, scope["sourceHead"])
     editorial = verify_rules_update(BASE, scope["sourceHead"],
                                     DOCUMENT_EDITORIAL_BLOBS, DOCUMENT_EDITORIAL_COMMIT)
+    normalized = verify_rules_update(BASE, scope["sourceHead"],
+                                     DIRECTIVE_NORMALIZATION_BLOBS, DIRECTIVE_NORMALIZATION_COMMIT)
     count = 0
     for name, (mode, expected) in old.items():
         if name in allowed:
@@ -165,6 +211,10 @@ def preserved_current(frozen):
             continue
         if name in DOCUMENT_EDITORIAL_BLOBS:
             assert (mode, expected) == ("100644", DOCUMENT_EDITORIAL_BLOBS[name][0]), name
+            count += 1
+            continue
+        if name in DIRECTIVE_NORMALIZATION_BLOBS:
+            assert (mode, expected) == ("100644", DIRECTIVE_NORMALIZATION_BLOBS[name][0]), name
             count += 1
             continue
         p = BASE / name
@@ -189,6 +239,8 @@ def preserved_current(frozen):
     return {"agentsPolicyCommit": AGENTS_POLICY_COMMIT,
             "approvedRulesUpdateCommit": RULES_UPDATE_COMMIT, "approvedRulesUpdateFiles": updated,
             "documentEditorialCommit": DOCUMENT_EDITORIAL_COMMIT, "documentEditorialFiles": editorial,
+            "directiveNormalizationCommit": DIRECTIVE_NORMALIZATION_COMMIT,
+            "directiveNormalizationFiles": normalized,
             "preservedSourceFiles": count, "historicalSnapshots": len(snapshots),
             "publicAndWorkerFiles": len(public), "historicalWorkflows": len(scope["historicalWorkflows"])}
 
