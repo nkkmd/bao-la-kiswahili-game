@@ -1,5 +1,7 @@
 # 第五世代研究 — 再現性の索引
 
+> 2026-11-05の権限・停止設計: [役割分離と強制停止の条件](runner-topology-20261017/authority-stop-20261105/README.md)を追加した。system側制御・異なるUIDを優先候補とし、継承FD、子孫停止、監督喪失、最終保存の終端を整理した。launcher権限・全egress拒否・有限な保存終端・全peakは未成立で、方式採用・配備・新規remote結合試験へ進まない。科学seed0・未認可・全工程未成立を維持する。
+
 > 2026-11-05のAPI境界確認: [Node20の限定API照合](runner-topology-20261017/work-api-20261105/README.md)を追加した。選択27記号を固定資料へ対応付け、同期Gitのtimeoutだけでは返却期限、現在processのRSSだけでは子孫込み制限を保証できないことを確認した。親監督・通信主体の権限と強制停止設計へ進むが、互換性・Node24除外・全工程は未認定、科学seed0・未認可を維持する。
 
 > 2026-11-05の再開・binary照合: [配布Nodeの静的同一性](runner-topology-20261017/node-binary-20261105/README.md)でmainと保存資料の整合を再確認し、固定runner内Node20と公式v20.20.2 Linux x64の実体98932688 byte・SHA-256一致を確認した。work互換性・Node24除外・全工程成立は未認定。次は指定版APIとwork使用箇所の対応確認で、runner改変・build・実行、remote結合試験、科学実行は開始しない。

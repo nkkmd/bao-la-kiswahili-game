@@ -1,0 +1,47 @@
+{
+  "evidenceClass": "FIXED-UPSTREAM-DOCUMENTATION-NOT-HOST-OBSERVATION",
+  "dateJapan": "2026-11-05",
+  "sources": [
+    {
+      "id": "service",
+      "repository": "systemd/systemd",
+      "commit": "db11bab38ccf1ed257f310d29070843d4c58ea01",
+      "path": "man/systemd.service.xml",
+      "url": "https://github.com/systemd/systemd/blob/db11bab38ccf1ed257f310d29070843d4c58ea01/man/systemd.service.xml"
+    },
+    {
+      "id": "kill",
+      "repository": "systemd/systemd",
+      "commit": "db11bab38ccf1ed257f310d29070843d4c58ea01",
+      "path": "man/systemd.kill.xml",
+      "url": "https://github.com/systemd/systemd/blob/db11bab38ccf1ed257f310d29070843d4c58ea01/man/systemd.kill.xml"
+    },
+    {
+      "id": "resource",
+      "repository": "systemd/systemd",
+      "commit": "db11bab38ccf1ed257f310d29070843d4c58ea01",
+      "path": "man/systemd.resource-control.xml",
+      "url": "https://github.com/systemd/systemd/blob/db11bab38ccf1ed257f310d29070843d4c58ea01/man/systemd.resource-control.xml"
+    },
+    {
+      "id": "exec",
+      "repository": "systemd/systemd",
+      "commit": "db11bab38ccf1ed257f310d29070843d4c58ea01",
+      "path": "man/systemd.exec.xml",
+      "url": "https://github.com/systemd/systemd/blob/db11bab38ccf1ed257f310d29070843d4c58ea01/man/systemd.exec.xml"
+    },
+    {
+      "id": "cgroup",
+      "repository": "torvalds/linux",
+      "commit": "7d0a66e4bb9081d75c82ec4957c50034cb0ea449",
+      "path": "Documentation/admin-guide/cgroup-v2.rst",
+      "url": "https://github.com/torvalds/linux/blob/7d0a66e4bb9081d75c82ec4957c50034cb0ea449/Documentation/admin-guide/cgroup-v2.rst"
+    }
+  ],
+  "systemdTag": "v255",
+  "systemdTagObject": "0966fe6734417ce07d5eb82a245fdec3789714da",
+  "linuxTag": "v6.18",
+  "linuxTagObject": "f7b88edb52c8dd01b7e576390d658ae6eef0e134",
+  "tagSignaturesVerified": false,
+  "installedBuildEquivalenceProven": false
+}
