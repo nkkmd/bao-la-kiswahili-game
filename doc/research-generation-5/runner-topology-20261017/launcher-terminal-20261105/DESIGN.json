@@ -1,0 +1,40 @@
+{
+  "evidenceClass": "STATIC-LAUNCHER-AND-TERMINAL-DESIGN-NOT-EXECUTION",
+  "baseCommit": "263454bf23f5697ac5060ebdb5a084705fafcbf4",
+  "kernelReference": {
+    "repository": "torvalds/linux",
+    "commit": "7d0a66e4bb9081d75c82ec4957c50034cb0ea449",
+    "path": "kernel/cgroup/cgroup.c",
+    "functions": [
+      "cgroup_kill_write",
+      "cgroup_file_write",
+      "cgroup_file_open",
+      "cgroup_css_set_fork"
+    ],
+    "installedBuildEquivalenceProven": false
+  },
+  "authorityCandidate": "PREOPENED-ROLE-KILL-FDS-NO-GENERAL-MANAGER-AUTHORITY",
+  "terminalCandidate": "SUPERVISOR-DIRECT-FINAL-SEND-AFTER-CHILDREN-STOP",
+  "adopted": false,
+  "launcherImplementation": null,
+  "launcherBootstrapAccounting": null,
+  "supervisorFinalTransport": null,
+  "finalObjectSet": null,
+  "finalAckRecordPreservation": null,
+  "parentExitEvidencePreservation": null,
+  "gateStatus": {
+    "AUTHORITY": "OPEN",
+    "EGRESS": "OPEN",
+    "STOP": "OPEN",
+    "OOM": "OPEN",
+    "TERMINAL": "OPEN",
+    "CAPACITY": "OPEN"
+  },
+  "hostModified": false,
+  "runnerModified": false,
+  "runnerExecuted": false,
+  "remoteIntegrationExecuted": false,
+  "wholeLifecycleOsProven": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false
+}
