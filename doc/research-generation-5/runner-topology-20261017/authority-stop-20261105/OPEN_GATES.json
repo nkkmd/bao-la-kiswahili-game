@@ -1,0 +1,66 @@
+{
+  "evidenceClass": "UNADOPTED-AUTHORITY-AND-STOP-DESIGN-NOT-EXECUTION",
+  "baseCommit": "f3bd7a1e96fcd5fcc371ed7356bc2d54afc492ff",
+  "candidate": "SYSTEM-MANAGED-DISTINCT-UID-ROLES",
+  "adopted": false,
+  "roleUids": {
+    "S": null,
+    "B": null,
+    "R": null,
+    "W": null
+  },
+  "runtimeUnitConfiguration": null,
+  "ipcTransport": null,
+  "launcherInputManifest": null,
+  "bounds": {
+    "totalSeconds": 1200,
+    "finishReserveSeconds": 180,
+    "memoryBytes": 1073741824,
+    "swapBytes": 0,
+    "storageBytes": 268435456,
+    "finishStorageReserveBytes": 16777216
+  },
+  "roleMemoryLimits": null,
+  "pidsLimit": null,
+  "gates": [
+    {
+      "id": "AUTHORITY",
+      "status": "OPEN",
+      "requiredEvidence": "対象限定launcher・資格切替え・停止権限と初回ロード費用。汎用root/manager権限をtaskへ渡さない"
+    },
+    {
+      "id": "EGRESS",
+      "status": "OPEN",
+      "requiredEvidence": "role別socket/namespace/FD/IPC・manager/daemon/WSL連携の迂回拒否と全protocol無再送"
+    },
+    {
+      "id": "STOP",
+      "status": "OPEN",
+      "requiredEvidence": "固定cgroupの全子孫停止・populated=0・再起動拒否・1200秒以内の終了確認"
+    },
+    {
+      "id": "OOM",
+      "status": "OPEN",
+      "requiredEvidence": "全体1 GiB/swap 0と監督用余裕、子OOM・祖先OOM・監督喪失のprefix分類"
+    },
+    {
+      "id": "TERMINAL",
+      "status": "OPEN",
+      "requiredEvidence": "外部ACK対象・ローカルtail・OS停止記録・独立検算終端の有限な結合と保全費用"
+    },
+    {
+      "id": "CAPACITY",
+      "status": "OPEN",
+      "requiredEvidence": "全input/runtime/runner/launcher/cache/log/tmp/remote/停止保存の合算peakと終了予約"
+    }
+  ],
+  "hostReobserved": false,
+  "hostModified": false,
+  "runnerModified": false,
+  "runnerExecuted": false,
+  "remoteIntegrationExecuted": false,
+  "node20WorkCompatibilityProven": false,
+  "wholeLifecycleOsProven": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false
+}
