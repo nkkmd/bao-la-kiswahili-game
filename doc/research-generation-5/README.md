@@ -1,61 +1,6 @@
 # 第五世代研究 — 探索順位の変動と厳密価値の損失
 
-> 現在の状態（2026-11-05）: ユーザーの指示により、第五世代研究は**技術準備不足による保留・凍結**とした。[凍結判断と再開条件](FREEZE_DECISION_20261105.md)を優先し、以下の過去の「次の工程」は現在の実行指示にしない。追加実装・技術試験・科学登録/実行は停止する。研究完了・仮説否定を意味しない。
-
-> 保存・統合の最新確認（2026-11-05）: [PR #238](https://github.com/nkkmd/bao-la-kiswahili-game/pull/238)で凍結記録と現在用保存監査の修正をmainへ統合した。統合commitは`9bf489bcfb491c05913f3462af89d631251c4288`。CI16件と統合後の完全保存監査が合格した。これは研究の実行条件成立や凍結解除ではない。未統合で閉じたPR #236・#237は[凍結判断](FREEZE_DECISION_20261105.md#未統合資料の保全)から参照する。
-
-> 2026-11-05の契約再評価・工程改訂案: [再評価結果](execution-contract-review-20261105/README.md)と[完結までの工程案](execution-contract-review-20261105/REVISED_ROADMAP_DRAFT.md)を作成した。準備P・科学処理M・保全Rを別計数し総費用を併記する案を推奨するが、計数範囲の実質変更であり未採用である。今回の作業は再評価・工程組み直しまでで終了し、契約採用・実装・新規試験・科学実行へ進まない。既存実装移行停止・BEFCS科学seed0・未認可・旧全工程未成立を保持する。
-
-> 2026-11-05の実装移行査定: [起動・保存候補の査定結果](runner-topology-20261017/readiness-decision-20261105/README.md)を記録した。今回の候補はIMPLEMENTATION-READINESS-NOT-METで、実装・配備への移行を停止する。WSL不採用・全方式の不可能性・研究終了を意味しない。再検討には初回ロードを含む具体的計数経路と、D/A/T/Eの有限な保全経路が必要であり、同じ観察・文書追加・成功取引の反復では代用しない。科学seed0・未認可を維持する。
-
-> 2026-11-05のWSL観察受領: [現在値と起動・保存条件の再評価](runner-topology-20261017/host-observed-20261105/README.md)にユーザー貼付出力を保存した。x86_64・systemd稼働・委任を再確認したが、観察したローカルmaxやkill属性は制限・停止権限の証明ではない。初回ロード計数・最終証拠の保全は未解決、6gate未成立、科学seed0・未認可を維持する。追加の同じWSL観察は今は不要である。
-
-> 2026-11-05の起動・保存順序検討: [停止専用FDと最終保存の候補](runner-topology-20261017/launcher-terminal-20261105/README.md)で、停止権限を事前openしたFDへ限定する案と、全子停止後にSが直接最終送信する案を比較した。kernelのnamespace拒否条件を確認したが、Lの初回ロード計数・最終ACK記録と親終了証拠の保全が未成立である。方式未採用・実行不可、科学seed0・未認可・全工程未成立を維持する。
-
-> 2026-11-05の権限・停止設計: [役割分離と強制停止の条件](runner-topology-20261017/authority-stop-20261105/README.md)を追加した。system側制御・異なるUIDを優先候補とし、継承FD、子孫停止、監督喪失、最終保存の終端を整理した。launcher権限・全egress拒否・有限な保存終端・全peakは未成立で、方式採用・配備・新規remote結合試験へ進まない。科学seed0・未認可・全工程未成立を維持する。
-
-> 2026-11-05のAPI境界確認: [Node20の限定API照合](runner-topology-20261017/work-api-20261105/README.md)を追加した。選択27記号を固定資料へ対応付け、同期Gitのtimeoutだけでは返却期限、現在processのRSSだけでは子孫込み制限を保証できないことを確認した。親監督・通信主体の権限と強制停止設計へ進むが、互換性・Node24除外・全工程は未認定、科学seed0・未認可を維持する。
-
-> 2026-11-05の再開・binary照合: [配布Nodeの静的同一性](runner-topology-20261017/node-binary-20261105/README.md)でmainと保存資料の整合を再確認し、固定runner内Node20と公式v20.20.2 Linux x64の実体98932688 byte・SHA-256一致を確認した。work互換性・Node24除外・全工程成立は未認定。次は指定版APIとwork使用箇所の対応確認で、runner改変・build・実行、remote結合試験、科学実行は開始しない。
-
-> 2026-10-31のNode20資料確認: [取得指定と限定API](runner-topology-20261017/node20-version-20261031/README.md)で固定runnerの取得指定20.20.2と、同版資料のstructuredClone/toReversedを確認した。配布binaryの版同定・work互換性は未成立で、Node24除外は未認定。原archiveの前回pathは欠落しており、再取得せず静的資料のみ保存。runner改変・build・実行、remote結合試験、科学実行は開始しない。
-
-> 2026-10-31のwork依存・CAS確認: [4入口の静的索引](runner-topology-20261017/work-deps-20261031/README.md)に26ファイル・48 literal参照を保存した。完全依存解析やNode20互換性の証明ではない。Git仲介でも期待旧ref付きpushとreceipt後読取を維持し、次は同梱Node20の静的版特定。runner改変・build・実行、remote結合試験、科学実行は開始しない。
-
-> 2026-10-31の候補経路台帳: [単一runtime仮説の候補](runner-topology-20261017/candidate-route-20261031/README.md)に取得・registry・保存・全子停止をまとめた。内部Node20とworkの共用は未証明の容量比較仮説で、Node24除外や方式採用は未認定。workflow/head/job等は未固定で、次は静的互換性とGit仲介の適合確認。runner改変・build・実行、remote結合試験、科学実行は開始しない。
-
-> 2026-10-31の通信・容量照合: [既存通信経路と容量下限](runner-topology-20261017/protocol-scope-20261031/README.md)で、最終科学workflowの未固定、Git/Node/Actionsの別経路とpromisor追加取得の監査条件を確認した。複数runtime保持案の容量超過を保持し、次は実行不可の候補経路台帳を具体化する。runner改変・build・実行、remote結合試験、科学実行は開始しない。
-
-> 2026-10-30の方式比較: [送信境界と設定移管](runner-topology-20261017/TRANSPORT_DECISION_20261030.md)で、別主体への移動だけでは内側retryが残ることを整理し、限定IPC・一度限りtransportの最小契約と設定移管を設計した。優先する静的調査候補で、方式採用・実装・全工程成立は未認定。全必要protocolと容量下限の確認へ進み、runner改変・build・実行、remote結合試験、科学実行は開始しない。
-
-> 2026-10-30の配布runtime確認: [静的同定と内側retry](runner-topology-20261017/runtime-components-20261030/README.md)で固定x64配布物のJSONがruntimepack 8.0.30を示すことと、対応.NETソースの内部retryを確認した。binary/sourceの厳密対応と全経路は未証明。外側guardだけでは無再送を認定せず、runner改変・build・実行、remote結合試験、科学実行を開始しない。
-
-> 2026-10-30の静的確認: [runtime指定とtransport置換](runner-topology-20261017/runtime-20261030/README.md)でnet8.0・self-containedとSDK 8.0.424の指定を確認した。配布runtime patch版は未確定。Vss/Rawの別型transportへの置換には設定移管が必要で、guard・迂回禁止・容量・最終receiptは未成立。runner改変・build・実行、remote結合試験、科学実行を開始しない。
-
-> 2026-10-30の再開確認: [Linux x64の通信・権限境界設計](runner-topology-20261017/BOUNDARY_DESIGN_20261030.md)にユーザーWSLの再観察と差込・迂回禁止・runtime/容量の未解決条件を整理した。architectureはx86_64、委任先のmemory/swap上限はmaxで、親制限の実効性は未検証。設計案の段階を維持し、runner改変・build・登録・実行、remote結合試験、科学実行を開始しない。
-
-> 2026-10-20の通信経路台帳: [client生成箇所とguard差込位置の部分調査](runner-topology-20261017/client-map-20261020/README.md)で、固定C#817ファイルから32ファイル・72構文一致を保存した。共通factory以外のVss・Raw・OAuth等にも生成経路があり、単一箇所の変更では不足する。全client列挙・迂回禁止・下位transport・実装は未成立。次は対象architectureの読取確認と差込・OS境界設計で、結合試験や科学実行を開始しない。全工程未成立・科学seed0・leaseなし・未認可を維持する。
-
-> 2026-10-20の追加制御設計: [最初の失敗で停止する要求guardの設計レビュー](runner-topology-20261017/fail-first-20261020/README.md)で、HTTP retry設定の下限補正・内側retry/認証経路を確認した。候補をsource管理下の最内側要求guardとし、許可消費・body検算・共有停止・保存専用許可を具体化したが、未実装・全client未監査である。配備・結合試験・科学実行を開始せず、全工程未成立・科学seed0・leaseなし・未認可を維持する。
-
-> 2026-10-20のshell経路監査: [job開始前の通信retry](runner-topology-20261017/shell-route-20261020/README.md)を通常・Broker両listenerで確認した。shell中心化・単一job・attempt 1だけでは初回通信失敗時のretry拒否は成立しない。次は追加の失敗即停止制御の設計レビューで、配備や新規remote試験を行わない。全工程未成立・科学seed0・leaseなし・未認可を維持する。
-
-> 2026-10-20の軽量経路レビュー: [固定ソースと候補比較](runner-topology-20261017/lightweight-20261020/README.md)で、bin全体とNode20/24両実行fileを保持する案も容量超過と確認した。次の静的監査はshell中心の実Actions job経路を優先するが、内部runtime・通信retry・全入力容量は未成立で、方式を採用していない。独立executorを実job/attemptの代用にせず、全工程未成立・科学seed0・leaseなし・未認可を維持する。
-
-> 2026-10-20の容量検算: [WSL共有値と標準x64 runnerの静的検算](runner-topology-20261017/capacity-20261020/README.md)で、標準配布物の通常file論理量679562451 byteを確認した。標準配布物全体の通常展開案は現行256 MiBに収まらない。WSL自体の不採用とは区別し、次は最小実行経路の契約適合レビューとする。追加の導入・実機試験を行わず、全工程未成立・科学seed消費0・leaseなし・未認可を維持する。
-
-> 2026-10-20の実行台帳: [入力・容量・権限・通信の台帳](runner-topology-20261017/EXECUTION_LEDGER_20261020.md)に候補経路と未確定欄を整理した。次はユーザーWSLの選択実行fileを読取専用観察器で採寸する。下限だけで全工程成立を認定せず、新規remote試験・科学実行を開始しない。科学seed消費0・leaseなし・未認可を維持する。
-
-> 2026-10-20のWSL候補確認: [ユーザー共有の読取専用観察と実装前設計](runner-topology-20261017/WSL_PARENT_PLAN_20261020.md)を記録した。systemdとmemory委任は確認できたが、親制限・権限分離・容量・retry拒否・最終保存は未実証である。次は入力・容量・権限・通信の台帳と実行経路の確定であり、新規remote試験を起動しない。全工程未成立、科学seed消費0・科学leaseなし・科学実行未認可を維持する。
-
-> 2026-10-17の親監督調査: [固定runnerソースと既存jobの照合](runner-topology-20261017/README.md)で、開始hook・job containerより前のActions取得と内部retry経路を確認した。hookの追加だけの方式を除外し、runner起動前からの親監督を設計候補とする。専用環境は未確認で、全工程未成立・科学seed消費0・科学leaseなし・科学実行未認可を維持する。
-
-> 2026-10-17の再開監査: PR #208までの保存証拠を再検算し、[全工程の計測範囲と次の実装条件](lifecycle-review-20261017/README.md)を整理した。外側準備とartifact保全の親監督が未成立で、全工程の測定値は未確定である。次は初回準備より前から動く監督環境の実装可能性確認とし、成功済み取引を反復しない。科学seed消費0・科学leaseなし・BEFCSと正式関係の未登録/未実行を維持する。
-
-> 2026-10-16の最新状態: [固定code取得と封印原image全体の外部保存](befcs-capsule-20261016/README.md)を検証し、1,266ファイルと通常/ACK抑止の両原imageを独立復元した。ACK抑止は未ACKのまま保持する。外側起動・封印後制御記録・最終科学input等は未完で、科学seed消費0・未登録/未実行を維持する。[現在の完了判定表](befcs-capsule-20261016/COMPLETION_GATES.md)を参照する。以下の追補は各段階時点の履歴である。
-
-更新日: 2026-10-15（日本時間）
-状態: **G5-01〜G5-05終了・BEFCS第3版技術検算済み・中間保存main統合済み／正式関係は未登録・未実行**
+第五世代研究は**技術準備不足による保留・凍結中**である。追加実装・技術試験・科学登録/実行は停止している。[凍結判断と再開条件](FREEZE_DECISION_20261105.md)を優先する。研究完了・仮説否定ではない。
 
 ## 何を調べるか
 
