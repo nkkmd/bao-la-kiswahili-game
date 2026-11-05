@@ -14,6 +14,11 @@ const presentationUpdates = {
   ],
 };
 const sha256 = bytes => crypto.createHash("sha256").update(bytes).digest("hex");
+// 現行の解説・キャッシュも、確認済みのバイト列からの改変を拒否する。
+const currentPresentationAssets = {
+  "public/rules.html": "87cdc845f9f80c559887b506034065c40172d380fb3dfceb155ee751f781e4fb",
+  "public/service-worker.js": "af0cce4af63a3d98ea93a006eab7a329b01b4a662b882abd53f7f5304f2abc3e"
+};
 function verify() {
   const bytes = fs.readFileSync(path.join(root, recordPath));
   assert.deepEqual(bytes, execFileSync("git", ["show", `${checkpoint}:${recordPath}`], { cwd: root, maxBuffer: 8 * 1024 * 1024 }), "工程6の固定検証記録を保持する");
@@ -45,6 +50,8 @@ function verify() {
   }
   for (const [file, hash] of Object.entries(assets).filter(([file]) => !["public/rules.html", "public/service-worker.js"].includes(file))) assert.equal(
     sha256(fs.readFileSync(path.join(root, file))), hash, file + "のtakasia改訂資産");
+  for (const [file, hash] of Object.entries(currentPresentationAssets)) assert.equal(
+    sha256(fs.readFileSync(path.join(root, file))), hash, file + "のv0.6.0表記・キャッシュ変更（現行ルール解説）");
   return { passed: true, checkpoint, appVersion: "v0.6.0", cache: "bao-la-kiswahili-v59",
     ruleRevision: record.ruleRevision, aiRevision: record.aiRevision, assets: Object.keys(assets).length };
 }

@@ -40,3 +40,5 @@ python tools/rules-guide/check.py
 日本語文書品質ゲートの対象はこの説明文書と追加した案内文。英語だけの説明見出し0件、英語だけの通常説明文0件。固定原稿と既存の日英UIは原文保持・多言語表示として扱う。原典の識別子・数値・ハッシュ・未解決事項に意図した変更はない。
 
 歴史的なtakasiaの検証記録は保持する。`check-current-assets.cjs` はルール解説とService Workerを当時のバイト列との照合から分離し、その他のエンジン・AI・対局資産は従来どおり照合する。現行の解説・キャッシュは生成検査とブラウザテストで確認する。
+
+ルール簡易版・Service Workerを変更するときは、検証後に `tools/takasia/check-current-assets.cjs` の `currentPresentationAssets` のSHA-256も更新する。改変を注入する既存テストで、この2資産にも改変検知が働くことを確認する。GitHub上では、初回コミットのルールページ検査がChromium・Firefox・WebKitの3種類ですべて通過した。

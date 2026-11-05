@@ -11,10 +11,10 @@ test("改訂資産の変更と過去の採用記録の変更をそれぞれ拒�
   try {
     execFileSync("git", ["worktree", "add", "--detach", checkout, "50988a4d3a3850ab5f790ee70aff95fad0380b4c"], { cwd: root, stdio: "pipe" }); added = true;
     for (const name of ["check-current-assets.cjs", "run-historical-ci.cjs"]) fs.copyFileSync(path.join(root, "tools/takasia", name), path.join(checkout, "tools/takasia", name));
-    for (const name of ["index.html", "service-worker.js"]) fs.copyFileSync(path.join(root, "public", name), path.join(checkout, "public", name));
+    for (const name of ["index.html", "service-worker.js", "rules.html"]) fs.copyFileSync(path.join(root, "public", name), path.join(checkout, "public", name));
     const current = () => spawnSync("node", ["tools/takasia/check-current-assets.cjs"], { cwd: checkout, encoding: "utf8" });
     assert.equal(current().status, 0);
-    for (const name of ["index.html", "service-worker.js"]) {
+    for (const name of ["index.html", "service-worker.js", "rules.html"]) {
       const file = path.join(checkout, "public", name), original = fs.readFileSync(file);
       fs.appendFileSync(file, "\n<!-- injected negative control -->\n");
       const altered = current();
