@@ -71,7 +71,7 @@ Bao la Kiswahili は、ローカル 2 人対戦とコンピューター対戦が
 | 世代横断の今後の研究候補と、完了研究から引き継ぐ境界 | [研究アジェンダ](doc/FUTURE_RESEARCH_AGENDA.md) |
 | 第五世代研究の目的、計画、成果 | [第五世代研究](doc/research-generation-5/README.md) |
 
-第五世代研究では、探索条件による着手順位の変化と、完全解析で確定した勝敗価値の損失との関係を調べています。研究は継続中です。[研究の計画と概要](doc/research-generation-5/README.md)、[現在の進捗](doc/research-generation-5/CURRENT_STATUS.md)、[再開手順](doc/research-generation-5/RESUME_HERE.md)を参照してください。研究結果と公開AIの採用・変更は別に判断します。
+第五世代研究では、探索条件による着手順位の変化と、完全解析で確定した勝敗価値の損失との関係を調べています。研究は技術準備不足により保留・凍結中です。[研究の計画と概要](doc/research-generation-5/README.md)、[現在の進捗](doc/research-generation-5/CURRENT_STATUS.md)、[再開手順](doc/research-generation-5/RESUME_HERE.md)を参照してください。研究結果と公開AIの採用・変更は別に判断します。
 
 先攻・後攻差については、独立した[AI-GEN4追加研究](doc/first-player-gen4/FINAL_REPORT.md)の全17,768局と検証が完了し、mainへ統合済みです。公開expertの静的評価上位3手序盤では先攻有利、全合法手からの一様序盤では未確定でした。Bao一般の先後差は未確定とし、第五世代の個別Studyとは別に管理します。
 

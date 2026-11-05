@@ -1,5 +1,7 @@
 # Bao今後の研究アジェンダ
 
+> 現在の状態（2026-11-05）: ユーザーの指示により、第五世代研究は**技術準備不足による保留・凍結**とした。[凍結判断と再開条件](research-generation-5/FREEZE_DECISION_20261105.md)を優先し、以下の過去の「次の工程」は現在の実行指示にしない。追加実装・技術試験・科学登録/実行は停止する。研究完了・仮説否定を意味しない。
+
 > 2026-10-17の親監督調査: [固定runnerソースと既存jobの照合](research-generation-5/runner-topology-20261017/README.md)で、開始hook・job containerより前のActions取得と内部retry経路を確認した。hookの追加だけの方式を除外し、runner起動前からの親監督を設計候補とする。専用環境は未確認で、全工程未成立・科学seed消費0・科学leaseなし・科学実行未認可を維持する。
 
 > 2026-10-17の再開監査: PR #208までの保存証拠を再検算し、[全工程の計測範囲と次の実装条件](research-generation-5/lifecycle-review-20261017/README.md)を整理した。外側準備とartifact保全の親監督が未成立で、全工程の測定値は未確定である。次は初回準備より前から動く監督環境の実装可能性確認とし、成功済み取引を反復しない。科学seed消費0・科学leaseなし・BEFCSと正式関係の未登録/未実行を維持する。
@@ -8,7 +10,7 @@
 
 > 2026-10-16の技術進捗: [有限image内のinput取得と外部停止診断の統合](research-generation-5/befcs-integrated-20261016/README.md)を3 caseで検証し、原image・通信prefix・remote内容を独立照合した。科学供給と正式関係は未登録・未実行、全起動・原証拠保存の条件は未成立である。[研究完了の判定表](research-generation-5/befcs-integrated-20261016/COMPLETION_GATES.md)を参照する。
 
-> 2026-10-15の現在案内: 第五世代の途中経過と再開条件は[PR #205](https://github.com/nkkmd/bao-la-kiswahili-game/pull/205)でmainへ統合済みです。[統合記録](research-generation-5/checkpoint-20261014/MAIN_INTEGRATION_20261015.md)と[中間保存・残り工程](research-generation-5/checkpoint-20261014/README.md)に根拠を示します。第五世代全体は継続中で、BEFCS-STUDY1と正式な主要関係は未登録・未実行です。以下の日時付き追記の「main未統合」「確認待ち」は当時の履歴です。最新の再開条件は[再開位置](research-generation-5/RESUME_HERE.md)を参照してください。
+> 2026-10-15の現在案内: 第五世代の途中経過と再開条件は[PR #205](https://github.com/nkkmd/bao-la-kiswahili-game/pull/205)でmainへ統合済みです。[統合記録](research-generation-5/checkpoint-20261014/MAIN_INTEGRATION_20261015.md)と[中間保存・残り工程](research-generation-5/checkpoint-20261014/README.md)に根拠を示します。第五世代全体は保留・凍結中で、BEFCS-STUDY1と正式な主要関係は未登録・未実行です。以下の日時付き追記の「main未統合」「確認待ち」は当時の履歴です。最新の再開条件は[再開位置](research-generation-5/RESUME_HERE.md)を参照してください。
 
 Version: 5.22.0
 
@@ -493,7 +495,7 @@ Fresh complete 0..10 prefixはG3-11 canonical exact prefixと一致し、integri
 4. **[完了] 第三世代のlocal game-tree geometryのbounded measurement**
 5. **[完了] 第四世代のcore G4-01〜G4-10 — 各終了判断を保持してmain統合済み。G4-10は`NON-ESTIMABLE`で閉じた**
 6. **[独立・未承認] G4-H01によるqualified human / expert evidenceの収集**
-7. **[継続中・G5-01〜G5-05終了・中間保存main統合済み] [第五世代研究](research-generation-5/README.md) — 計16完全領域を取得したが主要関係の準備は未成立。BEFCSの技術検証を進め、BEFCSと正式関係は未登録・未実行**
+7. **[保留・凍結中・G5-01〜G5-05終了] [第五世代研究](research-generation-5/README.md) — 計16完全領域を取得したが主要関係の準備は未成立。追加の技術検証は停止し、BEFCSと正式関係は未登録・未実行**
 
 ## 9. 研究と公開AI改善の分離
 
