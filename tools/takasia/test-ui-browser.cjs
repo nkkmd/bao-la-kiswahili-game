@@ -21,12 +21,12 @@ let oldWorker = null, offline = false;
 const server = http.createServer((req, res) => {
   if (offline) { req.socket.destroy(); return; }
   const url = new URL(req.url, "http://localhost");
-  const name = { "/": "/index.html", "/rules": "/rules.html", "/privacy": "/privacy.html" }[url.pathname] || url.pathname;
+  const name = { "/": "/index.html", "/rules": "/rules.html", "/rules/complete": "/rules/complete.html", "/privacy": "/privacy.html" }[url.pathname] || url.pathname;
   const file = path.resolve(root, "." + name);
   if (!file.startsWith(root + path.sep) || !fs.existsSync(file)) { res.writeHead(404); res.end(); return; }
   const body = oldWorker && name === "/service-worker.js" ? oldWorkers[oldWorker]
     : oldWorker && name === "/index.html" ? oldIndex : fs.readFileSync(file);
-  if (name === "/service-worker.js") report.workerRequests.push({ at: new Date().toISOString(), version: oldWorker || "v58" });
+  if (name === "/service-worker.js") report.workerRequests.push({ at: new Date().toISOString(), version: oldWorker || "v59" });
   const mime = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".svg": "image/svg+xml" }[path.extname(file)] || "application/json";
   res.writeHead(200, { "Content-Type": mime + "; charset=utf-8", "Cache-Control": "no-store" }); res.end(body);
 });
@@ -44,7 +44,7 @@ async function board(page, position) {
 async function images(page) {
   await page.locator("figure img").evaluateAll(ns => ns.forEach(n => { n.loading = "eager"; }));
   await page.waitForFunction(() => [...document.querySelectorAll("figure img")].every(n => n.complete && n.naturalWidth > 0));
-  assert.equal(await page.locator("figure img").count(), 12);
+  assert.equal(await page.locator("figure img").count(), 24);
 }
 async function cacheReady(page, version) {
   await page.evaluate(() => navigator.serviceWorker.ready);
@@ -70,11 +70,11 @@ let browser;
         deviceScaleFactor: 2, reducedMotion: "reduce", serviceWorkers: "block" });
       await context.route("https://www.googletagmanager.com/**", r => r.fulfill({ body: "" }));
       const page = await context.newPage(); page.on("pageerror", e => report.errors.push(String(e)));
-      await check(language + "：図解・全12画像・ページ内リンク・320/412/1280幅", async () => {
-        await page.goto(origin + "/rules?lang=" + language);
+      await check(language + "：図解・全24画像・ページ内リンク・320/412/1280幅", async () => {
+        await page.goto(origin + "/rules/complete?lang=" + language);
         await images(page);
         assert.equal(await page.locator("html").getAttribute("lang"), language);
-        assert.equal(await page.locator('a[href^="#"]').evaluateAll(ns => ns.every(n => document.getElementById(n.hash.slice(1)))), true);
+        assert.equal(await page.locator('a[href^="#"]').evaluateAll(ns => ns.every(n => document.getElementById(decodeURIComponent(n.hash.slice(1))))), true);
         if (language === "ja") {
           assert.equal(await page.locator("[data-ja]").evaluateAll(ns => ns.every(n => n.textContent === n.dataset.ja)), true);
           assert.equal(await page.locator("[data-ja-alt]").evaluateAll(ns => ns.every(n => n.alt === n.dataset.jaAlt)), true);
@@ -170,7 +170,7 @@ let browser;
       });
       await context.close();
     }
-    for (const oldVersion of ["v55", "v57"]) await check(oldVersion + "からv58へ更新し、v0.6.0・通信遮断中の日英ルール・全画像・ゲームを表示", async () => {
+    for (const oldVersion of ["v55", "v57"]) await check(oldVersion + "からv59へ更新し、v0.6.0・通信遮断中の日英ルール・全画像・ゲームを表示", async () => {
       const context = await browser.newContext();
       await context.route("https://www.googletagmanager.com/**", r => r.fulfill({ body: "" }));
       const page = await context.newPage(); page.on("pageerror", e => report.errors.push(String(e)));
@@ -181,7 +181,7 @@ let browser;
         const changed = new Promise(resolve => navigator.serviceWorker.addEventListener("controllerchange", resolve, { once: true }));
         await (await navigator.serviceWorker.getRegistration()).update(); await changed;
       });
-      await cacheReady(page, "v58");
+      await cacheReady(page, "v59");
       // 実際のページと同じ実行環境で削除完了を待ち、旧キャッシュ不在と新版の存在を検査する。
       const deadline = Date.now() + 30000;
       report.cacheSnapshots = [];
@@ -193,10 +193,10 @@ let browser;
         await new Promise(resolve => setTimeout(resolve, 100));
       } while (Date.now() < deadline);
       assert.equal(cacheNames.includes("bao-la-kiswahili-" + oldVersion), false);
-      assert.ok(cacheNames.includes("bao-la-kiswahili-v58"));
+      assert.ok(cacheNames.includes("bao-la-kiswahili-v59"));
       offline = true;
       for (const lang of ["ja", "en"]) {
-        await page.goto(origin + "/rules?lang=" + lang); await images(page);
+        await page.goto(origin + "/rules/complete?lang=" + lang); await images(page);
         assert.equal(await page.locator("html").getAttribute("lang"), lang);
         assert.match(await page.locator("#takasia-title").textContent(), /[Tt]akasia/);
       }
