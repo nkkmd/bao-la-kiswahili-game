@@ -1,0 +1,236 @@
+{
+  "evidenceClass": "FIXED-NODE-DOCUMENTATION-HEADING-MAP-NOT-COMPATIBILITY",
+  "nodeRelease": "v20.20.2",
+  "nodeSourceCommit": "3626fea570e44896ad99aaf3bf6e59def5adede5",
+  "documentationBaseUrl": "https://github.com/nodejs/node/blob/3626fea570e44896ad99aaf3bf6e59def5adede5/",
+  "mapping": [
+    {
+      "symbol": "Buffer.alloc",
+      "documentationPath": "doc/api/buffer.md",
+      "headings": [
+        "### Static method: `Buffer.alloc(size[, fill[, encoding]])`",
+        "## `Buffer.from()`, `Buffer.alloc()`, and `Buffer.allocUnsafe()`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "Buffer.byteLength",
+      "documentationPath": "doc/api/buffer.md",
+      "headings": [
+        "### Static method: `Buffer.byteLength(string[, encoding])`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "Buffer.concat",
+      "documentationPath": "doc/api/buffer.md",
+      "headings": [
+        "### Static method: `Buffer.concat(list[, totalLength])`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "Buffer.from",
+      "documentationPath": "doc/api/buffer.md",
+      "headings": [
+        "### Static method: `Buffer.from(array)`",
+        "### Static method: `Buffer.from(arrayBuffer[, byteOffset[, length]])`",
+        "### Static method: `Buffer.from(buffer)`",
+        "### Static method: `Buffer.from(object[, offsetOrEncoding[, length]])`",
+        "### Static method: `Buffer.from(string[, encoding])`",
+        "## `Buffer.from()`, `Buffer.alloc()`, and `Buffer.allocUnsafe()`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "Buffer.isBuffer",
+      "documentationPath": "doc/api/buffer.md",
+      "headings": [
+        "### Static method: `Buffer.isBuffer(obj)`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "assert.deepEqual",
+      "documentationPath": "doc/api/assert.md",
+      "headings": [
+        "## `assert.deepEqual(actual, expected[, message])`"
+      ],
+      "strictAlias": true,
+      "strictTarget": "assert.deepStrictEqual",
+      "strictHeading": "## `assert.deepStrictEqual(actual, expected[, message])`"
+    },
+    {
+      "symbol": "assert.equal",
+      "documentationPath": "doc/api/assert.md",
+      "headings": [
+        "## `assert.equal(actual, expected[, message])`"
+      ],
+      "strictAlias": true,
+      "strictTarget": "assert.strictEqual",
+      "strictHeading": "## `assert.strictEqual(actual, expected[, message])`"
+    },
+    {
+      "symbol": "assert.match",
+      "documentationPath": "doc/api/assert.md",
+      "headings": [
+        "## `assert.match(string, regexp[, message])`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "assert.notEqual",
+      "documentationPath": "doc/api/assert.md",
+      "headings": [
+        "## `assert.notEqual(actual, expected[, message])`"
+      ],
+      "strictAlias": true,
+      "strictTarget": "assert.notStrictEqual",
+      "strictHeading": "## `assert.notStrictEqual(actual, expected[, message])`"
+    },
+    {
+      "symbol": "assert.ok",
+      "documentationPath": "doc/api/assert.md",
+      "headings": [
+        "## `assert.ok(value[, message])`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "cp.execFileSync",
+      "documentationPath": "doc/api/child_process.md",
+      "headings": [
+        "### `child_process.execFileSync(file[, args][, options])`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "crypto.createHash",
+      "documentationPath": "doc/api/crypto.md",
+      "headings": [
+        "### `crypto.createHash(algorithm[, options])`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "fs.closeSync",
+      "documentationPath": "doc/api/fs.md",
+      "headings": [
+        "### `fs.closeSync(fd)`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "fs.existsSync",
+      "documentationPath": "doc/api/fs.md",
+      "headings": [
+        "### `fs.existsSync(path)`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "fs.fsyncSync",
+      "documentationPath": "doc/api/fs.md",
+      "headings": [
+        "### `fs.fsyncSync(fd)`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "fs.mkdirSync",
+      "documentationPath": "doc/api/fs.md",
+      "headings": [
+        "### `fs.mkdirSync(path[, options])`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "fs.openSync",
+      "documentationPath": "doc/api/fs.md",
+      "headings": [
+        "### `fs.openSync(path[, flags[, mode]])`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "fs.readFileSync",
+      "documentationPath": "doc/api/fs.md",
+      "headings": [
+        "### `fs.readFileSync(path[, options])`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "fs.renameSync",
+      "documentationPath": "doc/api/fs.md",
+      "headings": [
+        "### `fs.renameSync(oldPath, newPath)`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "fs.rmSync",
+      "documentationPath": "doc/api/fs.md",
+      "headings": [
+        "### `fs.rmSync(path[, options])`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "fs.writeFileSync",
+      "documentationPath": "doc/api/fs.md",
+      "headings": [
+        "### `fs.writeFileSync(file, data[, options])`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "fs.writeSync",
+      "documentationPath": "doc/api/fs.md",
+      "headings": [
+        "### `fs.writeSync(fd, buffer, offset[, length[, position]])`",
+        "### `fs.writeSync(fd, buffer[, options])`",
+        "### `fs.writeSync(fd, string[, position[, encoding]])`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "performance.now",
+      "documentationPath": "doc/api/perf_hooks.md",
+      "headings": [
+        "### `performance.now()`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "process.env",
+      "documentationPath": "doc/api/process.md",
+      "headings": [
+        "## `process.env`"
+      ],
+      "strictAlias": false
+    },
+    {
+      "symbol": "process.resourceUsage",
+      "documentationPath": "doc/api/process.md",
+      "headings": [
+        "## `process.resourceUsage()`"
+      ],
+      "strictAlias": false
+    }
+  ],
+  "otherSelectedSymbols": [
+    {
+      "symbol": "structuredClone",
+      "priorEvidence": "../node20-version-20261031/SOURCE_ORIGIN.json"
+    },
+    {
+      "symbol": ".toReversed",
+      "priorEvidence": "../node20-version-20261031/SOURCE_ORIGIN.json"
+    }
+  ],
+  "node20WorkCompatibilityProven": false,
+  "wholeLifecycleOsProven": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false
+}
