@@ -135,5 +135,23 @@
     "scientificLeaseCreated": false,
     "scientificExecutionAuthorized": false,
     "wholeLifecycleOsProven": false
+  },
+  "adoptionDecisionProposal": {
+    "status": "RECOMMENDATIONS-ONLY-NOT-FORMALLY-ADOPTED",
+    "referenceCommit": "f19454d75f303885f8f1697f7f058a86448085de",
+    "document": "ADOPTION_DECISION_PROPOSAL.md",
+    "inputEnvelope": "ADOPTION_INPUT_ENVELOPE.json",
+    "recommendScopeSeparation": true,
+    "recommendExistingJsonClientAsIs": false,
+    "recommendRawReadbackAndReservedTransferBudget": true,
+    "recommendApiReceiptWithExplicitTrustNarrowing": true,
+    "recommendCurrentB1PackageAdoption": false,
+    "finalScientificInputBytes": null,
+    "contractAdopted": false,
+    "implementationStopLifted": false,
+    "scientificSeedsRead": 0,
+    "scientificLeaseCreated": false,
+    "scientificExecutionAuthorized": false,
+    "wholeLifecycleOsProven": false
   }
 }

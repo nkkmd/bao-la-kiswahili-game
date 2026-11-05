@@ -313,5 +313,12 @@
   "scientificExecutionAuthorized": false,
   "wholeLifecycleOsProven": false,
   "hostModified": false,
-  "publicAssetsChanged": false
+  "publicAssetsChanged": false,
+  "subsequentDecisionProposal": {
+    "document": "ADOPTION_DECISION_PROPOSAL.md",
+    "inputEnvelope": "ADOPTION_INPUT_ENVELOPE.json",
+    "scientificRegistryAdapterExists": true,
+    "existingClassificationCountsReinterpretedAsNewPasses": false,
+    "candidateAdopted": false
+  }
 }
