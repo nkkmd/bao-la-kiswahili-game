@@ -52,5 +52,74 @@
   "scientificSeedsRead": 0,
   "scientificExecutionAuthorized": false,
   "wholeLifecycleOsProven": false,
-  "researchCompleted": false
+  "researchCompleted": false,
+  "concreteReview": {
+    "status": "CONCRETE-PROPOSAL-NOT-ADOPTED-NOT-AUTHORIZED",
+    "baseCommit": "1205afe0a2c79c957f5d21bee6b7de47a6665ae4",
+    "baseTree": "f6065400f243631e958f04c46214d4849b520a65",
+    "document": "CONCRETE_CONTRACT_PROPOSAL.md",
+    "proposalValuesAreMeasurements": false,
+    "recommendedBudget": "B1",
+    "adoptedBudget": null,
+    "proposedBudgets": {
+      "B1": {
+        "preparationSeconds": 600,
+        "scienceSeconds": 1200,
+        "postSciencePreservationSeconds": 600,
+        "executionSeconds": 2400
+      },
+      "B0": {
+        "preparationSeconds": 300,
+        "scienceSeconds": 1200,
+        "postSciencePreservationSeconds": 300,
+        "executionSeconds": 1800
+      }
+    },
+    "proposedResourceLimits": {
+      "preparationMemoryBytes": 2147483648,
+      "preservationMemoryBytes": 536870912,
+      "controlMemoryBytes": 134217728,
+      "taskParentMemoryBytes": 2281701376,
+      "taskSwapBytes": 0,
+      "preparationLocalBytes": 2147483648,
+      "scienceLocalBytes": 268435456,
+      "preservationAdditionalLocalBytes": 805306368,
+      "controlLocalBytes": 16777216,
+      "totalLocalBytes": 3238002688,
+      "remotePeakBytes": 805306368,
+      "preparationTransferBodyBytes": 1073741824,
+      "sciencePreservationControlTransferBodyBytes": 1073741824,
+      "preparationRequests": 256,
+      "preparationAttemptsPerFixedTarget": 3,
+      "sciencePreservationControlRequests": 12700,
+      "terminalControlBytes": 4194304,
+      "terminalReceiptBytes": 1048576
+    },
+    "platformAllocation": null,
+    "finalInputInventory": null,
+    "concreteTerminalApiBinding": null,
+    "trustedSupervisorOwnExitRequiredInProposedEvidence": false,
+    "wholeHostResourceProofClaimed": false,
+    "oldResultsReclassified": false,
+    "decisionItems": [
+      "J1-SCOPE",
+      "J2-BUDGET",
+      "J3-COMMUNICATION",
+      "J4-TERMINAL-TRUST",
+      "J5-ENVIRONMENT-COMPARISON"
+    ],
+    "allDecisionItemsAdopted": false,
+    "currentHashesOnlyAudit": {
+      "status": "FAILED-PREEXISTING-MAIN-MISMATCH",
+      "firstPath": ".github/workflows/illustrated-rules.yml"
+    },
+    "savedClientAudit": "PASS-SAVED-SUBSET-NOT-FULL-RESCAN",
+    "fullCurrentAuditPassed": false,
+    "implementationChanged": false,
+    "newTechnicalExperimentsStarted": false,
+    "scientificSeedsRead": 0,
+    "scientificLeaseCreated": false,
+    "scientificExecutionAuthorized": false,
+    "wholeLifecycleOsProven": false
+  }
 }

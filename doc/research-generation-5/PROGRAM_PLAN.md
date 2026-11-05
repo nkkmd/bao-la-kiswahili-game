@@ -1,5 +1,7 @@
 # 第五世代研究計画 — 探索順位の変動と厳密価値の損失
 
+> 契約具体化の最新追補: [未採用の具体案](execution-contract-review-20261105/CONCRETE_CONTRACT_PROPOSAL.md)にP/M/R・制御費用、有限予算B1/B0、操作別通信、保存終端D/A/T/E/U、Actions/WSL比較と判断J1〜J5を示した。[改訂工程案](execution-contract-review-20261105/REVISED_ROADMAP_DRAFT.md)は未実行・技術準備不足・供給不足・推定不能・非確認・確認を分ける。今回は具体案作成までで停止し、採用・実装・新規試験・科学登録/実行へ進まない。BEFCS科学seed0・leaseなし・未認可、既存実装移行停止と旧全工程未成立を保持する。PR #235後の現在用保存監査に既存不整合があり、文書PRの統合は必要CIの成立まで保留する。
+
 > 2026-11-05の契約再評価・工程改訂案: [再評価結果](execution-contract-review-20261105/README.md)と[完結までの工程案](execution-contract-review-20261105/REVISED_ROADMAP_DRAFT.md)を作成した。準備P・科学処理M・保全Rを別計数し総費用を併記する案を推奨するが、計数範囲の実質変更であり未採用である。今回の作業は再評価・工程組み直しまでで終了し、契約採用・実装・新規試験・科学実行へ進まない。既存実装移行停止・BEFCS科学seed0・未認可・旧全工程未成立を保持する。
 
 > 2026-11-05の実装移行査定: [起動・保存候補の査定結果](runner-topology-20261017/readiness-decision-20261105/README.md)を記録した。今回の候補はIMPLEMENTATION-READINESS-NOT-METで、実装・配備への移行を停止する。WSL不採用・全方式の不可能性・研究終了を意味しない。再検討には初回ロードを含む具体的計数経路と、D/A/T/Eの有限な保全経路が必要であり、同じ観察・文書追加・成功取引の反復では代用しない。科学seed0・未認可を維持する。
