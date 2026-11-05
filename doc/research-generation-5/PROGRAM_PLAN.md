@@ -1,6 +1,6 @@
 # 第五世代研究計画 — 探索順位の変動と厳密価値の損失
 
-> 契約具体化の最新追補: [未採用の具体案](execution-contract-review-20261105/CONCRETE_CONTRACT_PROPOSAL.md)にP/M/R・制御費用、有限予算B1/B0、操作別通信、保存終端D/A/T/E/U、Actions/WSL比較と判断J1〜J5を示した。[改訂工程案](execution-contract-review-20261105/REVISED_ROADMAP_DRAFT.md)は未実行・技術準備不足・供給不足・推定不能・非確認・確認を分ける。今回は具体案作成までで停止し、採用・実装・新規試験・科学登録/実行へ進まない。BEFCS科学seed0・leaseなし・未認可、既存実装移行停止と旧全工程未成立を保持する。PR #235後の現在用保存監査に既存不整合があり、文書PRの統合は必要CIの成立まで保留する。
+> Actions一候補の採用前レビュー: [三分類と具体的な不足](execution-contract-review-20261105/ACTIONS_PRE_ADOPTION_REVIEW.md)を整理した。既存のcgroup・容量・固定データ保存は部品証拠として保持するが、48 MiB片と24 MiB応答制限、実要求/転送量、最終T/E/UのAPI対応などは未成立で、正式採用は保留する。今回は静的レビューまでで停止し、実装・新規試験・科学登録/実行へ進まない。BEFCS科学seed0・leaseなし・未認可、旧全工程未成立と実装移行停止を維持する。保存監査の既存不整合により文書PRも統合保留とする。
 
 > 2026-11-05の契約再評価・工程改訂案: [再評価結果](execution-contract-review-20261105/README.md)と[完結までの工程案](execution-contract-review-20261105/REVISED_ROADMAP_DRAFT.md)を作成した。準備P・科学処理M・保全Rを別計数し総費用を併記する案を推奨するが、計数範囲の実質変更であり未採用である。今回の作業は再評価・工程組み直しまでで終了し、契約採用・実装・新規試験・科学実行へ進まない。既存実装移行停止・BEFCS科学seed0・未認可・旧全工程未成立を保持する。
 

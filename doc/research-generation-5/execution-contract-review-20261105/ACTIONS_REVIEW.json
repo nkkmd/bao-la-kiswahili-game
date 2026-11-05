@@ -1,0 +1,317 @@
+{
+  "status": "STATIC-PRE-ADOPTION-REVIEW-COMPLETE-CONTRACT-NOT-READY-NOT-ADOPTED",
+  "candidateId": "G5-ACTIONS-B1-GIT-REST-REVIEW-001",
+  "referenceCommit": "ec67f24db24b1e10e1091e90a5392fde4d17f96d",
+  "mainCommit": "1205afe0a2c79c957f5d21bee6b7de47a6665ae4",
+  "candidateRunnerLabel": "ubuntu-24.04",
+  "candidateArchitecture": "x64",
+  "candidateScientificNodeVersion": "24.19.0",
+  "runnerLabelIsImmutableImageDigest": false,
+  "proposedBudget": "B1",
+  "classificationCounts": {
+    "existingHistoricalComponentEvidence": 7,
+    "designExplainable": 7,
+    "notEstablished": 16
+  },
+  "countsAreProgressOrPassedGates": false,
+  "rows": [
+    {
+      "id": "E01",
+      "classification": "EXISTING-EVIDENCE-WITHIN-HISTORICAL-SCOPE",
+      "condition": "研究の問い・終了済み区画・不変条件の記録",
+      "basisOrGap": "[現在状態](../CURRENT_STATUS.md)、[旧科学契約案](../befcs-operations-20261013/CONTRACT_DRAFT.md)。320 source消費、16完全領域、BEFCS未実行を保持。新契約の採用証拠ではない",
+      "requiredClosure": null
+    },
+    {
+      "id": "E02",
+      "classification": "EXISTING-EVIDENCE-WITHIN-HISTORICAL-SCOPE",
+      "condition": "既知データでの全合法手・独立検算・未知保持",
+      "basisOrGap": "[BFS統合報告](../bfs-integration-20261013/REPORT.md)、[技術preflight](../branch-envelope-preflight-20261013/README.md)。科学入口への結合と新規供給は未成立",
+      "requiredClosure": null
+    },
+    {
+      "id": "E03",
+      "classification": "EXISTING-EVIDENCE-WITHIN-HISTORICAL-SCOPE",
+      "condition": "技術Git registryのCAS・読取前marker・独立履歴検算",
+      "basisOrGap": "[運用報告](../befcs-operations-20261013/REPORT.md)の1区画・128 marker・8 mirror・137 commit。ローカル技術remoteと論理IDであり、GitHub上の科学区画ではない",
+      "requiredClosure": null
+    },
+    {
+      "id": "E04",
+      "classification": "EXISTING-EVIDENCE-WITHIN-HISTORICAL-SCOPE",
+      "condition": "保存済み全workloadの1 GiB・swap条件・容量境界",
+      "basisOrGap": "[第2版CI確定](../befcs-workload-20261013/CI_CONFIRMATION_V2.md)、run 38354225350/38354228277の8固定シナリオ。新候補のP/R/C同時制限・資格分離は証明しない",
+      "requiredClosure": null
+    },
+    {
+      "id": "E05",
+      "classification": "EXISTING-EVIDENCE-WITHIN-HISTORICAL-SCOPE",
+      "condition": "実OSの小さな専用unit、OOM/ACK欠落、容量不足後の保存",
+      "basisOrGap": "[OS検算](../befcs-lifecycle-20261015/README.md)と[容量fixture](../befcs-capacity-20261015/README.md)、run 38739433923/38745436271。初回準備・全egress・外部終端は範囲外",
+      "requiredClosure": null
+    },
+    {
+      "id": "E06",
+      "classification": "EXISTING-EVIDENCE-WITHIN-HISTORICAL-SCOPE",
+      "condition": "固定技術データの外部保存・ACK抑止の区別",
+      "basisOrGap": "[外部保存](../befcs-external-20261015/README.md)、run 38743877526。保存成功と未ACKを区別できた部品証拠。新契約の全通信上限は証明しない",
+      "requiredClosure": null
+    },
+    {
+      "id": "E07",
+      "classification": "EXISTING-EVIDENCE-WITHIN-HISTORICAL-SCOPE",
+      "condition": "固定code取得と原image全体のD保存・独立復元",
+      "basisOrGap": "[capsule報告](../befcs-capsule-20261016/README.md)とCI_RECEIPT、run 38850453567。1266 file・11,746,870 byte、gzip約6.3 MBの技術例。最終科学input、48 MiB片、T/E/Uの成立には使わない",
+      "requiredClosure": null
+    },
+    {
+      "id": "D01",
+      "classification": "DESIGN-EXPLAINABLE-NOT-PROVEN",
+      "condition": "P/M/R/Cの対象・開始終了",
+      "basisOrGap": "Pは固定byte照合まで、t0を最初の科学exec前、Mは独立検算と停止まで、Rは既存byteの保全のみ。起動と時計の実効性はU03/U05へ",
+      "requiredClosure": null
+    },
+    {
+      "id": "D02",
+      "classification": "DESIGN-EXPLAINABLE-NOT-PROVEN",
+      "condition": "準備で科学計算を先取りしない",
+      "basisOrGap": "Pはhash/size照合だけ、遮断集合の構築・科学import・lease/consumeはM。P内で科学cacheを作らず、生成bufferをRへ逃がさない",
+      "requiredClosure": null
+    },
+    {
+      "id": "D03",
+      "classification": "DESIGN-EXPLAINABLE-NOT-PROVEN",
+      "condition": "同時資源・共有物・最後の送信費用",
+      "basisOrGap": "P残存物も計上し、M/R/C同時memory、共有fileとコピー、T封印前実測と終端予算を分離。最終peak不明を0にしない",
+      "requiredClosure": null
+    },
+    {
+      "id": "D04",
+      "classification": "DESIGN-EXPLAINABLE-NOT-PROVEN",
+      "condition": "runner改変とruntime共用を必須にしない",
+      "basisOrGap": "Kの標準runnerと科学Nodeを分ける。科学側だけを制限し、Kのretryは科学再実行を許可しない。固定版/依存同定はU02へ",
+      "requiredClosure": null
+    },
+    {
+      "id": "D05",
+      "classification": "DESIGN-EXPLAINABLE-NOT-PROVEN",
+      "condition": "一度限り性と停止後の解釈",
+      "basisOrGap": "科学入口1回、全区画lease後の中断は再開なし。失敗時は許可を閉じ、保存済prefixを保全するだけ。解null・未ACKを保持",
+      "requiredClosure": null
+    },
+    {
+      "id": "D06",
+      "classification": "DESIGN-EXPLAINABLE-NOT-PROVEN",
+      "condition": "科学操作と基盤通信を分ける",
+      "basisOrGap": "Git HTTPSのregistry/mirror、RESTのD/T、Kのjob/logを別台帳へ。科学workerにtoken・直接egressを与えない。下位要求/迂回拒否はU09/U10へ",
+      "requiredClosure": null
+    },
+    {
+      "id": "D07",
+      "classification": "DESIGN-EXPLAINABLE-NOT-PROVEN",
+      "condition": "不足時にも研究を正しく区切る",
+      "basisOrGap": "[工程案](REVISED_ROADMAP_DRAFT.md)の未実行・技術準備不足・供給不足・推定不能・非確認・確認に接続。正の結果を完結条件にしない",
+      "requiredClosure": null
+    },
+    {
+      "id": "U01",
+      "classification": "NOT-ESTABLISHED",
+      "condition": "最終科学入力をP/M容量へ収容",
+      "basisOrGap": "1266 fileの旧取得集合は最終入力一式ではない。保護集合・独立検算子・必要履歴・停止記録も要る",
+      "requiredClosure": "最終path/size/hash/実行bit/依存先、段階帰属、複製・allocated byteまでの静的台帳"
+    },
+    {
+      "id": "U02",
+      "classification": "NOT-ESTABLISHED",
+      "condition": "image/runtime/Kの固定と割当",
+      "basisOrGap": "OS labelだけでは版固定にならず、Node24.19.0の完全依存も未確定。一般仕様表は当該jobの割当証拠でない",
+      "requiredClosure": "利用imageと科学runtimeの許容条件・拒否条件、必要権限と基盤割当、入力manifest"
+    },
+    {
+      "id": "U03",
+      "classification": "NOT-ESTABLISHED",
+      "condition": "P600秒・取得3試行/256要求/1 GiB",
+      "basisOrGap": "現行workflowはcheckout/setup-nodeをSより前に実行する。外側の取得をP成功へ数えられない",
+      "requiredClosure": "K/S初回ロード→P制限確立→取得の順序と、全helper要求を含む制限経路"
+    },
+    {
+      "id": "U04",
+      "classification": "NOT-ESTABLISHED",
+      "condition": "Mの1 GiB・swap 0・合算RSS",
+      "basisOrGap": "過去cgroupは部品。Pで課金された共有頁、独立検算子、科学側の権限迂回を含む新構成は未確認",
+      "requiredClosure": "UID/cgroup/namespace/FDと共有頁計数の対応、上限変更/脱出拒否の合格条件"
+    },
+    {
+      "id": "U05",
+      "classification": "NOT-ESTABLISHED",
+      "condition": "M初回ロードから1200秒・領域180秒・終了予約",
+      "basisOrGap": "既存台帳の模擬時計や部分serviceを、新候補の初回exec・全停止の共通時計へ結合していない",
+      "requiredClosure": "t0・領域時計・1020秒以降の停止専用動作・hard deadline・停止失敗分類の一経路"
+    },
+    {
+      "id": "U06",
+      "classification": "NOT-ESTABLISHED",
+      "condition": "M256 MiB・予約16 MiB・全書込対象",
+      "basisOrGap": "Mのtmp/cache/journal/固定入力/原imageを最終一覧で網羅していない",
+      "requiredClosure": "全書込先と容量予約の同一台帳、解放順序、停止prefixの対象一覧"
+    },
+    {
+      "id": "U07",
+      "classification": "NOT-ESTABLISHED",
+      "condition": "R512 MiB・C128 MiB・停止後600秒",
+      "basisOrGap": "RESTのbase64/JSON全buffer、Git子孫、T送信を同時に収めた証拠がない",
+      "requiredClosure": "buffer寿命とprocess表、R/Cの分離、最終送信後費用の上限・計測不能欄"
+    },
+    {
+      "id": "U08",
+      "classification": "NOT-ESTABLISHED",
+      "condition": "task親2176 MiB・local3088 MiB・remote768 MiB",
+      "basisOrGap": "固定データの一部peakから全体peakへ外挿できない。Git loose/pack/metadataや孤立objectも費用を持つ",
+      "requiredClosure": "同時peakと累積object/remote残存の保守的上限、超過前停止経路"
+    },
+    {
+      "id": "U09",
+      "classification": "NOT-ESTABLISHED",
+      "condition": "token/egress/停止権限の分離・監督喪失",
+      "basisOrGap": "sudo可能なrunnerと科学UIDの隔離、manager/daemon経由の迂回、S喪失時の子孫停止が未結合",
+      "requiredClosure": "全権限・socket・FD・通信主体と、OS側停止/回収の担当表"
+    },
+    {
+      "id": "U10",
+      "classification": "NOT-ESTABLISHED",
+      "condition": "remote lease/consumeとattempt 1",
+      "basisOrGap": "現registryはTECHNICAL-REGISTRY-FIXTUREだけを受理し提案科学区画を拒否。run/head/契約hashと下位Git要求の一度限り性が未結合",
+      "requiredClosure": "既存拒否を維持した科学入口の別設計、CAS/receipt/応答不明停止、二度目入口拒否の条件"
+    },
+    {
+      "id": "U11",
+      "classification": "NOT-ESTABLISHED",
+      "condition": "mirrorと通信1 GiB/12700実要求",
+      "basisOrGap": "既存Gitはls-remote/fetch/pushを複数回使う。論理marker/片の数だけでは実要求数・pack転送量・timeoutを導けない",
+      "requiredClosure": "操作→Git subprocess→HTTP要求の静的台帳、metadata/pack上限、総body費用の算術"
+    },
+    {
+      "id": "U12",
+      "classification": "NOT-ESTABLISHED",
+      "condition": "D最大48 MiB片の保存/読戻し",
+      "basisOrGap": "現capsule clientは応答24 MiB上限。48 MiBのbase64本文だけで64 MiBとなり、直接流用不可",
+      "requiredClosure": "raw読戻し/別client等の案を予算内で比較。既存clientの上限だけを黙って増やさない"
+    },
+    {
+      "id": "U13",
+      "classification": "NOT-ESTABLISHED",
+      "condition": "A/T/E/Uの実APIと有限終端",
+      "basisOrGap": "旧成功はD/Aまで。Git ref作成responseを、永続な実行内U記録や親終了証拠と同一視できない",
+      "requiredClosure": "Tの全API要求、Uの必要field/保持先/照合、E対象、最後の費用・欠落分類。J4の保証変更の採否"
+    },
+    {
+      "id": "U14",
+      "classification": "NOT-ESTABLISHED",
+      "condition": "K費用・保持と全資源報告",
+      "basisOrGap": "標準VMの公開仕様と当該accountの利用条件・remote保存期間/料金を区別する必要がある。host全体の実測はない",
+      "requiredClosure": "基盤割当とtask実測の二層台帳、保持期間と費用上限、不明値の理由"
+    },
+    {
+      "id": "U15",
+      "classification": "NOT-ESTABLISHED",
+      "condition": "待ち1800秒・総実行2400秒と遅着拒否",
+      "basisOrGap": "jobのtimeoutだけではqueue期限・外部取消・遅着した科学入口拒否を保証しない",
+      "requiredClosure": "受付側期限/取消権限/一回認可失効の具体経路。未成立なら現在の70分受付案は採用不可"
+    },
+    {
+      "id": "U16",
+      "classification": "NOT-ESTABLISHED",
+      "condition": "保存監査CI・現在資料の統合",
+      "basisOrGap": "PR #235後のillustrated-rules.yml旧byte照合で現在用監査が停止する",
+      "requiredClosure": "科学実装と分離した現在用監査の正当な更新方針。旧証拠・凍結verify.py・旧bindingは維持"
+    }
+  ],
+  "sourcePins": {
+    "doc/research-generation-5/befcs-operations-20261013/REPORT.md": {
+      "bytes": 2842,
+      "sha256": "a4d7a6e56215aa62f2c97e94767dd91deb848f7416b32bb51b08f9028236687a"
+    },
+    "doc/research-generation-5/befcs-workload-20261013/CI_CONFIRMATION_V2.md": {
+      "bytes": 1546,
+      "sha256": "55138d299e71ad2c6c7a08f430af5e2b9d23b3666d2a3aed56eb7ae867ab0a2a"
+    },
+    "doc/research-generation-5/befcs-lifecycle-20261015/README.md": {
+      "bytes": 6832,
+      "sha256": "05f545b2e02498ff5cce15f1bc22f994b03d5c68ac0d8985a8bb8adb1a664115"
+    },
+    "doc/research-generation-5/befcs-capacity-20261015/README.md": {
+      "bytes": 3877,
+      "sha256": "04298818e1b4bab014bdac5baea89a88ce9207184e512c7e308412c55adc5a9d"
+    },
+    "doc/research-generation-5/befcs-external-20261015/README.md": {
+      "bytes": 3821,
+      "sha256": "8b8a4e09ae461b1a8159a17d1565acf453e3741188f234d640d94b41198ceb89"
+    },
+    "doc/research-generation-5/befcs-capsule-20261016/README.md": {
+      "bytes": 6181,
+      "sha256": "ee037591f914ed835b71beb6b1b4fe094cb09a8456f4f8cecbffff090edff41c"
+    },
+    "doc/research-generation-5/befcs-capsule-20261016/CI_RECEIPT.json": {
+      "bytes": 1704,
+      "sha256": "4e022dc45da972be2c0e5fe14c0f1ca6d48f79e7a8d739036cc164ad2ac943c2"
+    },
+    "doc/research-generation-5/befcs-capsule-20261016/CODE_MANIFEST.json": {
+      "bytes": 341921,
+      "sha256": "307af38bfa25636e782032d2b8e1318c3381442fc6c1625e6007d8b8c07a9fbb"
+    },
+    "doc/research-generation-5/bfs-integration-20261013/REPORT.md": {
+      "bytes": 6262,
+      "sha256": "3c324c2444ee7d689b3f5db0df5d047e60228bfa4fa7b4164404deeb4cd19f32"
+    },
+    "doc/research-generation-5/branch-envelope-preflight-20261013/README.md": {
+      "bytes": 953,
+      "sha256": "618c9435a9e1d8598d53e901f834cd65c4460c27ddb4b7ae47bf6944d253aaf6"
+    },
+    "tools/research/g5-befcs-capsule/transport.cjs": {
+      "bytes": 3263,
+      "sha256": "f9c9d67abce3b54d3bb706e9782c40df65b8b65c85a4703adac60a229b7c3e17"
+    },
+    "tools/research/g5-befcs-operations/registry.cjs": {
+      "bytes": 6477,
+      "sha256": "70028c203f7af49945fcffba36a99106114fb80211e8770d1fd002c17ffd07a4"
+    },
+    ".github/workflows/g5-befcs-capsule.yml": {
+      "bytes": 2535,
+      "sha256": "a36c257c88fc1c9d70ad625df7da5b69222b3a99c8b1510506dd258284754a7c"
+    }
+  },
+  "officialReferences": [
+    "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+    "https://docs.github.com/en/rest/git/blobs",
+    "https://docs.github.com/en/rest/git/refs"
+  ],
+  "staticFindings": {
+    "existingClientResponseLimitBytes": 25165824,
+    "proposedMaxChunkBytes": 50331648,
+    "base64CharsForMaxChunk": 67108864,
+    "maxChunkFitsExistingJsonClient": false,
+    "existingSingleCapsulePostCount": 5,
+    "existingSingleCapsuleGetCount": 4,
+    "sixChunkHypotheticalRestRequests": 19,
+    "hypotheticalRequestCountIsExecutionEvidence": false,
+    "proposedRequestCapProvenForAllTransports": false,
+    "terminalUApiBinding": null
+  },
+  "audits": {
+    "currentHashesOnly": "FAILED-PREEXISTING-ILLUSTRATED-RULES-WORKFLOW-MISMATCH",
+    "fullArchiveAuditPerformed": false,
+    "savedClients": "PASS-SAVED-SUBSET-NOT-FULL-RESCAN"
+  },
+  "contractAdopted": false,
+  "environmentSelected": false,
+  "implementationStopLifted": false,
+  "newTechnicalExperimentsStarted": false,
+  "newRemoteIntegrationTestStarted": false,
+  "scientificStudyRegistered": false,
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificExecutionAuthorized": false,
+  "wholeLifecycleOsProven": false,
+  "hostModified": false,
+  "publicAssetsChanged": false
+}

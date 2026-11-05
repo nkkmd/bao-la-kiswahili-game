@@ -121,5 +121,19 @@
     "scientificLeaseCreated": false,
     "scientificExecutionAuthorized": false,
     "wholeLifecycleOsProven": false
+  },
+  "actionsPreAdoptionReview": {
+    "status": "STATIC-REVIEW-COMPLETE-ADOPTION-NOT-READY",
+    "candidateId": "G5-ACTIONS-B1-GIT-REST-REVIEW-001",
+    "referenceCommit": "ec67f24db24b1e10e1091e90a5392fde4d17f96d",
+    "document": "ACTIONS_PRE_ADOPTION_REVIEW.md",
+    "matrix": "ACTIONS_REVIEW.json",
+    "contractAdopted": false,
+    "implementationStopLifted": false,
+    "newTechnicalExperimentsStarted": false,
+    "scientificSeedsRead": 0,
+    "scientificLeaseCreated": false,
+    "scientificExecutionAuthorized": false,
+    "wholeLifecycleOsProven": false
   }
 }
