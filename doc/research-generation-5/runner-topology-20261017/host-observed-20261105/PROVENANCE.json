@@ -1,0 +1,24 @@
+{
+  "evidenceClass": "USER-PASTED-OBSERVATION-TRANSCRIPTION-NOT-RAW-STDOUT",
+  "receivedDateJapan": "2026-11-05",
+  "measurementTimestamp": null,
+  "baseCommit": "9bc8fac5758140df67faa45e1e890714f1005676",
+  "observerCommit": "c9d19445f61e553d20e83d4151209d1dcdd22f8b",
+  "observerPath": "tools/research/g5-runner-topology/observe-parent-host.py",
+  "observerSha256": "f0236e9368afcf0f8243d1d637fc7fb339ff8cf29d15f0d36f6439659aa8e342",
+  "savedObservationSha256": "77cb6397e9ca3cd1732776023cb672849505a05429e5d5e0bd53fa94bbf9c331",
+  "savedHashIsOriginalStdoutHash": false,
+  "independentHostVerificationPerformed": false,
+  "hostReobservedByAssistant": false,
+  "gateStatus": {
+    "AUTHORITY": "OPEN",
+    "EGRESS": "OPEN",
+    "STOP": "OPEN",
+    "OOM": "OPEN",
+    "TERMINAL": "OPEN",
+    "CAPACITY": "OPEN"
+  },
+  "wholeLifecycleOsProven": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false
+}

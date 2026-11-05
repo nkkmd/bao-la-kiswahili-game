@@ -1,0 +1,99 @@
+{
+  "evidenceClass": "READ-ONLY-SELECTED-PARENT-HOST-OBSERVATION",
+  "architecture": "x86_64",
+  "kernelRelease": "6.18.54.1-microsoft-standard-WSL2",
+  "uid": 1000,
+  "systemdVersion": {
+    "status": "OBSERVED",
+    "exitCode": 0,
+    "stdout": "systemd 255 (255.4-1ubuntu8.17)"
+  },
+  "systemState": {
+    "status": "OBSERVED",
+    "exitCode": 0,
+    "stdout": "running"
+  },
+  "userService": {
+    "status": "OBSERVED",
+    "exitCode": 0,
+    "stdout": "ControlGroup=/user.slice/user-1000.slice/user@1000.service\nDelegate=yes\nActiveState=active"
+  },
+  "rootCgroup": {
+    "path": "/sys/fs/cgroup",
+    "values": {
+      "cgroup.type": {
+        "status": "OBSERVED",
+        "value": "domain"
+      },
+      "cgroup.controllers": {
+        "status": "OBSERVED",
+        "value": "cpuset cpu io memory hugetlb pids rdma"
+      },
+      "cgroup.subtree_control": {
+        "status": "OBSERVED",
+        "value": "cpu memory pids"
+      },
+      "memory.max": {
+        "status": "OBSERVED",
+        "value": "max"
+      },
+      "memory.swap.max": {
+        "status": "OBSERVED",
+        "value": "max"
+      },
+      "cgroup.events": {
+        "status": "OBSERVED",
+        "value": "populated 1\nfrozen 0"
+      }
+    },
+    "killFile": {
+      "status": "METADATA-ONLY",
+      "regularFile": true,
+      "mode": "0o200"
+    }
+  },
+  "selectedUserCgroup": {
+    "path": "/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service",
+    "values": {
+      "cgroup.type": {
+        "status": "OBSERVED",
+        "value": "domain"
+      },
+      "cgroup.controllers": {
+        "status": "OBSERVED",
+        "value": "cpu memory pids"
+      },
+      "cgroup.subtree_control": {
+        "status": "OBSERVED",
+        "value": "cpu memory pids"
+      },
+      "memory.max": {
+        "status": "OBSERVED",
+        "value": "max"
+      },
+      "memory.swap.max": {
+        "status": "OBSERVED",
+        "value": "max"
+      },
+      "cgroup.events": {
+        "status": "OBSERVED",
+        "value": "populated 1\nfrozen 0"
+      }
+    },
+    "killFile": {
+      "status": "METADATA-ONLY",
+      "regularFile": true,
+      "mode": "0o200"
+    }
+  },
+  "observationAtomic": false,
+  "privilegedOperationsTested": false,
+  "killFileOpened": false,
+  "limitsWritten": false,
+  "networkIsolationTested": false,
+  "mutationsPerformed": false,
+  "runnerExecuted": false,
+  "scientificSeedsRead": 0,
+  "wholeLifecycleOsProven": false,
+  "scientificExecutionAuthorized": false
+}
