@@ -1,0 +1,60 @@
+{
+  "evidenceClass": "STATIC-CANDIDATE-READINESS-DECISION-NOT-OS-EXECUTION",
+  "baseCommit": "ba0ea7f4ed6afd40ccc8f65b5cfd3f9d8c1b5a59",
+  "candidateId": "G5-PARENT-SCRIPT-S20-DRAFT-001",
+  "decision": "IMPLEMENTATION-READINESS-NOT-MET",
+  "decisionScope": "REVIEWED-BOOTSTRAP-AND-TERMINAL-ROUTES-ONLY",
+  "universalImpossibilityProven": false,
+  "wslRejected": false,
+  "researchCompleted": false,
+  "implementationMayProceed": false,
+  "remoteIntegrationMayProceed": false,
+  "routes": [
+    {
+      "id": "BOOT-USER-SAME-UID-AS-IS",
+      "status": "REJECTED-AS-SUFFICIENT",
+      "reason": "現状の同一UID委任だけではtaskからの制限解除・manager到達を拒否した証拠がない"
+    },
+    {
+      "id": "BOOT-L-OUTSIDE-C",
+      "status": "CONTRACT-NONCOMPLIANT",
+      "reason": "自作起動担当の初回ロード・準備を計数から外す"
+    },
+    {
+      "id": "BOOT-OS-PRECAP-L-INSIDE-C",
+      "status": "UNESTABLISHED",
+      "reason": "OS基盤と計数対象の境界、設定生成・起動前処理・開始時刻・費用が未固定"
+    },
+    {
+      "id": "END-B-SEND-THEN-S-TAIL",
+      "status": "UNESTABLISHED",
+      "reason": "B停止後の最終制御記録と親終了証拠の保全が未成立"
+    },
+    {
+      "id": "END-S-DIRECT-SEND",
+      "status": "UNESTABLISHED",
+      "reason": "Sの限定保存transportと最終ACK記録・親終了証拠の保全が未成立"
+    },
+    {
+      "id": "END-UNACCOUNTED-UPLOADER",
+      "status": "CONTRACT-NONCOMPLIANT",
+      "reason": "最後の保存主体・時計・memory・保存を範囲外へ移す"
+    },
+    {
+      "id": "END-RECURSIVE-RECEIPT-REUPLOAD",
+      "status": "REJECTED-AS-SUFFICIENT",
+      "reason": "receiptを含める再保存の反復では有限終端を定義できず、既存成功取引の反復を認めない"
+    }
+  ],
+  "requiredForReopening": [
+    "初回exec以前の制限・時計と全準備費用を含む一つの具体的経路",
+    "固定Dへの実行内ACKとT/Eの保全先・担当・有限な終端",
+    "対象限定権限・全client/egress・下位無再送・全入力と保存peakの未成立gateを保持"
+  ],
+  "fullStoragePeakBytes": null,
+  "bootstrapAccountingEstablished": false,
+  "terminalPreservationEstablished": false,
+  "wholeLifecycleOsProven": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false
+}
