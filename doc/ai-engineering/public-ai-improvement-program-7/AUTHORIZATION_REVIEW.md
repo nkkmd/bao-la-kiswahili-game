@@ -2,7 +2,7 @@
 
 ## 開始判断
 
-2026年9月8日、前回の推論実装の軽量化という提案に対するユーザーの「進めてください」に基づき、新規の実装・検証を開始する。Program IDは`PBAI-P7`、候補は`PBAI-C015-v1`。正式英語題目は `Exact Logic-Gate Inference Optimization and Strength Verification Program 7`。日本語題目は「学習済み論理ゲート評価器の厳密な推論軽量化と棋力検証」である。
+2026年9月8日、推論実装の軽量化に関する新規の実装・検証の開始が認可された。Program IDは`PBAI-P7`、候補は`PBAI-C015-v1`。正式英語題目は `Exact Logic-Gate Inference Optimization and Strength Verification Program 7`。日本語題目は「学習済み論理ゲート評価器の厳密な推論軽量化と棋力検証」である。
 
 GitHubのmainは`5caa1216a891b5b78f63a81bb559029d482c0181`、公開AIは`AI-GEN3 / AI-GEN3-RELEASE-001`。P6のPR #122は未統合で、HEADは`9ffda93ab3d659d4abe11e24a79b42c4fa925b78`。このHEADを基に`engineering/pbai-p7-logic-inference`を作成し、P6への依存を持つ別PRで扱う。mainもP6ブランチも変更しない。
 

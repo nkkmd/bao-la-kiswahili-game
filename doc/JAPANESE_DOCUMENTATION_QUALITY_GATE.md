@@ -120,6 +120,10 @@ A future study must use a new population contract and fresh seed block.
 
 **通常本文の英語完全文が1件でも残る場合、canonical / immutable / exact-output例外でなければFAIL。**
 
+### 会話中の指示の引用
+
+会話中の指示を逐語引用せず、決定内容・認可範囲・実施結果として記述していることを確認する。履歴の整理でも認可範囲や科学的判断を変更しない。原証拠・保存済みアーカイブと現在の説明文を区別し、必要な旧版参照と監査を保持する。
+
 ## 6. 必須ゲートC — code block・key/valueと日本語説明
 
 exact key/value、run status、hash、decision token等は翻訳しない。
