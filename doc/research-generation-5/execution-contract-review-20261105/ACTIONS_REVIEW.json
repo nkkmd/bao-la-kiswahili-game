@@ -327,5 +327,13 @@
     "priorFindingsConvertedToExecutionPasses": false,
     "fullExecutionContractAdopted": false,
     "scientificExecutionAuthorized": false
+  },
+  "subsequentLocalRawReadbackResult": {
+    "document": "../raw-readback-local-20261105/README.md",
+    "testCount": 13,
+    "runtime": "v24.22.1",
+    "existingCountsPromotedToNewExecutionPasses": false,
+    "u12LiveHttpOrOsConditionClosed": false,
+    "scientificExecutionAuthorized": false
   }
 }

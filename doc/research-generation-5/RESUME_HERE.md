@@ -1,6 +1,6 @@
 # 第五世代研究 — 安全な再開位置
 
-> ユーザー選択の確定: [確定した設計方針](execution-contract-review-20261105/USER_SELECTION.md)に基づき、P/M/R分割・科学上限/一度限り性の維持、raw読戻し、600/16/408 MiBの通信予約、API受理とS/Kの記録による最終受領方式を採用する。記録欠落は未確認とし、独立durable receiptとは区別する。B1数値一式・Actions実行契約全体は未採用で、実装・新規試験・科学登録/実行へ進まない。BEFCS科学seed0・leaseなし・未認可、旧全工程未成立と実装移行停止、文書PRの統合保留を維持する。
+> raw読戻し部品の限定実装: 後続のユーザー認可により[raw clientとローカル検査](raw-readback-local-20261105/README.md)を追加し、Node v24.22.1・メモリ内応答だけで13件が成功した。実HTTP adapter・OS制限・D全体ACK・T/U_api・科学runtime候補の適合は未検証で、既存の未成立条件を全体合格へ昇格しない。[選択済み方針](execution-contract-review-20261105/USER_SELECTION.md)は保持し、BEFCS科学seed0・leaseなし・未認可、実行契約全体未採用・文書統合保留を維持する。今回の新規実装/検査の認可はこの部品のローカル範囲だけで、外部結合・科学実行へ進まない。
 
 > 2026-11-05の契約再評価・工程改訂案: [再評価結果](execution-contract-review-20261105/README.md)と[完結までの工程案](execution-contract-review-20261105/REVISED_ROADMAP_DRAFT.md)を作成した。準備P・科学処理M・保全Rを別計数し総費用を併記する案を推奨するが、計数範囲の実質変更であり未採用である。今回の作業は再評価・工程組み直しまでで終了し、契約採用・実装・新規試験・科学実行へ進まない。既存実装移行停止・BEFCS科学seed0・未認可・旧全工程未成立を保持する。
 

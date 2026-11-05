@@ -154,7 +154,7 @@
     "scientificExecutionAuthorized": false,
     "wholeLifecycleOsProven": false
   },
-  "effectiveStatus": "USER-DESIGN-POLICIES-SELECTED-FULL-CONTRACT-NOT-ADOPTED-NOT-AUTHORIZED",
+  "effectiveStatus": "USER-DESIGN-POLICIES-SELECTED-RAW-LOCAL-COMPONENT-PASS-FULL-CONTRACT-NOT-ADOPTED",
   "userSelection": {
     "status": "DESIGN-POLICIES-SELECTED-BY-USER",
     "document": "USER_SELECTION.md",
@@ -182,6 +182,24 @@
     "implementationStopLifted": false,
     "newTechnicalExperimentsAuthorized": false,
     "scientificRegistrationAuthorized": false,
+    "scientificExecutionAuthorized": false,
+    "scientificSeedsRead": 0,
+    "scientificLeaseCreated": false,
+    "wholeLifecycleOsProven": false
+  },
+  "rawReadbackLocalWork": {
+    "status": "LOCAL-COMPONENT-IMPLEMENTED-AND-TESTED-NOT-LIVE-HTTP-OR-OS-PROVEN",
+    "authorizedScope": "RAW-CLIENT-IMPLEMENTATION-AND-LOCAL-KNOWN-DATA-TESTS-ONLY",
+    "document": "../raw-readback-local-20261105/README.md",
+    "result": "../raw-readback-local-20261105/LOCAL_RESULT.json",
+    "limitedNewImplementationPerformed": true,
+    "localTestCount": 13,
+    "localTestsPassed": 13,
+    "localNodeVersion": "v24.22.1",
+    "newLiveHttpOrRemoteIntegrationTestPerformed": false,
+    "newOsValidationPerformed": false,
+    "oldImplementationChanged": false,
+    "fullExecutionContractAdopted": false,
     "scientificExecutionAuthorized": false,
     "scientificSeedsRead": 0,
     "scientificLeaseCreated": false,

@@ -1,0 +1,56 @@
+{
+  "status": "LOCAL-IN-MEMORY-RAW-READBACK-COMPONENT-PASS-NOT-HTTP-OR-OS-VALIDATED",
+  "baseCommit": "3d021598d2b25d783968b238ee8e65b5fd1b761b",
+  "authorizedScope": "RAW-CLIENT-IMPLEMENTATION-AND-LOCAL-KNOWN-DATA-TESTS-ONLY",
+  "command": "node --test tools/research/g5-raw-readback/client.test.cjs",
+  "runtime": "v24.22.1",
+  "candidateNode24190Validated": false,
+  "testCount": 13,
+  "passed": 13,
+  "failed": 0,
+  "exitCode": 0,
+  "evidenceOrigin": "ASSISTANT-OBSERVED-LOCAL-NODE-TEST-OUTPUT",
+  "sources": {
+    "tools/research/g5-raw-readback/client.cjs": {
+      "bytes": 7588,
+      "sha256": "a4d02ac6413a10ce61225fa2e230dc7e80acc86316d58a8ef2bc12ef8d64a975"
+    },
+    "tools/research/g5-raw-readback/client.test.cjs": {
+      "bytes": 9415,
+      "sha256": "0aa65c00faa0239bf49e1010eda70b06c6e9bf87e350bc926da8069b21f03d71"
+    }
+  },
+  "fixed48MiB": {
+    "bytes": 50331648,
+    "byteValue": 165,
+    "sha256": "14d60307ec0f77dc1d495d74c4c9067eae1f316082ce3e43d1879d2478a85c60",
+    "gitBlob": "56904f0010a6f6c9e00a5f34bf63007b4191ed56",
+    "expectedHashesComputedWithPythonHashlib": true
+  },
+  "componentLimits": {
+    "blobBytes": 50331648,
+    "aggregateExpectedBytes": 268435456,
+    "requests": 6,
+    "ownedReadBufferBytes": 1048576,
+    "extraProbeBytesPerRequest": 1,
+    "maximumReservedProbeBytes": 6,
+    "maximumRequestMs": 10000
+  },
+  "fixtureTransport": "IN-MEMORY-BYOB-BYTE-STREAM-ONLY",
+  "realHttpRequests": 0,
+  "httpServerOrSocketCreated": false,
+  "newTestIncludedInRemoteWorkflow": false,
+  "oldImplementationChanged": false,
+  "liveHttpAdapterValidated": false,
+  "underlyingRetryAbsenceProven": false,
+  "osMemoryOrDeadlineProven": false,
+  "peakRssBytes": null,
+  "fullDataPreservationAcknowledged": false,
+  "terminalUApiValidated": false,
+  "fullExecutionContractAdopted": false,
+  "scientificModuleImported": false,
+  "scientificSeedsRead": 0,
+  "scientificLeaseCreated": false,
+  "scientificExecutionAuthorized": false,
+  "wholeLifecycleOsProven": false
+}
