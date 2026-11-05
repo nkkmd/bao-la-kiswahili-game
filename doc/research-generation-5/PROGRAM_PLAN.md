@@ -1,6 +1,6 @@
 # 第五世代研究計画 — 探索順位の変動と厳密価値の損失
 
-> 採否判断の最新追補: [判断案](execution-contract-review-20261105/ADOPTION_DECISION_PROPOSAL.md)と[既知入力台帳](execution-contract-review-20261105/ADOPTION_INPUT_ENVELOPE.json)を作成した。P/M/R分割は採用推奨、既存保存clientの直接流用は不適合、raw読戻しと終端予算の予約・U_apiの保証範囲は修正案として提示する。最終入力と新契約の技術条件が未成立のため一括採用は推奨せず、正式採用・実装・新規試験・科学登録/実行へ進まない。BEFCS科学seed0・leaseなし・未認可、旧全工程未成立と実装移行停止を維持する。文書PRの統合も既存保存監査の不整合により保留する。
+> ユーザー選択の確定: [確定した設計方針](execution-contract-review-20261105/USER_SELECTION.md)に基づき、P/M/R分割・科学上限/一度限り性の維持、raw読戻し、600/16/408 MiBの通信予約、API受理とS/Kの記録による最終受領方式を採用する。記録欠落は未確認とし、独立durable receiptとは区別する。B1数値一式・Actions実行契約全体は未採用で、実装・新規試験・科学登録/実行へ進まない。BEFCS科学seed0・leaseなし・未認可、旧全工程未成立と実装移行停止、文書PRの統合保留を維持する。
 
 > 2026-11-05の契約再評価・工程改訂案: [再評価結果](execution-contract-review-20261105/README.md)と[完結までの工程案](execution-contract-review-20261105/REVISED_ROADMAP_DRAFT.md)を作成した。準備P・科学処理M・保全Rを別計数し総費用を併記する案を推奨するが、計数範囲の実質変更であり未採用である。今回の作業は再評価・工程組み直しまでで終了し、契約採用・実装・新規試験・科学実行へ進まない。既存実装移行停止・BEFCS科学seed0・未認可・旧全工程未成立を保持する。
 

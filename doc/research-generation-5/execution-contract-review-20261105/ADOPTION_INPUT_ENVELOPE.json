@@ -246,5 +246,12 @@
     "total": 1073741824,
     "finalDataMetadataWithinReserve": 2097152
   },
-  "decisionProposal": "ADOPTION_DECISION_PROPOSAL.md"
+  "decisionProposal": "ADOPTION_DECISION_PROPOSAL.md",
+  "subsequentUserSelection": {
+    "document": "USER_SELECTION.md",
+    "designPoliciesSelected": true,
+    "priorFindingsConvertedToExecutionPasses": false,
+    "fullExecutionContractAdopted": false,
+    "scientificExecutionAuthorized": false
+  }
 }

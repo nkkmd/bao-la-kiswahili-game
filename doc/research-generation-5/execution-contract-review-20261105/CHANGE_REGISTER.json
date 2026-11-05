@@ -153,5 +153,38 @@
     "scientificLeaseCreated": false,
     "scientificExecutionAuthorized": false,
     "wholeLifecycleOsProven": false
+  },
+  "effectiveStatus": "USER-DESIGN-POLICIES-SELECTED-FULL-CONTRACT-NOT-ADOPTED-NOT-AUTHORIZED",
+  "userSelection": {
+    "status": "DESIGN-POLICIES-SELECTED-BY-USER",
+    "document": "USER_SELECTION.md",
+    "selectionSource": "推奨の選択でお願いします",
+    "referenceCommit": "b22fc5ebac2a34ab12989f01109a7edf7903e104",
+    "scopeSeparationSelected": true,
+    "scientificLimitsMaintained": true,
+    "consumeOnceMaintained": true,
+    "existingJsonClientAsIsSelected": false,
+    "rawReadbackSelected": true,
+    "selectedTransferBodyAllocationBytes": {
+      "finalData": 629145600,
+      "terminalControl": 16777216,
+      "registryConsumeMirror": 427819008,
+      "total": 1073741824
+    },
+    "terminalEvidenceMode": "API-ACCEPTANCE-PLUS-TRUSTED-SUPERVISOR-PLATFORM-RECORD",
+    "independentDurableReceiptRequired": false,
+    "supervisorOwnExitRequiredInTaskEvidence": false,
+    "scienceAndPreservationChildrenOsStopEvidenceRequired": true,
+    "missingExecutionReportPromotedByLaterRefDiscovery": false,
+    "requestCapAdopted": null,
+    "b1BudgetPackageAdopted": false,
+    "fullExecutionContractAdopted": false,
+    "implementationStopLifted": false,
+    "newTechnicalExperimentsAuthorized": false,
+    "scientificRegistrationAuthorized": false,
+    "scientificExecutionAuthorized": false,
+    "scientificSeedsRead": 0,
+    "scientificLeaseCreated": false,
+    "wholeLifecycleOsProven": false
   }
 }

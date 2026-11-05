@@ -320,5 +320,12 @@
     "scientificRegistryAdapterExists": true,
     "existingClassificationCountsReinterpretedAsNewPasses": false,
     "candidateAdopted": false
+  },
+  "subsequentUserSelection": {
+    "document": "USER_SELECTION.md",
+    "designPoliciesSelected": true,
+    "priorFindingsConvertedToExecutionPasses": false,
+    "fullExecutionContractAdopted": false,
+    "scientificExecutionAuthorized": false
   }
 }
