@@ -118,7 +118,7 @@ RULES_UPDATE_BLOBS = {
 
 
 def verify_rules_update(repo, source_head, pins=None, approval=None):
-    """承認済み15ファイルだけを履歴・現在byte・modeで限定照合する。"""
+    """固定更新の対象だけを履歴・現在byte・modeで限定照合する。"""
     pins = RULES_UPDATE_BLOBS if pins is None else pins
     approval = RULES_UPDATE_COMMIT if approval is None else approval
     assert subprocess.run(["git", "-C", str(repo), "merge-base", "--is-ancestor",
@@ -139,6 +139,11 @@ def verify_rules_update(repo, source_head, pins=None, approval=None):
     return len(pins)
 
 
+# 認可・結果を変えない文書表現の2件を、元sourceと固定更新commitで限定照合する。
+DOCUMENT_EDITORIAL_COMMIT = '78a3101e3308941dbd58baca53b0e1868b6c17ec'
+DOCUMENT_EDITORIAL_BLOBS = {'doc/ai-engineering/pbai-c015-adoption-review/ADOPTION.md': ('f477e2962dc69c8ddb7c29b9660d7765ea6e1ba5', 'd61f2762d709f6134f70e7fcdf48594042349d0e'), 'doc/first-player-gen4/MAIN_INTEGRATION.md': ('d4cca0dc59b6488bd39e341be1d27e971d885990', '8495b9602a984ff732632bc128bdd90e479d73ba')}
+
+
 def preserved_current(frozen):
     scope = frozen.read("INTEGRATION_SCOPE.json")
     old = frozen.tree(scope["sourceHead"])
@@ -148,12 +153,18 @@ def preserved_current(frozen):
     for name, text in snapshots.items():
         assert text.encode() == frozen.git("show", scope["sourceHead"] + ":" + name), name
     updated = verify_rules_update(BASE, scope["sourceHead"])
+    editorial = verify_rules_update(BASE, scope["sourceHead"],
+                                    DOCUMENT_EDITORIAL_BLOBS, DOCUMENT_EDITORIAL_COMMIT)
     count = 0
     for name, (mode, expected) in old.items():
         if name in allowed:
             continue
         if name in RULES_UPDATE_BLOBS:
             assert (mode, expected) == ("100644", RULES_UPDATE_BLOBS[name][0]), name
+            count += 1
+            continue
+        if name in DOCUMENT_EDITORIAL_BLOBS:
+            assert (mode, expected) == ("100644", DOCUMENT_EDITORIAL_BLOBS[name][0]), name
             count += 1
             continue
         p = BASE / name
@@ -177,6 +188,7 @@ def preserved_current(frozen):
         assert scope[k] is False
     return {"agentsPolicyCommit": AGENTS_POLICY_COMMIT,
             "approvedRulesUpdateCommit": RULES_UPDATE_COMMIT, "approvedRulesUpdateFiles": updated,
+            "documentEditorialCommit": DOCUMENT_EDITORIAL_COMMIT, "documentEditorialFiles": editorial,
             "preservedSourceFiles": count, "historicalSnapshots": len(snapshots),
             "publicAndWorkerFiles": len(public), "historicalWorkflows": len(scope["historicalWorkflows"])}
 

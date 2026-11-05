@@ -120,6 +120,11 @@ class AgentsPolicyTest(unittest.TestCase):
 
 
 class RulesUpdateTest(unittest.TestCase):
+    def test_pinned_document_editorial_update(self):
+        self.assertEqual(audit.verify_rules_update(audit.BASE,
+            "a5014f79b300d3e5731aa272e4c6cb0d16baa350",
+            audit.DOCUMENT_EDITORIAL_BLOBS, audit.DOCUMENT_EDITORIAL_COMMIT), 2)
+
     def test_real_approved_update(self):
         self.assertEqual(audit.verify_rules_update(audit.BASE,
             "a5014f79b300d3e5731aa272e4c6cb0d16baa350"), 15)
