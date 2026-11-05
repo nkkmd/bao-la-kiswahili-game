@@ -1,0 +1,2109 @@
+{
+  "evidenceClass": "TEXTUAL-SELECTED-API-REFERENCES-NOT-CALL-GRAPH",
+  "sourceCommit": "e8da76a89e42c534960ba060df154e9538b32bc3",
+  "inputManifestSha256": "7cd1755c763a381a25852ea25379fcd988c645ee9ddcc66bcebfea7a72b29e9e",
+  "verifiedInputFiles": 26,
+  "pattern": "\\b(?:fs|cp|crypto|process|Buffer|performance|assert)\\.[A-Za-z_$][\\w$]*|\\bstructuredClone\\b|\\.toReversed\\b",
+  "symbols": [
+    {
+      "symbol": ".toReversed",
+      "sites": [
+        {
+          "path": "tools/research/g5-compact-bfs/fixtures.cjs",
+          "line": 25,
+          "column": 138
+        },
+        {
+          "path": "tools/research/g5-method/ring-engine.cjs",
+          "line": 5,
+          "column": 64
+        },
+        {
+          "path": "tools/research/g5-method/ring-engine.cjs",
+          "line": 6,
+          "column": 66
+        }
+      ]
+    },
+    {
+      "symbol": "Buffer.alloc",
+      "sites": [
+        {
+          "path": "tools/research/g5-compact-bfs/compact.cjs",
+          "line": 38,
+          "column": 42
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/compact.cjs",
+          "line": 40,
+          "column": 184
+        },
+        {
+          "path": "tools/research/g5-method/raw-codec.cjs",
+          "line": 15,
+          "column": 29
+        }
+      ]
+    },
+    {
+      "symbol": "Buffer.byteLength",
+      "sites": [
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 20,
+          "column": 15
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 95,
+          "column": 15
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 20,
+          "column": 15
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 84,
+          "column": 15
+        }
+      ]
+    },
+    {
+      "symbol": "Buffer.concat",
+      "sites": [
+        {
+          "path": "tools/research/g5-compact-bfs/compact.cjs",
+          "line": 41,
+          "column": 9
+        }
+      ]
+    },
+    {
+      "symbol": "Buffer.from",
+      "sites": [
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 84,
+          "column": 97
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 73,
+          "column": 97
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/compact.cjs",
+          "line": 40,
+          "column": 15
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 12,
+          "column": 76
+        },
+        {
+          "path": "tools/research/g5-method/independent-raw-codec.cjs",
+          "line": 15,
+          "column": 9
+        }
+      ]
+    },
+    {
+      "symbol": "Buffer.isBuffer",
+      "sites": [
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 84,
+          "column": 64
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 73,
+          "column": 64
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 27,
+          "column": 12
+        }
+      ]
+    },
+    {
+      "symbol": "assert.deepEqual",
+      "sites": [
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 46,
+          "column": 14
+        },
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 58,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 47,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/session.cjs",
+          "line": 20,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/session.cjs",
+          "line": 23,
+          "column": 37
+        },
+        {
+          "path": "tools/research/g5-befcs-host/session.cjs",
+          "line": 39,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/session.cjs",
+          "line": 44,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 62,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 84,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 89,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 89,
+          "column": 50
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 97,
+          "column": 42
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 103,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 118,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 9,
+          "column": 103
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+          "line": 56,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+          "line": 58,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+          "line": 61,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+          "line": 70,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/independent-closure.cjs",
+          "line": 8,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/independent-closure.cjs",
+          "line": 15,
+          "column": 62
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/independent-closure.cjs",
+          "line": 16,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/independent-closure.cjs",
+          "line": 19,
+          "column": 20
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/independent-closure.cjs",
+          "line": 25,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/source.cjs",
+          "line": 51,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/source.cjs",
+          "line": 54,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/source.cjs",
+          "line": 60,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 11,
+          "column": 21
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 33,
+          "column": 294
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 36,
+          "column": 262
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 37,
+          "column": 2
+        },
+        {
+          "path": "tools/research/g5-method/independent-raw-codec.cjs",
+          "line": 13,
+          "column": 54
+        },
+        {
+          "path": "tools/research/g5-method/microstate-check.cjs",
+          "line": 10,
+          "column": 46
+        },
+        {
+          "path": "tools/research/g5-method/raw-codec.cjs",
+          "line": 10,
+          "column": 39
+        }
+      ]
+    },
+    {
+      "symbol": "assert.equal",
+      "sites": [
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 9,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 10,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 12,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 14,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 15,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 20,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 42,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 43,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 52,
+          "column": 16
+        },
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 53,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 54,
+          "column": 39
+        },
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 56,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 56,
+          "column": 50
+        },
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 57,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 7,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 21,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 36,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 43,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 43,
+          "column": 41
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 44,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 45,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 45,
+          "column": 55
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 46,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 46,
+          "column": 50
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 59,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 59,
+          "column": 47
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 60,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 62,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 63,
+          "column": 23
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 63,
+          "column": 58
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 63,
+          "column": 92
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 64,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 73,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 74,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 76,
+          "column": 23
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 77,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 77,
+          "column": 67
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 79,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/session.cjs",
+          "line": 16,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/session.cjs",
+          "line": 21,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/session.cjs",
+          "line": 22,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/session.cjs",
+          "line": 30,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/session.cjs",
+          "line": 38,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/session.cjs",
+          "line": 43,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/session.cjs",
+          "line": 58,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 51,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 52,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 52,
+          "column": 52
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 70,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 74,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 74,
+          "column": 43
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 76,
+          "column": 43
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 76,
+          "column": 87
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 79,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 82,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 82,
+          "column": 33
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 83,
+          "column": 55
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 88,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 91,
+          "column": 43
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 91,
+          "column": 75
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 92,
+          "column": 47
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 93,
+          "column": 35
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 93,
+          "column": 73
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 95,
+          "column": 49
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 95,
+          "column": 77
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 97,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 102,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 21,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 36,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 41,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 42,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 56,
+          "column": 23
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 56,
+          "column": 58
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 56,
+          "column": 92
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 57,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 66,
+          "column": 23
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 68,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 9,
+          "column": 2
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 9,
+          "column": 44
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 9,
+          "column": 176
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 9,
+          "column": 220
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 9,
+          "column": 270
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 9,
+          "column": 331
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 10,
+          "column": 253
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 11,
+          "column": 131
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 14,
+          "column": 60
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 14,
+          "column": 122
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 14,
+          "column": 157
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 14,
+          "column": 277
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 14,
+          "column": 319
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 14,
+          "column": 380
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+          "line": 9,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/independent-closure.cjs",
+          "line": 14,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/independent-closure.cjs",
+          "line": 14,
+          "column": 39
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/independent-closure.cjs",
+          "line": 14,
+          "column": 73
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/independent-closure.cjs",
+          "line": 15,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/independent-closure.cjs",
+          "line": 17,
+          "column": 46
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/source.cjs",
+          "line": 55,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/source.cjs",
+          "line": 91,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/compact.cjs",
+          "line": 17,
+          "column": 30
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/compact.cjs",
+          "line": 19,
+          "column": 85
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/compact.cjs",
+          "line": 44,
+          "column": 19
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 5,
+          "column": 23
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 9,
+          "column": 43
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 11,
+          "column": 62
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 11,
+          "column": 88
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 11,
+          "column": 124
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 11,
+          "column": 188
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 12,
+          "column": 109
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 13,
+          "column": 71
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 14,
+          "column": 64
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 15,
+          "column": 74
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 12,
+          "column": 110
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 13,
+          "column": 59
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 27,
+          "column": 54
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 28,
+          "column": 49
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 28,
+          "column": 75
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 28,
+          "column": 111
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 28,
+          "column": 148
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 28,
+          "column": 176
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 29,
+          "column": 23
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 29,
+          "column": 78
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 30,
+          "column": 53
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 30,
+          "column": 85
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 30,
+          "column": 115
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 31,
+          "column": 103
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 31,
+          "column": 134
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 32,
+          "column": 92
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 33,
+          "column": 50
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 33,
+          "column": 100
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 33,
+          "column": 150
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 33,
+          "column": 221
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 34,
+          "column": 36
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 34,
+          "column": 84
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 34,
+          "column": 253
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 36,
+          "column": 23
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 36,
+          "column": 89
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 36,
+          "column": 185
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 36,
+          "column": 352
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 37,
+          "column": 67
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 37,
+          "column": 129
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 37,
+          "column": 227
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 40,
+          "column": 19
+        },
+        {
+          "path": "tools/research/g5-method/independent-raw-codec.cjs",
+          "line": 5,
+          "column": 32
+        },
+        {
+          "path": "tools/research/g5-method/independent-raw-codec.cjs",
+          "line": 18,
+          "column": 41
+        },
+        {
+          "path": "tools/research/g5-method/independent-raw-codec.cjs",
+          "line": 18,
+          "column": 169
+        },
+        {
+          "path": "tools/research/g5-method/microstate-check.cjs",
+          "line": 5,
+          "column": 111
+        },
+        {
+          "path": "tools/research/g5-method/microstate-check.cjs",
+          "line": 6,
+          "column": 2
+        },
+        {
+          "path": "tools/research/g5-method/microstate-check.cjs",
+          "line": 7,
+          "column": 38
+        },
+        {
+          "path": "tools/research/g5-method/microstate-check.cjs",
+          "line": 10,
+          "column": 2
+        },
+        {
+          "path": "tools/research/g5-method/microstate-check.cjs",
+          "line": 11,
+          "column": 82
+        },
+        {
+          "path": "tools/research/g5-method/raw-codec.cjs",
+          "line": 5,
+          "column": 32
+        },
+        {
+          "path": "tools/research/g5-method/raw-codec.cjs",
+          "line": 9,
+          "column": 26
+        },
+        {
+          "path": "tools/research/g5-method/raw-codec.cjs",
+          "line": 16,
+          "column": 94
+        },
+        {
+          "path": "tools/research/g5-method/raw-codec.cjs",
+          "line": 19,
+          "column": 41
+        },
+        {
+          "path": "tools/research/g5-method/raw-codec.cjs",
+          "line": 19,
+          "column": 71
+        }
+      ]
+    },
+    {
+      "symbol": "assert.match",
+      "sites": [
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 18,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 19,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 35,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 84,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 7,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 42,
+          "column": 42
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 73,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 14,
+          "column": 418
+        }
+      ]
+    },
+    {
+      "symbol": "assert.notEqual",
+      "sites": [
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 50,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-befcs-host/session.cjs",
+          "line": 9,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/session.cjs",
+          "line": 10,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 90,
+          "column": 43
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 48,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/compact.cjs",
+          "line": 5,
+          "column": 2
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 5,
+          "column": 2
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 34,
+          "column": 152
+        },
+        {
+          "path": "tools/research/g5-method/microstate-check.cjs",
+          "line": 5,
+          "column": 60
+        }
+      ]
+    },
+    {
+      "symbol": "assert.ok",
+      "sites": [
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 20,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 28,
+          "column": 9
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 35,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 51,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 63,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 64,
+          "column": 87
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 76,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 80,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 92,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 95,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/session.cjs",
+          "line": 18,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/session.cjs",
+          "line": 45,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-host/session.cjs",
+          "line": 54,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 53,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 54,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 70,
+          "column": 45
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 80,
+          "column": 34
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 95,
+          "column": 33
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 20,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 28,
+          "column": 9
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 35,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 44,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 45,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 49,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 56,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 57,
+          "column": 87
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 66,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 69,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 81,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 84,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 7,
+          "column": 159
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 10,
+          "column": 186
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 14,
+          "column": 197
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 14,
+          "column": 470
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/scientific-source.cjs",
+          "line": 7,
+          "column": 52
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/scientific-source.cjs",
+          "line": 19,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/independent-closure.cjs",
+          "line": 12,
+          "column": 77
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/independent-closure.cjs",
+          "line": 17,
+          "column": 26
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/independent-closure.cjs",
+          "line": 18,
+          "column": 23
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/independent-closure.cjs",
+          "line": 23,
+          "column": 39
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/independent-closure.cjs",
+          "line": 24,
+          "column": 83
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/independent-closure.cjs",
+          "line": 28,
+          "column": 5
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/source.cjs",
+          "line": 11,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/source.cjs",
+          "line": 92,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/source.cjs",
+          "line": 93,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/source.cjs",
+          "line": 94,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/source.cjs",
+          "line": 109,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/compact.cjs",
+          "line": 19,
+          "column": 22
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 12,
+          "column": 23
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 13,
+          "column": 55
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 14,
+          "column": 179
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 14,
+          "column": 218
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 15,
+          "column": 58
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 19,
+          "column": 19
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 13,
+          "column": 22
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 27,
+          "column": 2
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 27,
+          "column": 143
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 31,
+          "column": 185
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 32,
+          "column": 270
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 32,
+          "column": 327
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 32,
+          "column": 375
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 34,
+          "column": 58
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 34,
+          "column": 125
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 34,
+          "column": 220
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 37,
+          "column": 163
+        },
+        {
+          "path": "tools/research/g5-method/independent-raw-codec.cjs",
+          "line": 6,
+          "column": 2
+        },
+        {
+          "path": "tools/research/g5-method/independent-raw-codec.cjs",
+          "line": 7,
+          "column": 23
+        },
+        {
+          "path": "tools/research/g5-method/independent-raw-codec.cjs",
+          "line": 7,
+          "column": 102
+        },
+        {
+          "path": "tools/research/g5-method/independent-raw-codec.cjs",
+          "line": 8,
+          "column": 43
+        },
+        {
+          "path": "tools/research/g5-method/independent-raw-codec.cjs",
+          "line": 9,
+          "column": 24
+        },
+        {
+          "path": "tools/research/g5-method/independent-raw-codec.cjs",
+          "line": 10,
+          "column": 2
+        },
+        {
+          "path": "tools/research/g5-method/independent-raw-codec.cjs",
+          "line": 10,
+          "column": 95
+        },
+        {
+          "path": "tools/research/g5-method/independent-raw-codec.cjs",
+          "line": 11,
+          "column": 2
+        },
+        {
+          "path": "tools/research/g5-method/independent-raw-codec.cjs",
+          "line": 11,
+          "column": 66
+        },
+        {
+          "path": "tools/research/g5-method/independent-raw-codec.cjs",
+          "line": 12,
+          "column": 2
+        },
+        {
+          "path": "tools/research/g5-method/independent-raw-codec.cjs",
+          "line": 13,
+          "column": 113
+        },
+        {
+          "path": "tools/research/g5-method/independent-raw-codec.cjs",
+          "line": 13,
+          "column": 151
+        },
+        {
+          "path": "tools/research/g5-method/independent-raw-codec.cjs",
+          "line": 18,
+          "column": 2
+        },
+        {
+          "path": "tools/research/g5-method/independent-raw-codec.cjs",
+          "line": 21,
+          "column": 57
+        },
+        {
+          "path": "tools/research/g5-method/independent-raw-codec.cjs",
+          "line": 22,
+          "column": 128
+        },
+        {
+          "path": "tools/research/g5-method/microstate-check.cjs",
+          "line": 4,
+          "column": 2
+        },
+        {
+          "path": "tools/research/g5-method/microstate-check.cjs",
+          "line": 5,
+          "column": 36
+        },
+        {
+          "path": "tools/research/g5-method/microstate-check.cjs",
+          "line": 8,
+          "column": 23
+        },
+        {
+          "path": "tools/research/g5-method/microstate-check.cjs",
+          "line": 9,
+          "column": 2
+        },
+        {
+          "path": "tools/research/g5-method/raw-codec.cjs",
+          "line": 3,
+          "column": 18
+        },
+        {
+          "path": "tools/research/g5-method/raw-codec.cjs",
+          "line": 6,
+          "column": 74
+        },
+        {
+          "path": "tools/research/g5-method/raw-codec.cjs",
+          "line": 8,
+          "column": 69
+        },
+        {
+          "path": "tools/research/g5-method/raw-codec.cjs",
+          "line": 9,
+          "column": 60
+        },
+        {
+          "path": "tools/research/g5-method/raw-codec.cjs",
+          "line": 9,
+          "column": 96
+        },
+        {
+          "path": "tools/research/g5-method/raw-codec.cjs",
+          "line": 9,
+          "column": 143
+        },
+        {
+          "path": "tools/research/g5-method/raw-codec.cjs",
+          "line": 10,
+          "column": 98
+        },
+        {
+          "path": "tools/research/g5-method/raw-codec.cjs",
+          "line": 10,
+          "column": 134
+        },
+        {
+          "path": "tools/research/g5-method/raw-codec.cjs",
+          "line": 19,
+          "column": 2
+        },
+        {
+          "path": "tools/research/g5-method/raw-codec.cjs",
+          "line": 21,
+          "column": 27
+        },
+        {
+          "path": "tools/research/g5-method/raw-codec.cjs",
+          "line": 21,
+          "column": 45
+        },
+        {
+          "path": "tools/research/g5-method/raw-codec.cjs",
+          "line": 21,
+          "column": 65
+        }
+      ]
+    },
+    {
+      "symbol": "cp.execFileSync",
+      "sites": [
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 10,
+          "column": 38
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 10,
+          "column": 38
+        }
+      ]
+    },
+    {
+      "symbol": "crypto.createHash",
+      "sites": [
+        {
+          "path": "tools/research/g5-01/measurement.cjs",
+          "line": 8,
+          "column": 21
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 4,
+          "column": 19
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 4,
+          "column": 19
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 5,
+          "column": 15
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 3,
+          "column": 15
+        }
+      ]
+    },
+    {
+      "symbol": "fs.closeSync",
+      "sites": [
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 5,
+          "column": 222
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 7,
+          "column": 147
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 7,
+          "column": 300
+        }
+      ]
+    },
+    {
+      "symbol": "fs.existsSync",
+      "sites": [
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 11,
+          "column": 8
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 11,
+          "column": 8
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 7,
+          "column": 169
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+          "line": 40,
+          "column": 18
+        }
+      ]
+    },
+    {
+      "symbol": "fs.fsyncSync",
+      "sites": [
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 5,
+          "column": 165
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 7,
+          "column": 121
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 7,
+          "column": 267
+        }
+      ]
+    },
+    {
+      "symbol": "fs.mkdirSync",
+      "sites": [
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 8,
+          "column": 3
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 8,
+          "column": 3
+        }
+      ]
+    },
+    {
+      "symbol": "fs.openSync",
+      "sites": [
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 4,
+          "column": 32
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 7,
+          "column": 62
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 7,
+          "column": 211
+        }
+      ]
+    },
+    {
+      "symbol": "fs.readFileSync",
+      "sites": [
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 28,
+          "column": 31
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 8,
+          "column": 27
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 10,
+          "column": 271
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 11,
+          "column": 149
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/science-gate.cjs",
+          "line": 12,
+          "column": 28
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+          "line": 40,
+          "column": 49
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+          "line": 44,
+          "column": 25
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+          "line": 55,
+          "column": 28
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/scientific-closure.cjs",
+          "line": 70,
+          "column": 29
+        }
+      ]
+    },
+    {
+      "symbol": "fs.renameSync",
+      "sites": [
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 7,
+          "column": 165
+        }
+      ]
+    },
+    {
+      "symbol": "fs.rmSync",
+      "sites": [
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 22,
+          "column": 61
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 37,
+          "column": 102
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 22,
+          "column": 61
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 37,
+          "column": 102
+        }
+      ]
+    },
+    {
+      "symbol": "fs.writeFileSync",
+      "sites": [
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 7,
+          "column": 94
+        }
+      ]
+    },
+    {
+      "symbol": "fs.writeSync",
+      "sites": [
+        {
+          "path": "tools/research/g5-compact-bfs/journal.cjs",
+          "line": 5,
+          "column": 123
+        }
+      ]
+    },
+    {
+      "symbol": "performance.now",
+      "sites": [
+        {
+          "path": "tools/research/g5-compact-bfs/compact.cjs",
+          "line": 6,
+          "column": 47
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/compact.cjs",
+          "line": 12,
+          "column": 31
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 6,
+          "column": 45
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 8,
+          "column": 24
+        }
+      ]
+    },
+    {
+      "symbol": "process.env",
+      "sites": [
+        {
+          "path": "tools/research/g5-befcs-host/host.cjs",
+          "line": 23,
+          "column": 54
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 9,
+          "column": 20
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 42,
+          "column": 63
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 43,
+          "column": 79
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 60,
+          "column": 69
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 74,
+          "column": 69
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 9,
+          "column": 20
+        }
+      ]
+    },
+    {
+      "symbol": "process.resourceUsage",
+      "sites": [
+        {
+          "path": "tools/research/g5-compact-bfs/compact.cjs",
+          "line": 12,
+          "column": 100
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 8,
+          "column": 81
+        }
+      ]
+    },
+    {
+      "symbol": "structuredClone",
+      "sites": [
+        {
+          "path": "tools/research/g5-01/transition/fixtures.cjs",
+          "line": 21,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-01/transition/fixtures.cjs",
+          "line": 22,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-01/transition/fixtures.cjs",
+          "line": 23,
+          "column": 7
+        },
+        {
+          "path": "tools/research/g5-01/transition/fixtures.cjs",
+          "line": 27,
+          "column": 64
+        },
+        {
+          "path": "tools/research/g5-befcs-host/scientific-registry.cjs",
+          "line": 54,
+          "column": 37
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 55,
+          "column": 15
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/independent-scientific-source.cjs",
+          "line": 64,
+          "column": 53
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/registry.cjs",
+          "line": 51,
+          "column": 24
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/scientific-source.cjs",
+          "line": 10,
+          "column": 15
+        },
+        {
+          "path": "tools/research/g5-befcs-workload/scientific-source.cjs",
+          "line": 25,
+          "column": 70
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/source.cjs",
+          "line": 100,
+          "column": 15
+        },
+        {
+          "path": "tools/research/g5-branch-envelope/source.cjs",
+          "line": 115,
+          "column": 70
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/fixtures.cjs",
+          "line": 37,
+          "column": 191
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 6,
+          "column": 71
+        },
+        {
+          "path": "tools/research/g5-compact-bfs/reference.cjs",
+          "line": 18,
+          "column": 197
+        },
+        {
+          "path": "tools/research/g5-method/microstate-check.cjs",
+          "line": 15,
+          "column": 50
+        },
+        {
+          "path": "tools/research/g5-method/microstate-check.cjs",
+          "line": 17,
+          "column": 54
+        },
+        {
+          "path": "tools/research/g5-method/ring-engine.cjs",
+          "line": 4,
+          "column": 14
+        }
+      ]
+    }
+  ],
+  "runtimeExecuted": false,
+  "node20WorkCompatibilityProven": false,
+  "wholeLifecycleOsProven": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false
+}
