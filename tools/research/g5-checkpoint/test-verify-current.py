@@ -119,5 +119,51 @@ class AgentsPolicyTest(unittest.TestCase):
                     audit.verify_agents(repo)
 
 
+class RulesUpdateTest(unittest.TestCase):
+    def test_real_approved_update(self):
+        self.assertEqual(audit.verify_rules_update(audit.BASE,
+            "a5014f79b300d3e5731aa272e4c6cb0d16baa350"), 15)
+
+    def test_changes_loss_symlink_and_unapproved_history_are_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            repo = Path(directory)
+            def git(*args):
+                return subprocess.check_output(["git", "-C", str(repo), "-c", "user.name=Fixture",
+                    "-c", "user.email=fixture@example.invalid", *args], stderr=subprocess.DEVNULL)
+            git("init", "-q", "-b", "main")
+            p = repo / "rules.txt"
+            p.write_bytes(b"old")
+            git("add", "."); git("commit", "-qm", "old")
+            old = git("rev-parse", "HEAD").decode().strip()
+            before = git("rev-parse", "HEAD:rules.txt").decode().strip()
+            p.write_bytes(b"approved")
+            git("add", "."); git("commit", "-qm", "approved")
+            approved = git("rev-parse", "HEAD").decode().strip()
+            after = git("rev-parse", "HEAD:rules.txt").decode().strip()
+            pins = {"rules.txt": (before, after)}
+            def verify(mapping=pins, source=old):
+                return audit.verify_rules_update(repo, source, mapping, approved)
+            self.assertEqual(verify(), 1)
+            p.chmod(0o755)
+            with self.assertRaises(AssertionError): verify()
+            p.chmod(0o644)
+            p.write_bytes(b"later change")
+            with self.assertRaises(AssertionError): verify()
+            p.unlink()
+            with self.assertRaises(AssertionError): verify()
+            other = repo / "other"
+            other.write_bytes(b"approved")
+            p.symlink_to(other)
+            with self.assertRaises(AssertionError): verify()
+            p.unlink(); p.write_bytes(b"approved")
+            with self.assertRaises(AssertionError): verify({})
+            with self.assertRaises(AssertionError): verify({"rules.txt": (after, after)})
+            with self.assertRaises(AssertionError): verify({"rules.txt": (before, before)})
+            with self.assertRaises(AssertionError): verify(source=approved)
+            git("checkout", "--orphan", "unrelated")
+            git("add", "."); git("commit", "-qm", "unrelated")
+            with self.assertRaises(AssertionError): verify()
+
+
 if __name__ == "__main__":
     unittest.main()

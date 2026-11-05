@@ -34,7 +34,7 @@
 
 両PRは凍結に伴い統合せず閉じ、branchとcommitを残す。部品のローカル合格は実HTTP・OS制限・保存全体ACK・科学runtime適合の証明にしない。本凍結記録は最新main `1205afe0a2c79c957f5d21bee6b7de47a6665ae4`から独立して作成し、未統合の実装を混入させない。
 
-保存監査はPR #235後の `.github/workflows/illustrated-rules.yml` の旧byte照合不一致が未解消である。hashes-onlyと完全監査は区別し、どちらも成功したとは記録しない。監査器・旧binding・原証拠を書き換えて回避しない。
+凍結記録作成時の保存監査はPR #235後の `.github/workflows/illustrated-rules.yml` の旧byte照合不一致が未解消である。hashes-onlyと完全監査は区別し、どちらも成功したとは記録しない。旧binding・原証拠を書き換えて回避しない。後続のユーザー認可による監査保守では、[現在用監査の案内](../../tools/research/g5-checkpoint/CURRENT_USAGE.md)に従い、PR #235の固定commit・15ファイルの旧新blobを現在用監査器で限定照合する。これは凍結解除ではなく、以下の再開条件は維持する。
 
 ## 再開条件
 
