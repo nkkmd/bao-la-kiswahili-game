@@ -1,0 +1,33 @@
+{
+  "evidenceClass": "LOCAL-STATIC-ACQUISITION-RECEIPT-NOT-RAW-HTTP",
+  "dateJapan": "2026-11-05",
+  "baseCommit": "02b2f17ba2c188bf6f0411957f56011b1c134c74",
+  "acquisitionPlanSha256": "68837f9a9edeb9342f2d721e53d2307f73306830fd1dee1b2a43a7200c65058a",
+  "requests": [
+    {
+      "url": "https://nodejs.org/dist/v20.20.2/SHASUMS256.txt",
+      "curlExitCode": 0,
+      "invocations": 1,
+      "bytes": 3777,
+      "sha256": "c6f74825d6ddf350ef06600c67fec6ea2f7996cf438a78c3cb2a89b29d4320ed"
+    },
+    {
+      "url": "https://github.com/actions/runner/releases/download/v2.337.0/actions-runner-linux-x64-2.337.0.tar.gz",
+      "curlExitCode": 0,
+      "invocations": 1,
+      "bytes": 226430031,
+      "sha256": "70920811a4f8ad4328818682bca5c6469c1c942fab52448868071d0063816613"
+    },
+    {
+      "url": "https://nodejs.org/dist/v20.20.2/node-v20.20.2-linux-x64.tar.gz",
+      "curlExitCode": 0,
+      "invocations": 1,
+      "bytes": 47175721,
+      "sha256": "19e56f0825510207dd904f087fe52faa0a4eb6b2aab5f0ea7a33830d04888b8b"
+    }
+  ],
+  "retryAfterFailure": false,
+  "fallbackUrlUsed": false,
+  "scientificTransactionRepeated": false,
+  "scope": "STATIC-RESEARCH-OUTSIDE-SCIENTIFIC-LIFECYCLE-PROOF"
+}

@@ -1,0 +1,19 @@
+name: G5 Static Node Binary Reader
+on:
+  pull_request:
+    paths: ['doc/research-generation-5/runner-topology-20261017/node-binary-20261105/**', '.github/workflows/g5-node-binary-audit.yml']
+  push:
+    branches: [main]
+    paths: ['doc/research-generation-5/runner-topology-20261017/node-binary-20261105/**', '.github/workflows/g5-node-binary-audit.yml']
+permissions:
+  contents: read
+jobs:
+  static-reader:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Test static reader on synthetic archives only
+        run: python3 -m unittest discover -s doc/research-generation-5/runner-topology-20261017/node-binary-20261105 -p test_compare.py
