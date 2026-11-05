@@ -1,0 +1,36 @@
+{
+  "evidenceClass": "STATIC-RELEASE-MEMBER-BYTE-IDENTITY",
+  "runnerArchive": {
+    "bytes": 226430031,
+    "sha256": "70920811a4f8ad4328818682bca5c6469c1c942fab52448868071d0063816613"
+  },
+  "nodeArchive": {
+    "bytes": 47175721,
+    "sha256": "19e56f0825510207dd904f087fe52faa0a4eb6b2aab5f0ea7a33830d04888b8b"
+  },
+  "checksumList": {
+    "bytes": 3777,
+    "sha256": "c6f74825d6ddf350ef06600c67fec6ea2f7996cf438a78c3cb2a89b29d4320ed"
+  },
+  "runnerNode": {
+    "path": "./externals/node20/bin/node",
+    "bytes": 98932688,
+    "sha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+    "format": "ELF64-LITTLE-ENDIAN-X86-64"
+  },
+  "officialNode": {
+    "path": "node-v20.20.2-linux-x64/bin/node",
+    "bytes": 98932688,
+    "sha256": "6295488653f0d93b0a157841746fef7e72cc4328cfb60c4bbe0ca2668a836ffd",
+    "format": "ELF64-LITTLE-ENDIAN-X86-64"
+  },
+  "nodeRelease": "v20.20.2",
+  "distributedNodeBinaryIdentified": true,
+  "releaseSignatureVerified": false,
+  "archiveExtracted": false,
+  "binaryExecuted": false,
+  "node20WorkCompatibilityProven": false,
+  "wholeLifecycleOsProven": false,
+  "scientificSeedsRead": 0,
+  "scientificExecutionAuthorized": false
+}

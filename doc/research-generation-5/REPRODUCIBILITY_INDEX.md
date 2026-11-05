@@ -1,5 +1,7 @@
 # 第五世代研究 — 再現性の索引
 
+> 2026-11-05の再開・binary照合: [配布Nodeの静的同一性](runner-topology-20261017/node-binary-20261105/README.md)でmainと保存資料の整合を再確認し、固定runner内Node20と公式v20.20.2 Linux x64の実体98932688 byte・SHA-256一致を確認した。work互換性・Node24除外・全工程成立は未認定。次は指定版APIとwork使用箇所の対応確認で、runner改変・build・実行、remote結合試験、科学実行は開始しない。
+
 > 2026-10-31のNode20資料確認: [取得指定と限定API](runner-topology-20261017/node20-version-20261031/README.md)で固定runnerの取得指定20.20.2と、同版資料のstructuredClone/toReversedを確認した。配布binaryの版同定・work互換性は未成立で、Node24除外は未認定。原archiveの前回pathは欠落しており、再取得せず静的資料のみ保存。runner改変・build・実行、remote結合試験、科学実行は開始しない。
 
 > 2026-10-31のwork依存・CAS確認: [4入口の静的索引](runner-topology-20261017/work-deps-20261031/README.md)に26ファイル・48 literal参照を保存した。完全依存解析やNode20互換性の証明ではない。Git仲介でも期待旧ref付きpushとreceipt後読取を維持し、次は同梱Node20の静的版特定。runner改変・build・実行、remote結合試験、科学実行は開始しない。
