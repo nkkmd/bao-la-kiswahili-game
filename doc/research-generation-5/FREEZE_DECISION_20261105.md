@@ -32,14 +32,20 @@
 | 契約具体化・採用前レビュー | [PR #236](https://github.com/nkkmd/bao-la-kiswahili-game/pull/236)、`3d021598d2b25d783968b238ee8e65b5fd1b761b` | 未統合の検討資料として保持 |
 | raw読戻し部品とローカル13件合格 | [PR #237](https://github.com/nkkmd/bao-la-kiswahili-game/pull/237)、`1fe40a297f5a9a9f9128fa263b7ec7f3fa895fa0` | 未統合の限定実装として保持 |
 
-両PRは凍結に伴い統合せず閉じ、branchとcommitを残す。部品のローカル合格は実HTTP・OS制限・保存全体ACK・科学runtime適合の証明にしない。本凍結記録は最新main `1205afe0a2c79c957f5d21bee6b7de47a6665ae4`から独立して作成し、未統合の実装を混入させない。
+両PRは凍結に伴い統合せず閉鎖済みで、branchとcommitを保持している。部品のローカル合格は実HTTP・OS制限・保存全体ACK・科学runtime適合の証明にしない。本凍結記録は当時のmain `1205afe0a2c79c957f5d21bee6b7de47a6665ae4`から独立して作成し、未統合の実装を混入させない。
 
-凍結記録作成時の保存監査はPR #235後の `.github/workflows/illustrated-rules.yml` の旧byte照合不一致が未解消である。hashes-onlyと完全監査は区別し、どちらも成功したとは記録しない。旧binding・原証拠を書き換えて回避しない。後続のユーザー認可による監査保守では、[現在用監査の案内](../../tools/research/g5-checkpoint/CURRENT_USAGE.md)に従い、PR #235の固定commit・15ファイルの旧新blobを現在用監査器で限定照合する。これは凍結解除ではなく、以下の再開条件は維持する。
+## 保存監査の解消と統合
+
+凍結記録作成時はPR #235による旧source内15ファイルの更新に現在用監査器が対応しておらず、最初の `.github/workflows/illustrated-rules.yml` で停止した。後続のユーザー認可で、固定commit・旧新blob・現在byteを限定照合するよう現在用監査器を修正した。旧verify.py・binding・scope・原ZIP・公開ファイル・workflowは変更していない。
+
+[PR #238](https://github.com/nkkmd/bao-la-kiswahili-game/pull/238)をmain `9bf489bcfb491c05913f3462af89d631251c4288`へ統合済み。CI16件、統合後の監査器10テストと完全保存監査が合格した。hashes-onlyだけの合格ではない。原binding、保存5資料・3361 member、旧source 8760ファイルの保全と限定更新の照合を確認した。[現在用監査の案内](../../tools/research/g5-checkpoint/CURRENT_USAGE.md)を使い、凍結済み旧監査器を現在案内へそのまま適用しない。
+
+保存監査の合格は研究の実行条件成立や凍結解除を意味せず、以下の再開条件は維持する。
 
 ## 再開条件
 
 1. ユーザーが凍結解除と次の限定作業を明示的に認可する。
-2. 最新main・保存資料・未統合資料を再照合し、監査不整合の扱いを決める。
+2. 最新main・保存資料・未統合資料を再照合し、現在用保存監査の合格を確認する。新たな不整合があれば科学作業前に解消する。
 3. 未成立条件ごとに必要最小限の技術作業、有限上限、費用、失敗時の停止点を示し、実施範囲を認可する。
 4. 技術条件の証拠を確認して実行契約とrunnerの採否を判断する。科学登録・実行は別途認可する。
 
@@ -47,4 +53,4 @@
 
 ## 文書監査
 
-対象は本書と研究案内6文書、契約再評価入口、ルートREADME、中央索引2文書の計11 Markdown。変更部分の英語だけの説明見出し・通常説明文、相対リンク切れ、意図しないcode block・数値・hash・科学認可の変更は0件とする。ID、path、hash、API名、既存decision tokenは識別子として保持する。自己レビューで凍結・科学判断・過去記録の区別を照合し、保存監査の既存失敗を別記する。
+対象は本書と研究案内6文書、契約再評価入口、ルートREADME、中央索引2文書の計11 Markdown。変更部分の英語だけの説明見出し・通常説明文、相対リンク切れ、意図しないcode block・数値・hash・科学認可の変更は0件とする。ID、path、hash、API名、既存decision tokenは識別子として保持する。自己レビューで凍結・科学判断・過去記録の区別を照合し、保存監査の当初失敗と解消後の完全監査合格を区別する。

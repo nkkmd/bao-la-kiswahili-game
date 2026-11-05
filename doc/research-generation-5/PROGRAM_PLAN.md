@@ -2,6 +2,8 @@
 
 > 現在の状態（2026-11-05）: ユーザーの指示により、第五世代研究は**技術準備不足による保留・凍結**とした。[凍結判断と再開条件](FREEZE_DECISION_20261105.md)を優先し、以下の過去の「次の工程」は現在の実行指示にしない。追加実装・技術試験・科学登録/実行は停止する。研究完了・仮説否定を意味しない。
 
+> 保存・統合の最新確認（2026-11-05）: [PR #238](https://github.com/nkkmd/bao-la-kiswahili-game/pull/238)で凍結記録と現在用保存監査の修正をmainへ統合した。統合commitは`9bf489bcfb491c05913f3462af89d631251c4288`。CI16件と統合後の完全保存監査が合格した。これは研究の実行条件成立や凍結解除ではない。未統合で閉じたPR #236・#237は[凍結判断](FREEZE_DECISION_20261105.md#未統合資料の保全)から参照する。
+
 > 2026-11-05の契約再評価・工程改訂案: [再評価結果](execution-contract-review-20261105/README.md)と[完結までの工程案](execution-contract-review-20261105/REVISED_ROADMAP_DRAFT.md)を作成した。準備P・科学処理M・保全Rを別計数し総費用を併記する案を推奨するが、計数範囲の実質変更であり未採用である。今回の作業は再評価・工程組み直しまでで終了し、契約採用・実装・新規試験・科学実行へ進まない。既存実装移行停止・BEFCS科学seed0・未認可・旧全工程未成立を保持する。
 
 > 2026-11-05の実装移行査定: [起動・保存候補の査定結果](runner-topology-20261017/readiness-decision-20261105/README.md)を記録した。今回の候補はIMPLEMENTATION-READINESS-NOT-METで、実装・配備への移行を停止する。WSL不採用・全方式の不可能性・研究終了を意味しない。再検討には初回ロードを含む具体的計数経路と、D/A/T/Eの有限な保全経路が必要であり、同じ観察・文書追加・成功取引の反復では代用しない。科学seed0・未認可を維持する。
@@ -26,10 +28,10 @@
 
 > 2026-10-16の最新状態: [固定code取得と封印原image全体の外部保存](befcs-capsule-20261016/README.md)を検証し、1,266ファイルと通常/ACK抑止の両原imageを独立復元した。ACK抑止は未ACKのまま保持する。外側起動・封印後制御記録・最終科学input等は未完で、科学seed消費0・未登録/未実行を維持する。[現在の完了判定表](befcs-capsule-20261016/COMPLETION_GATES.md)を参照する。以下の追補は各段階時点の履歴である。
 
-> 2026-10-15の現在案内: 終了済み5 Studyと第3版の取得後検算は[PR #205](https://github.com/nkkmd/bao-la-kiswahili-game/pull/205)でmainへ統合済みです。[統合記録](checkpoint-20261014/MAIN_INTEGRATION_20261015.md)、[中間保存](checkpoint-20261014/README.md)、[再開位置](RESUME_HERE.md)を参照してください。第五世代全体は継続中で、BEFCSと正式関係は未登録・未実行です。以下の日時付き記録と計画本文は各時点の履歴として保持します。
+> 2026-10-15の現在案内: 終了済み5 Studyと第3版の取得後検算は[PR #205](https://github.com/nkkmd/bao-la-kiswahili-game/pull/205)でmainへ統合済みです。[統合記録](checkpoint-20261014/MAIN_INTEGRATION_20261015.md)、[中間保存](checkpoint-20261014/README.md)、[再開位置](RESUME_HERE.md)を参照してください。当時の第五世代全体は継続中で、BEFCSと正式関係は未登録・未実行です。以下の日時付き記録と計画本文は各時点の履歴として保持します。
 
 作成日: 2026-09-29
-状態: **第五世代研究は継続中／供給5 Study終了・中間保存main統合済み・BEFCSと正式関係は未登録・未実行**
+状態: **技術準備不足による保留・凍結／供給5 Study終了・BEFCSと正式関係は未登録・未実行**
 対象: Bao Research Generation 5
 
 > 2026-10-12の着手追補: 本文は計画作成時点の記録を保持する。ユーザーの着手指示に基づく第1段階の技術実行、takasiaを含むRAW識別、資源上限は[G5-01技術契約](g5-01/TECHNICAL_CONTRACT.md)で具体化した。新規証拠の科学実行はまだ開始していない。最新状態は[CURRENT_STATUS.md](CURRENT_STATUS.md)を参照する。

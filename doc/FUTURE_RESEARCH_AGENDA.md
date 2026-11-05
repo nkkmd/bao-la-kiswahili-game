@@ -14,11 +14,11 @@
 
 Version: 5.22.0
 
-更新日: 2026-10-15（日本時間）
+更新日: 2026-11-05（日本時間）
 Research Generation 2: **Closed (2026-08-31)**（完了）
 Research Generation 3: **Closed and integrated to `main` (2026-09-04)**（完了・統合済み）
 Research Generation 4: **core G4-01〜G4-10 scientific agenda complete / G4-10 CLOSED NON-ESTIMABLE / main integrated**
-Research Generation 5: **G5-01〜G5-05終了・BEFCS第3版技術検算済み・中間保存main統合済み／正式関係準備未成立・未登録・未実行**
+Research Generation 5: **技術準備不足による保留・凍結／G5-01〜G5-05終了・BEFCS第3版技術検算済み・中間保存main統合済み／正式関係準備未成立・未登録・未実行**
 
 この文書は、今後の研究課題と、判断の前提となる完了済み研究を整理するものです。まず第1〜3節で現在地・優先課題・新規Studyの条件を確認し、第4〜7節で第一世代から第四世代までの記録を順に参照してください。候補として記載しただけでは、Study開始、seedアクセス、計算実行、公開AI変更は承認されません。
 
