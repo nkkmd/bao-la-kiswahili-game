@@ -25,7 +25,7 @@ class BindingTest(unittest.TestCase):
         for name in self.navigation:
             self.write(name, "# 元の日本語案内\n".encode())
         self.write(self.evidence, b'{"unknown":null,"seedsRead":0}\n')
-        self.write(audit.WORKFLOW, b"name: Frozen audit\n" + audit.OLD_STEP + b"\n")
+        self.write(audit.WORKFLOW, b"name: Frozen audit\n" + audit.OLD_STEP + b"\n" + audit.OLD_G5_TEST + b"\n")
         self.scope = audit.DOC + "/INTEGRATION_SCOPE.json"
         self.binding = audit.DOC + "/CHECKPOINT_BINDING.json"
         self.write(self.scope, json.dumps({"sourceHead": "fixed-source", "mutableNavigation": self.navigation}).encode())
@@ -36,7 +36,7 @@ class BindingTest(unittest.TestCase):
         self.snapshot = self.git("rev-parse", "HEAD").decode().strip()
         self.tree = self.git("rev-parse", "HEAD^{tree}").decode().strip()
         self.write("README.md", "# mainへ統合済みの現在案内\n".encode())
-        self.write(audit.WORKFLOW, b"name: Frozen audit\n" + audit.CURRENT_STEP + b"\n")
+        self.write(audit.WORKFLOW, b"name: Frozen audit\n" + audit.CURRENT_STEP + b"\n" + audit.CURRENT_G5_TEST + b"\n")
         self.commit("current navigation")
 
     def git(self, *args):
@@ -85,6 +85,12 @@ class BindingTest(unittest.TestCase):
         with self.assertRaises(AssertionError):
             self.verify()
 
+    def test_historical_ci_checkout_change_is_rejected(self):
+        current = (self.repo / audit.WORKFLOW).read_bytes()
+        self.write(audit.WORKFLOW, current.replace(b"43e145da1eb66cab38b56e96b52c0f3a4282b302", b"0" * 40))
+        with self.assertRaises(AssertionError):
+            self.verify()
+
     def test_unrelated_workflow_change_is_rejected(self):
         with (self.repo / audit.WORKFLOW).open("ab") as stream:
             stream.write(b"permissions: write-all\n")
@@ -120,6 +126,11 @@ class AgentsPolicyTest(unittest.TestCase):
 
 
 class RulesUpdateTest(unittest.TestCase):
+    def test_historical_ci_workflows_are_pinned(self):
+        self.assertEqual(audit.verify_rules_update(audit.BASE,
+            "a5014f79b300d3e5731aa272e4c6cb0d16baa350",
+            audit.CI_ADAPTATION_BLOBS, audit.CI_ADAPTATION_COMMIT), 9)
+
     def test_directive_normalization_preserves_originals(self):
         self.assertEqual(audit.verify_rules_update(audit.BASE,
             "a5014f79b300d3e5731aa272e4c6cb0d16baa350",

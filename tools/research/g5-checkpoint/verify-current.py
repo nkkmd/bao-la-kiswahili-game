@@ -19,6 +19,9 @@ CURRENT_STEP = (b"        run: |\n"
                 b"          python3 tools/research/g5-checkpoint/verify-current.py")
 
 
+OLD_G5_TEST = "        run: node --test test/g5-*.cjs"
+CURRENT_G5_TEST = "        run: |\n          git worktree add --detach \"$RUNNER_TEMP/g5-legacy-checkpoint\" 43e145da1eb66cab38b56e96b52c0f3a4282b302\n          (cd \"$RUNNER_TEMP/g5-legacy-checkpoint\" && node --test test/g5-*.cjs)"
+
 def git(repo, *args):
     return subprocess.check_output(["git", "-C", str(repo), *args])
 
@@ -55,7 +58,8 @@ def verify_bindings(repo, snapshot_commit, snapshot_tree):
             assert sha(frozen) == expected, name
             if name == WORKFLOW:
                 assert frozen.count(OLD_STEP) == 1, name
-                assert (repo / name).read_bytes() == frozen.replace(OLD_STEP, CURRENT_STEP), name
+                assert frozen.count(OLD_G5_TEST) == 1, name
+                assert (repo / name).read_bytes() == frozen.replace(OLD_STEP, CURRENT_STEP).replace(OLD_G5_TEST, CURRENT_G5_TEST), name
             else:
                 assert (repo / name).is_file(), name
             historical += 1
@@ -188,6 +192,21 @@ DIRECTIVE_NORMALIZATION_BLOBS = {
 }
 
 
+# CIで旧版と現在版を分離する。対象と前後blobを限定し旧Studyのbindingは不変とする。
+CI_ADAPTATION_COMMIT = 'e5cf796ad82bcd465a9d4117fb48dd3fddaa7007'
+CI_ADAPTATION_BLOBS = {
+    '.github/workflows/g5-01-development-preflight.yml': ('07de09c970cbe880b367ea71016f1cc85d3c8507', 'a174bf3cfb3fd3f52ba683f88c2bdbc468de0a15'),
+    '.github/workflows/g5-01-transition-technical.yml': ('f2b4b3b8300f435858ecd94767603786ebd97959', 'bd23d4fed4bf086d5b9761d92cbbcf2132ae7fed'),
+    '.github/workflows/g5-02-supply-preflight.yml': ('3e6972c2e1f29e8d6b6850d95f26c082447e58af', '7b71ebe62eb51d0247c1fa85a4c2f2450874467f'),
+    '.github/workflows/g5-03-supply-preflight.yml': ('918ff5ec9ee1b747b2225f74e0d67bc0d1e98fc2', 'a2ba29eb107068cab0dc64a6d960719c9199ef4d'),
+    '.github/workflows/g5-04-supply-preflight.yml': ('441e8b438c74aa53cbc33d33559e2d4198806bc9', '1450cfd211ba8a318b6a3dae5e7af76b90f5072e'),
+    '.github/workflows/g5-05-supply-preflight.yml': ('36a79a904eb51e5beb690cb09111aa2a6f5badf2', '6302e9208cebaf07cbe448e21ff9d5c568132418'),
+    '.github/workflows/g5-primary-readiness-review.yml': ('da42be9c7f0abba2b0b31e9b98fdf5d08bcf24a7', '000e9fa219ded6de0f31b4352fa414423601007c'),
+    '.github/workflows/g5-reply-mode-source-design.yml': ('9655db9178245cbef2ad15052864e37690a50852', 'b59515afb62138943c211ad8af7fbba618d13bad'),
+    'tools/engineering/audit-pbai-p5-results.py': ('b81ef42e2095f43b53323fec0919f0a2b296feff', '3adb83f37797bb308a6b0bf1b779a502a26897b5'),
+}
+
+
 def preserved_current(frozen):
     scope = frozen.read("INTEGRATION_SCOPE.json")
     old = frozen.tree(scope["sourceHead"])
@@ -201,6 +220,8 @@ def preserved_current(frozen):
                                     DOCUMENT_EDITORIAL_BLOBS, DOCUMENT_EDITORIAL_COMMIT)
     normalized = verify_rules_update(BASE, scope["sourceHead"],
                                      DIRECTIVE_NORMALIZATION_BLOBS, DIRECTIVE_NORMALIZATION_COMMIT)
+    ci_adaptation = verify_rules_update(BASE, scope["sourceHead"],
+                                       CI_ADAPTATION_BLOBS, CI_ADAPTATION_COMMIT)
     count = 0
     for name, (mode, expected) in old.items():
         if name in allowed:
@@ -211,6 +232,10 @@ def preserved_current(frozen):
             continue
         if name in DOCUMENT_EDITORIAL_BLOBS:
             assert (mode, expected) == ("100644", DOCUMENT_EDITORIAL_BLOBS[name][0]), name
+            count += 1
+            continue
+        if name in CI_ADAPTATION_BLOBS:
+            assert (mode, expected) == ("100644", CI_ADAPTATION_BLOBS[name][0]), name
             count += 1
             continue
         if name in DIRECTIVE_NORMALIZATION_BLOBS:
@@ -241,6 +266,8 @@ def preserved_current(frozen):
             "documentEditorialCommit": DOCUMENT_EDITORIAL_COMMIT, "documentEditorialFiles": editorial,
             "directiveNormalizationCommit": DIRECTIVE_NORMALIZATION_COMMIT,
             "directiveNormalizationFiles": normalized,
+            "historicalCiAdaptationCommit": CI_ADAPTATION_COMMIT,
+            "historicalCiAdaptationFiles": ci_adaptation,
             "preservedSourceFiles": count, "historicalSnapshots": len(snapshots),
             "publicAndWorkerFiles": len(public), "historicalWorkflows": len(scope["historicalWorkflows"])}
 

@@ -20,7 +20,9 @@ jobs:
         with:
           node-version: '24.19.0'
       - name: Validate current fixture code without scientific source execution
-        run: node --test test/g5-*.cjs
+        run: |
+          git worktree add --detach "$RUNNER_TEMP/g5-legacy-checkpoint" 43e145da1eb66cab38b56e96b52c0f3a4282b302
+          (cd "$RUNNER_TEMP/g5-legacy-checkpoint" && node --test test/g5-*.cjs)
       - name: Verify preserved bytes original archives raw Git and documentation
         run: |
           python3 tools/research/g5-checkpoint/test-verify-current.py
