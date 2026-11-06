@@ -2,7 +2,7 @@
 
 ## 開始判断
 
-2026年9月8日、JSON数値比較の修正と新規データによる独立再検証という提案へのユーザーの「進めてください」に基づき、`PBAI-P8`を開始する。日本語題目は「学習済み論理ゲート評価器の独立再検証」。正式英語題目は `Independent Revalidation of the Frozen Logic-Gate Evaluator Program 8`。候補は実装を変更しない`PBAI-C015-v1`である。
+2026年9月8日、JSON数値比較の修正と新規データによる独立再検証を対象とする`PBAI-P8`の開始が認可された。日本語題目は「学習済み論理ゲート評価器の独立再検証」。正式英語題目は `Independent Revalidation of the Frozen Logic-Gate Evaluator Program 8`。候補は実装を変更しない`PBAI-C015-v1`である。
 
 mainは`5caa1216a891b5b78f63a81bb559029d482c0181`、公開AIは`AI-GEN3 / AI-GEN3-RELEASE-001`。P7のPR #123は未統合で、HEADは`9d00e3f7d617cd388c1ccda4a614428f0ee62772`。このHEADから`engineering/pbai-p8-independent-revalidation`を作成し、P7への依存PRで記録する。
 

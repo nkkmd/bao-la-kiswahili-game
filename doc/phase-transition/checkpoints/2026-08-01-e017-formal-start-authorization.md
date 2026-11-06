@@ -7,9 +7,9 @@ Status: Approved / Awaiting fixed-local execution lock
 
 ## 1. 明示的開始承認
 
-2026-08-01 22:47 JST、ユーザーから研究再開時に提示した推奨順序「E-017 → H16直接比較実験」に対して「推奨順序で進めてください」と明示的な進行指示を受領した。
+2026-08-01 22:47 JST、研究の進行順序をE-017、H16直接比較実験の順とすることが明示的に承認された。
 
-この指示を、既存のD-073およびE-017 execution policyが要求する **E-017固有のformal experiment開始承認** として記録する。
+この承認を、既存のD-073およびE-017 execution policyが要求する **E-017固有のformal experiment開始承認** として記録する。
 
 E-011の過去承認を流用したものではない。
 

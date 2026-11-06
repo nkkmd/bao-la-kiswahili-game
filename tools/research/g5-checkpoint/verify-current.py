@@ -19,6 +19,9 @@ CURRENT_STEP = (b"        run: |\n"
                 b"          python3 tools/research/g5-checkpoint/verify-current.py")
 
 
+OLD_G5_TEST = b"        run: node --test test/g5-*.cjs"
+CURRENT_G5_TEST = b"        run: |\n          git worktree add --detach \"$RUNNER_TEMP/g5-legacy-checkpoint\" 43e145da1eb66cab38b56e96b52c0f3a4282b302\n          (cd \"$RUNNER_TEMP/g5-legacy-checkpoint\" && node --test test/g5-*.cjs)"
+
 def git(repo, *args):
     return subprocess.check_output(["git", "-C", str(repo), *args])
 
@@ -55,7 +58,8 @@ def verify_bindings(repo, snapshot_commit, snapshot_tree):
             assert sha(frozen) == expected, name
             if name == WORKFLOW:
                 assert frozen.count(OLD_STEP) == 1, name
-                assert (repo / name).read_bytes() == frozen.replace(OLD_STEP, CURRENT_STEP), name
+                assert frozen.count(OLD_G5_TEST) == 1, name
+                assert (repo / name).read_bytes() == frozen.replace(OLD_STEP, CURRENT_STEP).replace(OLD_G5_TEST, CURRENT_G5_TEST), name
             else:
                 assert (repo / name).is_file(), name
             historical += 1
@@ -144,6 +148,100 @@ DOCUMENT_EDITORIAL_COMMIT = '78a3101e3308941dbd58baca53b0e1868b6c17ec'
 DOCUMENT_EDITORIAL_BLOBS = {'doc/ai-engineering/pbai-c015-adoption-review/ADOPTION.md': ('f477e2962dc69c8ddb7c29b9660d7765ea6e1ba5', 'd61f2762d709f6134f70e7fcdf48594042349d0e'), 'doc/first-player-gen4/MAIN_INTEGRATION.md': ('d4cca0dc59b6488bd39e341be1d27e971d885990', '8495b9602a984ff732632bc128bdd90e479d73ba')}
 
 
+# 指示の逐語引用の整理と文書規約更新。元版と認可範囲を保持した19文書を限定照合する。
+DIRECTIVE_NORMALIZATION_COMMIT = '312c0d05abe2ba5a4652443f8ed9fbf156b22e4d'
+DIRECTIVE_NORMALIZATION_BLOBS = {
+    'doc/DOCUMENTATION_LANGUAGE_POLICY.md': (
+        'a8c6a65aa50717d516fcb0cb108448fff3b42913', '2f3526f347a4834e9d7320f01fdd8b31828a9a89'),
+    'doc/JAPANESE_DOCUMENTATION_QUALITY_GATE.md': (
+        '32935b1cc8ce4d331168579e1bc5f2ee70a6295a', 'b18f83e81fb6a51112da0e0fbae21befdaa01349'),
+    'doc/ai-engineering/public-ai-improvement-program-5/AUTHORIZATION_REVIEW.md': (
+        '3bab36b311dfb327ba445c82da3f922167023567', '88e0caf5c126c4c40956061af51926dede634365'),
+    'doc/ai-engineering/public-ai-improvement-program-5/EXECUTION_CONTRACT.md': (
+        '55cf728448c1a108f2f9c3b9e58a35d4f0d39e6d', 'c9d13f03abec46cf51483051baa329fd9277a44c'),
+    'doc/ai-engineering/public-ai-improvement-program-6/AUTHORIZATION_REVIEW.md': (
+        '274d4d735e3f010a1ac8de9dc529dae0a81776a6', '503a38f129afc3dd52b3dfcf3fdab9f3d5d68775'),
+    'doc/ai-engineering/public-ai-improvement-program-7/AUTHORIZATION_REVIEW.md': (
+        '4388ca841ebf016f9e0ffdb29616ad16d1d0b84f', 'd76f5c3943cdc619f8c674c25f59dae326249438'),
+    'doc/ai-engineering/public-ai-improvement-program-8/AUTHORIZATION_REVIEW.md': (
+        'a9d6c25ec50b71c3fc4e0ebea4f65ec608eb79d4', 'df34df79264c1eef1287f0985c14d9e1da28ad81'),
+    'doc/ai-engineering/public-ai-improvement-program-9/AUTHORIZATION.md': (
+        'bc53afaf6d49cc951303b19ccb7c5c115f6808eb', '2980a5b5c0fd66244e3aefc8dbed58708a823508'),
+    'doc/first-player-gen4/AUTHORIZATION.md': (
+        '90566fb0efe8e1e28d8e01e11655e93382ceea98', 'bf5a63d1fbda9d91271f16b7d507fde89d799a4c'),
+    'doc/phase-transition/RESEARCH_LOG.md': (
+        'c22dd770529d5db7647a8381b465584c7667960f', 'de28e011106542229ea15d400a88874be7806693'),
+    'doc/phase-transition/checkpoints/2026-08-01-e011-formal-start-authorization.md': (
+        '898830e9a69596bb45a4652d1b878b02ad87ec2f', '70840bfff1eb441739a07bed5e62818c414e43e1'),
+    'doc/phase-transition/checkpoints/2026-08-01-e017-formal-start-authorization.md': (
+        'fab9f778d63c5763c6098e7d3db084b061ff4917', 'a465fa6a3fb879df408468830cccee6205d57c8a'),
+    'doc/phase-transition/checkpoints/2026-08-02-e018-formal-start-authorization.md': (
+        '3687824e592d27a1be16bb5a4b549fb3fbbcf280', '4fd3083dcb82a6816d8f291133bf35ce66f301d7'),
+    'doc/research-generation-5/g5-01/PREEXECUTION_REVIEW.md': (
+        'b7e259c6c02a4a00fdd999d7714397b63484797d', 'b2b25215f003a519246f75eaaf2cdf8a2f41b9b6'),
+    'doc/research-generation-5/g5-01/development/PREEXECUTION_REVIEW.md': (
+        '82a30c26dde983932e5c6d03702f60a24b535c19', 'ee30ab4cba307a95ea753789ba6a42b83583b3f9'),
+    'doc/research-generation-5/g5-01/transition/TECHNICAL_CONTRACT.md': (
+        'b8c9904a64e6a0d9ea223d406ffda604790a056a', '392820797e7d255e4a3d5f827d391d18fa7148ed'),
+    'doc/research-generation-5/g5-02/PREEXECUTION_REVIEW.md': (
+        '563a3295b167166e589e4ca2f57b961fcd48f11c', '60cbab8d76b5ac82e9f13fe1fc1d4eb7c934f476'),
+    'doc/research-generation-5/g5-03/PREEXECUTION_REVIEW.md': (
+        '59f5e1974522b5a2f7e11a3b2fdfea06b61ea68e', 'ffcd5e29b799ae4c4a3563581a609b094cfa2fb8'),
+    'doc/research-generation-5/g5-04/PREEXECUTION_REVIEW.md': (
+        'd78d609cf17b501cccabea70c75b5aa931309e10', '35bac10685781c6325688b54e1a9c8fbab2b2342'),
+}
+
+
+# CIで旧版と現在版を分離する。対象と前後blobを限定し旧Studyのbindingは不変とする。
+CI_ADAPTATION_COMMIT = 'e5cf796ad82bcd465a9d4117fb48dd3fddaa7007'
+CI_ADAPTATION_BLOBS = {
+    '.github/workflows/g5-01-development-preflight.yml': ('07de09c970cbe880b367ea71016f1cc85d3c8507', 'a174bf3cfb3fd3f52ba683f88c2bdbc468de0a15'),
+    '.github/workflows/g5-01-transition-technical.yml': ('f2b4b3b8300f435858ecd94767603786ebd97959', 'bd23d4fed4bf086d5b9761d92cbbcf2132ae7fed'),
+    '.github/workflows/g5-02-supply-preflight.yml': ('3e6972c2e1f29e8d6b6850d95f26c082447e58af', '7b71ebe62eb51d0247c1fa85a4c2f2450874467f'),
+    '.github/workflows/g5-03-supply-preflight.yml': ('918ff5ec9ee1b747b2225f74e0d67bc0d1e98fc2', 'a2ba29eb107068cab0dc64a6d960719c9199ef4d'),
+    '.github/workflows/g5-04-supply-preflight.yml': ('441e8b438c74aa53cbc33d33559e2d4198806bc9', '1450cfd211ba8a318b6a3dae5e7af76b90f5072e'),
+    '.github/workflows/g5-05-supply-preflight.yml': ('36a79a904eb51e5beb690cb09111aa2a6f5badf2', '6302e9208cebaf07cbe448e21ff9d5c568132418'),
+    '.github/workflows/g5-primary-readiness-review.yml': ('da42be9c7f0abba2b0b31e9b98fdf5d08bcf24a7', '000e9fa219ded6de0f31b4352fa414423601007c'),
+    '.github/workflows/g5-reply-mode-source-design.yml': ('9655db9178245cbef2ad15052864e37690a50852', 'b59515afb62138943c211ad8af7fbba618d13bad'),
+    'tools/engineering/audit-pbai-p5-results.py': ('b81ef42e2095f43b53323fec0919f0a2b296feff', '3adb83f37797bb308a6b0bf1b779a502a26897b5'),
+}
+
+
+# 旧履歴検証器からP5の1文書監査器だけを限定例外とした2段階更新。
+HISTORICAL_CI_RUNNER = 'tools/takasia/run-historical-ci.cjs'
+HISTORICAL_CI_RUNNER_FIRST = '6a237c3b96d83c11e5998ba83b6ce83643ad09da'
+HISTORICAL_CI_RUNNER_FIX = 'cc27e068f0792f11469184d863a2262ce931fbcd'
+HISTORICAL_CI_RUNNER_BLOBS = (
+    '36ba6ab003de2c063473e3e23df25f8efb0927b6',
+    'ac8d629ad5f850e2902b02feed1ab6d5e1d5f6f7',
+    'dd261eb0b7a8a235488743a889c7865bc3b1f955',
+)
+
+
+def verify_historical_ci_runner(repo, source_head):
+    """元版→固定例外→NUL修正の順で、更新集合と現在blobを限定照合する。"""
+    name = HISTORICAL_CI_RUNNER
+    first, fixed = HISTORICAL_CI_RUNNER_FIRST, HISTORICAL_CI_RUNNER_FIX
+    old, middle, new = HISTORICAL_CI_RUNNER_BLOBS
+    for commit in (first, fixed):
+        assert subprocess.run(["git", "-C", str(repo), "merge-base", "--is-ancestor",
+                               commit, "HEAD"], capture_output=True).returncode == 0
+        changed = set(git(repo, "diff", "--name-only", "--diff-filter=M",
+                          commit + "^1", commit).decode().splitlines())
+        assert changed == {name}, commit
+    for ref, expected in ((source_head, old), (first + "^1", old), (first, middle),
+                          (fixed + "^1", middle), (fixed, new)):
+        entry = git(repo, "ls-tree", ref, "--", name).decode().strip().split()
+        assert entry[:3] == ["100644", "blob", expected], (ref, name)
+    path = repo / name
+    assert path.is_file() and not path.is_symlink(), name
+    assert path.stat().st_mode & 0o111 == 0, name
+    data = path.read_bytes()
+    actual = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+    assert actual == new, name
+    return 2
+
+
 def preserved_current(frozen):
     scope = frozen.read("INTEGRATION_SCOPE.json")
     old = frozen.tree(scope["sourceHead"])
@@ -155,6 +253,11 @@ def preserved_current(frozen):
     updated = verify_rules_update(BASE, scope["sourceHead"])
     editorial = verify_rules_update(BASE, scope["sourceHead"],
                                     DOCUMENT_EDITORIAL_BLOBS, DOCUMENT_EDITORIAL_COMMIT)
+    normalized = verify_rules_update(BASE, scope["sourceHead"],
+                                     DIRECTIVE_NORMALIZATION_BLOBS, DIRECTIVE_NORMALIZATION_COMMIT)
+    ci_adaptation = verify_rules_update(BASE, scope["sourceHead"],
+                                       CI_ADAPTATION_BLOBS, CI_ADAPTATION_COMMIT)
+    historical_runner = verify_historical_ci_runner(BASE, scope["sourceHead"])
     count = 0
     for name, (mode, expected) in old.items():
         if name in allowed:
@@ -165,6 +268,18 @@ def preserved_current(frozen):
             continue
         if name in DOCUMENT_EDITORIAL_BLOBS:
             assert (mode, expected) == ("100644", DOCUMENT_EDITORIAL_BLOBS[name][0]), name
+            count += 1
+            continue
+        if name == HISTORICAL_CI_RUNNER:
+            assert (mode, expected) == ("100644", HISTORICAL_CI_RUNNER_BLOBS[0]), name
+            count += 1
+            continue
+        if name in CI_ADAPTATION_BLOBS:
+            assert (mode, expected) == ("100644", CI_ADAPTATION_BLOBS[name][0]), name
+            count += 1
+            continue
+        if name in DIRECTIVE_NORMALIZATION_BLOBS:
+            assert (mode, expected) == ("100644", DIRECTIVE_NORMALIZATION_BLOBS[name][0]), name
             count += 1
             continue
         p = BASE / name
@@ -189,6 +304,11 @@ def preserved_current(frozen):
     return {"agentsPolicyCommit": AGENTS_POLICY_COMMIT,
             "approvedRulesUpdateCommit": RULES_UPDATE_COMMIT, "approvedRulesUpdateFiles": updated,
             "documentEditorialCommit": DOCUMENT_EDITORIAL_COMMIT, "documentEditorialFiles": editorial,
+            "directiveNormalizationCommit": DIRECTIVE_NORMALIZATION_COMMIT,
+            "directiveNormalizationFiles": normalized,
+            "historicalCiAdaptationCommit": CI_ADAPTATION_COMMIT,
+            "historicalCiAdaptationFiles": ci_adaptation,
+            "historicalCiRunnerChanges": historical_runner,
             "preservedSourceFiles": count, "historicalSnapshots": len(snapshots),
             "publicAndWorkerFiles": len(public), "historicalWorkflows": len(scope["historicalWorkflows"])}
 

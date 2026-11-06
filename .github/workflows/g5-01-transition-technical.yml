@@ -28,13 +28,25 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - name: Verify current editorial boundary and archived bindings
+        run: |
+          python3 tools/research/g5-checkpoint/test-verify-current.py
+          python3 tools/research/g5-checkpoint/verify-current.py --hashes-only
       - name: Verify independent transition fixtures
-        run: node --test test/g5-01-transition.test.cjs
+        run: |
+          git worktree add --detach "$RUNNER_TEMP/g5-legacy-verification" 43e145da1eb66cab38b56e96b52c0f3a4282b302
+          cd "$RUNNER_TEMP/g5-legacy-verification"
+          node --test test/g5-01-transition.test.cjs
       - name: Preserve technical measurement
-        run: node tools/research/g5-01/transition/run.cjs artifacts/local/g5-01-transition/result.json
+        run: |
+          mkdir -p artifacts/local/g5-01-transition
+          (cd "$RUNNER_TEMP/g5-legacy-verification" && node tools/research/g5-01/transition/run.cjs "$GITHUB_WORKSPACE/artifacts/local/g5-01-transition/result.json")
       - name: Upload transition evidence
         if: always()
         uses: actions/upload-artifact@v4

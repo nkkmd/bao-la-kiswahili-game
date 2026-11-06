@@ -21,12 +21,22 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      - name: Verify current editorial boundary and archived bindings
+        run: |
+          python3 tools/research/g5-checkpoint/test-verify-current.py
+          python3 tools/research/g5-checkpoint/verify-current.py --hashes-only
       - name: Test outcome blind structural selection
-        run: node --test test/g5-source-design.test.cjs
+        run: |
+          git worktree add --detach "$RUNNER_TEMP/g5-legacy-verification" 43e145da1eb66cab38b56e96b52c0f3a4282b302
+          cd "$RUNNER_TEMP/g5-legacy-verification"
+          node --test test/g5-source-design.test.cjs
       - name: Check saved structural audit
-        run: node tools/research/g5-source-design/audit.cjs --check
+        run: (cd "$RUNNER_TEMP/g5-legacy-verification" && node tools/research/g5-source-design/audit.cjs --check)
       - name: Recheck prior evidence and readiness review
-        run: node tools/research/g5-readiness/review.cjs --check
+        run: (cd "$RUNNER_TEMP/g5-legacy-verification" && node tools/research/g5-readiness/review.cjs --check)

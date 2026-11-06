@@ -33,7 +33,24 @@ const profiles = {
 function run(profile) {
   assert.ok(Object.hasOwn(profiles, profile), "既知の履歴検証profileが必要");
   const { preserved, commands, executionBundle } = profiles[profile];
-  execFileSync("git", ["diff", "--exit-code", source, "--", ...preserved], { cwd: root, stdio: "pipe" });
+  // P5の監査器だけは限定された後続CI修正を明示検証する。その他は歴史的byteを厳守する。
+  const p5Audit = "tools/engineering/audit-pbai-p5-results.py";
+  const verifiedPaths = profile === "p5" ? preserved.filter(name => name !== p5Audit) : preserved;
+  execFileSync("git", ["diff", "--exit-code", source, "--", ...verifiedPaths], { cwd: root, stdio: "pipe" });
+  if (profile === "p5") {
+    const crypto = require("node:crypto");
+    const hashBlob = bytes => crypto.createHash("sha1").update(Buffer.concat([
+      Buffer.from("blob " + bytes.length + "\0"), bytes])).digest("hex");
+    const readAt = commit => execFileSync("git", ["show", commit + ":" + p5Audit], { cwd: root });
+    const approved = "e5cf796ad82bcd465a9d4117fb48dd3fddaa7007";
+    const historicalSha = "b81ef42e2095f43b53323fec0919f0a2b296feff";
+    const currentSha = "3adb83f37797bb308a6b0bf1b779a502a26897b5";
+    execFileSync("git", ["merge-base", "--is-ancestor", approved, "HEAD"], { cwd: root });
+    assert.equal(hashBlob(readAt(source)), historicalSha);
+    assert.equal(hashBlob(readAt(approved + "^1")), historicalSha);
+    assert.equal(hashBlob(readAt(approved)), currentSha);
+    assert.equal(hashBlob(fs.readFileSync(path.join(root, p5Audit))), currentSha);
+  }
   const out = path.join(root, "artifacts/local/takasia-history", profile);
   fs.mkdirSync(out, { recursive: true });
   const temp = fs.mkdtempSync(path.join(os.tmpdir(), "bao-takasia-history-"));

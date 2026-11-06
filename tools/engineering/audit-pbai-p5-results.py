@@ -14,7 +14,9 @@ for ref in ('2d77792220af80ca2700bd0b3c0ab8e45197c24e','b7ec229a7b34eb9266d4bc19
  for p,h in historical_dependencies.items():
   data=subprocess.check_output(['git','show',f'{ref}:{p}'],cwd=R)
   assert sha(data)==h,(ref,p)
-for p,h in historical_dependencies.items():assert sha((R/p).read_bytes())==h,p
+# Historical dependencies are verified by the fixed Git references above.
+# Later releases may legitimately change current public assets; never compare
+# their current bytes to the earlier scientific run's frozen source hashes.
 index=read(O/'final-evidence-index.json');archive=O/'final-evidence.tar.gz'
 assert sha(archive.read_bytes())==index['archiveSha256']
 with tarfile.open(archive) as t:

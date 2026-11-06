@@ -5,7 +5,7 @@ Status: Approved / Awaiting fixed-local execution lock
 
 ## 承認
 
-ユーザーから「E-011の正式自己対局を開始してください」と明示的な開始指示を受領した。
+E-011固有の正式自己対局開始が明示的に承認された。
 
 この指示をE-011正式実験の開始承認として扱い、次の専用コミットでexecution policyを有効化した。
 

@@ -2,7 +2,7 @@
 
 ## 現状と認可範囲
 
-ユーザーの「では、再検証を行います。準備してください」に基づき、再検証の準備を認可する。新規seedの測定開始は今回の作業範囲に含めない。GitHubからmainを再取得し、548ccead3965fa98602d99c8b3e2a49fbeeed093を確認した。未統合PRはP4の#107であり、そのHEADは2d77792220af80ca2700bd0b3c0ab8e45197c24e。旧作業treeはcleanだった。
+再検証の準備を認可範囲とする。新規seedの測定開始は今回の作業範囲に含めない。GitHubからmainを再取得し、548ccead3965fa98602d99c8b3e2a49fbeeed093を確認した。未統合PRはP4の#107であり、そのHEADは2d77792220af80ca2700bd0b3c0ab8e45197c24e。旧作業treeはcleanだった。
 
 正式Program名は `Search-Only Lightweight State Transition Independent Reverification Program 5`、Program IDはPBAI-P5。対象候補は既存PBAI-C011-v1の同一sourceである。候補IDを新規発行・改名せず、P4の失敗を別名の成功へ置換しない。P4のHOLDは確定済みのまま維持する。Research Generation 4およびAI世代昇格とは独立している。
 
