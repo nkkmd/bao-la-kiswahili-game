@@ -237,7 +237,7 @@ def verify_historical_ci_runner(repo, source_head):
     assert path.is_file() and not path.is_symlink(), name
     assert path.stat().st_mode & 0o111 == 0, name
     data = path.read_bytes()
-    actual = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\\0" + data).hexdigest()
+    actual = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
     assert actual == new, name
     return 2
 
