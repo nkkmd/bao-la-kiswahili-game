@@ -19,8 +19,8 @@ CURRENT_STEP = (b"        run: |\n"
                 b"          python3 tools/research/g5-checkpoint/verify-current.py")
 
 
-OLD_G5_TEST = "        run: node --test test/g5-*.cjs"
-CURRENT_G5_TEST = "        run: |\n          git worktree add --detach \"$RUNNER_TEMP/g5-legacy-checkpoint\" 43e145da1eb66cab38b56e96b52c0f3a4282b302\n          (cd \"$RUNNER_TEMP/g5-legacy-checkpoint\" && node --test test/g5-*.cjs)"
+OLD_G5_TEST = b"        run: node --test test/g5-*.cjs"
+CURRENT_G5_TEST = b"        run: |\n          git worktree add --detach \"$RUNNER_TEMP/g5-legacy-checkpoint\" 43e145da1eb66cab38b56e96b52c0f3a4282b302\n          (cd \"$RUNNER_TEMP/g5-legacy-checkpoint\" && node --test test/g5-*.cjs)"
 
 def git(repo, *args):
     return subprocess.check_output(["git", "-C", str(repo), *args])
