@@ -207,6 +207,41 @@ CI_ADAPTATION_BLOBS = {
 }
 
 
+# 旧履歴検証器からP5の1文書監査器だけを限定例外とした2段階更新。
+HISTORICAL_CI_RUNNER = 'tools/takasia/run-historical-ci.cjs'
+HISTORICAL_CI_RUNNER_FIRST = '6a237c3b96d83c11e5998ba83b6ce83643ad09da'
+HISTORICAL_CI_RUNNER_FIX = 'cc27e068f0792f11469184d863a2262ce931fbcd'
+HISTORICAL_CI_RUNNER_BLOBS = (
+    '36ba6ab003de2c063473e3e23df25f8efb0927b6',
+    'ac8d629ad5f850e2902b02feed1ab6d5e1d5f6f7',
+    'dd261eb0b7a8a235488743a889c7865bc3b1f955',
+)
+
+
+def verify_historical_ci_runner(repo, source_head):
+    """元版→固定例外→NUL修正の順で、更新集合と現在blobを限定照合する。"""
+    name = HISTORICAL_CI_RUNNER
+    first, fixed = HISTORICAL_CI_RUNNER_FIRST, HISTORICAL_CI_RUNNER_FIX
+    old, middle, new = HISTORICAL_CI_RUNNER_BLOBS
+    for commit in (first, fixed):
+        assert subprocess.run(["git", "-C", str(repo), "merge-base", "--is-ancestor",
+                               commit, "HEAD"], capture_output=True).returncode == 0
+        changed = set(git(repo, "diff", "--name-only", "--diff-filter=M",
+                          commit + "^1", commit).decode().splitlines())
+        assert changed == {name}, commit
+    for ref, expected in ((source_head, old), (first + "^1", old), (first, middle),
+                          (fixed + "^1", middle), (fixed, new)):
+        entry = git(repo, "ls-tree", ref, "--", name).decode().strip().split()
+        assert entry[:3] == ["100644", "blob", expected], (ref, name)
+    path = repo / name
+    assert path.is_file() and not path.is_symlink(), name
+    assert path.stat().st_mode & 0o111 == 0, name
+    data = path.read_bytes()
+    actual = hashlib.sha1(b"blob " + str(len(data)).encode() + b"\\0" + data).hexdigest()
+    assert actual == new, name
+    return 2
+
+
 def preserved_current(frozen):
     scope = frozen.read("INTEGRATION_SCOPE.json")
     old = frozen.tree(scope["sourceHead"])
@@ -222,6 +257,7 @@ def preserved_current(frozen):
                                      DIRECTIVE_NORMALIZATION_BLOBS, DIRECTIVE_NORMALIZATION_COMMIT)
     ci_adaptation = verify_rules_update(BASE, scope["sourceHead"],
                                        CI_ADAPTATION_BLOBS, CI_ADAPTATION_COMMIT)
+    historical_runner = verify_historical_ci_runner(BASE, scope["sourceHead"])
     count = 0
     for name, (mode, expected) in old.items():
         if name in allowed:
@@ -232,6 +268,10 @@ def preserved_current(frozen):
             continue
         if name in DOCUMENT_EDITORIAL_BLOBS:
             assert (mode, expected) == ("100644", DOCUMENT_EDITORIAL_BLOBS[name][0]), name
+            count += 1
+            continue
+        if name == HISTORICAL_CI_RUNNER:
+            assert (mode, expected) == ("100644", HISTORICAL_CI_RUNNER_BLOBS[0]), name
             count += 1
             continue
         if name in CI_ADAPTATION_BLOBS:
@@ -268,6 +308,7 @@ def preserved_current(frozen):
             "directiveNormalizationFiles": normalized,
             "historicalCiAdaptationCommit": CI_ADAPTATION_COMMIT,
             "historicalCiAdaptationFiles": ci_adaptation,
+            "historicalCiRunnerChanges": historical_runner,
             "preservedSourceFiles": count, "historicalSnapshots": len(snapshots),
             "publicAndWorkerFiles": len(public), "historicalWorkflows": len(scope["historicalWorkflows"])}
 

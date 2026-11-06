@@ -126,6 +126,10 @@ class AgentsPolicyTest(unittest.TestCase):
 
 
 class RulesUpdateTest(unittest.TestCase):
+    def test_historical_p5_audit_runner_is_pinned(self):
+        self.assertEqual(audit.verify_historical_ci_runner(audit.BASE,
+            "a5014f79b300d3e5731aa272e4c6cb0d16baa350"), 2)
+
     def test_historical_ci_workflows_are_pinned(self):
         self.assertEqual(audit.verify_rules_update(audit.BASE,
             "a5014f79b300d3e5731aa272e4c6cb0d16baa350",
