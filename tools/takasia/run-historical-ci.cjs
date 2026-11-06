@@ -40,7 +40,7 @@ function run(profile) {
   if (profile === "p5") {
     const crypto = require("node:crypto");
     const hashBlob = bytes => crypto.createHash("sha1").update(Buffer.concat([
-      Buffer.from("blob " + bytes.length + "\\0"), bytes])).digest("hex");
+      Buffer.from("blob " + bytes.length + "\0"), bytes])).digest("hex");
     const readAt = commit => execFileSync("git", ["show", commit + ":" + p5Audit], { cwd: root });
     const approved = "e5cf796ad82bcd465a9d4117fb48dd3fddaa7007";
     const historicalSha = "b81ef42e2095f43b53323fec0919f0a2b296feff";
